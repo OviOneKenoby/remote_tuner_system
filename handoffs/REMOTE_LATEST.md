@@ -1,63 +1,62 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-001-20261008T142719Z
-- Updated (UTC): 2026-10-08T14:27:19Z
-- Task ID: A-REMOTE-001
+- Handoff ID: REMOTE-A-REMOTE-002-20261008T145852Z
+- Updated (UTC): 2026-10-08T16:03:40Z
+- Task ID: A-REMOTE-002
 - Status: READY FOR REVIEW
-- Prepared by: REMOTE Codex execution session, explicitly invoked by owner
-- Coordination input commit: 769c4dc1f50acebbf855b06d4bcf9cfc5eba7e16
+- Prepared by: REMOTE Codex executor; latest owner instruction authorizes result publication
+- Coordination input commit: 8e1ab9d87c4647964bbc48d0e50982472a0b9cca
 
 ## Milestone
-Live baseline/frozen-model recovery, bidirectional minimum-Native mapping and durability/sleep evidence reconciliation completed for review. This is the assigned inspection/documentation deliverable, not Native implementation, full CCM certification or common-gate acceptance. [Report](../reports/A-REMOTE-001.md).
+Bounded durable Core recovery and minimum reference/catalog/Favorite/content/numeric support design completed. Architecture, alternatives, capacity arithmetic, failure matrix and dependency-ordered gates in [report](../reports/A-REMOTE-002.md). Design only; no implementation/Native acceptance.
 
 ## Baseline
-- Device repository: C:/Users/RYZEN/Documents/REMOTE01/Code; actual owner-provided local workspace
-- Branch: UNKNOWN / unavailable: no Git metadata; no Git initialized
-- Firmware baseline commit: UNKNOWN / unavailable: SHA inventory substitutes for a fabricated commit
-- Firmware version: existing app descriptor project12_LVGL_Test/version1/IDF5.5.3; product release version UNKNOWN
-- Working tree at start: 4038-file SHA inventory;1704 outside .pio published. Dirty against a commit UNKNOWN; all entry files preserved except append-only device changelog
-- Contract references: recovered frozenCCM1.0.0 SHA7a46f9fffe706476de458aac078d0af1c94844df339248d3f9f4b5cf033011d7, original owner approval excerpt; Native candidate.1 UNAPPROVED/UNFROZEN; D-001?D-004/O01?O17 preserved; canonical handoff unchanged
+- Device repository: C:/Users/RYZEN/Documents/REMOTE01/Code, actual Git-less workspace
+- Branch: UNKNOWN / unavailable; no Git initialization
+- Firmware baseline commit: UNKNOWN / unavailable; exact entry source SHA inventory substitutes
+- Firmware version: existing artifact project12_LVGL_Test/version1/IDF5.5.3; product release identifier UNKNOWN
+- Working tree at start: 4039 entry files hashed; against A-001 non-.pio inventory only changelog changed and prior analysis doc added; executable/config source unchanged; dirty-against-commit UNKNOWN
+- Contract references: frozen CCM1.0.0 SHA7a46f9fffe706476de458aac078d0af1c94844df339248d3f9f4b5cf033011d7 and recovered approval excerpt; Native APIv1 UNAPPROVED/UNFROZEN/NOT IMPLEMENTED; O01-O17 OPEN
 
 ## Changes
-Created local docs/A_REMOTE_001_BASELINE_RECONCILIATION.md and appended device CHANGELOG.md. Created coordination reports/A-REMOTE-001.md and additive references/device_evidence/remote/A-REMOTE-001/ capture/index/validation, archived previous complete handoff and replaced this latest. Appended coordination changelog only. Firmware/source/tests/config/libs/artifacts untouched. Evidence snapshots are byte-preserved originals, never edits to synced starter references. No TUNER or PM-owned status changes.
+Device docs/A_REMOTE_002_DURABLE_RECOVERY_DESIGN.md and append-only CHANGELOG.md only. Prepared coordination reports/A-REMOTE-002.md, additive evidence/source/SDK hashes, this handoff and byte-original archive; appended coordination changelog. No firmware/config/tests/library/artifact writes; no TUNER/PM register edits. Prior outputs were UNPUBLISHED pending PM integration; current-main recheck and publication now explicitly authorized. Earlier own PR2 and task PR3 merges already published, detailed below.
 
 ## Verification
 | Check | Command/procedure | Environment | Result | Evidence |
 | --- | --- | --- | --- | --- |
-| Baseline/source inventory | Python pathlib/hashlib + read-only rg/Get-Content; existing BIN app-descriptor parse | Windows/PowerShell; installed Git/Python versions in inspection record | PASS for recorded source/artifact identity; source-to-artifact/flashed identity UNKNOWN | [Index](../references/device_evidence/remote/A-REMOTE-001/INDEX.md), BASELINE.json/SOURCE_SHA256.json |
-| Freeze/provenance | Original owner attachment search/read/hash; byte compare CCM sections1?20 allowing exactly two version substitutions | Actual local file versus immutable imported candidate.4 | PASS: recovered artifact and original approval instruction; no new approval | OWNER_FREEZE_APPROVAL_EXCERPT.txt / CCM_CANDIDATE_TO_FROZEN.diff / INSPECTION.md in index |
-| Mapping/persistence | Trace Core/ingress/facade/Mock/runtime/NETWORK/POWER paths | Source inspection, no executable tests | Findings recorded; real Native conformance NOT VERIFIED | Report sections2?7 and immutable source snapshots |
-| Docs/scope/archive | Local links, template headings, evidence hashes, entry/post manifest, git diff --check | Separate device coordination worktree | PASS when recorded in final validation; remote publication separately read back | [Validation](../references/device_evidence/remote/A-REMOTE-001/VALIDATION.md) |
-| Fresh regression/build/upload/hardware | NOT RUN: task authorizes inspection/docs only | NOT APPLICABLE | NOT RUN; historical results not promoted | Report sections1/6/8 |
+| Baseline | Python pathlib/hashlib entry/post inventory, A-001 inventory compare; read-only rg/Get-Content | Windows PowerShell, local Git-less REMOTE | PASS for source identity; source/artifact/flashed correspondence UNKNOWN | [Index](../references/device_evidence/remote/A-REMOTE-002/INDEX.md), BASELINE.json/SOURCE_SHA256.json |
+| Design trace | CCM clauses/current Core/ingress/facade/runtime and installed NVS5.5.3 source; exact Fraction arithmetic | Source/doc analysis only | READY FOR REVIEW; proposals not conformance acceptance | report sections2-8, SDK/source snapshots |
+| Scope/evidence/handoff | hash all entry files, archive bytes, template headings, local links and diff whitespace | isolated coordination worktree | PASS as recorded in VALIDATION; publication/readback reported separately after current owner authorization | [Validation](../references/device_evidence/remote/A-REMOTE-002/VALIDATION.md) |
+| Fresh regression/soak/build/upload/hardware | NOT RUN: task excludes executable work | NOT APPLICABLE | NOT RUN | no new firmware evidence claimed |
 
 ## Remaining unknowns
-Actually flashed image and current owner rollback-control residency outcome; provenance of unmatched local BIN/ELF; production durable history/ID/barrier recovery; real target identity/auth/context/ledger/freshness/capabilities; general numeric/reference/catalog ingress and missing operation execution slices; measured Native resource/security profile. Original approval attachment has no independent UTC timestamp/signature; October3 date is preserved durable document record. O01?O17 remain OPEN.
+Actual NVS free entries/fragmentation, physical atomicity/endurance/latency and safe profile size; complete immutable correlation/mandatory conflict projection; measured added RAM/frames; target identity/catalog/selection/context/ledger/result/security guarantees; O01-O17. Unmatched BIN/source/flashed identity and rollback-control residency still UNKNOWN/PENDING, independent of design. No newer hardware claim invented.
 
 ## Shared-contract impact
-- CCM 1.0.0: NO CHANGE; recovered exact frozen artifact/provenance and byte comparison, not semantic modification
-- TUNER Native API v1: NO CHANGE; UNAPPROVED/UNFROZEN/NOT IMPLEMENTED; mapping/profiles are recommendations only
-- Other device impact: questions/prerequisites for TUNER correctness/state/guard/resources in report; no TUNER files modified
-- Approval evidence: recovered original owner freeze instruction plus existing CCM section21/October3 changelog. NONE for Native API approval or implementation. Current owner authorization covers this inspection/publication only
+- CCM 1.0.0: NO CHANGE; exact frozen semantics/approval preserved
+- TUNER Native API v1: NO CHANGE; wire-independent numeric/storage/operation proposals only, unapproved/unfrozen/not implemented
+- Other device impact: TUNER state/context/ledger/guard/resource prerequisites identified; no TUNER changes; its corrections do not establish Native support
+- Approval evidence: attached PM package owner engage2026-10-08T14:36:49Z authorizes exact design/own administrative integration; NONE for Native/shared O closure or executable implementation
 
 ## Blockers
-NONE preventing this inspection report's delivery. Dependent production/Native work remains blocked by durable recovery and ingress/operation/numeric prerequisites, actual TUNER proof and unresolved shared decisions. Actual hardware rollback acceptance/artifact identity remains owner evidence gap, not inferred PASS. PM must review recovered frozen reference before changing shared availability status.
+NONE to delivery of this design. Implementation gates: NVS capacity/fault qualification, immutable recovery/target guarantees and shared approval. Latest owner instruction authorizes this executor to publish; prior delegation/package retained as history. No blocker to design publication.
 
 ## PM decision required
-Review/pin the recovered CCM artifact and approval provenance; review both device mapping/source reports; schedule separately scoped durability and minimum-slice follow-ups; obtain TUNER evidence for O-sensitive questions. Do not close common gate on this report alone. Shared binding/security/semantics changes still require both device reviews and explicit owner approval.
+Review recommended NVS qualification/profile and alternative rooted object log; assign only bounded D0 storage/codec qualification after review. Preserve common gate OPEN; review O-sensitive proposals with TUNER and owner before shared changes. Review the result PR and integrate only after review; no repeated PR2/PR3.
 
 ## Recommended next task
-REMOTE bounded durable-command-history/recovery design and minimum Native mapping prerequisite review, coordinated with A-TUNER-001 correctness/ownership findings. Exact scope/acceptance to be assigned by PM; not execution authorization. No real adapter/server implementation before approved shared contract and required evidence.
+Separately assigned D0 bounded canonical safety codec/NVS feasibility and fault test design/qualification, preserving credentials and partition layout. No Native adapter/server until approved shared revision and local/target evidence. Recommendation is not execution authorization.
 
 ## Commit
-- Firmware result commit(s): NONE; Git-less firmware workspace; docs only; exact entry hashes published
-- Device changelog: C:/Users/RYZEN/Documents/REMOTE01/Code/CHANGELOG.md, appended2026-10-08 A-REMOTE-001 entry; published evidence copy records entry version, not new changelog
-- Coordination publication: branch remote/a-remote-001-results-20261008; final coordination hash/link reported in publication message after push, not self-referential here
-- Previous handoff archive: [archive/remote/2026-10-08T142719Z_A-REMOTE-001_REMOTE-INIT-20261008.md](../archive/remote/2026-10-08T142719Z_A-REMOTE-001_REMOTE-INIT-20261008.md); byte-preserved REMOTE-INIT-20261008
+- Firmware result commit(s): NONE; device Git-less, documentation-only changes
+- Device changelog: C:/Users/RYZEN/Documents/REMOTE01/Code/CHANGELOG.md appended A-REMOTE-002 entry; exact changed-file hashes in package
+- Coordination publication: result branch remote/a-remote-002-publication-20261008 from current main; final result commit/PR is reported in publication message, avoiding self-reference. Earlier PR2 merged32d6e4b8e3fcf309b040e5701a3823289213da68; assignment PR3 mergeddce15583873f66fd56239b3b6cb805135477719a. Prepared for current-owner-authorized result publication; final commit/PR reported separately
+- Previous handoff archive: [archive/remote/2026-10-08T145852Z_A-REMOTE-002_REMOTE-A-REMOTE-001-20261008T142719Z.md](../archive/remote/2026-10-08T145852Z_A-REMOTE-002_REMOTE-A-REMOTE-001-20261008T142719Z.md); exact prior A-REMOTE-001 Git blob bytes
 
 ## Hardware status
-- Physical device tested: NO during this task; historical owner evidence retained separately
-- Board / hardware configuration: documented Waveshare ESP32-S3-Touch-LCD-3.49(B) V2 Rev1.1; GPIO1 external100k/100k, GPIO4 battery, GPIO8 wake; not newly physically inspected
-- Procedure and result: NOT RUN; historical GPIO1/sleep recovery/POWER covered paths PASS; ADC optimized residency FAIL; rollback-control residency PENDING; cause UNKNOWN
-- Firmware actually flashed: UNKNOWN; owner did not supply current hash, current local BIN differs from documented rollback
-- Build-only or simulated checks: NONE newly run; historical normal/soak/build evidence stays at its recorded scope/artifact/date
+- Physical device tested: NO during this design task
+- Board / hardware configuration: documented Waveshare ESP32-S3-Touch-LCD-3.49(B) V2 Rev1.1; GPIO1 external100k/100k, GPIO4 battery, GPIO8 wake; not remeasured
+- Procedure and result: NOT RUN; prior exact-scope owner evidence preserved; rollback residency PENDING
+- Firmware actually flashed: UNKNOWN; current BIN unmatched with recorded rollback
+- Build-only or simulated checks: document rational/capacity arithmetic only; no firmware runtime simulation or fresh build

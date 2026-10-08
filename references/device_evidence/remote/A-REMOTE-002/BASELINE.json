@@ -1,0 +1,17 @@
+{
+  "device_path": "C:\\Users\\RYZEN\\Documents\\REMOTE01\\Code",
+  "coordination_path": "C:\\Users\\RYZEN\\AppData\\Local\\Temp\\remote-a002\\results",
+  "coordination_input": "dce15583873f66fd56239b3b6cb805135477719a",
+  "reviewed_remote": "2163358f2f364df768d0db2ddd4589028d4aebf2",
+  "reviewed_tuner": "31205936ba12ec46a4e66d1c8766cac75334f5ce",
+  "prior_inventory_changed": [
+    "CHANGELOG.md"
+  ],
+  "prior_inventory_added_non_pio": [
+    "docs/A_REMOTE_001_BASELINE_RECONCILIATION.md"
+  ],
+  "entry_file_count": 4039,
+  "git_identity": "UNAVAILABLE; Git-less; no initialization",
+  "build": "NOT RUN",
+  "hardware": "NOT RUN"
+}

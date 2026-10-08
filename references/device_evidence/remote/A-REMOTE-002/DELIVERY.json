@@ -1,0 +1,10 @@
+{
+  "archive": "archive/remote/2026-10-08T145852Z_A-REMOTE-002_REMOTE-A-REMOTE-001-20261008T142719Z.md",
+  "timestamp_utc": "2026-10-08T14:58:52Z",
+  "publication": "UNPUBLISHED; delegated to separate PM session",
+  "already_merged_pr2": "32d6e4b8e3fcf309b040e5701a3823289213da68",
+  "already_merged_pr3": "dce15583873f66fd56239b3b6cb805135477719a",
+  "assignment_branch_head": "c4e63b2734b28e5a37f3bdea447b35822f2052be",
+  "pre_delivery_main": "8e1ab9d87c4647964bbc48d0e50982472a0b9cca",
+  "pre_delivery_state": "PM follow-up/TUNER docs concurrently integrated; REMOTE previous handoff unchanged; preserve all PM/TUNER changes"
+}
