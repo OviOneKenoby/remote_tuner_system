@@ -2,7 +2,7 @@
 
 Updated: 2026-10-08
 Coordinator: PM coordination repository publisher
-Coordination publication input: 13c7ff66d8d02e53d8cc163c10620ff21f17db9f
+Coordination publication input: d172db8615ca2da53d510d65c6a6ffcc5b21dd4a
 Common phase: Phase A contract reconciliation + TUNER correctness/control-state foundation
 Common gate: OPEN / NOT PASSED
 
@@ -10,7 +10,7 @@ Common gate: OPEN / NOT PASSED
 
 - TUNER [PR #1](https://github.com/OviOneKenoby/remote_tuner_system/pull/1) is merged at 13c7ff66d8d02e53d8cc163c10620ff21f17db9f. Package-reviewed head 31205936ba12ec46a4e66d1c8766cac75334f5ce is an ancestor of merged head 2b09770c7cfcbfb86efd3e3b1013cbb11fee0562. The added merge imports concurrent REMOTE changes; reviewed TUNER report/evidence/handoff/archive bytes are unchanged.
 - REMOTE [PR #2](https://github.com/OviOneKenoby/remote_tuner_system/pull/2) is merged at 32d6e4b8e3fcf309b040e5701a3823289213da68; head exactly matches package-reviewed 2163358f2f364df768d0db2ddd4589028d4aebf2.
-- Both changelog entries and device-owned evidence/handoffs/archives are preserved. Concurrent A-REMOTE-002 publication is preserved and matches the package assignment.
+- Both changelog entries and device-owned evidence/handoffs/archives are preserved. Concurrent A-REMOTE-002 and A-TUNER-002 publications are preserved and match the exact package assignments. Final integration input includes A-TUNER-002 assignment merge d172db8615ca2da53d510d65c6a6ffcc5b21dd4a.
 
 ## Baselines and authority
 
