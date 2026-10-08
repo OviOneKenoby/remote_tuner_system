@@ -1,0 +1,3 @@
+snapshot/** -text -whitespace
+OWNER_FREEZE_APPROVAL_EXCERPT.txt -text -whitespace
+CCM_CANDIDATE_TO_FROZEN.diff -text -whitespace
