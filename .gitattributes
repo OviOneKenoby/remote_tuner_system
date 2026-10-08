@@ -1,2 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Immutable imported reference bytes (including original line endings)
+references/starter_2026-10-08/** -text
+references/coordination_starter_2026-10-08/** -text

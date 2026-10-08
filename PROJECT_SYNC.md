@@ -1,7 +1,7 @@
 # Project synchronization
 Updated (UTC): 2026-10-08T13:55:34Z
-Coordinator: Project Manager — repository read access verified; write attempts rejected by GitHub integration (403)
-Publication: LOCAL PREPARATION ONLY / BLOCKED. Device assignments below take effect after publication to the coordination repository.
+Coordinator: Project Manager - authenticated Git publication verified
+Publication: PUBLISHED / VERIFIED. Initial push and remote readback: 07303e6feae109f4b1700563e2f26e7a5d4c09b3. Owner invocation of device chats remains required.
 Coordination planning input: dd63c07e485218dfc34ceb6a8855c8a929b4ae89
 Common phase: Phase A contract reconciliation + TUNER correctness/control-state foundation
 Common gate: OPEN / NOT PASSED
@@ -21,7 +21,7 @@ Historical owner hardware acceptance is recorded evidence for its exact scope/ar
 ## Assigned task queue
 | ID | Owner | Outcome | Dependency | Status |
 | --- | --- | --- | --- | --- |
-| A-PM-001 | PM | Index available evidence/provenance and publish scoped assignments | Current owner coordination request | BLOCKED on publication; local preparation verified |
+| A-PM-001 | PM | Index available evidence/provenance and publish scoped assignments | Current owner coordination request | DONE - documentation publication verified; device execution not started |
 | A-REMOTE-001 | REMOTE//01 | Live baseline/frozen-model recovery, bidirectional minimum-Native mapping and durability/sleep evidence reconciliation | A-PM-001 publication; inspect available evidence and report missing facts | ASSIGNED |
 | A-TUNER-001 | TUNER//01 | Live baseline/B01-B11 recheck, bounded foundation proposal and resource measurement plan | A-PM-001 publication and actual TUNER source | ASSIGNED |
 
