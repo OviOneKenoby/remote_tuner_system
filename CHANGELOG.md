@@ -51,3 +51,8 @@ READY FOR REVIEW, DESIGN ONLY. reports/A-REMOTE-002.md with durable identity/eff
 - Deterministic host suite PASS: 249 checks. Clean isolated pinned `esp32-dev` build PASS: RAM 83,056/327,680 (25.3%), flash 1,992,833/3,145,728 (63.4%). `firmware.bin` 1,999,408 bytes, SHA-256 `AF066BA215F863A7D2583A6313ACEE00020CCFAD4F8F8C3168DEDA76BCD6F5D4`.
 - Upload and physical hardware regression NOT RUN; hardware remains PENDING. Durable catalog identity, B02/B05/B07–B11, Native API and O01–O17 remain outside scope/open. CCM 1.0.0 and shared-contract status unchanged.
 - Added the full report, build/test evidence, byte-preserved prior handoff archive and complete TUNER latest handoff. Status READY FOR REVIEW; common gate remains OPEN / NOT PASSED.
+
+## 2026-10-08 - PM A-002 review and exact A-003 assignments
+- Integrated exact reviewed documentation PR #5/#6 with ordinary merges; preserved both device additions, full evidence and byte-original archives. Recorded PM package host-test provenance separately from executor ESP32 build evidence.
+- Preserved complete A-003 authorization package, published exact tasks and A-PM-002_REVIEW; appended scope-limited A-002 DONE dispositions while retaining original assignment bytes. A-003 ASSIGNED.
+- Hardware/artifact/storage gaps retained; full B04 identity and unrelated B items open, D1-D5 unassigned, O01-O17 OPEN, Native unapproved/unfrozen/not implemented, gate OPEN / NOT PASSED. No device task or firmware merge performed by publisher.

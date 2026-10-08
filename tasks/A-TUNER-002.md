@@ -22,3 +22,6 @@
 4. B06 saturates before narrowing. Do not introduce a new audio policy or broader BT volume mapping.
 5. B03 preserves the station's actual codec; do not infer AAC solely from a URL extension or default opaque streams to MP3.
 6. A build is not physical audio proof. Deliver the exact binary hash and a short owner regression checklist; do not flash automatically.
+
+## PM review disposition - 2026-10-08
+Disposition: DONE for bounded implementation/software-build delivery only; physical acceptance PENDING. The original ASSIGNED state and authorization above are preserved as historical assignment text. See [A-PM-002 review](../reports/A-PM-002_REVIEW.md) and [owner authorization](../references/PM_FOLLOW_UP_A003_2026-10-08.md). A-TUNER-003 is separately ASSIGNED; this publisher executes no device work.

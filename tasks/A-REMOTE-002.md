@@ -25,3 +25,6 @@
 7. Define the normalized Rational-to-TUNER integer 0..100 mapping proposal, exact representability/rejection/inverse rules and descriptor proof. UI rounding is not an adapter contract.
 8. Separate REMOTE-local implementation prerequisites from TUNER-required state/context/selection/result/ledger guarantees. A journal alone cannot create remote execution proof.
 9. Keep sleep rollback/artifact mismatch as a separate evidence gap. Do not begin its repair under this task.
+
+## PM review disposition - 2026-10-08
+Disposition: DONE for design/documentation delivery only; implementation NOT IMPLEMENTED. The original ASSIGNED state and authorization above are preserved as historical assignment text. See [A-PM-002 review](../reports/A-PM-002_REVIEW.md) and [owner authorization](../references/PM_FOLLOW_UP_A003_2026-10-08.md). A-REMOTE-003 is separately ASSIGNED; this publisher executes no device work.

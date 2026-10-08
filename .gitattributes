@@ -4,3 +4,6 @@
 # Immutable imported reference bytes (including original line endings)
 references/starter_2026-10-08/** -text
 references/coordination_starter_2026-10-08/** -text
+
+# Immutable A-003 owner authorization package
+references/PM_FOLLOW_UP_A003_2026-10-08.md -text
