@@ -1,0 +1,10 @@
+{
+  "tools/qualification/a_remote_003/backend.py": "7bacf4087a731f5d142447d7824903cf043008420e1178fd289ba94e7a815752",
+  "tools/qualification/a_remote_003/codec.py": "082b9c94b4fc0d4b23de4afa1b9f978ddacbb791df1088b2e2d7997eaa1d5240",
+  "tools/qualification/a_remote_003/fixtures.py": "41ce5329f58039e0d644af8149c25111dba4225509123aec3b9a81528532fb46",
+  "tools/qualification/a_remote_003/README.md": "29b962271e9fe403b47745313cb5b30cf9ddf842ab836723d5b7ff35d430807c",
+  "tools/qualification/a_remote_003/run_qualification.py": "83c2568df9547ded4dbf263c7cca2e20684c06f4f9ec130d5ba9c9344c26d593",
+  "tools/qualification/a_remote_003/test_qualification.py": "4d73edb852d2ce393cf4c536d05e3f5afe58a502afc0398e2abae867c48c286e",
+  "docs/A_REMOTE_003_D0_QUALIFICATION.md": "6e93a7196a5fe4b4b8afcba66e613084bf647bbafce9b0c11065274e2ffa990d",
+  "CHANGELOG.md": "f74dfa201137a4540aff233c8e09c001c2021531ca21d596e0882e020a72acdd"
+}

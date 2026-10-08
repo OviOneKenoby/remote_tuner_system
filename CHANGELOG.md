@@ -56,3 +56,9 @@ READY FOR REVIEW, DESIGN ONLY. reports/A-REMOTE-002.md with durable identity/eff
 - Integrated exact reviewed documentation PR #5/#6 with ordinary merges; preserved both device additions, full evidence and byte-original archives. Recorded PM package host-test provenance separately from executor ESP32 build evidence.
 - Preserved complete A-003 authorization package, published exact tasks and A-PM-002_REVIEW; appended scope-limited A-002 DONE dispositions while retaining original assignment bytes. A-003 ASSIGNED.
 - Hardware/artifact/storage gaps retained; full B04 identity and unrelated B items open, D1-D5 unassigned, O01-O17 OPEN, Native unapproved/unfrozen/not implemented, gate OPEN / NOT PASSED. No device task or firmware merge performed by publisher.
+
+
+## 2026-10-08 - A-REMOTE-003 isolated D0 qualification
+- REMOTE direct execution from main531aa8cd0435ed9813ab39664888992583df0d28. Complete narrowed projection/field trace,host codec/fake backend,exact fixture sizes/fault evidence published for PM review;prior REMOTE handoff byte-archived.
+- Host regression PASS13 tests/3859 counted checks/87 scenarios;production qualification FAIL/BLOCKED:2746->3228 typical resolution exceeds3072;maximum35324->44284,reserve8960;valid-old-anchor counterexample exposes unqualified newest-intent integrity.
+- No firmware integration/live NVS/credentials access/build/upload/hardware test,partition or shared-contract change. CCM frozen,Native unapproved/unfrozen/not implemented,O01-O17 open;D1-D5 remain unassigned/common gate OPEN. Separate redesign/physical qualification required.

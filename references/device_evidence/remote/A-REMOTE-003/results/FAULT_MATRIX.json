@@ -1,0 +1,771 @@
+[
+  {
+    "index": 0,
+    "boundary": "before-write-anchor",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 1,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 0,
+    "boundary": "before-write-anchor",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 0,
+    "boundary": "before-write-anchor",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 0,
+    "boundary": "before-write-anchor",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 1,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 1,
+    "boundary": "after-write-anchor",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 1,
+    "boundary": "after-write-anchor",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 1,
+    "boundary": "after-write-anchor",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 1,
+    "boundary": "after-write-anchor",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 2,
+    "boundary": "before-commit-prepare",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 2,
+    "boundary": "before-commit-prepare",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 2,
+    "boundary": "before-commit-prepare",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 2,
+    "boundary": "before-commit-prepare",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 3,
+    "boundary": "after-commit-prepare",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 3,
+    "boundary": "after-commit-prepare",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 3,
+    "boundary": "after-commit-prepare",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 3,
+    "boundary": "after-commit-prepare",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 4,
+    "boundary": "before-read-anchor",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 4,
+    "boundary": "before-read-anchor",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 4,
+    "boundary": "before-read-anchor",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 4,
+    "boundary": "before-read-anchor",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 5,
+    "boundary": "after-read-anchor",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 5,
+    "boundary": "after-read-anchor",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 5,
+    "boundary": "after-read-anchor",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 5,
+    "boundary": "after-read-anchor",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 6,
+    "boundary": "before-write-bank1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 6,
+    "boundary": "before-write-bank1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 6,
+    "boundary": "before-write-bank1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 6,
+    "boundary": "before-write-bank1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 7,
+    "boundary": "after-write-bank1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 7,
+    "boundary": "after-write-bank1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 7,
+    "boundary": "after-write-bank1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 7,
+    "boundary": "after-write-bank1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 8,
+    "boundary": "before-commit-bank",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 8,
+    "boundary": "before-commit-bank",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 8,
+    "boundary": "before-commit-bank",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 8,
+    "boundary": "before-commit-bank",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 9,
+    "boundary": "after-commit-bank",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 9,
+    "boundary": "after-commit-bank",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 9,
+    "boundary": "after-commit-bank",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 9,
+    "boundary": "after-commit-bank",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 10,
+    "boundary": "before-read-bank1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 10,
+    "boundary": "before-read-bank1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 10,
+    "boundary": "before-read-bank1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 10,
+    "boundary": "before-read-bank1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 11,
+    "boundary": "after-read-bank1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 11,
+    "boundary": "after-read-bank1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 11,
+    "boundary": "after-read-bank1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 11,
+    "boundary": "after-read-bank1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 12,
+    "boundary": "before-write-anchor",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 12,
+    "boundary": "before-write-anchor",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 12,
+    "boundary": "before-write-anchor",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 12,
+    "boundary": "before-write-anchor",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 13,
+    "boundary": "after-write-anchor",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 13,
+    "boundary": "after-write-anchor",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 13,
+    "boundary": "after-write-anchor",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "generation": null,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 13,
+    "boundary": "after-write-anchor",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 14,
+    "boundary": "before-commit-seal",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 14,
+    "boundary": "before-commit-seal",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 14,
+    "boundary": "before-commit-seal",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 14,
+    "boundary": "before-commit-seal",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 15,
+    "boundary": "after-commit-seal",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 15,
+    "boundary": "after-commit-seal",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 15,
+    "boundary": "after-commit-seal",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 15,
+    "boundary": "after-commit-seal",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 16,
+    "boundary": "before-read-anchor",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 16,
+    "boundary": "before-read-anchor",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 16,
+    "boundary": "before-read-anchor",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 16,
+    "boundary": "before-read-anchor",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 17,
+    "boundary": "after-read-anchor",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 17,
+    "boundary": "after-read-anchor",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 17,
+    "boundary": "after-read-anchor",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 17,
+    "boundary": "after-read-anchor",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 18,
+    "boundary": "before-simulated-handover",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 18,
+    "boundary": "before-simulated-handover",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 18,
+    "boundary": "before-simulated-handover",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 18,
+    "boundary": "before-simulated-handover",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 19,
+    "boundary": "after-simulated-handover",
+    "fault": "stop",
+    "emissions": 1,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 19,
+    "boundary": "after-simulated-handover",
+    "fault": "torn",
+    "emissions": 1,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 19,
+    "boundary": "after-simulated-handover",
+    "fault": "lost",
+    "emissions": 1,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "index": 19,
+    "boundary": "after-simulated-handover",
+    "fault": "ambiguous",
+    "emissions": 1,
+    "recovery": "RECOVERED_BLOCKED",
+    "generation": 2,
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "boundary": "write-explicit-error",
+    "fault": "before",
+    "emissions": 0,
+    "recovery": "RECOVERED_BLOCKED",
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "boundary": "write-explicit-error",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "boundary": "commit-explicit-error",
+    "fault": "before",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "boundary": "commit-explicit-error",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "boundary": "read-explicit-error",
+    "fault": "before",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "boundary": "read-explicit-error",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "GLOBAL_BLOCK",
+    "result": "PASS_NO_RECOVERY_REPLAY"
+  },
+  {
+    "boundary": "valid-old-anchor-after-new-emission",
+    "fault": "rollback-of-anchor-only",
+    "emissions": 1,
+    "recovery": "OLDER_VALID_PROJECTION_INDISTINGUISHABLE",
+    "result": "PRODUCTION_QUALIFICATION_BLOCKED"
+  }
+]
