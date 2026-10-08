@@ -21,3 +21,8 @@
 ## 2026-10-08 - A-PM-001 publication completed
 - Initial documentation publication verified at 07303e6feae109f4b1700563e2f26e7a5d4c09b3; PM task DONE. Device tasks ASSIGNED; common gate OPEN / NOT PASSED. Device execution NOT RUN.
 - Added reference-specific .gitattributes -text exceptions after detecting normalization, restored original bytes and regenerated checksums from final Git blobs. Handoffs, archives, templates and firmware preserved.
+
+
+## 2026-10-08 ? REMOTE Codex prompt publication
+
+Owner requested publication of the prepared A-REMOTE-001 instruction. Added `prompts/A-REMOTE-001_CODEX.md` using the exact assignment and filled mandatory footer from `769c4dc1f50acebbf855b06d4bcf9cfc5eba7e16`. Preparation/publication only: no inspection-result handoff, firmware change, build, upload, shared-contract approval or common-gate closure. Other device and PM status files unchanged.
