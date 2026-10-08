@@ -1,0 +1,36 @@
+{
+  "workspace": "C:\\Users\\RYZEN\\Documents\\REMOTE01\\Code",
+  "git_metadata": "ABSENT; branch/HEAD/dirty-against-commit unavailable",
+  "coordination_input": "769c4dc1f50acebbf855b06d4bcf9cfc5eba7e16",
+  "inspection_utc": "2026-10-08T14:21:45.277369+00:00",
+  "source_files": 1704,
+  "artifacts": {
+    ".pio/build/remote01/firmware.bin": {
+      "bytes": 2485824,
+      "sha256": "7e8d77c21898014fbd7ea625cf2d25aa7f77941d5ba1d24484090f7361279afb"
+    },
+    ".pio/build/remote01/firmware.elf": {
+      "bytes": 17777512,
+      "sha256": "61d077235a971919807bcff38aede169554f60de1ea7152625e5aa5b0b730525"
+    },
+    ".pio/build/remote01/partitions.bin": {
+      "bytes": 3072,
+      "sha256": "d7ffd497cfcd33e697304b3cf8112e7a1f1cb0619639fe9879ed431cbbdc8835"
+    }
+  },
+  "app_descriptor": {
+    "version": "1",
+    "project": "12_LVGL_Test",
+    "time": "23:57:20",
+    "date": "Oct  6 2026",
+    "idf": "5.5.3",
+    "elf_sha256": "61d077235a971919807bcff38aede169554f60de1ea7152625e5aa5b0b730525"
+  },
+  "artifact_source_provenance": "UNKNOWN; no fresh build or flash performed",
+  "owner_approval_original_path": "C:\\Users\\RYZEN\\.codex\\attachments\\73e8283c-9f10-4dec-aa3f-7db8d6a9e94a\\Pasted text.txt",
+  "owner_approval_original_bytes": 22490,
+  "owner_approval_original_sha256": "80d72f646b4cddcecda97a333859a9907a1cf944fc6f5ccdba13b291c07ff897",
+  "owner_approval_excerpt_lines": "1-135; byte-preserved prefix; remainder contains later API specification task, not included",
+  "owner_approval_excerpt_sha256": "5086355cc058b6860b094ebdb9519252c8032343a300ecb10cc3a9a684f5253f",
+  "ccm_sections_1_20_comparison": "PASS; exact bytes after only two documented current-version metadata substitutions"
+}

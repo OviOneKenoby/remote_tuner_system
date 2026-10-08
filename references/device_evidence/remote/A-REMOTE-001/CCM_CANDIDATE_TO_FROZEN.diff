@@ -1,0 +1,67 @@
+--- imported historical candidate.4
+
++++ live frozen CCM
+
+@@ -1,4 +1,4 @@
+
+-# Common Control Model v1 candidate
+-
+-Date: 2026-10-03. Candidate revision: `1.0.0-candidate.4`. **Not approved or frozen.**
++# Common Control Model v1.0.0
++
++Date: 2026-10-03. Frozen version: `1.0.0`. **OWNER APPROVED / FROZEN.** Source: `1.0.0-candidate.4`; explicit owner approval recorded on this date. Freeze changes version/status metadata only.
+ 
+@@ -6,5 +6,5 @@
+
+ 
+-The historical [candidate.3 freeze review](COMMON_CONTROL_MODEL_V1_CANDIDATE_3_FREEZE_REVIEW.md) found residual blockers FR15/FR16. Candidate.4 applies the narrow normative corrections in sections 11/12/13/17 and R01-R04/G01-G15 vectors; the [candidate.4 review](COMMON_CONTROL_MODEL_V1_CANDIDATE_4_FREEZE_REVIEW.md) records regression and fresh adversarial verification. This candidate remains unapproved/unfrozen.
+-
+-This is a logical, protocol-neutral specification, not a wire format, implementation, TUNER API or claim of adapter support. The [architecture](CONTROL_ARCHITECTURE.md) retains the layer boundaries and evidence history. This candidate supplies the normative contracts for corrections R1-R11. Physical HOME UI PASS remains separate from protocol/control-path validation.
++The historical [candidate.3 freeze review](COMMON_CONTROL_MODEL_V1_CANDIDATE_3_FREEZE_REVIEW.md) found residual blockers FR15/FR16. Candidate.4 applies the narrow normative corrections in sections 11/12/13/17 and R01-R04/G01-G15 vectors; the [candidate.4 review](COMMON_CONTROL_MODEL_V1_CANDIDATE_4_FREEZE_REVIEW.md) records regression and fresh adversarial verification. The owner subsequently approved freezing candidate.4 as v1.0.0 without normative semantic changes; section 21 records that decision.
++
++This is a logical, protocol-neutral specification, not a wire format, implementation, TUNER API or claim of adapter support. The [architecture](CONTROL_ARCHITECTURE.md) retains the layer boundaries and evidence history. This frozen specification supplies the normative contracts for corrections R1-R11. Physical HOME UI PASS remains separate from protocol/control-path validation.
+ 
+@@ -33,3 +33,3 @@
+
+ 
+-`common_model_version = {major: UInt32, minor: UInt32, patch: UInt32, candidate: UInt32?}`; this candidate uses `{1,0,0,4}`. Candidate versions MUST match exactly and MUST NOT claim frozen compatibility. Future frozen major versions require exact major agreement and an explicitly negotiated minor/operation subset; patch MUST NOT alter observable semantics. Unknown enums MUST remain unsupported/unknown, never be coerced to a known meaning.
++`common_model_version = {major: UInt32, minor: UInt32, patch: UInt32, candidate: UInt32?}`; frozen v1.0.0 uses `{1,0,0}`. Candidate versions MUST match exactly and MUST NOT claim frozen compatibility. Future frozen major versions require exact major agreement and an explicitly negotiated minor/operation subset; patch MUST NOT alter observable semantics. Unknown enums MUST remain unsupported/unknown, never be coerced to a known meaning.
+ 
+@@ -188,3 +188,3 @@
+
+ | 1 | For already-admitted work at any scheduling/validation gate, t>=deadline takes precedence over stages 2-8: close under sections 11/13, never send. Cached duplicate handling still precedes this. |
+-| 2 | Version not exactly candidate.4 => INVALID_ARGUMENT/VERSION_MISMATCH. Invalid primitive/closed schema, unknown argument field, malformed/missing mandatory capture, or inapplicable supplied context/recipe capture => INVALID_ARGUMENT/SCHEMA or MISSING_CAPTURE (missing wins before other schema errors in declaration order). Generations/captured revisions must be >=1. Malformed reference records => INVALID_REFERENCE/MALFORMED_REFERENCE. If Core cannot capture a required context because none is verified, stage 7 applies; this is not acceptance of a malformed request. |
++| 2 | Version not exactly 1.0.0 => INVALID_ARGUMENT/VERSION_MISMATCH. Invalid primitive/closed schema, unknown argument field, malformed/missing mandatory capture, or inapplicable supplied context/recipe capture => INVALID_ARGUMENT/SCHEMA or MISSING_CAPTURE (missing wins before other schema errors in declaration order). Generations/captured revisions must be >=1. Malformed reference records => INVALID_REFERENCE/MALFORMED_REFERENCE. If Core cannot capture a required context because none is verified, stage 7 applies; this is not acceptance of a malformed request. |
+ | 3 | Unknown device/target/binding or inconsistent ownership => INVALID_REFERENCE/SCOPE. Every reference must belong to the captured device/target/kind; wrong scope => INVALID_REFERENCE/SCOPE. |
+@@ -477,15 +477,16 @@
+
+ 
+-## 21. Freeze readiness
+-
+-Candidate.4 corrects FR15/FR16: historical delivery ambiguity remains distinct from execution uncertainty, verified proof resolves only its covered physical keys, and full/known-partial feedback-NONE work uses its existing deterministic folds. FR01-FR14 corrections remain in place. The [candidate.4 review](COMMON_CONTROL_MODEL_V1_CANDIDATE_4_FREEZE_REVIEW.md) records R01-R04, all 77 existing vectors, FR01-FR16 interactions and 15 fresh adversarial vectors. Historical reports remain unchanged; no approval or freeze occurs here.
+-
+-| Classification | Remaining status |
+-| --- | --- |
+-| BLOCKER FOR V1 FREEZE | None found after the FR15/FR16 correction and fresh document review |
+-| SHOULD FIX BEFORE V1 / EDITORIAL | FR13/FR14 corrections retained; no new required correction identified |
+-| FUTURE PROTOCOL VERIFICATION | Every actual mapping's role/features, units, identity, guards, sequencing, completion, retry, fencing and IR repeats; no adapter has been tested |
+-| NON-BLOCKING FUTURE EXTENSION | Wire formats, native API, adapters, extra operations, streaming/large catalogs, broader numeric/scheduling policies |
+-
+-NO BLOCKERS FOUND — CANDIDATE READY FOR OWNER FREEZE REVIEW
+-
+-Candidate remains `1.0.0-candidate.4`, UNAPPROVED and UNFROZEN. This is written-contract readiness only, not implementation or external-guarantee validation. Owner physical HOME/display/navigation PASS remains separate. No firmware/Core/API/adapter/networking/library/UI implementation, build, upload, release or tag.
++## 21. Owner freeze record
++
++**1.0.0 — OWNER APPROVED / FROZEN, 2026-10-03.** The owner explicitly approved the freeze from `1.0.0-candidate.4`. This is solely a status/version transition with zero normative semantic changes.
++
++FR01-FR16: PASS in the documented candidate.4 review. R01-R04, A-T/E01-E35/F01-F22 and G01-G15 were reviewed there. Final candidate verdict: **NO BLOCKERS FOUND — CANDIDATE READY FOR OWNER FREEZE REVIEW**. The [candidate.4 review](COMMON_CONTROL_MODEL_V1_CANDIDATE_4_FREEZE_REVIEW.md) and earlier reports remain historical records; their candidate conclusions are not rewritten.
++
++Frozen semantic scope: identifiers and generations; common value semantics; CommonDevice/Target/Binding semantics; capability descriptors; v1 operations; readable state fields; StateObservation; CommandRequest; command lifecycle/results; retry/fallback/deduplication; ordering; deadlines; numeric mapping/quantization; catalog/media-context semantics; identity/association semantics; conflict handling; shared resources; recipes; conformance semantics.
++
++Freeze verification: the complete sections 1-20 byte sequence was compared with candidate.4, allowing exactly two version-metadata substitutions: the current version tuple in section 2 (`{1,0,0,4}` -> `{1,0,0}`) and the exact-current-version check in section 10 (`candidate.4` -> `1.0.0`). All other bytes, including all 96 normative vector rows, are unchanged. Only the header and this nonnormative status section otherwise change. Current architecture status references were updated; historical review files remain unchanged.
++
++FROZEN does not mean Universal Control Core, TUNER Native API, TUNER adapter or API server firmware exists; REMOTE//01 does not yet control TUNER//01. It establishes no Matter, Home Assistant, Smart-TV or IR-profile support, no protocol-tested external mapping and no hardware-validated end-to-end control.
++
++**DESIGNED FOR COMPATIBILITY**, **PROTOCOL TESTED** and **HARDWARE VALIDATED** remain distinct per mapping/version/capability. Actual roles, features, units, identity, guards, sequencing, completion, retry and fencing require separate future verification. The owner's HOME/display/navigation physical PASS is UI/hardware evidence only.
++
++No firmware/Core/API/adapter/networking/UI/PlatformIO/library/hardware changes, build, upload, release or tag occur in the freeze phase.
