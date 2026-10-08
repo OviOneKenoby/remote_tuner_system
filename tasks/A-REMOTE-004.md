@@ -33,7 +33,14 @@ No production Core integration, live NVS access, credential access, flashing, pa
 
 Publish `tasks/A-REMOTE-004.md` with this authorization, `reports/A-REMOTE-004.md`, reproducible evidence and tests, and a complete new REMOTE handoff. Archive the previous handoff byte-for-byte, preserve concurrent changes, and open a separate result PR. Return full commit hashes, test results, capacity verdict and remaining physical guarantees. Do not merge PR #8, modify TUNER, approve Native or pass the common gate.
 
-## Execution footer
+## Mandatory execution footer (applied to this execution)
+
 Coordination checkout: C:/Users/RYZEN/AppData/Local/Temp/remote-a004
 Device: REMOTE
-Mandatory prompts/CODEX_TASK_FOOTER.md read and applied;original shared status/rules retained. This file records authorization,not a prompt for another executor. Final publication hash reported separately.
+Read AGENTS.md, README.md, PROJECT_SYNC.md, API_STATUS.md, DECISION_REGISTER.md and both latest handoffs. Record the coordination input commit. Confirm the real firmware baseline before editing. Missing evidence must be reported, not guessed.
+
+Execute only the assigned task. CCM 1.0.0 is OWNER APPROVED/FROZEN. TUNER Native API v1 is UNAPPROVED/UNFROZEN/NOT IMPLEMENTED unless a later explicit owner-approved decision with evidence supersedes that status. Do not make unilateral shared-contract changes. Stop dependent implementation and submit a proposal if the task requires one.
+
+At completion or blockage, update the device changelog and coordination CHANGELOG.md. Archive the prior handoffs/REMOTE_LATEST.md under archive/remote/ using the naming rule in README.md. Replace the latest file with the exact templates/HANDOFF_TEMPLATE.md structure, filled completely: milestone, baseline, changes, verification, remaining unknowns, shared-contract impact, blockers, PM decision required, recommended next task, commit and hardware status, plus metadata.
+
+Separate inspected facts, planned work, implemented work, build evidence and physical hardware evidence. Include exact procedures, results and evidence references. Do not mark the common gate passed or a contract approved. Publish the handoff with the firmware commit and report the final coordination publication commit separately. Reread current coordination state before publication and resolve concurrent changes without overwriting them. If access/publication is unavailable, provide the complete handoff and report it as UNPUBLISHED.

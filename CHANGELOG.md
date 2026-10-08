@@ -56,3 +56,10 @@ READY FOR REVIEW, DESIGN ONLY. reports/A-REMOTE-002.md with durable identity/eff
 - Integrated exact reviewed documentation PR #5/#6 with ordinary merges; preserved both device additions, full evidence and byte-original archives. Recorded PM package host-test provenance separately from executor ESP32 build evidence.
 - Preserved complete A-003 authorization package, published exact tasks and A-PM-002_REVIEW; appended scope-limited A-002 DONE dispositions while retaining original assignment bytes. A-003 ASSIGNED.
 - Hardware/artifact/storage gaps retained; full B04 identity and unrelated B items open, D1-D5 unassigned, O01-O17 OPEN, Native unapproved/unfrozen/not implemented, gate OPEN / NOT PASSED. No device task or firmware merge performed by publisher.
+
+
+## 2026-10-08 - A-REMOTE-004 bounded storage/recovery redesign
+- Explicit owner-authorized task published and executed from main531aa8cd0435ed9813ab39664888992583df0d28. A003input74e4f1a681cd589625aff63e91f917076cc22586/PR8 preserved unmerged;both latest-published A003 and current-main A002 handoffs byte-archived.
+- Added complete narrow lossless typed profile,BASE/ALLOC/PROOF log,intermediate per-key proof/recovery and bounded compaction;future resolution/overlap reserved,unqualified newest-head blocks. Host PASS12tests/7805checks/562scenarios,100compactions/400allocations;both rollback counterexamples retained.
+- Measured complete max6383bytes/growth796/raw record reserve15510. Existing24KiB conditional ideal fit under smaller occupancy assumptions,fails2-4KiB;actual backend integrity/free/GC/root overhead remain UNKNOWN,production BLOCKED. Larger-partition alternatives docs only.
+- No production Core/NVS/credentials access,partition/config/Native/TUNER changes,build/upload/hardware. CCM frozen,Native unapproved/unfrozen/not implemented,O01-O17open/common gate OPEN;separate backend/physical/importer gates remain.

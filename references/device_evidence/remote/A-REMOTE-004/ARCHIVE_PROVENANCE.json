@@ -1,0 +1,12 @@
+[
+  {
+    "path": "archive/remote/2026-10-08T202056Z_A-REMOTE-004_REMOTE-A-REMOTE-002-20261008T145852Z.md",
+    "input": "531aa8cd0435ed9813ab39664888992583df0d28",
+    "sha256": "59b89e6ce63356e690ca859db6fd72ecc6daf271f24d2cb7ac96aad496030ce1"
+  },
+  {
+    "path": "archive/remote/2026-10-08T202056Z_A-REMOTE-004_REMOTE-A-REMOTE-003-20261008T180706Z.md",
+    "input": "74e4f1a681cd589625aff63e91f917076cc22586",
+    "sha256": "540bcda6ff00dc3f11e65f52728589d1fdbd2db06cc1679aaf9e7b5eea99981d"
+  }
+]
