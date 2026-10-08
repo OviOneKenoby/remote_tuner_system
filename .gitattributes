@@ -7,3 +7,6 @@ references/coordination_starter_2026-10-08/** -text
 
 # Immutable A-003 owner authorization package
 references/PM_FOLLOW_UP_A003_2026-10-08.md -text
+
+# Preserve exact REMOTE A-004 qualification input/evidence bytes
+references/device_evidence/remote/A-REMOTE-004/** -text

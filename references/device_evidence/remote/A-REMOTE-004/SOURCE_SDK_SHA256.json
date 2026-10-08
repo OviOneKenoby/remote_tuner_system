@@ -1,0 +1,16 @@
+{
+  "components/control/core.cpp": "b0e37fa24fcbd7d81ff0f3fc2e9739ea0f4f1df4b494a364e4c23c0aff066413",
+  "components/control/include/control/core.hpp": "8c2e46b3e6a76261104c706f22f4abf5bc1746433cba7770d121b3ae5f00db21",
+  "components/control/include/control/model.hpp": "97b46b13b274e0f41b1c1c333fa64b9fe09ec25a2118accc9cad329218cdcf99",
+  "components/control/include/control/storage.hpp": "de8b3a189fb6bb2ec49fc5562a8f5f6a5cdfc290fc0a4f278b2b8435c25eab07",
+  "partitions.csv": "fb9b79c3f9b92f43633569e6159e4d0522f0e4289b4e081d864cc4587ce496fc",
+  "platformio.ini": "e455b728cecf0d72d391e7bb841e8795ce899c7af85a0ed64e15db67d0c9f175",
+  "CMakeLists.txt": "c02762f0c1b98608697e850c6143b9ac94b77e08d95d22c1ff6a0e6c59720d25",
+  "main/CMakeLists.txt": "54c47a34e39da82eedf4e2af7f8e3ded94475c815d59cb931cde56f67987daad",
+  "docs/COMMON_CONTROL_MODEL_V1.md": "7a46f9fffe706476de458aac078d0af1c94844df339248d3f9f4b5cf033011d7",
+  "SDK5.5.3/src/nvs_storage.cpp": "0d13b31fa0880c4174d1a13071150fd444c79a83c4ac2cb703a1fabb2d7ac222",
+  "SDK5.5.3/src/nvs_page.hpp": "5169df79ad3a76146cd92258abdcb09209080d259cc9325d0e55de4c01a568d3",
+  "SDK5.5.3/src/nvs_handle_simple.cpp": "15ed54fdb14bd9e8a0646cab54c41fe06140521b016830d6c13193675631facd",
+  "SDK5.5.3/private_include/nvs_constants.h": "e10b89107d46f66eba89e5b55bfb888e1825eb5aded5ee7b37665e1eda3c2f6f",
+  "SDK5.5.3/include/nvs.h": "e5cef94b3983f2f962351ac93ee827c4f69ca25fb47a9345f8f01f62d702427a"
+}
