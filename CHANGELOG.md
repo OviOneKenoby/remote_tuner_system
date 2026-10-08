@@ -39,3 +39,10 @@ Executed owner-invoked REMOTE inspection/documentation assignment against coordi
 - Preserved concurrent exact A-REMOTE-002 and unchanged original PM package; published exact A-TUNER-002 and shared authorization index. Marked A-001 inspections DONE for documentation scope and A-002 work ASSIGNED.
 - Indexed recovered frozen CCM/provenance without semantic change or new approval. Hardware/flashed-artifact/resource gaps remain explicit. Native UNAPPROVED/UNFROZEN/NOT IMPLEMENTED; O01-O17 OPEN; common gate OPEN / NOT PASSED. No device task, firmware change, build, upload or hardware action performed by this publisher.
 - Final concurrency recheck found the exact A-TUNER-002 assignment already merged at d172db8615ca2da53d510d65c6a6ffcc5b21dd4a; ordinary merge preserved that publication and task bytes.
+
+## 2026-10-08 — A-TUNER-002 bounded correctness guards ready for review
+- Executed the owner-authorized task from coordination input `d172db8615ca2da53d510d65c6a6ffcc5b21dd4a`; firmware baseline remained V1.1.0 executable `371cdebce7ba2648ea71636d5bdb5d738b42e680` plus documentation-only `48821a6071072b77a9a023303ebf215a0577ff2e`.
+- Published firmware commit `8fac1da6ccd749a47843d99dc746fc3d6e4bf19b` and PR https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/2 for B01 strict DELETE parsing, B04 empty/stale traversal guards, B06 saturating volume-down and B03 actual discovered codec propagation.
+- Deterministic host suite PASS: 249 checks. Clean isolated pinned `esp32-dev` build PASS: RAM 83,056/327,680 (25.3%), flash 1,992,833/3,145,728 (63.4%). `firmware.bin` 1,999,408 bytes, SHA-256 `AF066BA215F863A7D2583A6313ACEE00020CCFAD4F8F8C3168DEDA76BCD6F5D4`.
+- Upload and physical hardware regression NOT RUN; hardware remains PENDING. Durable catalog identity, B02/B05/B07–B11, Native API and O01–O17 remain outside scope/open. CCM 1.0.0 and shared-contract status unchanged.
+- Added the full report, build/test evidence, byte-preserved prior handoff archive and complete TUNER latest handoff. Status READY FOR REVIEW; common gate remains OPEN / NOT PASSED.
