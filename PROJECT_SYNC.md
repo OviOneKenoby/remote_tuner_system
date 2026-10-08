@@ -1,46 +1,55 @@
 # Project synchronization
-Updated (UTC): 2026-10-08T13:55:34Z
-Coordinator: Project Manager - authenticated Git publication verified
-Publication: PUBLISHED / VERIFIED. Initial push and remote readback: 07303e6feae109f4b1700563e2f26e7a5d4c09b3. Owner invocation of device chats remains required.
-Coordination planning input: dd63c07e485218dfc34ceb6a8855c8a929b4ae89
+
+Updated: 2026-10-08
+Coordinator: PM coordination repository publisher
+Coordination publication input: 13c7ff66d8d02e53d8cc163c10620ff21f17db9f
 Common phase: Phase A contract reconciliation + TUNER correctness/control-state foundation
 Common gate: OPEN / NOT PASSED
 
+## Reviewed inspection publications
+
+- TUNER [PR #1](https://github.com/OviOneKenoby/remote_tuner_system/pull/1) is merged at 13c7ff66d8d02e53d8cc163c10620ff21f17db9f. Package-reviewed head 31205936ba12ec46a4e66d1c8766cac75334f5ce is an ancestor of merged head 2b09770c7cfcbfb86efd3e3b1013cbb11fee0562. The added merge imports concurrent REMOTE changes; reviewed TUNER report/evidence/handoff/archive bytes are unchanged.
+- REMOTE [PR #2](https://github.com/OviOneKenoby/remote_tuner_system/pull/2) is merged at 32d6e4b8e3fcf309b040e5701a3823289213da68; head exactly matches package-reviewed 2163358f2f364df768d0db2ddd4589028d4aebf2.
+- Both changelog entries and device-owned evidence/handoffs/archives are preserved. Concurrent A-REMOTE-002 publication is preserved and matches the package assignment.
+
 ## Baselines and authority
-| Item | Current coordination state | Evidence |
+
+| Item | Current coordination state | Evidence / limit |
 | --- | --- | --- |
-| CCM 1.0.0 | OWNER APPROVED / FROZEN; actual frozen file/original approval provenance missing | D-001; later supplied freeze records; references/INDEX.md |
-| Native API v1 | UNAPPROVED / UNFROZEN / NOT IMPLEMENTED | D-002; canonical handoff; no new support claim |
-| TUNER source baseline | Remote main / 371cdebce7ba2648ea71636d5bdb5d738b42e680; config version 1.1.0 | Live GitHub ref/file verified by PM; local tree/build/hardware still UNKNOWN |
-| REMOTE baseline | Historical Core/Mock/platform/sleep acceptance records available; current checkout/version/flashed image UNKNOWN | Imported REMOTE changelog; A-REMOTE-001 must recover current facts |
-| REMOTE sleep risk | Latest supplied ADC optimization hardware FAIL; rollback-control software verified / hardware PENDING | Snapshot2026-10-06; later result not supplied |
-| Device handoffs | Initial placeholders preserved | Both read at planning input; no device result yet |
+| CCM 1.0.0 | OWNER APPROVED / FROZEN; actual artifact and original approval excerpt recovered | [REMOTE evidence index](references/device_evidence/remote/A-REMOTE-001/INDEX.md); SHA-256 7a46f9fffe706476de458aac078d0af1c94844df339248d3f9f4b5cf033011d7; original attachment has no independent UTC timestamp/signature; historical provenance, no new approval |
+| Native API v1 | UNAPPROVED / UNFROZEN / NOT IMPLEMENTED | D-002; O01-O17 OPEN; proposed mappings are not acceptance |
+| TUNER | Inspected executable baseline 371cdebce7ba2648ea71636d5bdb5d738b42e680, version 1.1.0; documentation-only result 48821a6071072b77a9a023303ebf215a0577ff2e | [A-TUNER-001](reports/A-TUNER-001.md); B01-B11 disposition recorded; current execution baseline must be rechecked |
+| REMOTE | Git-less source inventory and immutable evidence captured | [A-REMOTE-001](reports/A-REMOTE-001.md); branch/firmware commit unavailable, no fabricated identity |
+| Hardware / artifacts | Fresh build/upload/hardware NOT RUN in A-001 inspections | TUNER flashed image/resources UNKNOWN. REMOTE current BIN/ELF differs from recorded rollback; flashed image UNKNOWN; ADC optimization hardware FAIL, rollback residency PENDING. Historical acceptance retains dated scope only |
 
-Historical owner hardware acceptance is recorded evidence for its exact scope/artifact, not current whole-device or Native acceptance. See reports/A-PM-001.md.
+## Task queue
 
-## Assigned task queue
-| ID | Owner | Outcome | Dependency | Status |
-| --- | --- | --- | --- | --- |
-| A-PM-001 | PM | Index available evidence/provenance and publish scoped assignments | Current owner coordination request | DONE - documentation publication verified; device execution not started |
-| A-REMOTE-001 | REMOTE//01 | Live baseline/frozen-model recovery, bidirectional minimum-Native mapping and durability/sleep evidence reconciliation | A-PM-001 publication; inspect available evidence and report missing facts | ASSIGNED |
-| A-TUNER-001 | TUNER//01 | Live baseline/B01-B11 recheck, bounded foundation proposal and resource measurement plan | A-PM-001 publication and actual TUNER source | ASSIGNED |
+| ID | Owner | Scope | Status |
+| --- | --- | --- | --- |
+| A-PM-001 | PM | Initial evidence indexing and assignment publication | DONE - documentation publication |
+| A-TUNER-001 | TUNER//01 | Baseline/B01-B11/foundation/resource inspection | DONE - reviewed inspection/documentation only |
+| A-REMOTE-001 | REMOTE//01 | Baseline/frozen-model/mapping/durability/sleep inspection | DONE - reviewed inspection/documentation only |
+| A-TUNER-002 | TUNER//01 | B01, B04 zero-count, B06 and B03 bounded correctness guards | ASSIGNED - not executed by coordination publisher |
+| A-REMOTE-002 | REMOTE//01 | Durable recovery and catalog/reference/numeric operation design | ASSIGNED - design only; not executed by coordination publisher |
 
-Exact instructions: tasks/A-REMOTE-001.md and tasks/A-TUNER-001.md. They may proceed in parallel; neither depends on the other's completed result. Each specialized chat translates its own task into a Codex prompt with prompts/CODEX_TASK_FOOTER.md. Execution must record the current coordination commit containing this assignment; planning input above is not a self-referential publication hash. No automatic dispatch exists.
+Exact scope: [A-TUNER-002](tasks/A-TUNER-002.md), [A-REMOTE-002](tasks/A-REMOTE-002.md). [Authorization package and publication scope](references/PM_FOLLOW_UP_INDEX.md). Publication precedes execution. Each device records its actual current coordination input and rechecks its baseline. Neither A-002 depends on completion of the other. No automatic dispatch is configured.
 
-Firmware edits/fixes, Native client/server, endpoint/security/transport decisions, API freeze and uploads are NOT assigned. Next corrective implementation is a separately scoped task after evidence review.
+A-TUNER-002 authorizes only its four bounded device corrections and software/build validation; no flashing or automatic hardware tests. A-REMOTE-002 authorizes design/documents only, with no executable/test/config changes or fresh build/hardware work. This publisher performs neither assignment.
 
 ## Phase A synchronization gate
-| Criterion | Status | Required evidence |
-| --- | --- | --- |
-| Actual frozen CCM artifact/hash and original approval provenance | UNKNOWN | A-REMOTE-001 recovery; do not relabel historical candidate |
-| Audit reference and remote TUNER baseline/version | PASS for supplied audit integrity and remote ref/version only | references/INDEX.md; local differences pending A-TUNER-001 |
-| Current REMOTE baseline and validated scope | UNKNOWN | Current source/artifact inventory and later owner records |
-| Bidirectional reconciliation/no unresolved semantic contradiction | NOT VERIFIED | Both device reports and mapping review; mismatches assigned owners/O IDs |
-| Evidence-backed correctness/ownership and durability scope | NOT VERIFIED | Source recheck, bounded proposals and specific acceptance checks |
-| Both complete new device handoffs reviewed consistently | NOT VERIFIED | Await device-owned publication and PM review |
-| Shared ambiguity/API approval remains explicit | PRESERVED | O01-O17 OPEN; no approval or implementation badge |
 
-Gate remains OPEN. Final model/mapping acceptance and API freeze require the missing approved artifact and original provenance; independent read-only source inspection can proceed meanwhile.
+| Criterion | Status | Evidence / remaining gap |
+| --- | --- | --- |
+| Frozen artifact/provenance availability | RECOVERED / INDEXED | Exact frozen hash and historical approval excerpt; not full conformance |
+| Current inspected device baselines | RECORDED with limits | Both A-001 reports; runtime/flashed identity and live execution recheck remain separate |
+| Preliminary bidirectional mapping and correction scope | REVIEWED for follow-up assignment | Reports establish prerequisites/proposals; no binding or semantic acceptance |
+| Correctness and durable recovery implementation | NOT VERIFIED | A-002 work/results pending; REMOTE A-002 is design only |
+| Both complete A-001 handoffs | REVIEWED / PRESERVED | Owner-reviewed package and merged documentation PRs |
+| Resource and physical hardware acceptance | NOT VERIFIED | Explicit hardware/artifact gaps above; historical evidence is not current acceptance |
+| Shared ambiguity and Native approval | OPEN / NOT APPROVED | O01-O17 remain OPEN; separate both-device review and explicit owner approval required |
+
+Gate remains OPEN / NOT PASSED. A completed inspection and assigned follow-up do not prove device or Native acceptance.
 
 ## Next PM action
-Review both new handoffs; resolve baseline/provenance conflicts; select bounded correctness/durability follow-up tasks and shared decision proposals using both devices' evidence. Resource-dependent choices require TUNER measurements. Do not close common gate on one device result. Owner contract approval remains separate.
+
+Review the separately delivered A-002 results and software/build/design evidence, retain hardware gaps, then select any later implementation or physical verification scopes explicitly. Shared Native decisions still require both-device review and owner approval.

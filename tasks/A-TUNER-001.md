@@ -1,6 +1,6 @@
 # A-TUNER-001: Verify the live TUNER baseline and scope the correctness/state foundation
 - Owner: TUNER//01
-- State: ASSIGNED
+- State: DONE
 - Coordination input commit: dd63c07e485218dfc34ceb6a8855c8a929b4ae89
 - Objective: Return confirmed TUNER source facts, current B01-B11 disposition, bounded correction proposals and resource evidence needs before any Native implementation.
 - Baseline: https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio ; expected main commit 371cdebce7ba2648ea71636d5bdb5d738b42e680, firmware 1.1.0. PM verified remote main and src/config.h at this commit on 2026-10-08. Actual local checkout/dirty state/flashed image/build/resource margins remain UNKNOWN and must be inspected; do not discard or rewrite newer/uncommitted owner work.
@@ -27,3 +27,6 @@
 
 ## Execution and publication
 The hash above is the PM planning input. Before starting, read the current coordination commit containing this assignment and record that actual execution-input hash in your handoff. Append the complete text of prompts/CODEX_TASK_FOOTER.md to the generated Codex prompt; fill the actual absolute coordination checkout path rather than inventing one. Publish on a separate device branch; reread current main and preserve concurrent updates. If merged before the other device finishes, the other task may continue after rereading: neither task depends on the other's completion. The owner still invokes the specialized chat/Codex; publication does not automatically dispatch it.
+
+## PM review disposition - 2026-10-08
+Inspection/documentation completed and owner-reviewed in the [PM follow-up authorization](../references/device_evidence/remote/A-REMOTE-002/PM_FOLLOW_UP_2026-10-08.md). Integrated PR #1. DONE applies only to the A-001 inspection; no hardware, Native or common-gate acceptance. A-TUNER-002 is separately ASSIGNED and has not been executed by this publisher.

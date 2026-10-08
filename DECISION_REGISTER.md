@@ -58,3 +58,6 @@ Product boundaries, direct LAN operation, TUNER catalog ownership, REMOTE artwor
 
 ## Administrative PM assignment record
 At 2026-10-08T13:55:34Z, PM assigned A-REMOTE-001 and A-TUNER-001 under the owner's current request to inspect the common repo and decide work for both chats. Exact task files and PROJECT_SYNC.md are the assignment evidence. Inspection/documentation scope only; no firmware/Native implementation or O01-O17 closure. A-PM-001 indexing is complete for available evidence; final approved-model provenance remains pending.
+
+## PM follow-up publication record - 2026-10-08
+Both owner-reviewed A-001 inspection/documentation deliveries are integrated and complete for that scope. Recovered CCM artifact/provenance is available in REMOTE A-001 evidence; earlier missing-evidence entries remain historical. [Authorization index](references/PM_FOLLOW_UP_INDEX.md) links the unchanged owner package and exact A-002 assignments. A-TUNER-002: bounded internal guards; A-REMOTE-002: design only. No new CCM/Native approval or O01-O17 closure. Common gate OPEN / NOT PASSED; hardware gaps remain explicit in PROJECT_SYNC.md.

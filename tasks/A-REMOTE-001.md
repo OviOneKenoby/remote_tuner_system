@@ -1,6 +1,6 @@
 # A-REMOTE-001: Recover the live baseline and reconcile the Native candidate with frozen CCM
 - Owner: REMOTE//01
-- State: ASSIGNED
+- State: DONE
 - Coordination input commit: dd63c07e485218dfc34ceb6a8855c8a929b4ae89
 - Objective: Return a source-backed REMOTE baseline, exact frozen-model provenance, bidirectional minimum-Native mapping and implementation prerequisites without changing firmware.
 - Baseline: Supplied snapshot identifies C:/Users/RYZEN/Documents/REMOTE01/Code with no Git metadata. Current repository/path/branch/HEAD/version/dirty state and flashed artifact are UNKNOWN; inspect the actual owner-provided checkout, do not initialize Git or assume the October 6 snapshot is current.
@@ -27,3 +27,6 @@
 
 ## Execution and publication
 The hash above is the PM planning input. Before starting, read the current coordination commit containing this assignment and record that actual execution-input hash in your handoff. Append the complete text of prompts/CODEX_TASK_FOOTER.md to the generated Codex prompt; fill the actual absolute coordination checkout path rather than inventing one. Publish on a separate device branch; reread current main and preserve concurrent updates. If merged before the other device finishes, the other task may continue after rereading: neither task depends on the other's completion. The owner still invokes the specialized chat/Codex; publication does not automatically dispatch it.
+
+## PM review disposition - 2026-10-08
+Inspection/documentation completed and owner-reviewed in the [PM follow-up authorization](../references/device_evidence/remote/A-REMOTE-002/PM_FOLLOW_UP_2026-10-08.md). Integrated PR #2. DONE applies only to the A-001 inspection; no hardware, Native or common-gate acceptance. A-REMOTE-002 is separately ASSIGNED and has not been executed by this publisher.
