@@ -1,0 +1,135 @@
+Continue the REMOTE//01 project from the current verified state.
+
+We have completed the Common Control Model v1 candidate review.
+
+CURRENT AUTHORITATIVE STATE
+
+- docs/COMMON_CONTROL_MODEL_V1.md is currently:
+  1.0.0-candidate.4
+- candidate.4 is UNAPPROVED / UNFROZEN only because the owner freeze
+  has not yet been recorded.
+- FR01-FR16 are corrected.
+- R01-R04 pass.
+- Regression review passed:
+  A-T
+  E01-E35
+  F01-F22
+- Additional G01-G15 adversarial vectors pass.
+- Latest review verdict:
+
+  NO BLOCKERS FOUND — CANDIDATE READY FOR OWNER FREEZE REVIEW
+
+OWNER DECISION
+
+The owner now explicitly APPROVES the Common Control Model v1 freeze.
+
+This task therefore has TWO SEQUENTIAL PHASES.
+
+PHASE A:
+Freeze Common Control Model v1.
+
+PHASE B:
+After verifying that freeze was performed with ZERO normative semantic
+changes, begin the TUNER//01 Native API v1 specification milestone.
+
+Do not mix the two phases.
+
+================================================================
+PHASE A — COMMON CONTROL MODEL V1 FREEZE
+================================================================
+
+Read completely before editing:
+
+- docs/COMMON_CONTROL_MODEL_V1.md
+- docs/COMMON_CONTROL_MODEL_V1_CANDIDATE_4_FREEZE_REVIEW.md
+- docs/COMMON_CONTROL_MODEL_V1_CORRECTION_REVIEW.md
+- docs/COMMON_CONTROL_MODEL_V1_FREEZE_REVIEW.md
+- docs/CONTROL_ARCHITECTURE.md
+- CHANGELOG.md
+
+Also inspect any other existing project documentation that references the
+Common Control Model status/version.
+
+FREEZE ACTION
+
+Promote:
+
+1.0.0-candidate.4
+
+to:
+
+1.0.0
+
+Status:
+
+OWNER APPROVED
+FROZEN
+
+This is a STATUS/VERSION transition only.
+
+ABSOLUTELY NO normative semantic changes are permitted during this phase.
+
+Do NOT:
+- rewrite normative rules
+- clean up wording merely for style
+- add operations
+- remove operations
+- change schemas
+- change lifecycle rules
+- change retry behavior
+- change state semantics
+- change mappings
+- change conformance vectors
+- silently fix anything else
+
+If you discover a genuine normative problem while performing the freeze:
+
+STOP.
+
+Do NOT freeze.
+
+Report the problem as a new freeze blocker.
+
+Otherwise perform the freeze.
+
+Record explicitly that Common Control Model v1.0.0 freezes:
+
+- identifiers and generations
+- common value semantics
+- CommonDevice / Target / Binding semantics
+- capability descriptors
+- v1 operations
+- readable state fields
+- StateObservation semantics
+- CommandRequest semantics
+- command lifecycle/results
+- retry/fallback/deduplication
+- ordering
+- deadlines
+- numeric mapping/quantization
+- catalog/media-context semantics
+- identity/association semantics
+- conflict handling
+- shared-resource behavior
+- recipe behavior
+- conformance semantics
+
+Record explicitly that FROZEN DOES NOT mean:
+
+- Universal Control Core exists
+- TUNER Native API exists
+- TUNER adapter exists
+- TUNER firmware implements the API
+- REMOTE//01 controls TUNER//01 yet
+- Matter support exists
+- Home Assistant support exists
+- Smart-TV support exists
+- IR profiles exist
+- any external protocol mapping is protocol-tested
+- end-to-end control is hardware-validated
+
+Preserve the validation distinction:
+
+DESIGNED FOR COMPATIBILITY
+PROTOCOL TESTED
+HARDWARE VALIDATED
