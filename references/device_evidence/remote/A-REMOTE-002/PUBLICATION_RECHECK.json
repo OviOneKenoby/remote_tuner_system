@@ -1,0 +1,12 @@
+{
+  "current_main_input": "8e1ab9d87c4647964bbc48d0e50982472a0b9cca",
+  "timestamp_utc": "2026-10-08T16:03:40Z",
+  "original_design_input": "dce15583873f66fd56239b3b6cb805135477719a",
+  "source_file_count_at_recheck": 4040,
+  "original_design_file_count": 4039,
+  "device_source_status": "all original executable/test/config/library/artifact hashes unchanged; completed A-002 docs/changelog only",
+  "publication_authority": "latest explicit owner request to execute from current main and deliver/publish; previous delegation superseded for this result",
+  "result_branch": "remote/a-remote-002-publication-20261008",
+  "build_upload_hardware": "NOT RUN",
+  "contract_status": "CCM1.0.0 FROZEN unchanged; Native unapproved/unfrozen/not implemented; O01-O17 OPEN"
+}

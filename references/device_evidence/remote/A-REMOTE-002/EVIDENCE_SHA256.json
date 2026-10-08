@@ -1,0 +1,90 @@
+{
+  "snapshot/components/control/core.cpp": {
+    "sha256": "b0e37fa24fcbd7d81ff0f3fc2e9739ea0f4f1df4b494a364e4c23c0aff066413",
+    "bytes": 82181
+  },
+  "snapshot/components/control/include/control/core.hpp": {
+    "sha256": "8c2e46b3e6a76261104c706f22f4abf5bc1746433cba7770d121b3ae5f00db21",
+    "bytes": 7778
+  },
+  "snapshot/components/control/include/control/model.hpp": {
+    "sha256": "97b46b13b274e0f41b1c1c333fa64b9fe09ec25a2118accc9cad329218cdcf99",
+    "bytes": 17471
+  },
+  "snapshot/components/control/include/control/storage.hpp": {
+    "sha256": "de8b3a189fb6bb2ec49fc5562a8f5f6a5cdfc290fc0a4f278b2b8435c25eab07",
+    "bytes": 8087
+  },
+  "snapshot/components/control/ingress.cpp": {
+    "sha256": "0093272f5a2f274eeb26c5425a841e662a96e37d904293f146d995a672afe86b",
+    "bytes": 20913
+  },
+  "snapshot/components/control/include/control/ingress.hpp": {
+    "sha256": "e102d5bb7680843c1e6fafa935aa129b52ba17c79f7360ac7f67b63a3f6f84c9",
+    "bytes": 6742
+  },
+  "snapshot/components/control_home/runtime.cpp": {
+    "sha256": "6c43e02cffae19ea76733c06893ab471c593ffd0cd7aed5bb8ea9fa792fc91b9",
+    "bytes": 12213
+  },
+  "snapshot/components/control_home/facade.cpp": {
+    "sha256": "fd10ab46fcaf0d85c54e5a0b4f96f53dc726e5b383db5fb45cf708ea9ad20f88",
+    "bytes": 5367
+  },
+  "snapshot/components/control_home/development.cpp": {
+    "sha256": "94ce07bbad18f2e91c367118718c294d346b332f627a0f19f8b2fbcfb5f3cac6",
+    "bytes": 8279
+  },
+  "snapshot/components/control_home/include/control_home/development.hpp": {
+    "sha256": "eebaec5c0851508b74b081b27a413a8dafb82b305707c6cee02df23f2ca6054f",
+    "bytes": 3504
+  },
+  "snapshot/components/control/include/control/mock_adapter.hpp": {
+    "sha256": "48da2641acb1e917b413bc916f77520f24fc4e547fd1792141c5d8a108cd1d99",
+    "bytes": 1499
+  },
+  "snapshot/components/network_manager/runtime.cpp": {
+    "sha256": "869b6b0dd77a40dd20f71d11c781be94babae8a206ac4a0f6ba61ad9f434ef39",
+    "bytes": 28527
+  },
+  "snapshot/partitions.csv": {
+    "sha256": "fb9b79c3f9b92f43633569e6159e4d0522f0e4289b4e081d864cc4587ce496fc",
+    "bytes": 404
+  },
+  "snapshot/platformio.ini": {
+    "sha256": "e455b728cecf0d72d391e7bb841e8795ce899c7af85a0ed64e15db67d0c9f175",
+    "bytes": 429
+  },
+  "snapshot/docs/COMMON_CONTROL_MODEL_V1.md": {
+    "sha256": "7a46f9fffe706476de458aac078d0af1c94844df339248d3f9f4b5cf033011d7",
+    "bytes": 113347
+  },
+  "snapshot/docs/TUNER_REQUIREMENTS_FROM_REMOTE.md": {
+    "sha256": "fc6303f73c231e3abad91171ce0ea29ad05afe2b4c27833c5bd8743f79246c12",
+    "bytes": 36321
+  },
+  "snapshot/docs/TUNER_NATIVE_API_V1.md": {
+    "sha256": "0405e1844d194406f7a150568835e3bf1fda73ddb5ef18d434870f4458c0bb08",
+    "bytes": 66310
+  },
+  "sdk/components/nvs_flash/include/nvs.h": {
+    "sha256": "e5cef94b3983f2f962351ac93ee827c4f69ca25fb47a9345f8f01f62d702427a",
+    "bytes": 40962
+  },
+  "sdk/components/nvs_flash/src/nvs_storage.cpp": {
+    "sha256": "0d13b31fa0880c4174d1a13071150fd444c79a83c4ac2cb703a1fabb2d7ac222",
+    "bytes": 41059
+  },
+  "sdk/components/nvs_flash/src/nvs_page.hpp": {
+    "sha256": "5169df79ad3a76146cd92258abdcb09209080d259cc9325d0e55de4c01a568d3",
+    "bytes": 8152
+  },
+  "sdk/components/nvs_flash/src/nvs_handle_simple.cpp": {
+    "sha256": "15ed54fdb14bd9e8a0646cab54c41fe06140521b016830d6c13193675631facd",
+    "bytes": 4506
+  },
+  "sdk/components/nvs_flash/private_include/nvs_constants.h": {
+    "sha256": "e10b89107d46f66eba89e5b55bfb888e1825eb5aded5ee7b37665e1eda3c2f6f",
+    "bytes": 2749
+  }
+}
