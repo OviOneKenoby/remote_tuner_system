@@ -1,0 +1,17 @@
+{
+  "proposal": "P-REMOTE-V1-001",
+  "decision": "D-006",
+  "state": "PROPOSED / NOT APPROVED",
+  "input_main": "4588adc63c4856d31f144913aad59e599993c233",
+  "frozen_base_path": "references/device_evidence/remote/A-REMOTE-001/snapshot/docs/COMMON_CONTROL_MODEL_V1.md",
+  "frozen_base_sha256": "7a46f9fffe706476de458aac078d0af1c94844df339248d3f9f4b5cf033011d7",
+  "patch_sha256": "90d40c161d9d5b87fc83ec5a4daa1cb1e74f410647f9380f68c17651fd07d8a6",
+  "proposed_normative_result_sha256": "ac93ad8891899f91f9ae96b304d5c92dd5b36bfdf6c5f8dd7386342fd9af19a8",
+  "application": "Apply only to a separately approved new versioned CCM revision. Never edit the historical frozen artifact. Candidate historical header is not an approval; new revision metadata requires explicit owner authorization.",
+  "normative_changes": [
+    "section 2 last persistence sentence qualified only by section 12.1",
+    "new section 12.1; all remaining normative bytes unchanged"
+  ],
+  "owner_approval": "PENDING",
+  "effective_revision": "NONE"
+}

@@ -79,3 +79,20 @@ Both owner-reviewed A-001 inspection/documentation deliveries are integrated and
 - Implementation tasks/commits: firmware PR5 previously merged; no firmware implementation in A-PM-003; coordination merges recorded in PM report.
 - Verification: all five release asset SHA checks PASS; pinned functional hardware PASS with limits; B01/B03/B06/B04 empty/stale physical PENDING, full B04/B02/B05/B07-B11 unresolved.
 - Supersedes / superseded by: D-003 only as current baseline pointer; D-003 retained historical; superseded by NONE.
+
+### D-006: REMOTE v1 practical rollback model
+- Date (UTC): 2026-10-11
+- Task / proposal ID: A-PM-005 / P-REMOTE-V1-001
+- State: PROPOSED / NOT APPROVED
+- Problem and evidence: PR10 normal merge `4588adc63c4856d31f144913aad59e599993c233`; [review](proposals/P-REMOTE-V1-001/PR10_REVIEW.md); A005 strict G1 FAIL/acceptance BLOCKED.
+- Exact proposed change: [normative diff](proposals/P-REMOTE-V1-001/CCM_EXACT_DIFF.patch), SHA256 `90d40c161d9d5b87fc83ec5a4daa1cb1e74f410647f9380f68c17651fd07d8a6`; [manifest](proposals/P-REMOTE-V1-001/DIFF_MANIFEST.json).
+- CCM impact: proposed section2 qualification/new12.1 only, separately approved new revision required; frozen1.0.0 unchanged.
+- Native API impact: NONE; UNAPPROVED/UNFROZEN/NOT IMPLEMENTED, O01-O17 OPEN.
+- REMOTE impact and review: PM2026-10-11 [desk review](proposals/P-REMOTE-V1-001/REMOTE_REVIEW.md), conditionally implementable design, backend NOT QUALIFIED.
+- TUNER impact and review: PM2026-10-11 [desk review](proposals/P-REMOTE-V1-001/TUNER_REVIEW.md), no required firmware/storage/authority/protocol change; no independent device-session approval claimed.
+- Alternatives and compatibility: strict monotonic service retains old threat scope; practical model excludes coherent adversarial restoration only; [migration/task bounds](proposals/P-REMOTE-V1-001/IMPLEMENTATION_AND_MIGRATION.md).
+- Owner approval: PENDING; [exact wording](proposals/P-REMOTE-V1-001/OWNER_APPROVAL_REQUIRED.md); current request authorizes proposal, not exact diff approval.
+- Effective approved revision: NONE; CCM1.0.0 still effective.
+- Implementation tasks/commits: NOT IMPLEMENTED;006-009 proposed only, D1-D5 unassigned.
+- Verification: PR10 reproduction PASS;12 capacity ledger cases; physical NOT RUN; [proposal](proposals/P-REMOTE-V1-001/README.md).
+- Supersedes / superseded by: NONE; no approved decision superseded.

@@ -1,0 +1,6 @@
+# PR #10 review and normal integration
+PM direct review, 2026-10-11. Input main `4a4fe0b58036d919daf57d5036d9fcd99e33cf46`, exact reviewed head `807e5cd4e17d1b29526b20ad0b237044c5e8769a`. Normal merge `4588adc63c4856d31f144913aad59e599993c233`. Empty GitHub comments/reviews/threads; no independent device endorsement invented.
+
+Reproduced source-informed host tests: 8 tests, 10247 checks, 1079 faults, 180 capacity cases, seed50052026. Measurements, fault matrix and capacity ledger match published JSON exactly. Checked 291 Git-blob manifest entries, 68 historical artifacts, 4036 current device post-inventory hashes, selected SDK/source hashes and byte-original handoff archive. Task/report/G0-G4 reviewed. No production/config/build/SDK changes. Verification: `python -B review10.py` in isolated exported coordination checkout, Windows/Python3.13.13; runner `python -B run_qualification.py`. Git archive text conversion is accounted for by validating canonical Git blobs, not checkout line endings.
+
+Verdict: scope/reproducibility PASS, integrate documentation. A-REMOTE-005 remains BLOCKED under its original requirement: host PASS; strict G1 FAIL; physical G2-G4 UNKNOWN; capacity CONDITIONAL/FAIL; physical NOT RUN; production NOT IMPLEMENTED. No task/device execution or hardware proof in this review. Original report/task/handoffs remain unchanged.
