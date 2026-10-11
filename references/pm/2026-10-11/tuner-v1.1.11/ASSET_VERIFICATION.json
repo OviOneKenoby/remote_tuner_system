@@ -1,0 +1,43 @@
+{
+  "release_url": "https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/releases/tag/v1.1.11",
+  "draft": false,
+  "prerelease": false,
+  "assets": [
+    {
+      "name": "BUILD_MANIFEST.md",
+      "bytes": 2799,
+      "sha256": "f3c786bcbb221332bb45c9d62a5ca202bd3559803388ab15c74fc9aa25d54205",
+      "url": "https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/releases/download/v1.1.11/BUILD_MANIFEST.md",
+      "api_digest_verified": true
+    },
+    {
+      "name": "ELF_VERIFICATION.txt",
+      "bytes": 3656,
+      "sha256": "8144d379b190d302c537e2d2593c9d40e8f22f872ee6b3f28cee082240e76f1b",
+      "url": "https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/releases/download/v1.1.11/ELF_VERIFICATION.txt",
+      "api_digest_verified": true
+    },
+    {
+      "name": "firmware-1.1.11-psram-124e84801b06.bin",
+      "bytes": 2028672,
+      "sha256": "796221b3521800eb5d6e41f6932c81f600ea9f6e57e9bbc240640c9e8522dbf2",
+      "url": "https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/releases/download/v1.1.11/firmware-1.1.11-psram-124e84801b06.bin",
+      "api_digest_verified": true
+    },
+    {
+      "name": "firmware-1.1.11-psram-124e84801b06.elf",
+      "bytes": 29599964,
+      "sha256": "c1bc29571b7ac59d12bab006ec0761464cebb4c76e7f14686606c73866f7c209",
+      "url": "https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/releases/download/v1.1.11/firmware-1.1.11-psram-124e84801b06.elf",
+      "api_digest_verified": true
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "bytes": 210,
+      "sha256": "c3bcd70b421b0bab880021d3b74bb23080b9a0198853bbf64dc6db9c90941ad0",
+      "url": "https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/releases/download/v1.1.11/SHA256SUMS.txt",
+      "api_digest_verified": true
+    }
+  ],
+  "procedure": "All five assets downloaded read-only and SHA256 compared to API digest; no build/hardware rerun"
+}

@@ -1,0 +1,180 @@
+{
+  "environment": "3.13.13 / Windows-11-10.0.26200-SP0",
+  "seed": 40042026,
+  "tests": 12,
+  "counted_checks": 7805,
+  "failures": 0,
+  "errors": 0,
+  "fault_cases": 562,
+  "fixtures": {
+    "typical_pending": {
+      "bytes": 1405,
+      "sha256": "4cea732a9ef47e7b88b6d81b6a7f51df5827e1a2cc29091be15a6bbe9511bf6d",
+      "dictionary_counts": {
+        "id": 22,
+        "text": 10
+      },
+      "typed_body_bytes": 1105
+    },
+    "typical_resolved": {
+      "bytes": 1601,
+      "sha256": "87eda30d22b8146195769efa345a6153cf8c4a42ea5311b118f67fcb8f884cbf",
+      "dictionary_counts": {
+        "id": 24,
+        "text": 16
+      },
+      "typed_body_bytes": 1233
+    },
+    "maximum_pending": {
+      "bytes": 5587,
+      "sha256": "4678d8c0c647d8a231a00e5d91b6e137e24fb0895e8c11f27766dceea21c1979",
+      "dictionary_counts": {
+        "id": 30,
+        "text": 10
+      },
+      "typed_body_bytes": 1150
+    },
+    "maximum_resolved": {
+      "bytes": 6383,
+      "sha256": "0174e1ca7382785a077afa845ff60bb6796b43ee8b82f97e8c0678decd2129d6",
+      "dictionary_counts": {
+        "id": 32,
+        "text": 16
+      },
+      "typed_body_bytes": 1298
+    }
+  },
+  "maximum_derivation": {
+    "0": {
+      "structural_body_max": 1258,
+      "deductions": {
+        "3 STRING instead of REF scalars": 81,
+        "RESOURCE second key in effect and each proof": 2,
+        "seek absent": 8,
+        "recipe absent": 1,
+        "step absent in attempt and errors": 16
+      },
+      "legal_body_max": 1150,
+      "ID_table_bytes": 3769,
+      "TEXT_table_bytes": 650,
+      "encoded_max": 5587
+    },
+    "1": {
+      "structural_body_max": 1337,
+      "deductions": {
+        "3 STRING instead of REF scalars": 81,
+        "RESOURCE second key in effect and each proof": 3,
+        "seek absent": 8,
+        "recipe absent": 1,
+        "step absent in attempt and errors": 20
+      },
+      "legal_body_max": 1224,
+      "ID_table_bytes": 3898,
+      "TEXT_table_bytes": 845,
+      "encoded_max": 5985
+    },
+    "2": {
+      "structural_body_max": 1416,
+      "deductions": {
+        "3 STRING instead of REF scalars": 81,
+        "RESOURCE second key in effect and each proof": 4,
+        "seek absent": 8,
+        "recipe absent": 1,
+        "step absent in attempt and errors": 24
+      },
+      "legal_body_max": 1298,
+      "ID_table_bytes": 4027,
+      "TEXT_table_bytes": 1040,
+      "encoded_max": 6383
+    }
+  },
+  "maximum_state_bytes": 6383,
+  "maximum_future_growth_bytes": 796,
+  "BASE_node_max": 6447,
+  "PROOF_node_max": 1146,
+  "ALLOC_node_max": 162,
+  "trusted_root_bytes": 76,
+  "maximum_tail_nodes": 4,
+  "conservative_record_reserve_bytes": 15510,
+  "measured_max_fixture_compaction_record_peak": 14390,
+  "capacity": [
+    {
+      "other_occupancy_assumed_bytes": 0,
+      "other_old_new_entries": 0,
+      "snapshot_overlap_entries": 410,
+      "tail_entries": 92,
+      "root_old_new_entries": 10,
+      "metadata_entries": 12,
+      "GC_entries": 126,
+      "peak_entries_lower_bound": 650,
+      "partition_entries": 756,
+      "lower_bound_pages": 6,
+      "optimistic_fits": true,
+      "free_entries_if_exact": 106,
+      "record_blob_bytes": 15510
+    },
+    {
+      "other_occupancy_assumed_bytes": 512,
+      "other_old_new_entries": 36,
+      "snapshot_overlap_entries": 410,
+      "tail_entries": 92,
+      "root_old_new_entries": 10,
+      "metadata_entries": 12,
+      "GC_entries": 126,
+      "peak_entries_lower_bound": 686,
+      "partition_entries": 756,
+      "lower_bound_pages": 6,
+      "optimistic_fits": true,
+      "free_entries_if_exact": 70,
+      "record_blob_bytes": 15510
+    },
+    {
+      "other_occupancy_assumed_bytes": 1024,
+      "other_old_new_entries": 68,
+      "snapshot_overlap_entries": 410,
+      "tail_entries": 92,
+      "root_old_new_entries": 10,
+      "metadata_entries": 12,
+      "GC_entries": 126,
+      "peak_entries_lower_bound": 718,
+      "partition_entries": 756,
+      "lower_bound_pages": 6,
+      "optimistic_fits": true,
+      "free_entries_if_exact": 38,
+      "record_blob_bytes": 15510
+    },
+    {
+      "other_occupancy_assumed_bytes": 2048,
+      "other_old_new_entries": 132,
+      "snapshot_overlap_entries": 410,
+      "tail_entries": 92,
+      "root_old_new_entries": 10,
+      "metadata_entries": 12,
+      "GC_entries": 126,
+      "peak_entries_lower_bound": 782,
+      "partition_entries": 756,
+      "lower_bound_pages": 7,
+      "optimistic_fits": false,
+      "free_entries_if_exact": -26,
+      "record_blob_bytes": 15510
+    },
+    {
+      "other_occupancy_assumed_bytes": 4096,
+      "other_old_new_entries": 262,
+      "snapshot_overlap_entries": 410,
+      "tail_entries": 92,
+      "root_old_new_entries": 10,
+      "metadata_entries": 12,
+      "GC_entries": 126,
+      "peak_entries_lower_bound": 912,
+      "partition_entries": 756,
+      "lower_bound_pages": 8,
+      "optimistic_fits": false,
+      "free_entries_if_exact": -156,
+      "record_blob_bytes": 15510
+    }
+  ],
+  "qualification": "CONDITIONAL HOST PASS; actual backend newest-intent integrity NOT QUALIFIED / PRODUCTION BLOCKED",
+  "hardware": "NOT RUN",
+  "production_integration": "NOT IMPLEMENTED"
+}

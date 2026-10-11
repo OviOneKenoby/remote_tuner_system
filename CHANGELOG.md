@@ -76,3 +76,11 @@ READY FOR REVIEW, DESIGN ONLY. reports/A-REMOTE-002.md with durable identity/eff
 - Added complete narrow lossless typed profile,BASE/ALLOC/PROOF log,intermediate per-key proof/recovery and bounded compaction;future resolution/overlap reserved,unqualified newest-head blocks. Host PASS12tests/7805checks/562scenarios,100compactions/400allocations;both rollback counterexamples retained.
 - Measured complete max6383bytes/growth796/raw record reserve15510. Existing24KiB conditional ideal fit under smaller occupancy assumptions,fails2-4KiB;actual backend integrity/free/GC/root overhead remain UNKNOWN,production BLOCKED. Larger-partition alternatives docs only.
 - No production Core/NVS/credentials access,partition/config/Native/TUNER changes,build/upload/hardware. CCM frozen,Native unapproved/unfrozen/not implemented,O01-O17open/common gate OPEN;separate backend/physical/importer gates remain.
+
+
+## 2026-10-11T17:37:47Z - A-PM-003 current-state reconciliation
+- Reviewed/merged PR7/8/9 exact heads in order; historical evidence, A003/A004, archives and all changelog deltas preserved; ordinary merges in PM report.
+- Independently reproduced host A003/A004 suites; production FAIL/BLOCKED and conditional host PASS / BLOCKED; hardware NOT RUN.
+- Reconciled final TUNER v1.1.11 main/tag/PR5/release/source/BIN/ELF; all five asset digests PASS. Owner functional BT/web/ping/recovery acceptance retains zero-DMA FAIL,3m44.566s limit and case-specific physical PENDING.
+- Updated current globals/task dispositions; appended D-005 without deleting history/closing O01-O17; archived both old handoffs byte-for-byte; added exact owner authorization, PM evidence/review/current TUNER report and Git-blob manifest.
+- No shared/Native/production Core/firmware/release/live NVS/credentials/partition/flash/hardware changes. D1-D5 unassigned; next backend mission recommended only.

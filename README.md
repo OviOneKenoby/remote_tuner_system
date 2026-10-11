@@ -31,10 +31,10 @@ REMOTE-TUNER-SYSTEM/
 
 - CCM 1.0.0: **OWNER APPROVED / FROZEN**.
 - TUNER Native API v1: **UNAPPROVED / UNFROZEN / NOT IMPLEMENTED**.
-- Current TUNER audited baseline: branch `main`, commit `371cdebce7ba2648ea71636d5bdb5d738b42e680`, firmware `1.1.0`.
+- Initial historical TUNER audited baseline: branch `main`, commit `371cdebce7ba2648ea71636d5bdb5d738b42e680`, firmware `1.1.0`.
 - Common phase: **Phase A contract reconciliation + TUNER correctness/control-state foundation**.
 
-These facts were explicitly supplied by the owner for this package. The underlying approved CCM, audit and firmware checkout were not supplied here and have not been independently inspected. An audited baseline does not prove the current checkout is still at that commit, that a build passed, or that hardware passed. REMOTE baseline and both devices' current hardware status are unknown.
+These starting facts were supplied for the initial 2026-10-08 package; the missing-evidence description here is historical. The underlying approved CCM, audit and firmware checkout were not supplied here and have not been independently inspected. An audited baseline does not prove the current checkout is still at that commit, that a build passed, or that hardware passed. REMOTE baseline and both devices' current hardware status are unknown.
 
 ## Workflow and responsibilities
 
@@ -61,3 +61,7 @@ Archive the previous complete handoff before replacement as `archive/<device>/YY
 This ZIP does not publish a repository, connect accounts, grant filesystem access, dispatch tasks or install a scheduler. Shared files provide durable handoff; each actor must be given access and invoked. A chat without repository access needs the current files uploaded or pasted by the owner. Full automatic dispatch requires a separately configured runner/integration with access, scheduling and conflict handling. Until then, use the manual cycle in MANUAL_SETUP.md. Never treat a stale uploaded copy as live repository state.
 
 Read MANUAL_SETUP.md for the exact initialization and publication steps.
+
+
+## Current coordination state - 2026-10-11
+TUNER final v1.1.11 supersedes the initial baseline; [current report](reports/TUNER_V1_1_11_RECONCILIATION.md). PR7/8/9 evidence integrated; REMOTE A003 production qualification FAIL/BLOCKED and A004 conditional host PASS / production BLOCKED. [PROJECT_SYNC](PROJECT_SYNC.md), [PM review](reports/A-PM-003_RECONCILIATION.md), [evidence index](references/pm/2026-10-11/INDEX.md) record exact identity/limits. CCM/Native/O01-O17/common gate unchanged; no automatic D1/device authorization.

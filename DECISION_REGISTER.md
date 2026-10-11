@@ -61,3 +61,21 @@ At 2026-10-08T13:55:34Z, PM assigned A-REMOTE-001 and A-TUNER-001 under the owne
 
 ## PM follow-up publication record - 2026-10-08
 Both owner-reviewed A-001 inspection/documentation deliveries are integrated and complete for that scope. Recovered CCM artifact/provenance is available in REMOTE A-001 evidence; earlier missing-evidence entries remain historical. [Authorization index](references/PM_FOLLOW_UP_INDEX.md) links the unchanged owner package and exact A-002 assignments. A-TUNER-002: bounded internal guards; A-REMOTE-002: design only. No new CCM/Native approval or O01-O17 closure. Common gate OPEN / NOT PASSED; hardware gaps remain explicit in PROJECT_SYNC.md.
+
+
+### D-005: Current TUNER final v1.1.11 factual baseline
+- Date (UTC): 2026-10-11T17:37:47Z
+- Task / proposal ID: A-PM-003 reconciliation
+- State: OWNER APPROVED
+- Problem and evidence: D-003 initial 1.1.0 and A-TUNER003 artifact are historical; [current report](reports/TUNER_V1_1_11_RECONCILIATION.md), [release metadata](references/pm/2026-10-11/tuner-v1.1.11/release.json).
+- Exact proposed change: Current pointer main/tag/merge `5fb92c95d228d744d1182ae3956e850c5be2f277`, executable source `124e84801b06f9e07764dabc3985a573dffaff3b`, build_git_id `124e84801b06`; history preserved.
+- CCM impact: none; D-001 remains frozen, no semantics/version/approval changes.
+- Native API impact: none; D-002 UNAPPROVED/UNFROZEN/NOT IMPLEMENTED, O01-O17 OPEN.
+- REMOTE impact and review: PM 2026-10-11T17:37:47Z; no device acceptance; A003/A004 reviewed production BLOCKED, [PM report](reports/A-PM-003_RECONCILIATION.md).
+- TUNER impact and review: PM 2026-10-11T17:37:47Z; public PR5/main/tag/final release/assets checked; functional PASS only recorded BT/web/ping/recovery windows, zero-DMA FAIL and 30-minute soak NOT COMPLETED.
+- Alternatives and compatibility: retain D-003/old reports historical, no case-specific hardware acceptance inferred.
+- Owner approval: 2026-10-11 functional acceptance/merge/release scope in pinned FINAL_VALIDATION; [current exact request](references/PM_RECONCILIATION_AUTHORIZATION_2026-10-11.txt). No new shared approval.
+- Effective approved revision: v1.1.11 / `5fb92c95d228d744d1182ae3956e850c5be2f277`, executable source above; explicit esp32-lwip-psram.
+- Implementation tasks/commits: firmware PR5 previously merged; no firmware implementation in A-PM-003; coordination merges recorded in PM report.
+- Verification: all five release asset SHA checks PASS; pinned functional hardware PASS with limits; B01/B03/B06/B04 empty/stale physical PENDING, full B04/B02/B05/B07-B11 unresolved.
+- Supersedes / superseded by: D-003 only as current baseline pointer; D-003 retained historical; superseded by NONE.

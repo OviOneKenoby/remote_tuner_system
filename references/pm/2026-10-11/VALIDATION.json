@@ -1,0 +1,36 @@
+{
+  "procedure": "validate_pm.py: compare original PR blobs, frozen refs/history, exact archive source blobs, rerun results, local links, template and staged root SHA256SUMS",
+  "utc": "2026-10-11T17:40:14.864549+00:00",
+  "unchanged_PR_delivery_paths": {
+    "7": 3,
+    "8": 31,
+    "9": 42
+  },
+  "prior_baseline_immutable_paths_preserved": 128,
+  "original_task_authorization_bodies": "PASS; only administrative State changed, review appendix added",
+  "byte_exact_prior_handoff_archives": {
+    "TUNER": {
+      "path": "archive/tuner/2026-10-11T173747Z_A-PM-003_TUNER-A-TUNER-003-20261008T175304Z.md",
+      "source_commit": "3e75a6c7a68ad28312a656505b1c78959726c0e9",
+      "source_path": "handoffs/TUNER_LATEST.md",
+      "sha256": "afaac6ae134305973da99468f1642184319bdd9f2f9fae666f339086b432fbe9"
+    },
+    "REMOTE": {
+      "path": "archive/remote/2026-10-11T173747Z_A-PM-003_REMOTE-A-REMOTE-004-20261008T202056Z.md",
+      "source_commit": "3e75a6c7a68ad28312a656505b1c78959726c0e9",
+      "source_path": "handoffs/REMOTE_LATEST.md",
+      "sha256": "77f7e6ec6d25be088576e41d4c16d74eebd324e29f9feac539c3daf72d88632d"
+    }
+  },
+  "evidence_manifest_and_rerun_results": "PASS all original hashes, measured results/fault matrices and binary fixture bytes",
+  "A004_vendor_preserves_A003": "PASS five original Python files",
+  "changelogs_decisions_initial_sync": "PASS all three PR deltas, original decision prefix/O01-O17 OPEN, complete old sync preserved historical",
+  "exact_handoff_headings_all_fields": "PASS both latest",
+  "owner_authorization_bytes": "PASS",
+  "active_local_links": {
+    "checked": 83,
+    "broken": [],
+    "historical_exclusion": "Unchanged imports/archives/source report copies retain original-location links; provenance INDEX links originals. No invented missing target."
+  },
+  "root_manifest": "PASS procedure regenerates/validates all staged blobs excluding SHA256SUMS.txt itself"
+}

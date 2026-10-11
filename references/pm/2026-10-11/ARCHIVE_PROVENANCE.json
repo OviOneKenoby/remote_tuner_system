@@ -1,0 +1,14 @@
+{
+  "TUNER": {
+    "path": "archive/tuner/2026-10-11T173747Z_A-PM-003_TUNER-A-TUNER-003-20261008T175304Z.md",
+    "source_commit": "3e75a6c7a68ad28312a656505b1c78959726c0e9",
+    "source_path": "handoffs/TUNER_LATEST.md",
+    "sha256": "afaac6ae134305973da99468f1642184319bdd9f2f9fae666f339086b432fbe9"
+  },
+  "REMOTE": {
+    "path": "archive/remote/2026-10-11T173747Z_A-PM-003_REMOTE-A-REMOTE-004-20261008T202056Z.md",
+    "source_commit": "3e75a6c7a68ad28312a656505b1c78959726c0e9",
+    "source_path": "handoffs/REMOTE_LATEST.md",
+    "sha256": "77f7e6ec6d25be088576e41d4c16d74eebd324e29f9feac539c3daf72d88632d"
+  }
+}

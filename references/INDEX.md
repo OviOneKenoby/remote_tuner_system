@@ -40,3 +40,7 @@ The final approved CCM 1.0.0 file and original approval record are not included.
 ## Current verification
 PM used GitHub get-ref and fetch-file at TUNER commit 371cdebce7ba2648ea71636d5bdb5d738b42e680; src/config.h contains FIRMWARE_VERSION1.1.0. Source confirmation is separate from running firmware.
 No passwords/tokens/private telemetry added. Both latest device handoffs remain the owners' initial placeholders until device inspections publish results.
+
+
+## Current evidence index - 2026-10-11
+Above availability/verification sections retain initial 2026-10-08 scope, not current status. Frozen artifact recovered in REMOTE A001; [current PM index](pm/2026-10-11/INDEX.md) covers PR7/8/9 and final TUNERv1.1.11. [Current project state](../PROJECT_SYNC.md) supersedes baseline/placeholder present-tense statements; originals immutable.

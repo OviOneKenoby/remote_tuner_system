@@ -1,6 +1,6 @@
 # A-TUNER-003: Review/integrate bounded guards and prepare identified-artifact physical regression
 - Owner: TUNER//01
-- State: ASSIGNED
+- State: SOFTWARE / ARTIFACT DELIVERY REVIEWED; PHYSICAL MATRIX PENDING
 - Coordination input commit: 8e1ab9d87c4647964bbc48d0e50982472a0b9cca (PM review input); record actual current execution commit containing this assignment.
 - Objective: Complete firmware PR #2 software integration review and prepare the exact artifact and owner-assisted regression that can establish physical acceptance of only B01, B03, B04 empty/stale traversal and B06.
 - Baseline: OviOneKenoby/ESP32-WROVER-Internet-radio; reviewed tuner/a-tuner-002 head 8fac1da6ccd749a47843d99dc746fc3d6e4bf19b; prior executable main 371cdebce7ba2648ea71636d5bdb5d738b42e680; firmware 1.1.0 unchanged. Inspect current local/remote HEAD and dirty work; preserve all changes. Do not use the older uploaded platformio/GPIO guides as current build authority.
@@ -24,3 +24,7 @@
 6. Prepare real handler cases: empty/signed/space/junk/oversized suffixes, 255/256/count boundaries, index zero and valid middle removal. Record actual HTTP response and full list before/after. Test zero/one/many and stale saved selection, radio/BT Down at zero, opaque AAC/AAC+ Favorite via playing-screen action followed by actual storage/reboot/playback, and opaque MP3 plus case-insensitive .aac cases. Use verified streams; do not invent availability.
 7. Deliver the artifact and owner-assisted procedure. The owner performs flashing and physical interaction deliberately; do not auto-detect COM4 or flash an assumed device. Preserve catalog/Wi-Fi through ordinary upload. No erase or forced hardware reset beyond the owner's deliberate test procedure.
 8. Publish available preparation even when physical results are pending. Record later actual owner observations with exact artifact/date and separate status. Do not finish by merely asking permission while withholding the review/artifact/checklist.
+
+
+## PM review disposition - 2026-10-11
+Original assignment and exact authorization preserved apart from administrative State. Integrated under current owner reconciliation scope; [PM review](../reports/A-PM-003_RECONCILIATION.md). SOFTWARE / ARTIFACT DELIVERY REVIEWED; PHYSICAL MATRIX PENDING. No new device assignment or production/shared gate acceptance. Historical TUNER delivery superseded only as current pointer by [v1.1.11 report](../reports/TUNER_V1_1_11_RECONCILIATION.md).

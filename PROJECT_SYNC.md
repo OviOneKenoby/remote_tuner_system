@@ -1,4 +1,40 @@
 # Project synchronization
+Updated 2026-10-11T17:37:47Z; coordination input `531aa8cd0435ed9813ab39664888992583df0d28`.
+Common phase: Phase A contract reconciliation + TUNER correctness/control-state foundation.
+Common gate: **OPEN / NOT PASSED**. No automatic task dispatch.
+
+## Current state - supersedes historical status below
+| Item | Current state | Evidence / limit |
+| --- | --- | --- |
+| CCM 1.0.0 | OWNER APPROVED / FROZEN | Recovered frozen artifact/provenance retained; full device conformance NOT VERIFIED |
+| Native API v1 | UNAPPROVED / UNFROZEN / NOT IMPLEMENTED | O01-O17 OPEN; no new shared approval |
+| TUNER | Final v1.1.11; main/tag/merge `5fb92c95d228d744d1182ae3956e850c5be2f277` | [Current report](reports/TUNER_V1_1_11_RECONCILIATION.md); executable source `124e84801b06f9e07764dabc3985a573dffaff3b`, build_git_id `124e84801b06`; explicit `esp32-lwip-psram`, default `esp32-dev` remains |
+| TUNER artifact | BIN SHA256 `796221b3521800eb5d6e41f6932c81f600ea9f6e57e9bbc240640c9e8522dbf2`; ELF SHA256 `c1bc29571b7ac59d12bab006ec0761464cebb4c76e7f14686606c73866f7c209` | Public final release/PR5/assets verified; prior 1.1.0/1,999,408-byte reports historical |
+| TUNER hardware | Owner functional BT SBC/web/diagnostics/ping/recovery PASS in two boots | Three transient 1622-byte DMA failures each; strict zero-failure FAIL; no persistent NO_MEM/headNULL/retained refs; TX/ref/free recover. SUSTAINED01 3m44.566s, not 30min; B01/B03/B06/B04 empty/stale physical PENDING; full B04/B02/B05/B07-B11 unresolved |
+| REMOTE A003 | Executed; host PASS 13/3859/87; production qualification FAIL/BLOCKED | [Report](reports/A-REMOTE-003.md); typical 3228>3072, max 44284; old valid anchor counterexample; hardware NOT RUN |
+| REMOTE A004 | Executed; host delivery reviewed; READY FOR REVIEW / production integration BLOCKED | [Report](reports/A-REMOTE-004.md); conditional PASS 12/7805/562; max6383, reserve796, raw15510; 24KiB conditional only, occupancy cases fail |
+| REMOTE blocker | Concrete qualified monotonic durable root/CAS and ordered records absent | G1-G4 assumptions; unqualified backend GLOBAL_BLOCK. Actual occupancy/fragmentation/GC/root costs, physical ordering/power-loss/latency/endurance/RAM/frame UNKNOWN |
+| REMOTE hardware/artifacts | NOT RUN for A003/A004 | Source/BIN/flashed correspondence UNKNOWN; historical ADC optimization hardware FAIL, rollback residency PENDING |
+
+## Current task dispositions
+| Task | Disposition |
+| --- | --- |
+| A-PM-001 / A001 inspections | DONE documentation/inspection scope only |
+| A-TUNER-002 / A-REMOTE-002 | DONE bounded software/design scope only; prior limits retained |
+| [A-TUNER-003](tasks/A-TUNER-003.md) | Software integration/artifact delivery reviewed; case-specific physical matrix PENDING |
+| [A-REMOTE-003](tasks/A-REMOTE-003.md) | Execution DONE; production qualification FAIL/BLOCKED |
+| [A-REMOTE-004](tasks/A-REMOTE-004.md) | Execution DONE; host delivery reviewed; READY FOR REVIEW / production integration BLOCKED |
+| A-PM-003 | Reconciliation/review documentation publication; final SHA reported after remote verification |
+| D1-D5 | UNASSIGNED / NOT IMPLEMENTED; Native not authorized |
+
+PR7/8/9 integrated in order, evidence/changelogs preserved; [PM review](reports/A-PM-003_RECONCILIATION.md) contains exact hashes/checks. Latest [TUNER](handoffs/TUNER_LATEST.md) and [REMOTE](handoffs/REMOTE_LATEST.md) handoffs distinguish history/current facts. D-005 factual baseline supersession leaves D-001/D-002/O01-O17 unchanged.
+
+Next recommendation A-REMOTE-005: concrete backend guarantee/capacity feasibility and host qualification, exact PM report scope; NOT ASSIGNED. No production Core/NVS/flash/partition/hardware, D1 or Native. Shared changes require both-device review and owner approval.
+
+## Historical synchronization snapshot - 2026-10-08 (not current baseline/queue)
+Present-tense ASSIGNED/unmerged statements below apply to that historical date only, superseded by current state above.
+
+# Project synchronization
 
 Updated: 2026-10-08
 Coordinator: PM coordination repository publisher

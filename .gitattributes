@@ -13,3 +13,10 @@ references/device_evidence/remote/A-REMOTE-003/** -text
 
 # Preserve exact REMOTE A-004 qualification input/evidence bytes
 references/device_evidence/remote/A-REMOTE-004/** -text
+
+
+# PM immutable authorization, evidence and byte-original handoff archives
+references/PM_RECONCILIATION_AUTHORIZATION_2026-10-11.txt -text
+references/pm/2026-10-11/** -text
+archive/tuner/2026-10-11T173747Z_A-PM-003_TUNER-A-TUNER-003-20261008T175304Z.md -text
+archive/remote/2026-10-11T173747Z_A-PM-003_REMOTE-A-REMOTE-004-20261008T202056Z.md -text

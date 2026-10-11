@@ -1,64 +1,63 @@
 # TUNER//01 handoff
 
 ## Metadata
-- Handoff ID: TUNER-A-TUNER-003-20261008T175304Z
-- Updated (UTC): 2026-10-08T17:53:04Z
-- Task ID: A-TUNER-003
-- Status: READY FOR REVIEW
-- Prepared by: TUNER//01 / Codex
+- Handoff ID: TUNER-A-PM-003-20261011T173747Z
+- Updated (UTC): 2026-10-11T17:37:47Z
+- Task ID: A-PM-003
+- Status: ACCEPTED
+- Prepared by: PM authorized current-state reconciliation publisher
 - Coordination input commit: 531aa8cd0435ed9813ab39664888992583df0d28
 
 ## Milestone
-Complete final software integration review of the four A-TUNER-002 guards, perform the authorized ordinary firmware merge if unchanged, recover and publish the exact tested artifact, and deliver an owner-assisted physical regression matrix. Software integration and artifact preparation are complete. Physical hardware acceptance remains PENDING / NOT RUN.
+Current final v1.1.11 identity/owner functional acceptance reconciled; historical A-TUNER003 preserved, case-specific physical matrix PENDING. [PM review](../reports/A-PM-003_RECONCILIATION.md); documentation/host scope only, common gate OPEN/NOT PASSED.
 
 ## Baseline
-- Device repository: `C:\Users\RYZEN\Downloads\InternetRadio_ESP32_EPaper\ESP32-WROVER-Internet radio`; https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio
-- Branch: reviewed `tuner/a-tuner-002`; final remote `main` after software and documentation merges
-- Firmware baseline commit: prior main `371cdebce7ba2648ea71636d5bdb5d738b42e680`; reviewed implementation `8fac1da6ccd749a47843d99dc746fc3d6e4bf19b`
-- Firmware version: 1.1.0, unchanged
-- Working tree at start: clean at reviewed PR head; remote main still matched assigned base; no divergent executable work
-- Contract references: CCM 1.0.0 OWNER APPROVED/FROZEN; TUNER Native API v1 UNAPPROVED/UNFROZEN/NOT IMPLEMENTED; O01–O17 OPEN; A-TUNER-003 package at coordination `531aa8cd0435ed9813ab39664888992583df0d28`.
+- Device repository: https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio
+- Branch: main, public ref checked
+- Firmware baseline commit: 5fb92c95d228d744d1182ae3956e850c5be2f277 (release main/tag); executable source 124e84801b06f9e07764dabc3985a573dffaff3b
+- Firmware version: final release v1.1.11; validated1.1.11-psram-validation/build124e84801b06, explicit esp32-lwip-psram, default esp32-dev remains
+- Working tree at start: Device NOT INSPECTED by PM; isolated coordination checkout clean at input; no live device edits
+- Contract references: CCM1.0.0 OWNER APPROVED/FROZEN; Nativev1 UNAPPROVED/UNFROZEN/NOT IMPLEMENTED; D-001/D-002/D-005, O01-O17 OPEN
 
 ## Changes
-Rereviewed the real DELETE, traversal, volume and discovered-codec persistence/audio call paths. Merged unchanged firmware PR #2 ordinarily as `d1e51765179f99567df3b5d18a451152adac514c`; its tree exactly equals reviewed head `8fac1da6ccd749a47843d99dc746fc3d6e4bf19b`. Recovered the original exact binary and published it through a non-production GitHub prerelease. Added artifact identity, SHA manifest, NVS-preserving owner regression checklist and device CHANGELOG through documentation-only PR #3, merged as final firmware main `cb17e945b9c0e086a03e7176d9ad442a8c78d89b`. No executable/configuration, dependency, partition, GPIO, version, Native, REMOTE or contract change was added by A-TUNER-003.
+Coordination-only PR7/8/9 integration, statuses/review/reports/task dispositions; latest handoff replaced after byte-exact archive. No device change by publisher. [Current TUNER report](../reports/TUNER_V1_1_11_RECONCILIATION.md) supersedes old baseline.
 
 ## Verification
 | Check | Command/procedure | Environment | Result | Evidence |
 | --- | --- | --- | --- | --- |
-| Final call-path review | Git diff/rg and full handler/navigation/codec/save/load/audio inspection | Firmware PR #2 exact head `8fac1da6…` | PASS for software integration; physical semantics still pending | `reports/A-TUNER-003.md`; integration evidence |
-| Ordinary merge identity | Pin PR state/head/base; GitHub merge API; fetch and compare Git trees | GitHub and local Git | PASS — software merge `d1e51765179f99567df3b5d18a451152adac514c`, tree equals reviewed head | integration evidence |
-| Executable scope after documentation | Scoped diff from reviewed head through final main | final main `cb17e945b9c0e086a03e7176d9ad442a8c78d89b` | PASS — only CHANGELOG/artifact documentation after software merge | firmware PR #3 and evidence |
-| Deterministic/build evidence | Reuse unchanged A-TUNER-002 and independent PM suites/build per task | GCC 16.2.0 and 13.3.0; PlatformIO 6.2.0 / esp32-dev | PASS — 249 checks twice; original clean build PASS | A-TUNER-002 build evidence and A-PM-002 review |
-| Exact artifact | Rehash original isolated output; publish prerelease; fresh public download/readback; resolve tag | Tested commit `8fac1da6…` | PASS — 1,999,408 bytes, SHA-256 `AF066BA215F863A7D2583A6313ACEE00020CCFAD4F8F8C3168DEDA76BCD6F5D4` | A-TUNER-003 integration evidence and prerelease |
-| Owner physical matrix | Exact versioned checklist with preconditions/result table/restoration | ESP32-WROVER owner hardware | NOT RUN / PENDING | firmware `artifacts/A-TUNER-003/OWNER_REGRESSION_CHECKLIST.md` |
+| Review/provenance | all PR files/conversations; evidence SHA manifests/Git archive bytes | isolated Windows/Git2.55.0.windows.2 | PASS preservation; conversations empty | [PM index](../references/pm/2026-10-11/INDEX.md) |
+| Host qualification | python -B run_qualification.py in exported A003/A004 prototypes | Windows/Python3.13.13/fake backend | PASS13/3859/87 and12/7805/562; production FAIL/BLOCKED/conditional BLOCKED | PM index rerun logs/matrices |
+| Public TUNER identity | git ls-remote, PR5/main/tag/release metadata, five downloaded asset SHA checks | read-only public release | PASS exact artifacts, no new build | [TUNER report](../reports/TUNER_V1_1_11_RECONCILIATION.md) |
+| Physical evidence | read pinned FINAL_VALIDATION/TEST01/SUSTAINED01; no PM rerun | reported WROVER/PSRAM explicit profile; REMOTE NOT RUN | TUNER limited functional PASS, zero-DMA FAIL; REMOTE NOT RUN | PM index pinned reports |
+| Coordination validation | Git-blob manifest, template fields/headings, archive bytes/active links | isolated checkout | VALIDATION.json; final remote SHA reported separately | [Validation](../references/pm/2026-10-11/VALIDATION.json) |
 
 ## Remaining unknowns
-Actual flashed artifact, board port, test date, serial/HTTP evidence, catalog restoration, physical B01/B03/B04-empty-stale/B06 behavior and representative MP3/AAC+/Bluetooth/web/local regression remain unknown/pending. Full B04 durable identity and active deletion semantics, B02/B05/B07–B11, Native state/security/resource work and O01–O17 remain outside scope/open.
+Current local flashed residency NOT VERIFIED; zero-DMA FAIL,30-minute soak NOT COMPLETED; B01/B03/B06/B04 empty/stale physical PENDING; fullB04/B02/B05/B07-B11 unresolved; endurance/resources outside windows UNKNOWN.
 
 ## Shared-contract impact
-- CCM 1.0.0: NO CHANGE — reviewed internal fixes and artifact preparation preserve frozen semantics.
-- TUNER Native API v1: NO CHANGE — no endpoint, adapter, discovery, pairing, transport or support claim; remains unapproved/unfrozen/not implemented.
-- Other device impact: REMOTE may consume only the recorded software integration/artifact identity; it must not infer physical acceptance, full catalog identity or common-gate completion.
-- Approval evidence: owner `engage` authorization embodied by `references/PM_FOLLOW_UP_A003_2026-10-08.md` and exact task at coordination execution input `531aa8cd0435ed9813ab39664888992583df0d28`; no shared-contract approval.
+- CCM 1.0.0: NO CHANGE; frozen semantics/original approval retained
+- TUNER Native API v1: NO CHANGE; UNAPPROVED/UNFROZEN/NOT IMPLEMENTED
+- Other device impact: NONE; no device edits or inferred acceptance/automatic dependency completion
+- Approval evidence: [current owner scope](../references/PM_RECONCILIATION_AUTHORIZATION_2026-10-11.txt), D-005 limited TUNER factual acceptance; NONE for Native/shared/production approval
 
 ## Blockers
-NONE for completed software integration or artifact preparation. Physical acceptance requires the owner to deliberately flash the exact artifact and return the completed dated matrix/logs. Missing or unavailable stream cases remain PENDING.
+NONE for factual publication; case-specific physical matrix PENDING, remaining resource/shared gates unresolved. Common gate OPEN/NOT PASSED, O01-O17 OPEN.
 
 ## PM decision required
-Review this integration/result publication. After owner evidence arrives, accept or reject only B01, B03, B04 empty/stale traversal and B06 physical scope against the exact binary. Do not close full B04, other B items, Native/API decisions or the common gate from this task.
+Separately authorize exact concrete backend feasibility/qualification mission. No D1 authorization. Shared changes still require both-device review and explicit owner approval.
 
 ## Recommended next task
-Owner-assisted execution of the versioned A-TUNER-003 checklist using the exact prerelease binary, followed by an additive artifact-specific result record. Any discovered defect requires a separately scoped correction task; no firmware change is pre-authorized here.
+A-REMOTE-005 recommendation only: read-only concrete G0-G4 feasibility/design and isolated host fault/capacity qualification, exact scope in PM report. No production Core/NVS/credentials/flash/partition/Native or automatic D1-D5; physical synthetic tests require separate owner authorization. TUNER case-specific physical regression remains separate PENDING; no execution now.
 
 ## Commit
-- Firmware result commit(s): reviewed implementation `8fac1da6ccd749a47843d99dc746fc3d6e4bf19b`; ordinary software merge `d1e51765179f99567df3b5d18a451152adac514c`; artifact documentation `315e5528562ac0dd3eff325e3412dde3a9a8fc2a`; final documentation merge/main `cb17e945b9c0e086a03e7176d9ad442a8c78d89b`
-- Device changelog: `CHANGELOG.md` at final firmware main `cb17e945b9c0e086a03e7176d9ad442a8c78d89b`
-- Coordination publication: branch `tuner/a-tuner-003-results-20261008`; final coordination commit/PR reported in publication message
-- Previous handoff archive: `archive/tuner/2026-10-08T175304Z_A-TUNER-003_TUNER-A-TUNER-002-20261008T150049Z.md`
+- Firmware result commit(s): 5fb92c95d228d744d1182ae3956e850c5be2f277 (release main/tag); executable source 124e84801b06f9e07764dabc3985a573dffaff3b
+- Device changelog: TUNER CHANGELOG at final release merge; no PM edit
+- Coordination publication: pm/reconcile-20261011; PR7/8/9 merge hashes in PM review; final SHA after remote verification
+- Previous handoff archive: [archive/tuner/2026-10-11T173747Z_A-PM-003_TUNER-A-TUNER-003-20261008T175304Z.md](../archive/tuner/2026-10-11T173747Z_A-PM-003_TUNER-A-TUNER-003-20261008T175304Z.md)
 
 ## Hardware status
-- Physical device tested: NO
-- Board / hardware configuration: configured `esp32dev`, classic ESP32-WROVER with PSRAM flags, 4 MB framework `huge_app.csv`; GPIO and configuration unchanged and recorded in evidence
-- Procedure and result: versioned owner-assisted matrix published; executor performed no upload, flash, reset, NVS erase, serial interaction or physical action; all rows PENDING / NOT RUN
-- Firmware actually flashed: UNKNOWN; exact prepared artifact embeds `8fac1da6ccd7` but has not been reported flashed
-- Build-only or simulated checks: unchanged 249-check suites and original isolated clean build reused; merge/tree/scope checks and public artifact readback PASS. These are not physical audio/control proof.
+- Physical device tested: YES in prior owner evidence; NO by PM this round
+- Board / hardware configuration: reported ESP32-WROVER/PSRAM, Wi-Fi TX dynamic32/cache4, Bluetooth SBC; exact wiring not re-inspected
+- Procedure and result: prior TEST01/SUSTAINED01 functional PASS; three1622-byte DMA failures each,zero-failure FAIL,sustained3m44.566s not30min
+- Firmware actually flashed: prior boots source124e84801b06f9e07764dabc3985a573dffaff3b/build124e84801b06 and verified release BIN/ELF; current residency NOT VERIFIED
+- Build-only or simulated checks: isolated Python fake models; read-only prior TUNER build evidence; no PM target build/flash
