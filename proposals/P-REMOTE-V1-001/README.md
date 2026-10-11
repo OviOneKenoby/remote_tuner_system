@@ -1,0 +1,8 @@
+# P-REMOTE-V1-001: REMOTE v1 practical rollback model
+**PROPOSED / NOT APPROVED**, decision D-006, PM task A-PM-005. Coordination input `4588adc63c4856d31f144913aad59e599993c233` after normal PR10 merge. Current owner request authorizes this proposal/reviews/capacity analysis only; it expressly withholds approval of an unpublished exact diff. No conversational prompt is stored as approval evidence.
+
+Frozen CCM1.0.0 remains unchanged/effective. [Exact normative patch](CCM_EXACT_DIFF.patch), [base/result/hash manifest](DIFF_MANIFEST.json), [threat table and G1 map](THREAT_MODEL.md), [REMOTE review](REMOTE_REVIEW.md), [TUNER review](TUNER_REVIEW.md), [capacity](CAPACITY.md), [compatibility/migration/future tasks](IMPLEMENTATION_AND_MIGRATION.md), [exact owner wording](OWNER_APPROVAL_REQUIRED.md), [PR10 review](PR10_REVIEW.md).
+
+Only section2 persistence sentence is qualified and new12.1 added. Patch against canonical frozen source bytes is a semantic delta for a separately approved new CCM revision, never permission to overwrite read-only1.0.0. Metadata/version/approval of the historical document does not transfer to the proposal. G1a stays REQUIRED; G1b is explicitly OUTSIDE, not PASS. Both reviews are distinct PM desk assessments, not fabricated independent device-session approvals. If owner requires device-session ratification it remains pending before approval.
+
+Capacity independently BLOCKED: minimum realistic planning recommendation48KiB for bounded P4/external occupancy/fragmentation; current24 and32 fail planning. Broader44284-byte two-bank profile fails all sizes. Physical UNKNOWN/NOT RUN; production NOT IMPLEMENTED. Native unapproved/unfrozen, TUNER unchanged, O01-O17 OPEN, gate OPEN/NOT PASSED.

@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "input_main": "4588adc63c4856d31f144913aad59e599993c233",
+  "patch_apply_and_result_hash": "PASS",
+  "patch_sha256": "90d40c161d9d5b87fc83ec5a4daa1cb1e74f410647f9380f68c17651fd07d8a6",
+  "capacity_cases": 12,
+  "local_links": 9,
+  "PM_task_template": "PASS",
+  "frozen_and_prior_files": "UNCHANGED",
+  "reviews": "two distinct PM desk reviews; no independent device session signoff invented",
+  "physical": "NOT RUN",
+  "production": "NOT IMPLEMENTED",
+  "approval": "PENDING / NOT APPROVED"
+}

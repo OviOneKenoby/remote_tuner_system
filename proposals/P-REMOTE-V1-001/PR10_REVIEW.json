@@ -1,0 +1,28 @@
+{
+  "input_main": "4a4fe0b58036d919daf57d5036d9fcd99e33cf46",
+  "head": "807e5cd4e17d1b29526b20ad0b237044c5e8769a",
+  "root_hashes": 291,
+  "prior_artifacts": 68,
+  "device_post_files": 4036,
+  "archive": "BYTE IDENTICAL",
+  "reproduction": {
+    "seed": 50052026,
+    "environment": "3.13.13 / Windows-11-10.0.26200-SP0",
+    "tests": 8,
+    "checks": 10247,
+    "failures": 0,
+    "errors": 0,
+    "fault_scenarios": 1079,
+    "capacity_cases": 180,
+    "host_model": "PASS",
+    "concrete_backend": "FAIL: G1 anti-rollback absent; G2-G4 physical durability/capacity UNKNOWN",
+    "capacity": "CONDITIONAL low-occupancy ideal; FAIL adverse occupancy/fragmentation; actual UNKNOWN",
+    "physical": "NOT RUN",
+    "production": "NOT IMPLEMENTED",
+    "task_verdict": "BLOCKED"
+  },
+  "scope": "PASS: production/config/build/SDK unchanged; device task NOT EXECUTED this round",
+  "conversations": "GitHub review submissions/comments/threads EMPTY",
+  "reviewer": "PM direct source/host review; no independent device approval claimed",
+  "normal_merge_sha": "4588adc63c4856d31f144913aad59e599993c233"
+}
