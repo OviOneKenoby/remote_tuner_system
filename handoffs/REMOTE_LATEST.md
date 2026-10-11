@@ -9,7 +9,7 @@
 - Coordination input commit: 1611f3130d1286c9d0b413baf4858f07aebb0e97
 
 ## Milestone
-Private source-to-build attempt delivered; verdict FAIL / SOURCE DOES NOT MATCH because both builds fail compiler ICE, not proof of code mismatch. Source correspondence UNKNOWN; A009 BLOCKED. [Report](../reports/A-REMOTE-008_SOURCE_TO_BUILD.md).
+Private source-to-build attempt delivered; verdict INCONCLUSIVE — BUILD REPRODUCTION BLOCKED BY REPRODUCIBLE COMPILER ICE because both builds fail compiler ICE, not proof of code mismatch. Source correspondence UNKNOWN; A009 BLOCKED. [Report](../reports/A-REMOTE-008_SOURCE_TO_BUILD.md).
 
 ## Baseline
 - Device repository: Original Git-less REMOTE workspace; private temp copy only, no source remote

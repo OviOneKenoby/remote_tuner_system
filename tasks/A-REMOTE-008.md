@@ -1,6 +1,6 @@
 # A-REMOTE-008: Source-to-build reproducibility and canonical local baseline
 - Owner: REMOTE//01 / PM direct authorized executor
-- State: BLOCKED
+- State: IN PROGRESS / BLOCKED ON COMPILER ICE
 - Coordination input commit: 74c52c060306059b5a451457b26ce741ad457466
 - Objective: Determine exact installed/A006 correspondence of clean builds from local source; do not change functionality.
 - Baseline: Original Git-less REMOTE workspace;4036 files SHA baseline A006 unchanged; installed real BIN2485824 bytes SHA7e8d77c21898014fbd7ea625cf2d25aa7f77941d5ba1d24484090f7361279afb; private byte-preserving temporary copy only, no source push.
@@ -20,4 +20,7 @@ Read AGENTS/README/PROJECT_SYNC/API_STATUS/DECISION_REGISTER/both latest handoff
 
 ## Execution disposition - 2026-10-11
 - Original assignment state at published input commit: ASSIGNED; execution acceptance now BLOCKED.
-[Report](../reports/A-REMOTE-008_SOURCE_TO_BUILD.md): FAIL / SOURCE DOES NOT MATCH because both clean attempts fail identical compiler ICE; no fresh artifacts/source-to-build closure. Delivered evidence is not acceptance/DONE; A009 BLOCKED/not started. Original protected, no source/hardware/SDK changes.
+[Report](../reports/A-REMOTE-008_SOURCE_TO_BUILD.md): INCONCLUSIVE — BUILD REPRODUCTION BLOCKED BY REPRODUCIBLE COMPILER ICE because both clean attempts fail identical compiler ICE; no fresh artifacts/source-to-build closure. Delivered evidence is not acceptance/DONE; A009 BLOCKED/not started. Original protected, no source/hardware/SDK changes.
+
+## Owner diagnostic correction/continuation - 2026-10-11
+Source-to-build UNKNOWN, clean-build reproduction BLOCKED. The prior failure verdict is withdrawn before merge; no complete artifacts exist. Authorizes isolated exact compiler/response/env capture, smoke/preprocess/direct3 repeats/pathTEMP/byte-identical toolchain copy; fresh exact-version/windows_amd64 package only with official identity/hash verification and no installed replacement. Original optimization/version/source unchanged for any qualification; alternative optimization diagnostic only, no firmware incorporation. Framework source/upstream hash, WER/Defender read-only, resources/loaded modules, LVGL missing-file cause investigation; restore byte-preserving snapshot before any full build. Only if original flags/source/versions/deps work, two successful fresh builds and original full artifact comparisons. No hardware/reset/SDK or source edits/global update/source.i/archive publication/PRmerge/A009. Result updated in same PR14.

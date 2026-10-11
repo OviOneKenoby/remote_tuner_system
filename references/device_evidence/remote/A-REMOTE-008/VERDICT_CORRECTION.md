@@ -1,0 +1,6 @@
+# Verdict correction before merge
+At PR14 head8ed4902f819a62c78f659bae1e1b58f739337519, the label `FAIL / SOURCE DOES NOT MATCH` was unsupported without a completed clean-build image or binary comparison. It is withdrawn as current verdict. Two compiler failures remain facts; cause UNKNOWN at correction, no measured binary differences, source neither confirmed nor disproven.
+
+Current: **INCONCLUSIVE — BUILD REPRODUCTION BLOCKED BY REPRODUCIBLE COMPILER ICE**. source-to-build UNKNOWN; clean-build reproduction BLOCKED; A008 IN PROGRESS / BLOCKED ON COMPILER ICE; A009 BLOCKED / NOT STARTED. Original assignment's four binary verdicts become applicable only after two complete clean artifacts. Exact diagnostic authorization in tasks/A-REMOTE-008.md; no PR14 merge/A009.
+
+Historic prior handoff archive archive/remote/2026-10-11T195149Z_A-REMOTE-008_REMOTE-A-REMOTE-005-20261011T180356Z.md predates A008 and contains no A008 result. Any later archived prior A008 handoff with the withdrawn label is historical, explicitly corrected by this record and current handoff. Private original logs/manifests and Git history retained, not rewritten. Current evidence metadata overrides unsupported prose; no source identity conclusion from compiler failure.
