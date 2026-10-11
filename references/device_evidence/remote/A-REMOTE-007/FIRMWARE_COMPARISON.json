@@ -1,0 +1,13 @@
+{
+  "installed_image_bytes": 2485824,
+  "installed_image_sha256": "7e8d77c21898014fbd7ea625cf2d25aa7f77941d5ba1d24484090f7361279afb",
+  "local_firmware_bin_sha256": "7e8d77c21898014fbd7ea625cf2d25aa7f77941d5ba1d24484090f7361279afb",
+  "installed_equals_local_bin": true,
+  "embedded_elf_sha256_matches_local": true,
+  "local_elf_sha256": "61d077235a971919807bcff38aede169554f60de1ea7152625e5aa5b0b730525",
+  "local_artifact_provenance": "A006 ARTIFACT_SHA256 + A007 current source/artifact preservation",
+  "method": "ESP v1 header24; each segment header8 plus actual flash-read length; checksum at next16-byte boundary minus1; optional appendedSHA25632. Must validate entire extracted image with selected esptool before asserting identity. No slot padding in hash.",
+  "header_flash_size": "16MB encoded, separate physical flash_id16MB verified",
+  "source_build_correspondence": "UNKNOWN (Git-less source not rebuilt)",
+  "installed_binary_identity": "MATCH EXACT to A006 local firmware.bin"
+}

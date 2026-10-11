@@ -1,0 +1,13 @@
+{
+  "workspace_files": 4036,
+  "entry_reference": "../A-REMOTE-006/ENTRY_SHA256.json",
+  "post_delta": [],
+  "result": "PASS byte/size unchanged",
+  "hardware_commands": "get_security_info/flash_id/read_flash only; controlled reset and RAM stub",
+  "persistent_write_commands": [],
+  "NVS_reads": [],
+  "software_TX_commands": [],
+  "source_build_correspondence": "UNKNOWN",
+  "binary_installed_correspondence": "MATCH EXACT",
+  "no_public_dump_or_REMOTE_source": true
+}

@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "assignment": "71d7af42d40ec0ccbc25a7fee76b939d0031895d",
+  "relative_links_checked": 16,
+  "privacy": "No full MAC/new raw binaries/source/serial dumps; sanitized logs only",
+  "private_capture_hashes": "PASS",
+  "selected_tool_hashes": "PASS",
+  "historical_content": "Preserved; own status append only",
+  "hardware": "Bounded read-only observation and controlled return",
+  "owner_return": "Basic normal display/function confirmed",
+  "layout_approval": "PENDING",
+  "64KiB": "READY FOR OWNER LAYOUT APPROVAL",
+  "production": "NOT IMPLEMENTED",
+  "common_gate": "OPEN / NOT PASSED",
+  "result_PR": "Must remain OPEN / unmerged"
+}

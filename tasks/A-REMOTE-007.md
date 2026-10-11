@@ -14,3 +14,7 @@
 - Stop/report conditions: Ambiguous/no port; active writer; security restrictions; flash communication warning; layout mismatch/sensitive interval; uncertain active image means no automatic slot read; failed return boot means stop without recovery/flash.
 - Required outputs: reports/A-REMOTE-007_DEVICE_IDENTITY.md; evidence READ_ONLY_PROTOCOL/INSTALLED_LAYOUT/OTA_AND_FIRMWARE_IDENTITY/CANDIDATE_REGION_OBSERVATION/EVIDENCE_MANIFEST; sanitized logs/local-only capture hashes; minimal task/status/changelog; no implementation task assignment.
 - PM assignment evidence: 2026-10-11 direct scoped device-identification request; this technical assignment records approved observation/reset/RAM-only/read-only scope, not a conversational transcript or partition/production approval.
+
+## Read-only delivery disposition - 2026-10-11
+- State: DONE (bounded read-only observation/reset/return scope only).
+[Report](../reports/A-REMOTE-007_DEVICE_IDENTITY.md):16MiB physical, tableMATCHEXACT, runningfactory/installedBINexactA006, candidate64KiBOBSERVEDERASED, final normal startup+owner basic function.64KiBREADYFOROWNERLAYOUTAPPROVAL only; no layout/backend/production acceptance or further task assignment. Original ASSIGNED fields retained as history.

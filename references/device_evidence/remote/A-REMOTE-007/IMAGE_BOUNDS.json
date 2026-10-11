@@ -1,0 +1,56 @@
+{
+  "utc": "2026-10-11T18:59:31.047723+00:00",
+  "running_evidence": "bootloader log loaded app offset0x10000 after controlled reset",
+  "active_partition": "factory",
+  "active_offset": 65536,
+  "partition_end": 8454144,
+  "segments": [
+    {
+      "segment": 0,
+      "header_offset_within_image": 24,
+      "length": 1335172,
+      "load_address": 1007681568
+    },
+    {
+      "segment": 1,
+      "header_offset_within_image": 1335204,
+      "length": 24540,
+      "load_address": 1070223104
+    },
+    {
+      "segment": 2,
+      "header_offset_within_image": 1359752,
+      "length": 16520,
+      "load_address": 1077362688
+    },
+    {
+      "segment": 3,
+      "header_offset_within_image": 1376280,
+      "length": 991128,
+      "load_address": 1107296288
+    },
+    {
+      "segment": 4,
+      "header_offset_within_image": 2367416,
+      "length": 118228,
+      "load_address": 1077379208
+    },
+    {
+      "segment": 5,
+      "header_offset_within_image": 2485652,
+      "length": 32,
+      "load_address": 1342177920
+    },
+    {
+      "segment": 6,
+      "header_offset_within_image": 2485692,
+      "length": 88,
+      "load_address": 1611653120
+    }
+  ],
+  "image_data_end": 2485788,
+  "checksum_offset": 2485791,
+  "append_sha256": true,
+  "real_validatable_image_bytes": 2485824,
+  "method": "ESP v1 header24; each segment header8 plus actual flash-read length; checksum at next16-byte boundary minus1; optional appendedSHA25632. Must validate entire extracted image with selected esptool before asserting identity. No slot padding in hash."
+}
