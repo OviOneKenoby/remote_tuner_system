@@ -1,0 +1,173 @@
+[
+  {
+    "capture": "active_image_header.json",
+    "started_utc": "2026-10-11T18:58:53.935136+00:00",
+    "ended_utc": "UNKNOWN (exit capture timestamp is file provenance)",
+    "command": "C:\\Users\\RYZEN\\.platformio\\penv\\Scripts\\python.exe -B C:\\Users\\RYZEN\\.platformio\\packages\\tool-esptoolpy\\esptool.py --chip esp32s3 --port COM3 --baud 115200 --before no_reset --after no_reset read_flash 0x10000 0x100 <LOCAL_ONLY>\\active_header.bin",
+    "exit_code": 0,
+    "stdout_sanitized": "esptool.py v4.11.0\nSerial port COM3\nWARNING: Pre-connection option \"no_reset\" was selected. Connection may fail if the chip is not in bootloader or flasher stub mode.\nConnecting...\nChip is ESP32-S3 (QFN56) (revision v0.2)\nFeatures: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)\nCrystal is 40MHz\nUSB mode: USB-Serial/JTAG\nMAC: 80:45:6b:XX:XX:XX\nUploading stub...\nRunning stub...\nStub running...\nConfiguring flash size...\nRead 256 bytes at 0x00010000 in 0.0 seconds (88.6 kbit/s)...\nStaying in bootloader.",
+    "stderr_sanitized": ""
+  },
+  {
+    "capture": "active_segment_1_header.json",
+    "started_utc": "2026-10-11T18:59:23.708620+00:00",
+    "ended_utc": "UNKNOWN (exit capture timestamp is file provenance)",
+    "command": "C:\\Users\\RYZEN\\.platformio\\penv\\Scripts\\python.exe -B C:\\Users\\RYZEN\\.platformio\\packages\\tool-esptoolpy\\esptool.py --chip esp32s3 --port COM3 --baud 115200 --before no_reset --after no_reset read_flash 0x155fa4 0x8 <LOCAL_ONLY>\\active_segment_1_header.bin",
+    "exit_code": 0,
+    "stdout_sanitized": "esptool.py v4.11.0\nSerial port COM3\nWARNING: Pre-connection option \"no_reset\" was selected. Connection may fail if the chip is not in bootloader or flasher stub mode.\nConnecting...\nChip is ESP32-S3 (QFN56) (revision v0.2)\nFeatures: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)\nCrystal is 40MHz\nUSB mode: USB-Serial/JTAG\nMAC: 80:45:6b:XX:XX:XX\nUploading stub...\nRunning stub...\nStub running...\nConfiguring flash size...\nRead 8 bytes at 0x00155fa4 in 0.0 seconds (3.5 kbit/s)...\nStaying in bootloader.",
+    "stderr_sanitized": ""
+  },
+  {
+    "capture": "active_segment_2_header.json",
+    "started_utc": "2026-10-11T18:59:24.950224+00:00",
+    "ended_utc": "UNKNOWN (exit capture timestamp is file provenance)",
+    "command": "C:\\Users\\RYZEN\\.platformio\\penv\\Scripts\\python.exe -B C:\\Users\\RYZEN\\.platformio\\packages\\tool-esptoolpy\\esptool.py --chip esp32s3 --port COM3 --baud 115200 --before no_reset --after no_reset read_flash 0x15bf88 0x8 <LOCAL_ONLY>\\active_segment_2_header.bin",
+    "exit_code": 0,
+    "stdout_sanitized": "esptool.py v4.11.0\nSerial port COM3\nWARNING: Pre-connection option \"no_reset\" was selected. Connection may fail if the chip is not in bootloader or flasher stub mode.\nConnecting...\nChip is ESP32-S3 (QFN56) (revision v0.2)\nFeatures: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)\nCrystal is 40MHz\nUSB mode: USB-Serial/JTAG\nMAC: 80:45:6b:XX:XX:XX\nUploading stub...\nRunning stub...\nStub running...\nConfiguring flash size...\nRead 8 bytes at 0x0015bf88 in 0.0 seconds (3.3 kbit/s)...\nStaying in bootloader.",
+    "stderr_sanitized": ""
+  },
+  {
+    "capture": "active_segment_3_header.json",
+    "started_utc": "2026-10-11T18:59:26.185924+00:00",
+    "ended_utc": "UNKNOWN (exit capture timestamp is file provenance)",
+    "command": "C:\\Users\\RYZEN\\.platformio\\penv\\Scripts\\python.exe -B C:\\Users\\RYZEN\\.platformio\\packages\\tool-esptoolpy\\esptool.py --chip esp32s3 --port COM3 --baud 115200 --before no_reset --after no_reset read_flash 0x160018 0x8 <LOCAL_ONLY>\\active_segment_3_header.bin",
+    "exit_code": 0,
+    "stdout_sanitized": "esptool.py v4.11.0\nSerial port COM3\nWARNING: Pre-connection option \"no_reset\" was selected. Connection may fail if the chip is not in bootloader or flasher stub mode.\nConnecting...\nChip is ESP32-S3 (QFN56) (revision v0.2)\nFeatures: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)\nCrystal is 40MHz\nUSB mode: USB-Serial/JTAG\nMAC: 80:45:6b:XX:XX:XX\nUploading stub...\nRunning stub...\nStub running...\nConfiguring flash size...\nRead 8 bytes at 0x00160018 in 0.0 seconds (3.3 kbit/s)...\nStaying in bootloader.",
+    "stderr_sanitized": ""
+  },
+  {
+    "capture": "active_segment_4_header.json",
+    "started_utc": "2026-10-11T18:59:27.425470+00:00",
+    "ended_utc": "UNKNOWN (exit capture timestamp is file provenance)",
+    "command": "C:\\Users\\RYZEN\\.platformio\\penv\\Scripts\\python.exe -B C:\\Users\\RYZEN\\.platformio\\packages\\tool-esptoolpy\\esptool.py --chip esp32s3 --port COM3 --baud 115200 --before no_reset --after no_reset read_flash 0x251fb8 0x8 <LOCAL_ONLY>\\active_segment_4_header.bin",
+    "exit_code": 0,
+    "stdout_sanitized": "esptool.py v4.11.0\nSerial port COM3\nWARNING: Pre-connection option \"no_reset\" was selected. Connection may fail if the chip is not in bootloader or flasher stub mode.\nConnecting...\nChip is ESP32-S3 (QFN56) (revision v0.2)\nFeatures: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)\nCrystal is 40MHz\nUSB mode: USB-Serial/JTAG\nMAC: 80:45:6b:XX:XX:XX\nUploading stub...\nRunning stub...\nStub running...\nConfiguring flash size...\nRead 8 bytes at 0x00251fb8 in 0.0 seconds (3.3 kbit/s)...\nStaying in bootloader.",
+    "stderr_sanitized": ""
+  },
+  {
+    "capture": "active_segment_5_header.json",
+    "started_utc": "2026-10-11T18:59:28.655510+00:00",
+    "ended_utc": "UNKNOWN (exit capture timestamp is file provenance)",
+    "command": "C:\\Users\\RYZEN\\.platformio\\penv\\Scripts\\python.exe -B C:\\Users\\RYZEN\\.platformio\\packages\\tool-esptoolpy\\esptool.py --chip esp32s3 --port COM3 --baud 115200 --before no_reset --after no_reset read_flash 0x26ed94 0x8 <LOCAL_ONLY>\\active_segment_5_header.bin",
+    "exit_code": 0,
+    "stdout_sanitized": "esptool.py v4.11.0\nSerial port COM3\nWARNING: Pre-connection option \"no_reset\" was selected. Connection may fail if the chip is not in bootloader or flasher stub mode.\nConnecting...\nChip is ESP32-S3 (QFN56) (revision v0.2)\nFeatures: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)\nCrystal is 40MHz\nUSB mode: USB-Serial/JTAG\nMAC: 80:45:6b:XX:XX:XX\nUploading stub...\nRunning stub...\nStub running...\nConfiguring flash size...\nRead 8 bytes at 0x0026ed94 in 0.0 seconds (3.4 kbit/s)...\nStaying in bootloader.",
+    "stderr_sanitized": ""
+  },
+  {
+    "capture": "active_segment_6_header.json",
+    "started_utc": "2026-10-11T18:59:29.889888+00:00",
+    "ended_utc": "UNKNOWN (exit capture timestamp is file provenance)",
+    "command": "C:\\Users\\RYZEN\\.platformio\\penv\\Scripts\\python.exe -B C:\\Users\\RYZEN\\.platformio\\packages\\tool-esptoolpy\\esptool.py --chip esp32s3 --port COM3 --baud 115200 --before no_reset --after no_reset read_flash 0x26edbc 0x8 <LOCAL_ONLY>\\active_segment_6_header.bin",
+    "exit_code": 0,
+    "stdout_sanitized": "esptool.py v4.11.0\nSerial port COM3\nWARNING: Pre-connection option \"no_reset\" was selected. Connection may fail if the chip is not in bootloader or flasher stub mode.\nConnecting...\nChip is ESP32-S3 (QFN56) (revision v0.2)\nFeatures: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)\nCrystal is 40MHz\nUSB mode: USB-Serial/JTAG\nMAC: 80:45:6b:XX:XX:XX\nUploading stub...\nRunning stub...\nStub running...\nConfiguring flash size...\nRead 8 bytes at 0x0026edbc in 0.0 seconds (3.5 kbit/s)...\nStaying in bootloader.",
+    "stderr_sanitized": ""
+  },
+  {
+    "capture": "candidate_region.json",
+    "started_utc": "2026-10-11T18:57:02.462931+00:00",
+    "ended_utc": "UNKNOWN (exit capture timestamp is file provenance)",
+    "command": "C:\\Users\\RYZEN\\.platformio\\penv\\Scripts\\python.exe -B C:\\Users\\RYZEN\\.platformio\\packages\\tool-esptoolpy\\esptool.py --chip esp32s3 --port COM3 --baud 115200 --before no_reset --after no_reset read_flash 0xE20000 0x10000 <LOCAL_ONLY>\\candidate_64KiB.bin",
+    "exit_code": 0,
+    "stdout_sanitized": "esptool.py v4.11.0\nSerial port COM3\nWARNING: Pre-connection option \"no_reset\" was selected. Connection may fail if the chip is not in bootloader or flasher stub mode.\nConnecting...\nChip is ESP32-S3 (QFN56) (revision v0.2)\nFeatures: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)\nCrystal is 40MHz\nUSB mode: USB-Serial/JTAG\nMAC: 80:45:6b:XX:XX:XX\nUploading stub...\nRunning stub...\nStub running...\nConfiguring flash size...\nRead 65536 bytes at 0x00e20000 in 5.7 seconds (92.0 kbit/s)...\nStaying in bootloader.",
+    "stderr_sanitized": ""
+  },
+  {
+    "capture": "flash_identity.json",
+    "started_utc": "2026-10-11T18:55:53.697794+00:00",
+    "ended_utc": "UNKNOWN (exit capture timestamp is file provenance)",
+    "command": "C:\\Users\\RYZEN\\.platformio\\penv\\Scripts\\python.exe -B C:\\Users\\RYZEN\\.platformio\\packages\\tool-esptoolpy\\esptool.py --chip esp32s3 --port COM3 --baud 115200 --before no_reset --after no_reset flash_id",
+    "exit_code": 0,
+    "stdout_sanitized": "esptool.py v4.11.0\nSerial port COM3\nWARNING: Pre-connection option \"no_reset\" was selected. Connection may fail if the chip is not in bootloader or flasher stub mode.\nConnecting...\nChip is ESP32-S3 (QFN56) (revision v0.2)\nFeatures: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)\nCrystal is 40MHz\nUSB mode: USB-Serial/JTAG\nMAC: 80:45:6b:XX:XX:XX\nUploading stub...\nRunning stub...\nStub running...\nManufacturer: 20\nDevice: 4018\nDetected flash size: 16MB\nFlash type set in eFuse: quad (4 data lines)\nFlash voltage set by eFuse to 3.3V\nStaying in bootloader.",
+    "stderr_sanitized": ""
+  },
+  {
+    "capture": "installed_active_image.json",
+    "started_utc": "2026-10-11T18:59:40.725148+00:00",
+    "ended_utc": "UNKNOWN (exit capture timestamp is file provenance)",
+    "command": "C:\\Users\\RYZEN\\.platformio\\penv\\Scripts\\python.exe -B C:\\Users\\RYZEN\\.platformio\\packages\\tool-esptoolpy\\esptool.py --chip esp32s3 --port COM3 --baud 115200 --before no_reset --after no_reset read_flash 0x10000 2485824 <LOCAL_ONLY>\\active_image.bin",
+    "exit_code": 0,
+    "stdout_sanitized": "esptool.py v4.11.0\nSerial port COM3\nWARNING: Pre-connection option \"no_reset\" was selected. Connection may fail if the chip is not in bootloader or flasher stub mode.\nConnecting...\nChip is ESP32-S3 (QFN56) (revision v0.2)\nFeatures: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)\nCrystal is 40MHz\nUSB mode: USB-Serial/JTAG\nMAC: 80:45:6b:XX:XX:XX\nUploading stub...\nRunning stub...\nStub running...\nConfiguring flash size...\nRead 2485824 bytes at 0x00010000 in 217.1 seconds (91.6 kbit/s)...\nStaying in bootloader.",
+    "stderr_sanitized": ""
+  },
+  {
+    "capture": "installed_image_info.json",
+    "started_utc": "2026-10-11T19:03:29.991928+00:00",
+    "ended_utc": "2026-10-11T19:03:30.276867+00:00",
+    "command": "C:\\Users\\RYZEN\\.platformio\\penv\\Scripts\\python.exe -B C:\\Users\\RYZEN\\.platformio\\packages\\tool-esptoolpy\\esptool.py --chip esp32s3 image_info --version 2 <LOCAL_ONLY>\\active_image.bin",
+    "exit_code": 0,
+    "stdout_sanitized": "esptool.py v4.11.0\nFile size: 2485824 (bytes)\n\nESP32S3 image header\n====================\nImage version: 1\nEntry point: 0x4037c44c\nSegments: 7\nFlash size: 16MB\nFlash freq: 80m\nFlash mode: DIO\n\nESP32S3 extended image header\n=============================\nWP pin: 0xee (disabled)\nFlash pins drive settings: clk_drv: 0x0, q_drv: 0x0, d_drv: 0x0, cs0_drv: 0x0, hd_drv: 0x0, wp_drv: 0x0\nChip ID: 9 (ESP32-S3)\nMinimal chip revision: v0.0, (legacy min_rev = 0)\nMaximal chip revision: v655.35\n\nSegments information\n====================\nSegment   Length   Load addr   File offs  Memory types\n-------  -------  ----------  ----------  ------------\n      0  0x145f84  0x3c100020  0x00000018  DROM\n      1  0x05fdc  0x3fca4f00  0x00145fa4  BYTE_ACCESSIBLE, MEM_INTERNAL, DRAM\n      2  0x04088  0x40374000  0x0014bf88  MEM_INTERNAL, IRAM\n      3  0xf1f98  0x42000020  0x00150018  IROM\n      4  0x1cdd4  0x40378088  0x00241fb8  MEM_INTERNAL, IRAM\n      5  0x00020  0x50000280  0x0025ed94  RTC_DATA\n      6  0x00058  0x600fe000  0x0025edbc  RTC_DRAM, RTC_IRAM\n\nESP32S3 image footer\n====================\nChecksum: 0x42 (valid)\nValidation hash: 412548737176dcd8c553dd56d04689e5a68975f64dc276d5373c8dd1be7850f8 (valid)\n\nApplication information\n=======================\nProject name: 12_LVGL_Test\nApp version: 1\nCompile time: Oct  6 2026 23:57:20\nELF file SHA256: 61d077235a971919807bcff38aede169554f60de1ea7152625e5aa5b0b730525\nESP-IDF: 5.5.3\nMinimal eFuse block revision: 0.0\nMaximal eFuse block revision: 1.99\nMMU page size: 64 KB\nSecure version: 0",
+    "stderr_sanitized": ""
+  },
+  {
+    "capture": "installed_otadata.json",
+    "started_utc": "2026-10-11T18:57:00.537535+00:00",
+    "ended_utc": "UNKNOWN (exit capture timestamp is file provenance)",
+    "command": "C:\\Users\\RYZEN\\.platformio\\penv\\Scripts\\python.exe -B C:\\Users\\RYZEN\\.platformio\\packages\\tool-esptoolpy\\esptool.py --chip esp32s3 --port COM3 --baud 115200 --before no_reset --after no_reset read_flash 0x810000 0x2000 <LOCAL_ONLY>\\otadata.bin",
+    "exit_code": 0,
+    "stdout_sanitized": "esptool.py v4.11.0\nSerial port COM3\nWARNING: Pre-connection option \"no_reset\" was selected. Connection may fail if the chip is not in bootloader or flasher stub mode.\nConnecting...\nChip is ESP32-S3 (QFN56) (revision v0.2)\nFeatures: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)\nCrystal is 40MHz\nUSB mode: USB-Serial/JTAG\nMAC: 80:45:6b:XX:XX:XX\nUploading stub...\nRunning stub...\nStub running...\nConfiguring flash size...\nRead 8192 bytes at 0x00810000 in 0.7 seconds (91.4 kbit/s)...\nStaying in bootloader.",
+    "stderr_sanitized": ""
+  },
+  {
+    "capture": "installed_partition_table.json",
+    "started_utc": "2026-10-11T18:56:11.618137+00:00",
+    "ended_utc": "UNKNOWN (exit capture timestamp is file provenance)",
+    "command": "C:\\Users\\RYZEN\\.platformio\\penv\\Scripts\\python.exe -B C:\\Users\\RYZEN\\.platformio\\packages\\tool-esptoolpy\\esptool.py --chip esp32s3 --port COM3 --baud 115200 --before no_reset --after no_reset read_flash 0x8000 0x1000 <LOCAL_ONLY>\\partition_table.bin",
+    "exit_code": 0,
+    "stdout_sanitized": "esptool.py v4.11.0\nSerial port COM3\nWARNING: Pre-connection option \"no_reset\" was selected. Connection may fail if the chip is not in bootloader or flasher stub mode.\nConnecting...\nChip is ESP32-S3 (QFN56) (revision v0.2)\nFeatures: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)\nCrystal is 40MHz\nUSB mode: USB-Serial/JTAG\nMAC: 80:45:6b:XX:XX:XX\nUploading stub...\nRunning stub...\nStub running...\nConfiguring flash size...\nRead 4096 bytes at 0x00008000 in 0.4 seconds (90.8 kbit/s)...\nStaying in bootloader.",
+    "stderr_sanitized": ""
+  },
+  {
+    "capture": "process_inventory.json",
+    "started_utc": "2026-10-11T18:55:06.379545+00:00",
+    "ended_utc": "UNKNOWN (exit capture timestamp is file provenance)",
+    "command": "powershell -NoProfile -Command \"Get-CimInstance Win32_Process | Where-Object { $_.Name -match 'python|esptool|platformio' -and $_.CommandLine -match 'write_flash|erase_flash|erase_region|(-t|--target) +upload|platformio +device +monitor|espota' } | Select-Object ProcessId,Name | ConvertTo-Json\"",
+    "exit_code": 0,
+    "stdout_sanitized": "",
+    "stderr_sanitized": ""
+  },
+  {
+    "capture": "security.json",
+    "started_utc": "2026-10-11T18:55:48.512364+00:00",
+    "ended_utc": "UNKNOWN (exit capture timestamp is file provenance)",
+    "command": "C:\\Users\\RYZEN\\.platformio\\penv\\Scripts\\python.exe -B C:\\Users\\RYZEN\\.platformio\\packages\\tool-esptoolpy\\esptool.py --chip esp32s3 --port COM3 --baud 115200 --before default_reset --after no_reset --no-stub get_security_info",
+    "exit_code": 0,
+    "stdout_sanitized": "esptool.py v4.11.0\nSerial port COM3\nConnecting...\nChip is ESP32-S3 (QFN56) (revision v0.2)\nFeatures: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)\nCrystal is 40MHz\nUSB mode: USB-Serial/JTAG\nMAC: 80:45:6b:XX:XX:XX\nEnabling default SPI flash mode...\n\nSecurity Information:\n=====================\nFlags: 0x00000000 (0b0)\nChip ID: 9\nAPI Version: 0\nSecure Boot: Disabled\nFlash Encryption: Disabled\nSPI Boot Crypt Count (SPI_BOOT_CRYPT_CNT): 0x0\nStaying in bootloader.",
+    "stderr_sanitized": ""
+  },
+  {
+    "capture": "security_before_image.json",
+    "started_utc": "2026-10-11T18:58:52.586347+00:00",
+    "ended_utc": "UNKNOWN (exit capture timestamp is file provenance)",
+    "command": "C:\\Users\\RYZEN\\.platformio\\penv\\Scripts\\python.exe -B C:\\Users\\RYZEN\\.platformio\\packages\\tool-esptoolpy\\esptool.py --chip esp32s3 --port COM3 --baud 115200 --before default_reset --after no_reset --no-stub get_security_info",
+    "exit_code": 0,
+    "stdout_sanitized": "esptool.py v4.11.0\nSerial port COM3\nConnecting...\nChip is ESP32-S3 (QFN56) (revision v0.2)\nFeatures: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)\nCrystal is 40MHz\nUSB mode: USB-Serial/JTAG\nMAC: 80:45:6b:XX:XX:XX\nEnabling default SPI flash mode...\n\nSecurity Information:\n=====================\nFlags: 0x00000000 (0b0)\nChip ID: 9\nAPI Version: 0\nSecure Boot: Disabled\nFlash Encryption: Disabled\nSPI Boot Crypt Count (SPI_BOOT_CRYPT_CNT): 0x0\nStaying in bootloader.",
+    "stderr_sanitized": ""
+  },
+  {
+    "capture": "version_esptool.json",
+    "started_utc": "2026-10-11T18:55:06.912141+00:00",
+    "ended_utc": "UNKNOWN (exit capture timestamp is file provenance)",
+    "command": "C:\\Users\\RYZEN\\.platformio\\penv\\Scripts\\python.exe -B C:\\Users\\RYZEN\\.platformio\\packages\\tool-esptoolpy\\esptool.py version",
+    "exit_code": 0,
+    "stdout_sanitized": "esptool.py v4.11.0\n4.11.0",
+    "stderr_sanitized": ""
+  },
+  {
+    "capture": "version_platformio.json",
+    "started_utc": "2026-10-11T18:55:07.086181+00:00",
+    "ended_utc": "UNKNOWN (exit capture timestamp is file provenance)",
+    "command": "C:\\Users\\RYZEN\\.platformio\\penv\\Scripts\\python.exe -B -m platformio --version",
+    "exit_code": 0,
+    "stdout_sanitized": "PlatformIO Core, version 6.2.0",
+    "stderr_sanitized": ""
+  },
+  {
+    "capture": "version_python.json",
+    "started_utc": "2026-10-11T18:55:06.888138+00:00",
+    "ended_utc": "UNKNOWN (exit capture timestamp is file provenance)",
+    "command": "C:\\Users\\RYZEN\\.platformio\\penv\\Scripts\\python.exe --version",
+    "exit_code": 0,
+    "stdout_sanitized": "Python 3.11.7",
+    "stderr_sanitized": ""
+  }
+]

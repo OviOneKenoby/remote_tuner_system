@@ -1,0 +1,61 @@
+{
+  "utc": "2026-10-11T18:55:07.490077+00:00",
+  "port": {
+    "port": "COM3",
+    "description": "USB Serial Device (COM3)",
+    "vid": 12346,
+    "pid": 4097
+  },
+  "versions": {
+    "python": "Python 3.11.7",
+    "esptool": "esptool.py v4.11.0\n4.11.0",
+    "platformio": "PlatformIO Core, version 6.2.0"
+  },
+  "target": "esp32s3",
+  "SDK": "C:/Users/RYZEN/.platformio/packages/framework-espidf@3.50503.0",
+  "partition_table_offset": 32768,
+  "partition_table_sector_bytes": 4096,
+  "partition_table_artifact_bytes": 3072,
+  "otadata": {
+    "label": "otadata",
+    "type": 1,
+    "subtype": 0,
+    "offset": 8454144,
+    "size": 8192,
+    "end": 8462336,
+    "flags": 0
+  },
+  "app_slots": [
+    {
+      "label": "factory",
+      "type": 0,
+      "subtype": 0,
+      "offset": 65536,
+      "size": 8388608,
+      "end": 8454144,
+      "flags": 0
+    },
+    {
+      "label": "ota_0",
+      "type": 0,
+      "subtype": 16,
+      "offset": 8519680,
+      "size": 3145728,
+      "end": 11665408,
+      "flags": 0
+    },
+    {
+      "label": "ota_1",
+      "type": 0,
+      "subtype": 17,
+      "offset": 11665408,
+      "size": 3145728,
+      "end": 14811136,
+      "flags": 0
+    }
+  ],
+  "candidate_start": 14811136,
+  "candidate_bytes": 65536,
+  "hardware_commands_executed": [],
+  "write_operations": "NONE"
+}

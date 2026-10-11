@@ -29,3 +29,6 @@ archive/remote/2026-10-11T180356Z_A-REMOTE-005_REMOTE-A-PM-004-20261011T175133Z.
 
 # A006 immutable local/proposed layout evidence, not device dumps
 references/device_evidence/remote/A-REMOTE-006/** -text
+
+# A007 sanitized observation/hash evidence only; raw device captures never published
+references/device_evidence/remote/A-REMOTE-007/** -text

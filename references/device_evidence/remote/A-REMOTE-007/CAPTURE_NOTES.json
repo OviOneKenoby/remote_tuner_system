@@ -1,0 +1,10 @@
+{
+  "capture_notes": [
+    "Initial passive15s produced0 bytes: pre-reset running identity UNKNOWN.",
+    "No_reset preconnection caution is generic for already-confirmed ROM/stub mode; each command succeeded, no actual flash communication warning, no device command retry or baud increase.",
+    "One reset-helper import lacked selected package _contrib path before reset executed; dependency search path corrected in temporary script only.",
+    "Flash_id device command exit0 was initially misclassified by wrapper due generic no_reset/flasher-stub caution; no flash operation failed or retried.",
+    "Selected esptool HardReset(uses_usb=True).reset used directly (no automatic reconnect retry).",
+    "No software TX diagnostic/application commands or provisioning/reconnect/recovery requested; normal existing boot performed as authorized."
+  ]
+}
