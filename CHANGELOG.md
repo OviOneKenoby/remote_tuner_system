@@ -88,3 +88,6 @@ READY FOR REVIEW, DESIGN ONLY. reports/A-REMOTE-002.md with durable identity/eff
 ## 2026-10-11T17:51:33Z - A-PM-004 administrative reference correction
 - Removed conversational reconciliation authorization transcript from current tree; replaced with concise technical scope/reference. Updated current links, report wording and attributes; regenerated root Git-blob manifest. Previous handoffs archived byte-for-byte before link replacement.
 - No history rewrite/force push; PR7/8/9 merges and A-PM-003/D-005/device technical verdicts unchanged.
+
+## 2026-10-11 - A-REMOTE-005 assignment
+- Published exact scoped concrete-backend host qualification assignment after verified administrative correction; direct execution authorized, hardware/production/Native/D1-D5 excluded.
