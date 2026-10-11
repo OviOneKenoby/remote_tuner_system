@@ -1,0 +1,40 @@
+{
+  "utc": "2026-10-11T18:08:15.375353+00:00",
+  "execution_input": "4a4fe0b58036d919daf57d5036d9fcd99e33cf46",
+  "entry_files": 4027,
+  "post_files": 4036,
+  "changed": [
+    "CHANGELOG.md"
+  ],
+  "new": [
+    "docs/A_REMOTE_005_BACKEND_QUALIFICATION.md",
+    "tools/qualification/a_remote_005/README.md",
+    "tools/qualification/a_remote_005/prototype/backend_model.py",
+    "tools/qualification/a_remote_005/prototype/run_qualification.py",
+    "tools/qualification/a_remote_005/prototype/test_backend.py",
+    "tools/qualification/a_remote_005/results/CAPACITY_LEDGER.json",
+    "tools/qualification/a_remote_005/results/FAULT_MATRIX.json",
+    "tools/qualification/a_remote_005/results/MEASUREMENTS.json",
+    "tools/qualification/a_remote_005/results/TEST_LOG.txt"
+  ],
+  "missing": [],
+  "production_config_build_artifacts_unchanged": true,
+  "SDK_source_unchanged": true,
+  "prior_A003_A004_files_unchanged": 68,
+  "device_prototype_and_results_reproduce_coordination": true,
+  "archive_bytes_match": {
+    "path": "archive/remote/2026-10-11T180356Z_A-REMOTE-005_REMOTE-A-PM-004-20261011T175133Z.md",
+    "source_commit": "4a4fe0b58036d919daf57d5036d9fcd99e33cf46",
+    "source_path": "handoffs/REMOTE_LATEST.md",
+    "sha256": "42cfcd11818cdce597931179e6cf41f2899300e904167edb5d860697947b97de"
+  },
+  "all_template_fields_exact_headings": "PASS",
+  "active_local_links_checked": 63,
+  "broken_links": [],
+  "credential_values": "NOT READ/PUBLISHED; only opaque file hashes/source API constants, no device/NVS access",
+  "target_compile": "NOT RUN/not necessary for decisive source-only G1 blocker",
+  "hardware": "NOT RUN",
+  "production_integration": "NOT IMPLEMENTED",
+  "contract_status": "CCM frozen; Native unapproved/unfrozen/not implemented; O01-O17 OPEN; gate OPEN; D1-D5 unassigned",
+  "whitespace_check": "PASS all authored/source files excluding PRIOR_SDK_DIFF.txt: valid unified-diff empty context lines contain a required single space; preserved as diff evidence"
+}

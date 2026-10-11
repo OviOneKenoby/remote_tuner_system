@@ -1,0 +1,19 @@
+{
+  "matches": {
+    "framework-espidf": [
+      "SDK5.5.3/src/nvs_storage.cpp",
+      "SDK5.5.3/src/nvs_page.hpp",
+      "SDK5.5.3/src/nvs_handle_simple.cpp",
+      "SDK5.5.3/private_include/nvs_constants.h",
+      "SDK5.5.3/include/nvs.h"
+    ],
+    "framework-espidf@3.50503.0": [],
+    "framework-espidf@4.50505.0": [],
+    "framework-espidf@4.60000.0": [
+      "SDK5.5.3/private_include/nvs_constants.h"
+    ]
+  },
+  "installed_default_package_version": "4.60001.0",
+  "selected_package_version": "3.50503.0",
+  "interpretation": "Current five matching historical snapshots belong bytewise to unselected installed default tree; earlier inspection-time package provenance not independently established"
+}

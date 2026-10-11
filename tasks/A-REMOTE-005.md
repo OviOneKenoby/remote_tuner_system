@@ -1,6 +1,6 @@
 # A-REMOTE-005: Concrete root/ordered backend qualification
 - Owner: REMOTE//01 / PM direct executor
-- State: ASSIGNED
+- State: BLOCKED
 - Coordination input commit: e9e554ae86d414b8b97941ce15f9c520ccf7359a
 - Objective: Qualify the concrete backend against A004 G0-G4 and complete capacity; preserve BLOCKED when guarantees are missing.
 - Baseline: Git-less C:/Users/RYZEN/Documents/REMOTE01/Code; no invented firmware/source/flashed identity. Reinventory current source/config/SDK/artifacts; preserve concurrent changes.
@@ -14,3 +14,6 @@
 - Stop/report conditions: missing newest integrity/capacity => BLOCKED, no semantic weakening/production workaround. Contract conflict or real data risk stops dependent work; document smallest later physical experiment only.
 - Required outputs: task/report; G0-G4 mechanism/source/test/verdict matrix; isolated prototype/tests/fault matrix/capacity ledger/commands/versions/seeds/logs/hash manifests; exact proposed physical validation; archived prior handoff/new latest; device+coordination CHANGELOG and PROJECT_SYNC; separate result PR.
 - PM assignment evidence: explicit owner technical request2026-10-11; this scoped task published before execution. No conversational transcript retained; no shared-contract approval or physical execution authorization.
+
+## Execution disposition
+Allowed host/source work delivered; acceptance BLOCKED (G1 unavailable and physical capacity/order unqualified). No DONE/PASS claim; report and complete evidence published in separate result PR.

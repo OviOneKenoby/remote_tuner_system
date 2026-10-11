@@ -102,3 +102,7 @@ REMOTE design accepted only as design. Its 3,072-byte bank is an unqualified est
 
 ## Current A-REMOTE-005 assignment - 2026-10-11
 [A-REMOTE-005](tasks/A-REMOTE-005.md) is now ASSIGNED for read-only concrete backend analysis and isolated host qualification; supersedes only the prior recommendation/not-assigned statement. Production, real NVS/credentials, hardware, Native and D1-D5 remain excluded/unassigned.
+
+
+## A-REMOTE-005 result - 2026-10-11T18:03:56Z
+Read-only concrete backend/host execution delivered; [task](tasks/A-REMOTE-005.md) acceptance BLOCKED, [report](reports/A-REMOTE-005.md). Host PASS 8/10247/1079; G1 required freshness/anti-rollback FAIL for same-domain NVS root+records; physical G2-G4/capacity UNKNOWN.180 capacity cases: ideal108-byte remote_wifi assumption662 entries fits756 conditionally; adverse occupancy/fragmentation FAIL. SDK selected5.5.3 re-pinned, five old snapshots differ beyond EOL, originals retained. No physical tests or production integration; D1-D5 unassigned. Supersedes prior ASSIGNED/recommendation status only; TUNER/A003/A004/CCM/Native/O01-O17/common gate verdicts unchanged. Result branch requires review, not automatically merged.

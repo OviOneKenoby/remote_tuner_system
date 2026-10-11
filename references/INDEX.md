@@ -47,3 +47,7 @@ Above availability/verification sections retain initial 2026-10-08 scope, not cu
 
 ## Administrative reference correction - 2026-10-11
 Current reconciliation reference: [technical scope](PM_RECONCILIATION_SCOPE_2026-10-11.md). Conversational authorization transcript removed from current tree; historical commits/archives remain unchanged. Technical verdicts are unchanged.
+
+
+## A-REMOTE-005 current evidence
+[Concrete backend qualification](device_evidence/remote/A-REMOTE-005/INDEX.md): source-selected SDK re-pinned; historical SDK snapshots differ, retained unchanged. Host PASS / concrete required G1 FAIL / overall BLOCKED; physical NOT RUN, production NOT IMPLEMENTED.
