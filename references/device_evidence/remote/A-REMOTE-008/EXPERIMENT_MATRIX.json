@@ -1,0 +1,1376 @@
+[
+  {
+    "name": "confirmed_identical_copy_1",
+    "command": [
+      "${COPIED_TC}\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "@${DIAG}\\original-reconstructed.rsp"
+    ],
+    "cwd": "${PRIVATE_COPY}",
+    "startedUTC": "2026-10-11T20:12:37.598103+00:00",
+    "endedUTC": "2026-10-11T20:12:38.201112+00:00",
+    "exit_code": 0,
+    "seconds": 0.6023,
+    "RAM_before": {
+      "total": 16556584960,
+      "available": 7884034048
+    },
+    "pagefile_swap_before": {
+      "total": 1073741824,
+      "used": 170778624,
+      "free": 902963200,
+      "percent": 15.9,
+      "sin": 0,
+      "sout": 0
+    },
+    "peak_observed_process_tree_RSS_bytes": 54091776,
+    "peak_measurement": "nonintrusive polling10ms; lower bound/not guaranteed true peak",
+    "process_executables": [
+      "${COPIED_TC}\\bin\\xtensa-esp-elf-gcc.exe",
+      "${COPIED_TC}\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${COPIED_TC}\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "${COPIED_TC}\\xtensa-esp-elf\\bin\\as.exe"
+    ],
+    "loaded_modules_observed": [
+      "${COPIED_TC}\\bin\\xtensa-esp-elf-gcc.exe",
+      "${COPIED_TC}\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${COPIED_TC}\\lib\\xtensa_esp32s3.so",
+      "${COPIED_TC}\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "${COPIED_TC}\\xtensa-esp-elf\\bin\\as.exe",
+      "C:\\Windows\\System32\\KernelBase.dll",
+      "C:\\Windows\\System32\\advapi32.dll",
+      "C:\\Windows\\System32\\bcrypt.dll",
+      "C:\\Windows\\System32\\cryptbase.dll",
+      "C:\\Windows\\System32\\gdi32.dll",
+      "C:\\Windows\\System32\\gdi32full.dll",
+      "C:\\Windows\\System32\\imm32.dll",
+      "C:\\Windows\\System32\\kernel32.dll",
+      "C:\\Windows\\System32\\msvcp_win.dll",
+      "C:\\Windows\\System32\\msvcrt.dll",
+      "C:\\Windows\\System32\\ntdll.dll",
+      "C:\\Windows\\System32\\rpcrt4.dll",
+      "C:\\Windows\\System32\\sechost.dll",
+      "C:\\Windows\\System32\\ucrtbase.dll",
+      "C:\\Windows\\System32\\user32.dll",
+      "C:\\Windows\\System32\\userenv.dll",
+      "C:\\Windows\\System32\\win32u.dll",
+      "C:\\Windows\\System32\\ws2_32.dll"
+    ],
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "object_result": {
+      "bytes": 328068,
+      "sha256": "d8425cded6e171666f31908bd352432507e00a9ce0375b1db1df6e3cae768a6f"
+    },
+    "stderr_relevant_lines": [],
+    "WER_fault_address_module": "UNKNOWN"
+  },
+  {
+    "name": "confirmed_identical_copy_2",
+    "command": [
+      "${COPIED_TC}\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "@${DIAG}\\original-reconstructed.rsp"
+    ],
+    "cwd": "${PRIVATE_COPY}",
+    "startedUTC": "2026-10-11T20:12:38.212001+00:00",
+    "endedUTC": "2026-10-11T20:12:38.760615+00:00",
+    "exit_code": 0,
+    "seconds": 0.5484,
+    "RAM_before": {
+      "total": 16556584960,
+      "available": 7892893696
+    },
+    "pagefile_swap_before": {
+      "total": 1073741824,
+      "used": 170778624,
+      "free": 902963200,
+      "percent": 15.9,
+      "sin": 0,
+      "sout": 0
+    },
+    "peak_observed_process_tree_RSS_bytes": 54296576,
+    "peak_measurement": "nonintrusive polling10ms; lower bound/not guaranteed true peak",
+    "process_executables": [
+      "${COPIED_TC}\\bin\\xtensa-esp-elf-gcc.exe",
+      "${COPIED_TC}\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${COPIED_TC}\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "${COPIED_TC}\\xtensa-esp-elf\\bin\\as.exe"
+    ],
+    "loaded_modules_observed": [
+      "${COPIED_TC}\\bin\\xtensa-esp-elf-gcc.exe",
+      "${COPIED_TC}\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${COPIED_TC}\\lib\\xtensa_esp32s3.so",
+      "${COPIED_TC}\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "${COPIED_TC}\\xtensa-esp-elf\\bin\\as.exe",
+      "C:\\Windows\\System32\\KernelBase.dll",
+      "C:\\Windows\\System32\\advapi32.dll",
+      "C:\\Windows\\System32\\bcrypt.dll",
+      "C:\\Windows\\System32\\cryptbase.dll",
+      "C:\\Windows\\System32\\gdi32.dll",
+      "C:\\Windows\\System32\\gdi32full.dll",
+      "C:\\Windows\\System32\\imm32.dll",
+      "C:\\Windows\\System32\\kernel32.dll",
+      "C:\\Windows\\System32\\msvcp_win.dll",
+      "C:\\Windows\\System32\\msvcrt.dll",
+      "C:\\Windows\\System32\\ntdll.dll",
+      "C:\\Windows\\System32\\rpcrt4.dll",
+      "C:\\Windows\\System32\\sechost.dll",
+      "C:\\Windows\\System32\\ucrtbase.dll",
+      "C:\\Windows\\System32\\user32.dll",
+      "C:\\Windows\\System32\\userenv.dll",
+      "C:\\Windows\\System32\\win32u.dll",
+      "C:\\Windows\\System32\\ws2_32.dll"
+    ],
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "object_result": {
+      "bytes": 328068,
+      "sha256": "d8425cded6e171666f31908bd352432507e00a9ce0375b1db1df6e3cae768a6f"
+    },
+    "stderr_relevant_lines": [],
+    "WER_fault_address_module": "UNKNOWN"
+  },
+  {
+    "name": "confirmed_identical_copy_3",
+    "command": [
+      "${COPIED_TC}\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "@${DIAG}\\original-reconstructed.rsp"
+    ],
+    "cwd": "${PRIVATE_COPY}",
+    "startedUTC": "2026-10-11T20:12:38.771492+00:00",
+    "endedUTC": "2026-10-11T20:12:39.326721+00:00",
+    "exit_code": 0,
+    "seconds": 0.5548,
+    "RAM_before": {
+      "total": 16556584960,
+      "available": 7883649024
+    },
+    "pagefile_swap_before": {
+      "total": 1073741824,
+      "used": 170778624,
+      "free": 902963200,
+      "percent": 15.9,
+      "sin": 0,
+      "sout": 0
+    },
+    "peak_observed_process_tree_RSS_bytes": 53989376,
+    "peak_measurement": "nonintrusive polling10ms; lower bound/not guaranteed true peak",
+    "process_executables": [
+      "${COPIED_TC}\\bin\\xtensa-esp-elf-gcc.exe",
+      "${COPIED_TC}\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${COPIED_TC}\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "${COPIED_TC}\\xtensa-esp-elf\\bin\\as.exe"
+    ],
+    "loaded_modules_observed": [
+      "${COPIED_TC}\\bin\\xtensa-esp-elf-gcc.exe",
+      "${COPIED_TC}\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${COPIED_TC}\\lib\\xtensa_esp32s3.so",
+      "${COPIED_TC}\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "${COPIED_TC}\\xtensa-esp-elf\\bin\\as.exe",
+      "C:\\Windows\\System32\\KernelBase.dll",
+      "C:\\Windows\\System32\\advapi32.dll",
+      "C:\\Windows\\System32\\bcrypt.dll",
+      "C:\\Windows\\System32\\cryptbase.dll",
+      "C:\\Windows\\System32\\gdi32.dll",
+      "C:\\Windows\\System32\\gdi32full.dll",
+      "C:\\Windows\\System32\\imm32.dll",
+      "C:\\Windows\\System32\\kernel32.dll",
+      "C:\\Windows\\System32\\msvcp_win.dll",
+      "C:\\Windows\\System32\\msvcrt.dll",
+      "C:\\Windows\\System32\\ntdll.dll",
+      "C:\\Windows\\System32\\rpcrt4.dll",
+      "C:\\Windows\\System32\\sechost.dll",
+      "C:\\Windows\\System32\\ucrtbase.dll",
+      "C:\\Windows\\System32\\user32.dll",
+      "C:\\Windows\\System32\\userenv.dll",
+      "C:\\Windows\\System32\\win32u.dll",
+      "C:\\Windows\\System32\\ws2_32.dll"
+    ],
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "object_result": {
+      "bytes": 328068,
+      "sha256": "d8425cded6e171666f31908bd352432507e00a9ce0375b1db1df6e3cae768a6f"
+    },
+    "stderr_relevant_lines": [],
+    "WER_fault_address_module": "UNKNOWN"
+  },
+  {
+    "name": "confirmed_installed_1",
+    "command": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "@${DIAG}\\original-reconstructed.rsp"
+    ],
+    "cwd": "${PRIVATE_COPY}",
+    "startedUTC": "2026-10-11T20:12:35.666655+00:00",
+    "endedUTC": "2026-10-11T20:12:36.455384+00:00",
+    "exit_code": 0,
+    "seconds": 0.586,
+    "RAM_before": {
+      "total": 16556584960,
+      "available": 7896227840
+    },
+    "pagefile_swap_before": {
+      "total": 1073741824,
+      "used": 170778624,
+      "free": 902963200,
+      "percent": 15.9,
+      "sin": 0,
+      "sout": 0
+    },
+    "peak_observed_process_tree_RSS_bytes": 54362112,
+    "peak_measurement": "nonintrusive polling10ms; lower bound/not guaranteed true peak",
+    "process_executables": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\xtensa-esp-elf\\bin\\as.exe"
+    ],
+    "loaded_modules_observed": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\lib\\xtensa_esp32s3.so",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\xtensa-esp-elf\\bin\\as.exe",
+      "C:\\Windows\\System32\\KernelBase.dll",
+      "C:\\Windows\\System32\\advapi32.dll",
+      "C:\\Windows\\System32\\bcrypt.dll",
+      "C:\\Windows\\System32\\cryptbase.dll",
+      "C:\\Windows\\System32\\gdi32.dll",
+      "C:\\Windows\\System32\\gdi32full.dll",
+      "C:\\Windows\\System32\\imm32.dll",
+      "C:\\Windows\\System32\\kernel32.dll",
+      "C:\\Windows\\System32\\msvcp_win.dll",
+      "C:\\Windows\\System32\\msvcrt.dll",
+      "C:\\Windows\\System32\\ntdll.dll",
+      "C:\\Windows\\System32\\rpcrt4.dll",
+      "C:\\Windows\\System32\\sechost.dll",
+      "C:\\Windows\\System32\\ucrtbase.dll",
+      "C:\\Windows\\System32\\user32.dll",
+      "C:\\Windows\\System32\\userenv.dll",
+      "C:\\Windows\\System32\\win32u.dll",
+      "C:\\Windows\\System32\\ws2_32.dll"
+    ],
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "object_result": {
+      "bytes": 328192,
+      "sha256": "e140ad2ffed0de3b871aa5e81dccce0620d38d7c4b3e194cedd884a3f6e6b8f2"
+    },
+    "stderr_relevant_lines": [],
+    "WER_fault_address_module": "UNKNOWN"
+  },
+  {
+    "name": "confirmed_installed_2",
+    "command": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "@${DIAG}\\original-reconstructed.rsp"
+    ],
+    "cwd": "${PRIVATE_COPY}",
+    "startedUTC": "2026-10-11T20:12:36.460466+00:00",
+    "endedUTC": "2026-10-11T20:12:37.024143+00:00",
+    "exit_code": 0,
+    "seconds": 0.5631,
+    "RAM_before": {
+      "total": 16556584960,
+      "available": 7884050432
+    },
+    "pagefile_swap_before": {
+      "total": 1073741824,
+      "used": 170778624,
+      "free": 902963200,
+      "percent": 15.9,
+      "sin": 0,
+      "sout": 0
+    },
+    "peak_observed_process_tree_RSS_bytes": 53968896,
+    "peak_measurement": "nonintrusive polling10ms; lower bound/not guaranteed true peak",
+    "process_executables": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\xtensa-esp-elf\\bin\\as.exe"
+    ],
+    "loaded_modules_observed": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\lib\\xtensa_esp32s3.so",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\xtensa-esp-elf\\bin\\as.exe",
+      "C:\\Windows\\System32\\KernelBase.dll",
+      "C:\\Windows\\System32\\advapi32.dll",
+      "C:\\Windows\\System32\\bcrypt.dll",
+      "C:\\Windows\\System32\\cryptbase.dll",
+      "C:\\Windows\\System32\\gdi32.dll",
+      "C:\\Windows\\System32\\gdi32full.dll",
+      "C:\\Windows\\System32\\imm32.dll",
+      "C:\\Windows\\System32\\kernel32.dll",
+      "C:\\Windows\\System32\\msvcp_win.dll",
+      "C:\\Windows\\System32\\msvcrt.dll",
+      "C:\\Windows\\System32\\ntdll.dll",
+      "C:\\Windows\\System32\\rpcrt4.dll",
+      "C:\\Windows\\System32\\sechost.dll",
+      "C:\\Windows\\System32\\ucrtbase.dll",
+      "C:\\Windows\\System32\\user32.dll",
+      "C:\\Windows\\System32\\userenv.dll",
+      "C:\\Windows\\System32\\win32u.dll",
+      "C:\\Windows\\System32\\ws2_32.dll"
+    ],
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "object_result": {
+      "bytes": 328192,
+      "sha256": "e140ad2ffed0de3b871aa5e81dccce0620d38d7c4b3e194cedd884a3f6e6b8f2"
+    },
+    "stderr_relevant_lines": [],
+    "WER_fault_address_module": "UNKNOWN"
+  },
+  {
+    "name": "confirmed_installed_3",
+    "command": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "@${DIAG}\\original-reconstructed.rsp"
+    ],
+    "cwd": "${PRIVATE_COPY}",
+    "startedUTC": "2026-10-11T20:12:37.028397+00:00",
+    "endedUTC": "2026-10-11T20:12:37.593764+00:00",
+    "exit_code": 0,
+    "seconds": 0.5651,
+    "RAM_before": {
+      "total": 16556584960,
+      "available": 7886249984
+    },
+    "pagefile_swap_before": {
+      "total": 1073741824,
+      "used": 170778624,
+      "free": 902963200,
+      "percent": 15.9,
+      "sin": 0,
+      "sout": 0
+    },
+    "peak_observed_process_tree_RSS_bytes": 53915648,
+    "peak_measurement": "nonintrusive polling10ms; lower bound/not guaranteed true peak",
+    "process_executables": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\xtensa-esp-elf\\bin\\as.exe"
+    ],
+    "loaded_modules_observed": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\lib\\xtensa_esp32s3.so",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\xtensa-esp-elf\\bin\\as.exe",
+      "C:\\Windows\\System32\\KernelBase.dll",
+      "C:\\Windows\\System32\\advapi32.dll",
+      "C:\\Windows\\System32\\bcrypt.dll",
+      "C:\\Windows\\System32\\cryptbase.dll",
+      "C:\\Windows\\System32\\gdi32.dll",
+      "C:\\Windows\\System32\\gdi32full.dll",
+      "C:\\Windows\\System32\\imm32.dll",
+      "C:\\Windows\\System32\\kernel32.dll",
+      "C:\\Windows\\System32\\msvcp_win.dll",
+      "C:\\Windows\\System32\\msvcrt.dll",
+      "C:\\Windows\\System32\\ntdll.dll",
+      "C:\\Windows\\System32\\rpcrt4.dll",
+      "C:\\Windows\\System32\\sechost.dll",
+      "C:\\Windows\\System32\\ucrtbase.dll",
+      "C:\\Windows\\System32\\user32.dll",
+      "C:\\Windows\\System32\\userenv.dll",
+      "C:\\Windows\\System32\\win32u.dll",
+      "C:\\Windows\\System32\\ws2_32.dll"
+    ],
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "object_result": {
+      "bytes": 328192,
+      "sha256": "e140ad2ffed0de3b871aa5e81dccce0620d38d7c4b3e194cedd884a3f6e6b8f2"
+    },
+    "stderr_relevant_lines": [],
+    "WER_fault_address_module": "UNKNOWN"
+  },
+  {
+    "name": "confirmed_official_fresh_1",
+    "command": [
+      "${OFFICIAL_TC}\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "@${DIAG}\\original-reconstructed.rsp"
+    ],
+    "cwd": "${PRIVATE_COPY}",
+    "startedUTC": "2026-10-11T20:12:39.337245+00:00",
+    "endedUTC": "2026-10-11T20:12:39.903994+00:00",
+    "exit_code": 0,
+    "seconds": 0.5664,
+    "RAM_before": {
+      "total": 16556584960,
+      "available": 7886516224
+    },
+    "pagefile_swap_before": {
+      "total": 1073741824,
+      "used": 170778624,
+      "free": 902963200,
+      "percent": 15.9,
+      "sin": 0,
+      "sout": 0
+    },
+    "peak_observed_process_tree_RSS_bytes": 54509568,
+    "peak_measurement": "nonintrusive polling10ms; lower bound/not guaranteed true peak",
+    "process_executables": [
+      "${OFFICIAL_TC}\\bin\\xtensa-esp-elf-gcc.exe",
+      "${OFFICIAL_TC}\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${OFFICIAL_TC}\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "${OFFICIAL_TC}\\xtensa-esp-elf\\bin\\as.exe"
+    ],
+    "loaded_modules_observed": [
+      "${OFFICIAL_TC}\\bin\\xtensa-esp-elf-gcc.exe",
+      "${OFFICIAL_TC}\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${OFFICIAL_TC}\\lib\\xtensa_esp32s3.so",
+      "${OFFICIAL_TC}\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "${OFFICIAL_TC}\\xtensa-esp-elf\\bin\\as.exe",
+      "C:\\Windows\\System32\\KernelBase.dll",
+      "C:\\Windows\\System32\\advapi32.dll",
+      "C:\\Windows\\System32\\bcrypt.dll",
+      "C:\\Windows\\System32\\cryptbase.dll",
+      "C:\\Windows\\System32\\gdi32.dll",
+      "C:\\Windows\\System32\\gdi32full.dll",
+      "C:\\Windows\\System32\\imm32.dll",
+      "C:\\Windows\\System32\\kernel32.dll",
+      "C:\\Windows\\System32\\msvcp_win.dll",
+      "C:\\Windows\\System32\\msvcrt.dll",
+      "C:\\Windows\\System32\\ntdll.dll",
+      "C:\\Windows\\System32\\rpcrt4.dll",
+      "C:\\Windows\\System32\\sechost.dll",
+      "C:\\Windows\\System32\\ucrtbase.dll",
+      "C:\\Windows\\System32\\user32.dll",
+      "C:\\Windows\\System32\\userenv.dll",
+      "C:\\Windows\\System32\\win32u.dll",
+      "C:\\Windows\\System32\\ws2_32.dll"
+    ],
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "object_result": {
+      "bytes": 328080,
+      "sha256": "c6b996ec476a72b95eab761e6e1cc184cc171c311c490c6288e4d5d36a10cca2"
+    },
+    "stderr_relevant_lines": [],
+    "WER_fault_address_module": "UNKNOWN"
+  },
+  {
+    "name": "confirmed_official_fresh_2",
+    "command": [
+      "${OFFICIAL_TC}\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "@${DIAG}\\original-reconstructed.rsp"
+    ],
+    "cwd": "${PRIVATE_COPY}",
+    "startedUTC": "2026-10-11T20:12:39.915057+00:00",
+    "endedUTC": "2026-10-11T20:12:40.462439+00:00",
+    "exit_code": 0,
+    "seconds": 0.5471,
+    "RAM_before": {
+      "total": 16556584960,
+      "available": 7878926336
+    },
+    "pagefile_swap_before": {
+      "total": 1073741824,
+      "used": 170778624,
+      "free": 902963200,
+      "percent": 15.9,
+      "sin": 0,
+      "sout": 0
+    },
+    "peak_observed_process_tree_RSS_bytes": 54407168,
+    "peak_measurement": "nonintrusive polling10ms; lower bound/not guaranteed true peak",
+    "process_executables": [
+      "${OFFICIAL_TC}\\bin\\xtensa-esp-elf-gcc.exe",
+      "${OFFICIAL_TC}\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${OFFICIAL_TC}\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "${OFFICIAL_TC}\\xtensa-esp-elf\\bin\\as.exe"
+    ],
+    "loaded_modules_observed": [
+      "${OFFICIAL_TC}\\bin\\xtensa-esp-elf-gcc.exe",
+      "${OFFICIAL_TC}\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${OFFICIAL_TC}\\lib\\xtensa_esp32s3.so",
+      "${OFFICIAL_TC}\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "${OFFICIAL_TC}\\xtensa-esp-elf\\bin\\as.exe",
+      "C:\\Windows\\System32\\KernelBase.dll",
+      "C:\\Windows\\System32\\advapi32.dll",
+      "C:\\Windows\\System32\\bcrypt.dll",
+      "C:\\Windows\\System32\\cryptbase.dll",
+      "C:\\Windows\\System32\\gdi32.dll",
+      "C:\\Windows\\System32\\gdi32full.dll",
+      "C:\\Windows\\System32\\imm32.dll",
+      "C:\\Windows\\System32\\kernel32.dll",
+      "C:\\Windows\\System32\\msvcp_win.dll",
+      "C:\\Windows\\System32\\msvcrt.dll",
+      "C:\\Windows\\System32\\ntdll.dll",
+      "C:\\Windows\\System32\\rpcrt4.dll",
+      "C:\\Windows\\System32\\sechost.dll",
+      "C:\\Windows\\System32\\ucrtbase.dll",
+      "C:\\Windows\\System32\\user32.dll",
+      "C:\\Windows\\System32\\userenv.dll",
+      "C:\\Windows\\System32\\win32u.dll",
+      "C:\\Windows\\System32\\ws2_32.dll"
+    ],
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "object_result": {
+      "bytes": 328080,
+      "sha256": "c6b996ec476a72b95eab761e6e1cc184cc171c311c490c6288e4d5d36a10cca2"
+    },
+    "stderr_relevant_lines": [],
+    "WER_fault_address_module": "UNKNOWN"
+  },
+  {
+    "name": "confirmed_official_fresh_3",
+    "command": [
+      "${OFFICIAL_TC}\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "@${DIAG}\\original-reconstructed.rsp"
+    ],
+    "cwd": "${PRIVATE_COPY}",
+    "startedUTC": "2026-10-11T20:12:40.475120+00:00",
+    "endedUTC": "2026-10-11T20:12:41.027653+00:00",
+    "exit_code": 0,
+    "seconds": 0.5523,
+    "RAM_before": {
+      "total": 16556584960,
+      "available": 7881322496
+    },
+    "pagefile_swap_before": {
+      "total": 1073741824,
+      "used": 170778624,
+      "free": 902963200,
+      "percent": 15.9,
+      "sin": 0,
+      "sout": 0
+    },
+    "peak_observed_process_tree_RSS_bytes": 54390784,
+    "peak_measurement": "nonintrusive polling10ms; lower bound/not guaranteed true peak",
+    "process_executables": [
+      "${OFFICIAL_TC}\\bin\\xtensa-esp-elf-gcc.exe",
+      "${OFFICIAL_TC}\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${OFFICIAL_TC}\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "${OFFICIAL_TC}\\xtensa-esp-elf\\bin\\as.exe"
+    ],
+    "loaded_modules_observed": [
+      "${OFFICIAL_TC}\\bin\\xtensa-esp-elf-gcc.exe",
+      "${OFFICIAL_TC}\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${OFFICIAL_TC}\\lib\\xtensa_esp32s3.so",
+      "${OFFICIAL_TC}\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "${OFFICIAL_TC}\\xtensa-esp-elf\\bin\\as.exe",
+      "C:\\Windows\\System32\\KernelBase.dll",
+      "C:\\Windows\\System32\\advapi32.dll",
+      "C:\\Windows\\System32\\bcrypt.dll",
+      "C:\\Windows\\System32\\cryptbase.dll",
+      "C:\\Windows\\System32\\gdi32.dll",
+      "C:\\Windows\\System32\\gdi32full.dll",
+      "C:\\Windows\\System32\\imm32.dll",
+      "C:\\Windows\\System32\\kernel32.dll",
+      "C:\\Windows\\System32\\msvcp_win.dll",
+      "C:\\Windows\\System32\\msvcrt.dll",
+      "C:\\Windows\\System32\\ntdll.dll",
+      "C:\\Windows\\System32\\rpcrt4.dll",
+      "C:\\Windows\\System32\\sechost.dll",
+      "C:\\Windows\\System32\\ucrtbase.dll",
+      "C:\\Windows\\System32\\user32.dll",
+      "C:\\Windows\\System32\\userenv.dll",
+      "C:\\Windows\\System32\\win32u.dll",
+      "C:\\Windows\\System32\\ws2_32.dll"
+    ],
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "object_result": {
+      "bytes": 328080,
+      "sha256": "c6b996ec476a72b95eab761e6e1cc184cc171c311c490c6288e4d5d36a10cca2"
+    },
+    "stderr_relevant_lines": [],
+    "WER_fault_address_module": "UNKNOWN"
+  },
+  {
+    "name": "fixed_response_stability_1",
+    "command": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "@${DIAG}\\original-reconstructed.rsp"
+    ],
+    "cwd": "${PRIVATE_COPY}",
+    "startedUTC": "2026-10-11T20:16:01.151458+00:00",
+    "endedUTC": "2026-10-11T20:16:01.711970+00:00",
+    "exit_code": 1,
+    "seconds": 0.3468,
+    "RAM_before": {
+      "total": 16556584960,
+      "available": 7877775360
+    },
+    "pagefile_swap_before": {
+      "total": 1073741824,
+      "used": 170778624,
+      "free": 902963200,
+      "percent": 15.9,
+      "sin": 0,
+      "sout": 0
+    },
+    "peak_observed_process_tree_RSS_bytes": 51433472,
+    "peak_measurement": "nonintrusive polling10ms; lower bound/not guaranteed true peak",
+    "process_executables": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe"
+    ],
+    "loaded_modules_observed": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\lib\\xtensa_esp32s3.so",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "C:\\Windows\\System32\\KernelBase.dll",
+      "C:\\Windows\\System32\\advapi32.dll",
+      "C:\\Windows\\System32\\bcrypt.dll",
+      "C:\\Windows\\System32\\cryptbase.dll",
+      "C:\\Windows\\System32\\kernel32.dll",
+      "C:\\Windows\\System32\\msvcrt.dll",
+      "C:\\Windows\\System32\\ntdll.dll",
+      "C:\\Windows\\System32\\rpcrt4.dll",
+      "C:\\Windows\\System32\\sechost.dll",
+      "C:\\Windows\\System32\\ucrtbase.dll",
+      "C:\\Windows\\System32\\userenv.dll",
+      "C:\\Windows\\System32\\ws2_32.dll"
+    ],
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f724c470c2f355a76c5ec82cbebcba96d433ce461f6c9cbab60ed038564eb64c",
+    "stderr_relevant_lines": [
+      "during RTL pass: ira",
+      "\u001b[K${PIO}/packages/framework-espidf@3.50503.0/components/esp_lcd/rgb/esp_lcd_panel_rgb.c:700:1:\u001b[K \u001b[Kinternal compiler error: \u001b[KSegmentation fault"
+    ],
+    "WER_fault_address_module": "UNKNOWN"
+  },
+  {
+    "name": "fixed_response_stability_2",
+    "command": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "@${DIAG}\\original-reconstructed.rsp"
+    ],
+    "cwd": "${PRIVATE_COPY}",
+    "startedUTC": "2026-10-11T20:16:01.716271+00:00",
+    "endedUTC": "2026-10-11T20:16:02.083649+00:00",
+    "exit_code": 1,
+    "seconds": 0.3673,
+    "RAM_before": {
+      "total": 16556584960,
+      "available": 7873789952
+    },
+    "pagefile_swap_before": {
+      "total": 1073741824,
+      "used": 170778624,
+      "free": 902963200,
+      "percent": 15.9,
+      "sin": 0,
+      "sout": 0
+    },
+    "peak_observed_process_tree_RSS_bytes": 49553408,
+    "peak_measurement": "nonintrusive polling10ms; lower bound/not guaranteed true peak",
+    "process_executables": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe"
+    ],
+    "loaded_modules_observed": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\lib\\xtensa_esp32s3.so",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "C:\\Windows\\System32\\KernelBase.dll",
+      "C:\\Windows\\System32\\advapi32.dll",
+      "C:\\Windows\\System32\\bcrypt.dll",
+      "C:\\Windows\\System32\\cryptbase.dll",
+      "C:\\Windows\\System32\\kernel32.dll",
+      "C:\\Windows\\System32\\msvcrt.dll",
+      "C:\\Windows\\System32\\ntdll.dll",
+      "C:\\Windows\\System32\\rpcrt4.dll",
+      "C:\\Windows\\System32\\sechost.dll",
+      "C:\\Windows\\System32\\ucrtbase.dll",
+      "C:\\Windows\\System32\\userenv.dll",
+      "C:\\Windows\\System32\\ws2_32.dll"
+    ],
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f724c470c2f355a76c5ec82cbebcba96d433ce461f6c9cbab60ed038564eb64c",
+    "stderr_relevant_lines": [
+      "during RTL pass: ira",
+      "\u001b[K${PIO}/packages/framework-espidf@3.50503.0/components/esp_lcd/rgb/esp_lcd_panel_rgb.c:700:1:\u001b[K \u001b[Kinternal compiler error: \u001b[KSegmentation fault"
+    ],
+    "WER_fault_address_module": "UNKNOWN"
+  },
+  {
+    "name": "fixed_response_stability_3",
+    "command": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "@${DIAG}\\original-reconstructed.rsp"
+    ],
+    "cwd": "${PRIVATE_COPY}",
+    "startedUTC": "2026-10-11T20:16:02.088207+00:00",
+    "endedUTC": "2026-10-11T20:16:02.430176+00:00",
+    "exit_code": 1,
+    "seconds": 0.342,
+    "RAM_before": {
+      "total": 16556584960,
+      "available": 7871082496
+    },
+    "pagefile_swap_before": {
+      "total": 1073741824,
+      "used": 170778624,
+      "free": 902963200,
+      "percent": 15.9,
+      "sin": 0,
+      "sout": 0
+    },
+    "peak_observed_process_tree_RSS_bytes": 49856512,
+    "peak_measurement": "nonintrusive polling10ms; lower bound/not guaranteed true peak",
+    "process_executables": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe"
+    ],
+    "loaded_modules_observed": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\lib\\xtensa_esp32s3.so",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "C:\\Windows\\System32\\KernelBase.dll",
+      "C:\\Windows\\System32\\advapi32.dll",
+      "C:\\Windows\\System32\\bcrypt.dll",
+      "C:\\Windows\\System32\\cryptbase.dll",
+      "C:\\Windows\\System32\\kernel32.dll",
+      "C:\\Windows\\System32\\msvcrt.dll",
+      "C:\\Windows\\System32\\ntdll.dll",
+      "C:\\Windows\\System32\\rpcrt4.dll",
+      "C:\\Windows\\System32\\sechost.dll",
+      "C:\\Windows\\System32\\ucrtbase.dll",
+      "C:\\Windows\\System32\\userenv.dll",
+      "C:\\Windows\\System32\\ws2_32.dll"
+    ],
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f724c470c2f355a76c5ec82cbebcba96d433ce461f6c9cbab60ed038564eb64c",
+    "stderr_relevant_lines": [
+      "during RTL pass: ira",
+      "\u001b[K${PIO}/packages/framework-espidf@3.50503.0/components/esp_lcd/rgb/esp_lcd_panel_rgb.c:700:1:\u001b[K \u001b[Kinternal compiler error: \u001b[KSegmentation fault"
+    ],
+    "WER_fault_address_module": "UNKNOWN"
+  },
+  {
+    "name": "output_presence_control_1",
+    "command": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "@${DIAG}\\original-reconstructed.rsp"
+    ],
+    "cwd": "${PRIVATE_COPY}",
+    "startedUTC": "2026-10-11T20:17:00.815763+00:00",
+    "endedUTC": "2026-10-11T20:17:01.377734+00:00",
+    "exit_code": 1,
+    "seconds": 0.3591,
+    "RAM_before": {
+      "total": 16556584960,
+      "available": 7861522432
+    },
+    "pagefile_swap_before": {
+      "total": 1073741824,
+      "used": 170778624,
+      "free": 902963200,
+      "percent": 15.9,
+      "sin": 0,
+      "sout": 0
+    },
+    "peak_observed_process_tree_RSS_bytes": 50946048,
+    "peak_measurement": "nonintrusive polling10ms; lower bound/not guaranteed true peak",
+    "process_executables": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe"
+    ],
+    "loaded_modules_observed": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\lib\\xtensa_esp32s3.so",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "C:\\Windows\\System32\\KernelBase.dll",
+      "C:\\Windows\\System32\\advapi32.dll",
+      "C:\\Windows\\System32\\bcrypt.dll",
+      "C:\\Windows\\System32\\cryptbase.dll",
+      "C:\\Windows\\System32\\kernel32.dll",
+      "C:\\Windows\\System32\\msvcrt.dll",
+      "C:\\Windows\\System32\\ntdll.dll",
+      "C:\\Windows\\System32\\rpcrt4.dll",
+      "C:\\Windows\\System32\\sechost.dll",
+      "C:\\Windows\\System32\\ucrtbase.dll",
+      "C:\\Windows\\System32\\userenv.dll",
+      "C:\\Windows\\System32\\ws2_32.dll"
+    ],
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f724c470c2f355a76c5ec82cbebcba96d433ce461f6c9cbab60ed038564eb64c",
+    "stderr_relevant_lines": [
+      "during RTL pass: ira",
+      "\u001b[K${PIO}/packages/framework-espidf@3.50503.0/components/esp_lcd/rgb/esp_lcd_panel_rgb.c:700:1:\u001b[K \u001b[Kinternal compiler error: \u001b[KSegmentation fault"
+    ],
+    "WER_fault_address_module": "UNKNOWN"
+  },
+  {
+    "name": "output_presence_control_2",
+    "command": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "@${DIAG}\\original-reconstructed.rsp"
+    ],
+    "cwd": "${PRIVATE_COPY}",
+    "startedUTC": "2026-10-11T20:17:01.383404+00:00",
+    "endedUTC": "2026-10-11T20:17:01.734793+00:00",
+    "exit_code": 1,
+    "seconds": 0.3513,
+    "RAM_before": {
+      "total": 16556584960,
+      "available": 7850668032
+    },
+    "pagefile_swap_before": {
+      "total": 1073741824,
+      "used": 170778624,
+      "free": 902963200,
+      "percent": 15.9,
+      "sin": 0,
+      "sout": 0
+    },
+    "peak_observed_process_tree_RSS_bytes": 51453952,
+    "peak_measurement": "nonintrusive polling10ms; lower bound/not guaranteed true peak",
+    "process_executables": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe"
+    ],
+    "loaded_modules_observed": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\lib\\xtensa_esp32s3.so",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "C:\\Windows\\System32\\KernelBase.dll",
+      "C:\\Windows\\System32\\advapi32.dll",
+      "C:\\Windows\\System32\\bcrypt.dll",
+      "C:\\Windows\\System32\\cryptbase.dll",
+      "C:\\Windows\\System32\\kernel32.dll",
+      "C:\\Windows\\System32\\msvcrt.dll",
+      "C:\\Windows\\System32\\ntdll.dll",
+      "C:\\Windows\\System32\\rpcrt4.dll",
+      "C:\\Windows\\System32\\sechost.dll",
+      "C:\\Windows\\System32\\ucrtbase.dll",
+      "C:\\Windows\\System32\\userenv.dll",
+      "C:\\Windows\\System32\\ws2_32.dll"
+    ],
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f724c470c2f355a76c5ec82cbebcba96d433ce461f6c9cbab60ed038564eb64c",
+    "stderr_relevant_lines": [
+      "during RTL pass: ira",
+      "\u001b[K${PIO}/packages/framework-espidf@3.50503.0/components/esp_lcd/rgb/esp_lcd_panel_rgb.c:700:1:\u001b[K \u001b[Kinternal compiler error: \u001b[KSegmentation fault"
+    ],
+    "WER_fault_address_module": "UNKNOWN"
+  },
+  {
+    "name": "output_presence_control_3",
+    "command": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "@${DIAG}\\original-reconstructed.rsp"
+    ],
+    "cwd": "${PRIVATE_COPY}",
+    "startedUTC": "2026-10-11T20:17:01.739497+00:00",
+    "endedUTC": "2026-10-11T20:17:02.297842+00:00",
+    "exit_code": 0,
+    "seconds": 0.5581,
+    "RAM_before": {
+      "total": 16556584960,
+      "available": 7855640576
+    },
+    "pagefile_swap_before": {
+      "total": 1073741824,
+      "used": 170778624,
+      "free": 902963200,
+      "percent": 15.9,
+      "sin": 0,
+      "sout": 0
+    },
+    "peak_observed_process_tree_RSS_bytes": 54116352,
+    "peak_measurement": "nonintrusive polling10ms; lower bound/not guaranteed true peak",
+    "process_executables": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\xtensa-esp-elf\\bin\\as.exe"
+    ],
+    "loaded_modules_observed": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\lib\\xtensa_esp32s3.so",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\xtensa-esp-elf\\bin\\as.exe",
+      "C:\\Windows\\System32\\KernelBase.dll",
+      "C:\\Windows\\System32\\advapi32.dll",
+      "C:\\Windows\\System32\\bcrypt.dll",
+      "C:\\Windows\\System32\\cryptbase.dll",
+      "C:\\Windows\\System32\\gdi32.dll",
+      "C:\\Windows\\System32\\gdi32full.dll",
+      "C:\\Windows\\System32\\imm32.dll",
+      "C:\\Windows\\System32\\kernel32.dll",
+      "C:\\Windows\\System32\\msvcp_win.dll",
+      "C:\\Windows\\System32\\msvcrt.dll",
+      "C:\\Windows\\System32\\ntdll.dll",
+      "C:\\Windows\\System32\\rpcrt4.dll",
+      "C:\\Windows\\System32\\sechost.dll",
+      "C:\\Windows\\System32\\ucrtbase.dll",
+      "C:\\Windows\\System32\\user32.dll",
+      "C:\\Windows\\System32\\userenv.dll",
+      "C:\\Windows\\System32\\win32u.dll",
+      "C:\\Windows\\System32\\ws2_32.dll"
+    ],
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_relevant_lines": [],
+    "WER_fault_address_module": "UNKNOWN"
+  },
+  {
+    "name": "output_presence_control_4",
+    "command": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "@${DIAG}\\original-reconstructed.rsp"
+    ],
+    "cwd": "${PRIVATE_COPY}",
+    "startedUTC": "2026-10-11T20:17:02.301587+00:00",
+    "endedUTC": "2026-10-11T20:17:02.657917+00:00",
+    "exit_code": 1,
+    "seconds": 0.3559,
+    "RAM_before": {
+      "total": 16556584960,
+      "available": 7855255552
+    },
+    "pagefile_swap_before": {
+      "total": 1073741824,
+      "used": 170778624,
+      "free": 902963200,
+      "percent": 15.9,
+      "sin": 0,
+      "sout": 0
+    },
+    "peak_observed_process_tree_RSS_bytes": 50946048,
+    "peak_measurement": "nonintrusive polling10ms; lower bound/not guaranteed true peak",
+    "process_executables": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe"
+    ],
+    "loaded_modules_observed": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\lib\\xtensa_esp32s3.so",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "C:\\Windows\\System32\\KernelBase.dll",
+      "C:\\Windows\\System32\\advapi32.dll",
+      "C:\\Windows\\System32\\bcrypt.dll",
+      "C:\\Windows\\System32\\cryptbase.dll",
+      "C:\\Windows\\System32\\kernel32.dll",
+      "C:\\Windows\\System32\\msvcrt.dll",
+      "C:\\Windows\\System32\\ntdll.dll",
+      "C:\\Windows\\System32\\rpcrt4.dll",
+      "C:\\Windows\\System32\\sechost.dll",
+      "C:\\Windows\\System32\\ucrtbase.dll",
+      "C:\\Windows\\System32\\userenv.dll",
+      "C:\\Windows\\System32\\ws2_32.dll"
+    ],
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f724c470c2f355a76c5ec82cbebcba96d433ce461f6c9cbab60ed038564eb64c",
+    "stderr_relevant_lines": [
+      "during RTL pass: ira",
+      "\u001b[K${PIO}/packages/framework-espidf@3.50503.0/components/esp_lcd/rgb/esp_lcd_panel_rgb.c:700:1:\u001b[K \u001b[Kinternal compiler error: \u001b[KSegmentation fault"
+    ],
+    "WER_fault_address_module": "UNKNOWN"
+  },
+  {
+    "name": "preprocess_hash_recheck",
+    "command": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "@${DIAG}\\preprocess-only.rsp"
+    ],
+    "cwd": "${PRIVATE_COPY}",
+    "startedUTC": "2026-10-11T20:14:13.716032+00:00",
+    "endedUTC": "2026-10-11T20:14:14.183428+00:00",
+    "exit_code": 0,
+    "seconds": 0.2632,
+    "RAM_before": {
+      "total": 16556584960,
+      "available": 7891300352
+    },
+    "pagefile_swap_before": {
+      "total": 1073741824,
+      "used": 170778624,
+      "free": 902963200,
+      "percent": 15.9,
+      "sin": 0,
+      "sout": 0
+    },
+    "peak_observed_process_tree_RSS_bytes": 26411008,
+    "peak_measurement": "nonintrusive polling10ms; lower bound/not guaranteed true peak",
+    "process_executables": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe"
+    ],
+    "loaded_modules_observed": [
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\lib\\xtensa_esp32s3.so",
+      "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe",
+      "C:\\Windows\\System32\\KernelBase.dll",
+      "C:\\Windows\\System32\\advapi32.dll",
+      "C:\\Windows\\System32\\bcrypt.dll",
+      "C:\\Windows\\System32\\cryptbase.dll",
+      "C:\\Windows\\System32\\kernel32.dll",
+      "C:\\Windows\\System32\\msvcrt.dll",
+      "C:\\Windows\\System32\\ntdll.dll",
+      "C:\\Windows\\System32\\rpcrt4.dll",
+      "C:\\Windows\\System32\\sechost.dll",
+      "C:\\Windows\\System32\\ucrtbase.dll",
+      "C:\\Windows\\System32\\userenv.dll",
+      "C:\\Windows\\System32\\ws2_32.dll"
+    ],
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_relevant_lines": [],
+    "WER_fault_address_module": "UNKNOWN"
+  },
+  {
+    "name": "compiler_version",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "54647711739999ccd0cbda87ae088ab6f41ca0cb60f119c51da7299b5f655f5a",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "compiler_verbose",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "219b40fb4a5916cf72ddf7ab3d68e9d31f4740ecc54d9b96c2b73be4098125d3",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "compiler_target",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "3bcc8ff1689fb2ecae0ca983dd606c4d0a24762e9e20901ae6f631f3b6639d46",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "compiler_dumpversion",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "c7b767d998fd06d85c45b5daaec2f2423bb49b7e8df8b17f2ceb599b0c15bcf5",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "smoke_default",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "smoke_target_ABI",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "smoke_emit_assembly",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "smoke_assemble",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "smoke_objdump",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "1ab18b15b39c5660169518ff0635eb6b2bd90ecf451cce0e5f9f4c85d19a8a8b",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "smoke_assembled_objdump",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "f7c50884dbca608a7376996d1f5b0d935bdc59365ab241ec4464fd3296774e32",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "preprocess_valid",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "dependency_only",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "syntax_original",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "exact_original_direct",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "preprocessed_original_1",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "preprocessed_original_2",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "preprocessed_original_3",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "short_path_same_TEMP",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "short_path_short_TEMP",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "byte_identical_copy_1",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "byte_identical_copy_2",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "byte_identical_copy_3",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "official_fresh_1",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "official_fresh_2",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "official_fresh_3",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "original_exact_repeat_1",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "original_exact_repeat_2",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "original_exact_repeat_3",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "preprocessed_actual_SCons_ENV_1",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "preprocessed_actual_SCons_ENV_2",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "preprocessed_actual_SCons_ENV_3",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "preprocessed_actual_SCons_ENV_4",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "preprocessed_actual_SCons_ENV_5",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "preprocessed_actual_SCons_ENV_6",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "PASS isolated phase only, not firmware qualification"
+  },
+  {
+    "name": "original_response_actual_SCons_ENV_1",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stderr_relevant_lines": [],
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "Same original response/cwd/captured SCons environment; variable outcome"
+  },
+  {
+    "name": "original_response_actual_SCons_ENV_2",
+    "exit_code": 0,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stderr_relevant_lines": [],
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "result": "Same original response/cwd/captured SCons environment; variable outcome"
+  },
+  {
+    "name": "original_response_actual_SCons_ENV_3",
+    "exit_code": 1,
+    "seconds": "UNKNOWN; aggregate capture gap",
+    "peak_memory": "UNKNOWN; aggregate capture gap",
+    "stderr_relevant_lines": [
+      "during RTL pass: ira",
+      "${PIO}/packages/framework-espidf@3.50503.0/components/esp_lcd/rgb/esp_lcd_panel_rgb.c:700:1: internal compiler error: Segmentation fault"
+    ],
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "f724c470c2f355a76c5ec82cbebcba96d433ce461f6c9cbab60ed038564eb64c",
+    "result": "Same original response/cwd/captured SCons environment; variable outcome"
+  }
+]

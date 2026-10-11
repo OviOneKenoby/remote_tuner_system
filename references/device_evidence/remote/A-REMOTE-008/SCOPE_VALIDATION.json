@@ -13,12 +13,12 @@
     },
     {
       "file": "components/lvgl/scripts/release/commits.txt",
-      "change": "removed during build, cause UNKNOWN",
+      "change": "absent at first post-build inspection; actor/phase UNKNOWN, restored from verified original during authorized diagnosis",
       "selected_compile_unit": false
     },
     {
       "file": "components/lvgl/src/extra/others/fragment/README.md",
-      "change": "removed during build, cause UNKNOWN",
+      "change": "absent at first post-build inspection; actor/phase UNKNOWN, restored from verified original during authorized diagnosis",
       "selected_compile_unit": false
     }
   ],

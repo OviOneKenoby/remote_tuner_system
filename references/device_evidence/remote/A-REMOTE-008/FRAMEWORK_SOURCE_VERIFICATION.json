@@ -1,0 +1,19 @@
+{
+  "version": "ESP-IDF v5.5.3 / framework-espidf@3.50503.0",
+  "source": "components/esp_lcd/rgb/esp_lcd_panel_rgb.c",
+  "official_url": "https://raw.githubusercontent.com/espressif/esp-idf/v5.5.3/components/esp_lcd/rgb/esp_lcd_panel_rgb.c",
+  "installed_and_upstream_sha256": "eab4844a88cf27e1156af7e64edb834e2aa137d28fa7bef406ee20238dc6ebee",
+  "installed_byte_identical_to_upstream": true,
+  "line_700_context": "Closing brace of rgb_panel_draw_bitmap; abandonment location, not established cause",
+  "patches": "NONE",
+  "config_and_linker_hashes": [
+    "CONFIG_INPUT_SHA256.json",
+    "GENERATED_LINKER_SCRIPT_SHA256.json",
+    "SELECTED_EXTERNAL_SHA256.json"
+  ],
+  "package_registry": "https://api.registry.platformio.org/v3/packages/platformio/tool/toolchain-xtensa-esp-elf?version=14.2.0%2B20251107",
+  "official_archive_url": "https://dl.registry.platformio.org/download/platformio/tool/toolchain-xtensa-esp-elf/14.2.0+20251107/toolchain-xtensa-esp-elf-windows_amd64-14.2.0+20251107.tar.gz",
+  "official_and_downloaded_archive_SHA256": "438d60943f6e82c2ecbdca1b41a0ca9e9e04ee710f942d07e2bde3b6b693f5e3",
+  "archive_bytes": 385551090,
+  "identity": "toolchain-xtensa-esp-elf / 14.2.0+20251107 / windows_amd64; checked before extraction; installed package not replaced"
+}

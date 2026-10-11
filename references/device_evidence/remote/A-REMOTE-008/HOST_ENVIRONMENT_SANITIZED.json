@@ -1,0 +1,57 @@
+{
+  "snapshot": {
+    "OS": {
+      "Caption": "Microsoft Windows 11 Pro",
+      "Version": "10.0.26200",
+      "BuildNumber": "26200",
+      "OSArchitecture": "64-bit",
+      "TotalVisibleMemorySize": 16168540,
+      "FreePhysicalMemory": 7254320,
+      "TotalVirtualMemorySize": 17217116,
+      "FreeVirtualMemory": 4102936
+    },
+    "Memory": {
+      "CommittedBytes": 13447122944,
+      "CommitLimit": 17630326784,
+      "AvailableBytes": 7461658624,
+      "PercentCommittedBytesInUse": 76
+    },
+    "Pagefile": [
+      {
+        "Name": "C:\\pagefile.sys",
+        "AllocatedBaseSize": 1024,
+        "CurrentUsage": 169,
+        "PeakUsage": 179
+      }
+    ],
+    "Volumes": [
+      {
+        "DeviceID": "C:",
+        "Size": 510983663616,
+        "FreeSpace": 149506682880
+      }
+    ],
+    "Culture": "en-US",
+    "OutputCodePage": 65001,
+    "UTC": "2026-10-11T20:03:36.1469006Z"
+  },
+  "Python": "3.11.7",
+  "SCons": "4.11.1",
+  "PlatformIO": "6.2.0",
+  "path_lengths": {
+    "input": 105,
+    "original_output_absolute": 105,
+    "gcc": 107
+  },
+  "volumes_for_project_packages_TEMP": "All C:; snapshot free space reported, not a reservation",
+  "events_initial": {
+    "Application": [],
+    "Microsoft-Windows-Windows Defender/Operational": []
+  },
+  "events_after_diagnosis": {
+    "Application": [],
+    "Microsoft-Windows-Windows Defender/Operational": []
+  },
+  "WER_fault_address_module": "UNKNOWN; no matching collected events; compiler caught internal SIGSEGV",
+  "settings_changes": "NONE"
+}

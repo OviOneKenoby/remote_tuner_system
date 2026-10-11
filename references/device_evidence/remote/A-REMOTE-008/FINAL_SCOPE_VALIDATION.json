@@ -1,0 +1,16 @@
+{
+  "original_files_unchanged": 4036,
+  "selected_external_files_unchanged": 1031,
+  "full_installed_toolchain_files_unchanged": 2049,
+  "original_root_Git": "NONE",
+  "hardware_access": "NONE",
+  "SDK_dependency_version_updates": "NONE",
+  "qualification_optimization_changes": "NONE",
+  "source_publication": "NONE",
+  "source_to_build": "UNKNOWN",
+  "clean_build_reproduction": "BLOCKED",
+  "A008": "IN PROGRESS / BLOCKED ON COMPILER ICE",
+  "A009": "BLOCKED / NOT STARTED",
+  "new_complete_clean_builds": 0,
+  "historical_private_capture_restoration": "Prior scope metadata restored exact recorded hash after audit helper refreshed it; current facts recorded separately here"
+}

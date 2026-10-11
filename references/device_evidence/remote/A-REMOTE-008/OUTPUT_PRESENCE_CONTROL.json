@@ -1,0 +1,46 @@
+[
+  {
+    "name": "output_presence_control_1",
+    "deleted_prior_output": true,
+    "before": {
+      "exists": true,
+      "bytes": 328080
+    },
+    "exit": 1,
+    "after_exists": false,
+    "after_SHA256": null
+  },
+  {
+    "name": "output_presence_control_2",
+    "deleted_prior_output": false,
+    "before": {
+      "exists": false,
+      "bytes": null
+    },
+    "exit": 1,
+    "after_exists": false,
+    "after_SHA256": null
+  },
+  {
+    "name": "output_presence_control_3",
+    "deleted_prior_output": true,
+    "before": {
+      "exists": false,
+      "bytes": null
+    },
+    "exit": 0,
+    "after_exists": true,
+    "after_SHA256": "e140ad2ffed0de3b871aa5e81dccce0620d38d7c4b3e194cedd884a3f6e6b8f2"
+  },
+  {
+    "name": "output_presence_control_4",
+    "deleted_prior_output": false,
+    "before": {
+      "exists": true,
+      "bytes": 328192
+    },
+    "exit": 1,
+    "after_exists": true,
+    "after_SHA256": "e140ad2ffed0de3b871aa5e81dccce0620d38d7c4b3e194cedd884a3f6e6b8f2"
+  }
+]
