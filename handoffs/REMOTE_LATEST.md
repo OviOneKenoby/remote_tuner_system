@@ -1,8 +1,8 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-PM-003-20261011T173747Z
-- Updated (UTC): 2026-10-11T17:37:47Z
+- Handoff ID: REMOTE-A-PM-004-20261011T175133Z
+- Updated (UTC): 2026-10-11T17:51:33Z
 - Task ID: A-PM-003
 - Status: READY FOR REVIEW
 - Prepared by: PM authorized current-state reconciliation publisher
@@ -38,7 +38,7 @@ Concrete monotonic durable root/CAS/ordered records G1-G4 unqualified; occupancy
 - CCM 1.0.0: NO CHANGE; frozen semantics/original approval retained
 - TUNER Native API v1: NO CHANGE; UNAPPROVED/UNFROZEN/NOT IMPLEMENTED
 - Other device impact: NONE; no device edits or inferred acceptance/automatic dependency completion
-- Approval evidence: [current owner scope](../references/PM_RECONCILIATION_AUTHORIZATION_2026-10-11.txt), D-005 limited TUNER factual acceptance; NONE for Native/shared/production approval
+- Approval evidence: [technical reconciliation scope](../references/PM_RECONCILIATION_SCOPE_2026-10-11.md), D-005 limited TUNER factual acceptance; NONE for Native/shared/production approval
 
 ## Blockers
 Production integration BLOCKED: qualified newest-intent root/ordered backend absent;24KiB conditional and higher modeled occupancy fails; hardware NOT RUN. Common gate OPEN/NOT PASSED, O01-O17 OPEN.
@@ -53,7 +53,7 @@ A-REMOTE-005 recommendation only: read-only concrete G0-G4 feasibility/design an
 - Firmware result commit(s): NONE in PM round; device firmware commit UNKNOWN
 - Device changelog: A003/A004 append records preserved in immutable evidence; no PM device edit
 - Coordination publication: pm/reconcile-20261011; PR7/8/9 merge hashes in PM review; final SHA after remote verification
-- Previous handoff archive: [archive/remote/2026-10-11T173747Z_A-PM-003_REMOTE-A-REMOTE-004-20261008T202056Z.md](../archive/remote/2026-10-11T173747Z_A-PM-003_REMOTE-A-REMOTE-004-20261008T202056Z.md)
+- Previous handoff archive: [archive/remote/2026-10-11T175133Z_A-PM-004_REMOTE-A-PM-003-20261011T173747Z.md](../archive/remote/2026-10-11T175133Z_A-PM-004_REMOTE-A-PM-003-20261011T173747Z.md)
 
 ## Hardware status
 - Physical device tested: NO for A003/A004/PM review

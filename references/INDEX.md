@@ -44,3 +44,6 @@ No passwords/tokens/private telemetry added. Both latest device handoffs remain 
 
 ## Current evidence index - 2026-10-11
 Above availability/verification sections retain initial 2026-10-08 scope, not current status. Frozen artifact recovered in REMOTE A001; [current PM index](pm/2026-10-11/INDEX.md) covers PR7/8/9 and final TUNERv1.1.11. [Current project state](../PROJECT_SYNC.md) supersedes baseline/placeholder present-tense statements; originals immutable.
+
+## Administrative reference correction - 2026-10-11
+Current reconciliation reference: [technical scope](PM_RECONCILIATION_SCOPE_2026-10-11.md). Conversational authorization transcript removed from current tree; historical commits/archives remain unchanged. Technical verdicts are unchanged.

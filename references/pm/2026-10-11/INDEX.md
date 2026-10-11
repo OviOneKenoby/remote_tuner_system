@@ -1,7 +1,7 @@
 # PM reconciliation evidence - 2026-10-11
 Input coordination main `531aa8cd0435ed9813ab39664888992583df0d28`; review UTC 2026-10-11T17:37:47Z.
 
-[Exact owner authorization](../../PM_RECONCILIATION_AUTHORIZATION_2026-10-11.txt) preserved byte-for-byte. Current request authorizes PM publication/host review; older packages and device instructions remain historical scope, not authority to expand device work.
+[Technical reconciliation scope](../../PM_RECONCILIATION_SCOPE_2026-10-11.md) records technical objectives, allowed/excluded actions and integration commits; conversational transcript removed by administrative correction.
 
 - [Integration heads/merge commits](INTEGRATION.json); [PR7](pr7_api.json), [PR8](pr8_api.json), [PR9](pr9_api.json) API snapshots. Issue comments, reviews and inline threads fetched independently: all empty at review.
 - [Complete read inventory](read_inventory.json): PR7 5 files, PR8 35, PR9 47; every text decoded, JSON parsed, binaries inventoried.

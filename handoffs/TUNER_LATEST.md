@@ -1,8 +1,8 @@
 # TUNER//01 handoff
 
 ## Metadata
-- Handoff ID: TUNER-A-PM-003-20261011T173747Z
-- Updated (UTC): 2026-10-11T17:37:47Z
+- Handoff ID: TUNER-A-PM-004-20261011T175133Z
+- Updated (UTC): 2026-10-11T17:51:33Z
 - Task ID: A-PM-003
 - Status: ACCEPTED
 - Prepared by: PM authorized current-state reconciliation publisher
@@ -38,7 +38,7 @@ Current local flashed residency NOT VERIFIED; zero-DMA FAIL,30-minute soak NOT C
 - CCM 1.0.0: NO CHANGE; frozen semantics/original approval retained
 - TUNER Native API v1: NO CHANGE; UNAPPROVED/UNFROZEN/NOT IMPLEMENTED
 - Other device impact: NONE; no device edits or inferred acceptance/automatic dependency completion
-- Approval evidence: [current owner scope](../references/PM_RECONCILIATION_AUTHORIZATION_2026-10-11.txt), D-005 limited TUNER factual acceptance; NONE for Native/shared/production approval
+- Approval evidence: [technical reconciliation scope](../references/PM_RECONCILIATION_SCOPE_2026-10-11.md), D-005 limited TUNER factual acceptance; NONE for Native/shared/production approval
 
 ## Blockers
 NONE for factual publication; case-specific physical matrix PENDING, remaining resource/shared gates unresolved. Common gate OPEN/NOT PASSED, O01-O17 OPEN.
@@ -53,7 +53,7 @@ A-REMOTE-005 recommendation only: read-only concrete G0-G4 feasibility/design an
 - Firmware result commit(s): 5fb92c95d228d744d1182ae3956e850c5be2f277 (release main/tag); executable source 124e84801b06f9e07764dabc3985a573dffaff3b
 - Device changelog: TUNER CHANGELOG at final release merge; no PM edit
 - Coordination publication: pm/reconcile-20261011; PR7/8/9 merge hashes in PM review; final SHA after remote verification
-- Previous handoff archive: [archive/tuner/2026-10-11T173747Z_A-PM-003_TUNER-A-TUNER-003-20261008T175304Z.md](../archive/tuner/2026-10-11T173747Z_A-PM-003_TUNER-A-TUNER-003-20261008T175304Z.md)
+- Previous handoff archive: [archive/tuner/2026-10-11T175133Z_A-PM-004_TUNER-A-PM-003-20261011T173747Z.md](../archive/tuner/2026-10-11T175133Z_A-PM-004_TUNER-A-PM-003-20261011T173747Z.md)
 
 ## Hardware status
 - Physical device tested: YES in prior owner evidence; NO by PM this round

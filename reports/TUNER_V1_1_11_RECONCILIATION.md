@@ -1,5 +1,5 @@
 # Current TUNER v1.1.11 reconciliation
-Reviewed 2026-10-11T17:37:47Z; coordination input `531aa8cd0435ed9813ab39664888992583df0d28`. [Owner scope](../references/PM_RECONCILIATION_AUTHORIZATION_2026-10-11.txt). This supersedes the baseline in historical [A-TUNER-003](A-TUNER-003.md); its old 1,999,408-byte BIN and reports remain unchanged historical evidence.
+Reviewed 2026-10-11T17:37:47Z; coordination input `531aa8cd0435ed9813ab39664888992583df0d28`. [Owner scope](../references/PM_RECONCILIATION_SCOPE_2026-10-11.md). This supersedes the baseline in historical [A-TUNER-003](A-TUNER-003.md); its old 1,999,408-byte BIN and reports remain unchanged historical evidence.
 
 ## Exact current identity
 - [Firmware PR5](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/5) MERGED; main/tag v1.1.11/merge `5fb92c95d228d744d1182ae3956e850c5be2f277`, independently checked with metadata and git ls-remote.

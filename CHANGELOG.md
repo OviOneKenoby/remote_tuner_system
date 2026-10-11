@@ -84,3 +84,7 @@ READY FOR REVIEW, DESIGN ONLY. reports/A-REMOTE-002.md with durable identity/eff
 - Reconciled final TUNER v1.1.11 main/tag/PR5/release/source/BIN/ELF; all five asset digests PASS. Owner functional BT/web/ping/recovery acceptance retains zero-DMA FAIL,3m44.566s limit and case-specific physical PENDING.
 - Updated current globals/task dispositions; appended D-005 without deleting history/closing O01-O17; archived both old handoffs byte-for-byte; added exact owner authorization, PM evidence/review/current TUNER report and Git-blob manifest.
 - No shared/Native/production Core/firmware/release/live NVS/credentials/partition/flash/hardware changes. D1-D5 unassigned; next backend mission recommended only.
+
+## 2026-10-11T17:51:33Z - A-PM-004 administrative reference correction
+- Removed conversational reconciliation authorization transcript from current tree; replaced with concise technical scope/reference. Updated current links, report wording and attributes; regenerated root Git-blob manifest. Previous handoffs archived byte-for-byte before link replacement.
+- No history rewrite/force push; PR7/8/9 merges and A-PM-003/D-005/device technical verdicts unchanged.

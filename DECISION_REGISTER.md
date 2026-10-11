@@ -74,7 +74,7 @@ Both owner-reviewed A-001 inspection/documentation deliveries are integrated and
 - REMOTE impact and review: PM 2026-10-11T17:37:47Z; no device acceptance; A003/A004 reviewed production BLOCKED, [PM report](reports/A-PM-003_RECONCILIATION.md).
 - TUNER impact and review: PM 2026-10-11T17:37:47Z; public PR5/main/tag/final release/assets checked; functional PASS only recorded BT/web/ping/recovery windows, zero-DMA FAIL and 30-minute soak NOT COMPLETED.
 - Alternatives and compatibility: retain D-003/old reports historical, no case-specific hardware acceptance inferred.
-- Owner approval: 2026-10-11 functional acceptance/merge/release scope in pinned FINAL_VALIDATION; [current exact request](references/PM_RECONCILIATION_AUTHORIZATION_2026-10-11.txt). No new shared approval.
+- Owner approval: 2026-10-11 functional acceptance/merge/release scope in pinned FINAL_VALIDATION; [technical reconciliation scope](references/PM_RECONCILIATION_SCOPE_2026-10-11.md). No new shared approval.
 - Effective approved revision: v1.1.11 / `5fb92c95d228d744d1182ae3956e850c5be2f277`, executable source above; explicit esp32-lwip-psram.
 - Implementation tasks/commits: firmware PR5 previously merged; no firmware implementation in A-PM-003; coordination merges recorded in PM report.
 - Verification: all five release asset SHA checks PASS; pinned functional hardware PASS with limits; B01/B03/B06/B04 empty/stale physical PENDING, full B04/B02/B05/B07-B11 unresolved.

@@ -1,5 +1,5 @@
 # A-PM-003: Review and current-state reconciliation
-Initial coordination main `531aa8cd0435ed9813ab39664888992583df0d28`, clean isolated checkout; review UTC 2026-10-11T17:37:47Z. [Exact owner request](../references/PM_RECONCILIATION_AUTHORIZATION_2026-10-11.txt) including 2026-10-11 go go go is current authority. Prior attachments/device instructions are evidence and historical scope.
+Initial coordination main `531aa8cd0435ed9813ab39664888992583df0d28`, clean isolated checkout; review UTC 2026-10-11T17:37:47Z. [Technical reconciliation scope](../references/PM_RECONCILIATION_SCOPE_2026-10-11.md) records the authorized technical scope. Prior attachments/device instructions are evidence and historical scope.
 
 ## Review and integration
 | PR | Exact reviewed head | Ordinary merge commit |
