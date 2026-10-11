@@ -1,6 +1,6 @@
 # A-REMOTE-008: Source-to-build reproducibility and canonical local baseline
 - Owner: REMOTE//01 / PM direct authorized executor
-- State: ASSIGNED
+- State: BLOCKED
 - Coordination input commit: 74c52c060306059b5a451457b26ce741ad457466
 - Objective: Determine exact installed/A006 correspondence of clean builds from local source; do not change functionality.
 - Baseline: Original Git-less REMOTE workspace;4036 files SHA baseline A006 unchanged; installed real BIN2485824 bytes SHA7e8d77c21898014fbd7ea625cf2d25aa7f77941d5ba1d24484090f7361279afb; private byte-preserving temporary copy only, no source push.
@@ -17,3 +17,7 @@
 
 ## Mandatory task footer application
 Read AGENTS/README/PROJECT_SYNC/API_STATUS/DECISION_REGISTER/both latest handoffs at recorded commit; execute only scoped task. Apply prompts/CODEX_TASK_FOOTER.md, with later owner-approved CCM1.1.0 effective and no original-device changelog edits (user restriction supersedes). Archive prior REMOTE handoff byte-exact, retain all template headings/fields; missing evidence UNKNOWN/NOT RUN. No source publication. Build and physical evidence separate. Reread remote before publication, preserve concurrent changes, report final commit externally.
+
+## Execution disposition - 2026-10-11
+- Original assignment state at published input commit: ASSIGNED; execution acceptance now BLOCKED.
+[Report](../reports/A-REMOTE-008_SOURCE_TO_BUILD.md): FAIL / SOURCE DOES NOT MATCH because both clean attempts fail identical compiler ICE; no fresh artifacts/source-to-build closure. Delivered evidence is not acceptance/DONE; A009 BLOCKED/not started. Original protected, no source/hardware/SDK changes.

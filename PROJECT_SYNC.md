@@ -131,3 +131,6 @@ PR13 normal merge `72875788767840d27c7085faf994b012d1babefd` accepts read-only e
 
 ## A-REMOTE-008 assigned - 2026-10-11
 [Exact task](tasks/A-REMOTE-008.md) assigns private offline source-to-build closure only. D-008 architectural approval does not authorize hardware writes/backend/migration. Original workspace/source privacy preserved; result requires separate OPEN/unmerged review. A009 not assigned/started. All shared/hardware qualification gaps retained.
+
+## A-REMOTE-008 blocked result - 2026-10-11
+[Report](reports/A-REMOTE-008_SOURCE_TO_BUILD.md): FAIL / SOURCE DOES NOT MATCH on repeated GCC internal compiler error Segmentation fault at esp_lcd_panel_rgb.c:700:1 (-j8/-j1 clean attempts). No complete artifacts or fresh firmware hash; correspondence UNKNOWN, not proven code mismatch.4036 original files and1031 selected external hashes preserved, effective config/TU lists agree; private Git baseline unqualified/no push. No hardware/source/SDK publication/change. A008/A009 BLOCKED, no automatic implementation. D00864KiB target/serviceUSB/noOTAtable/ROMrecovery architecture approved, migration/backend/production unqualified; frozenCCM/Nativeunapproved/O01-O17/gateOPEN/ADCFAIL/rollbackPENDING unchanged.

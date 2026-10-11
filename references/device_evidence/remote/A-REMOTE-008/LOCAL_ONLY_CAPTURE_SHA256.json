@@ -1,0 +1,112 @@
+{
+  "A006_REFERENCE_ARTIFACTS.json": {
+    "sha256": "6a96e86eba2ca49183bf2685b1c32449fa6570a34e307a232003c9c325172892",
+    "bytes": 809,
+    "scope": "LOCAL-ONLY; raw contents never copied to public repository"
+  },
+  "BASELINE.json": {
+    "sha256": "a783081eea16e7ef917fe964a9bf22d055e9a5ef5729348ee0005815786942ca",
+    "bytes": 634,
+    "scope": "LOCAL-ONLY; raw contents never copied to public repository"
+  },
+  "BUILD1_COMMAND.json": {
+    "sha256": "fc90ed71b0ac06c70198838547298743bee2da4ef1b25213e06466d23af30638",
+    "bytes": 531,
+    "scope": "LOCAL-ONLY; raw contents never copied to public repository"
+  },
+  "BUILD1_RAW.log": {
+    "sha256": "44d22449f5ffb6f83522d32087d051a5648f4f669ba85a9d0c5929bec213ef69",
+    "bytes": 2121825,
+    "scope": "LOCAL-ONLY; raw contents never copied to public repository"
+  },
+  "BUILD2_COMMAND.json": {
+    "sha256": "c9dbc6ab24c070ddd8af9c9fb15a8cb668e64dc5b405530eba9988cbf14ce386",
+    "bytes": 531,
+    "scope": "LOCAL-ONLY; raw contents never copied to public repository"
+  },
+  "BUILD2_RAW.log": {
+    "sha256": "90571221ee4d2a8daf013217f2ff2e5cda7f126f966cd2305b33b802196a9268",
+    "bytes": 2062315,
+    "scope": "LOCAL-ONLY; raw contents never copied to public repository"
+  },
+  "BUILD_COMMAND_COMPARISON_LOCAL_ONLY.json": {
+    "sha256": "3d9beeb838d320ef5a07e12a541c232ec173ac7f34e696a569f14a7961b2b84f",
+    "bytes": 540,
+    "scope": "LOCAL-ONLY; raw contents never copied to public repository"
+  },
+  "CLASSIFICATION.json": {
+    "sha256": "5bba7432772f55ec389e39ca92a6de309ab4a96d1a5f0392d175fb8e3988dcea",
+    "bytes": 384087,
+    "scope": "LOCAL-ONLY; raw contents never copied to public repository"
+  },
+  "COMPILER_LINKER_VERSIONS.json": {
+    "sha256": "bb017f3a97eb5b6ebbd4994d07d8d26379e6fb678ea753055a4143da500fc38e",
+    "bytes": 984,
+    "scope": "LOCAL-ONLY; raw contents never copied to public repository"
+  },
+  "CONFIG_COMPARISON.json": {
+    "sha256": "a87b4cf103bdd58e2a3be38ee5f6125fb22bf3d62a277925c5af3cbda377c37c",
+    "bytes": 253,
+    "scope": "LOCAL-ONLY; raw contents never copied to public repository"
+  },
+  "DEPENDENCY_COMMAND.json": {
+    "sha256": "c5003b79289f23edcadaed5e8e97cdfbffe5842b366151d1cc6618be3e9a4551",
+    "bytes": 237,
+    "scope": "LOCAL-ONLY; raw contents never copied to public repository"
+  },
+  "DEPENDENCY_COMMAND_UTF8.json": {
+    "sha256": "c02a6fb181663a3de2d295e5210dead3df2d4f85b7fedf7dbc055c307c1ea3e5",
+    "bytes": 350,
+    "scope": "LOCAL-ONLY; raw contents never copied to public repository"
+  },
+  "DEPENDENCY_REPORT_RAW.log": {
+    "sha256": "966e179f66047f32214cd658f8bd4e49d4d80628ec23f93d3f08b014c494604a",
+    "bytes": 3748,
+    "scope": "LOCAL-ONLY; raw contents never copied to public repository"
+  },
+  "DEPENDENCY_REPORT_UTF8_RAW.log": {
+    "sha256": "4fdb9fd40cdf2c64e8a3ed36cea03d9a072c61cc3cc519243a0092bcdafb9e99",
+    "bytes": 1639,
+    "scope": "LOCAL-ONLY; raw contents never copied to public repository"
+  },
+  "ENTRY_SHA256.json": {
+    "sha256": "38cf58ccef46ad71320fca1cad0c02e54d5682ddcfa83ff1b41ee47b5f761d58",
+    "bytes": 710772,
+    "scope": "LOCAL-ONLY; raw contents never copied to public repository"
+  },
+  "EXTERNAL_ENTRY_SHA256.json": {
+    "sha256": "8ec9ff35395fe134fbe519b8a68385424597a4153c2706b531dfdb3ba770d9dd",
+    "bytes": 157469,
+    "scope": "LOCAL-ONLY; raw contents never copied to public repository"
+  },
+  "PARTIAL_OUTPUTS.json": {
+    "sha256": "bc0e1f0b4d52f3a0b5c76207148e7a4ee3b3c8dd51636e212c41cc7cb7e10e8b",
+    "bytes": 456,
+    "scope": "LOCAL-ONLY; raw contents never copied to public repository"
+  },
+  "PREBUILD_ENVIRONMENT.json": {
+    "sha256": "d3fca13de085a39cbda67e34ff7dfad57ffedcba9b3f891c22188e603eea97c0",
+    "bytes": 628,
+    "scope": "LOCAL-ONLY; raw contents never copied to public repository"
+  },
+  "PUBLICATION_INPUT.json": {
+    "sha256": "facaf648ba81a8bfe939c774f7491867b89a96f50441faa8a1f072b61a428afe",
+    "bytes": 123,
+    "scope": "LOCAL-ONLY; raw contents never copied to public repository"
+  },
+  "SCOPE_VALIDATION.json": {
+    "sha256": "5a4c858830da407e72430ffd427efbe19f79d35514df37c2d6943a5bb4ad0c98",
+    "bytes": 1125,
+    "scope": "LOCAL-ONLY; raw contents never copied to public repository"
+  },
+  "SDKCONFIG_AFTER_BUILD1_LOCAL_ONLY.txt": {
+    "sha256": "5e1757dd81d2a891c4e8863fa4993b0bc643baeaef766399d644ff27a1441f0d",
+    "bytes": 85971,
+    "scope": "LOCAL-ONLY; raw contents never copied to public repository"
+  },
+  "guard/sitecustomize.py": {
+    "sha256": "984e9ad006d182f5406d67084ea20f820dceb4342d49f71e13990a4cbc6c2639",
+    "bytes": 1971,
+    "scope": "LOCAL-ONLY offline guard helper"
+  }
+}

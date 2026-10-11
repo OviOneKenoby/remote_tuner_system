@@ -1,0 +1,20 @@
+{
+  "commit": "2855ff4c96122c424c4c191be458fd24de7b677a",
+  "tracked_files": 1604,
+  "copy_entry_byte_preserving": true,
+  "entry_files": 4036,
+  "Git_remote": "NONE",
+  "sensitive_files_excluded_from_commit": 1,
+  "classification": {
+    "documentation/tools/tests/other": 604,
+    "build_outputs/generated": 2322,
+    "dependency_build_cache": 10,
+    "local_IDE_configuration": 3,
+    "source/build_input": 996,
+    "local_configuration": 6,
+    "managed_dependency_cache": 92,
+    "unrelated_nested_repository_metadata/docs": 3
+  },
+  "qualified_firmware_baseline": false,
+  "label": "Private unqualified source baseline; not installed firmware; no remote/push"
+}

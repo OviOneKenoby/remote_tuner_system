@@ -32,3 +32,6 @@ references/device_evidence/remote/A-REMOTE-006/** -text
 
 # A007 sanitized observation/hash evidence only; raw device captures never published
 references/device_evidence/remote/A-REMOTE-007/** -text
+
+# A008 sanitized metadata/log/hash evidence only; private source and raw artifacts excluded
+references/device_evidence/remote/A-REMOTE-008/** -text

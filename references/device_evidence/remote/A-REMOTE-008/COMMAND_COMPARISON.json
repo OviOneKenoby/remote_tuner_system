@@ -1,0 +1,48 @@
+{
+  "original_units": 1449,
+  "fresh_configured_units": 1449,
+  "added_units": [],
+  "removed_units": [],
+  "differing_commands": [
+    {
+      "unit": "<PIO>/packages/framework-espidf@3.50503.0/components/esp_app_format/esp_app_desc.c",
+      "command_token_delta": [
+        {
+          "old": [
+            "-DPROJECT_VER=/\"1/\""
+          ],
+          "fresh": [
+            "-DPROJECT_VER=/\"2855ff4-dirty/\""
+          ]
+        }
+      ]
+    },
+    {
+      "unit": "<PIO>/packages/framework-espidf@3.50503.0/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c",
+      "command_token_delta": [
+        {
+          "old": [
+            "esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/492d64494d188749334d06a986158ed6/framework-espidf@3.50503.0/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.obj"
+          ],
+          "fresh": [
+            "esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/77c485583f6c74a5393c1da6dd699225/components/mbedtls/port/crypto_shared_gdma/esp_crypto_shared_gdma.c.obj"
+          ]
+        }
+      ]
+    },
+    {
+      "unit": "<PIO>/packages/framework-espidf@3.50503.0/components/mbedtls/port/sha/core/esp_sha_gdma_impl.c",
+      "command_token_delta": [
+        {
+          "old": [
+            "esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/C_/Users/RYZEN/.platformio/packages/framework-espidf@3.50503.0/components/mbedtls/port/sha/core/esp_sha_gdma_impl.c.obj"
+          ],
+          "fresh": [
+            "esp-idf/mbedtls/mbedtls/library/CMakeFiles/mbedcrypto.dir/492d64494d188749334d06a986158ed6/framework-espidf@3.50503.0/components/mbedtls/port/sha/core/esp_sha_gdma_impl.c.obj"
+          ]
+        }
+      ]
+    }
+  ],
+  "method": "Normalize only project path and separator spelling for token analysis; full original command list retained privately; output/object path changes not code identity proof"
+}

@@ -1,0 +1,28 @@
+{
+  "firmware.bin": {
+    "exists": true,
+    "bytes": 2485824,
+    "sha256": "7e8d77c21898014fbd7ea625cf2d25aa7f77941d5ba1d24484090f7361279afb"
+  },
+  "firmware.elf": {
+    "exists": true,
+    "bytes": 17777512,
+    "sha256": "61d077235a971919807bcff38aede169554f60de1ea7152625e5aa5b0b730525"
+  },
+  "firmware.map": {
+    "exists": true,
+    "actual_name": "12_LVGL_Test.map",
+    "bytes": 14090045,
+    "sha256": "d4cc48cbfcefb1edde1abd17076a42d58515ad3f801fd95b94b46502187e7c4e"
+  },
+  "bootloader.bin": {
+    "exists": true,
+    "bytes": 20832,
+    "sha256": "ebe1f8e2fa9dc072808ee05ced04db850106aa1b3f91d50c30f52aec62253b1c"
+  },
+  "partitions.bin": {
+    "exists": true,
+    "bytes": 3072,
+    "sha256": "d7ffd497cfcd33e697304b3cf8112e7a1f1cb0619639fe9879ed431cbbdc8835"
+  }
+}

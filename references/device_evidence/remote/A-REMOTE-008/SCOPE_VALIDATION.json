@@ -1,0 +1,34 @@
+{
+  "status": "PASS original preservation and bounded failure reporting",
+  "original_files_unchanged": 4036,
+  "selected_external_files_unchanged": 1031,
+  "copy_noncache_delta": [
+    {
+      "file": ".gitignore",
+      "change": "audit .gitignore only"
+    },
+    {
+      "file": "CHANGELOG.md",
+      "change": "private-only device changelog audit append after builds"
+    },
+    {
+      "file": "components/lvgl/scripts/release/commits.txt",
+      "change": "removed during build, cause UNKNOWN",
+      "selected_compile_unit": false
+    },
+    {
+      "file": "components/lvgl/src/extra/others/fragment/README.md",
+      "change": "removed during build, cause UNKNOWN",
+      "selected_compile_unit": false
+    }
+  ],
+  "hardware": "NOT RUN / no access",
+  "SDK_dependency_updates": "NONE / guard events NONE",
+  "verdict": "FAIL / SOURCE DOES NOT MATCH",
+  "verdict_basis": "Two clean attempts fail same compiler ICE; no complete image, source correspondence UNKNOWN",
+  "A008": "BLOCKED",
+  "A009": "BLOCKED / NOT STARTED",
+  "new_firmware_bin": "NOT PRODUCED",
+  "source_publication": "NONE",
+  "raw_logs_artifacts": "LOCAL-ONLY"
+}

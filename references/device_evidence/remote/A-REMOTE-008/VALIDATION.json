@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "assignment": "1611f3130d1286c9d0b413baf4858f07aebb0e97",
+  "relative_links": 43,
+  "template": "exact headings/all fields PASS",
+  "privacy": "No source/patch/raw binary/dump/full MAC/private paths/secrets; metadata/commands/hashes only",
+  "original4036": "BYTE UNCHANGED",
+  "selected_external1031": "BYTE UNCHANGED",
+  "result_verdict": "FAIL / SOURCE DOES NOT MATCH on build inability",
+  "task": "BLOCKED",
+  "A009": "BLOCKED / NOT STARTED",
+  "PR": "must remain OPEN/unmerged",
+  "new_firmware_hash": "NOT PRODUCED",
+  "canonical_history": "preserved; own task State updated, handoff archived exactly"
+}

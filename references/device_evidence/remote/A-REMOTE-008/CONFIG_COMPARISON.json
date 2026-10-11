@@ -1,0 +1,6 @@
+{
+  "effective_config_differing_keys": [],
+  "effective_config_equal": true,
+  "selected_sdkconfig_text_equal": true,
+  "local_git_status": " D components/lvgl/scripts/release/commits.txt\n D components/lvgl/src/extra/others/fragment/README.md\n"
+}

@@ -1,0 +1,13 @@
+{
+  "original_translation_units": 1449,
+  "categories": {
+    "local_source": 477,
+    "SDK": 966,
+    "managed_dependency": 6
+  },
+  "dependency_lock_sha256": "9b7816a0ab8d663d7cf488061f426412e6384306783cf26f05fece958f5acbb1",
+  "sdkconfig_selected_sha256": "5e1757dd81d2a891c4e8863fa4993b0bc643baeaef766399d644ff27a1441f0d",
+  "sdkconfig_defaults_sha256": "08c722635f0271dc2cb3fbd898d9189b02cdcdc3f87e114093fd6e861dabb883",
+  "partitions_csv_sha256": "fb9b79c3f9b92f43633569e6159e4d0522f0e4289b4e081d864cc4587ce496fc",
+  "platformio_ini_sha256": "e455b728cecf0d72d391e7bb841e8795ce899c7af85a0ed64e15db67d0c9f175"
+}
