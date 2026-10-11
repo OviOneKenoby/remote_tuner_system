@@ -1,0 +1,16 @@
+# A-REMOTE-007: Installed flash, partition and firmware identity
+- Owner: REMOTE//01 / PM direct read-only executor
+- State: ASSIGNED
+- Coordination input commit: 8c88ece60138733535525b52e0a929a6f07a11c2
+- Objective: Observe installed chip/flash/security/partition table/OTA/image/candidate region; compare A006; restore existing boot by controlled reset, no persistent writes.
+- Baseline: Git-less REMOTE C:/Users/RYZEN/Documents/REMOTE01/Code preserved; installed identity UNKNOWN until measured; source/build-selected ESP-IDF5.5.3.
+- Required references: CCM1.1.0 frozen; reviewed A006 PR12 head063a6e17372d4723b3776a39f8b294c5e80d3cbe; local build-selected esptool/SDK/config/partition artifacts.
+- Dependencies: PR12 normal merge8c88ece60138733535525b52e0a929a6f07a11c2 accepted as conditional historical analysis only; D007 layout NOT APPROVED. Current direct assignment replaces prospective007 design reservation only.
+- Allowed scope: Controlled reset/bootloader entry; selected esptool RAM-only stub; read-only chip/flash/security/table/otadata/justified active image/confirmed unallocated candidate-region reads; passive serial capture; private local raw files; sanitized coordination report/result OPEN PR.
+- Excluded scope: No write_flash/erase/merge_bin/eFuse/upload/partition/NVS/provisioning/reconnect/recovery/backend/firmware/SDK/config/release/TUNER changes. No public raw dumps/images/NVS/secrets/full MAC/REMOTE source. No automatic result merge.
+- Shared-contract guard: CCM1.1.0 frozen unchanged; Native unapproved; G1a required/G1b outside; O01-O17/gate OPEN; no layout approval.
+- Acceptance criteria: Evidence-derived offsets/tool/target and unambiguous port before connection; passive pre-reset logs; physical/security/table/OTA/image/region measurements or exact UNKNOWN/block; restore existing firmware; publish sanitized hashes/classifications in separate OPEN PR.
+- Verification: Record timestamps/Python/esptool/PlatformIO; process/port inventory; no device write operations; selected SDK partition utility; installed structural+byte comparison; OTA CRC/selection using matching SDK semantics; validated real image length/hash; candidate counts only; source inventory before/after.
+- Stop/report conditions: Ambiguous/no port; active writer; security restrictions; flash communication warning; layout mismatch/sensitive interval; uncertain active image means no automatic slot read; failed return boot means stop without recovery/flash.
+- Required outputs: reports/A-REMOTE-007_DEVICE_IDENTITY.md; evidence READ_ONLY_PROTOCOL/INSTALLED_LAYOUT/OTA_AND_FIRMWARE_IDENTITY/CANDIDATE_REGION_OBSERVATION/EVIDENCE_MANIFEST; sanitized logs/local-only capture hashes; minimal task/status/changelog; no implementation task assignment.
+- PM assignment evidence: 2026-10-11 direct scoped device-identification request; this technical assignment records approved observation/reset/RAM-only/read-only scope, not a conversational transcript or partition/production approval.
