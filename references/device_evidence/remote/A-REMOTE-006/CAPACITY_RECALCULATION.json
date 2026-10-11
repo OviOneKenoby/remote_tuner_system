@@ -1,0 +1,38 @@
+[
+  {
+    "KiB": 24,
+    "pool_entries": 756,
+    "previous_conservative_required": 1222,
+    "previous_margin": -466,
+    "previous_margin_percent": -61.64021164021164,
+    "dedicated_P4_required": 948,
+    "dedicated_margin": -192,
+    "dedicated_margin_percent": -25.396825396825395,
+    "wifi_external_entries_removed": 0,
+    "physical": "UNKNOWN"
+  },
+  {
+    "KiB": 48,
+    "pool_entries": 1512,
+    "previous_conservative_required": 1222,
+    "previous_margin": 290,
+    "previous_margin_percent": 19.17989417989418,
+    "dedicated_P4_required": 948,
+    "dedicated_margin": 564,
+    "dedicated_margin_percent": 37.301587301587304,
+    "wifi_external_entries_removed": 274,
+    "physical": "UNKNOWN"
+  },
+  {
+    "KiB": 64,
+    "pool_entries": 2016,
+    "previous_conservative_required": 1222,
+    "previous_margin": 794,
+    "previous_margin_percent": 39.38492063492063,
+    "dedicated_P4_required": 948,
+    "dedicated_margin": 1068,
+    "dedicated_margin_percent": 52.976190476190474,
+    "wifi_external_entries_removed": 274,
+    "physical": "UNKNOWN"
+  }
+]

@@ -1,0 +1,313 @@
+{
+  "environment": "remote01",
+  "idf": "5.5.3",
+  "framework_package": "framework-espidf@3.50503.0",
+  "parts": [
+    {
+      "label": "nvs",
+      "type": 1,
+      "subtype": 2,
+      "offset": 36864,
+      "size": 24576,
+      "end": 61440,
+      "flags": 0
+    },
+    {
+      "label": "phy_init",
+      "type": 1,
+      "subtype": 1,
+      "offset": 61440,
+      "size": 4096,
+      "end": 65536,
+      "flags": 0
+    },
+    {
+      "label": "factory",
+      "type": 0,
+      "subtype": 0,
+      "offset": 65536,
+      "size": 8388608,
+      "end": 8454144,
+      "flags": 0
+    },
+    {
+      "label": "otadata",
+      "type": 1,
+      "subtype": 0,
+      "offset": 8454144,
+      "size": 8192,
+      "end": 8462336,
+      "flags": 0
+    },
+    {
+      "label": "ota_0",
+      "type": 0,
+      "subtype": 16,
+      "offset": 8519680,
+      "size": 3145728,
+      "end": 11665408,
+      "flags": 0
+    },
+    {
+      "label": "ota_1",
+      "type": 0,
+      "subtype": 17,
+      "offset": 11665408,
+      "size": 3145728,
+      "end": 14811136,
+      "flags": 0
+    }
+  ],
+  "CSV_generated_bin_byte_identical": true,
+  "partition_table_binary_bytes": 3072,
+  "flash_configured_bytes": 16777216,
+  "flash_physical": "REQUIRES DEVICE EVIDENCE",
+  "flash_mode_build": "dio",
+  "flash_frequency_build": "80m",
+  "app_header": {
+    "magic": "0xe9",
+    "segment_count": 7,
+    "flash_mode_byte": 2,
+    "flash_size_nibble": 4,
+    "flash_frequency_nibble": 15
+  },
+  "bootloader_header": {
+    "magic": "0xe9",
+    "segment_count": 3,
+    "flash_mode_byte": 2,
+    "flash_size_nibble": 4,
+    "flash_frequency_nibble": 15
+  },
+  "firmware_bytes": 2485824,
+  "firmware_sha256": "7e8d77c21898014fbd7ea625cf2d25aa7f77941d5ba1d24484090f7361279afb",
+  "bootloader_bytes": 20832,
+  "otadata_bytes": 8192,
+  "ota_initial_all_FF": true,
+  "variants": {
+    "A_64KiB": {
+      "partitions": [
+        {
+          "label": "nvs",
+          "type": 1,
+          "subtype": 2,
+          "offset": 36864,
+          "size": 24576,
+          "end": 61440,
+          "flags": 0
+        },
+        {
+          "label": "phy_init",
+          "type": 1,
+          "subtype": 1,
+          "offset": 61440,
+          "size": 4096,
+          "end": 65536,
+          "flags": 0
+        },
+        {
+          "label": "factory",
+          "type": 0,
+          "subtype": 0,
+          "offset": 65536,
+          "size": 8388608,
+          "end": 8454144,
+          "flags": 0
+        },
+        {
+          "label": "otadata",
+          "type": 1,
+          "subtype": 0,
+          "offset": 8454144,
+          "size": 8192,
+          "end": 8462336,
+          "flags": 0
+        },
+        {
+          "label": "ota_0",
+          "type": 0,
+          "subtype": 16,
+          "offset": 8519680,
+          "size": 3145728,
+          "end": 11665408,
+          "flags": 0
+        },
+        {
+          "label": "ota_1",
+          "type": 0,
+          "subtype": 17,
+          "offset": 11665408,
+          "size": 3145728,
+          "end": 14811136,
+          "flags": 0
+        },
+        {
+          "label": "remote_ctl",
+          "type": 1,
+          "subtype": 2,
+          "offset": 14811136,
+          "size": 65536,
+          "end": 14876672,
+          "flags": 0
+        }
+      ],
+      "configured_flash_bytes": 16777216,
+      "unallocated_tail_bytes": 1900544,
+      "app_bytes": 2485824,
+      "OTA_slot_bytes": 3145728,
+      "OTA_headroom_bytes": 659904,
+      "OTA_headroom_percent": 20.977783203125,
+      "factory_headroom_bytes": 5902784,
+      "configured_fit": "PASS",
+      "physical_fit": "REQUIRES DEVICE EVIDENCE",
+      "rollout_verdict": "CONDITIONAL"
+    },
+    "B_48KiB": {
+      "partitions": [
+        {
+          "label": "nvs",
+          "type": 1,
+          "subtype": 2,
+          "offset": 36864,
+          "size": 24576,
+          "end": 61440,
+          "flags": 0
+        },
+        {
+          "label": "phy_init",
+          "type": 1,
+          "subtype": 1,
+          "offset": 61440,
+          "size": 4096,
+          "end": 65536,
+          "flags": 0
+        },
+        {
+          "label": "factory",
+          "type": 0,
+          "subtype": 0,
+          "offset": 65536,
+          "size": 8388608,
+          "end": 8454144,
+          "flags": 0
+        },
+        {
+          "label": "otadata",
+          "type": 1,
+          "subtype": 0,
+          "offset": 8454144,
+          "size": 8192,
+          "end": 8462336,
+          "flags": 0
+        },
+        {
+          "label": "ota_0",
+          "type": 0,
+          "subtype": 16,
+          "offset": 8519680,
+          "size": 3145728,
+          "end": 11665408,
+          "flags": 0
+        },
+        {
+          "label": "ota_1",
+          "type": 0,
+          "subtype": 17,
+          "offset": 11665408,
+          "size": 3145728,
+          "end": 14811136,
+          "flags": 0
+        },
+        {
+          "label": "remote_ctl",
+          "type": 1,
+          "subtype": 2,
+          "offset": 14811136,
+          "size": 49152,
+          "end": 14860288,
+          "flags": 0
+        }
+      ],
+      "configured_flash_bytes": 16777216,
+      "unallocated_tail_bytes": 1916928,
+      "app_bytes": 2485824,
+      "OTA_slot_bytes": 3145728,
+      "OTA_headroom_bytes": 659904,
+      "OTA_headroom_percent": 20.977783203125,
+      "factory_headroom_bytes": 5902784,
+      "configured_fit": "PASS",
+      "physical_fit": "REQUIRES DEVICE EVIDENCE",
+      "rollout_verdict": "CONDITIONAL"
+    },
+    "C_CURRENT": {
+      "partitions": [
+        {
+          "label": "nvs",
+          "type": 1,
+          "subtype": 2,
+          "offset": 36864,
+          "size": 24576,
+          "end": 61440,
+          "flags": 0
+        },
+        {
+          "label": "phy_init",
+          "type": 1,
+          "subtype": 1,
+          "offset": 61440,
+          "size": 4096,
+          "end": 65536,
+          "flags": 0
+        },
+        {
+          "label": "factory",
+          "type": 0,
+          "subtype": 0,
+          "offset": 65536,
+          "size": 8388608,
+          "end": 8454144,
+          "flags": 0
+        },
+        {
+          "label": "otadata",
+          "type": 1,
+          "subtype": 0,
+          "offset": 8454144,
+          "size": 8192,
+          "end": 8462336,
+          "flags": 0
+        },
+        {
+          "label": "ota_0",
+          "type": 0,
+          "subtype": 16,
+          "offset": 8519680,
+          "size": 3145728,
+          "end": 11665408,
+          "flags": 0
+        },
+        {
+          "label": "ota_1",
+          "type": 0,
+          "subtype": 17,
+          "offset": 11665408,
+          "size": 3145728,
+          "end": 14811136,
+          "flags": 0
+        }
+      ],
+      "configured_flash_bytes": 16777216,
+      "unallocated_tail_bytes": 1966080,
+      "app_bytes": 2485824,
+      "OTA_slot_bytes": 3145728,
+      "OTA_headroom_bytes": 659904,
+      "OTA_headroom_percent": 20.977783203125,
+      "factory_headroom_bytes": 5902784,
+      "configured_fit": "PASS",
+      "physical_fit": "REQUIRES DEVICE EVIDENCE",
+      "rollout_verdict": "FAIL as dedicated-control recommendation"
+    }
+  },
+  "source_binary_flashed": "UNKNOWN",
+  "device": "NOT ACCESSED",
+  "compile": "NOT RUN; existing artifacts suffice"
+}

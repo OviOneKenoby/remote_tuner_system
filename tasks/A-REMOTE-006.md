@@ -14,3 +14,7 @@
 - Stop/report conditions: Input/head mismatch, concurrent changes or missing selected-toolchain evidence; no physical flash size/installed image claims from config alone.
 - Required outputs: reports/A-REMOTE-006_FLASH_LAYOUT.md; references/device_evidence/remote/A-REMOTE-006/{CURRENT_LAYOUT,CANDIDATE_LAYOUTS,MIGRATION_AND_ROLLBACK,EVIDENCE_MANIFEST}.md; hashes; task/status/changelog and separate OPEN result PR. Device changelog/handoff not replaced for read-only analysis; no invented authorization transcript.
 - PM assignment evidence: 2026-10-11 direct owner request for technical read-only flash/layout analysis; this published assignment is its concise scope. No hardware/layout implementation approval.
+
+## Read-only result disposition - 2026-10-11
+- State: BLOCKED (deployment/acceptance pending owner review and missing device/recovery evidence; read-only analysis delivered).
+[Report](../reports/A-REMOTE-006_FLASH_LAYOUT.md).64/48 configured-fit conditional, prefer64 without OTA shrink; physical NOT RUN, production NOT IMPLEMENTED. Original ASSIGNED fields retained as assignment history. No next device task assigned.

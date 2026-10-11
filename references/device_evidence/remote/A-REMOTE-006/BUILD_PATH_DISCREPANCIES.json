@@ -1,0 +1,29 @@
+{
+  "12_LVGL_Test.bin": {
+    "exists": false
+  },
+  "12_LVGL_Test.elf": {
+    "exists": false
+  },
+  "partition_table/partition-table.bin": {
+    "exists": false
+  },
+  "bootloader/bootloader.bin": {
+    "exists": false
+  },
+  "firmware.bin": {
+    "exists": true
+  },
+  "firmware.elf": {
+    "exists": true
+  },
+  "partitions.bin": {
+    "exists": true
+  },
+  "bootloader.bin": {
+    "exists": true
+  },
+  "bootloader/bootloader.elf": {
+    "exists": false
+  }
+}

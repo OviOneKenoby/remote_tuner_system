@@ -1,0 +1,15 @@
+esptool.py v4.11.0
+File size: 2485824 (bytes)
+Image version: 1
+Entry point: 4037c44c
+7 segments
+
+Segment 1: len 0x145f84 load 0x3c100020 file_offs 0x00000018 [DROM]
+Segment 2: len 0x05fdc load 0x3fca4f00 file_offs 0x00145fa4 [BYTE_ACCESSIBLE,MEM_INTERNAL,DRAM]
+Segment 3: len 0x04088 load 0x40374000 file_offs 0x0014bf88 [MEM_INTERNAL,IRAM]
+Segment 4: len 0xf1f98 load 0x42000020 file_offs 0x00150018 [IROM]
+Segment 5: len 0x1cdd4 load 0x40378088 file_offs 0x00241fb8 [MEM_INTERNAL,IRAM]
+Segment 6: len 0x00020 load 0x50000280 file_offs 0x0025ed94 [RTC_DATA]
+Segment 7: len 0x00058 load 0x600fe000 file_offs 0x0025edbc [RTC_DRAM,RTC_IRAM]
+Checksum: 42 (valid)
+Validation Hash: 412548737176dcd8c553dd56d04689e5a68975f64dc276d5373c8dd1be7850f8 (valid)
