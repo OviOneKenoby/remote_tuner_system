@@ -1,0 +1,81 @@
+{
+  "idf_path": "C:/Users/RYZEN/.platformio/packages/framework-espidf@3.50503.0",
+  "idf_version": "5.5.3",
+  "framework_package": "3.50503.0",
+  "platform": "espressif32@6.13.0",
+  "toolchain": "xtensa-esp-elf@14.2.0+20251107",
+  "coordination_input": "4a4fe0b58036d919daf57d5036d9fcd99e33cf46",
+  "source_hashes": {
+    "SDK5.5.3/src/nvs_api.cpp": "9e2c748145c2a1d9a0798062316382ee24c2eeb18e17c9c43676a3c8bc323e4f",
+    "SDK5.5.3/src/nvs_handle_simple.cpp": "ff65228c44ee4945f54bdb073251ff2e0e39b3b9de7db4caa1e576606e172b91",
+    "SDK5.5.3/src/nvs_storage.cpp": "43d9723cee9791d63d9ade1205d26833abd7541a97d77e4392e933e8cf8361c9",
+    "SDK5.5.3/src/nvs_page.cpp": "1166427a9042eda79609d387e538602abd13c8de696c0ae36b321435d9a5877c",
+    "SDK5.5.3/src/nvs_page.hpp": "bed8fcd18a35ee702abbdd03e8d9d094b82fc45a057dd074166d5364278a7b65",
+    "SDK5.5.3/src/nvs_pagemanager.cpp": "c2d12e65174232db912d4a6b303787dbe5cf2ad9bd288f820885d933615b76f6",
+    "SDK5.5.3/private_include/nvs_constants.h": "e025890b9206bd02177b8dc5a0a3983935fae53981a865cb51ff0f12de8e1491",
+    "SDK5.5.3/include/nvs.h": "d961b401c3fa771c8cabdcf1ed19008b8044281b964990648d012c2ac81e0883",
+    "SDK5.5.3/include/nvs_flash.h": "5a88848045df9a98ab8aaa21cfb7fac20e2501bb72f638a079cdbba505426235",
+    "SDK5.5.3/src/nvs_partition.cpp": "84ebf8ce5f76de96e839f3d43b1b5a75704617c9050598ee1c10f19ed45a42f3",
+    "SDK5.5.3/src/nvs_platform.cpp": "34867e196e9e96ab2b740f37adc995d734918d185c921968786135fee54396ed",
+    "components/control/core.cpp": "b0e37fa24fcbd7d81ff0f3fc2e9739ea0f4f1df4b494a364e4c23c0aff066413",
+    "components/control/include/control/core.hpp": "8c2e46b3e6a76261104c706f22f4abf5bc1746433cba7770d121b3ae5f00db21",
+    "components/control/include/control/storage.hpp": "de8b3a189fb6bb2ec49fc5562a8f5f6a5cdfc290fc0a4f278b2b8435c25eab07",
+    "components/control/include/control/model.hpp": "97b46b13b274e0f41b1c1c333fa64b9fe09ec25a2118accc9cad329218cdcf99",
+    "components/control/include/control/mock_adapter.hpp": "48da2641acb1e917b413bc916f77520f24fc4e547fd1792141c5d8a108cd1d99",
+    "components/network_manager/runtime.cpp": "869b6b0dd77a40dd20f71d11c781be94babae8a206ac4a0f6ba61ad9f434ef39",
+    "components/network_manager/include/network_manager/model.hpp": "f828b00538f8f6ef1b84016cc434eb4ffed73f58dcfd363a4f0f88678617f63c",
+    "platformio.ini": "e455b728cecf0d72d391e7bb841e8795ce899c7af85a0ed64e15db67d0c9f175",
+    "partitions.csv": "fb9b79c3f9b92f43633569e6159e4d0522f0e4289b4e081d864cc4587ce496fc",
+    "CMakeLists.txt": "c02762f0c1b98608697e850c6143b9ac94b77e08d95d22c1ff6a0e6c59720d25",
+    "main/CMakeLists.txt": "54c47a34e39da82eedf4e2af7f8e3ded94475c815d59cb931cde56f67987daad",
+    "docs/COMMON_CONTROL_MODEL_V1.md": "7a46f9fffe706476de458aac078d0af1c94844df339248d3f9f4b5cf033011d7"
+  },
+  "matches_A004": {
+    "components/control/core.cpp": true,
+    "components/control/include/control/core.hpp": true,
+    "components/control/include/control/model.hpp": true,
+    "components/control/include/control/storage.hpp": true,
+    "partitions.csv": true,
+    "platformio.ini": true,
+    "CMakeLists.txt": true,
+    "main/CMakeLists.txt": true,
+    "docs/COMMON_CONTROL_MODEL_V1.md": true,
+    "SDK5.5.3/src/nvs_storage.cpp": false,
+    "SDK5.5.3/src/nvs_page.hpp": false,
+    "SDK5.5.3/src/nvs_handle_simple.cpp": false,
+    "SDK5.5.3/private_include/nvs_constants.h": false,
+    "SDK5.5.3/include/nvs.h": false
+  },
+  "prior_sdk_comparison": {
+    "SDK5.5.3/src/nvs_storage.cpp": {
+      "raw_equal": false,
+      "normalized_LF_equal": false,
+      "previous_sha": "0d13b31fa0880c4174d1a13071150fd444c79a83c4ac2cb703a1fabb2d7ac222",
+      "current_raw_sha": "43d9723cee9791d63d9ade1205d26833abd7541a97d77e4392e933e8cf8361c9"
+    },
+    "SDK5.5.3/src/nvs_page.hpp": {
+      "raw_equal": false,
+      "normalized_LF_equal": false,
+      "previous_sha": "5169df79ad3a76146cd92258abdcb09209080d259cc9325d0e55de4c01a568d3",
+      "current_raw_sha": "bed8fcd18a35ee702abbdd03e8d9d094b82fc45a057dd074166d5364278a7b65"
+    },
+    "SDK5.5.3/src/nvs_handle_simple.cpp": {
+      "raw_equal": false,
+      "normalized_LF_equal": false,
+      "previous_sha": "15ed54fdb14bd9e8a0646cab54c41fe06140521b016830d6c13193675631facd",
+      "current_raw_sha": "ff65228c44ee4945f54bdb073251ff2e0e39b3b9de7db4caa1e576606e172b91"
+    },
+    "SDK5.5.3/private_include/nvs_constants.h": {
+      "raw_equal": false,
+      "normalized_LF_equal": false,
+      "previous_sha": "e10b89107d46f66eba89e5b55bfb888e1825eb5aded5ee7b37665e1eda3c2f6f",
+      "current_raw_sha": "e025890b9206bd02177b8dc5a0a3983935fae53981a865cb51ff0f12de8e1491"
+    },
+    "SDK5.5.3/include/nvs.h": {
+      "raw_equal": false,
+      "normalized_LF_equal": false,
+      "previous_sha": "e5cef94b3983f2f962351ac93ee827c4f69ca25fb47a9345f8f01f62d702427a",
+      "current_raw_sha": "d961b401c3fa771c8cabdcf1ed19008b8044281b964990648d012c2ac81e0883"
+    }
+  }
+}

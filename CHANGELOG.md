@@ -91,3 +91,9 @@ READY FOR REVIEW, DESIGN ONLY. reports/A-REMOTE-002.md with durable identity/eff
 
 ## 2026-10-11 - A-REMOTE-005 assignment
 - Published exact scoped concrete-backend host qualification assignment after verified administrative correction; direct execution authorized, hardware/production/Native/D1-D5 excluded.
+
+
+## 2026-10-11T18:03:56Z - A-REMOTE-005 concrete backend host/source qualification
+- Delivered read-only source/SDK provenance, G0-G4 matrix and isolated source-informed model; host PASS, G1 required anti-rollback FAIL, overall BLOCKED. A003/whole-domain rollback counterexamples retained; actual unqualified candidate always GLOBAL_BLOCK, recovery emits0.
+- Capacity ledger separates encoded/logical/physical overlap/root/metadata/proof/GC/fragmentation/remote_wifi/external occupancy; ideal conditional, adverse FAIL, actual UNKNOWN. No credential values accessed/published.
+- New report/evidence and BLOCKED task/current REMOTE handoff after byte-exact archive; PROJECT_SYNC/manifest refreshed. Device own isolated docs/tools/changelog only, production/config/.pio/SDK/TUNER preserved. Physical proposal NOT RUN; Native/D1-D5/shared gate unchanged.
