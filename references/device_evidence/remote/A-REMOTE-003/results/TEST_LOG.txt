@@ -1,0 +1,18 @@
+test_all_protocol_boundaries_no_recovery_replay (test_qualification.Qualification.test_all_protocol_boundaries_no_recovery_replay) ... ok
+test_capacity_model_and_no_live_storage (test_qualification.Qualification.test_capacity_model_and_no_live_storage) ... ok
+test_capacity_refusal_and_consumed_id (test_qualification.Qualification.test_capacity_refusal_and_consumed_id) ... ok
+test_every_truncation_and_corruption (test_qualification.Qualification.test_every_truncation_and_corruption) ... ok
+test_explicit_backend_errors_and_readback_mismatch (test_qualification.Qualification.test_explicit_backend_errors_and_readback_mismatch) ... ok
+test_missing_corrupt_and_stale_sealed_bank (test_qualification.Qualification.test_missing_corrupt_and_stale_sealed_bank) ... ok
+test_profile_bounds_and_identity (test_qualification.Qualification.test_profile_bounds_and_identity) ... ok
+test_recomputed_crc_does_not_bypass_validation (test_qualification.Qualification.test_recomputed_crc_does_not_bypass_validation) ... ok
+test_repeated_cycles_and_independent_history (test_qualification.Qualification.test_repeated_cycles_and_independent_history) ... ok
+test_resolution_growth_and_no_result_recreation (test_qualification.Qualification.test_resolution_growth_and_no_result_recreation) ... ok
+test_roundtrip_and_canonical_order (test_qualification.Qualification.test_roundtrip_and_canonical_order) ... ok
+test_scalar_exact_types (test_qualification.Qualification.test_scalar_exact_types) ... ok
+test_stale_valid_anchor_counterexample_not_certified (test_qualification.Qualification.test_stale_valid_anchor_counterexample_not_certified) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.817s
+
+OK

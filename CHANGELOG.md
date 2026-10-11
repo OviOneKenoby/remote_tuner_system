@@ -63,3 +63,9 @@ READY FOR REVIEW, DESIGN ONLY. reports/A-REMOTE-002.md with durable identity/eff
 - Recovered the original tested `firmware.bin` rather than rebuilding or relabeling it: 1,999,408 bytes, SHA-256 `AF066BA215F863A7D2583A6313ACEE00020CCFAD4F8F8C3168DEDA76BCD6F5D4`. Public non-production prerelease download/readback and tag-to-source checks PASS.
 - Published an owner-assisted, NVS-preserving regression matrix with artifact/build-ID gates, real DELETE cases, empty/stale traversal, radio/BT zero-volume, codec storage/reboot/playback, representative regression and restoration steps.
 - No automatic upload, reset, NVS erase or physical action occurred. All hardware rows remain PENDING / NOT RUN; full B04 identity, B02/B05/B07–B11, O01–O17, Native approval and the common gate remain open/outside scope.
+
+
+## 2026-10-08 - A-REMOTE-003 isolated D0 qualification
+- REMOTE direct execution from main531aa8cd0435ed9813ab39664888992583df0d28. Complete narrowed projection/field trace,host codec/fake backend,exact fixture sizes/fault evidence published for PM review;prior REMOTE handoff byte-archived.
+- Host regression PASS13 tests/3859 counted checks/87 scenarios;production qualification FAIL/BLOCKED:2746->3228 typical resolution exceeds3072;maximum35324->44284,reserve8960;valid-old-anchor counterexample exposes unqualified newest-intent integrity.
+- No firmware integration/live NVS/credentials access/build/upload/hardware test,partition or shared-contract change. CCM frozen,Native unapproved/unfrozen/not implemented,O01-O17 open;D1-D5 remain unassigned/common gate OPEN. Separate redesign/physical qualification required.

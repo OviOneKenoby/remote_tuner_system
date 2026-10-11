@@ -1,0 +1,270 @@
+{
+  "environment": "3.13.13 / Windows-11-10.0.26200-SP0",
+  "seed": 30032026,
+  "tests": 13,
+  "failures": 0,
+  "errors": 0,
+  "counted_checks": 3859,
+  "fault_cases": 87,
+  "fixtures": {
+    "typical_pending": {
+      "payload_bytes": 2730,
+      "encoded_bytes": 2746,
+      "sha256": "753fc33aec16bf9f47b9330da04704f4624850455b27af2eafc7a4a8196c13fb",
+      "sections": {
+        "format_version": 2,
+        "required_features": 4,
+        "common_model_version": 12,
+        "registry_id": 12,
+        "allocators": 80,
+        "clock_epoch": 9,
+        "ingress_watermark": 8,
+        "deleted_ids": 25,
+        "devices": 96,
+        "targets": 61,
+        "bindings": 458,
+        "resources": 111,
+        "associations": 2,
+        "catalogs": 353,
+        "conflicts": 602,
+        "effects": 895
+      }
+    },
+    "typical_resolved": {
+      "payload_bytes": 3212,
+      "encoded_bytes": 3228,
+      "sha256": "80190250724e4a34b8c45902f5b26568e8ef4870c9b856d804521ea506696dd6",
+      "sections": {
+        "format_version": 2,
+        "required_features": 4,
+        "common_model_version": 12,
+        "registry_id": 12,
+        "allocators": 80,
+        "clock_epoch": 9,
+        "ingress_watermark": 8,
+        "deleted_ids": 25,
+        "devices": 96,
+        "targets": 61,
+        "bindings": 458,
+        "resources": 111,
+        "associations": 2,
+        "catalogs": 353,
+        "conflicts": 602,
+        "effects": 1377
+      }
+    },
+    "maximum_pending": {
+      "payload_bytes": 35308,
+      "encoded_bytes": 35324,
+      "sha256": "bb5af7304c8ab518ff188cf49d41cd3802243bdc8e803726e1714dca90190dc9",
+      "sections": {
+        "format_version": 2,
+        "required_features": 4,
+        "common_model_version": 12,
+        "registry_id": 130,
+        "allocators": 80,
+        "clock_epoch": 130,
+        "ingress_watermark": 8,
+        "deleted_ids": 1046,
+        "devices": 1824,
+        "targets": 419,
+        "bindings": 6072,
+        "resources": 2079,
+        "associations": 2233,
+        "catalogs": 4496,
+        "conflicts": 6294,
+        "effects": 10479
+      }
+    },
+    "maximum_resolved": {
+      "payload_bytes": 44268,
+      "encoded_bytes": 44284,
+      "sha256": "5580de02eb51e466254da0f3a9dda4541ce356df7c42620d81dc39fd635f2e0a",
+      "sections": {
+        "format_version": 2,
+        "required_features": 4,
+        "common_model_version": 12,
+        "registry_id": 130,
+        "allocators": 80,
+        "clock_epoch": 130,
+        "ingress_watermark": 8,
+        "deleted_ids": 1046,
+        "devices": 1824,
+        "targets": 419,
+        "bindings": 6072,
+        "resources": 2079,
+        "associations": 2233,
+        "catalogs": 4496,
+        "conflicts": 6294,
+        "effects": 19439
+      }
+    }
+  },
+  "structural_max_bytes": 46044,
+  "legal_max_deductions": {
+    "title/precondition STRING instead of larger REFERENCE": 471,
+    "second key RESOURCE instead of TARGET in effect and three proofs": 520,
+    "six correlated intent IDs 27 instead of 128 bytes": 606,
+    "no seek generation": 8,
+    "no recipe capture": 1,
+    "no recipe step in attempt/five errors": 24,
+    "no rollback_of ID": 130
+  },
+  "derived_max_legal_bytes": 44284,
+  "maximum_resolution_reserve_bytes": 8960,
+  "capacity": [
+    {
+      "bank_bytes": 3072,
+      "credentials_assumed_bytes": 0,
+      "blob_entries": 98,
+      "peak_entries": 442,
+      "partition_entries": 756,
+      "peak_pages_lower_bound": 4,
+      "optimistic_fits": true,
+      "model": "3 bank generations +2 anchors +old/new credentials +metadata +GC page"
+    },
+    {
+      "bank_bytes": 3072,
+      "credentials_assumed_bytes": 512,
+      "blob_entries": 98,
+      "peak_entries": 476,
+      "partition_entries": 756,
+      "peak_pages_lower_bound": 4,
+      "optimistic_fits": true,
+      "model": "3 bank generations +2 anchors +old/new credentials +metadata +GC page"
+    },
+    {
+      "bank_bytes": 3072,
+      "credentials_assumed_bytes": 4096,
+      "blob_entries": 98,
+      "peak_entries": 702,
+      "partition_entries": 756,
+      "peak_pages_lower_bound": 6,
+      "optimistic_fits": true,
+      "model": "3 bank generations +2 anchors +old/new credentials +metadata +GC page"
+    },
+    {
+      "bank_bytes": 2746,
+      "credentials_assumed_bytes": 0,
+      "blob_entries": 88,
+      "peak_entries": 412,
+      "partition_entries": 756,
+      "peak_pages_lower_bound": 4,
+      "optimistic_fits": true,
+      "model": "3 bank generations +2 anchors +old/new credentials +metadata +GC page"
+    },
+    {
+      "bank_bytes": 2746,
+      "credentials_assumed_bytes": 512,
+      "blob_entries": 88,
+      "peak_entries": 446,
+      "partition_entries": 756,
+      "peak_pages_lower_bound": 4,
+      "optimistic_fits": true,
+      "model": "3 bank generations +2 anchors +old/new credentials +metadata +GC page"
+    },
+    {
+      "bank_bytes": 2746,
+      "credentials_assumed_bytes": 4096,
+      "blob_entries": 88,
+      "peak_entries": 672,
+      "partition_entries": 756,
+      "peak_pages_lower_bound": 6,
+      "optimistic_fits": true,
+      "model": "3 bank generations +2 anchors +old/new credentials +metadata +GC page"
+    },
+    {
+      "bank_bytes": 3228,
+      "credentials_assumed_bytes": 0,
+      "blob_entries": 103,
+      "peak_entries": 457,
+      "partition_entries": 756,
+      "peak_pages_lower_bound": 4,
+      "optimistic_fits": true,
+      "model": "3 bank generations +2 anchors +old/new credentials +metadata +GC page"
+    },
+    {
+      "bank_bytes": 3228,
+      "credentials_assumed_bytes": 512,
+      "blob_entries": 103,
+      "peak_entries": 491,
+      "partition_entries": 756,
+      "peak_pages_lower_bound": 4,
+      "optimistic_fits": true,
+      "model": "3 bank generations +2 anchors +old/new credentials +metadata +GC page"
+    },
+    {
+      "bank_bytes": 3228,
+      "credentials_assumed_bytes": 4096,
+      "blob_entries": 103,
+      "peak_entries": 717,
+      "partition_entries": 756,
+      "peak_pages_lower_bound": 6,
+      "optimistic_fits": true,
+      "model": "3 bank generations +2 anchors +old/new credentials +metadata +GC page"
+    },
+    {
+      "bank_bytes": 35324,
+      "credentials_assumed_bytes": 0,
+      "blob_entries": 1114,
+      "peak_entries": 3490,
+      "partition_entries": 756,
+      "peak_pages_lower_bound": 28,
+      "optimistic_fits": false,
+      "model": "3 bank generations +2 anchors +old/new credentials +metadata +GC page"
+    },
+    {
+      "bank_bytes": 35324,
+      "credentials_assumed_bytes": 512,
+      "blob_entries": 1114,
+      "peak_entries": 3524,
+      "partition_entries": 756,
+      "peak_pages_lower_bound": 28,
+      "optimistic_fits": false,
+      "model": "3 bank generations +2 anchors +old/new credentials +metadata +GC page"
+    },
+    {
+      "bank_bytes": 35324,
+      "credentials_assumed_bytes": 4096,
+      "blob_entries": 1114,
+      "peak_entries": 3750,
+      "partition_entries": 756,
+      "peak_pages_lower_bound": 30,
+      "optimistic_fits": false,
+      "model": "3 bank generations +2 anchors +old/new credentials +metadata +GC page"
+    },
+    {
+      "bank_bytes": 44284,
+      "credentials_assumed_bytes": 0,
+      "blob_entries": 1397,
+      "peak_entries": 4339,
+      "partition_entries": 756,
+      "peak_pages_lower_bound": 35,
+      "optimistic_fits": false,
+      "model": "3 bank generations +2 anchors +old/new credentials +metadata +GC page"
+    },
+    {
+      "bank_bytes": 44284,
+      "credentials_assumed_bytes": 512,
+      "blob_entries": 1397,
+      "peak_entries": 4373,
+      "partition_entries": 756,
+      "peak_pages_lower_bound": 35,
+      "optimistic_fits": false,
+      "model": "3 bank generations +2 anchors +old/new credentials +metadata +GC page"
+    },
+    {
+      "bank_bytes": 44284,
+      "credentials_assumed_bytes": 4096,
+      "blob_entries": 1397,
+      "peak_entries": 4599,
+      "partition_entries": 756,
+      "peak_pages_lower_bound": 37,
+      "optimistic_fits": false,
+      "model": "3 bank generations +2 anchors +old/new credentials +metadata +GC page"
+    }
+  ],
+  "qualification": "PRODUCTION FAIL/BLOCKED: 3KiB maximum capacity; stale-valid-anchor guarantee",
+  "hardware": "NOT RUN",
+  "production_integration": "NOT IMPLEMENTED"
+}
