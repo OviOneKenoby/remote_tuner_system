@@ -56,3 +56,10 @@ READY FOR REVIEW, DESIGN ONLY. reports/A-REMOTE-002.md with durable identity/eff
 - Integrated exact reviewed documentation PR #5/#6 with ordinary merges; preserved both device additions, full evidence and byte-original archives. Recorded PM package host-test provenance separately from executor ESP32 build evidence.
 - Preserved complete A-003 authorization package, published exact tasks and A-PM-002_REVIEW; appended scope-limited A-002 DONE dispositions while retaining original assignment bytes. A-003 ASSIGNED.
 - Hardware/artifact/storage gaps retained; full B04 identity and unrelated B items open, D1-D5 unassigned, O01-O17 OPEN, Native unapproved/unfrozen/not implemented, gate OPEN / NOT PASSED. No device task or firmware merge performed by publisher.
+
+## 2026-10-08 — A-TUNER-003 software integration and identified artifact
+- Executed from coordination input `531aa8cd0435ed9813ab39664888992583df0d28`; rereviewed unchanged firmware PR #2 head `8fac1da6ccd749a47843d99dc746fc3d6e4bf19b` and its B01/B03/B04-empty-stale/B06 call paths.
+- Merged firmware PR #2 ordinarily as `d1e51765179f99567df3b5d18a451152adac514c`; the merge tree exactly equals the reviewed head tree. A documentation-only artifact/changelog PR #3 was merged as final firmware main `cb17e945b9c0e086a03e7176d9ad442a8c78d89b`; executable/configuration paths are unchanged.
+- Recovered the original tested `firmware.bin` rather than rebuilding or relabeling it: 1,999,408 bytes, SHA-256 `AF066BA215F863A7D2583A6313ACEE00020CCFAD4F8F8C3168DEDA76BCD6F5D4`. Public non-production prerelease download/readback and tag-to-source checks PASS.
+- Published an owner-assisted, NVS-preserving regression matrix with artifact/build-ID gates, real DELETE cases, empty/stale traversal, radio/BT zero-volume, codec storage/reboot/playback, representative regression and restoration steps.
+- No automatic upload, reset, NVS erase or physical action occurred. All hardware rows remain PENDING / NOT RUN; full B04 identity, B02/B05/B07–B11, O01–O17, Native approval and the common gate remain open/outside scope.
