@@ -10,3 +10,6 @@ references/PM_FOLLOW_UP_A003_2026-10-08.md -text
 
 # Preserve exact REMOTE A-003 qualification evidence bytes and hashes
 references/device_evidence/remote/A-REMOTE-003/** -text
+
+# Preserve exact REMOTE A-004 qualification input/evidence bytes
+references/device_evidence/remote/A-REMOTE-004/** -text

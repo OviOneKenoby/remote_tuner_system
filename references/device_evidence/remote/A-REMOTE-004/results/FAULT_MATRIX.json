@@ -1,0 +1,5052 @@
+[
+  {
+    "operation": "A003-counterexample",
+    "result": "REPRODUCED_OLD_VALID_ANCHOR",
+    "emissions": 1
+  },
+  {
+    "operation": "G1-contract-violation",
+    "result": "UNDETECTABLE_WHOLE_TRUSTED_BACKEND_ROLLBACK",
+    "emissions": 1
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 0,
+    "boundary": "before-read-trusted-head",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 0,
+    "boundary": "before-read-trusted-head",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 0,
+    "boundary": "before-read-trusted-head",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 0,
+    "boundary": "before-read-trusted-head",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 1,
+    "boundary": "after-read-trusted-head",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 1,
+    "boundary": "after-read-trusted-head",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 1,
+    "boundary": "after-read-trusted-head",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 1,
+    "boundary": "after-read-trusted-head",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 2,
+    "boundary": "before-read-s0_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 2,
+    "boundary": "before-read-s0_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 2,
+    "boundary": "before-read-s0_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 2,
+    "boundary": "before-read-s0_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 3,
+    "boundary": "after-read-s0_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 3,
+    "boundary": "after-read-s0_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 3,
+    "boundary": "after-read-s0_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 3,
+    "boundary": "after-read-s0_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 4,
+    "boundary": "before-erase-s1_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 4,
+    "boundary": "before-erase-s1_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 4,
+    "boundary": "before-erase-s1_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 4,
+    "boundary": "before-erase-s1_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 5,
+    "boundary": "after-erase-s1_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 5,
+    "boundary": "after-erase-s1_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 5,
+    "boundary": "after-erase-s1_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 5,
+    "boundary": "after-erase-s1_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 6,
+    "boundary": "before-erase-s1_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 6,
+    "boundary": "before-erase-s1_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 6,
+    "boundary": "before-erase-s1_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 6,
+    "boundary": "before-erase-s1_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 7,
+    "boundary": "after-erase-s1_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 7,
+    "boundary": "after-erase-s1_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 7,
+    "boundary": "after-erase-s1_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 7,
+    "boundary": "after-erase-s1_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 8,
+    "boundary": "before-erase-s1_r2",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 8,
+    "boundary": "before-erase-s1_r2",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 8,
+    "boundary": "before-erase-s1_r2",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 8,
+    "boundary": "before-erase-s1_r2",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 9,
+    "boundary": "after-erase-s1_r2",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 9,
+    "boundary": "after-erase-s1_r2",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 9,
+    "boundary": "after-erase-s1_r2",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 9,
+    "boundary": "after-erase-s1_r2",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 10,
+    "boundary": "before-erase-s1_r3",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 10,
+    "boundary": "before-erase-s1_r3",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 10,
+    "boundary": "before-erase-s1_r3",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 10,
+    "boundary": "before-erase-s1_r3",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 11,
+    "boundary": "after-erase-s1_r3",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 11,
+    "boundary": "after-erase-s1_r3",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 11,
+    "boundary": "after-erase-s1_r3",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 11,
+    "boundary": "after-erase-s1_r3",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 12,
+    "boundary": "before-erase-s1_r4",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 12,
+    "boundary": "before-erase-s1_r4",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 12,
+    "boundary": "before-erase-s1_r4",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 12,
+    "boundary": "before-erase-s1_r4",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 13,
+    "boundary": "after-erase-s1_r4",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 13,
+    "boundary": "after-erase-s1_r4",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 13,
+    "boundary": "after-erase-s1_r4",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 13,
+    "boundary": "after-erase-s1_r4",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 14,
+    "boundary": "before-write-s1_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 14,
+    "boundary": "before-write-s1_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 14,
+    "boundary": "before-write-s1_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 14,
+    "boundary": "before-write-s1_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 15,
+    "boundary": "after-write-s1_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 15,
+    "boundary": "after-write-s1_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 15,
+    "boundary": "after-write-s1_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 15,
+    "boundary": "after-write-s1_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 16,
+    "boundary": "before-commit-compaction",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 16,
+    "boundary": "before-commit-compaction",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 16,
+    "boundary": "before-commit-compaction",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 16,
+    "boundary": "before-commit-compaction",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 17,
+    "boundary": "after-commit-compaction",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 17,
+    "boundary": "after-commit-compaction",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 17,
+    "boundary": "after-commit-compaction",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 17,
+    "boundary": "after-commit-compaction",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 18,
+    "boundary": "before-read-s1_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 18,
+    "boundary": "before-read-s1_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 18,
+    "boundary": "before-read-s1_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 18,
+    "boundary": "before-read-s1_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 19,
+    "boundary": "after-read-s1_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 19,
+    "boundary": "after-read-s1_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 19,
+    "boundary": "after-read-s1_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 19,
+    "boundary": "after-read-s1_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 20,
+    "boundary": "before-trusted-CAS",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 20,
+    "boundary": "before-trusted-CAS",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 20,
+    "boundary": "before-trusted-CAS",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 20,
+    "boundary": "before-trusted-CAS",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 21,
+    "boundary": "after-trusted-CAS",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 21,
+    "boundary": "after-trusted-CAS",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 21,
+    "boundary": "after-trusted-CAS",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 21,
+    "boundary": "after-trusted-CAS",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 22,
+    "boundary": "before-simulated-emission",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 22,
+    "boundary": "before-simulated-emission",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 22,
+    "boundary": "before-simulated-emission",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 22,
+    "boundary": "before-simulated-emission",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 23,
+    "boundary": "after-simulated-emission",
+    "fault": "stop",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 23,
+    "boundary": "after-simulated-emission",
+    "fault": "torn",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 23,
+    "boundary": "after-simulated-emission",
+    "fault": "lost",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 23,
+    "boundary": "after-simulated-emission",
+    "fault": "ambiguous",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 24,
+    "boundary": "before-erase-s0_base",
+    "fault": "stop",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 24,
+    "boundary": "before-erase-s0_base",
+    "fault": "torn",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 24,
+    "boundary": "before-erase-s0_base",
+    "fault": "lost",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 24,
+    "boundary": "before-erase-s0_base",
+    "fault": "ambiguous",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 25,
+    "boundary": "after-erase-s0_base",
+    "fault": "stop",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 25,
+    "boundary": "after-erase-s0_base",
+    "fault": "torn",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 25,
+    "boundary": "after-erase-s0_base",
+    "fault": "lost",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 25,
+    "boundary": "after-erase-s0_base",
+    "fault": "ambiguous",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 26,
+    "boundary": "before-erase-s0_r1",
+    "fault": "stop",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 26,
+    "boundary": "before-erase-s0_r1",
+    "fault": "torn",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 26,
+    "boundary": "before-erase-s0_r1",
+    "fault": "lost",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 26,
+    "boundary": "before-erase-s0_r1",
+    "fault": "ambiguous",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 27,
+    "boundary": "after-erase-s0_r1",
+    "fault": "stop",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 27,
+    "boundary": "after-erase-s0_r1",
+    "fault": "torn",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 27,
+    "boundary": "after-erase-s0_r1",
+    "fault": "lost",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 27,
+    "boundary": "after-erase-s0_r1",
+    "fault": "ambiguous",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 28,
+    "boundary": "before-erase-s0_r2",
+    "fault": "stop",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 28,
+    "boundary": "before-erase-s0_r2",
+    "fault": "torn",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 28,
+    "boundary": "before-erase-s0_r2",
+    "fault": "lost",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 28,
+    "boundary": "before-erase-s0_r2",
+    "fault": "ambiguous",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 29,
+    "boundary": "after-erase-s0_r2",
+    "fault": "stop",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 29,
+    "boundary": "after-erase-s0_r2",
+    "fault": "torn",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 29,
+    "boundary": "after-erase-s0_r2",
+    "fault": "lost",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 29,
+    "boundary": "after-erase-s0_r2",
+    "fault": "ambiguous",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 30,
+    "boundary": "before-erase-s0_r3",
+    "fault": "stop",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 30,
+    "boundary": "before-erase-s0_r3",
+    "fault": "torn",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 30,
+    "boundary": "before-erase-s0_r3",
+    "fault": "lost",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 30,
+    "boundary": "before-erase-s0_r3",
+    "fault": "ambiguous",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 31,
+    "boundary": "after-erase-s0_r3",
+    "fault": "stop",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 31,
+    "boundary": "after-erase-s0_r3",
+    "fault": "torn",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 31,
+    "boundary": "after-erase-s0_r3",
+    "fault": "lost",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 31,
+    "boundary": "after-erase-s0_r3",
+    "fault": "ambiguous",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 32,
+    "boundary": "before-erase-s0_r4",
+    "fault": "stop",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 32,
+    "boundary": "before-erase-s0_r4",
+    "fault": "torn",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 32,
+    "boundary": "before-erase-s0_r4",
+    "fault": "lost",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 32,
+    "boundary": "before-erase-s0_r4",
+    "fault": "ambiguous",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 33,
+    "boundary": "after-erase-s0_r4",
+    "fault": "stop",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 33,
+    "boundary": "after-erase-s0_r4",
+    "fault": "torn",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 33,
+    "boundary": "after-erase-s0_r4",
+    "fault": "lost",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 33,
+    "boundary": "after-erase-s0_r4",
+    "fault": "ambiguous",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 34,
+    "boundary": "before-read-trusted-head",
+    "fault": "stop",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 34,
+    "boundary": "before-read-trusted-head",
+    "fault": "torn",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 34,
+    "boundary": "before-read-trusted-head",
+    "fault": "lost",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 34,
+    "boundary": "before-read-trusted-head",
+    "fault": "ambiguous",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 35,
+    "boundary": "after-read-trusted-head",
+    "fault": "stop",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 35,
+    "boundary": "after-read-trusted-head",
+    "fault": "torn",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 35,
+    "boundary": "after-read-trusted-head",
+    "fault": "lost",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 35,
+    "boundary": "after-read-trusted-head",
+    "fault": "ambiguous",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 36,
+    "boundary": "before-read-s1_base",
+    "fault": "stop",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 36,
+    "boundary": "before-read-s1_base",
+    "fault": "torn",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 36,
+    "boundary": "before-read-s1_base",
+    "fault": "lost",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 36,
+    "boundary": "before-read-s1_base",
+    "fault": "ambiguous",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 37,
+    "boundary": "after-read-s1_base",
+    "fault": "stop",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 37,
+    "boundary": "after-read-s1_base",
+    "fault": "torn",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 37,
+    "boundary": "after-read-s1_base",
+    "fault": "lost",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "initial-history-handover",
+    "index": 37,
+    "boundary": "after-read-s1_base",
+    "fault": "ambiguous",
+    "emissions": 1,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 0,
+    "boundary": "before-read-trusted-head",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 0,
+    "boundary": "before-read-trusted-head",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 0,
+    "boundary": "before-read-trusted-head",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 0,
+    "boundary": "before-read-trusted-head",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 1,
+    "boundary": "after-read-trusted-head",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 1,
+    "boundary": "after-read-trusted-head",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 1,
+    "boundary": "after-read-trusted-head",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 1,
+    "boundary": "after-read-trusted-head",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 2,
+    "boundary": "before-read-s0_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 2,
+    "boundary": "before-read-s0_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 2,
+    "boundary": "before-read-s0_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 2,
+    "boundary": "before-read-s0_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 3,
+    "boundary": "after-read-s0_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 3,
+    "boundary": "after-read-s0_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 3,
+    "boundary": "after-read-s0_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 3,
+    "boundary": "after-read-s0_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 4,
+    "boundary": "before-erase-s1_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 4,
+    "boundary": "before-erase-s1_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 4,
+    "boundary": "before-erase-s1_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 4,
+    "boundary": "before-erase-s1_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 5,
+    "boundary": "after-erase-s1_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 5,
+    "boundary": "after-erase-s1_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 5,
+    "boundary": "after-erase-s1_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 5,
+    "boundary": "after-erase-s1_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 6,
+    "boundary": "before-erase-s1_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 6,
+    "boundary": "before-erase-s1_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 6,
+    "boundary": "before-erase-s1_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 6,
+    "boundary": "before-erase-s1_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 7,
+    "boundary": "after-erase-s1_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 7,
+    "boundary": "after-erase-s1_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 7,
+    "boundary": "after-erase-s1_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 7,
+    "boundary": "after-erase-s1_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 8,
+    "boundary": "before-erase-s1_r2",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 8,
+    "boundary": "before-erase-s1_r2",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 8,
+    "boundary": "before-erase-s1_r2",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 8,
+    "boundary": "before-erase-s1_r2",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 9,
+    "boundary": "after-erase-s1_r2",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 9,
+    "boundary": "after-erase-s1_r2",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 9,
+    "boundary": "after-erase-s1_r2",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 9,
+    "boundary": "after-erase-s1_r2",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 10,
+    "boundary": "before-erase-s1_r3",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 10,
+    "boundary": "before-erase-s1_r3",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 10,
+    "boundary": "before-erase-s1_r3",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 10,
+    "boundary": "before-erase-s1_r3",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 11,
+    "boundary": "after-erase-s1_r3",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 11,
+    "boundary": "after-erase-s1_r3",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 11,
+    "boundary": "after-erase-s1_r3",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 11,
+    "boundary": "after-erase-s1_r3",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 12,
+    "boundary": "before-erase-s1_r4",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 12,
+    "boundary": "before-erase-s1_r4",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 12,
+    "boundary": "before-erase-s1_r4",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 12,
+    "boundary": "before-erase-s1_r4",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 13,
+    "boundary": "after-erase-s1_r4",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 13,
+    "boundary": "after-erase-s1_r4",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 13,
+    "boundary": "after-erase-s1_r4",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 13,
+    "boundary": "after-erase-s1_r4",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 14,
+    "boundary": "before-erase-s0_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 14,
+    "boundary": "before-erase-s0_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 14,
+    "boundary": "before-erase-s0_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 14,
+    "boundary": "before-erase-s0_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 15,
+    "boundary": "after-erase-s0_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 15,
+    "boundary": "after-erase-s0_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 15,
+    "boundary": "after-erase-s0_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 15,
+    "boundary": "after-erase-s0_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 16,
+    "boundary": "before-write-s0_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 16,
+    "boundary": "before-write-s0_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 16,
+    "boundary": "before-write-s0_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 16,
+    "boundary": "before-write-s0_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 17,
+    "boundary": "after-write-s0_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 17,
+    "boundary": "after-write-s0_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 17,
+    "boundary": "after-write-s0_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 17,
+    "boundary": "after-write-s0_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 18,
+    "boundary": "before-commit-append",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 18,
+    "boundary": "before-commit-append",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 18,
+    "boundary": "before-commit-append",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 18,
+    "boundary": "before-commit-append",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 19,
+    "boundary": "after-commit-append",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 19,
+    "boundary": "after-commit-append",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 19,
+    "boundary": "after-commit-append",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 19,
+    "boundary": "after-commit-append",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 20,
+    "boundary": "before-read-s0_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 20,
+    "boundary": "before-read-s0_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 20,
+    "boundary": "before-read-s0_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 20,
+    "boundary": "before-read-s0_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 21,
+    "boundary": "after-read-s0_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 21,
+    "boundary": "after-read-s0_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 21,
+    "boundary": "after-read-s0_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 21,
+    "boundary": "after-read-s0_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 22,
+    "boundary": "before-trusted-CAS",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 22,
+    "boundary": "before-trusted-CAS",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 22,
+    "boundary": "before-trusted-CAS",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 22,
+    "boundary": "before-trusted-CAS",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 23,
+    "boundary": "after-trusted-CAS",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 23,
+    "boundary": "after-trusted-CAS",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 23,
+    "boundary": "after-trusted-CAS",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 23,
+    "boundary": "after-trusted-CAS",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 24,
+    "boundary": "before-read-trusted-head",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 24,
+    "boundary": "before-read-trusted-head",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 24,
+    "boundary": "before-read-trusted-head",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 24,
+    "boundary": "before-read-trusted-head",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 25,
+    "boundary": "after-read-trusted-head",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 25,
+    "boundary": "after-read-trusted-head",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 25,
+    "boundary": "after-read-trusted-head",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 25,
+    "boundary": "after-read-trusted-head",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 26,
+    "boundary": "before-read-s0_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 26,
+    "boundary": "before-read-s0_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 26,
+    "boundary": "before-read-s0_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 26,
+    "boundary": "before-read-s0_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 27,
+    "boundary": "after-read-s0_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 27,
+    "boundary": "after-read-s0_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 27,
+    "boundary": "after-read-s0_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 27,
+    "boundary": "after-read-s0_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 28,
+    "boundary": "before-read-s0_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 28,
+    "boundary": "before-read-s0_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 28,
+    "boundary": "before-read-s0_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 28,
+    "boundary": "before-read-s0_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 29,
+    "boundary": "after-read-s0_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 29,
+    "boundary": "after-read-s0_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 29,
+    "boundary": "after-read-s0_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "future-proof",
+    "index": 29,
+    "boundary": "after-read-s0_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 0,
+    "boundary": "before-read-trusted-head",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 0,
+    "boundary": "before-read-trusted-head",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 0,
+    "boundary": "before-read-trusted-head",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 0,
+    "boundary": "before-read-trusted-head",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 1,
+    "boundary": "after-read-trusted-head",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 1,
+    "boundary": "after-read-trusted-head",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 1,
+    "boundary": "after-read-trusted-head",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 1,
+    "boundary": "after-read-trusted-head",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 2,
+    "boundary": "before-read-s0_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 2,
+    "boundary": "before-read-s0_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 2,
+    "boundary": "before-read-s0_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 2,
+    "boundary": "before-read-s0_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 3,
+    "boundary": "after-read-s0_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 3,
+    "boundary": "after-read-s0_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 3,
+    "boundary": "after-read-s0_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 3,
+    "boundary": "after-read-s0_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 4,
+    "boundary": "before-read-trusted-head",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 4,
+    "boundary": "before-read-trusted-head",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 4,
+    "boundary": "before-read-trusted-head",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 4,
+    "boundary": "before-read-trusted-head",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 5,
+    "boundary": "after-read-trusted-head",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 5,
+    "boundary": "after-read-trusted-head",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 5,
+    "boundary": "after-read-trusted-head",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 5,
+    "boundary": "after-read-trusted-head",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 6,
+    "boundary": "before-read-s0_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 6,
+    "boundary": "before-read-s0_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 6,
+    "boundary": "before-read-s0_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 6,
+    "boundary": "before-read-s0_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 7,
+    "boundary": "after-read-s0_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 7,
+    "boundary": "after-read-s0_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 7,
+    "boundary": "after-read-s0_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 7,
+    "boundary": "after-read-s0_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 8,
+    "boundary": "before-erase-s1_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 8,
+    "boundary": "before-erase-s1_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 8,
+    "boundary": "before-erase-s1_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 8,
+    "boundary": "before-erase-s1_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 9,
+    "boundary": "after-erase-s1_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 9,
+    "boundary": "after-erase-s1_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 9,
+    "boundary": "after-erase-s1_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 9,
+    "boundary": "after-erase-s1_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 10,
+    "boundary": "before-erase-s1_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 10,
+    "boundary": "before-erase-s1_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 10,
+    "boundary": "before-erase-s1_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 10,
+    "boundary": "before-erase-s1_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 11,
+    "boundary": "after-erase-s1_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 11,
+    "boundary": "after-erase-s1_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 11,
+    "boundary": "after-erase-s1_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 11,
+    "boundary": "after-erase-s1_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 12,
+    "boundary": "before-erase-s1_r2",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 12,
+    "boundary": "before-erase-s1_r2",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 12,
+    "boundary": "before-erase-s1_r2",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 12,
+    "boundary": "before-erase-s1_r2",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 13,
+    "boundary": "after-erase-s1_r2",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 13,
+    "boundary": "after-erase-s1_r2",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 13,
+    "boundary": "after-erase-s1_r2",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 13,
+    "boundary": "after-erase-s1_r2",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 14,
+    "boundary": "before-erase-s1_r3",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 14,
+    "boundary": "before-erase-s1_r3",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 14,
+    "boundary": "before-erase-s1_r3",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 14,
+    "boundary": "before-erase-s1_r3",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 15,
+    "boundary": "after-erase-s1_r3",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 15,
+    "boundary": "after-erase-s1_r3",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 15,
+    "boundary": "after-erase-s1_r3",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 15,
+    "boundary": "after-erase-s1_r3",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 16,
+    "boundary": "before-erase-s1_r4",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 16,
+    "boundary": "before-erase-s1_r4",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 16,
+    "boundary": "before-erase-s1_r4",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 16,
+    "boundary": "before-erase-s1_r4",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 17,
+    "boundary": "after-erase-s1_r4",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 17,
+    "boundary": "after-erase-s1_r4",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 17,
+    "boundary": "after-erase-s1_r4",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 17,
+    "boundary": "after-erase-s1_r4",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 18,
+    "boundary": "before-erase-s0_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 18,
+    "boundary": "before-erase-s0_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 18,
+    "boundary": "before-erase-s0_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 18,
+    "boundary": "before-erase-s0_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 19,
+    "boundary": "after-erase-s0_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 19,
+    "boundary": "after-erase-s0_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 19,
+    "boundary": "after-erase-s0_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 19,
+    "boundary": "after-erase-s0_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 20,
+    "boundary": "before-write-s0_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 20,
+    "boundary": "before-write-s0_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 20,
+    "boundary": "before-write-s0_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 20,
+    "boundary": "before-write-s0_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 21,
+    "boundary": "after-write-s0_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 21,
+    "boundary": "after-write-s0_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 21,
+    "boundary": "after-write-s0_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 21,
+    "boundary": "after-write-s0_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 22,
+    "boundary": "before-commit-append",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 22,
+    "boundary": "before-commit-append",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 22,
+    "boundary": "before-commit-append",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 22,
+    "boundary": "before-commit-append",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 23,
+    "boundary": "after-commit-append",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 23,
+    "boundary": "after-commit-append",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 23,
+    "boundary": "after-commit-append",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 23,
+    "boundary": "after-commit-append",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 24,
+    "boundary": "before-read-s0_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 24,
+    "boundary": "before-read-s0_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 24,
+    "boundary": "before-read-s0_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 24,
+    "boundary": "before-read-s0_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 25,
+    "boundary": "after-read-s0_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 25,
+    "boundary": "after-read-s0_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 25,
+    "boundary": "after-read-s0_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 25,
+    "boundary": "after-read-s0_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 26,
+    "boundary": "before-trusted-CAS",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 26,
+    "boundary": "before-trusted-CAS",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 26,
+    "boundary": "before-trusted-CAS",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 26,
+    "boundary": "before-trusted-CAS",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 27,
+    "boundary": "after-trusted-CAS",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 27,
+    "boundary": "after-trusted-CAS",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 27,
+    "boundary": "after-trusted-CAS",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 27,
+    "boundary": "after-trusted-CAS",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 28,
+    "boundary": "before-read-trusted-head",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 28,
+    "boundary": "before-read-trusted-head",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 28,
+    "boundary": "before-read-trusted-head",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 28,
+    "boundary": "before-read-trusted-head",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 29,
+    "boundary": "after-read-trusted-head",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 29,
+    "boundary": "after-read-trusted-head",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 29,
+    "boundary": "after-read-trusted-head",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 29,
+    "boundary": "after-read-trusted-head",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 30,
+    "boundary": "before-read-s0_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 30,
+    "boundary": "before-read-s0_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 30,
+    "boundary": "before-read-s0_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 30,
+    "boundary": "before-read-s0_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 31,
+    "boundary": "after-read-s0_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 31,
+    "boundary": "after-read-s0_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 31,
+    "boundary": "after-read-s0_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 31,
+    "boundary": "after-read-s0_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 32,
+    "boundary": "before-read-s0_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 32,
+    "boundary": "before-read-s0_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 32,
+    "boundary": "before-read-s0_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 32,
+    "boundary": "before-read-s0_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 33,
+    "boundary": "after-read-s0_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 33,
+    "boundary": "after-read-s0_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 33,
+    "boundary": "after-read-s0_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "refused-allocation",
+    "index": 33,
+    "boundary": "after-read-s0_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 0,
+    "boundary": "before-read-trusted-head",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 0,
+    "boundary": "before-read-trusted-head",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 0,
+    "boundary": "before-read-trusted-head",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 0,
+    "boundary": "before-read-trusted-head",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 1,
+    "boundary": "after-read-trusted-head",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 1,
+    "boundary": "after-read-trusted-head",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 1,
+    "boundary": "after-read-trusted-head",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 1,
+    "boundary": "after-read-trusted-head",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 2,
+    "boundary": "before-read-s0_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 2,
+    "boundary": "before-read-s0_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 2,
+    "boundary": "before-read-s0_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 2,
+    "boundary": "before-read-s0_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 3,
+    "boundary": "after-read-s0_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 3,
+    "boundary": "after-read-s0_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 3,
+    "boundary": "after-read-s0_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 3,
+    "boundary": "after-read-s0_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 4,
+    "boundary": "before-read-s0_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 4,
+    "boundary": "before-read-s0_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 4,
+    "boundary": "before-read-s0_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 4,
+    "boundary": "before-read-s0_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 5,
+    "boundary": "after-read-s0_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 5,
+    "boundary": "after-read-s0_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 5,
+    "boundary": "after-read-s0_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 5,
+    "boundary": "after-read-s0_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 6,
+    "boundary": "before-erase-s1_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 6,
+    "boundary": "before-erase-s1_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 6,
+    "boundary": "before-erase-s1_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 6,
+    "boundary": "before-erase-s1_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 7,
+    "boundary": "after-erase-s1_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 7,
+    "boundary": "after-erase-s1_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 7,
+    "boundary": "after-erase-s1_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 7,
+    "boundary": "after-erase-s1_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 8,
+    "boundary": "before-erase-s1_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 8,
+    "boundary": "before-erase-s1_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 8,
+    "boundary": "before-erase-s1_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 8,
+    "boundary": "before-erase-s1_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 9,
+    "boundary": "after-erase-s1_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 9,
+    "boundary": "after-erase-s1_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 9,
+    "boundary": "after-erase-s1_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 9,
+    "boundary": "after-erase-s1_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 10,
+    "boundary": "before-erase-s1_r2",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 10,
+    "boundary": "before-erase-s1_r2",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 10,
+    "boundary": "before-erase-s1_r2",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 10,
+    "boundary": "before-erase-s1_r2",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 11,
+    "boundary": "after-erase-s1_r2",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 11,
+    "boundary": "after-erase-s1_r2",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 11,
+    "boundary": "after-erase-s1_r2",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 11,
+    "boundary": "after-erase-s1_r2",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 12,
+    "boundary": "before-erase-s1_r3",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 12,
+    "boundary": "before-erase-s1_r3",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 12,
+    "boundary": "before-erase-s1_r3",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 12,
+    "boundary": "before-erase-s1_r3",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 13,
+    "boundary": "after-erase-s1_r3",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 13,
+    "boundary": "after-erase-s1_r3",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 13,
+    "boundary": "after-erase-s1_r3",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 13,
+    "boundary": "after-erase-s1_r3",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 14,
+    "boundary": "before-erase-s1_r4",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 14,
+    "boundary": "before-erase-s1_r4",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 14,
+    "boundary": "before-erase-s1_r4",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 14,
+    "boundary": "before-erase-s1_r4",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 15,
+    "boundary": "after-erase-s1_r4",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 15,
+    "boundary": "after-erase-s1_r4",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 15,
+    "boundary": "after-erase-s1_r4",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 15,
+    "boundary": "after-erase-s1_r4",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 16,
+    "boundary": "before-write-s1_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 16,
+    "boundary": "before-write-s1_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 16,
+    "boundary": "before-write-s1_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 16,
+    "boundary": "before-write-s1_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 17,
+    "boundary": "after-write-s1_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 17,
+    "boundary": "after-write-s1_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 17,
+    "boundary": "after-write-s1_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 17,
+    "boundary": "after-write-s1_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 18,
+    "boundary": "before-commit-compaction",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 18,
+    "boundary": "before-commit-compaction",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 18,
+    "boundary": "before-commit-compaction",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 18,
+    "boundary": "before-commit-compaction",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 19,
+    "boundary": "after-commit-compaction",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 19,
+    "boundary": "after-commit-compaction",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 19,
+    "boundary": "after-commit-compaction",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 19,
+    "boundary": "after-commit-compaction",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 20,
+    "boundary": "before-read-s1_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 20,
+    "boundary": "before-read-s1_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 20,
+    "boundary": "before-read-s1_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 20,
+    "boundary": "before-read-s1_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 21,
+    "boundary": "after-read-s1_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 21,
+    "boundary": "after-read-s1_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 21,
+    "boundary": "after-read-s1_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 21,
+    "boundary": "after-read-s1_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 22,
+    "boundary": "before-trusted-CAS",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 22,
+    "boundary": "before-trusted-CAS",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 22,
+    "boundary": "before-trusted-CAS",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 22,
+    "boundary": "before-trusted-CAS",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 23,
+    "boundary": "after-trusted-CAS",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 23,
+    "boundary": "after-trusted-CAS",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 23,
+    "boundary": "after-trusted-CAS",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 23,
+    "boundary": "after-trusted-CAS",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 24,
+    "boundary": "before-erase-s0_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 24,
+    "boundary": "before-erase-s0_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 24,
+    "boundary": "before-erase-s0_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 24,
+    "boundary": "before-erase-s0_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 25,
+    "boundary": "after-erase-s0_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 25,
+    "boundary": "after-erase-s0_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 25,
+    "boundary": "after-erase-s0_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 25,
+    "boundary": "after-erase-s0_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 26,
+    "boundary": "before-erase-s0_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 26,
+    "boundary": "before-erase-s0_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 26,
+    "boundary": "before-erase-s0_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 26,
+    "boundary": "before-erase-s0_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 27,
+    "boundary": "after-erase-s0_r1",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 27,
+    "boundary": "after-erase-s0_r1",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 27,
+    "boundary": "after-erase-s0_r1",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 27,
+    "boundary": "after-erase-s0_r1",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 28,
+    "boundary": "before-erase-s0_r2",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 28,
+    "boundary": "before-erase-s0_r2",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 28,
+    "boundary": "before-erase-s0_r2",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 28,
+    "boundary": "before-erase-s0_r2",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 29,
+    "boundary": "after-erase-s0_r2",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 29,
+    "boundary": "after-erase-s0_r2",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 29,
+    "boundary": "after-erase-s0_r2",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 29,
+    "boundary": "after-erase-s0_r2",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 30,
+    "boundary": "before-erase-s0_r3",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 30,
+    "boundary": "before-erase-s0_r3",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 30,
+    "boundary": "before-erase-s0_r3",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 30,
+    "boundary": "before-erase-s0_r3",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 31,
+    "boundary": "after-erase-s0_r3",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 31,
+    "boundary": "after-erase-s0_r3",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 31,
+    "boundary": "after-erase-s0_r3",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 31,
+    "boundary": "after-erase-s0_r3",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 32,
+    "boundary": "before-erase-s0_r4",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 32,
+    "boundary": "before-erase-s0_r4",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 32,
+    "boundary": "before-erase-s0_r4",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 32,
+    "boundary": "before-erase-s0_r4",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 33,
+    "boundary": "after-erase-s0_r4",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 33,
+    "boundary": "after-erase-s0_r4",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 33,
+    "boundary": "after-erase-s0_r4",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 33,
+    "boundary": "after-erase-s0_r4",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 34,
+    "boundary": "before-read-trusted-head",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 34,
+    "boundary": "before-read-trusted-head",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 34,
+    "boundary": "before-read-trusted-head",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 34,
+    "boundary": "before-read-trusted-head",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 35,
+    "boundary": "after-read-trusted-head",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 35,
+    "boundary": "after-read-trusted-head",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 35,
+    "boundary": "after-read-trusted-head",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 35,
+    "boundary": "after-read-trusted-head",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 36,
+    "boundary": "before-read-s1_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 36,
+    "boundary": "before-read-s1_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 36,
+    "boundary": "before-read-s1_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 36,
+    "boundary": "before-read-s1_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 37,
+    "boundary": "after-read-s1_base",
+    "fault": "stop",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 37,
+    "boundary": "after-read-s1_base",
+    "fault": "torn",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 37,
+    "boundary": "after-read-s1_base",
+    "fault": "lost",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  },
+  {
+    "operation": "compaction-with-live-barrier",
+    "index": 37,
+    "boundary": "after-read-s1_base",
+    "fault": "ambiguous",
+    "emissions": 0,
+    "recovery": "HISTORICAL_ONLY_BLOCKED",
+    "result": "PASS_CONDITIONAL_G1_G4"
+  }
+]

@@ -1,0 +1,610 @@
+{
+  "format_version": 1,
+  "required_features": 0,
+  "common_model_version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0
+  },
+  "registry_id": "registry:1",
+  "allocators": {
+    "device": 1,
+    "target": 1,
+    "binding": 2,
+    "resource": 1,
+    "item": 2,
+    "asset": 0,
+    "request_lifetime": 1,
+    "boot": 1,
+    "epoch_base": 0,
+    "ticket_watermark": 1
+  },
+  "clock_epoch": "epoch:1",
+  "ingress_watermark": 6,
+  "deleted_ids": [
+    {
+      "kind": "ITEM",
+      "owner": "target:1",
+      "object_id": "retiredA:1"
+    }
+  ],
+  "devices": [
+    {
+      "device_id": "device:1",
+      "association_generation": 1,
+      "identity_evidence": [
+        {
+          "evidence_id": "identity",
+          "kind": "PROJECT_DESIGN",
+          "reference": "sample00",
+          "verified_claims": [
+            "sample01"
+          ],
+          "version": {
+            "tag": "PRESENT",
+            "value": "sample02"
+          }
+        }
+      ]
+    }
+  ],
+  "targets": [
+    {
+      "device_id": "device:1",
+      "target_id": "target:1",
+      "association_generation": 1,
+      "capability_revision": 1,
+      "media_context_generation": 1,
+      "resource_ids": [
+        "resource:1"
+      ],
+      "ordering": "STRICT"
+    }
+  ],
+  "bindings": [
+    {
+      "binding_id": "bindingA:1",
+      "device_id": "device:1",
+      "target_id": "target:1",
+      "device_association_generation": 1,
+      "association_generation": 1,
+      "mapping_revision": 1,
+      "session_generation": 1,
+      "adapter_version": "sample03",
+      "external_version": {
+        "tag": "PRESENT",
+        "value": "sample04"
+      },
+      "model_versions": [
+        {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        }
+      ],
+      "owner_priority": 0,
+      "mapping_evidence": [
+        {
+          "evidence_id": "map0",
+          "kind": "PROJECT_DESIGN",
+          "reference": "sample05",
+          "verified_claims": [
+            "sample06"
+          ],
+          "version": {
+            "tag": "PRESENT",
+            "value": "sample07"
+          }
+        }
+      ],
+      "transport_refs": [
+        "private:1"
+      ],
+      "private_metadata_ref": "private:1",
+      "credential_ref": "credential:1"
+    },
+    {
+      "binding_id": "bindingB:1",
+      "device_id": "device:1",
+      "target_id": "target:1",
+      "device_association_generation": 1,
+      "association_generation": 1,
+      "mapping_revision": 1,
+      "session_generation": 1,
+      "adapter_version": "sample08",
+      "external_version": {
+        "tag": "PRESENT",
+        "value": "sample09"
+      },
+      "model_versions": [
+        {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        }
+      ],
+      "owner_priority": 1,
+      "mapping_evidence": [
+        {
+          "evidence_id": "map1",
+          "kind": "PROJECT_DESIGN",
+          "reference": "sample00",
+          "verified_claims": [
+            "sample01"
+          ],
+          "version": {
+            "tag": "PRESENT",
+            "value": "sample02"
+          }
+        }
+      ],
+      "transport_refs": [
+        "private:1"
+      ],
+      "private_metadata_ref": "private:1",
+      "credential_ref": "credential:1"
+    }
+  ],
+  "resources": [
+    {
+      "resource_id": "resource:1",
+      "member_targets": [
+        {
+          "device_id": "device:1",
+          "target_id": "target:1"
+        }
+      ],
+      "ordering": "STRICT",
+      "evidence": [
+        {
+          "evidence_id": "shared",
+          "kind": "PROJECT_DESIGN",
+          "reference": "sample03",
+          "verified_claims": [
+            "sample04"
+          ],
+          "version": {
+            "tag": "PRESENT",
+            "value": "sample05"
+          }
+        }
+      ]
+    }
+  ],
+  "associations": [],
+  "catalogs": [
+    {
+      "device_id": "device:1",
+      "target_id": "target:1",
+      "binding_id": "bindingA:1",
+      "kind": "FAVORITE",
+      "catalog_generation": 1,
+      "token_generation": 1,
+      "mapping_revision": 1,
+      "session_generation": 1,
+      "continuity_evidence": [
+        {
+          "evidence_id": "catalog",
+          "kind": "PROJECT_DESIGN",
+          "reference": "sample06",
+          "verified_claims": [
+            "sample07"
+          ],
+          "version": {
+            "tag": "PRESENT",
+            "value": "sample08"
+          }
+        }
+      ],
+      "complete": true,
+      "items": [
+        {
+          "item_id": "itemA:1",
+          "reference": {
+            "kind": "FAVORITE",
+            "device_id": "device:1",
+            "target_id": "target:1",
+            "device_association_generation": 1,
+            "association_generation": 1,
+            "item_id": "itemA:1",
+            "catalog_generation": 1
+          },
+          "label": "sample09",
+          "variant": "sample00",
+          "private_token": "itemA:1"
+        },
+        {
+          "item_id": "itemB:1",
+          "reference": {
+            "kind": "FAVORITE",
+            "device_id": "device:1",
+            "target_id": "target:1",
+            "device_association_generation": 1,
+            "association_generation": 1,
+            "item_id": "itemB:1",
+            "catalog_generation": 1
+          },
+          "label": "sample01",
+          "variant": "sample02",
+          "private_token": "itemB:1"
+        }
+      ]
+    }
+  ],
+  "conflicts": [
+    {
+      "device_id": "device:1",
+      "target_id": "target:1",
+      "field_id": "media.title",
+      "conflict_latched": true,
+      "revision": 1,
+      "participants": [
+        {
+          "binding_id": "bindingA:1",
+          "conflict_ingress": 4,
+          "resync_started_ingress": {
+            "tag": "PRESENT",
+            "value": 5
+          },
+          "resync_observation": {
+            "tag": "PRESENT",
+            "value": {
+              "observation_id": "obs:1",
+              "device_id": "device:1",
+              "target_id": "target:1",
+              "field_id": "media.title",
+              "value": {
+                "tag": "PRESENT",
+                "value": {
+                  "tag": "STRING",
+                  "value": "sample00"
+                }
+              },
+              "confidence": "REPORTED",
+              "binding_id": "bindingA:1",
+              "provenance": [
+                {
+                  "actor_id": "device:1",
+                  "role": "TARGET",
+                  "evidence_id": "hop0"
+                }
+              ],
+              "device_association_generation": 1,
+              "association_generation": 1,
+              "mapping_revision": 1,
+              "session_generation": 1,
+              "receipt_time": {
+                "clock_epoch": "epoch:1",
+                "tick_ms": 61000
+              },
+              "acquisition_order": 5,
+              "origin": "RESYNC",
+              "observation_time": {
+                "clock_epoch": "epoch:1",
+                "tick_ms": 61000
+              },
+              "source_time": "sample04",
+              "age_at_receipt_ms": 0,
+              "clock_quality": "BOUNDED",
+              "freshness": {
+                "max_age_ms": 1000,
+                "acquisition": "VERIFIED_SEQUENCE",
+                "source_clock_contract": {
+                  "tag": "PRESENT",
+                  "value": "sample05"
+                }
+              },
+              "source_sequence": {
+                "domain": "sequence:1",
+                "ordinal": 5
+              },
+              "media_context_generation": 1,
+              "pending_request_id": "intent:1"
+            }
+          },
+          "exclusion_evidence": []
+        },
+        {
+          "binding_id": "bindingB:1",
+          "conflict_ingress": 4,
+          "resync_started_ingress": {
+            "tag": "PRESENT",
+            "value": 5
+          },
+          "resync_observation": {
+            "tag": "PRESENT",
+            "value": {
+              "observation_id": "obs:1",
+              "device_id": "device:1",
+              "target_id": "target:1",
+              "field_id": "media.title",
+              "value": {
+                "tag": "PRESENT",
+                "value": {
+                  "tag": "STRING",
+                  "value": "sample01"
+                }
+              },
+              "confidence": "REPORTED",
+              "binding_id": "bindingB:1",
+              "provenance": [
+                {
+                  "actor_id": "device:1",
+                  "role": "TARGET",
+                  "evidence_id": "hop0"
+                }
+              ],
+              "device_association_generation": 1,
+              "association_generation": 1,
+              "mapping_revision": 1,
+              "session_generation": 1,
+              "receipt_time": {
+                "clock_epoch": "epoch:1",
+                "tick_ms": 61000
+              },
+              "acquisition_order": 5,
+              "origin": "RESYNC",
+              "observation_time": {
+                "clock_epoch": "epoch:1",
+                "tick_ms": 61000
+              },
+              "source_time": "sample07",
+              "age_at_receipt_ms": 0,
+              "clock_quality": "BOUNDED",
+              "freshness": {
+                "max_age_ms": 1000,
+                "acquisition": "VERIFIED_SEQUENCE",
+                "source_clock_contract": {
+                  "tag": "PRESENT",
+                  "value": "sample08"
+                }
+              },
+              "source_sequence": {
+                "domain": "sequence:1",
+                "ordinal": 5
+              },
+              "media_context_generation": 1,
+              "pending_request_id": "intent:1"
+            }
+          },
+          "exclusion_evidence": []
+        }
+      ]
+    }
+  ],
+  "effects": [
+    {
+      "request": {
+        "common_model_version": {
+          "major": 1,
+          "minor": 0,
+          "patch": 0
+        },
+        "request_id": "intent:1",
+        "admission_ticket": {
+          "clock_epoch": "epoch:1",
+          "serial": 1
+        },
+        "device_id": "device:1",
+        "target_id": "target:1",
+        "operation_id": "favorites.activate",
+        "arguments": {
+          "favorite": {
+            "kind": "FAVORITE",
+            "device_id": "device:1",
+            "target_id": "target:1",
+            "device_association_generation": 1,
+            "association_generation": 1,
+            "item_id": "itemA:1",
+            "catalog_generation": 1
+          }
+        },
+        "deadline": {
+          "clock_epoch": "epoch:1",
+          "tick_ms": 60000
+        },
+        "capability_revision": 1,
+        "binding_id": "bindingA:1",
+        "mapping_revision": 1,
+        "device_association_generation": 1,
+        "association_generation": 1,
+        "catalog_generation": 1,
+        "token_generation": 1,
+        "media_context_generation": 1,
+        "seek_window_generation": null,
+        "preconditions": [
+          {
+            "field_id": "media.title",
+            "observation_id": "obs:1",
+            "expected_value": {
+              "tag": "PRESENT",
+              "value": {
+                "tag": "STRING",
+                "value": "sample09"
+              }
+            }
+          }
+        ],
+        "route_plan": [
+          {
+            "binding_id": "bindingA:1",
+            "mapping_revision": 1,
+            "capability_revision": 1,
+            "token_generation": 1,
+            "execution_contract": {
+              "feedback": "CORRELATED_RESULT",
+              "completion_claim": "sample00",
+              "guaranteed_no_execution_errors": [
+                "sample01"
+              ],
+              "context_guard": "VERIFIED",
+              "selection_guard": "VERIFIED",
+              "ordering_fence": "VERIFIED",
+              "mapping_reference": "sample02"
+            }
+          }
+        ],
+        "recipe_capture": null
+      },
+      "attempt": {
+        "attempt_index": 1,
+        "binding_id": "bindingA:1",
+        "mapping_revision": 1,
+        "session_generation": 1,
+        "dispatch_time": {
+          "clock_epoch": "epoch:1",
+          "tick_ms": 20
+        },
+        "closed_time": {
+          "clock_epoch": "epoch:1",
+          "tick_ms": 60000
+        },
+        "step_index": null,
+        "delivery": "AMBIGUOUS",
+        "target_outcome": "UNKNOWN",
+        "evidence": [
+          {
+            "evidence_id": "proof0",
+            "kind": "PROJECT_DESIGN",
+            "reference": "sample00",
+            "verified_claims": [
+              "sample01"
+            ],
+            "version": {
+              "tag": "PRESENT",
+              "value": "sample02"
+            }
+          }
+        ],
+        "guaranteed_no_execution": false,
+        "resource_ids": [
+          "resource:1"
+        ],
+        "error": {
+          "tag": "PRESENT",
+          "value": {
+            "code": "TIMEOUT",
+            "detail": "sample06",
+            "rejection_origin": "CORE",
+            "cause": null,
+            "step_index": null
+          }
+        }
+      },
+      "execution_contract": {
+        "feedback": "CORRELATED_RESULT",
+        "completion_claim": "sample00",
+        "guaranteed_no_execution_errors": [
+          "sample01"
+        ],
+        "context_guard": "VERIFIED",
+        "selection_guard": "VERIFIED",
+        "ordering_fence": "VERIFIED",
+        "mapping_reference": "sample02"
+      },
+      "retry_policy": {
+        "automatic": false,
+        "fallback_on_no_execution": false,
+        "max_attempts": 1,
+        "delay_ms": 1
+      },
+      "semantic_variant": "DEVICE_NATIVE",
+      "affected_keys": [
+        {
+          "key": {
+            "tag": "TARGET",
+            "value": {
+              "device_id": "device:1",
+              "target_id": "target:1"
+            }
+          },
+          "ordering": "STRICT",
+          "no_past": false,
+          "no_future": false
+        },
+        {
+          "key": {
+            "tag": "RESOURCE",
+            "value": {
+              "resource_id": "resource:1"
+            }
+          },
+          "ordering": "STRICT",
+          "no_past": false,
+          "no_future": false
+        }
+      ],
+      "proof_history": [
+        {
+          "evidence": {
+            "evidence_id": "proof0",
+            "kind": "PROJECT_DESIGN",
+            "reference": "sample00",
+            "verified_claims": [
+              "sample01"
+            ],
+            "version": {
+              "tag": "PRESENT",
+              "value": "sample02"
+            }
+          },
+          "signal": "PROGRESS",
+          "covered_keys": [
+            {
+              "tag": "TARGET",
+              "value": {
+                "device_id": "device:1",
+                "target_id": "target:1"
+              }
+            },
+            {
+              "tag": "RESOURCE",
+              "value": {
+                "resource_id": "resource:1"
+              }
+            }
+          ],
+          "delivery": "AMBIGUOUS",
+          "progress": {
+            "total": 1,
+            "emitted": 0,
+            "confirmed": 0,
+            "uncertain_remaining": true
+          },
+          "closed": true,
+          "failure": null,
+          "historical_request": "intent:1",
+          "attempt_index": 1,
+          "binding_id": "bindingA:1",
+          "mapping_revision": 1,
+          "session_generation": 1
+        }
+      ],
+      "progress": {
+        "total": 1,
+        "emitted": 0,
+        "confirmed": 0,
+        "uncertain_remaining": true
+      },
+      "complete": false,
+      "refused": false,
+      "uncertain_extent": true,
+      "first_terminal_time": {
+        "clock_epoch": "epoch:1",
+        "tick_ms": 60000
+      },
+      "closure_error": {
+        "tag": "PRESENT",
+        "value": {
+          "code": "TIMEOUT",
+          "detail": "sample06",
+          "rejection_origin": "CORE",
+          "cause": null,
+          "step_index": null
+        }
+      },
+      "invalidated": false,
+      "scheduling_closed": true
+    }
+  ]
+}

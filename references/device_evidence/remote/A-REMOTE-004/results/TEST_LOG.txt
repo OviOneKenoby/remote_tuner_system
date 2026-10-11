@@ -1,0 +1,17 @@
+test_a003_and_whole_trusted_backend_rollback_counterexample (test_redesign.Redesign.test_a003_and_whole_trusted_backend_rollback_counterexample) ... ok
+test_compaction_retains_all_proofs_nonreuse_and_conflict (test_redesign.Redesign.test_compaction_retains_all_proofs_nonreuse_and_conflict) ... ok
+test_dictionary_reserve_partial_proof_and_bad_correlation (test_redesign.Redesign.test_dictionary_reserve_partial_proof_and_bad_correlation) ... ok
+test_every_admission_append_and_compaction_boundary (test_redesign.Redesign.test_every_admission_append_and_compaction_boundary) ... ok
+test_every_truncation_corruption_and_migration (test_redesign.Redesign.test_every_truncation_corruption_and_migration) ... ok
+test_exhaustion_and_explicit_errors (test_redesign.Redesign.test_exhaustion_and_explicit_errors) ... ok
+test_future_resolution_slots_and_bytes_reserved (test_redesign.Redesign.test_future_resolution_slots_and_bytes_reserved) ... ok
+test_input_bounds_no_truncation_or_emission (test_redesign.Redesign.test_input_bounds_no_truncation_or_emission) ... ok
+test_post_CAS_cleanup_loss_does_not_accumulate_two_tails (test_redesign.Redesign.test_post_CAS_cleanup_loss_does_not_accumulate_two_tails) ... ok
+test_roundtrip_exact_fields_and_history (test_redesign.Redesign.test_roundtrip_exact_fields_and_history) ... ok
+test_single_owner_reentry_refuses_without_mutation (test_redesign.Redesign.test_single_owner_reentry_refuses_without_mutation) ... ok
+test_unqualified_backend_and_stale_root_record (test_redesign.Redesign.test_unqualified_backend_and_stale_root_record) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 41.014s
+
+OK

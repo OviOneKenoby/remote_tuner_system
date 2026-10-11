@@ -1,0 +1,9 @@
+# Final scope/publication validation
+
+- Current coordination main fetched531aa8cd0435ed9813ab39664888992583df0d28;rules/status/registers/current handoffs/footer read. No concurrent main changes at recheck. PR8readback OPEN/UNMERGED,head74e4f1a681cd589625aff63e91f917076cc22586 unchanged. No PR8/TUNER/PM modification.
+- Device4047entry files:4046unchanged,only append-only CHANGELOG changed. New paths restricted to docs/A_REMOTE_004_STORAGE_RECOVERY_QUALIFICATION.md and tools/qualification/a_remote_004. No production source/tests/config/.pio/artifact changes. Exact local prototype/vendor bytes match additive evidence.
+- Frozen CCM SHA unchanged;current Core/headers/partition/CMake and installed SDK source pinned. Vendor A003bytes checked against pinned Git blobs. No source/installed/flashed identity fabrication.
+- Both prior latest handoffs archived byte-exactly:current-main A002 and last-published A003from still-unmerged PR8;source commits/hashes recorded. Latest template headings/fields match exact template. Archive links retain original handoff base,not rewritten.
+- Final host runner PASS12tests/7805checks,0failures/errors,562scenarios;derived max6383/growth796/reserve15510. Tests are conditional on explicitly assumed G0-G4,not physical conformance. Hardware NOT RUN,production blocked.
+- Publication metadata preserves raw new A004evidence bytes (including pinned CRLFvendor);root checksum refreshed from staged canonical blobs. Validate evidence hashes/local links/template/archive/root manifest and `git -c core.whitespace=cr-at-eol diff --cached --check` before commit. Root manifest integrity is not firmware correctness.
+- Separate result PR;no merge. Final authorization/result hashes and publication links reported separately to avoid self-reference. No firmware commit/build/hash/upload claimed.

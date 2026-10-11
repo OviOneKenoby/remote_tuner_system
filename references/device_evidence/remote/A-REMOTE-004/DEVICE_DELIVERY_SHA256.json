@@ -1,0 +1,14 @@
+{
+  "docs/A_REMOTE_004_STORAGE_RECOVERY_QUALIFICATION.md": "0e28cb3953d39423bc70058226f611e4e05c195380394e342e37f66542832569",
+  "tools/qualification/a_remote_004/README.md": "8ea662ebf2ac8c1650da963c2fdc71dc2e2f239ab9ca18ae8269b23a64f62318",
+  "tools/qualification/a_remote_004/prototype/projection.py": "5d1e31443d5e87ba70642763ac96b02dfa2998a789ef4a9c8a454a16981c2b53",
+  "tools/qualification/a_remote_004/prototype/protocol.py": "48536406ea969bc5919281e0fd436ff8514ace3a730b48ce15afe006cea485bd",
+  "tools/qualification/a_remote_004/prototype/run_qualification.py": "bd9033cb26591d728e5cea46f5e1fe217ddb773c74dc2603551ad1df7adec4ba",
+  "tools/qualification/a_remote_004/prototype/test_redesign.py": "a87b63db447c9e2f0d833c7e5f23eab1845d53b8560e6a6d076f3b2a9e0caed1",
+  "tools/qualification/a_remote_004/prototype/vendor_a003/backend.py": "7bacf4087a731f5d142447d7824903cf043008420e1178fd289ba94e7a815752",
+  "tools/qualification/a_remote_004/prototype/vendor_a003/codec.py": "082b9c94b4fc0d4b23de4afa1b9f978ddacbb791df1088b2e2d7997eaa1d5240",
+  "tools/qualification/a_remote_004/prototype/vendor_a003/fixtures.py": "41ce5329f58039e0d644af8149c25111dba4225509123aec3b9a81528532fb46",
+  "tools/qualification/a_remote_004/prototype/vendor_a003/run_qualification.py": "83c2568df9547ded4dbf263c7cca2e20684c06f4f9ec130d5ba9c9344c26d593",
+  "tools/qualification/a_remote_004/prototype/vendor_a003/test_qualification.py": "4d73edb852d2ce393cf4c536d05e3f5afe58a502afc0398e2abae867c48c286e",
+  "CHANGELOG.md": "38915bcdad91cf3e065024211fc5e98497a0a81910b1e6ded72f809d393e9f80"
+}
