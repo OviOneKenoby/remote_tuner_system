@@ -1,0 +1,9 @@
+{
+  "local_ELF_SHA256": "61d077235a971919807bcff38aede169554f60de1ea7152625e5aa5b0b730525",
+  "BIN_embedded_ELF_hash_match": true,
+  "legacy_esp_wifi_bsp_build_component": false,
+  "selected_sdkconfig": "sdkconfig.remote01",
+  "unselected_root_sdkconfig_header": "# Espressif IoT Development Framework (ESP-IDF) 5.5.4 Project Configuration",
+  "unselected_defaults_header": "# Espressif IoT Development Framework (ESP-IDF) 5.3.2 Project Minimal Configuration",
+  "source_binary_flashed": "UNKNOWN"
+}

@@ -26,3 +26,6 @@ archive/tuner/2026-10-11T175133Z_A-PM-004_TUNER-A-PM-003-20261011T173747Z.md -te
 # A005 raw evidence/source and byte-original prior handoff
 references/device_evidence/remote/A-REMOTE-005/** -text
 archive/remote/2026-10-11T180356Z_A-REMOTE-005_REMOTE-A-PM-004-20261011T175133Z.md -text
+
+# A006 immutable local/proposed layout evidence, not device dumps
+references/device_evidence/remote/A-REMOTE-006/** -text

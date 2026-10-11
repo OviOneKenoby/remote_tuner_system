@@ -1,0 +1,14 @@
+{
+  "project_name": "12_LVGL_Test",
+  "project_version": "1",
+  "project_path": "C:/Users/RYZEN/Documents/REMOTE01/Code",
+  "idf_path": "C:/Users/RYZEN/.platformio/packages/framework-espidf@3.50503.0",
+  "build_dir": "C:/Users/RYZEN/Documents/REMOTE01/Code/.pio/build/remote01",
+  "config_file": "C:/Users/RYZEN/Documents/REMOTE01/Code/sdkconfig.remote01",
+  "config_defaults": "C:/Users/RYZEN/Documents/REMOTE01/Code/sdkconfig.defaults",
+  "git_revision": "5.5.3",
+  "target": "esp32s3",
+  "c_compiler": "C:/Users/RYZEN/.platformio/packages/toolchain-xtensa-esp-elf@14.2.0+20251107/bin/xtensa-esp32s3-elf-gcc.exe",
+  "app_bin": "12_LVGL_Test.bin",
+  "app_elf": "12_LVGL_Test.elf"
+}

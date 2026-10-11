@@ -1,0 +1,154 @@
+{
+  "platformio.ini": {
+    "bytes": 429,
+    "sha256": "e455b728cecf0d72d391e7bb841e8795ce899c7af85a0ed64e15db67d0c9f175"
+  },
+  "partitions.csv": {
+    "bytes": 404,
+    "sha256": "fb9b79c3f9b92f43633569e6159e4d0522f0e4289b4e081d864cc4587ce496fc"
+  },
+  "sdkconfig.remote01": {
+    "bytes": 85971,
+    "sha256": "5e1757dd81d2a891c4e8863fa4993b0bc643baeaef766399d644ff27a1441f0d"
+  },
+  "sdkconfig.defaults": {
+    "bytes": 1089,
+    "sha256": "08c722635f0271dc2cb3fbd898d9189b02cdcdc3f87e114093fd6e861dabb883"
+  },
+  "sdkconfig": {
+    "bytes": 108804,
+    "sha256": "2671a7b865f9a55c022fc77981a0bdd832e3465e3270aedf644625ed8fbb127a"
+  },
+  ".pio/build/remote01/project_description.json": {
+    "bytes": 319561,
+    "sha256": "1a097f1fe74cf8eadd67cb288af3a477c947177d194085dbbade858b31f5432f"
+  },
+  ".pio/build/remote01/config/sdkconfig.h": {
+    "bytes": 55192,
+    "sha256": "d3a3163c1e10697e0e4bff4fcb96ed53b1a8085b2a8b240c487045b87fadbd71"
+  },
+  ".pio/build/remote01/config/sdkconfig.json": {
+    "bytes": 66271,
+    "sha256": "f436714a4d9059c52f4df44973ac307484f1cf54af9de0be760b42291c68932f"
+  },
+  ".pio/build/remote01/CMakeCache.txt": {
+    "bytes": 26376,
+    "sha256": "3adc3103cf80a2c0885d15c86c7ae84bc5a56e3ec79a919137e2552b8674eaff"
+  },
+  ".pio/build/remote01/build.ninja": {
+    "bytes": 12560074,
+    "sha256": "013cb3c0212bcae38add7b8ed38456b800a4295b47b38fb342d1f8b1f6d5cb98"
+  },
+  ".pio/build/remote01/flasher_args.json": {
+    "bytes": 1087,
+    "sha256": "17d4c170d52ece39e9c273d297976a9f67bbfde3be5e5cac3053131e9433e664"
+  },
+  ".pio/build/remote01/flash_args": {
+    "bytes": 185,
+    "sha256": "d76a9c32c40a093309d1c6bf5b3cc1167c26542c3a7e05de288019c80290303f"
+  },
+  ".pio/build/remote01/partition-table-flash_args": {
+    "bytes": 97,
+    "sha256": "3291bbf21ef883b96342d5ae993ba534c896cc489cad568a0d16a08468586fae"
+  },
+  ".pio/build/remote01/bootloader-flash_args": {
+    "bytes": 84,
+    "sha256": "1031515a92a7f191f6b7c796d6742eafe3a648cfae84ffcfe81009406980f821"
+  },
+  ".pio/build/remote01/app-flash_args": {
+    "bytes": 79,
+    "sha256": "f13d0d0d46a71402890ff1f3a95738a380c2c1a278225576a3c8dd656665cdac"
+  },
+  ".pio/build/remote01/partitions.bin": {
+    "bytes": 3072,
+    "sha256": "d7ffd497cfcd33e697304b3cf8112e7a1f1cb0619639fe9879ed431cbbdc8835"
+  },
+  ".pio/build/remote01/firmware.bin": {
+    "bytes": 2485824,
+    "sha256": "7e8d77c21898014fbd7ea625cf2d25aa7f77941d5ba1d24484090f7361279afb"
+  },
+  ".pio/build/remote01/firmware.elf": {
+    "bytes": 17777512,
+    "sha256": "61d077235a971919807bcff38aede169554f60de1ea7152625e5aa5b0b730525"
+  },
+  ".pio/build/remote01/bootloader.bin": {
+    "bytes": 20832,
+    "sha256": "ebe1f8e2fa9dc072808ee05ced04db850106aa1b3f91d50c30f52aec62253b1c"
+  },
+  ".pio/build/remote01/ota_data_initial.bin": {
+    "bytes": 8192,
+    "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f"
+  },
+  "components/network_manager/runtime.cpp": {
+    "bytes": 28527,
+    "sha256": "869b6b0dd77a40dd20f71d11c781be94babae8a206ac4a0f6ba61ad9f434ef39"
+  },
+  "components/network_manager/include/network_manager/model.hpp": {
+    "bytes": 2950,
+    "sha256": "f828b00538f8f6ef1b84016cc434eb4ffed73f58dcfd363a4f0f88678617f63c"
+  },
+  "components/control/include/control/mock_adapter.hpp": {
+    "bytes": 1499,
+    "sha256": "48da2641acb1e917b413bc916f77520f24fc4e547fd1792141c5d8a108cd1d99"
+  },
+  "components/control/include/control/core.hpp": {
+    "bytes": 7778,
+    "sha256": "8c2e46b3e6a76261104c706f22f4abf5bc1746433cba7770d121b3ae5f00db21"
+  },
+  "components/control_profile/include/control_profile/profile.hpp": {
+    "bytes": 1142,
+    "sha256": "0e56266338534497e704aa28b4ed25a31e145c41ac349562812bc5887faf4b1a"
+  },
+  "components/control_home/include/control_home/development.hpp": {
+    "bytes": 3504,
+    "sha256": "eebaec5c0851508b74b081b27a413a8dafb82b305707c6cee02df23f2ca6054f"
+  },
+  "main/main.cpp": {
+    "bytes": 13264,
+    "sha256": "da1db6329e2b07b5396beb414f4314398d7fdfd3bad7388d8b3597084d073075"
+  },
+  "components/esp_wifi_bsp/esp_wifi_bsp.c": {
+    "bytes": 3510,
+    "sha256": "1d404c539e4cafc9f233e7bb2738c7c8f3332e2d846218452f9560f1392a7abe"
+  },
+  "C:\\Users\\RYZEN\\.platformio\\packages\\framework-espidf@3.50503.0\\components\\partition_table\\gen_esp32part.py": {
+    "bytes": 30000,
+    "sha256": "02f6c1c5f012393d47987ee64bc50ba319a2eda48cbcec754d8cfaf780cce529"
+  },
+  "C:\\Users\\RYZEN\\.platformio\\packages\\framework-espidf@3.50503.0\\package.json": {
+    "bytes": 536,
+    "sha256": "230c52993499adf9f64d1d6477495ea46c3f14d63022bd52081858373098da68"
+  },
+  "C:\\Users\\RYZEN\\.platformio\\platforms\\espressif32\\boards\\esp32-s3-devkitc-1.json": {
+    "bytes": 1164,
+    "sha256": "6af86efc82b72cd3ae37086903b476ca2a1fcdd6d97465ceeaea4fb3ffbe6c2d"
+  },
+  "C:\\Users\\RYZEN\\.platformio\\platforms\\espressif32\\platform.json": {
+    "bytes": 4032,
+    "sha256": "7fcda3cabda805b365efbe6b56f0742370123333dc07c013e8eb8d06686b9969"
+  },
+  "C:\\Users\\RYZEN\\.platformio\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\package.json": {
+    "bytes": 473,
+    "sha256": "a0c85be45a39c6c4dee3729599cb82ed4df9298b37ef970ddbfe276743a7510b"
+  },
+  "C:\\Users\\RYZEN\\.platformio\\packages\\tool-esptoolpy\\package.json": {
+    "bytes": 449,
+    "sha256": "650d928dd0eb9b160785b1242badaf5fde82f008311d4199d1878275b3065e3d"
+  },
+  "C:\\Users\\RYZEN\\.platformio\\packages\\tool-esptoolpy\\esptool.py": {
+    "bytes": 1402,
+    "sha256": "7e6833367b891629474c7717eb1689178377c1b13be286016ef72ee2c4e269a9"
+  },
+  "C:\\Users\\RYZEN\\.platformio\\packages\\framework-espidf@3.50503.0\\components\\nvs_flash\\src\\nvs_api.cpp": {
+    "bytes": 24616,
+    "sha256": "9e2c748145c2a1d9a0798062316382ee24c2eeb18e17c9c43676a3c8bc323e4f"
+  },
+  "C:\\Users\\RYZEN\\.platformio\\packages\\framework-espidf@3.50503.0\\components\\nvs_flash\\private_include\\nvs_constants.h": {
+    "bytes": 2725,
+    "sha256": "e025890b9206bd02177b8dc5a0a3983935fae53981a865cb51ff0f12de8e1491"
+  },
+  "C:\\Users\\RYZEN\\.platformio\\packages\\framework-espidf@3.50503.0\\components\\bootloader_support\\src\\bootloader_utility.c": {
+    "bytes": 53658,
+    "sha256": "3255f24b8dbcd437dd24b4b64e4a4bc6cd5e9cdbb2ab716e8c3a702875df9a94"
+  }
+}

@@ -101,3 +101,20 @@ Both owner-reviewed A-001 inspection/documentation deliveries are integrated and
 P-REMOTE-V1-001 exact PR11 head03c1be0b34df6ff9904cdaf78a0f5de79fd7ac0c is OWNER APPROVED by [exact scope](references/P_REMOTE_V1_001_OWNER_APPROVAL_2026-10-11.md). Current new revision [CCM1.1.0](references/CCM_1_1_0.md) OWNER APPROVED/FROZEN; [publication hashes](references/CCM_1_1_0_PUBLICATION.json). Supersedes only the prior pending-approval/current1.0.0 pointer for this approved REMOTE persistence threat delta; historical1.0.0/proposal/reviews/old task verdicts remain unchanged. G1a REQUIRED, G1b OUTSIDE for intentional complete coherent restoration. This is contract publication, not implementation or device acceptance. Capacity48KiB conditional recommendation; actual capacity/ordering/durability/migration unqualified. Core/NVS/partition/firmware/Native/TUNER/hardware untouched. Native UNAPPROVED/UNFROZEN/NOT IMPLEMENTED, O01-O17 OPEN, common gate OPEN/NOT PASSED;006-009/D1-D5 unassigned. No automatic task execution.
 
 D-006 state: OWNER APPROVED. Effective approved revision: CCM1.1.0, frozen. Owner evidence above; exact patch SHA25690d40c161d9d5b87fc83ec5a4daa1cb1e74f410647f9380f68c17651fd07d8a6. D-0011.0.0 approval remains historical; no other decision superseded. Implementation NOT IMPLEMENTED.
+
+### D-007: Dedicated REMOTE control storage layout
+- Date (UTC): 2026-10-11
+- Task / proposal ID: A-REMOTE-006 layout analysis
+- State: PROPOSED
+- Problem and evidence: [A006 report](reports/A-REMOTE-006_FLASH_LAYOUT.md); current24KiB insufficient under conservative control profile, physical capacity UNKNOWN.
+- Exact proposed change: [64KiB patch](references/device_evidence/remote/A-REMOTE-006/A_64KiB.patch); [48KiB fallback](references/device_evidence/remote/A-REMOTE-006/B_48KiB.patch); not applied.
+- CCM impact: NONE;1.1.0 frozen preserved, G1a REQUIRED/G1b OUTSIDE; mandatory history/barriers/non-reuse retained.
+- Native API impact: NONE; unapproved/unfrozen/not implemented.
+- REMOTE impact and review: PM/REMOTE direct read-only analysis,64 preferred conditional, physical/deployment BLOCKED; all4036 existing files unchanged.
+- TUNER impact and review: NONE; no TUNER code/storage/authority/protocol obligation or task.
+- Alternatives and compatibility:48 conditional minimum; current negative witness; single-table update/old firmware authority compatibility unresolved; migration report.
+- Owner approval: PENDING for layout and safe deployment/recovery route. Current authorization is analysis only.
+- Effective approved revision: NONE for partition/layout; current CCM1.1.0 remains effective.
+- Implementation tasks/commits: NOT IMPLEMENTED; next007 recommendation unassigned.
+- Verification: selected5.5.3 offline decode/reencode/alignment/slot checks PASS; physical NOT RUN, source/flashed UNKNOWN.
+- Supersedes / superseded by: NONE; D-006 remains approved contract scope only. O01-O17/gate OPEN.

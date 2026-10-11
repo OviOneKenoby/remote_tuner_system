@@ -1,0 +1,12 @@
+{
+  "entry_files": 4036,
+  "post_files": 4036,
+  "file_content_size_delta": [],
+  "result": "PASS unchanged entire inventoried workspace",
+  "excluded": ".git metadata, credentials/NVS dumps/secrets/env/private keys (not read)",
+  "SDK_tools_sources": "selected external files unchanged",
+  "entry_inventory_sha256": "e6da14668634151a1ce3e189702c626a607db3f4ff045b59a900db261b6a0e10",
+  "device_operations": "NONE",
+  "SDK_import_bytecode": "disabled with -B",
+  "no_binary_or_credentials_uploaded": true
+}

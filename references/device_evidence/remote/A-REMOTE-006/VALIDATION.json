@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "assignment_commit": "81d7d2f4d2c3d7625d6c6f5618785ffd90b93940",
+  "workspace_files_unchanged": 4036,
+  "selected_artifact_SDK_hashes": "PASS",
+  "current_CSV_binary": "BYTE IDENTICAL (selected5.5.3 utility)",
+  "candidate_layouts": 3,
+  "future_patch_apply": "PASS raw CSV to exact candidate bytes in temp directories",
+  "partition_overlap_alignment_sizes": "PASS source/artifact only",
+  "local_ELF_BIN_pairing": "PASS",
+  "source_binary_flashed": "UNKNOWN",
+  "physical_flash": "REQUIRES DEVICE EVIDENCE",
+  "links_checked": 69,
+  "task_template": "PASS",
+  "target_compile": "NOT RUN / not required",
+  "physical": "NOT RUN",
+  "production": "NOT IMPLEMENTED",
+  "CCM1.1.0": "UNCHANGED",
+  "old_evidence_archives_handoffs": "UNCHANGED",
+  "result_PR": "OPEN / must not merge",
+  "migration_table_sector_powerloss": "BLOCKED until qualified deployment/recovery route"
+}
