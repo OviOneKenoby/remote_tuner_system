@@ -28,3 +28,7 @@ O01-O17 are OPEN. PM assignments authorize only their exact task scope, never sh
 
 ## Current REMOTE qualification boundary - 2026-10-11
 A003 execution complete, production qualification FAIL/BLOCKED. A004 execution complete, conditional host delivery reviewed, READY FOR REVIEW / production integration BLOCKED. Concrete root/ordered-record backend and physical capacity unqualified; hardware NOT RUN. D1-D5 unassigned. [PM review](reports/A-PM-003_RECONCILIATION.md). Earlier assignment paragraphs retain historical dated scope only.
+
+## D-006 owner approval and CCM1.1.0 publication - 2026-10-11
+P-REMOTE-V1-001 exact PR11 head03c1be0b34df6ff9904cdaf78a0f5de79fd7ac0c is OWNER APPROVED by [exact scope](references/P_REMOTE_V1_001_OWNER_APPROVAL_2026-10-11.md). Current new revision [CCM1.1.0](references/CCM_1_1_0.md) OWNER APPROVED/FROZEN; [publication hashes](references/CCM_1_1_0_PUBLICATION.json). Supersedes only the prior pending-approval/current1.0.0 pointer for this approved REMOTE persistence threat delta; historical1.0.0/proposal/reviews/old task verdicts remain unchanged. G1a REQUIRED, G1b OUTSIDE for intentional complete coherent restoration. This is contract publication, not implementation or device acceptance. Capacity48KiB conditional recommendation; actual capacity/ordering/durability/migration unqualified. Core/NVS/partition/firmware/Native/TUNER/hardware untouched. Native UNAPPROVED/UNFROZEN/NOT IMPLEMENTED, O01-O17 OPEN, common gate OPEN/NOT PASSED;006-009/D1-D5 unassigned. No automatic task execution.
+

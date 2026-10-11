@@ -96,3 +96,9 @@ Both owner-reviewed A-001 inspection/documentation deliveries are integrated and
 - Implementation tasks/commits: NOT IMPLEMENTED;006-009 proposed only, D1-D5 unassigned.
 - Verification: PR10 reproduction PASS;12 capacity ledger cases; physical NOT RUN; [proposal](proposals/P-REMOTE-V1-001/README.md).
 - Supersedes / superseded by: NONE; no approved decision superseded.
+
+## D-006 owner approval and CCM1.1.0 publication - 2026-10-11
+P-REMOTE-V1-001 exact PR11 head03c1be0b34df6ff9904cdaf78a0f5de79fd7ac0c is OWNER APPROVED by [exact scope](references/P_REMOTE_V1_001_OWNER_APPROVAL_2026-10-11.md). Current new revision [CCM1.1.0](references/CCM_1_1_0.md) OWNER APPROVED/FROZEN; [publication hashes](references/CCM_1_1_0_PUBLICATION.json). Supersedes only the prior pending-approval/current1.0.0 pointer for this approved REMOTE persistence threat delta; historical1.0.0/proposal/reviews/old task verdicts remain unchanged. G1a REQUIRED, G1b OUTSIDE for intentional complete coherent restoration. This is contract publication, not implementation or device acceptance. Capacity48KiB conditional recommendation; actual capacity/ordering/durability/migration unqualified. Core/NVS/partition/firmware/Native/TUNER/hardware untouched. Native UNAPPROVED/UNFROZEN/NOT IMPLEMENTED, O01-O17 OPEN, common gate OPEN/NOT PASSED;006-009/D1-D5 unassigned. No automatic task execution.
+
+D-006 state: OWNER APPROVED. Effective approved revision: CCM1.1.0, frozen. Owner evidence above; exact patch SHA25690d40c161d9d5b87fc83ec5a4daa1cb1e74f410647f9380f68c17651fd07d8a6. D-0011.0.0 approval remains historical; no other decision superseded. Implementation NOT IMPLEMENTED.
+

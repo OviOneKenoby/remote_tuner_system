@@ -1,0 +1,21 @@
+{
+  "state": "OWNER APPROVED / FROZEN",
+  "version": "1.1.0",
+  "approved_PR_head": "03c1be0b34df6ff9904cdaf78a0f5de79fd7ac0c",
+  "input_main": "4588adc63c4856d31f144913aad59e599993c233",
+  "proposal_normal_merge": "9ce402e4dd27914d8d78b9b755224add4e2cfde9",
+  "approved_patch_sha256": "90d40c161d9d5b87fc83ec5a4daa1cb1e74f410647f9380f68c17651fd07d8a6",
+  "historical_base_sha256": "7a46f9fffe706476de458aac078d0af1c94844df339248d3f9f4b5cf033011d7",
+  "approved_semantic_result_sha256": "ac93ad8891899f91f9ae96b304d5c92dd5b36bfdf6c5f8dd7386342fd9af19a8",
+  "published_revision_sha256": "89a566c4af0a3fb05f318efad17f663174dd90bd541cf1123b9f3e511ec76eee",
+  "metadata_only_changes": [
+    "title/date/header",
+    "current version tuple and exact-version validation",
+    "section21 historical title; new22 approval",
+    "relocated historical document hyperlinks"
+  ],
+  "semantic_inverse_verification": "PASS exact approved patched bytes",
+  "implementation": "NOT IMPLEMENTED",
+  "physical": "NOT RUN",
+  "task_assignment": "NONE"
+}
