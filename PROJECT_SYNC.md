@@ -128,3 +128,6 @@ PR12 normal merge8c88ece60138733535525b52e0a929a6f07a11c2 accepts A006 condition
 
 ## D-008 approved architectural layout / A007 integrated - 2026-10-11
 PR13 normal merge `72875788767840d27c7085faf994b012d1babefd` accepts read-only evidence only. [D-008 approval](references/REMOTE_V1_LAYOUT_OWNER_APPROVAL_2026-10-11.md):64KiB remote_ctl at0xE20000 approved architectural target,48KiB fallback unselected. Migration ONLY controlled USB service, no OTA partition-table update; interrupted migration must be ROM-bootloader recoverable, procedure unqualified. No writes/device/source publication/new authority activation authorized. Source-to-build UNKNOWN; exact downgrade boundary before authority activation. Backend/migration/production unqualified, CCM1.1.0 frozen/Native unapproved/O01-O17/common gate OPEN; ADC FAIL/rollback residency PENDING retained. Historical pending-layout and OPEN PR13 paragraphs superseded only as current scope/state.
+
+## A-REMOTE-008 assigned - 2026-10-11
+[Exact task](tasks/A-REMOTE-008.md) assigns private offline source-to-build closure only. D-008 architectural approval does not authorize hardware writes/backend/migration. Original workspace/source privacy preserved; result requires separate OPEN/unmerged review. A009 not assigned/started. All shared/hardware qualification gaps retained.
