@@ -118,3 +118,20 @@ D-006 state: OWNER APPROVED. Effective approved revision: CCM1.1.0, frozen. Owne
 - Implementation tasks/commits: NOT IMPLEMENTED; next007 recommendation unassigned.
 - Verification: selected5.5.3 offline decode/reencode/alignment/slot checks PASS; physical NOT RUN, source/flashed UNKNOWN.
 - Supersedes / superseded by: NONE; D-006 remains approved contract scope only. O01-O17/gate OPEN.
+
+### D-008: Owner-approved REMOTE v1 dedicated control layout and USB migration architecture
+- Date (UTC): 2026-10-11
+- Task / proposal ID: A-REMOTE-006/A-REMOTE-007; A-REMOTE-008 source-to-build gate
+- State: OWNER APPROVED (architectural target only)
+- Problem and evidence: D-007 already PROPOSED; [A007 report](reports/A-REMOTE-007_DEVICE_IDENTITY.md) verifies16MiB, exact table, factory/local image and erased64KiB candidate. PR13 normal merge `72875788767840d27c7085faf994b012d1babefd` accepts bounded observations only.
+- Exact proposed change: approved data/nvs remote_ctl offset0xE20000 size0x10000/64KiB, [A006 exact layout](references/device_evidence/remote/A-REMOTE-006/A_64KiB.csv);48KiB fallback unselected. Existing partitions/two3MiB OTA slots preserved.
+- CCM impact: NONE; CCM1.1.0 OWNER APPROVED/FROZEN, G1a and all fail-closed/no-replay/barriers/non-reuse/capacity/migration obligations retained.
+- Native API impact: NONE; UNAPPROVED/UNFROZEN/NOT IMPLEMENTED; O01-O17 OPEN.
+- REMOTE impact and review: A006 layout analysis and A007 exact evidence verified; physical facts accepted, source-to-build UNKNOWN pending A008. No implementation/flash/authority activation.
+- TUNER impact and review: NONE; no TUNER change or task/approval inferred.
+- Alternatives and compatibility:48KiB fallback not selected; migration ONLY controlled service USB, OTA partition-table migration excluded; interrupted migration recovery through ROM bootloader mandatory. Recovery procedure NOT QUALIFIED; exact downgrade boundary required before new authority activation.
+- Owner approval: [technical scope](references/REMOTE_V1_LAYOUT_OWNER_APPROVAL_2026-10-11.md), owner2026-10-11 explicit layout/service/recovery architecture approval; no hardware writes authorized.
+- Effective approved revision:64KiB architectural layout target; installed table remains existing six-partition layout. Production/backend/migration qualification NOT GRANTED.
+- Implementation tasks/commits: NONE; A008 private reproducibility only, A009 not started/assigned.
+- Verification: PR13 head8c6135b298783e740cce7b334d7c8b894075d04d;21 evidence/369 canonical hashes PASS;4036 original workspace files unchanged; owner basic return confirmed. No persistent-write command; source-to-build UNKNOWN.
+- Supersedes / superseded by: D-007 pending layout-selection scope only; historical proposal unchanged. D-006/CCM unchanged; superseded by NONE. O01-O17/common gate OPEN/NOT PASSED.
