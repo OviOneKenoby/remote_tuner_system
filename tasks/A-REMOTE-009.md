@@ -35,3 +35,18 @@ Preparation OWNER ACCEPTED; **PASS — READ-ONLY HARDWARE PREFLIGHT; PERSISTENT 
 
 ## A009 table-only hardware result — 2026-10-12T20:24:27.882825+00:00
 A009 backup-bound table-only operation **PASS / READY FOR OWNER REVIEW**, [report](../reports/A-REMOTE-009_TABLE_ONLY_HARDWARE_VALIDATION.md), [owner scope](../references/A009_TABLE_ONLY_WRITE_OWNER_AUTHORIZATION_2026-10-12.md). One table-sector write0x8000–0x8FFF/exit0; readback candidate+FF exact, independent seven-entry decode, six old records/both3MiB OTA slots preserved. Target65536FF; full pre-reboot16MiB read byte-identical outside table sector. Same factory boots, passive logs clean, owner confirms normal UI/configuration without mutation. Rollback not required/not executed; ROM restoration write remains untested. Local backup rehashed; separate-storage copy size/hash OWNER VERIFIED. PR15 OPEN/unmerged; A009 owner acceptance pending, no A010/backend/API/TUNER/CCM change. A008 accepted, Native unapproved/O01–O17/common gate OPEN. Earlier persistent-NOT-AUTHORIZED snapshots superseded only for this completed exact write; no ongoing write authorization.
+
+
+## A009 final owner acceptance — 2026-10-12T20:29:15.774597+00:00
+
+**A-REMOTE-009: DONE / OWNER ACCEPTED. PASS at the approved practical hobby/public-beta assurance level.**
+
+Installed physical state from accepted evidence: seven partition entries; `remote_ctl`, data/nvs, offset `0xE20000`, size `0x10000` (64 KiB), flags0. All six earlier entries, factory at0x10000 and both3MiB OTA slots remain unchanged. The new region was read as65536bytes of0xFF after table writing and confirmed in the full pre-reboot read; it remains erased/unused in the accepted state, no backend initialized. Existing factory firmware is unchanged and booted normally; owner confirmed ordinary display/UI and existing observable configuration without mutation.
+
+Preserve preparation, read-only preflight, complete16MiB backup identity, independent sector readback/decode, and full before-reboot preservation evidence: every byte outside0x8000–0x8FFF was identical to the verified backup,50 changed bytes all inside the table sector. One authorized table-only command, no firmware upload or other-region write. ROM/USB download/read access remains available without JTAG; an actual restoration write was NOT physically exercised. No rollback was required/executed. Normal firmware housekeeping after boot is not a claim of globally frozen flash bytes.
+
+Primary recovery backup16777216bytes/SHA256 `f6d806e0c19e545951f2e75ab8b9373a89215a58f2cb8b0a3c21f3d759e3bdb8` retained privately; owner separately verified an Orange Pi copy with the same size/hash. Original4096-byte0x8000–0x8FFF sector retained privately, SHA256 `4946a42576c9e499c4a856b9104abfb6d09fff4f3fff2cd7985649ccbcec8f46`. Absolute private paths/backup contents/identifiers remain unpublished.
+
+No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/TUNER/common-API change occurred during acceptance. A010 remains NOT ASSIGNED / NOT STARTED. A008 stays DONE/OWNER ACCEPTED with byte-reproducibility/historical runtime-equivalence unproven and exact Ryzen compiler-process failure cause UNKNOWN. CCM1.1.0 frozen/historical1.0.0 unchanged, Native UNAPPROVED/UNFROZEN/NOT IMPLEMENTED; O01–O17/common gate OPEN/NOT PASSED. Backend/durability/G1a/migration limits remain separate.
+
+[Owner acceptance](../references/A009_FINAL_OWNER_ACCEPTANCE_2026-10-12.md); normal PR15 merge `9b12c9b2642fcba3e9c7a9f3c3171e831430f108`, reviewed head `52f99887cb1a88772bed98f7bc7cfb60529de4e6`. A010 proposal only: minimum private remote_ctl persistence backend with focused host interruption/error tests and separate hardware authorization; not assigned or executed.

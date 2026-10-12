@@ -1,26 +1,26 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-009-HARDWARE-20261012T202427Z
-- Updated (UTC): 2026-10-12T20:24:27.882825+00:00
+- Handoff ID: REMOTE-A-REMOTE-009-OWNER-ACCEPTED-20261012T202915Z
+- Updated (UTC): 2026-10-12T20:29:15.774597+00:00
 - Task ID: A-REMOTE-009
-- Status: READY FOR REVIEW
-- Prepared by: Owner-authorized table-only hardware executor/publisher
-- Coordination input commit: 1e549d4d6be00c77d61c020adf0b82ed4a04e729
+- Status: ACCEPTED
+- Prepared by: Owner-authorized acceptance coordination publisher
+- Coordination input commit: 9b12c9b2642fcba3e9c7a9f3c3171e831430f108
 
 ## Milestone
-PASS — TABLE-ONLY HARDWARE VALIDATION / READY FOR OWNER REVIEW. PR15 OPEN/unmerged; A009 owner acceptance pending. Prior read-only/preparation results preserved.
+A-REMOTE-009 DONE / OWNER ACCEPTED — PASS at practical hobby/public-beta level. PR15 normally merged; seven-entry physical layout, normal existing factory firmware/UI/configuration accepted. [Owner record](../references/A009_FINAL_OWNER_ACCEPTANCE_2026-10-12.md).
 
 ## Baseline
 - Device repository: Private Git-less REMOTE source; not published
-- Branch: NONE original; coordination remote/a-remote-009-preparation-20261012
+- Branch: NONE original; coordination main
 - Firmware baseline commit: UNKNOWN Git-less historical/current source commit; accepted installed/A006 image hash in report
 - Firmware version: project12_LVGL_Test/version1/IDF5.5.3; current compiled image metadata retained privately, exact historical runtime equivalence UNPROVEN
 - Working tree at start: Coordination clean at assigned input; original read-only; current changelog update preserved; build/source/config input hashes verified
 - Contract references: CCM1.1.0 OWNER APPROVED/FROZEN, historical1.0.0 unchanged; D00864KiB layout; A006/A007/A008 accepted evidence and A009 backup-bound table-only owner authorization
 
 ## Changes
-One authorized candidate table-sector write0x8000–0x8FFF; safe generated table already published. Sanitized hardware evidence/owner scope and append-only coordination records. No production source/tool/TUNER/shared-contract edit; no firmware upload/backend/API/A010.
+Normally merge reviewed PR15, archive previous complete handoff byte-exact and record final owner acceptance. All preparation/preflight/write/readback/decode/preservation/boot evidence remains unchanged. No new hardware operation, production change, backend/common API or A010 work.
 
 ## Verification
 | Check | Command/procedure | Environment | Result | Evidence |
@@ -32,7 +32,7 @@ One authorized candidate table-sector write0x8000–0x8FFF; safe generated table
 | Target | Independent65536-byte read |0xE20000 |65536FF/0nonFF | Result |
 | Normal boot/UI | One USBHardReset/passive45s capture/owner observation | Existing factory0x10000 | PASS no logged error/loop; normal UI/configuration | Report |
 | Rollback | NOT REQUIRED/NOT EXECUTED | Bounded original-sector authority only | Full restore not authorized; restoration untested | Owner scope |
-| Publication | Blob SHA/privacy/archive/history/fresh remote verification | PR15 OPEN/unmerged | Final commit reported externally | Publication audit |
+| Publication | Normal two-parent merge/reviewed-tree equality, fresh remote hashes/history verification | main, PR15 merged `9b12c9b2642fcba3e9c7a9f3c3171e831430f108` | Final main commit reported externally | Owner acceptance |
 
 ## Remaining unknowns
 Actual ROM restoration write NOT TESTED; backend/G1a/migration/durability qualification NOT RUN. Exact source/runtime equivalence and byte-reproducible builds UNPROVEN, nonblockers at accepted hobby/public-beta level. Exact Ryzen failure cause UNKNOWN. After-boot normal firmware housekeeping not globally byte-frozen; no settings mutation performed. A010 NOT STARTED.
@@ -41,22 +41,22 @@ Actual ROM restoration write NOT TESTED; backend/G1a/migration/durability qualif
 - CCM 1.0.0: NO CHANGE; historical version and current frozen CCM1.1.0 preserved
 - TUNER Native API v1: NO CHANGE; UNAPPROVED/UNFROZEN/NOT IMPLEMENTED; O01–O17 OPEN
 - Other device impact: NONE; TUNER source/evidence/latest handoff untouched
-- Approval evidence: [Backup-bound owner table-only and bounded sector rollback scope](../references/A009_TABLE_ONLY_WRITE_OWNER_AUTHORIZATION_2026-10-12.md); no other write/firmware/backend/API/A010 authorization
+- Approval evidence: [Final owner acceptance and normal PR15 merge](../references/A009_FINAL_OWNER_ACCEPTANCE_2026-10-12.md); no further hardware write/recovery/A010 authority
 
 ## Blockers
-NONE for completed limited table-only validation. Owner result acceptance/PR15 disposition PENDING; PR OPEN/unmerged. Backend/common gate remain separate and OPEN/NOT PASSED.
+NONE for completed owner-accepted A009 scope. Backend/G1a/migration qualification separate; ROM restoration not physically exercised. O01–O17/common gate OPEN/NOT PASSED.
 
 ## PM decision required
-Owner review/accept A009 limited layout hardware result and decide PR15 disposition. No automatic merge, next task or persistent operation.
+NONE for A009 acceptance/merge; completed under explicit owner decision. Separate owner-approved scope required to assign or execute A010 or any further hardware operation.
 
 ## Recommended next task
-NONE assigned. Discuss A010 separately only after explicit owner scope/authorization; no backend/common API execution here.
+Proposal only, not an assignment or execution: implement the minimum private REMOTE persistence backend using only the installed64KiB remote_ctl partition. Preserve default NVS/factory/OTA layout; define versioned records, bounded capacity and initialization/migration rules; enforce approved CCM1.1.0 fail-closed/no-replay/barriers/non-reuse requirements with explicit durable ordering and error handling. Validate the adapter with focused host fault-injection for interrupted/partial operations and a bounded clean build. Any target writes/upload/recovery testing require a separate explicit owner scope/checkpoint with retained backups. No common API, MQTT/SmartThings/UI/TUNER work or industrial qualification campaign. Resolve any concrete capacity, data-loss, security or bricking risk before hardware execution.
 
 ## Commit
 - Firmware result commit(s): NONE; Git-less original unedited; private disposable candidate artifacts only, hashes published
 - Device changelog: Separate private A009 review-copy entry; original and immutable accepted Dell payload unchanged
-- Coordination publication: New PR15, remote/a-remote-009-preparation-20261012, OPEN/unmerged; assignment `b55176d8f9a2a18f175c6eae027a62e235f63d1f`; final head reported after fresh remote verification
-- Previous handoff archive: [archive/remote/2026-10-12T202427Z_A-REMOTE-009_REMOTE-A-REMOTE-009-READ-ONLY-20261012T193649Z.md](../archive/remote/2026-10-12T202427Z_A-REMOTE-009_REMOTE-A-REMOTE-009-READ-ONLY-20261012T193649Z.md)
+- Coordination publication: main; PR15 normal merge `9b12c9b2642fcba3e9c7a9f3c3171e831430f108`; reviewed head `52f99887cb1a88772bed98f7bc7cfb60529de4e6`; final main commit reported externally
+- Previous handoff archive: [archive/remote/2026-10-12T202915Z_A-REMOTE-009_REMOTE-A-REMOTE-009-HARDWARE-20261012T202427Z.md](../archive/remote/2026-10-12T202915Z_A-REMOTE-009_REMOTE-A-REMOTE-009-HARDWARE-20261012T202427Z.md)
 
 ## Hardware status
 - Physical device tested: YES owner-authorized table-only write/readback/normal boot; NO backend or restoration test
