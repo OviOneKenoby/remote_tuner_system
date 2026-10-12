@@ -1,64 +1,65 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-008-DELL-20261012T154633Z
-- Updated (UTC): 2026-10-12T15:46:33.352221+00:00
+- Handoff ID: REMOTE-A-REMOTE-008-DELL-REVIEW-20261012T175751Z
+- Updated (UTC): 2026-10-12T17:57:51.204673+00:00
 - Task ID: A-REMOTE-008
-- Status: IN PROGRESS
-- Prepared by: Authorized PM/private second-host bundle publisher
-- Coordination input commit: aaed9dbedb50da03d2e33dd757a8b953432b8aac
+- Status: READY FOR REVIEW
+- Prepared by: Authorized PM/Dell evidence reviewer and publisher
+- Coordination input commit: b3ee531bec15d690f0e33f35a2d353deec7163b1
 
 ## Milestone
-Private Dell bundle READY / locally verified. Full source-to-installed-build closure NOT achieved; Dell experiment NOT RUN. Current INCONCLUSIVE — BUILD REPRODUCTION BLOCKED BY INTERMITTENT COMPILER PROCESS FAILURE. [Current record](../references/device_evidence/remote/A-REMOTE-008/DELL_BUNDLE_READY.md).
+PASS — PRACTICAL DELL SOURCE-TO-BUILD REPRODUCTION (HOBBY / PUBLIC-BETA SCOPE). A008 execution/review DONE at approved practical scope; owner acceptance pending. Dell1configuration/20frozen/20source/3serial clean builds PASS, zero failed builds/ICE. [Review](../reports/A-REMOTE-008_DELL_REVIEW.md).
 
 ## Baseline
-- Device repository: Protected private REMOTE workspace, Git-less; source not published
-- Branch: NONE for original; coordination remote/a-remote-008-source-to-build-20261011
-- Firmware baseline commit: UNKNOWN; historical installed/A006 artifact SHA7e8d77c21898014fbd7ea625cf2d25aa7f77941d5ba1d24484090f7361279afb, source correspondence UNKNOWN
-- Firmware version: UNKNOWN correspondence; configured original Git-less PROJECT_VER1
-- Working tree at start: Original protected4036-file inventory unchanged; coordination clean at recorded input
-- Contract references: CCM1.1.0 OWNER APPROVED/FROZEN; historical CCM1.0.0 unchanged; Native unapproved; D008 architecture only, A008 private build-only continuation
+- Device repository: Protected private Git-less REMOTE source; not published
+- Branch: NONE original; coordination remote/a-remote-008-source-to-build-20261011
+- Firmware baseline commit: UNKNOWN historical source commit; Dell artifacts generated from byte-verified approved bundle, no fabricated firmware commit
+- Firmware version: All descriptors project12_LVGL_Test/version1/IDF5.5.3; timestamps/ELF hashes differ from historical image
+- Working tree at start: Coordination clean at recorded input; original source unchanged, no production edits
+- Contract references: CCM1.1.0 OWNER APPROVED/FROZEN; historical1.0.0 unchanged; Native unapproved; D008 architectural only; owner hobby-beta scope and current Dell review authorization
 
 ## Changes
-Owner accepts full outside-build credential-component exclusion with residual hobby-beta uncertainty; stop forensic metadata/link-order analysis. Private offline bundle/protocol/runner prepared and verified, original source/tools preserved. [Owner record](../references/A008_DELL_OWNER_ACCEPTANCE_2026-10-12.md), [product scope](../references/PROJECT_HOBBY_BETA_SCOPE_2026-10-12.md). Same PR14 updated OPEN/unmerged; no firmware or downstream task executed.
+Review completed Dell private evidence, publish sanitized logs/compact hashes/report; archive prior handoff byte-exact, update coordination and task disposition. Previous INCONCLUSIVE/blocking status superseded only as current A008 practical outcome; historical evidence unchanged. No source/config/tool/partition/hardware change.
 
 ## Verification
 | Check | Command/procedure | Environment | Result | Evidence |
 | --- | --- | --- | --- | --- |
-| Secret scan | full proposed-input byte scan/private review/whole-file exclusions/copied-byte checks | disposable private payload, pinned inputs | PASS scoped scan, no recognized effective-input secret; residual unknown/obfuscated limitation explicit | [Public record](../references/device_evidence/remote/A-REMOTE-008/DELL_BUNDLE_PUBLICATION.json) |
-| Private archive | fresh TEMP extraction, every SHA-256 entry/extras/excluded-path check, PS syntax and VerifyOnly | isolated Windows amd64 | PASS; archive SHA8ef30f580b8d27280863679abc9780ec94afe5b8b100f06767d0f6de9683887d, 1449621481 bytes, 29832 files | Same record |
-| Local smoke | isolated configure compiledb, one retained-.i and one original RGB source compile | copied Python3.11.7/PIO6.2.0/IDF5.5.3/GCC14.2.0, original flags | PASS local packaging scope; no complete firmware test or task acceptance | Same record |
-| Dell experiment |20+20 serial compiler trials and three -j1 clean builds, artifact/structural comparisons | owner Dell host | NOT RUN; transfer not performed | [Protocol method](../references/device_evidence/remote/A-REMOTE-008/DELL_BUNDLE_READY.md) |
-| Preservation | protected source/external/toolchain rehash, historical Git blobs, canonical/evidence/template check | isolated coordination publication |4036/1031/2049 byte-unchanged; final remote verification reported separately | Publication audit |
-| Hardware | no device access/reset/serial/flash/erase/NVS operation | NONE | NOT RUN | Private build-only protocol |
+| Archive | size/SHA check before safe private TEMP extraction;42,780 entries hashed | original results archive1,597,657,193 bytes | PASS SHA792432a5581ce92a2ddec35c4b2d6f9deec57ef03593912c34aa3a7aa6c593ec | [Manifest](../references/device_evidence/remote/A-REMOTE-008/DELL_REVIEW_RESULT.json) |
+| Dell configuration/compiler trials | recorded exits/raw log and object rehash, expected44-outcome sequence | Win11amd64/i5-7440HQ; pinned Python/PIO/IDF/GCC |1/1+20/20+20/20 PASS,0ICE; objects identical within each population | [Sanitized logs](../references/device_evidence/remote/A-REMOTE-008/DELL_TEST_LOGS_SANITIZED.log) |
+| Dell complete builds | three recorded fresh -j1 runs, every artifact independently rehashed | approved private bundle/exact tool versions |3/3 PASS,0FAIL/ICE; raw firmware/ELF/map/bootloader vary, partition/initialOTA/bootloaderMap identical | [Hashes](../references/device_evidence/remote/A-REMOTE-008/DELL_ARTIFACT_HASHES.md) |
+| Source/config/layout |1,613 source files each, effective config dictionaries,895 actual selected archive members, three affected pre-link instruction/relocation sections | private extracted actual evidence, no rebuild/disassembly/normalization | source/config/partition SAME; final size/layout variation consistent with linking, no demonstrated functional discrepancy | Review/manifest |
+| Historical comparison | actual image structure/raw hash/difference records compared with designated A006 reference | private historical build artifact | BIN byte identity NOT DEMONSTRATED; headers/profile agree, partition bytes SAME | Review |
+| Publication | canonical/evidence/template/privacy/byte-archive/preservation and remote verification | isolated coordination branch | final remote result reported externally; PR14 OPEN/unmerged | Publication audit |
+| Hardware | none performed by reviewer; owner reports no Dell upload/serial/flash | NONE | NOT RUN | Reviewed build-only records |
 
 ## Remaining unknowns
-Intermittent compiler failure and prior SCons image-action TypeError causes UNKNOWN. Successful complete Dell images and historical correspondence UNKNOWN. No backend/migration/power-loss/capacity/USB-recovery/production acceptance; prior hardware/shared gaps retained.
+Exact Ryzen OS/compiler/hardware cause UNKNOWN, no proven hardware defect. Historical source commit/BIN byte identity and full runtime semantic equivalence NOT DEMONSTRATED. Fresh device behavior, recovery/migration/persistence/backend acceptance NOT RUN/unqualified; proportionate limits do not reopen industrial forensics.
 
 ## Shared-contract impact
 - CCM 1.0.0: NO CHANGE; historical original and current CCM1.1.0 frozen unchanged
 - TUNER Native API v1: NO CHANGE; UNAPPROVED/UNFROZEN/NOT IMPLEMENTED, O01–O17 OPEN
 - Other device impact: NONE; TUNER firmware/evidence/handoff unchanged
-- Approval evidence: Owner2026-10-12 accepts exclusion/private Dell preparation and hobby-beta scope only; no hardware/firmware/source publication/merge/A009 authority
+- Approval evidence: Current owner authorizes Dell review/publication/practical A008 completion only; PR merge/hardware/A009/production authority not granted
 
 ## Blockers
-NONE for verified private bundle readiness. Build reproduction remains INCONCLUSIVE pending Dell experiment and review; A009 BLOCKED / NOT STARTED. Common gate OPEN / NOT PASSED.
+NONE for practical A008 build/review completion. Owner review/merge pending; A009 BLOCKED / NOT STARTED. Common gate OPEN / NOT PASSED and other production/hardware gates retained.
 
 ## PM decision required
-NONE for completed authorized bundle preparation. No automatic next task or verdict promotion; review actual Dell outcomes privately after owner transfer/execution.
+Owner accept practical A008 evidence and documentation-only PR14 disposition with explicit non-byte-identical/no-fresh-runtime limits. Separately decide next A009 scope; no automatic execution.
 
 ## Recommended next task
-Owner copies only the private delivery directory and runs its initial launcher on Dell for the already authorized A008 build-only experiment. Retain all outcomes; no new A009 assignment, Native implementation or hardware work.
+Owner review and merge PR14 documentation/evidence only, then separately authorize the next bounded mission. No A009 start, source/SDK publication, partition change or device operation by this review.
 
 ## Commit
-- Firmware result commit(s): NONE; original source unchanged, no complete qualified new firmware
-- Device changelog: English addition in private bundle copy only; original CHANGELOG unchanged
-- Coordination publication: Same OPEN/unmerged PR14; final head in publication message after remote verification
-- Previous handoff archive: [archive/remote/2026-10-12T154633Z_A-REMOTE-008_REMOTE-A-REMOTE-008-EPOCH-20261012T052129Z.md](../archive/remote/2026-10-12T154633Z_A-REMOTE-008_REMOTE-A-REMOTE-008-EPOCH-20261012T052129Z.md)
+- Firmware result commit(s): NONE; Git-less source not edited or published; exact generated artifact hashes in review
+- Device changelog: English review entry in separate private review-copy changelog only; original and immutable transferred bundle unchanged
+- Coordination publication: Same OPEN/unmerged PR14; final coordination hash reported after remote verification
+- Previous handoff archive: [archive/remote/2026-10-12T175751Z_A-REMOTE-008_REMOTE-A-REMOTE-008-DELL-20261012T154633Z.md](../archive/remote/2026-10-12T175751Z_A-REMOTE-008_REMOTE-A-REMOTE-008-DELL-20261012T154633Z.md)
 
 ## Hardware status
-- Physical device tested: NO this round
-- Board / hardware configuration: Prior ESP32-S3/16MiB read-only A007 evidence; current live hardware NOT INSPECTED
-- Procedure and result: NOT RUN; no hardware access or persistent operation
-- Firmware actually flashed: NONE this round; prior installed/A006 exact BIN hash retained, source commit UNKNOWN
-- Build-only or simulated checks: Local private bundle integrity/environment/configure/two smoke compilations only. Prior PASS/ICE/full-build failures retained; Dell20+20/three-build experiment NOT RUN. No complete firmware or simulation/production/hardware acceptance.
+- Physical device tested: NO this round; Dell is a build host, not target-device validation
+- Board / hardware configuration: Prior ESP32-S3/16MiB read-only A007 evidence retained; live hardware NOT INSPECTED
+- Procedure and result: NOT RUN; no serial/reset/upload/flash/erase/partition/NVS operation
+- Firmware actually flashed: NONE this round; historical installed/A006 hash retained; no Dell artifact deployed
+- Build-only or simulated checks: Reviewed owner Dell1configuration+40serial compiles+3complete serial builds and artifact evidence; no reviewer build, new simulation, runtime or hardware acceptance.
