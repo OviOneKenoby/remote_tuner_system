@@ -1,0 +1,13 @@
+{
+  "epoch": 1791763200,
+  "epoch_UTC": "2026-10-12T00:00:00Z",
+  "contexts_per_state": 1549,
+  "successful_preprocess_calls": 3098,
+  "raw_preprocessing_differences": [],
+  "all_raw_preprocessing_byte_identical": true,
+  "actual_depfile_differences_after_excluding_output_target": [],
+  "depfile_target_exclusion": "Compare prerequisite section only; diagnostic .i target paths differ and are not build inputs. No prerequisite/path/output-content normalization.",
+  "wifi_component_dependency_contexts": [],
+  "normalizations": "NONE; compiler temporal macros controlled solely by SOURCE_DATE_EPOCH",
+  "environment": "Same recorded full parent and compiler dictionaries, restricted local; same physical root during both states"
+}

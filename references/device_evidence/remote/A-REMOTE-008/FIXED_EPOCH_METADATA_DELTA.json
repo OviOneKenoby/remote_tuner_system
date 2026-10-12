@@ -1,0 +1,12 @@
+{
+  "allowed_delta": [
+    {
+      "op": "remove",
+      "path": "/all_component_info/esp_wifi_bsp"
+    }
+  ],
+  "other_top_level_changes": [],
+  "other_component_record_changes": [],
+  "A_description_SHA256": "c4fb392ad465a49e516c02d29e8e028867997815579da0389d253db84f6bac67",
+  "B_description_SHA256": "579c8b20c8288fa8966d5120879c992887dafa9cb1d11cc41478f0d175d041b9"
+}
