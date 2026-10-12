@@ -1,0 +1,17 @@
+{
+  "owner_scope": "Only esp_app_desc.time __TIME__ literal, experiment only; never final firmware normalization",
+  "replacement": "00:00:00",
+  "method": "Anchored exact designated initializer; exactly one match per output; preserve all other bytes; require complete normalized output equality",
+  "raw_SHA256": {
+    "PRESENT": "0457a2f77a68cfc4ac14dbe365da9ddd9c37c9530735ac6f67969848fe6e3d1b",
+    "ABSENT": "62e3a8aa888b883d4765ac0e8997958842cdb5c311bf095bdb39660d060edde4"
+  },
+  "normalized_SHA256": {
+    "PRESENT": "ad90422eb937a41e873466baa766c761dd2c15d6c21fa9de3c62f2646f4be1d2",
+    "ABSENT": "ad90422eb937a41e873466baa766c761dd2c15d6c21fa9de3c62f2646f4be1d2"
+  },
+  "exclusive_difference_proved": true,
+  "complete_normalized_outputs_equal": true,
+  "other_normalizations": "NONE",
+  "raw_clock_strings": "Recorded privately; ordinary clock values not classified as credentials"
+}
