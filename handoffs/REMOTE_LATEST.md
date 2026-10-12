@@ -1,15 +1,15 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-008-CROSSHOST-20261012T035357Z
-- Updated (UTC): 2026-10-12T03:53:57Z
+- Handoff ID: REMOTE-A-REMOTE-008-EXCLUSION-20261012T040506Z
+- Updated (UTC): 2026-10-12T04:05:06Z
 - Task ID: A-REMOTE-008
 - Status: IN PROGRESS / BLOCKED ON INTERMITTENT COMPILER PROCESS FAILURE
 - Prepared by: PM / REMOTE direct authorized private build executor
-- Coordination input commit: 0183f891cc975ab496e7fe3eb638c30757b139ef
+- Coordination input commit: f1fa75ba2f0cabeb54d988492b93f40afd01da60
 
 ## Milestone
-Current INCONCLUSIVE — BUILD REPRODUCTION BLOCKED BY INTERMITTENT COMPILER PROCESS FAILURE. Original source command alternates PASS/ICE, frozen .i repeatedly compiles; no deterministic crash reproduced by .i, cause UNKNOWN, no evidence of hardware/source/deterministic compiler defect. Cross-host preparation authorized but STOPPED on credential gate; no archive/protocol/transfer or second-host tests. Source-to-build UNKNOWN; A008 IN PROGRESS/BLOCKED, not DONE, A009 BLOCKED. [Disposition](../references/device_evidence/remote/A-REMOTE-008/CROSS_HOST_PREPARATION.md).
+INCONCLUSIVE — BUILD REPRODUCTION BLOCKED BY INTERMITTENT COMPILER PROCESS FAILURE. Conditional component exclusion verified only partially: compiled/configured effective inputs unchanged, generated discovery graph changes. A008 IN PROGRESS, no source-to-build closure/DONE; A009 BLOCKED/NOT STARTED. [English superseding disposition](../references/device_evidence/remote/A-REMOTE-008/EXCLUSION_CHECK_REPORT.md).
 
 ## Baseline
 - Device repository: Original Git-less REMOTE workspace; private temp copy only, no source remote
@@ -20,7 +20,7 @@ Current INCONCLUSIVE — BUILD REPRODUCTION BLOCKED BY INTERMITTENT COMPILER PRO
 - Contract references: CCM1.1.0 OWNER APPROVED/FROZEN, historical1.0.0 unchanged; D006/D008 only bounded approved scopes; Native unapproved/O01-O17 OPEN
 
 ## Changes
-Current verdict terminology corrected across own current PR14 documentation. Prior complete handoff archived byte-exact; historical logs/hash evidence retained. Added sanitized cross-host authorization/credential-stop record. No private bundle or source edits. Private-copy device changelog audit only; original protected.
+Added English conditional-exclusion A/B report/results and appended current task/status/decision/changelog dispositions. Prior handoff archived byte-exact, all historical evidence retained without translation. Only disposable component moved to restricted local backup; original intact, no source edit or transfer omission. Private-copy changelog audit only. No bundle/protocol/transfer/hardware changes.
 
 ## Verification
 | Check | Command/procedure | Environment | Result | Evidence |
@@ -31,11 +31,12 @@ Current verdict terminology corrected across own current PR14 documentation. Pri
 | BIN/ELF/map/header/segments/partition/bootloader | compare fresh artifacts to installed/A006 | NOT APPLICABLE without outputs | NOT RUN / fresh artifacts not produced | [Comparison](../references/device_evidence/remote/A-REMOTE-008/ARTIFACT_COMPARISON.md) |
 | Hardware | no access/reset/flash/upload/erase | owner device not accessed | NOT RUN | [Protocol](../references/device_evidence/remote/A-REMOTE-008/REPRODUCTION_PROTOCOL.md) |
 | Publication | canonical/evidence hashes/privacy/template/archive/remote verification | separate coordination result branch | final remote result reported separately, PR OPEN/unmerged | [Manifest](../references/device_evidence/remote/A-REMOTE-008/EVIDENCE_MANIFEST.md) |
-| Secret gate | read-only literal-type scan, root CMake exclusion and both configured TU lists | original/private source tree, no build/hardware | BLOCKED early-stop SSID/password finding; no source values published, no bundle | [Disposition](../references/device_evidence/remote/A-REMOTE-008/CROSS_HOST_PREPARATION.md) |
+| Conditional exclusion | same-path fresh pio compiledb PRESENT/ABSENT | disposable source, pinned installed tools | exits0/0, effective commands/config unchanged; generated discovery metadata differs, strict gate BLOCKED | [Results](../references/device_evidence/remote/A-REMOTE-008/EXCLUSION_CHECK_RESULT.json) |
+| Prior secret gate | read-only literal-type scan, root CMake exclusion and both configured TU lists | original/private source tree, no build/hardware | BLOCKED early-stop SSID/password finding; no source values published, no bundle | [Disposition](../references/device_evidence/remote/A-REMOTE-008/CROSS_HOST_PREPARATION.md) |
 | Compiler diagnosis | exact response/source vs frozen .i serial, official byte hashes, output-presence controls | same GCC14.2.0+20251107/original -Og, isolated Windows | NONDETERMINISTIC ENVIRONMENT OR HARDWARE FAILURE; root cause UNKNOWN; no complete image | [Diagnosis](../references/device_evidence/remote/A-REMOTE-008/ICE_DIAGNOSTIC.md) |
 
 ## Remaining unknowns
-Compiler ICE cause; source-to-build correspondence; all fresh binary differences/determinism; exact installed bootloader binary; two private noncompile zero-byte docs missing at first post-build inspection, actor/phase UNKNOWN; restored from original. Prior migration/recovery/backend/capacity/GC/endurance/downgrade/defaultNVS/inactiveOTA/rollback gaps persist; source privacy and original protection required.
+Full transitive selected-header closure, failing-TU preprocessing pair, full final SCons linker/intended-artifact/dependency certificate, and all-input secret scan/bundle integrity NOT COMPLETED after gate. No second-host outcomes, two complete firmware images or binary comparisons. Compiler root cause and source-to-build UNKNOWN; historical physical/backend/migration/production gaps retained.
 
 ## Shared-contract impact
 - CCM 1.0.0: NO CHANGE; historical frozen original unchanged; current CCM1.1.0 frozen also unchanged
@@ -44,23 +45,23 @@ Compiler ICE cause; source-to-build correspondence; all fresh binary differences
 - Approval evidence: D008 owner architectural layout/serviceUSB/noOTAtable/ROMrecovery target only; task A008 private reproducibility; no hardware write/backend/source-publication approval
 
 ## Blockers
-Intermittent compiler process failure, root cause UNKNOWN; no complete clean images/source match. Private offline cross-host bundle preparation additionally STOPPED by explicit owner credential gate. Owner must resolve secret-bearing source-tree file before preparation resumes. No second-host results. Other migration/backend/production/common-gate gaps retained.
+Strict owner no-generated-file/configuration/dependency-graph-use/change requirement is not met by removal: project_description.json all_component_info changes. No positive selected-code dependency found; remaining full effective-input/preprocessing/dependency proofs not completed. Bundle remains NOT CREATED. Compiler cause/source-to-build UNKNOWN; existing migration/backend/production/common-gate gaps persist.
 
 ## PM decision required
-Explicitly resolve the source-tree SSID/password stop condition. Currently excluded esp_wifi_bsp is not selected compilation input; possible owner-reviewed exclusion from transfer is not applied. No production source redaction, arbitrary input omission or secret transfer. Cross-host reproduction is already authorized; no need to authorize that scope again.
+Clarify whether non-selected component-discovery metadata variance is permissible while all effective compile/link/configuration/dependency inputs and outstanding checks remain invariant. No relaxation assumed. Conditional omission already authorized, but complete certification required; no repeated request for unconditional cross-host authorization.
 
 ## Recommended next task
-Resume this same A008 bundle preparation only after owner resolves credential gate, with exact input/integrity/secret scan and complete executable20/20/2+clean-build protocol validation. NOT RUN here. A009 BLOCKED/NOT STARTED.
+Continue same A008 exclusion verification/complete secret scan/exact private bundle/protocol only after owner resolves metadata scope and remaining proofs pass. No A009, transfer, hardware or merge.
 
 ## Commit
 - Firmware result commit(s): NONE; private baseline 2855ff4c96122c424c4c191be458fd24de7b677a is unqualified source audit, not installed firmware
 - Device changelog: private copy CHANGELOG.md append only; original unchanged by owner restriction
 - Coordination publication: remote/a-remote-008-source-to-build-20261011, separate OPEN/unmerged PR; final commit reported externally
-- Previous handoff archive: [archive/remote/2026-10-12T035357Z_A-REMOTE-008_REMOTE-A-REMOTE-008-ICE-20261011T202056Z.md](../archive/remote/2026-10-12T035357Z_A-REMOTE-008_REMOTE-A-REMOTE-008-ICE-20261011T202056Z.md)
+- Previous handoff archive: [archive/remote/2026-10-12T040506Z_A-REMOTE-008_REMOTE-A-REMOTE-008-CROSSHOST-20261012T035357Z.md](../archive/remote/2026-10-12T040506Z_A-REMOTE-008_REMOTE-A-REMOTE-008-CROSSHOST-20261012T035357Z.md)
 
 ## Hardware status
 - Physical device tested: NO this round; A007 prior bounded read-only identity/normal return accepted separately
 - Board / hardware configuration: prior ESP32-S3 QFN56rev0.2/physical16MiB; actual PCB identity UNKNOWN
 - Procedure and result: NOT RUN; no hardware access, no reset/upload/write
 - Firmware actually flashed: NONE this round; prior installed BIN exactA006 SHA7e8d77c21898014fbd7ea625cf2d25aa7f77941d5ba1d24484090f7361279afb, source commit UNKNOWN
-- Build-only or simulated checks: NONE new this continuation; no cross-host tests. Prior: two failed guarded clean builds and later isolated compiler/preprocessor/smoke/path/TEMP/same-package tests; no complete firmware, simulation/production/hardware qualification
+- Build-only or simulated checks: Two disposable configuration/compile-database targets only; no full firmware or cross-host tests. Prior: two failed guarded clean builds and later isolated compiler/preprocessor/smoke/path/TEMP/same-package tests; no complete firmware, simulation/production/hardware qualification

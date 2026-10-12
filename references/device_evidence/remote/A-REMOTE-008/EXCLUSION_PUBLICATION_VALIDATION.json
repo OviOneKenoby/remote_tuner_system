@@ -1,0 +1,16 @@
+{
+  "status": "PASS documentation/privacy/template verification; exclusion gate NOT PASSED",
+  "coordination_input": "f1fa75ba2f0cabeb54d988492b93f40afd01da60",
+  "new_material_language": "English; historical documents not translated",
+  "checked_links": 28,
+  "original_protection": "final remote/source/tool verification reported externally",
+  "private_restricted_hash": "NOT PUBLISHED",
+  "credential_values_source_archive": "NOT PUBLISHED",
+  "archive": "NOT CREATED",
+  "full_secret_scan": "NOT RUN after exclusion gate",
+  "local_bundle_verification": "NOT RUN; no bundle",
+  "A008": "IN PROGRESS",
+  "A009": "BLOCKED / NOT STARTED",
+  "source_to_build": "UNKNOWN",
+  "PR14": "OPEN/unmerged"
+}
