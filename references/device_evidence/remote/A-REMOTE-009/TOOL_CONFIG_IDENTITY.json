@@ -1,0 +1,38 @@
+{
+  "Python": "3.11.7",
+  "PlatformIO": "6.2.0",
+  "platform": "espressif32@6.13.0",
+  "IDF": "5.5.3",
+  "framework": "3.50503.0",
+  "GCC": "14.2.0+20251107",
+  "binutils": "2.43.1",
+  "esptool": "4.11.0 / package2.41100.0",
+  "target": "esp32s3",
+  "environment": "remote01",
+  "jobs": 1,
+  "config_input_hashes": {
+    "platformio.ini": "e455b728cecf0d72d391e7bb841e8795ce899c7af85a0ed64e15db67d0c9f175",
+    "sdkconfig.defaults": "08c722635f0271dc2cb3fbd898d9189b02cdcdc3f87e114093fd6e861dabb883",
+    "sdkconfig.remote01": "5e1757dd81d2a891c4e8863fa4993b0bc643baeaef766399d644ff27a1441f0d",
+    "dependencies.lock": "9b7816a0ab8d663d7cf488061f426412e6384306783cf26f05fece958f5acbb1",
+    "CMakeLists.txt": "c02762f0c1b98608697e850c6143b9ac94b77e08d95d22c1ff6a0e6c59720d25",
+    "main/CMakeLists.txt": "54c47a34e39da82eedf4e2af7f8e3ded94475c815d59cb931cde56f67987daad"
+  },
+  "package_versions": {
+    "framework-espidf@3.50503.0": "3.50503.0",
+    "tool-cmake": "3.30.2",
+    "tool-esp-rom-elfs": "0.0.1+20241011",
+    "tool-esptoolpy": "2.41100.0",
+    "tool-idf": "1.0.1",
+    "tool-mconf": "1.4060000.20190628",
+    "tool-ninja": "1.9.0",
+    "tool-riscv32-esp-elf-gdb": "11.2.0+20220823",
+    "tool-scons": "4.41101.0",
+    "tool-xtensa-esp-elf-gdb": "11.2.0+20230208",
+    "toolchain-esp32ulp": "1.23800.240113",
+    "toolchain-riscv32-esp@14.2.0+20251107": "14.2.0+20251107",
+    "toolchain-xtensa-esp-elf@14.2.0+20251107": "14.2.0+20251107"
+  },
+  "original_installed_tools": "Not modified; build used copied accepted private tools/runtime with offline and serial guards",
+  "bootstrap_note": "Initial sequential copy interrupted before compiler invocation; replacement parallel copy completed in a new disposable directory; not a build/ICE outcome"
+}

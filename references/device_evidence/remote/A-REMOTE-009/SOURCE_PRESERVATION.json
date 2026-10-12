@@ -1,0 +1,14 @@
+{
+  "original_included_source_files": 1613,
+  "source_hashes_unchanged": true,
+  "credential_component_untouched": true,
+  "installed_tools": "Copied accepted private toolchain; installed tools not modified",
+  "hardware_access": false,
+  "current_build_relevant_file_inventory": "MATCH accepted bundle outside previously accepted complete credential-component exclusion",
+  "files": 1055,
+  "unselected_host_test_files_omitted_from_accepted_bundle": 14,
+  "selected_build_input_differences": [],
+  "missing": [],
+  "hardware": "NONE",
+  "bundle_comparison": "1612 included source files identical to accepted bundle; current unselected CHANGELOG update preserved. All1613 current included files unchanged after preparation; no original edit."
+}

@@ -1,0 +1,66 @@
+{
+  "offline_synthetic_preflight_tests": {
+    "positive": "PASS",
+    "synthetic_fixture": "Accepted table/reference image inserted into erased16MiB buffer; NEVER a recovery backup",
+    "hardware": "NONE",
+    "table_mismatch": "PASS: STOP: current partition table differs from accepted baseline",
+    "non_erased_target": "PASS: STOP: proposed region is not completely erased; do not erase it",
+    "changed_OTA": "PASS: STOP: OTA metadata differs; running-image selection needs review",
+    "wrong_image": "PASS: STOP: invalid factory image header"
+  },
+  "PowerShell_blocks": [
+    {
+      "Block": "PROTOCOL_BLOCK_00.ps1",
+      "Syntax": "PASS",
+      "Executed": false
+    },
+    {
+      "Block": "PROTOCOL_BLOCK_01.ps1",
+      "Syntax": "PASS",
+      "Executed": false
+    },
+    {
+      "Block": "PROTOCOL_BLOCK_02.ps1",
+      "Syntax": "PASS",
+      "Executed": false
+    },
+    {
+      "Block": "PROTOCOL_BLOCK_03.ps1",
+      "Syntax": "PASS",
+      "Executed": false
+    },
+    {
+      "Block": "PROTOCOL_BLOCK_04.ps1",
+      "Syntax": "PASS",
+      "Executed": false
+    },
+    {
+      "Block": "PROTOCOL_BLOCK_05.ps1",
+      "Syntax": "PASS",
+      "Executed": false
+    },
+    {
+      "Block": "PROTOCOL_BLOCK_06.ps1",
+      "Syntax": "PASS",
+      "Executed": false
+    },
+    {
+      "Block": "PROTOCOL_BLOCK_07.ps1",
+      "Syntax": "PASS",
+      "Executed": false
+    },
+    {
+      "Block": "PROTOCOL_BLOCK_08.ps1",
+      "Syntax": "PASS",
+      "Executed": false
+    },
+    {
+      "Block": "PROTOCOL_BLOCK_09.ps1",
+      "Syntax": "PASS",
+      "Executed": false
+    }
+  ],
+  "protocol_commands_executed": false,
+  "hardware_access": false,
+  "recovery_qualification": "NOT RUN; syntactic/offline preflight verification only"
+}

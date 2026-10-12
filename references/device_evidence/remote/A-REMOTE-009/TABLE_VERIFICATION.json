@@ -1,0 +1,102 @@
+{
+  "base": "e6fa6f4911eb6bcd342d1db9600ad66f134636ab",
+  "baseline_bytes": 3072,
+  "baseline_sha256": "d7ffd497cfcd33e697304b3cf8112e7a1f1cb0619639fe9879ed431cbbdc8835",
+  "candidate_csv": {
+    "bytes": 450,
+    "sha256": "8c4b9d3561957750e89e7dab8bbebd523607c9a9c53428037595ef0edcbe4b33"
+  },
+  "candidate_bin": {
+    "bytes": 3072,
+    "sha256": "a144343580dbdadace66fccc5969d7557de3d4c4f15a61e76db205cc26348184"
+  },
+  "candidate_sector_sha256": "fd62ef669cdbab98ac5372777a686d8dcd9813f7eb5302a67cc5136e96e90f69",
+  "entries": [
+    {
+      "label": "nvs",
+      "type": 1,
+      "subtype": 2,
+      "offset": 36864,
+      "size": 24576,
+      "end_exclusive": 61440,
+      "flags": 0,
+      "entry_sha256": "1f7a55c8c54102479bf495dabb6f05bc813002ff01de5ef455ba885778e6a507",
+      "baseline_entry_identical": true
+    },
+    {
+      "label": "phy_init",
+      "type": 1,
+      "subtype": 1,
+      "offset": 61440,
+      "size": 4096,
+      "end_exclusive": 65536,
+      "flags": 0,
+      "entry_sha256": "ef37bd42c141685398e790598b96fbe58e0be1674eb867a565cd93a8e3f3755c",
+      "baseline_entry_identical": true
+    },
+    {
+      "label": "factory",
+      "type": 0,
+      "subtype": 0,
+      "offset": 65536,
+      "size": 8388608,
+      "end_exclusive": 8454144,
+      "flags": 0,
+      "entry_sha256": "3ebea5217f4c6e88176ac52afafe4368f3737b8198a1b41e207c781ead211e43",
+      "baseline_entry_identical": true
+    },
+    {
+      "label": "otadata",
+      "type": 1,
+      "subtype": 0,
+      "offset": 8454144,
+      "size": 8192,
+      "end_exclusive": 8462336,
+      "flags": 0,
+      "entry_sha256": "565feab38cdb3c240fb06198c0dde9d7100a193d2a0fb92523ec515cb26f83f9",
+      "baseline_entry_identical": true
+    },
+    {
+      "label": "ota_0",
+      "type": 0,
+      "subtype": 16,
+      "offset": 8519680,
+      "size": 3145728,
+      "end_exclusive": 11665408,
+      "flags": 0,
+      "entry_sha256": "7f3611e45dcad75d4271a409e96acb111a5122430799acde963bff2b5576f536",
+      "baseline_entry_identical": true
+    },
+    {
+      "label": "ota_1",
+      "type": 0,
+      "subtype": 17,
+      "offset": 11665408,
+      "size": 3145728,
+      "end_exclusive": 14811136,
+      "flags": 0,
+      "entry_sha256": "a43bc2d8c421f02ab06307405bd9776bbc7c9cfa80ad17bb6fd3132dafc846ce",
+      "baseline_entry_identical": true
+    },
+    {
+      "label": "remote_ctl",
+      "type": 1,
+      "subtype": 2,
+      "offset": 14811136,
+      "size": 65536,
+      "end_exclusive": 14876672,
+      "flags": 0,
+      "entry_sha256": "aeea5b2795a000e7105aec75d3effecb1b4a4450771bd499067f53b930d12f6d",
+      "baseline_entry_identical": false
+    }
+  ],
+  "unchanged_entries": "6/6 byte-identical32-byte records",
+  "MD5": "PASS",
+  "alignment_bounds_overlap": "PASS",
+  "flash_bytes": 16777216,
+  "last_partition_end_exclusive": "0xE30000",
+  "tail_free_bytes": 1900544,
+  "partition_table_offset": "0x8000",
+  "sector_size": 4096,
+  "hardware": "NOT RUN"
+}

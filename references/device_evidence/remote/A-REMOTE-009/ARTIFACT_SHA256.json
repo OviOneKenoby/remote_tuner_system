@@ -1,0 +1,46 @@
+{
+  "partitions.csv": {
+    "bytes": 450,
+    "sha256": "8c4b9d3561957750e89e7dab8bbebd523607c9a9c53428037595ef0edcbe4b33"
+  },
+  "partitions.bin": {
+    "bytes": 3072,
+    "sha256": "a144343580dbdadace66fccc5969d7557de3d4c4f15a61e76db205cc26348184"
+  },
+  "PARTITION_DELTA.patch": {
+    "bytes": 244,
+    "sha256": "a7401a4fe73c3b7b38313d23da9f75336d0c691104bff294e4d18515b2f76c27"
+  },
+  "private_build/partitions.bin": {
+    "sha256": "a144343580dbdadace66fccc5969d7557de3d4c4f15a61e76db205cc26348184",
+    "bytes": 3072
+  },
+  "private_build/firmware.bin": {
+    "sha256": "69d98302474f749ec8036af7ba23d75ca1d7763d994866aac4526d775f6ef217",
+    "bytes": 2485584
+  },
+  "private_build/firmware.elf": {
+    "sha256": "3993515309dcc67c8f14efffb1699b117bc3a31fc5e6e949b3df0ccd72c38acd",
+    "bytes": 17770000
+  },
+  "private_build/bootloader.bin": {
+    "sha256": "c24087a3ac7838054768b1cdc42e87a693ea33988289c9e99b06b428a09f5cb5",
+    "bytes": 20832
+  },
+  "private_build/bootloader.elf": {
+    "sha256": "4b89411170474ceac4b280f1d19788af13af0593b50c147bf475bba945c3a515",
+    "bytes": 591376
+  },
+  "private_build/ota_data_initial.bin": {
+    "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+    "bytes": 8192
+  },
+  "private_build/12_LVGL_Test.map": {
+    "bytes": 14067695,
+    "sha256": "2558f8785057c4c9c0203274f09147ec2addac99ca9e7f419f554a9c4de153a5"
+  },
+  "private_build/bootloader/bootloader.map": {
+    "bytes": 666700,
+    "sha256": "b43a65365b64986bb4fdbbd1bd29500fcc9f691f7a8a267dc82ca35eed27d7a3"
+  }
+}
