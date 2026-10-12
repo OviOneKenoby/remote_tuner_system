@@ -46,5 +46,17 @@
   "TOOL_CONFIG_IDENTITY.json": {
     "bytes": 1763,
     "sha256": "c9858e0db8bfb84e9125f63933e478fb63cafe2fc7e04cd05d2734fe66b78c11"
+  },
+  "READ_ONLY_PREFLIGHT_RESULT.json": {
+    "bytes": 3370,
+    "sha256": "fbc52c43d3f9f1c92bf1fcc11a051c355135b265a048cac0f39fda228a4df8fa"
+  },
+  "READ_ONLY_STRUCTURAL_VERIFICATION.json": {
+    "bytes": 1447,
+    "sha256": "968d58c971f2b000347e60941d2ebb6364d5c3dc800809dffd854bcfcd80300f"
+  },
+  "READ_ONLY_OPERATION_SUMMARY.json": {
+    "bytes": 2061,
+    "sha256": "02f12b87c65e97850ea5492c8df2688863332764030a9007c3d8d235f04e4f3f"
   }
 }

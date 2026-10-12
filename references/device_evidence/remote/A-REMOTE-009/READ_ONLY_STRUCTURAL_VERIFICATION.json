@@ -1,0 +1,67 @@
+{
+  "decoder": "ESP-IDF5.5.3 gen_esp32part.py",
+  "decode_exit_code": 0,
+  "MD5": "PASS",
+  "entries": [
+    {
+      "label": "nvs",
+      "type": 1,
+      "subtype": 2,
+      "offset": "0x9000",
+      "size": 24576,
+      "flags": 0
+    },
+    {
+      "label": "phy_init",
+      "type": 1,
+      "subtype": 1,
+      "offset": "0xf000",
+      "size": 4096,
+      "flags": 0
+    },
+    {
+      "label": "factory",
+      "type": 0,
+      "subtype": 0,
+      "offset": "0x10000",
+      "size": 8388608,
+      "flags": 0
+    },
+    {
+      "label": "otadata",
+      "type": 1,
+      "subtype": 0,
+      "offset": "0x810000",
+      "size": 8192,
+      "flags": 0
+    },
+    {
+      "label": "ota_0",
+      "type": 0,
+      "subtype": 16,
+      "offset": "0x820000",
+      "size": 3145728,
+      "flags": 0
+    },
+    {
+      "label": "ota_1",
+      "type": 0,
+      "subtype": 17,
+      "offset": "0xb20000",
+      "size": 3145728,
+      "flags": 0
+    }
+  ],
+  "independent_sector_vs_A007": "BYTE-IDENTICAL4096bytes",
+  "table_sector_vs_each_full_backup": "BYTE-IDENTICAL",
+  "target_vs_each_full_backup": "BYTE-IDENTICAL65536bytes",
+  "no_all_FF_or_all_00_full_backup": true,
+  "full_backup_reopen_read_hash": "PASS",
+  "full_backup_sizes": [
+    16777216,
+    16777216
+  ],
+  "two_full_read_equality": "PASS, full byte comparison and SHA256",
+  "future_external_backup_copy": "PENDING / mandatory before any write",
+  "write_or_erase_commands": 0
+}

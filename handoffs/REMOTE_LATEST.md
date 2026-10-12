@@ -1,15 +1,15 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-009-PREPARED-20261012T183541Z
-- Updated (UTC): 2026-10-12T18:35:41.124995+00:00
+- Handoff ID: REMOTE-A-REMOTE-009-READ-ONLY-20261012T193649Z
+- Updated (UTC): 2026-10-12T19:36:49.377474+00:00
 - Task ID: A-REMOTE-009
 - Status: READY FOR REVIEW
-- Prepared by: Owner-authorized preparation executor/publisher
-- Coordination input commit: b55176d8f9a2a18f175c6eae027a62e235f63d1f
+- Prepared by: Owner-authorized read-only preflight executor/publisher
+- Coordination input commit: bd5682d327448696f659000f40ae4b50ab16eeb4
 
 ## Milestone
-PASS — HOST LAYOUT/RECOVERY PREPARATION; HARDWARE NOT RUN. Preparation complete, hardware phase BLOCKED awaiting explicit approval. [Report](../reports/A-REMOTE-009_PREPARATION.md); A008 remains DONE / OWNER ACCEPTED.
+Preparation OWNER ACCEPTED. PASS — READ-ONLY HARDWARE PREFLIGHT; PERSISTENT OPERATIONS NOT AUTHORIZED. [Report](../reports/A-REMOTE-009_READ_ONLY_PREFLIGHT.md); two verified private16MiB backups; stop in ROM/stub at first-write checkpoint. A008 accepted; PR15 OPEN/unmerged.
 
 ## Baseline
 - Device repository: Private Git-less REMOTE source; not published
@@ -20,45 +20,47 @@ PASS — HOST LAYOUT/RECOVERY PREPARATION; HARDWARE NOT RUN. Preparation complet
 - Contract references: CCM1.1.0 OWNER APPROVED/FROZEN, historical1.0.0 unchanged; D00864KiB layout; A006/A007/A008 accepted evidence and A009 preparation-only owner authorization
 
 ## Changes
-Disposable partition CSV adds only remote_ctl64KiB at0xE20000; generated table/local candidate build and prepared single USB/ROM backup/recovery protocol. Sanitized coordination report/evidence publication, private review-copy changelog, byte-exact prior handoff archive. No production firmware/backend/API/tool/hardware change.
+Owner-approved read-only identification/USB ROM entry, independent table/target reads and two complete flash backups; sanitized results publication and prior handoff archived byte-exact. No source/tool/TUNER/contract or persistent hardware change. No return-to-application reset requested.
 
 ## Verification
 | Check | Command/procedure | Environment | Result | Evidence |
 | --- | --- | --- | --- | --- |
-| Baseline/inputs | Included1613 current source hashes before/after; accepted bundle/current effective-config and selected-source inventory comparisons | Private disposable copy, original read-only | PASS; unselected changelog update retained; excluded credential component untouched | [Preservation](../references/device_evidence/remote/A-REMOTE-009/SOURCE_PRESERVATION.json) |
-| Table | IDF5.5.3 generator, six32-byte comparisons, MD5,4KiB/64KiB alignment,16MiB bounds/no overlap | Host only; accepted A007 table evidence | PASS; seven entries, both3MiB OTA slots unchanged | [Table](../references/device_evidence/remote/A-REMOTE-009/TABLE_VERIFICATION.json) |
-| Build | fresh platformio run -e remote01 -j1; bounded ICE retry only | Python3.11.7/PIO6.2.0/platform6.13.0/IDF5.5.3/GCC14.2.0 copied tools | PASS; 1 attempts; firmware2485584bytes/OTA headroom660144bytes | [Build](../references/device_evidence/remote/A-REMOTE-009/BUILD_RESULT.json) |
-| Protocol | PowerShell AST parsing; offline synthetic positive/four safety-negative backup checks | No protocol command execution | PASS10 syntax blocks/5 offline safety cases; no actual backup or ROM recovery tested | [Validation](../references/device_evidence/remote/A-REMOTE-009/PROTOCOL_LOCAL_VALIDATION.json) |
-| Publication | staged/remote Git-blob SHA/privacy/template/archive/preservation checks | New PR15 OPEN/unmerged | Final remote verification reported externally | Coordination publication audit |
-| Hardware | NONE; A007 facts historical only | NOT ACCESSED | NOT RUN; no persistent hardware operation or protocol execution | Owner scope/report |
+| Exact device | Unique USB serial matches private A007 identity before open; MAC/chip checked privately | Native USB serial, esptool4.11.0 | PASS ESP32-S3revision0.2/16MiB; identifiers unpublished | Read-only report/private records |
+| ROM/security | Selected read-access USB reset; no-stub get_security_info/flash_id,115200 | ROM-only queries before volatile stub | PASS securityflags0/secureboot+encryption disabled; no JTAG | [Result](../references/device_evidence/remote/A-REMOTE-009/READ_ONLY_PREFLIGHT_RESULT.json) |
+| Backups | Two independent read_flash0x0/0x1000000; reopen/hash/full-byte equality and published offline verifier | Private owner-restricted local copies, application halted | PASS16777216bytes each/SHA `f6d806e0c19e545951f2e75ab8b9373a89215a58f2cb8b0a3c21f3d759e3bdb8`; no allFF/all00/truncation; external-copy pending before write | Report/structural result |
+| Installed table | Separate read_flash0x8000/4096; SDK5.5.3decode/MD5/full-sector byte comparison | Current physical table vs accepted A007 | BYTE-IDENTICAL six entries/padding; matches both backups | [Structural checks](../references/device_evidence/remote/A-REMOTE-009/READ_ONLY_STRUCTURAL_VERIFICATION.json) |
+| Target | Separate read_flash0xE20000/65536; compare with both backups | Physical64KiB region |65536FF/0nonFF PASS | Result |
+| Firmware/OTA | Validated actual factory image/checksum/digest/descriptor and OTA metadata in backup | Read-only bytes | A006/A007 image BYTE-IDENTICAL; source equivalence NOT DEMONSTRATED, runtime not behavior-tested | Report |
+| Writes/recovery | NONE; stop at approval checkpoint | ROM/stub remains, no normal return reset |0persistent writes/0erase; rollback/restore NOT RUN | [Operations](../references/device_evidence/remote/A-REMOTE-009/READ_ONLY_OPERATION_SUMMARY.json) |
+| Publication | staged/remote hashes/privacy/template/archive/history checks | PR15 OPEN/unmerged | Final remote verification reported externally | Publication audit |
 
 ## Remaining unknowns
-Current COM/security/installed state/new complete backup UNKNOWN until separately authorized preflight. Table-write/reboot/USB rollback NOT RUN; source-to-installed runtime equivalence and byte-identical builds UNPROVEN, non-blocking for accepted hobby/public-beta scope. Exact Ryzen compiler-process cause UNKNOWN, A008 not reopened. Durable backend/migration/capacity/G1a qualification NOT RUN; no automatic OTA rollback guarantee.
+External/separate-storage backup copy PENDING by owner choice, mandatory before writing. Table update/reboot behavior/write-based ROM rollback NOT RUN. Current source/historical runtime equivalence UNPROVEN; no new UI behavior acceptance. Exact Ryzen cause UNKNOWN, A008 not reopened. Backend/migration/G1a qualification NOT RUN. Current device remains in ROM/stub download mode.
 
 ## Shared-contract impact
 - CCM 1.0.0: NO CHANGE; historical version and current frozen CCM1.1.0 preserved
 - TUNER Native API v1: NO CHANGE; UNAPPROVED/UNFROZEN/NOT IMPLEMENTED; O01–O17 OPEN
 - Other device impact: NONE; TUNER source/evidence/latest handoff untouched
-- Approval evidence: [A009 preparation-only owner authorization](../references/A009_PREPARATION_OWNER_AUTHORIZATION_2026-10-12.md); NONE for hardware/persistent write/A010/backend/API execution
+- Approval evidence: [A009 accepted preparation/read-only owner scope](../references/A009_READ_ONLY_PREFLIGHT_OWNER_AUTHORIZATION_2026-10-12.md); NONE for persistent writes, erase, upload, NVS mutation, rollback/recovery writes or A010
 
 ## Blockers
-NONE for completed host layout/protocol preparation when build PASS; local build status PASS. Hardware deployment/recovery tests BLOCKED pending explicit owner approval and fresh verified16MiB backup/preflight. Common gate OPEN / NOT PASSED.
+NONE for completed read-only preflight. Any persistent operation BLOCKED pending verified separate-storage backup copy and explicit owner approval bound to this backup and exact candidate. PR15 remains unmerged; common gate OPEN/NOT PASSED.
 
 ## PM decision required
-Owner review exact PR15 artifacts/protocol and separately authorize hardware read-only preflight. Stop before any persistent operation for explicit approval of the fresh backup-bound table-only write/rollback. No implicit hardware approval.
+Request explicit owner approval for the reviewed table-only write0x8000 after separate-storage backup verification. Rollback/recovery writes remain separately unauthorized. No implicit hardware write approval.
 
 ## Recommended next task
-Only separately approved A009 owner hardware validation under the published protocol; no A010 assignment/start. No backend/API/MQTT/SmartThings/UI work follows automatically.
+Only explicitly approved A009 table deployment under the published protocol and fresh verified backup; no automatic operation, normal return reboot, A010 or backend/API implementation.
 
 ## Commit
 - Firmware result commit(s): NONE; Git-less original unedited; private disposable candidate artifacts only, hashes published
 - Device changelog: Separate private A009 review-copy entry; original and immutable accepted Dell payload unchanged
 - Coordination publication: New PR15, remote/a-remote-009-preparation-20261012, OPEN/unmerged; assignment `b55176d8f9a2a18f175c6eae027a62e235f63d1f`; final head reported after fresh remote verification
-- Previous handoff archive: [archive/remote/2026-10-12T183541Z_A-REMOTE-009_REMOTE-A-REMOTE-008-OWNER-ACCEPTED-20261012T180836Z.md](../archive/remote/2026-10-12T183541Z_A-REMOTE-009_REMOTE-A-REMOTE-008-OWNER-ACCEPTED-20261012T180836Z.md)
+- Previous handoff archive: [archive/remote/2026-10-12T193649Z_A-REMOTE-009_REMOTE-A-REMOTE-009-PREPARED-20261012T183541Z.md](../archive/remote/2026-10-12T193649Z_A-REMOTE-009_REMOTE-A-REMOTE-009-PREPARED-20261012T183541Z.md)
 
 ## Hardware status
-- Physical device tested: NO this task
-- Board / hardware configuration: Historical A007 ESP32-S3/physical16MiB/factory0x10000/erased64KiB target; current hardware NOT INSPECTED
-- Procedure and result: NOT RUN; no serial/ROM/reset/read/write/erase/upload/NVS operation or recovery test
-- Firmware actually flashed: NONE this task; historical installed/A006 identity retained, no candidate deployed
-- Build-only or simulated checks: Candidate generation/entry-byte/bounds/MD5 checks, 1 clean serial build attempt(s), offline synthetic backup safety checks and PowerShell syntax parsing; no target validation
+- Physical device tested: YES read-only identification/flash capture; NO write/recovery/runtime test
+- Board / hardware configuration: Same privately identified A007 ESP32-S3QFN56revision0.2/physical16MiB; exact MAC/USB/COM kept private
+- Procedure and result: ROM USB entry and read-only queries/reads PASS, two full backups and independent table/target checks; no JTAG; stop in ROM/stub
+- Firmware actually flashed: NONE; installed factory image read-only byte-identical to accepted A006/A007, no upload
+- Build-only or simulated checks: Prior accepted A009 clean serial build/table verification retained; no new build/forensics; actual backups checked with published offline verifier, distinct from prior synthetic fixture

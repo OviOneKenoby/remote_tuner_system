@@ -1,0 +1,69 @@
+{
+  "operations": [
+    {
+      "stage": "SECURITY_IDENTITY",
+      "operation": "get_security_info",
+      "baud": 115200,
+      "exit_code": 0,
+      "seconds": 5.016,
+      "started_utc": "2026-10-12T18:45:51.593830+00:00",
+      "ended_utc": "2026-10-12T18:45:56.607925+00:00",
+      "persistent_write": false
+    },
+    {
+      "stage": "FLASH_IDENTITY",
+      "operation": "flash_id",
+      "baud": 115200,
+      "exit_code": 0,
+      "seconds": 5.016,
+      "started_utc": "2026-10-12T18:45:56.609925+00:00",
+      "ended_utc": "2026-10-12T18:46:01.624466+00:00",
+      "persistent_write": false
+    },
+    {
+      "stage": "INSTALLED_TABLE",
+      "operation": "read_flash",
+      "baud": 115200,
+      "exit_code": 0,
+      "seconds": 5.016,
+      "started_utc": "2026-10-12T18:46:23.844256+00:00",
+      "ended_utc": "2026-10-12T18:46:28.859449+00:00",
+      "persistent_write": false
+    },
+    {
+      "stage": "FULL_BACKUP_1",
+      "operation": "read_flash",
+      "baud": 115200,
+      "exit_code": 0,
+      "seconds": 1462.094,
+      "started_utc": "2026-10-12T18:46:40.653541+00:00",
+      "ended_utc": "2026-10-12T19:11:02.746443+00:00",
+      "persistent_write": false
+    },
+    {
+      "stage": "FULL_BACKUP_2",
+      "operation": "read_flash",
+      "baud": 115200,
+      "exit_code": 0,
+      "seconds": 1461.968,
+      "started_utc": "2026-10-12T19:11:16.248021+00:00",
+      "ended_utc": "2026-10-12T19:35:38.216620+00:00",
+      "persistent_write": false
+    },
+    {
+      "stage": "TARGET_64KiB",
+      "operation": "read_flash",
+      "baud": 115200,
+      "exit_code": 0,
+      "seconds": 10.032,
+      "started_utc": "2026-10-12T19:35:51.968861+00:00",
+      "ended_utc": "2026-10-12T19:36:01.991930+00:00",
+      "persistent_write": false
+    }
+  ],
+  "raw_logs_and_identifiers": "Restricted locally; not published, including their potentially guessable identifier-containing hashes",
+  "persistent_write_commands": 0,
+  "erase_commands": 0,
+  "application_TX_commands": 0,
+  "normal_application_return_reset": "NOT REQUESTED"
+}
