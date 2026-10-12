@@ -1,0 +1,29 @@
+{
+  "components/lvgl/scripts/release/commits.txt": {
+    "original_bytes": 0,
+    "original_SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "restored_copy_exists": true,
+    "restored_copy_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "is_translation_unit": false,
+    "original_entry": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "components/lvgl/src/extra/others/fragment/README.md": {
+    "original_bytes": 0,
+    "original_SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "restored_copy_exists": true,
+    "restored_copy_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "is_translation_unit": false,
+    "original_entry": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "deletion_actor": "UNKNOWN; not recorded retrospectively",
+  "deletion_phase": "UNKNOWN; initial verified copy -> first post-build missing observation, not proven build cleanup",
+  "current_config_target_reproduction": "Both restored files survive original single-object target and diagnostic-config single-object target; no matching Python removal audit event",
+  "dependency_lock_unchanged": true,
+  "aggregate_source_manifest_effect": "Removing zero-byte paths changes aggregate file-list manifest, not content of other entries; no service-managed component package checksum established for local LVGL"
+}

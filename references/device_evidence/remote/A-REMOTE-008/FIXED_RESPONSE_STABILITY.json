@@ -1,0 +1,26 @@
+{
+  "same_response_sha256": "ef7bbcfa1dea874bf5c558a9e2d68d51a6a6188c91d7dca49d0a3bc3b0d74540",
+  "same_cwd": "${PRIVATE_COPY}",
+  "same_environment_sha256": "da953d939356fb76df800e4c5ca75a99fbd98778d24e3a3474be28e7dcfa32da",
+  "results": [
+    {
+      "name": "fixed_response_stability_1",
+      "exit_code": 1,
+      "seconds": 0.3468,
+      "peak_RSS": 51433472
+    },
+    {
+      "name": "fixed_response_stability_2",
+      "exit_code": 1,
+      "seconds": 0.3673,
+      "peak_RSS": 49553408
+    },
+    {
+      "name": "fixed_response_stability_3",
+      "exit_code": 1,
+      "seconds": 0.342,
+      "peak_RSS": 49856512
+    }
+  ],
+  "stop_rule": "Minimum3; stop after captured failure, maximum12 additional identical trials for durable failure metadata; never qualification"
+}

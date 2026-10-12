@@ -1,0 +1,11 @@
+{
+  "installed_files": 2049,
+  "copy_byte_identical": "PASS",
+  "official_different_or_installed_extra_files": [
+    ".piopm"
+  ],
+  "official_extra_files": [],
+  "official_payload_match": true,
+  "official_archive_identity_SHA": "438d60943f6e82c2ecbdca1b41a0ca9e9e04ee710f942d07e2bde3b6b693f5e3",
+  "private_copy": "${COPIED_TC}"
+}

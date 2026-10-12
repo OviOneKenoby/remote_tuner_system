@@ -1,0 +1,10 @@
+{
+  "earlier_aggregate_record_gap": "Earlier helper stage imports reset aggregate records; raw logs intact, complete timing/peak metadata not retained for all earlier cases. No invented metadata. Confirmed individual .result.json files now authoritative.",
+  "preprocess_initial_helper_error": "duplicate -o, corrected by removing original output/mode before -E; no input/include failure",
+  "observer_initial_helper_errors": [
+    "relative external observer path rejected before compiler",
+    "non-native ENV JSON serialization rejected before compiler"
+  ],
+  "original_response_gap": "original ephemeral response deleted by SCons atexit; reconstructed bytes equal later actual captured response",
+  "LVGL_deletion_capture_gap": "No deletion actor/time instrumentation during initial attempts; interval from initial verified copy to first post-build missing observation"
+}

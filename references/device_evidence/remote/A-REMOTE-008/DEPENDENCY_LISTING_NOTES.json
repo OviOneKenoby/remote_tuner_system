@@ -1,0 +1,6 @@
+{
+  "first_listing": "cp1252 tree glyph UnicodeEncodeError, exit1; no update/install",
+  "UTF8_listing_exit": 0,
+  "transport_only_change": "PYTHONIOENCODING=utf-8",
+  "guard_events": "NONE"
+}

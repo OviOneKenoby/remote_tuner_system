@@ -1,0 +1,56 @@
+[
+  {
+    "command": [
+      "<PIO>\\penv\\Scripts\\python.exe",
+      "-m",
+      "platformio",
+      "run",
+      "-e",
+      "remote01",
+      "-v",
+      "-j",
+      "8"
+    ],
+    "cwd": "<PRIVATE_COPY>",
+    "startedUTC": "2026-10-11T19:42:31.319057+00:00",
+    "guard": "installed packages only; socket network and pip/venv/hardware writes blocked; no newest component solve",
+    "exit_code": 1,
+    "endedUTC": "2026-10-11T19:43:38.700254+00:00",
+    "guard_events": "NONE",
+    "compiler_errors": [
+      "<PIO>/packages/framework-espidf@3.50503.0/components/esp_lcd/rgb/esp_lcd_panel_rgb.c:700:1: internal compiler error: Segmentation fault",
+      "*** [.pio\\build\\remote01\\esp_lcd\\rgb\\esp_lcd_panel_rgb.c.o] Error 1"
+    ],
+    "actual_compile_command_count": 259,
+    "raw_log_sha256_LOCAL_ONLY": "44d22449f5ffb6f83522d32087d051a5648f4f669ba85a9d0c5929bec213ef69",
+    "fresh_BIN": "NOT PRODUCED",
+    "full_configured_translation_unit_list": 1449
+  },
+  {
+    "command": [
+      "<PIO>\\penv\\Scripts\\python.exe",
+      "-m",
+      "platformio",
+      "run",
+      "-e",
+      "remote01",
+      "-v",
+      "-j",
+      "1"
+    ],
+    "cwd": "<PRIVATE_COPY>",
+    "startedUTC": "2026-10-11T19:44:18.273464+00:00",
+    "guard": "installed packages only; socket network and pip/venv/hardware writes blocked; no newest component solve",
+    "exit_code": 1,
+    "endedUTC": "2026-10-11T19:46:19.570361+00:00",
+    "guard_events": "NONE",
+    "compiler_errors": [
+      "<PIO>/packages/framework-espidf@3.50503.0/components/esp_lcd/rgb/esp_lcd_panel_rgb.c:700:1: internal compiler error: Segmentation fault",
+      "*** [.pio\\build\\remote01\\esp_lcd\\rgb\\esp_lcd_panel_rgb.c.o] Error 1"
+    ],
+    "actual_compile_command_count": 252,
+    "raw_log_sha256_LOCAL_ONLY": "90571221ee4d2a8daf013217f2ff2e5cda7f126f966cd2305b33b802196a9268",
+    "fresh_BIN": "NOT PRODUCED",
+    "full_configured_translation_unit_list": 1449
+  }
+]

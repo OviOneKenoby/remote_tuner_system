@@ -1,0 +1,27 @@
+{
+  "bootloader.bin": {
+    "exists": false,
+    "bytes": null,
+    "sha256": null
+  },
+  "partitions.bin": {
+    "exists": false,
+    "bytes": null,
+    "sha256": null
+  },
+  "firmware.bin": {
+    "exists": false,
+    "bytes": null,
+    "sha256": null
+  },
+  "firmware.elf": {
+    "exists": false,
+    "bytes": null,
+    "sha256": null
+  },
+  "12_LVGL_Test.map": {
+    "exists": false,
+    "bytes": null,
+    "sha256": null
+  }
+}

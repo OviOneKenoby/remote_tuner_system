@@ -1,0 +1,16 @@
+{
+  "status": "PASS documentation/privacy/template verification; first non-temporal linker-order difference STOP; global graph NOT CERTIFIED",
+  "coordination_input": "c15e7a294b4bc5eb5770c54deda9db4fb8b5f42b",
+  "new_material_language": "English; historical documents not translated",
+  "checked_links": 42,
+  "original_protection": "final remote/source/tool verification reported externally",
+  "private_restricted_hash": "NOT PUBLISHED",
+  "credential_values_source_archive": "NOT PUBLISHED",
+  "archive": "NOT CREATED",
+  "full_secret_scan": "NOT RUN after exclusion gate",
+  "local_bundle_verification": "NOT RUN; no bundle",
+  "A008": "IN PROGRESS",
+  "A009": "BLOCKED / NOT STARTED",
+  "source_to_build": "UNKNOWN",
+  "PR14": "OPEN/unmerged"
+}

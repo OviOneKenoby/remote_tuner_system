@@ -1,0 +1,172 @@
+{
+  "${COPIED_TC}\\bin\\xtensa-esp-elf-gcc.exe": {
+    "bytes": 2310656,
+    "sha256": "72d3d28e7bfa9d1fceeebee687dfa4f8af913ca79f1adfbce9358f4427684e7b",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "${COPIED_TC}\\bin\\xtensa-esp32s3-elf-gcc.exe": {
+    "bytes": 1049600,
+    "sha256": "386e71efcdb8ee5c4ec8f07dc7007cdfac159d7d0f319530069fa3ad85e23271",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "${COPIED_TC}\\lib\\xtensa_esp32s3.so": {
+    "bytes": 935868,
+    "sha256": "b8b0b372b429e34dd39189cb39b012fcdca3ad3a2b7b018e9e2c18dda37df1a2",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "${COPIED_TC}\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe": {
+    "bytes": 25593344,
+    "sha256": "26c4eb361fa7eb2c7e07c7248f07c60172b19b066399e016f372826ab31f2d15",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "${COPIED_TC}\\xtensa-esp-elf\\bin\\as.exe": {
+    "bytes": 1424384,
+    "sha256": "91e53832638f22442a12834584d0da57861205c6fda273af7128fa9e0750f6ec",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "C:\\Windows\\System32\\KernelBase.dll": {
+    "bytes": 4212112,
+    "sha256": "becad014fb8efa8cb5e314931cca92778ad42c649b12a6909632cacd68af4f40",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "C:\\Windows\\System32\\advapi32.dll": {
+    "bytes": 778344,
+    "sha256": "e036c9baecd170d7ef4759a5a7eb76036158cacc4cd9e3f697dbf410a3457224",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "C:\\Windows\\System32\\bcrypt.dll": {
+    "bytes": 183376,
+    "sha256": "b5691584e857caf0c6c590dda13779966b383d66be3c87d5b3cbbc2f5005495b",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "C:\\Windows\\System32\\cryptbase.dll": {
+    "bytes": 59392,
+    "sha256": "d77b19df871b5a2f02e826ebeb5de86735f5cd0806294fe9143ba138c964ee16",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "C:\\Windows\\System32\\gdi32.dll": {
+    "bytes": 187456,
+    "sha256": "772c73e294a4c5f5e0d4146288af95287a85c074d3aee3fa9f320dc010d7dbfe",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "C:\\Windows\\System32\\gdi32full.dll": {
+    "bytes": 1220496,
+    "sha256": "bde2077a56c90f68c5fa1ce5ebd4a40755c97a5080b91a87d2beff47349dd01e",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "C:\\Windows\\System32\\imm32.dll": {
+    "bytes": 212288,
+    "sha256": "7e45f12c1c555e2407c5ca082bd925b34655278fde4dbfac53a0468cc1e77411",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "C:\\Windows\\System32\\kernel32.dll": {
+    "bytes": 844496,
+    "sha256": "8f8629741558b5df71def4e1dd8ef9645d4f806b949762c47757c50fea1a9e6d",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "C:\\Windows\\System32\\msvcp_win.dll": {
+    "bytes": 642016,
+    "sha256": "c50165e6aaf74395c059564d65fa78b0911844828cbcf791d78f80d964a60f4e",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "C:\\Windows\\System32\\msvcrt.dll": {
+    "bytes": 699848,
+    "sha256": "a1bd0acd64e1a60368b8878d3987f603d966ed45be2252d2d4d0f92feb10fa8e",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "C:\\Windows\\System32\\ntdll.dll": {
+    "bytes": 2522080,
+    "sha256": "a74f7482085eab125ccc09152ab7e0b5994bcb13e1a7b29880bdbb24179ecb8b",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "C:\\Windows\\System32\\rpcrt4.dll": {
+    "bytes": 1162656,
+    "sha256": "89af87b6387bde4243306036fce2be89c67a328f93c25c53542e4c665b114747",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "C:\\Windows\\System32\\sechost.dll": {
+    "bytes": 704008,
+    "sha256": "c760d6c0dfa2705446aa7a2260206c9076182d92231854c04aa526403217eb9a",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "C:\\Windows\\System32\\ucrtbase.dll": {
+    "bytes": 1377512,
+    "sha256": "5c52e3a303baaac0e0af8bd9b96134993da34bc9d834a31ef37e1d2cdc7fe192",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "C:\\Windows\\System32\\user32.dll": {
+    "bytes": 1914656,
+    "sha256": "93a4310e66a47fa359f588c2ebda64fe3651771c6f9ff30d462a77215a2e558e",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "C:\\Windows\\System32\\userenv.dll": {
+    "bytes": 224656,
+    "sha256": "e5e77885cbac08ac247fa45916eca36d2fde292a8527ac2c428f36a691827fea",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "C:\\Windows\\System32\\win32u.dll": {
+    "bytes": 170952,
+    "sha256": "9cd636e8a1b300e2f4b16f339d650eda71fa02b92b100e4b2f89ce7c04811767",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "C:\\Windows\\System32\\ws2_32.dll": {
+    "bytes": 534592,
+    "sha256": "535d7a8336ddbae77b1f2c68339e5e7dbeb5f06445d6e42b19c794ef0e26f6a3",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp-elf-gcc.exe": {
+    "bytes": 2310656,
+    "sha256": "72d3d28e7bfa9d1fceeebee687dfa4f8af913ca79f1adfbce9358f4427684e7b",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\bin\\xtensa-esp32s3-elf-gcc.exe": {
+    "bytes": 1049600,
+    "sha256": "386e71efcdb8ee5c4ec8f07dc7007cdfac159d7d0f319530069fa3ad85e23271",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\lib\\xtensa_esp32s3.so": {
+    "bytes": 935868,
+    "sha256": "b8b0b372b429e34dd39189cb39b012fcdca3ad3a2b7b018e9e2c18dda37df1a2",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe": {
+    "bytes": 25593344,
+    "sha256": "26c4eb361fa7eb2c7e07c7248f07c60172b19b066399e016f372826ab31f2d15",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "${PIO}\\packages\\toolchain-xtensa-esp-elf@14.2.0+20251107\\xtensa-esp-elf\\bin\\as.exe": {
+    "bytes": 1424384,
+    "sha256": "91e53832638f22442a12834584d0da57861205c6fda273af7128fa9e0750f6ec",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "${OFFICIAL_TC}\\bin\\xtensa-esp-elf-gcc.exe": {
+    "bytes": 2310656,
+    "sha256": "72d3d28e7bfa9d1fceeebee687dfa4f8af913ca79f1adfbce9358f4427684e7b",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "${OFFICIAL_TC}\\bin\\xtensa-esp32s3-elf-gcc.exe": {
+    "bytes": 1049600,
+    "sha256": "386e71efcdb8ee5c4ec8f07dc7007cdfac159d7d0f319530069fa3ad85e23271",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "${OFFICIAL_TC}\\lib\\xtensa_esp32s3.so": {
+    "bytes": 935868,
+    "sha256": "b8b0b372b429e34dd39189cb39b012fcdca3ad3a2b7b018e9e2c18dda37df1a2",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "${OFFICIAL_TC}\\libexec\\gcc\\xtensa-esp-elf\\14.2.0\\cc1.exe": {
+    "bytes": 25593344,
+    "sha256": "26c4eb361fa7eb2c7e07c7248f07c60172b19b066399e016f372826ab31f2d15",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "${OFFICIAL_TC}\\xtensa-esp-elf\\bin\\as.exe": {
+    "bytes": 1424384,
+    "sha256": "91e53832638f22442a12834584d0da57861205c6fda273af7128fa9e0750f6ec",
+    "scope": "observed by nonintrusive polling; not exhaustive, no fault-address attribution"
+  },
+  "C:\\Windows\\System32\\apphelp.dll": {
+    "sha256": "6915f018bd5261cccbbda0f50d8585a0d86172e8aac54b2642cdd3efeca75e74",
+    "bytes": 662640,
+    "scope": "observed loaded module (polling, not exhaustive)"
+  }
+}

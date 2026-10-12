@@ -1,0 +1,1292 @@
+{
+  "coordination_input": "b3ee531bec15d690f0e33f35a2d353deec7163b1",
+  "review_timestamp_UTC": "2026-10-12T17:57:51.204673+00:00",
+  "archive": {
+    "archive_bytes": 1597657193,
+    "archive_sha256": "792432a5581ce92a2ddec35c4b2d6f9deec57ef03593912c34aa3a7aa6c593ec",
+    "files": 42780,
+    "uncompressed_bytes": 5955153681,
+    "archive_verification": "PASS before extraction",
+    "safe_extraction": "PASS"
+  },
+  "host": {
+    "TimestampUTC": "2026-10-12T16:35:51.6317072Z",
+    "Windows": "Microsoft Windows 11 Pro",
+    "Architecture": "64-bit",
+    "FreeDiskBytes": 118531428352,
+    "Version": "10.0.26200",
+    "RAMBytes": 17050853376,
+    "PowerShell": "5.1.26100.9444",
+    "CPU": [
+      {
+        "Name": "Intel(R) Core(TM) i5-7440HQ CPU @ 2.80GHz",
+        "Architecture": 9,
+        "NumberOfCores": 4,
+        "NumberOfLogicalProcessors": 4
+      }
+    ],
+    "Build": "26200"
+  },
+  "tools": {
+    "Python": "3.11.7",
+    "PlatformIO": "6.2.0",
+    "platform": "6.13.0",
+    "framework": "3.50503.0",
+    "IDF": "5.5.3",
+    "GCC": "14.2.0+20251107",
+    "binutils": "2.43.1",
+    "exact_python_distributions": "MATCH pinned Core and IDF separately"
+  },
+  "configuration": {
+    "PASS": 1,
+    "exit_code": 0
+  },
+  "series": {
+    "FROZEN_I": {
+      "PASS": 20,
+      "FAIL": 0,
+      "ICE": 0,
+      "identical_objects": true,
+      "object_sha256": "1c9697744e5ba5e57f6fbdb44bcbc15a87213ebb42df7ee8f1dcc17c07482745"
+    },
+    "ORIGINAL_SOURCE": {
+      "PASS": 20,
+      "FAIL": 0,
+      "ICE": 0,
+      "identical_objects": true,
+      "object_sha256": "f683eb5e1b849346047f4b9e903601df1c8ae0fe9b0e59d1c34a03ba2f760bc5"
+    }
+  },
+  "clean_builds": {
+    "PASS": 3,
+    "FAIL": 0,
+    "ICE": 0,
+    "serial_j1": true
+  },
+  "outcomes": [
+    {
+      "name": "CONFIGURE_RGB",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 53.36,
+      "raw_log_sha256": "4d20b675ff7c0da44eff8c790abc762a7ea1855a2083d9bb0b8f24e2a236504c",
+      "raw_log_bytes": 2075,
+      "object_sha256": null,
+      "command_type": "PlatformIO compiledb -e remote01 -j1"
+    },
+    {
+      "name": "FROZEN_I_01",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.504,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "1c9697744e5ba5e57f6fbdb44bcbc15a87213ebb42df7ee8f1dcc17c07482745",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "FROZEN_I_02",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.464,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "1c9697744e5ba5e57f6fbdb44bcbc15a87213ebb42df7ee8f1dcc17c07482745",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "FROZEN_I_03",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.47,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "1c9697744e5ba5e57f6fbdb44bcbc15a87213ebb42df7ee8f1dcc17c07482745",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "FROZEN_I_04",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.468,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "1c9697744e5ba5e57f6fbdb44bcbc15a87213ebb42df7ee8f1dcc17c07482745",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "FROZEN_I_05",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.472,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "1c9697744e5ba5e57f6fbdb44bcbc15a87213ebb42df7ee8f1dcc17c07482745",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "FROZEN_I_06",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.47,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "1c9697744e5ba5e57f6fbdb44bcbc15a87213ebb42df7ee8f1dcc17c07482745",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "FROZEN_I_07",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.476,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "1c9697744e5ba5e57f6fbdb44bcbc15a87213ebb42df7ee8f1dcc17c07482745",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "FROZEN_I_08",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.471,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "1c9697744e5ba5e57f6fbdb44bcbc15a87213ebb42df7ee8f1dcc17c07482745",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "FROZEN_I_09",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.468,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "1c9697744e5ba5e57f6fbdb44bcbc15a87213ebb42df7ee8f1dcc17c07482745",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "FROZEN_I_10",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.462,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "1c9697744e5ba5e57f6fbdb44bcbc15a87213ebb42df7ee8f1dcc17c07482745",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "FROZEN_I_11",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.481,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "1c9697744e5ba5e57f6fbdb44bcbc15a87213ebb42df7ee8f1dcc17c07482745",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "FROZEN_I_12",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.478,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "1c9697744e5ba5e57f6fbdb44bcbc15a87213ebb42df7ee8f1dcc17c07482745",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "FROZEN_I_13",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.469,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "1c9697744e5ba5e57f6fbdb44bcbc15a87213ebb42df7ee8f1dcc17c07482745",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "FROZEN_I_14",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.466,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "1c9697744e5ba5e57f6fbdb44bcbc15a87213ebb42df7ee8f1dcc17c07482745",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "FROZEN_I_15",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.469,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "1c9697744e5ba5e57f6fbdb44bcbc15a87213ebb42df7ee8f1dcc17c07482745",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "FROZEN_I_16",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.466,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "1c9697744e5ba5e57f6fbdb44bcbc15a87213ebb42df7ee8f1dcc17c07482745",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "FROZEN_I_17",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.466,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "1c9697744e5ba5e57f6fbdb44bcbc15a87213ebb42df7ee8f1dcc17c07482745",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "FROZEN_I_18",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.472,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "1c9697744e5ba5e57f6fbdb44bcbc15a87213ebb42df7ee8f1dcc17c07482745",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "FROZEN_I_19",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.47,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "1c9697744e5ba5e57f6fbdb44bcbc15a87213ebb42df7ee8f1dcc17c07482745",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "FROZEN_I_20",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.474,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "1c9697744e5ba5e57f6fbdb44bcbc15a87213ebb42df7ee8f1dcc17c07482745",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "ORIGINAL_SOURCE_01",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 1.818,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "f683eb5e1b849346047f4b9e903601df1c8ae0fe9b0e59d1c34a03ba2f760bc5",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "ORIGINAL_SOURCE_02",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.662,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "f683eb5e1b849346047f4b9e903601df1c8ae0fe9b0e59d1c34a03ba2f760bc5",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "ORIGINAL_SOURCE_03",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.666,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "f683eb5e1b849346047f4b9e903601df1c8ae0fe9b0e59d1c34a03ba2f760bc5",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "ORIGINAL_SOURCE_04",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.669,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "f683eb5e1b849346047f4b9e903601df1c8ae0fe9b0e59d1c34a03ba2f760bc5",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "ORIGINAL_SOURCE_05",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.662,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "f683eb5e1b849346047f4b9e903601df1c8ae0fe9b0e59d1c34a03ba2f760bc5",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "ORIGINAL_SOURCE_06",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.664,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "f683eb5e1b849346047f4b9e903601df1c8ae0fe9b0e59d1c34a03ba2f760bc5",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "ORIGINAL_SOURCE_07",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.667,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "f683eb5e1b849346047f4b9e903601df1c8ae0fe9b0e59d1c34a03ba2f760bc5",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "ORIGINAL_SOURCE_08",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.661,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "f683eb5e1b849346047f4b9e903601df1c8ae0fe9b0e59d1c34a03ba2f760bc5",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "ORIGINAL_SOURCE_09",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.661,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "f683eb5e1b849346047f4b9e903601df1c8ae0fe9b0e59d1c34a03ba2f760bc5",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "ORIGINAL_SOURCE_10",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.662,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "f683eb5e1b849346047f4b9e903601df1c8ae0fe9b0e59d1c34a03ba2f760bc5",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "ORIGINAL_SOURCE_11",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.657,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "f683eb5e1b849346047f4b9e903601df1c8ae0fe9b0e59d1c34a03ba2f760bc5",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "ORIGINAL_SOURCE_12",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.666,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "f683eb5e1b849346047f4b9e903601df1c8ae0fe9b0e59d1c34a03ba2f760bc5",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "ORIGINAL_SOURCE_13",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.663,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "f683eb5e1b849346047f4b9e903601df1c8ae0fe9b0e59d1c34a03ba2f760bc5",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "ORIGINAL_SOURCE_14",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.659,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "f683eb5e1b849346047f4b9e903601df1c8ae0fe9b0e59d1c34a03ba2f760bc5",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "ORIGINAL_SOURCE_15",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.668,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "f683eb5e1b849346047f4b9e903601df1c8ae0fe9b0e59d1c34a03ba2f760bc5",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "ORIGINAL_SOURCE_16",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.667,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "f683eb5e1b849346047f4b9e903601df1c8ae0fe9b0e59d1c34a03ba2f760bc5",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "ORIGINAL_SOURCE_17",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.667,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "f683eb5e1b849346047f4b9e903601df1c8ae0fe9b0e59d1c34a03ba2f760bc5",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "ORIGINAL_SOURCE_18",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.669,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "f683eb5e1b849346047f4b9e903601df1c8ae0fe9b0e59d1c34a03ba2f760bc5",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "ORIGINAL_SOURCE_19",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.667,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "f683eb5e1b849346047f4b9e903601df1c8ae0fe9b0e59d1c34a03ba2f760bc5",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "ORIGINAL_SOURCE_20",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 0.665,
+      "raw_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "raw_log_bytes": 0,
+      "object_sha256": "f683eb5e1b849346047f4b9e903601df1c8ae0fe9b0e59d1c34a03ba2f760bc5",
+      "command_type": "Original pinned Xtensa GCC flags / private response file"
+    },
+    {
+      "name": "CLEAN_BUILD_1",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 608.444,
+      "raw_log_sha256": "3df826a93a7dae29baddd1704478462790d4eee10d57cdc5cfe0c100660700a8",
+      "raw_log_bytes": 123953,
+      "object_sha256": null,
+      "command_type": "PlatformIO build -e remote01 -j1"
+    },
+    {
+      "name": "CLEAN_BUILD_2",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 584.057,
+      "raw_log_sha256": "8201506025e8cafd7ba458425f1fcb8a5970eeec154b321b62708cf67e3fe659",
+      "raw_log_bytes": 123953,
+      "object_sha256": null,
+      "command_type": "PlatformIO build -e remote01 -j1"
+    },
+    {
+      "name": "CLEAN_BUILD_3",
+      "status": "PASS",
+      "exit_code": 0,
+      "seconds": 582.254,
+      "raw_log_sha256": "473e4ecb14727ccf0ad92b4a44e9e8a23d0201be7ffc15b6f9b562a6f0778f53",
+      "raw_log_bytes": 123953,
+      "object_sha256": null,
+      "command_type": "PlatformIO build -e remote01 -j1"
+    }
+  ],
+  "source_comparison": [
+    {
+      "build": 1,
+      "compared_bundle_source_files": 1613,
+      "missing": [],
+      "different_files": []
+    },
+    {
+      "build": 2,
+      "compared_bundle_source_files": 1613,
+      "missing": [],
+      "different_files": []
+    },
+    {
+      "build": 3,
+      "compared_bundle_source_files": 1613,
+      "missing": [],
+      "different_files": []
+    }
+  ],
+  "effective_configurations_identical_across_Dell_and_historical_profile": true,
+  "artifact_hashes": [
+    {
+      "build": 1,
+      "artifact": "12_LVGL_Test.map",
+      "sha256": "a45322d52af2262284b38ab43ea6a452c9663063b22e5aa5e66264b8d0586f2a",
+      "bytes": 14022950
+    },
+    {
+      "build": 1,
+      "artifact": "bootloader.bin",
+      "sha256": "2fb1e877703a2125e0e6b0901a0fdf97f0c9a27b3b686368fde9d723e9e9f8c0",
+      "bytes": 20832
+    },
+    {
+      "build": 1,
+      "artifact": "bootloader.elf",
+      "sha256": "4248b328536b941fae230949da766d0335d33d2d411190d5e7caccfc8aa402b9",
+      "bytes": 590764
+    },
+    {
+      "build": 1,
+      "artifact": "firmware.bin",
+      "sha256": "c3670b055bc964888f6ece334ee51db8bd734d47e03f093ed6c18ee6e75b21c8",
+      "bytes": 2485824
+    },
+    {
+      "build": 1,
+      "artifact": "firmware.elf",
+      "sha256": "df5c59649d2301d6251cd21f3e0a8deebe34fe35888d73f33014f32fd068a799",
+      "bytes": 17758832
+    },
+    {
+      "build": 1,
+      "artifact": "ota_data_initial.bin",
+      "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+      "bytes": 8192
+    },
+    {
+      "build": 1,
+      "artifact": "partitions.bin",
+      "sha256": "d7ffd497cfcd33e697304b3cf8112e7a1f1cb0619639fe9879ed431cbbdc8835",
+      "bytes": 3072
+    },
+    {
+      "build": 1,
+      "artifact": "bootloader/bootloader.map",
+      "sha256": "38fb27e2b59b618defbec8432f21ac2a0ed384297e1286cdd03f4dd9d65f3731",
+      "bytes": 666332
+    },
+    {
+      "build": 1,
+      "artifact": "bootloader/CMakeFiles/3.30.2/CMakeDetermineCompilerABI_C.bin",
+      "sha256": "7bbb0893c2d4a45129e76b9fcaf9d2bd6232dd33187aad9a26b03af6cfe36264",
+      "bytes": 1384
+    },
+    {
+      "build": 1,
+      "artifact": "bootloader/CMakeFiles/3.30.2/CMakeDetermineCompilerABI_CXX.bin",
+      "sha256": "0785b3a6e7d5f406feb497a6b1308b9016f2ad922c1acc709aa17689713c65a7",
+      "bytes": 1404
+    },
+    {
+      "build": 1,
+      "artifact": "CMakeFiles/3.30.2/CMakeDetermineCompilerABI_C.bin",
+      "sha256": "7bbb0893c2d4a45129e76b9fcaf9d2bd6232dd33187aad9a26b03af6cfe36264",
+      "bytes": 1384
+    },
+    {
+      "build": 1,
+      "artifact": "CMakeFiles/3.30.2/CMakeDetermineCompilerABI_CXX.bin",
+      "sha256": "0785b3a6e7d5f406feb497a6b1308b9016f2ad922c1acc709aa17689713c65a7",
+      "bytes": 1404
+    },
+    {
+      "build": 2,
+      "artifact": "12_LVGL_Test.map",
+      "sha256": "c56fbca4d62c43cfb9e7a863eba7c049798293a90a2877643fa8dc5d7c31fdf7",
+      "bytes": 14022950
+    },
+    {
+      "build": 2,
+      "artifact": "bootloader.bin",
+      "sha256": "770a00192bee87590c9b3ea25139c22469237ac156678edc1c9e90af929abdab",
+      "bytes": 20832
+    },
+    {
+      "build": 2,
+      "artifact": "bootloader.elf",
+      "sha256": "a2bb7e2220815c141b2cdb46bd576122d7d988d589ec673decd7a432f3800dcc",
+      "bytes": 590764
+    },
+    {
+      "build": 2,
+      "artifact": "firmware.bin",
+      "sha256": "04b90df112588d3fe5068bbd3a4e6fdc573b41ef877ce6a85b9412cbed5d4d56",
+      "bytes": 2485824
+    },
+    {
+      "build": 2,
+      "artifact": "firmware.elf",
+      "sha256": "e43143d9e00b7dfb65aa7f17f3371cf12e7c427279f57f24e94233f81bea0216",
+      "bytes": 17758832
+    },
+    {
+      "build": 2,
+      "artifact": "ota_data_initial.bin",
+      "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+      "bytes": 8192
+    },
+    {
+      "build": 2,
+      "artifact": "partitions.bin",
+      "sha256": "d7ffd497cfcd33e697304b3cf8112e7a1f1cb0619639fe9879ed431cbbdc8835",
+      "bytes": 3072
+    },
+    {
+      "build": 2,
+      "artifact": "bootloader/bootloader.map",
+      "sha256": "38fb27e2b59b618defbec8432f21ac2a0ed384297e1286cdd03f4dd9d65f3731",
+      "bytes": 666332
+    },
+    {
+      "build": 2,
+      "artifact": "bootloader/CMakeFiles/3.30.2/CMakeDetermineCompilerABI_C.bin",
+      "sha256": "7bbb0893c2d4a45129e76b9fcaf9d2bd6232dd33187aad9a26b03af6cfe36264",
+      "bytes": 1384
+    },
+    {
+      "build": 2,
+      "artifact": "bootloader/CMakeFiles/3.30.2/CMakeDetermineCompilerABI_CXX.bin",
+      "sha256": "0785b3a6e7d5f406feb497a6b1308b9016f2ad922c1acc709aa17689713c65a7",
+      "bytes": 1404
+    },
+    {
+      "build": 2,
+      "artifact": "CMakeFiles/3.30.2/CMakeDetermineCompilerABI_C.bin",
+      "sha256": "7bbb0893c2d4a45129e76b9fcaf9d2bd6232dd33187aad9a26b03af6cfe36264",
+      "bytes": 1384
+    },
+    {
+      "build": 2,
+      "artifact": "CMakeFiles/3.30.2/CMakeDetermineCompilerABI_CXX.bin",
+      "sha256": "0785b3a6e7d5f406feb497a6b1308b9016f2ad922c1acc709aa17689713c65a7",
+      "bytes": 1404
+    },
+    {
+      "build": 3,
+      "artifact": "12_LVGL_Test.map",
+      "sha256": "e4f3046a2d594e8a8246226b86df3d9d6050bfef71df1a3b4a0f449a6de7acc8",
+      "bytes": 14022699
+    },
+    {
+      "build": 3,
+      "artifact": "bootloader.bin",
+      "sha256": "dfbefac376d51181d8e4b65cdcca9e35c9fceb9e872263e9021e9afda6e3f642",
+      "bytes": 20832
+    },
+    {
+      "build": 3,
+      "artifact": "bootloader.elf",
+      "sha256": "425656fd6db6e79f2eea2c4c77410a7adc5a0111cec456717807f5f58b08d59b",
+      "bytes": 590764
+    },
+    {
+      "build": 3,
+      "artifact": "firmware.bin",
+      "sha256": "f733f35e5fb247946d3a4693d4e074f87a4e1a5b68bd500c92e7e68786468b6f",
+      "bytes": 2485568
+    },
+    {
+      "build": 3,
+      "artifact": "firmware.elf",
+      "sha256": "441b33168f9d131b86e1d47aa4f02b0958ab0a93cea1eeb1be1c257da2c81ea6",
+      "bytes": 17758832
+    },
+    {
+      "build": 3,
+      "artifact": "ota_data_initial.bin",
+      "sha256": "7d2c7ac4888bfd75cd5f56e8d61f69595121183afc81556c876732fd3782c62f",
+      "bytes": 8192
+    },
+    {
+      "build": 3,
+      "artifact": "partitions.bin",
+      "sha256": "d7ffd497cfcd33e697304b3cf8112e7a1f1cb0619639fe9879ed431cbbdc8835",
+      "bytes": 3072
+    },
+    {
+      "build": 3,
+      "artifact": "bootloader/bootloader.map",
+      "sha256": "38fb27e2b59b618defbec8432f21ac2a0ed384297e1286cdd03f4dd9d65f3731",
+      "bytes": 666332
+    },
+    {
+      "build": 3,
+      "artifact": "bootloader/CMakeFiles/3.30.2/CMakeDetermineCompilerABI_C.bin",
+      "sha256": "7bbb0893c2d4a45129e76b9fcaf9d2bd6232dd33187aad9a26b03af6cfe36264",
+      "bytes": 1384
+    },
+    {
+      "build": 3,
+      "artifact": "bootloader/CMakeFiles/3.30.2/CMakeDetermineCompilerABI_CXX.bin",
+      "sha256": "0785b3a6e7d5f406feb497a6b1308b9016f2ad922c1acc709aa17689713c65a7",
+      "bytes": 1404
+    },
+    {
+      "build": 3,
+      "artifact": "CMakeFiles/3.30.2/CMakeDetermineCompilerABI_C.bin",
+      "sha256": "7bbb0893c2d4a45129e76b9fcaf9d2bd6232dd33187aad9a26b03af6cfe36264",
+      "bytes": 1384
+    },
+    {
+      "build": 3,
+      "artifact": "CMakeFiles/3.30.2/CMakeDetermineCompilerABI_CXX.bin",
+      "sha256": "0785b3a6e7d5f406feb497a6b1308b9016f2ad922c1acc709aa17689713c65a7",
+      "bytes": 1404
+    }
+  ],
+  "mutual_firmware_byte_identity": false,
+  "historical_firmware_byte_identity": false,
+  "layout_review": {
+    "selected_archive_members_same": true,
+    "selected_archive_member_counts": [
+      895,
+      895,
+      895
+    ],
+    "affected_prelink_instructions_and_relocations_identical": true,
+    "final_function_layout": [
+      {
+        "tx_param": {
+          "address": "0x4203f518",
+          "bytes": 36,
+          "provider": "libespressif__esp_lcd_axs15231b.a(esp_lcd_axs15231b.c.o)"
+        },
+        "tx_color": {
+          "address": "0x4203f620",
+          "bytes": 36,
+          "provider": "libespressif__esp_lcd_axs15231b.a(esp_lcd_axs15231b.c.o)"
+        },
+        "setup_scr_screen": {
+          "address": "0x420a10c8",
+          "bytes": 8300,
+          "provider": "libui_bsp.a(setup_scr_screen.c.o)"
+        }
+      },
+      {
+        "tx_param": {
+          "address": "0x4203f518",
+          "bytes": 36,
+          "provider": "libespressif__esp_lcd_axs15231b.a(esp_lcd_axs15231b.c.o)"
+        },
+        "tx_color": {
+          "address": "0x4203f620",
+          "bytes": 36,
+          "provider": "libespressif__esp_lcd_axs15231b.a(esp_lcd_axs15231b.c.o)"
+        },
+        "setup_scr_screen": {
+          "address": "0x420a117c",
+          "bytes": 8300,
+          "provider": "libui_bsp.a(setup_scr_screen.c.o)"
+        }
+      },
+      {
+        "tx_param": {
+          "address": "0x420024f8",
+          "bytes": 39,
+          "provider": "libespressif__esp_lcd_axs15231b.a(esp_lcd_axs15231b.c.o)"
+        },
+        "tx_color": {
+          "address": "0x42002604",
+          "bytes": 39,
+          "provider": "libespressif__esp_lcd_axs15231b.a(esp_lcd_axs15231b.c.o)"
+        },
+        "setup_scr_screen": {
+          "address": "0x4209c630",
+          "bytes": 8012,
+          "provider": "libui_bsp.a(setup_scr_screen.c.o)"
+        }
+      }
+    ],
+    "interpretation": "Consistent with Xtensa link layout/relaxation; no selected-source/configuration/partition discrepancy. This is not an exhaustive runtime semantic-equivalence proof."
+  },
+  "image_metadata": [
+    {
+      "build": 1,
+      "bytes": 2485824,
+      "header_hex": "e907024f4cc43740ee0000000900000000ffff0000000001",
+      "entry": "0x4037c44c",
+      "segments": [
+        {
+          "address": "0x3c100020",
+          "bytes": 1335172,
+          "sha256": "d2314cfa05735dabac1bc2b0db4d346071cf29c043a9490e23ad6fd9f2fb051c"
+        },
+        {
+          "address": "0x3fca4f00",
+          "bytes": 24540,
+          "sha256": "9f4407333d785930ea1aec72f0146f4ca161ad50022b13108a8c7dbceebe585c"
+        },
+        {
+          "address": "0x40374000",
+          "bytes": 16520,
+          "sha256": "c3c9688d57bc761fd92410efebce561dd9fea9fffa9b1aec8733bc2fdd131ca4"
+        },
+        {
+          "address": "0x42000020",
+          "bytes": 991128,
+          "sha256": "8266615bde15bec9d0642d316316cf7ca86758fd389bbf3d1625ba211ed241cf"
+        },
+        {
+          "address": "0x40378088",
+          "bytes": 118228,
+          "sha256": "c18f068bceaf3279ef824e1fb63d6f3db2be9cb3180716c5fa5bb573944d5682"
+        },
+        {
+          "address": "0x50000280",
+          "bytes": 32,
+          "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+        },
+        {
+          "address": "0x600fe000",
+          "bytes": 88,
+          "sha256": "92cddd0ca70c0ce1cf45458cacd0b33eab27a5a687264bb5075ee0f7a5cb9ac6"
+        }
+      ],
+      "app_descriptor": {
+        "offset": 32,
+        "secure_version": 0,
+        "version": "1",
+        "project": "12_LVGL_Test",
+        "time": "19:41:28",
+        "date": "Oct 12 2026",
+        "idf_version": "5.5.3",
+        "elf_sha256": "df5c59649d2301d6251cd21f3e0a8deebe34fe35888d73f33014f32fd068a799",
+        "raw_sha256": "7799a62db7d368dfd73d2909a4cb6a4f7bc65e5745c1ef82d52534b301d03cba"
+      }
+    },
+    {
+      "build": 2,
+      "bytes": 2485824,
+      "header_hex": "e907024f4cc43740ee0000000900000000ffff0000000001",
+      "entry": "0x4037c44c",
+      "segments": [
+        {
+          "address": "0x3c100020",
+          "bytes": 1335172,
+          "sha256": "eebc239c5f5142509b59dd7a084a5ee6e0e492629da7ad7c13ecdb5640e22df3"
+        },
+        {
+          "address": "0x3fca4f00",
+          "bytes": 24540,
+          "sha256": "9f4407333d785930ea1aec72f0146f4ca161ad50022b13108a8c7dbceebe585c"
+        },
+        {
+          "address": "0x40374000",
+          "bytes": 16520,
+          "sha256": "c3c9688d57bc761fd92410efebce561dd9fea9fffa9b1aec8733bc2fdd131ca4"
+        },
+        {
+          "address": "0x42000020",
+          "bytes": 991128,
+          "sha256": "195c9139b511e52f5ae8e861a2ee53b1e14cb792cc969c48b7f13346321e9608"
+        },
+        {
+          "address": "0x40378088",
+          "bytes": 118228,
+          "sha256": "c18f068bceaf3279ef824e1fb63d6f3db2be9cb3180716c5fa5bb573944d5682"
+        },
+        {
+          "address": "0x50000280",
+          "bytes": 32,
+          "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+        },
+        {
+          "address": "0x600fe000",
+          "bytes": 88,
+          "sha256": "92cddd0ca70c0ce1cf45458cacd0b33eab27a5a687264bb5075ee0f7a5cb9ac6"
+        }
+      ],
+      "app_descriptor": {
+        "offset": 32,
+        "secure_version": 0,
+        "version": "1",
+        "project": "12_LVGL_Test",
+        "time": "19:51:39",
+        "date": "Oct 12 2026",
+        "idf_version": "5.5.3",
+        "elf_sha256": "e43143d9e00b7dfb65aa7f17f3371cf12e7c427279f57f24e94233f81bea0216",
+        "raw_sha256": "bcb392dd4d8f1ab61e640e660e3b5f2ddb9b01c9b11a00f9b7630e6f230f98d1"
+      }
+    },
+    {
+      "build": 3,
+      "bytes": 2485568,
+      "header_hex": "e907024f4cc43740ee0000000900000000ffff0000000001",
+      "entry": "0x4037c44c",
+      "segments": [
+        {
+          "address": "0x3c100020",
+          "bytes": 1335172,
+          "sha256": "8389bffcf6cb6e944e69aa13e51778fe3dea7afe1e3c555326e829ff99abff43"
+        },
+        {
+          "address": "0x3fca4f00",
+          "bytes": 24540,
+          "sha256": "68529e54293c797697d6a01c5fb159542fc943b3ff432f02de3d7f964dcc6b09"
+        },
+        {
+          "address": "0x40374000",
+          "bytes": 16520,
+          "sha256": "7af28b2c13057da98b70876a845d9d9addd8858ca51fe3353b617865295949cc"
+        },
+        {
+          "address": "0x42000020",
+          "bytes": 990868,
+          "sha256": "7accdaa35313e60a6a1dda1bed504a691df545787570417e7e697e2c04b44062"
+        },
+        {
+          "address": "0x40378088",
+          "bytes": 118228,
+          "sha256": "26706f59a2256ab2f714cd66b9eb6aac3461f8fa1937590ac28784dc497a6007"
+        },
+        {
+          "address": "0x50000280",
+          "bytes": 32,
+          "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925"
+        },
+        {
+          "address": "0x600fe000",
+          "bytes": 88,
+          "sha256": "92cddd0ca70c0ce1cf45458cacd0b33eab27a5a687264bb5075ee0f7a5cb9ac6"
+        }
+      ],
+      "app_descriptor": {
+        "offset": 32,
+        "secure_version": 0,
+        "version": "1",
+        "project": "12_LVGL_Test",
+        "time": "20:01:25",
+        "date": "Oct 12 2026",
+        "idf_version": "5.5.3",
+        "elf_sha256": "441b33168f9d131b86e1d47aa4f02b0958ab0a93cea1eeb1be1c257da2c81ea6",
+        "raw_sha256": "6bbe3f9f26582cb621dea562a9752036792f4ff48e4fd008bd73658bf0e55ce3"
+      }
+    }
+  ],
+  "historical_image": {
+    "magic": 233,
+    "segments": 7,
+    "spi_mode": 2,
+    "spi_speed_size": 79,
+    "entry": "0x4037c44c",
+    "header_hex": "e907024f4cc43740ee0000000900000000ffff0000000001",
+    "bytes": 2485824,
+    "sha256": "7e8d77c21898014fbd7ea625cf2d25aa7f77941d5ba1d24484090f7361279afb",
+    "segments_detail": [
+      {
+        "index": 0,
+        "address": "0x3c100020",
+        "bytes": 1335172,
+        "sha256": "78f40f6283ee3fff24aa23c0e11887875fe74545d811c50a02df046484f8b23e",
+        "file_offset": 32,
+        "app_descriptor": {
+          "offset": 32,
+          "secure_version": 0,
+          "version": "1",
+          "project": "12_LVGL_Test",
+          "time": "23:57:20",
+          "date": "Oct  6 2026",
+          "idf_version": "5.5.3",
+          "elf_sha256": "61d077235a971919807bcff38aede169554f60de1ea7152625e5aa5b0b730525",
+          "raw_sha256": "182628b2549f41c0a25846b78bb5dc6c8a2bc0cd550b9c009ee1ae60d44772c1"
+        }
+      },
+      {
+        "index": 1,
+        "address": "0x3fca4f00",
+        "bytes": 24540,
+        "sha256": "ee10a78eed4d44a7fcb62c998f85bdd2b90e42843db2d976174ab8568666aaf3",
+        "file_offset": 1335212
+      },
+      {
+        "index": 2,
+        "address": "0x40374000",
+        "bytes": 16520,
+        "sha256": "f5419005c8824a8d75796155c9f0b79a079f8c1c1d35b97e5123eb66f54bacb5",
+        "file_offset": 1359760
+      },
+      {
+        "index": 3,
+        "address": "0x42000020",
+        "bytes": 991128,
+        "sha256": "359527a1392f4fd2a4b4d34ef23762d8dc88c0eb716147f1177f2cc11dba896b",
+        "file_offset": 1376288
+      },
+      {
+        "index": 4,
+        "address": "0x40378088",
+        "bytes": 118228,
+        "sha256": "c18f068bceaf3279ef824e1fb63d6f3db2be9cb3180716c5fa5bb573944d5682",
+        "file_offset": 2367424
+      },
+      {
+        "index": 5,
+        "address": "0x50000280",
+        "bytes": 32,
+        "sha256": "66687aadf862bd776c8fc18b8e9f8e20089714856ee233b3902a591d0d5f2925",
+        "file_offset": 2485660
+      },
+      {
+        "index": 6,
+        "address": "0x600fe000",
+        "bytes": 88,
+        "sha256": "92cddd0ca70c0ce1cf45458cacd0b33eab27a5a687264bb5075ee0f7a5cb9ac6",
+        "file_offset": 2485700
+      }
+    ],
+    "trailer_bytes": 36,
+    "trailer_sha256": "4a064893e310a86ac29b08c30d586b06b085b03476dae802862ad3e4e4cb9a90"
+  },
+  "historical_comparison": "Every Dell application hash differs from A006; header/entry/segment-count/project/version/IDF match, partitions byte-identical, builds1/2 image length and segment layout match; build3 text segment smaller260bytes and whole image smaller256bytes. Runtime/installed semantic equivalence not demonstrated; no binary normalization.",
+  "Ryzen_classification": "Intermittent host/environment/compiler-process failure; not a reproducible source defect in these tests. Exact OS/compiler interaction or hardware cause UNKNOWN; hardware fault not established.",
+  "verdict": "PASS \u2014 PRACTICAL DELL SOURCE-TO-BUILD REPRODUCTION (HOBBY / PUBLIC-BETA SCOPE)",
+  "A008": "DONE \u2014 practical build/review scope; READY FOR OWNER REVIEW",
+  "A009": "BLOCKED / NOT STARTED; unassigned execution",
+  "PR14": "OPEN / UNMERGED; documentation-only merge recommended after owner review",
+  "no_hardware": "Owner reports none on Dell; recorded commands reviewed as compiler/build-only; no reviewer device access",
+  "source_archive_SDK_toolchain_artifacts_published": false,
+  "remaining_limits": [
+    "No historical or cross-build firmware byte identity",
+    "No fresh device runtime/flash/layout/recovery acceptance",
+    "Ryzen root cause not isolated",
+    "Backend/persistence/migration/Native/shared gate unchanged"
+  ],
+  "log_sanitization": {
+    "CONFIGURE_RGB": {
+      "raw_lines": 37,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 37
+    },
+    "FROZEN_I_01": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "FROZEN_I_02": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "FROZEN_I_03": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "FROZEN_I_04": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "FROZEN_I_05": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "FROZEN_I_06": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "FROZEN_I_07": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "FROZEN_I_08": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "FROZEN_I_09": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "FROZEN_I_10": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "FROZEN_I_11": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "FROZEN_I_12": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "FROZEN_I_13": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "FROZEN_I_14": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "FROZEN_I_15": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "FROZEN_I_16": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "FROZEN_I_17": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "FROZEN_I_18": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "FROZEN_I_19": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "FROZEN_I_20": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "ORIGINAL_SOURCE_01": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "ORIGINAL_SOURCE_02": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "ORIGINAL_SOURCE_03": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "ORIGINAL_SOURCE_04": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "ORIGINAL_SOURCE_05": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "ORIGINAL_SOURCE_06": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "ORIGINAL_SOURCE_07": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "ORIGINAL_SOURCE_08": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "ORIGINAL_SOURCE_09": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "ORIGINAL_SOURCE_10": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "ORIGINAL_SOURCE_11": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "ORIGINAL_SOURCE_12": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "ORIGINAL_SOURCE_13": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "ORIGINAL_SOURCE_14": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "ORIGINAL_SOURCE_15": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "ORIGINAL_SOURCE_16": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "ORIGINAL_SOURCE_17": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "ORIGINAL_SOURCE_18": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "ORIGINAL_SOURCE_19": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "ORIGINAL_SOURCE_20": {
+      "raw_lines": 0,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 0
+    },
+    "CLEAN_BUILD_1": {
+      "raw_lines": 1725,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 1725
+    },
+    "CLEAN_BUILD_2": {
+      "raw_lines": 1725,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 1725
+    },
+    "CLEAN_BUILD_3": {
+      "raw_lines": 1725,
+      "omitted_source_or_command_lines": 0,
+      "published_lines": 1725
+    }
+  },
+  "input_identity_checks": {
+    "complete_package_identities": "MATCH approved bundle",
+    "Python_runtime": "3.11.7 MATCH",
+    "original_RGB_SDK_source": "MATCH approved bundle",
+    "bundled_toolchain_files_byte_identical": 2049
+  }
+}

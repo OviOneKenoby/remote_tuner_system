@@ -1,0 +1,39 @@
+{
+  "same_root_process_ENV": true,
+  "targets": {
+    "firmware.elf": {
+      "changed_fields": [
+        "action_signature_expanded",
+        "LIBS"
+      ],
+      "ordered_link_sources_equal": true,
+      "actual_action_signature_equal": false,
+      "link_library_order_equal": false,
+      "link_library_multiset_equal": true,
+      "first_library_order_difference": {
+        "position": 0,
+        "A_basename": "libxtensa.a",
+        "B_basename": "libapp_trace.a"
+      },
+      "target_compiler_ENV_equal": true
+    },
+    "bootloader.elf": {
+      "changed_fields": [],
+      "ordered_link_sources_equal": true,
+      "actual_action_signature_equal": true,
+      "link_library_order_equal": true,
+      "link_library_multiset_equal": true,
+      "first_library_order_difference": null,
+      "target_compiler_ENV_equal": true
+    }
+  },
+  "first_non_temporal_difference": {
+    "target": "firmware.elf",
+    "difference": "Actual expanded final linker command/input order differs",
+    "first_library_order_difference": {
+      "position": 0,
+      "A_basename": "libxtensa.a",
+      "B_basename": "libapp_trace.a"
+    }
+  }
+}

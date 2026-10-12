@@ -1,0 +1,33 @@
+{
+  "allowed_JSON_pointers": [
+    "/all_component_info/esp_wifi_bsp"
+  ],
+  "operations": [
+    {
+      "op": "remove",
+      "path": "/all_component_info/esp_wifi_bsp",
+      "before_sanitized": {
+        "alias": "idf::esp_wifi_bsp",
+        "target": "___idf_esp_wifi_bsp",
+        "prefix": "idf",
+        "dir": "<DISPOSABLE>/components/esp_wifi_bsp",
+        "lib": "__idf_esp_wifi_bsp",
+        "reqs": [],
+        "priv_reqs": [
+          "esp_wifi",
+          "esp_event",
+          "nvs_flash"
+        ],
+        "managed_reqs": [],
+        "managed_priv_reqs": [],
+        "include_dirs": [
+          "./"
+        ]
+      }
+    }
+  ],
+  "unrelated_component_changes": [],
+  "PRESENT_description_SHA256": "2f0f620836acb4dc766e2572c047e24a30493b1203cbb324f680c9da97e6a0a1",
+  "ABSENT_description_SHA256": "60d5300f046b328f543365c5024032ddaa10cbf6a0671843a99867506bc961d7",
+  "permission": "Owner2026-10-12 accepts this non-selected discovery metadata record delta only"
+}

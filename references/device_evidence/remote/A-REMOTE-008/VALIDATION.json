@@ -1,0 +1,19 @@
+{
+  "status": "PASS documentation/privacy/link/template verification; bundle BLOCKED not validated",
+  "coordination_read": "0183f891cc975ab496e7fe3eb638c30757b139ef",
+  "main_assignment": "1611f3130d1286c9d0b413baf4858f07aebb0e97",
+  "relative_links": 74,
+  "handoff": "exact template/all fields; previous published handoff archived byte-exact",
+  "privacy": "No private source/credential value/.i/archive/artifact published; scan finding types only",
+  "concurrent_unrelated_content": "verified separately from staged Git blobs",
+  "source_to_build": "UNKNOWN",
+  "verdict": "INCONCLUSIVE — BUILD REPRODUCTION BLOCKED BY INTERMITTENT COMPILER PROCESS FAILURE",
+  "root_cause": "UNKNOWN; no proven hardware/source/deterministic compiler defect",
+  "A008": "IN PROGRESS / BLOCKED ON INTERMITTENT COMPILER PROCESS FAILURE; CROSS-HOST SECRET GATE BLOCKED",
+  "A009": "BLOCKED / NOT STARTED",
+  "new_complete_builds": 0,
+  "cross_host": "NOT RUN",
+  "bundle": "NOT CREATED; early-stop credentials scan, not a clean attestation",
+  "protocol": "NOT CREATED; dependent preparation halted",
+  "PR14": "OPEN / unmerged; final remote verification reported externally"
+}

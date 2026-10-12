@@ -1,0 +1,64 @@
+{
+  "coordination_input": "48e07f8d90ed126aedd3f3e492975033c73cc570",
+  "owner_date": "2026-10-12 Europe/Bucharest",
+  "discovery_metadata_delta": "PERMITTED exact removal /all_component_info/esp_wifi_bsp; no unrelated records changed",
+  "actual_SCons_command_database_equal": true,
+  "actual_command_entries": 1549,
+  "configured_CMake_entries": 1449,
+  "preprocessing_pair": [
+    {
+      "unit": "esp_lcd_panel_rgb.c",
+      "byte_equal": true,
+      "PRESENT_sha256": "af84972eebfeff281712c932f4666818ec899e191f5f177e24b5cbe0e58bfc96",
+      "ABSENT_sha256": "af84972eebfeff281712c932f4666818ec899e191f5f177e24b5cbe0e58bfc96",
+      "normalization": "NONE",
+      "non_header_diff_lines": 0,
+      "differences_are_only_time_literals": false
+    },
+    {
+      "unit": "esp_app_desc.c",
+      "byte_equal": false,
+      "PRESENT_sha256": "0457a2f77a68cfc4ac14dbe365da9ddd9c37c9530735ac6f67969848fe6e3d1b",
+      "ABSENT_sha256": "62e3a8aa888b883d4765ac0e8997958842cdb5c311bf095bdb39660d060edde4",
+      "normalization": "NONE",
+      "non_header_diff_lines": 2,
+      "differences_are_only_time_literals": true
+    }
+  ],
+  "first_unresolved_preprocessed_content_difference": {
+    "unit": "ESP-IDF components/esp_app_format/esp_app_desc.c",
+    "field": "esp_app_desc.time",
+    "origin_macro": "__TIME__",
+    "origin_line": 54,
+    "CONFIG_APP_COMPILE_TIME_DATE": true,
+    "difference": "Two clock-time string initializer lines differ; all remaining preprocessed content byte-identical",
+    "causal_attribution": "Temporal compiler macro expansion, not proved caused by component omission",
+    "normalization": "NONE; macro/source-content normalization not applied",
+    "input_source_sdkconfig_commands_changed": false
+  },
+  "actual_header_dependency_checks": {
+    "tested_units": [
+      "esp_lcd_panel_rgb.c",
+      "esp_app_desc.c"
+    ],
+    "PRESENT_and_ABSENT_depfiles": "PASS four successful -E/-MD/-MF invocations; no esp_wifi_bsp header path",
+    "all_selected_units": "NOT COMPLETED after preprocessing gate; no global transitive-header certificate"
+  },
+  "full_dependency_graph_certificate": "NOT COMPLETED; actual compile/assembly databases equal, prior build.ninja/sdkconfig/CMakeCache equal, no full final SCons link/input/generated-source/binary-embedding/partition/version certificate",
+  "disposable_full_clean_build_pair": "NOT RUN after first unresolved preprocessing-content difference; configuration targets are not full builds",
+  "strongest_build_comparison": "No corresponding new object/final artifacts; preprocessing outputs retained privately and compared",
+  "result": "EXCLUSION NOT VALIDATED",
+  "transfer_exclusion": "NOT APPLIED",
+  "remaining_secret_scan": "NOT RUN; gated on all checks passing",
+  "bundle": "NOT CREATED",
+  "archive_path_size_SHA256_file_count": "NOT APPLICABLE",
+  "second_host_protocol_runner": "NOT CREATED",
+  "copy_item_and_initial_command": "NONE",
+  "transfer_second_host_hardware": "NOT RUN",
+  "original_source_SDK": "UNCHANGED",
+  "restricted_component_directory_hash": "LOCAL ONLY; never published",
+  "current_verdict": "INCONCLUSIVE \u2014 BUILD REPRODUCTION BLOCKED BY INTERMITTENT COMPILER PROCESS FAILURE",
+  "A008": "IN PROGRESS; exclusion/preprocessing verification BLOCKED",
+  "A009": "BLOCKED / NOT STARTED",
+  "PR14": "OPEN/unmerged"
+}

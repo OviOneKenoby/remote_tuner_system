@@ -1,0 +1,14 @@
+{
+  "counts": {
+    "documentation/tools/tests/other": 604,
+    "build_outputs/generated": 2322,
+    "dependency_build_cache": 10,
+    "local_IDE_configuration": 3,
+    "source/build_input": 996,
+    "local_configuration": 6,
+    "managed_dependency_cache": 92,
+    "unrelated_nested_repository_metadata/docs": 3
+  },
+  "potential_sensitive_files_excluded_from_Git_and_public_source_manifest": 1,
+  "excluded_git_or_sensitive_paths_count": 31
+}

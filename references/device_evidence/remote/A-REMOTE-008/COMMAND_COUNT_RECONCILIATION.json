@@ -1,0 +1,63 @@
+{
+  "populations": {
+    "CMake": {
+      "definition": "database entries, not unique files or count of arbitrary SCons actions",
+      "entries": 1449,
+      "unique_resolved_source_files": 1449,
+      "C_compiler": 1383,
+      "CXX_compiler": 49,
+      "preprocessed_assembly": 17,
+      "application_output_entries": 1449,
+      "bootloader_output_entries": 0,
+      "source_identity_duplicates_across_output_contexts": 0,
+      "unique_C_source_files": 1383,
+      "unique_CXX_source_files": 49,
+      "unique_assembly_source_files": 17,
+      "output_context_definition": "explicit /bootloader/ path segment; component names containing bootloader do not imply bootloader sub-build"
+    },
+    "SCons": {
+      "definition": "database entries, not unique files or count of arbitrary SCons actions",
+      "entries": 1549,
+      "unique_resolved_source_files": 1457,
+      "C_compiler": 1483,
+      "CXX_compiler": 48,
+      "preprocessed_assembly": 18,
+      "application_output_entries": 1445,
+      "bootloader_output_entries": 104,
+      "source_identity_duplicates_across_output_contexts": 92,
+      "unique_C_source_files": 1393,
+      "unique_CXX_source_files": 48,
+      "unique_assembly_source_files": 16,
+      "output_context_definition": "explicit /bootloader/ path segment; component names containing bootloader do not imply bootloader sub-build"
+    }
+  },
+  "CMake_database_equal_A_B": true,
+  "SCons_database_equal_A_B": true,
+  "CMake_only_generated_scaffolding": [
+    "__dummy.c",
+    "__dummy.cpp",
+    "__dummy.s",
+    "project_elf_src_esp32s3.c"
+  ],
+  "SCons_only_bootloader_sources": [
+    "uecc_verify_antifault.c",
+    "bootloader_start.c",
+    "bootloader_clock_loader.c",
+    "bootloader_console.c",
+    "bootloader_console_loader.c",
+    "bootloader_init.c",
+    "bootloader_panic.c",
+    "bootloader_esp32s3.c",
+    "bootloader_soc.c",
+    "log_lock.c",
+    "log_timestamp.c",
+    "util.c"
+  ],
+  "arithmetic": "1549 = 1449 - 4 CMake-only scaffolding entries + 12 SCons-only bootloader source files + 92 second-context source entries",
+  "selected_actual_TU_compile_contexts": 1549,
+  "selected_actual_unique_source_files": 1457,
+  "equivalence": "Both compiler/assembly populations identical between A/B; neither population includes link actions",
+  "selected_actual_C_CXX_TU_contexts": 1531,
+  "selected_actual_unique_C_CXX_TUs": 1441,
+  "collector_correction": "Earlier substring-based bootloader grouping also counted application bootloader-support components; replaced by exact output path-segment grouping. Total command/type/unique-source counts unchanged."
+}

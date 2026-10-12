@@ -1,0 +1,69 @@
+{
+  "coordination_input": "f1fa75ba2f0cabeb54d988492b93f40afd01da60",
+  "owner_decision_date": "2026-10-12 Europe/Bucharest",
+  "procedure": "Same-path PRESENT/ABSENT fresh pio run -e remote01 -v -j1 -t compiledb, entire component moved only in disposable copy; installed-only guard",
+  "PRESENT_exit": 0,
+  "ABSENT_exit": 0,
+  "guard_events": "NONE",
+  "effective_build_components_byte_semantic_equal": true,
+  "component_absent_from_effective_build_components": true,
+  "translation_units": 1449,
+  "complete_compile_database_equal": true,
+  "generated_configuration_comparisons": {
+    "config/sdkconfig.h": {
+      "byte_equal": true
+    },
+    "config/sdkconfig.cmake": {
+      "byte_equal": true
+    },
+    "config/sdkconfig.json": {
+      "byte_equal": true
+    },
+    "build.ninja": {
+      "byte_equal": true
+    },
+    "CMakeCache.txt": {
+      "byte_equal": true
+    }
+  },
+  "generated_project_description_changed_fields": [
+    "all_component_info"
+  ],
+  "all_component_info_removed_entry": "esp_wifi_bsp",
+  "discovery_entry_contains": [
+    "dir",
+    "include_dirs",
+    "lib",
+    "target",
+    "priv_reqs",
+    "reqs"
+  ],
+  "declared_private_dependency_names": [
+    "esp_wifi",
+    "esp_event",
+    "nvs_flash"
+  ],
+  "selected_or_generated_metadata_references": [
+    "project_description.json"
+  ],
+  "direct_selected_header_scan": "No direct literal include matches in recorded selected sources; not a full transitive include proof",
+  "historical_component_exclusion": "PASS original retained configuration effective component absent and root EXCLUDE_COMPONENTS declaration retained",
+  "positive_compiled_source_dependency": "NOT FOUND in performed checks; metadata discovery reference is distinguished from selected compilation",
+  "strict_owner_conditions": "NOT ALL SATISFIED; generated project_description.json changes and discovery/configuration records reference component",
+  "preprocessing_output_pair": "NOT RUN after generated metadata/configuration stop condition",
+  "full_link_command_and_intended_artifact_set_comparison": "NOT COMPLETED after stop; effective component/compile database equality alone is not all requested evidence",
+  "dependency_resolution_equivalence": "NOT CERTIFIED; discovery graph information changes",
+  "exclusion_from_transfer": "NOT APPLIED; conditional permission is not unconditional",
+  "remaining_secret_scan": "NOT RUN; gated on conclusive exclusion",
+  "bundle": "NOT CREATED",
+  "second_host_protocol_runner": "NOT CREATED; preparation stopped before validated exclusion",
+  "private_archive_sha256_size_file_count": "NOT APPLICABLE; no archive",
+  "transfer": "NOT PERFORMED",
+  "second_host": "NOT RUN",
+  "directory_content_hash": "Computed LOCALLY as RESTRICTED evidence; hash/manifest never published",
+  "owner_decision_required": "Clarify whether the difference limited to excluded-component discovery metadata is permitted, or retain strict zero-generated-file/graph-change condition (preparation remains blocked). No relaxation applied.",
+  "current_verdict": "INCONCLUSIVE \u2014 BUILD REPRODUCTION BLOCKED BY INTERMITTENT COMPILER PROCESS FAILURE",
+  "A008": "IN PROGRESS; CROSS-HOST PREPARATION BLOCKED ON EXCLUSION CONDITIONS",
+  "A009": "BLOCKED / NOT STARTED",
+  "original_component_source_SDK_hardware": "UNCHANGED"
+}
