@@ -1,0 +1,51 @@
+{
+  "coordination_input": "0183f891cc975ab496e7fe3eb638c30757b139ef",
+  "main_assignment": "1611f3130d1286c9d0b413baf4858f07aebb0e97",
+  "owner_request_date": "2026-10-12 Europe/Bucharest",
+  "cross_host_authorization": "Read-only/build-only second Windows amd64 host, offline private exact-input bundle, isolated exact versions; no production/source/SDK/hardware/security/merge/A009 changes",
+  "secret_gate": "BLOCKED; early scan stopped at first credential-bearing source file",
+  "file_type": "C source in original source tree",
+  "file": "components/esp_wifi_bsp/esp_wifi_bsp.c",
+  "findings": [
+    {
+      "line": 34,
+      "type": "Wi-Fi SSID literal",
+      "value": "WITHHELD"
+    },
+    {
+      "line": 35,
+      "type": "Wi-Fi password literal",
+      "value": "WITHHELD"
+    }
+  ],
+  "placeholder_pattern_match": false,
+  "active_credential_validity": "UNKNOWN; not tested",
+  "build_selection": {
+    "configured_translation_units_original": 1449,
+    "configured_translation_units_private_copy": 1449,
+    "file_in_either_selected_TU_list": false,
+    "component_explicitly_excluded_in_root_CMake": true,
+    "required_as_selected_compilation_input": false,
+    "source_tree_presence": true
+  },
+  "scan_completeness": "EARLY STOP; not a completed all-input secrets-clean attestation",
+  "arbitrary_exclusion_redaction": "NONE; no incomplete or modified-input bundle",
+  "archive": "NOT CREATED",
+  "archive_SHA256": "NOT APPLICABLE; no archive",
+  "archive_bytes": "NOT APPLICABLE; no archive",
+  "complete_bundle_manifest": "NOT CREATED",
+  "second_host_executable_protocol": "NOT CREATED; preparation stopped by explicit owner secret gate",
+  "copy_to_second_laptop": "NONE; no transferable verified bundle",
+  "initial_second_host_command": "NONE; no executable validated bundle/protocol exists",
+  "second_host_tests": "NOT RUN",
+  "new_first_host_builds": "NOT RUN this continuation",
+  "source_to_build": "UNKNOWN",
+  "clean_build_reproduction": "BLOCKED",
+  "current_verdict": "INCONCLUSIVE — BUILD REPRODUCTION BLOCKED BY INTERMITTENT COMPILER PROCESS FAILURE",
+  "cause": "UNKNOWN; no proof of hardware/source/deterministic compiler defect",
+  "A008": "IN PROGRESS / BLOCKED ON INTERMITTENT COMPILER PROCESS FAILURE; cross-host preparation additionally BLOCKED ON SECRET GATE",
+  "A009": "BLOCKED / NOT STARTED",
+  "PR14": "OPEN / unmerged",
+  "owner_decision_required": "Explicitly resolve the stop condition for the credential-bearing, currently excluded component before resuming preparation; no production redaction or arbitrary omission performed",
+  "original_SDK_hardware_changes": "NONE"
+}

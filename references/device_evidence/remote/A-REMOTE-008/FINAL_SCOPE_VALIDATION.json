@@ -9,7 +9,7 @@
   "source_publication": "NONE",
   "source_to_build": "UNKNOWN",
   "clean_build_reproduction": "BLOCKED",
-  "A008": "IN PROGRESS / BLOCKED ON COMPILER ICE",
+  "A008": "IN PROGRESS / BLOCKED ON INTERMITTENT COMPILER PROCESS FAILURE",
   "A009": "BLOCKED / NOT STARTED",
   "new_complete_clean_builds": 0,
   "historical_private_capture_restoration": "Prior scope metadata restored exact recorded hash after audit helper refreshed it; current facts recorded separately here"

@@ -24,7 +24,7 @@
   ],
   "hardware": "NOT RUN / no access",
   "SDK_dependency_updates": "NONE / guard events NONE",
-  "verdict": "INCONCLUSIVE — BUILD REPRODUCTION BLOCKED BY REPRODUCIBLE COMPILER ICE",
+  "verdict": "INCONCLUSIVE — BUILD REPRODUCTION BLOCKED BY INTERMITTENT COMPILER PROCESS FAILURE",
   "verdict_basis": "Two clean attempts fail same compiler ICE; no complete image, source correspondence UNKNOWN",
   "A008": "BLOCKED",
   "A009": "BLOCKED / NOT STARTED",
