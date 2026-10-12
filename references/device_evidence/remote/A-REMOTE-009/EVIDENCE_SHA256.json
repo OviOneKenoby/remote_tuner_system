@@ -58,5 +58,13 @@
   "READ_ONLY_OPERATION_SUMMARY.json": {
     "bytes": 2061,
     "sha256": "02f12b87c65e97850ea5492c8df2688863332764030a9007c3d8d235f04e4f3f"
+  },
+  "TABLE_ONLY_HARDWARE_RESULT.json": {
+    "bytes": 6752,
+    "sha256": "f83a538daeb8591bb45a27b9d31ae9089c872d1991df81b32bb9a57a6dd315f1"
+  },
+  "TABLE_ONLY_BOOT_SELECTED_LINES.log": {
+    "bytes": 925,
+    "sha256": "6d26de0cc780295c2833b8b9484b545134e183f6064ade313f4447f5b27a0d39"
   }
 }

@@ -1,0 +1,210 @@
+{
+  "verdict": "PASS \u2014 TABLE-ONLY HARDWARE VALIDATION; READY FOR OWNER REVIEW",
+  "coordination_input": "1e549d4d6be00c77d61c020adf0b82ed4a04e729",
+  "pre_write": {
+    "PASS": true,
+    "backup_bytes": 16777216,
+    "backup_sha256": "f6d806e0c19e545951f2e75ab8b9373a89215a58f2cb8b0a3c21f3d759e3bdb8",
+    "candidate_bytes": 3072,
+    "candidate_sha256": "a144343580dbdadace66fccc5969d7557de3d4c4f15a61e76db205cc26348184",
+    "original_sector_bytes": 4096,
+    "original_sector_sha256": "4946a42576c9e499c4a856b9104abfb6d09fff4f3fff2cd7985649ccbcec8f46",
+    "same_A007_A009_device": true,
+    "chip": "ESP32-S3 revision v0.2",
+    "physical_flash_bytes": 16777216,
+    "ROM_USB": "PASS",
+    "esptool": "4.11.0",
+    "separate_storage_copy": "OWNER VERIFIED size/hash; not independently accessed by agent",
+    "utc": "2026-10-12T19:57:38.831362+00:00"
+  },
+  "table_readback": {
+    "PASS": true,
+    "table_sector_sha256": "fd62ef669cdbab98ac5372777a686d8dcd9813f7eb5302a67cc5136e96e90f69",
+    "candidate_bytes_exact_match": true,
+    "padding_1024_all_FF": true,
+    "six_previous_records_byte_identical": true,
+    "independent_IDF_decode_exit_code": 0,
+    "MD5_bounds_alignment_overlap": "PASS",
+    "entries": [
+      {
+        "name": "nvs",
+        "type": 1,
+        "subtype": 2,
+        "offset": "0x9000",
+        "size": "0x6000",
+        "flags": 0
+      },
+      {
+        "name": "phy_init",
+        "type": 1,
+        "subtype": 1,
+        "offset": "0xf000",
+        "size": "0x1000",
+        "flags": 0
+      },
+      {
+        "name": "factory",
+        "type": 0,
+        "subtype": 0,
+        "offset": "0x10000",
+        "size": "0x800000",
+        "flags": 0
+      },
+      {
+        "name": "otadata",
+        "type": 1,
+        "subtype": 0,
+        "offset": "0x810000",
+        "size": "0x2000",
+        "flags": 0
+      },
+      {
+        "name": "ota_0",
+        "type": 0,
+        "subtype": 16,
+        "offset": "0x820000",
+        "size": "0x300000",
+        "flags": 0
+      },
+      {
+        "name": "ota_1",
+        "type": 0,
+        "subtype": 17,
+        "offset": "0xb20000",
+        "size": "0x300000",
+        "flags": 0
+      },
+      {
+        "name": "remote_ctl",
+        "type": 1,
+        "subtype": 2,
+        "offset": "0xe20000",
+        "size": "0x10000",
+        "flags": 0
+      }
+    ],
+    "target_bytes": 65536,
+    "target_all_FF": true,
+    "target_sha256": "71189f7fb6aed638640078fba3a35fda6c39c8962e74dcc75935aac948da9063"
+  },
+  "full_before_reboot_preservation": {
+    "PASS": true,
+    "bytes": 16777216,
+    "sha256": "d333b3d4ac6443de094a66c95a0c238d73445a189698e3d0780549336567c8d6",
+    "outside_table_sector_byte_identical": true,
+    "changed_byte_count": 50,
+    "target_all_FF": true,
+    "seconds": 1460.25
+  },
+  "normal_boot": {
+    "utc": "2026-10-12T20:23:39.130325+00:00",
+    "capture_seconds": 45,
+    "factory_0x10000_logged": true,
+    "boot_errors_detected": false,
+    "ROM_banner_count": 1,
+    "PASS": true,
+    "UI_owner_observation": "CONFIRMED normal UI and existing observable configuration without settings mutation; see owner record",
+    "raw_capture": "PRIVATE; not published"
+  },
+  "owner_visual_observation": {
+    "utc": "2026-10-12T20:24:27.684902+00:00",
+    "normal_UI": true,
+    "configuration_present_without_mutation": true,
+    "owner_answer": "Yes \u2014 normal UI and existing configuration are present",
+    "observation": "Owner confirmation after normal boot; no settings change requested"
+  },
+  "operations": [
+    {
+      "operation": "get_security_info",
+      "started_utc": "2026-10-12T19:57:32.777541+00:00",
+      "ended_utc": "2026-10-12T19:57:34.792166+00:00",
+      "exit_code": 0,
+      "seconds": 2.015,
+      "persistent_write": false,
+      "stage": "SECURITY",
+      "baud": 115200
+    },
+    {
+      "operation": "flash_id",
+      "started_utc": "2026-10-12T19:57:34.797407+00:00",
+      "ended_utc": "2026-10-12T19:57:36.808257+00:00",
+      "exit_code": 0,
+      "seconds": 2.016,
+      "persistent_write": false,
+      "stage": "FLASH_ID",
+      "baud": 115200
+    },
+    {
+      "operation": "read_flash",
+      "started_utc": "2026-10-12T19:57:36.812757+00:00",
+      "ended_utc": "2026-10-12T19:57:38.823475+00:00",
+      "exit_code": 0,
+      "seconds": 2.016,
+      "persistent_write": false,
+      "stage": "ORIGINAL_SECTOR",
+      "baud": 115200
+    },
+    {
+      "operation": "write_flash",
+      "started_utc": "2026-10-12T19:58:07.298851+00:00",
+      "ended_utc": "2026-10-12T19:58:09.315050+00:00",
+      "exit_code": 0,
+      "seconds": 2.016,
+      "persistent_write": true,
+      "stage": "CANDIDATE_WRITE",
+      "baud": 115200
+    },
+    {
+      "operation": "read_flash",
+      "started_utc": "2026-10-12T19:58:12.780536+00:00",
+      "ended_utc": "2026-10-12T19:58:14.790977+00:00",
+      "exit_code": 0,
+      "seconds": 2.015,
+      "persistent_write": false,
+      "stage": "TABLE_READBACK",
+      "baud": 115200
+    },
+    {
+      "operation": "read_flash",
+      "started_utc": "2026-10-12T19:58:14.903369+00:00",
+      "ended_utc": "2026-10-12T19:58:22.915307+00:00",
+      "exit_code": 0,
+      "seconds": 8.015,
+      "persistent_write": false,
+      "stage": "TARGET_POSTWRITE",
+      "baud": 115200
+    },
+    {
+      "operation": "read_flash",
+      "started_utc": "2026-10-12T19:58:28.172101+00:00",
+      "ended_utc": "2026-10-12T20:22:48.414825+00:00",
+      "exit_code": 0,
+      "seconds": 1460.25,
+      "persistent_write": false,
+      "stage": "FULL_POSTWRITE",
+      "baud": 115200
+    }
+  ],
+  "persistent_write_commands": 1,
+  "standalone_erase_commands": 0,
+  "internal_erase_program_regions": [
+    {
+      "start": "0x8000",
+      "end_exclusive": "0x9000",
+      "bytes": 4096
+    }
+  ],
+  "rollback": "NOT REQUIRED / NOT EXECUTED",
+  "firmware_uploads": 0,
+  "NVS_OTA_application_target_write_commands": 0,
+  "factory_image_sha256": "7e8d77c21898014fbd7ea625cf2d25aa7f77941d5ba1d24484090f7361279afb",
+  "factory_image_bytes": 2485824,
+  "final_device_state": "Existing firmware running normally from factory0x10000; owner confirms UI and existing observable configuration without mutation",
+  "limitations": [
+    "ROM entry/reads demonstrated; restoration write not tested",
+    "Exact source/runtime equivalence and byte-reproducible builds remain unproven, nonblockers for approved practical assurance",
+    "Existing firmware may perform normal housekeeping during normal boot; no application TX/settings commands or deliberate NVS mutation performed",
+    "No backend/capacity/durability/G1a/migration qualification; A010 NOT STARTED"
+  ],
+  "private_evidence": "Raw flash/logs/MAC/USB identity/absolute paths and raw-log hashes remain restricted locally"
+}

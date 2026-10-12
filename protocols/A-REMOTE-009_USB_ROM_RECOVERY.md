@@ -166,3 +166,7 @@ Official guidance: [ESP-IDF5.5.3 ESP32-S3 partition tables](https://docs.espress
 
 ## Read-only execution record — 2026-10-12T19:36:49.377474+00:00
 [Owner accepts preparation and authorizes read-only preflight](../references/A009_READ_ONLY_PREFLIGHT_OWNER_AUTHORIZATION_2026-10-12.md); [actual execution report](../reports/A-REMOTE-009_READ_ONLY_PREFLIGHT.md). Steps through installed-state/backup verification PASS; initial USB ROM entry used selected automatic reset, owner retained115200baud and deferred separate-storage copy until before writing. Earlier NOT RUN paragraphs remain historical preparation records. Current mode ROM/stub; no normal return reboot. **Steps6–9 persistent operations remain NOT AUTHORIZED / NOT EXECUTED.** No table/firmware/NVS/erase/rollback write or recovery test. External-copy verification and explicit fresh-backup-bound approval are required before any write.
+
+
+## Backup-bound table-only execution and bounded rollback supersession — 2026-10-12T20:24:27.882825+00:00
+[Current exact owner authority](../references/A009_TABLE_ONLY_WRITE_OWNER_AUTHORIZATION_2026-10-12.md); [result](../reports/A-REMOTE-009_TABLE_ONLY_HARDWARE_VALIDATION.md). Table-only write and protocol full preservation read PASS; owner confirms normal factory boot/UI/configuration. Historical step9 full-flash recovery is NOT authorized by this decision: only one original-sector0x8000 rollback upon listed failure was authorized. Rollback NOT REQUIRED/NOT EXECUTED. No continuing hardware-write authority. PR15 OPEN/unmerged, owner acceptance pending.
