@@ -39,3 +39,6 @@ references/device_evidence/remote/A-REMOTE-008/** -text
 
 # Preserve exact current owner authorization bytes
 references/A008_DELL_OWNER_ACCEPTANCE_2026-10-12.md -text
+
+# A009 safe generated partition evidence and sanitized host verification
+references/device_evidence/remote/A-REMOTE-009/** -text

@@ -1,0 +1,28 @@
+{
+  "configured_environment": "remote01",
+  "target": "esp32s3",
+  "project_name": "12_LVGL_Test",
+  "project_version": "1",
+  "IDF": "5.5.3",
+  "effective_CMake_compile_database_entries": 1449,
+  "translation_units_by_extension": {
+    ".c": 1383,
+    ".S": 17,
+    ".cpp": 49
+  },
+  "selected_project_translation_units": 481,
+  "selected_project_API_token_file_counts": {
+    "remote_ctl": 0,
+    "nvs_flash_init_partition": 0,
+    "nvs_open_from_partition": 0,
+    "nvs_flash_erase_partition": 0,
+    "nvs_flash_init(": 1,
+    "nvs_flash_erase(": 0
+  },
+  "selected_component_count": 125,
+  "excluded_private_component_selected": false,
+  "effective_config_differences_against_current_original": {},
+  "missing_original_config_keys": {},
+  "platformio_ini_sha256": "e455b728cecf0d72d391e7bb841e8795ce899c7af85a0ed64e15db67d0c9f175",
+  "inspection": "Counts/tokens only; no private source contents published"
+}

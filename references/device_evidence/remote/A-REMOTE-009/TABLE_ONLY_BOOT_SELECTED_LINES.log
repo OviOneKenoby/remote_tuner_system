@@ -1,0 +1,15 @@
+Selected structural boot lines; other raw logs remain private.
+I (47) boot: Partition Table:
+I (50) boot: ## Label            Usage          Type ST Offset   Length
+I (56) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (62) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (69) boot:  2 factory          factory app      00 00 00010000 00800000
+I (75) boot:  3 otadata          OTA data         01 00 00810000 00002000
+I (82) boot:  4 ota_0            OTA app          00 10 00820000 00300000
+I (89) boot:  5 ota_1            OTA app          00 11 00b20000 00300000
+I (95) boot:  6 remote_ctl       WiFi data        01 02 00e20000 00010000
+I (102) boot: End of partition table
+I (580) boot: Loaded app from partition at offset 0x10000
+I (1090) app_init: Project name:     12_LVGL_Test
+I (1095) app_init: App version:      1
+I (1108) app_init: ESP-IDF:          5.5.3

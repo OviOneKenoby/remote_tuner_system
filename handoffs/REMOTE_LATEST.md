@@ -1,65 +1,66 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-008-OWNER-ACCEPTED-20261012T180836Z
-- Updated (UTC): 2026-10-12T18:08:36.987171+00:00
-- Task ID: A-REMOTE-008
-- Status: ACCEPTED
-- Prepared by: Authorized owner-acceptance coordination publisher
-- Coordination input commit: 36b819e79b6f6385e9e5abf380ffcb4cc412f0dc
+- Handoff ID: REMOTE-A-REMOTE-009-HARDWARE-20261012T202427Z
+- Updated (UTC): 2026-10-12T20:24:27.882825+00:00
+- Task ID: A-REMOTE-009
+- Status: READY FOR REVIEW
+- Prepared by: Owner-authorized table-only hardware executor/publisher
+- Coordination input commit: 1e549d4d6be00c77d61c020adf0b82ed4a04e729
 
 ## Milestone
-PASS — PRACTICAL DELL SOURCE-TO-BUILD REPRODUCTION (HOBBY / PUBLIC-BETA SCOPE). A008 DONE / OWNER ACCEPTED at approved practical scope. Dell1configuration/20frozen/20source/3serial clean builds PASS, zero failed builds/ICE. [Review](../reports/A-REMOTE-008_DELL_REVIEW.md).
+PASS — TABLE-ONLY HARDWARE VALIDATION / READY FOR OWNER REVIEW. PR15 OPEN/unmerged; A009 owner acceptance pending. Prior read-only/preparation results preserved.
 
 ## Baseline
-- Device repository: Protected private Git-less REMOTE source; not published
-- Branch: NONE original; coordination main
-- Firmware baseline commit: UNKNOWN historical source commit; Dell artifacts generated from byte-verified approved bundle, no fabricated firmware commit
-- Firmware version: All descriptors project12_LVGL_Test/version1/IDF5.5.3; timestamps/ELF hashes differ from historical image
-- Working tree at start: Coordination clean at recorded input; original source unchanged, no production edits
-- Contract references: CCM1.1.0 OWNER APPROVED/FROZEN; historical1.0.0 unchanged; Native unapproved; D008 architectural only; owner hobby-beta scope and current Dell review authorization
+- Device repository: Private Git-less REMOTE source; not published
+- Branch: NONE original; coordination remote/a-remote-009-preparation-20261012
+- Firmware baseline commit: UNKNOWN Git-less historical/current source commit; accepted installed/A006 image hash in report
+- Firmware version: project12_LVGL_Test/version1/IDF5.5.3; current compiled image metadata retained privately, exact historical runtime equivalence UNPROVEN
+- Working tree at start: Coordination clean at assigned input; original read-only; current changelog update preserved; build/source/config input hashes verified
+- Contract references: CCM1.1.0 OWNER APPROVED/FROZEN, historical1.0.0 unchanged; D00864KiB layout; A006/A007/A008 accepted evidence and A009 backup-bound table-only owner authorization
 
 ## Changes
-Owner accepts A008 practical PASS. Normally merge reviewed PR14 as 36b819e79b6f6385e9e5abf380ffcb4cc412f0dc; archive previous complete handoff byte-exact and record DONE / OWNER ACCEPTED. Historical investigation and Dell review/evidence remain unchanged. [Acceptance](../references/A008_FINAL_OWNER_ACCEPTANCE_2026-10-12.md). No source/config/tool/partition/hardware change.
+One authorized candidate table-sector write0x8000–0x8FFF; safe generated table already published. Sanitized hardware evidence/owner scope and append-only coordination records. No production source/tool/TUNER/shared-contract edit; no firmware upload/backend/API/A010.
 
 ## Verification
 | Check | Command/procedure | Environment | Result | Evidence |
 | --- | --- | --- | --- | --- |
-| Archive | size/SHA check before safe private TEMP extraction;42,780 entries hashed | original results archive1,597,657,193 bytes | PASS SHA792432a5581ce92a2ddec35c4b2d6f9deec57ef03593912c34aa3a7aa6c593ec | [Manifest](../references/device_evidence/remote/A-REMOTE-008/DELL_REVIEW_RESULT.json) |
-| Dell configuration/compiler trials | recorded exits/raw log and object rehash, expected44-outcome sequence | Win11amd64/i5-7440HQ; pinned Python/PIO/IDF/GCC |1/1+20/20+20/20 PASS,0ICE; objects identical within each population | [Sanitized logs](../references/device_evidence/remote/A-REMOTE-008/DELL_TEST_LOGS_SANITIZED.log) |
-| Dell complete builds | three recorded fresh -j1 runs, every artifact independently rehashed | approved private bundle/exact tool versions |3/3 PASS,0FAIL/ICE; raw firmware/ELF/map/bootloader vary, partition/initialOTA/bootloaderMap identical | [Hashes](../references/device_evidence/remote/A-REMOTE-008/DELL_ARTIFACT_HASHES.md) |
-| Source/config/layout |1,613 source files each, effective config dictionaries,895 actual selected archive members, three affected pre-link instruction/relocation sections | private extracted actual evidence, no rebuild/disassembly/normalization | source/config/partition SAME; final size/layout variation consistent with linking, no demonstrated functional discrepancy | Review/manifest |
-| Historical comparison | actual image structure/raw hash/difference records compared with designated A006 reference | private historical build artifact | BIN byte identity NOT DEMONSTRATED; headers/profile agree, partition bytes SAME | Review |
-| Publication | canonical/evidence/template/privacy/byte-archive/preservation and remote verification | isolated coordination branch | normal PR14 merge independently verified; final main/canonical preservation checks reported externally | Publication audit |
-| Hardware | none performed by reviewer; owner reports no Dell upload/serial/flash | NONE | NOT RUN | Reviewed build-only records |
+| Backup/candidate/device | Rehash; exact USB/ROM identity/security/physical flash queries | ESP32-S3v0.2/16MiB, COM3/esptool4.11.0 | PASS; separate-storage copy OWNER VERIFIED | [Report](../reports/A-REMOTE-009_TABLE_ONLY_HARDWARE_VALIDATION.md) |
+| Original sector | read_flash0x8000/4096 and backup byte comparison | Private separate sector | PASS SHA4946a42576c9e499c4a856b9104abfb6d09fff4f3fff2cd7985649ccbcec8f46 | Report |
+| Table write/readback | One keep/keep/keep write0x8000, read4096 and independent IDFdecode |115200/ROM RAM stub | exit0; candidate+FF exact/seven entries/six preserved | [Result](../references/device_evidence/remote/A-REMOTE-009/TABLE_ONLY_HARDWARE_RESULT.json) |
+| Whole-flash preservation | read_flash0/16MiB before boot, compare outside table sector | Private full read | Every outside byte unchanged | Result |
+| Target | Independent65536-byte read |0xE20000 |65536FF/0nonFF | Result |
+| Normal boot/UI | One USBHardReset/passive45s capture/owner observation | Existing factory0x10000 | PASS no logged error/loop; normal UI/configuration | Report |
+| Rollback | NOT REQUIRED/NOT EXECUTED | Bounded original-sector authority only | Full restore not authorized; restoration untested | Owner scope |
+| Publication | Blob SHA/privacy/archive/history/fresh remote verification | PR15 OPEN/unmerged | Final commit reported externally | Publication audit |
 
 ## Remaining unknowns
-Exact Ryzen OS/compiler/hardware cause UNKNOWN, no proven hardware defect. Historical source commit/BIN byte identity, reproducible byte-identical builds and full historical A-006 runtime semantic equivalence NOT DEMONSTRATED; non-blocking at the approved hobby/public-beta level. Fresh device behavior, recovery/migration/persistence/backend acceptance NOT RUN/unqualified; proportionate limits do not reopen industrial forensics.
+Actual ROM restoration write NOT TESTED; backend/G1a/migration/durability qualification NOT RUN. Exact source/runtime equivalence and byte-reproducible builds UNPROVEN, nonblockers at accepted hobby/public-beta level. Exact Ryzen failure cause UNKNOWN. After-boot normal firmware housekeeping not globally byte-frozen; no settings mutation performed. A010 NOT STARTED.
 
 ## Shared-contract impact
-- CCM 1.0.0: NO CHANGE; historical original and current CCM1.1.0 frozen unchanged
-- TUNER Native API v1: NO CHANGE; UNAPPROVED/UNFROZEN/NOT IMPLEMENTED, O01–O17 OPEN
-- Other device impact: NONE; TUNER firmware/evidence/handoff unchanged
-- Approval evidence: Owner explicitly accepts practical A008 PASS and normal PR14 merge; [acceptance](../references/A008_FINAL_OWNER_ACCEPTANCE_2026-10-12.md). No hardware/A009/production execution authority granted
+- CCM 1.0.0: NO CHANGE; historical version and current frozen CCM1.1.0 preserved
+- TUNER Native API v1: NO CHANGE; UNAPPROVED/UNFROZEN/NOT IMPLEMENTED; O01–O17 OPEN
+- Other device impact: NONE; TUNER source/evidence/latest handoff untouched
+- Approval evidence: [Backup-bound owner table-only and bounded sector rollback scope](../references/A009_TABLE_ONLY_WRITE_OWNER_AUTHORIZATION_2026-10-12.md); no other write/firmware/backend/API/A010 authorization
 
 ## Blockers
-NONE for practical A008 build/review completion. Owner accepted and PR14 normally merged; A009 BLOCKED / NOT STARTED. Common gate OPEN / NOT PASSED and other production/hardware gates retained.
+NONE for completed limited table-only validation. Owner result acceptance/PR15 disposition PENDING; PR OPEN/unmerged. Backend/common gate remain separate and OPEN/NOT PASSED.
 
 ## PM decision required
-NONE for A008 acceptance/merge; completed under explicit owner decision. Separate owner decision required before any A009 assignment/execution.
+Owner review/accept A009 limited layout hardware result and decide PR15 disposition. No automatic merge, next task or persistent operation.
 
 ## Recommended next task
-Proposal only: prepare the approved 64KiB layout change and bounded USB/ROM-bootloader recovery protocol with test/rollback criteria. No A009 assignment/start; hardware execution requires separate authorization.
+NONE assigned. Discuss A010 separately only after explicit owner scope/authorization; no backend/common API execution here.
 
 ## Commit
-- Firmware result commit(s): NONE; Git-less source not edited or published; exact generated artifact hashes in review
-- Device changelog: English review entry in separate private review-copy changelog only; original and immutable transferred bundle unchanged
-- Coordination publication: PR14 normally merged as 36b819e79b6f6385e9e5abf380ffcb4cc412f0dc; owner-acceptance status published on main; final coordination hash reported after fresh remote verification
-- Previous handoff archive: [archive/remote/2026-10-12T180836Z_A-REMOTE-008_REMOTE-A-REMOTE-008-DELL-REVIEW-20261012T175751Z.md](../archive/remote/2026-10-12T180836Z_A-REMOTE-008_REMOTE-A-REMOTE-008-DELL-REVIEW-20261012T175751Z.md)
+- Firmware result commit(s): NONE; Git-less original unedited; private disposable candidate artifacts only, hashes published
+- Device changelog: Separate private A009 review-copy entry; original and immutable accepted Dell payload unchanged
+- Coordination publication: New PR15, remote/a-remote-009-preparation-20261012, OPEN/unmerged; assignment `b55176d8f9a2a18f175c6eae027a62e235f63d1f`; final head reported after fresh remote verification
+- Previous handoff archive: [archive/remote/2026-10-12T202427Z_A-REMOTE-009_REMOTE-A-REMOTE-009-READ-ONLY-20261012T193649Z.md](../archive/remote/2026-10-12T202427Z_A-REMOTE-009_REMOTE-A-REMOTE-009-READ-ONLY-20261012T193649Z.md)
 
 ## Hardware status
-- Physical device tested: NO this round; Dell is a build host, not target-device validation
-- Board / hardware configuration: Prior ESP32-S3/16MiB read-only A007 evidence retained; live hardware NOT INSPECTED
-- Procedure and result: NOT RUN; no serial/reset/upload/flash/erase/partition/NVS operation
-- Firmware actually flashed: NONE this round; historical installed/A006 hash retained; no Dell artifact deployed
-- Build-only or simulated checks: Reviewed owner Dell1configuration+40serial compiles+3complete serial builds and artifact evidence; no reviewer build, new simulation, runtime or hardware acceptance.
+- Physical device tested: YES owner-authorized table-only write/readback/normal boot; NO backend or restoration test
+- Board / hardware configuration: Same A007/A009 ESP32-S3QFN56revision0.2/16MiB, COM3; unique identifiers private
+- Procedure and result: One table-sector write/readback/independent decode/full outside-sector byte preservation/erased64KiB target/normal factory boot PASS; owner confirms UI/configuration; rollback NOT REQUIRED
+- Firmware actually flashed: NONE; existing accepted A006/A007 factory image preserved, no application upload
+- Build-only or simulated checks: Earlier clean serial preparation build retained; no new build/forensics; physical flash evidence distinct from prior synthetic fixture
