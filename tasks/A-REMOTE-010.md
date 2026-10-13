@@ -1,7 +1,7 @@
 # A-REMOTE-010: minimal private persistence backend
 
 - Owner: REMOTE//01; authorized executor/publisher.
-- State: ASSIGNED / IN PROGRESS; hardware NOT AUTHORIZED.
+- State: IMPLEMENTED / HOST VERIFIED / READY FOR OWNER REVIEW; hardware NOT RUN / NOT AUTHORIZED.
 - Coordination input: 3ed3ff49f8ff6ba548a8b3b23020ad6a32c4566f.
 - Objective: smallest reliable versioned persistence backend for installed64KiB remote_ctl, sufficient as a generic storage primitive for later common-API state; API not implemented.
 - References: [Owner authority](../references/A010_PRIVATE_IMPLEMENTATION_OWNER_AUTHORIZATION_2026-10-12.md); accepted A009 physical layout/recovery files, CCM1.1.0 section12.1; exact handoff/footer templates.
@@ -31,3 +31,7 @@ At completion or blockage, update the device changelog and coordination CHANGELO
 
 Separate inspected facts, planned work, implemented work, build evidence and physical hardware evidence. Include exact procedures, results and evidence references. Do not mark the common gate passed or a contract approved. Publish the handoff with the firmware commit and report the final coordination publication commit separately. Reread current coordination state before publication and resolve concurrent changes without overwriting them. If access/publication is unavailable, provide the complete handoff and report it as UNPUBLISHED.
 ```
+
+## Result published 2026-10-13T03:35:07.084328+00:00
+
+PASS — private implementation / host verified / clean build; hardware not run. See [report](../reports/A-REMOTE-010_PRIVATE_BACKEND.md), [evidence](../references/device_evidence/remote/A-REMOTE-010/RESULT.json), and [unexecuted protocol](../protocols/A-REMOTE-010_HARDWARE_VALIDATION.md). PR #16 remains OPEN/unmerged. Owner acceptance and a reviewed diagnostic activation plus exact hardware-write approval are required before physical exercise. A-REMOTE-011 is NOT STARTED.

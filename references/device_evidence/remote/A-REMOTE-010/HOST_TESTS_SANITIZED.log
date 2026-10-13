@@ -1,0 +1,15 @@
+PASS empty_partition_initialization
+PASS first_commit
+PASS successor_commit
+PASS interrupted_before_record
+PASS interrupted_after_record_before_root
+PASS corrupted_record
+PASS corrupted_authority_root
+PASS ambiguous_duplicate_generation
+PASS capacity_exhaustion
+PASS restart_recovery_zero_emission
+PASS replay_nonmonotonic_rejection
+PASS nvs_full_version_error_handling
+PASS unknown_key_fail_closed
+PASS coherent_root_records_rollback_G1b_outside
+TOTAL 14/14 PASS

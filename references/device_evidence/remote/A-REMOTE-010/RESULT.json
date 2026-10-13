@@ -1,0 +1,104 @@
+{
+  "recorded_utc": "2026-10-13T03:35:07.084328+00:00",
+  "verdict": "PASS - PRIVATE IMPLEMENTATION / HOST VERIFIED / CLEAN BUILD; HARDWARE NOT RUN",
+  "coordination_input": "3ed3ff49f8ff6ba548a8b3b23020ad6a32c4566f",
+  "assignment_commit": "09930a610de936596a6f3ee2c92cc9aa4d1766b7",
+  "source_change_paths": {
+    "modified": [
+      "CHANGELOG.md",
+      "main/CMakeLists.txt",
+      "partitions.csv"
+    ],
+    "added": [
+      "components/remote_persistence/CMakeLists.txt",
+      "components/remote_persistence/backend.cpp",
+      "components/remote_persistence/esp_nvs_store.cpp",
+      "components/remote_persistence/include/remote_persistence/backend.hpp",
+      "components/remote_persistence/include/remote_persistence/esp_nvs_store.hpp",
+      "tests/remote_persistence/backend_tests.cpp"
+    ],
+    "missing": [],
+    "original_tree_modified_by_A010": false
+  },
+  "backend": {
+    "partition_label": "remote_ctl",
+    "namespace": "ctl_v1",
+    "schema_version": 1,
+    "payload_max_bytes": 4096,
+    "retained_record_slots": 3,
+    "current_authoritative_records": 1,
+    "generation": "UInt64, starts at 1, strict next durable fence, no wrap",
+    "ordering": [
+      "commit generation fence",
+      "commit versioned record with payload and envelope CRCs",
+      "commit authority root referencing exact slot/generation/record CRC"
+    ],
+    "recovery": "root selects only exact valid record; dangling newer record/fence marks incomplete but cannot become authority; corrupt/unknown/duplicate/stale inconsistencies fail closed",
+    "automatic_partition_erase": false,
+    "boot_activation": false,
+    "payload_logging": false,
+    "G1b": "OUTSIDE V1 THREAT MODEL for deliberate coherent whole-domain restoration"
+  },
+  "host_tests": {
+    "passed": 14,
+    "total": 14,
+    "compiler": "MSYS2 UCRT64 g++ 16.2.0",
+    "warnings": "-Wall -Wextra -Werror -pedantic",
+    "verdict": "PASS"
+  },
+  "build": {
+    "result": "PASS clean serial -j1",
+    "duration_seconds": 512.09,
+    "platformio": "6.2.0",
+    "platform": "espressif32 6.13.0",
+    "framework": "ESP-IDF 5.5.3",
+    "toolchain": "xtensa-esp-elf GCC 14.2.0+20251107",
+    "artifacts": {
+      "firmware.bin": {
+        "bytes": 2496400,
+        "sha256": "b045bbe720091da89871a36686d17aa2ca06a27efdca05a90d2b660120f55dd3"
+      },
+      "firmware.elf": {
+        "bytes": 18289944,
+        "sha256": "8217bdf2ee0f1dcddea2b6532924a07d357ce7b8a8c636327c4117a728929ee0"
+      },
+      "firmware.map": {
+        "bytes": 14304883,
+        "sha256": "b0b31e6c977ef91f4e8886f0cb9f6a14cca944cf3e82b5b829dda01344b5bac6"
+      },
+      "partitions.bin": {
+        "bytes": 3072,
+        "sha256": "a144343580dbdadace66fccc5969d7557de3d4c4f15a61e76db205cc26348184"
+      },
+      "bootloader.bin": {
+        "bytes": 20832,
+        "sha256": "3b66c48324a1287759e467da62138fd5aeadab069b655561536a718d1be86f97"
+      }
+    },
+    "firmware_bytes": 2496400,
+    "OTA_slot_bytes": 3145728,
+    "OTA_headroom_bytes": 649328,
+    "component_selected": true,
+    "both_sources_compiled": true,
+    "component_linked_into_elf": true,
+    "linked_symbols": [
+      "remote_persistence::Backend::recover()",
+      "remote_persistence::EspNvsStore::open()",
+      "remote_persistence_backend_anchor",
+      "remote_persistence_esp_nvs_anchor"
+    ],
+    "link_policy": "main private dependency plus linker-only anchors; no runtime caller",
+    "boot_runtime_reference": false,
+    "partition_binary_exact_A009": true,
+    "partition_layout_changed": false
+  },
+  "secret_scan": "PASS over A010-added source/test files; no credential-like assignment/private key/token pattern",
+  "hardware": {
+    "access": false,
+    "persistent_writes": 0,
+    "uploads": 0,
+    "erases": 0
+  },
+  "A011": "NOT STARTED",
+  "privacy": "Private source, payloads, credentials, firmware/ELF/map binaries, complete flash images, and absolute private paths are not published."
+}
