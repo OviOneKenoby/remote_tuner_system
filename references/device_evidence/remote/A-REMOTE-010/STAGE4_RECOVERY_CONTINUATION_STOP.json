@@ -1,0 +1,45 @@
+{
+  "task": "A-REMOTE-010",
+  "stage": "Stage 4 recovery continuation",
+  "recorded_utc": "2026-10-13T08:33:00Z",
+  "stage_input_commit": "cc660e417b73f0aae29d50866bacb990c80eee90",
+  "result": "STOPPED_IN_ROM_DOWNLOAD_MODE",
+  "port": "COM3",
+  "baud": 115200,
+  "pre_reset_check": {
+    "port_opened": true,
+    "observation_seconds": 5,
+    "captured_bytes": 0,
+    "normal_runtime_verified": false,
+    "prior_reset_verified": false
+  },
+  "authorized_reset": {
+    "count": 1,
+    "rom_banner_count": 1,
+    "reset_reason": "USB_UART_CHIP_RESET",
+    "boot_mode": "DOWNLOAD(USB/UART0)",
+    "waiting_for_download_observed": true,
+    "normal_a010_identity_observed": false,
+    "normal_boot_verified": false
+  },
+  "recover": {
+    "command": "!A010 RECOVER",
+    "transmitted_count": 0,
+    "reason": "Guard required normal A010 boot before transmission."
+  },
+  "initialization_repeated": false,
+  "commit1_executed": false,
+  "commit2_executed": false,
+  "erase_executed": false,
+  "firmware_write": false,
+  "source_code_change": false,
+  "owner_ui_verdict": "NOT VERIFIED; device left in ROM download mode",
+  "owner_configuration_verdict": "NOT VERIFIED",
+  "private_capture": {
+    "size": 152,
+    "sha256": "ac99e9c9fca775238cfd74483f79a86d666f432f510790e59b18dd5a36c2e15f",
+    "published": false
+  },
+  "last_verified_persistence_state": "initialized_empty generation 0 next 1 before reboot verification",
+  "next_gate": "Owner authorization required for one normal hard reset out of ROM download mode, normal-boot/UI verification, and one read-only RECOVER."
+}
