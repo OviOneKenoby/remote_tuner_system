@@ -1,6 +1,6 @@
 # A-REMOTE-010 hardware validation protocol
 
-**STAGES 1–5 EXECUTED / PASS; STAGE 6 PRECONDITION PASS, STOPPED BEFORE COMMIT2.** One saved read-only RECOVER verified valid-recoverable generation 1/next 2/incomplete 0. Never repeat `INIT` or `COMMIT1`; COMMIT2 still requires explicit owner authorization. Practical hobby/public-beta scope applies.
+**STAGES 1–5 EXECUTED / PASS; STAGE 6 COMMIT2 STOPPED BEFORE TRANSMISSION.** The read-only precondition verified valid generation 1/next 2, but the authorized COMMIT2 runner then failed to configure COM3 with Windows device error 31. Zero command bytes were sent. Never repeat `INIT` or `COMMIT1`; do not retry COMMIT2 without a new owner instruction. Practical hobby/public-beta scope applies.
 
 ## Fixed identities
 
@@ -68,6 +68,8 @@ An owner-authorized retry also stopped before mutation: COM3 identity remained c
 Diagnosis corrected the interpretation of the preceding INFO: INFO uses `inspect(false)`, which returns `storage_error` for any exact, non-erased partition without opening NVS. The retry's raw 3,460-byte buffer was never persisted and cannot be inspected retrospectively. Minimum next step is one separately authorized, read-only RECOVER using the proven ten-second capture procedure, saving raw bytes privately before parsing. See [diagnosis](../reports/A-REMOTE-010_STAGE6_DIAGNOSIS.md).
 
 Read-only precondition verification completed 2026-10-13: PASS. Exactly one RECOVER using the proven ten-second private capture procedure verified valid generation 1/next 2/incomplete 0 and the Stage 5 capacity counts. The 250-byte raw capture was saved and hashed privately. No COMMIT2 was sent. See [precondition report](../reports/A-REMOTE-010_STAGE6_READ_ONLY_PRECONDITION.md).
+
+The subsequently authorized COMMIT2 attempt stopped before transmission: COM3 enumerated, but pyserial could not configure/open it and reported Windows device error 31. The capture is zero bytes; COMMIT2 was not sent and no retry/reset followed. See [pre-transmission stop report](../reports/A-REMOTE-010_STAGE6_COMMIT2_PRETRANSMISSION_STOP.md).
 
 Obtain explicit owner approval for COMMIT2. Send exactly `!A010 COMMIT2 CONFIRM-A010-REMOTE-CTL-COMMIT2` once. Require before generation 1, after valid generation 2/next 3. Reboot once; send `!A010 RECOVER`; require generation 2 and recoverable. Send `!A010 STATUS` and record safe used/free/available entry counts. Require normal UI/configuration. STOP without retry on any mismatch.
 

@@ -1,7 +1,7 @@
 # A-REMOTE-010: minimal private persistence backend
 
 - Owner: REMOTE//01; authorized executor/publisher.
-- State: STAGE 6 PRECONDITION PASS; VALID GENERATION 1 VERIFIED; STOPPED BEFORE COMMIT2.
+- State: STAGE 6 COMMIT2 STOPPED BEFORE TRANSMISSION; COM3 CONFIGURATION FAILED.
 - Coordination input: 3ed3ff49f8ff6ba548a8b3b23020ad6a32c4566f.
 - Objective: smallest reliable versioned persistence backend for installed64KiB remote_ctl, sufficient as a generic storage primitive for later common-API state; API not implemented.
 - References: [Owner authority](../references/A010_PRIVATE_IMPLEMENTATION_OWNER_AUTHORIZATION_2026-10-12.md); accepted A009 physical layout/recovery files, CCM1.1.0 section12.1; exact handoff/footer templates.
@@ -77,3 +77,7 @@ The earlier INFO result is explained by diagnostic design: INFO calls the non-re
 ## Stage 6 read-only precondition verification — 2026-10-13T14:52:40Z
 
 PASS — exactly one read-only RECOVER used the proven ten-second capture procedure and returned valid-recoverable generation 1, next 2, incomplete 0, with 14 used/2,002 free/1,876 available entries and no unexpected error. The complete 250-byte private UART capture was saved before parsing and hashed. No COMMIT2 or other mutation, reset, flash or source change occurred. See the [report](../reports/A-REMOTE-010_STAGE6_READ_ONLY_PRECONDITION.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-010/STAGE6_READ_ONLY_PRECONDITION.json).
+
+## Stage 6 COMMIT2 pre-transmission stop — 2026-10-13T14:54:55Z
+
+STOPPED with zero command bytes transmitted. COM3 was enumerated with status OK, but the proven capture-first runner could not configure/open it; Windows returned device error 31 through pyserial. The private capture was created as an empty file and hashed. COMMIT2 was not executed, no reset or other command followed, and the last verified state remains valid generation 1/next 2. See the [report](../reports/A-REMOTE-010_STAGE6_COMMIT2_PRETRANSMISSION_STOP.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-010/STAGE6_COMMIT2_PRETRANSMISSION_STOP.json).
