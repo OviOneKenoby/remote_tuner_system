@@ -250,3 +250,10 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 - Inspected TUNER v1.1.11 and private REMOTE/A-010 source read only; documented reusable components, missing wire/API binding, exact prospective files and RAM/flash risks.
 - Proposed a bounded first slice (`volume.set`, `volume.level`, `playback.state`, identity/capability/session handling) for owner review. No firmware, hardware, contract or private-source publication occurred.
 - Archived the completed A-REMOTE-010 handoff and published the A-REMOTE-011 kickoff handoff.
+
+## A-REMOTE-011 Phase 1 reconciliation and transport decision — 2026-10-13
+
+- Compared the active and preserved A-010 private REMOTE trees without changing either: 1,695 scoped files identical, 11 preserved-only files and six changed files.
+- Published the exact controlled reconciliation procedure and retained the installed seven-partition layout, validated persistence semantics, UI, GPIO, provisioning, sleep/wake and OTA boundaries.
+- Recommended a bounded persistent TCP channel with a PSK-derived AES-GCM record layer using existing mbedTLS primitives. Rejected WSS/HTTPS because of TUNER internal-RAM pressure and ESP-NOW because the pinned IDF 4.4 coexistence table does not support receive with Classic Bluetooth.
+- Defined the minimum identity/capability/state/`volume.set` implementation sequence and private pairing decision. No firmware build/change, hardware access, credential publication or PR merge occurred.
