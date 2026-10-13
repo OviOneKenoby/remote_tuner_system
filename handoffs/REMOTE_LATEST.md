@@ -1,15 +1,15 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-010-STAGE7-PREPARED-20261013T150305Z
-- Updated (UTC): 2026-10-13T15:03:05Z
+- Handoff ID: REMOTE-A-REMOTE-010-DONE-20261013T151911Z
+- Updated (UTC): 2026-10-13T15:19:11Z
 - Task ID: A-REMOTE-010
-- Status: OWNER ACCEPTED — STAGE 7 RESTORATION PREPARED / NOT AUTHORIZED
+- Status: DONE / OWNER ACCEPTED — PR READY FOR MERGE
 - Prepared by: authorized executor / coordination publisher
-- Coordination input commit: 009698dc618858365a0c4cc267bbca1bff478b22
+- Coordination input commit: 55c13231afc802dee825d6952e6cbc34a1db5ff4
 
 ## Milestone
-Prepare restoration of the accepted prior firmware while preserving `remote_ctl`. Achieved offline: exact restore span, backup identity, range and non-overlap reverified; stopped before hardware access.
+Complete practical hobby/public-beta persistence validation and restore the accepted prior firmware. Achieved: Stage 7 write/readback PASS, original firmware/UI/configuration functional, task owner accepted.
 
 ## Baseline
 - Device repository: owner-private REMOTE source; unpublished
@@ -19,20 +19,20 @@ Prepare restoration of the accepted prior firmware while preserving `remote_ctl`
 - Owner authorization: `references/A010_STAGE6_OWNER_AUTHORIZATION_2026-10-13.md`
 
 ## Changes
-Documentation-only closure preparation. No hardware, firmware, source, partition or `remote_ctl` change.
+Exact prior firmware span restored at `0x10000`; no source, partition, default-NVS or `remote_ctl` change. Closure documentation added.
 
 ## Verification
 | Check | Result | Evidence |
 | --- | --- | --- |
-| Owner acceptance | PASS — practical hobby/public-beta validation accepted | `references/A010_OWNER_ACCEPTANCE_AND_CLOSURE_PREPARATION_2026-10-13.md` |
-| Restore span identity | PASS — 2,506,752 bytes; expected SHA-256 | `references/device_evidence/remote/A-REMOTE-010/STAGE7_PREPARATION.json` |
-| Backup derivation | PASS — restore span equals verified backup slice | same |
-| Flash range | PASS — `0x10000–0x273FFF` | same |
-| `remote_ctl` preservation | PASS — no overlap with `0xE20000–0xE2FFFF` | same |
-| Execution boundary | PASS — no hardware access or flash operation | same |
+| Restore write | PASS — one exact span at `0x10000–0x273FFF` | `references/device_evidence/remote/A-REMOTE-010/STAGE7_RESULT.json` |
+| Full readback | PASS — 2,506,752 bytes and required SHA-256 | same |
+| Firmware/UI/configuration | PASS — owner confirmed after USB reconnection | same |
+| `remote_ctl` preservation | PASS — no erase/write; generation-2 records retained | same |
+| Closure review | PASS — practical hobby/public-beta result owner accepted | `reports/A-REMOTE-010_CLOSURE.md` |
+| Publication boundary | PASS — private source/binaries/backups not published | same |
 
 ## Remaining unknowns
-Stage 7 physical restoration and its readback/boot verification remain unexecuted. `remote_ctl` erase is explicitly excluded.
+No task blocker remains. The USB reconnection observation is retained as an accepted practical limitation. `remote_ctl` generation-2 test records remain present.
 
 ## Shared-contract impact
 - CCM 1.1.0: NO CHANGE.
@@ -40,21 +40,21 @@ Stage 7 physical restoration and its readback/boot verification remain unexecute
 - TUNER: not accessed or modified.
 
 ## Blockers
-Stage 7 is blocked only on explicit owner authorization for the exact firmware-only write.
+PR #16 merge requires separate explicit owner authorization.
 
 ## PM decision required
-Authorize or reject the prepared Stage 7 write at `0x10000`; no other region is in scope.
+Authorize or reject normal merge of PR #16.
 
 ## Recommended next task
-If explicitly authorized, execute the exact verified restore-span write/readback and normal-boot check, preserving `remote_ctl`. This is a recommendation, not authorization.
+If explicitly authorized, normally merge PR #16 and verify final main. Do not start A-REMOTE-011 automatically.
 
 ## Commit
 - Firmware/source changes: NONE.
 - Coordination publication: PR #16; final publication hash reported separately.
-- Previous handoff archived at `archive/remote/2026-10-13T150305Z_A-REMOTE-010_REMOTE-A-REMOTE-010-STAGE6-PASS-20261013T145932Z.md`.
+- Previous handoff archived at `archive/remote/2026-10-13T151911Z_A-REMOTE-010_REMOTE-A-REMOTE-010-STAGE7-PREPARED-20261013T150305Z.md`.
 
 ## Hardware status
 - Physical device accessed: YES, one authorized COMMIT2 plus read-only UART verification
-- Latest result: Stage 7 restore span reverified offline; no hardware operation
-- Persistent operations during preparation: NONE
-- Stage 7 restoration: NOT EXECUTED
+- Latest result: prior firmware restored and owner-confirmed functional
+- Persistent operations: one exact firmware restore write; no `remote_ctl` erase/write
+- Stage 7 restoration: PASS / OWNER ACCEPTED

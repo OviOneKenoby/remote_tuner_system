@@ -1,7 +1,7 @@
 # A-REMOTE-010: minimal private persistence backend
 
 - Owner: REMOTE//01; authorized executor/publisher.
-- State: OWNER ACCEPTED AT PRACTICAL HOBBY/PUBLIC-BETA LEVEL; STAGE 7 RESTORATION PREPARED, NOT AUTHORIZED.
+- State: DONE / OWNER ACCEPTED — PRACTICAL HOBBY/PUBLIC-BETA HARDWARE VALIDATION COMPLETE.
 - Coordination input: 3ed3ff49f8ff6ba548a8b3b23020ad6a32c4566f.
 - Objective: smallest reliable versioned persistence backend for installed64KiB remote_ctl, sufficient as a generic storage primitive for later common-API state; API not implemented.
 - References: [Owner authority](../references/A010_PRIVATE_IMPLEMENTATION_OWNER_AUTHORIZATION_2026-10-12.md); accepted A009 physical layout/recovery files, CCM1.1.0 section12.1; exact handoff/footer templates.
@@ -89,3 +89,7 @@ PASS — communication recovered; one saved read-only RECOVER reconfirmed genera
 ## Owner acceptance and Stage 7 preparation — 2026-10-13T15:03:05Z
 
 The owner accepted the completed practical hobby/public-beta persistence validation. Stage 7 restoration is prepared but not executed: the verified private restore span is 2,506,752 bytes for flash `0x10000–0x273FFF`, SHA-256 `57736494ea726600c68e25ae6a8f5b3bd109f5e5c1d5d858a05afd7ee8603aca`, and is byte-identical to the same slice of the retained verified 16 MiB backup. Its embedded factory-image prefix retains accepted SHA-256 `7e8d77c21898014fbd7ea625cf2d25aa7f77941d5ba1d24484090f7361279afb`. The span is disjoint from `remote_ctl`; generation 2/test records will be preserved. See the [preparation report](../reports/A-REMOTE-010_STAGE7_RESTORATION_PREPARATION.md). Explicit owner authorization is required before flashing. A-REMOTE-011 remains NOT STARTED.
+
+## Stage 7 and closure — 2026-10-13T15:19:11Z
+
+PASS / OWNER ACCEPTED — the verified prior-byte restore span was written exactly once at `0x10000`; complete readback matched all 2,506,752 bytes and required SHA-256. No other flash region was supplied. The first attempted normal reset did not start REMOTE; disconnecting and reconnecting USB restored normal operation. The owner confirmed the original firmware boots with functional UI and retained configuration and accepted this bounded observation without a new investigation. `remote_ctl` remains unerased with generation-2 test records preserved. See the [Stage 7 result](../reports/A-REMOTE-010_STAGE7_RESTORATION_RESULT.md) and [final closure report](../reports/A-REMOTE-010_CLOSURE.md). PR #16 remains open/unmerged pending separate authorization. A-REMOTE-011 remains NOT STARTED.

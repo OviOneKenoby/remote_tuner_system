@@ -1,6 +1,6 @@
 # A-REMOTE-010 hardware validation protocol
 
-**STAGES 1–6 EXECUTED / PASS AND OWNER ACCEPTED; STAGE 7 PREPARED / NOT AUTHORIZED.** The restore span and recovery backup were reverified offline. Never repeat `INIT`, `COMMIT1` or `COMMIT2`; do not erase `remote_ctl`. Explicit owner authorization is required before the Stage 7 firmware-only write. Practical hobby/public-beta scope applies.
+**STAGES 1–7 EXECUTED / PASS; OWNER ACCEPTED; TASK COMPLETE.** The exact prior firmware span was restored and fully read back. The first normal-reset attempt did not start REMOTE; USB disconnect/reconnect restored normal operation, and the owner confirmed original firmware, UI and configuration. Preserve `remote_ctl` generation 2 and all private recovery evidence. Do not execute Stage 8. Practical hobby/public-beta scope applies.
 
 ## Fixed identities
 
@@ -80,6 +80,8 @@ Obtain explicit owner approval for COMMIT2. Send exactly `!A010 COMMIT2 CONFIRM-
 Close the monitor and enter ROM mode. After explicit rollback approval, write only the verified 2,506,752-byte prior-byte restore span at `0x10000` with keep mode/frequency/size. Read back that full span and require SHA-256 `57736494ea726600c68e25ae6a8f5b3bd109f5e5c1d5d858a05afd7ee8603aca`. Reset once and require the accepted previous factory identity, normal UI and retained configuration. Do not write the table, bootloader, OTA data or default NVS.
 
 Prepared offline 2026-10-13: private restore span size/hash PASS; byte-identical to offset `0x10000`, length `0x264000`, of the verified 16 MiB backup. Exact authorized command, when separately approved, is equivalent to `esptool.py --chip esp32s3 --port <VERIFIED_COM> --baud 115200 write_flash --flash_mode keep --flash_freq keep --flash_size keep 0x10000 <PRIVATE_VERIFIED_RESTORE_SPAN>`. Its affected range ends at `0x273FFF`, far below `remote_ctl` at `0xE20000`; generation 2 and test records remain untouched. See [preparation report](../reports/A-REMOTE-010_STAGE7_RESTORATION_PREPARATION.md). No command from this stage has been executed.
+
+Executed under explicit owner authorization: PASS. One write supplied only the verified restore span at `0x10000`; esptool verified the data hash. Full `0x264000` readback was byte-identical and matched SHA-256 `57736494ea726600c68e25ae6a8f5b3bd109f5e5c1d5d858a05afd7ee8603aca`. After the first normal-reset attempt did not start the device, one USB disconnect/reconnect restored normal operation; the owner confirmed original firmware, UI and retained configuration. No new investigation was opened. See [Stage 7 result](../reports/A-REMOTE-010_STAGE7_RESTORATION_RESULT.md).
 
 Diagnostic records remain in `remote_ctl` unless the owner separately authorizes Stage 8. The restored pre-A010 firmware ignores this dedicated partition.
 
