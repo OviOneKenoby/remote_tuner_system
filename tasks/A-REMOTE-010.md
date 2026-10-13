@@ -65,3 +65,7 @@ PASS — exact confirmed COMMIT1 sent once, transitioning initialized-empty gene
 ## Stage 6 precondition stop — 2026-10-13T14:43:43Z
 
 STOPPED before COMMIT2. A read-only identity check immediately before the Stage 6 authorization returned the expected A010 diagnostic and exact `remote_ctl` partition identity, but reported `storage_error`, generation 0, next 0 and zero capacity counts instead of the required valid-recoverable generation 1/next 2 state. The Stage 6 mutation precondition was therefore false. No COMMIT2, reset, RECOVER, ERASE, flash or source change was performed. See the [stop report](../reports/A-REMOTE-010_STAGE6_PRECONDITION_STOP.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-010/STAGE6_PRECONDITION_STOP.json).
+
+## Stage 6 retry stop — 2026-10-13T14:46:17Z
+
+STOPPED again before COMMIT2. COM3 retained the expected Espressif USB identity and status OK. Exactly one read-only RECOVER was transmitted during the authorized retry, but the received serial stream contained no A010 response; a subsequent passive three-second observation found no A010 identity or fault line. The protocol's missing-output stop condition applied, so no mutation or reset followed. See the [retry report](../reports/A-REMOTE-010_STAGE6_RETRY_STOP.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-010/STAGE6_RETRY_STOP.json).

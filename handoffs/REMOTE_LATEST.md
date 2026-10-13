@@ -1,15 +1,15 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-010-STAGE6-PRECONDITION-STOP-20261013T144343Z
-- Updated (UTC): 2026-10-13T14:43:43Z
+- Handoff ID: REMOTE-A-REMOTE-010-STAGE6-RETRY-STOP-20261013T144617Z
+- Updated (UTC): 2026-10-13T14:46:17Z
 - Task ID: A-REMOTE-010
 - Status: IN PROGRESS — STAGE 6 BLOCKED BEFORE MUTATION
 - Prepared by: authorized executor / coordination publisher
-- Coordination input commit: b2d665da9314b43d410c4a85a19997ac6c352521
+- Coordination input commit: f8a6a380bb937e0b0efb62271b144d172d3c7656
 
 ## Milestone
-Validate a successor record from valid generation 1. Execution stopped before COMMIT2 because a read-only INFO reported `storage_error`, generation 0/next 0 instead of the required valid generation 1/next 2.
+Validate a successor record from valid generation 1. A retry stopped before COMMIT2 because one read-only RECOVER returned serial data without an A010 response, so the required valid generation 1/next 2 state could not be verified.
 
 ## Baseline
 - Device repository: owner-private REMOTE source; unpublished
@@ -27,10 +27,11 @@ No persistent or source change. COMMIT2 was not transmitted.
 | Port/device identity | PASS — COM3 matched expected Espressif USB identity | `reports/A-REMOTE-010_STAGE6_PRECONDITION_STOP.md` |
 | Diagnostic/partition identity | PASS — A010 response; exact data/NVS offset and size | `references/device_evidence/remote/A-REMOTE-010/STAGE6_PRECONDITION_STOP.json` |
 | Stage 6 starting state | FAIL — `storage_error`, generation 0/next 0 | same |
+| Retry RECOVER | STOP — one transmission, no A010 response | `references/device_evidence/remote/A-REMOTE-010/STAGE6_RETRY_STOP.json` |
 | Mutation boundary | PASS — no COMMIT2 or other mutation | same |
 
 ## Remaining unknowns
-The reason for the discrepancy between the Stage 5 recovered state and the subsequent read-only INFO result is unknown. Current persistence authority must be treated as unresolved until bounded read-only diagnosis is authorized and completed.
+The prior storage error and the missing retry response remain unexplained. Current persistence authority remains unresolved.
 
 ## Shared-contract impact
 - CCM 1.1.0: NO CHANGE.
@@ -49,10 +50,10 @@ If explicitly authorized, collect one bounded read-only RECOVER/status sequence 
 ## Commit
 - Firmware/source changes: NONE.
 - Coordination publication: PR #16; final publication hash reported separately.
-- Previous handoff archived at `archive/remote/2026-10-13T144343Z_A-REMOTE-010_REMOTE-A-REMOTE-010-STAGE5-PASS-20261013T144001Z.md`.
+- Previous handoff archived at `archive/remote/2026-10-13T144617Z_A-REMOTE-010_REMOTE-A-REMOTE-010-STAGE6-PRECONDITION-STOP-20261013T144343Z.md`.
 
 ## Hardware status
 - Physical device accessed: YES, read-only UART only
-- Latest result: A010 diagnostic responded, but persistence reported `storage_error`
+- Latest result: COM3 remained present, but the retry RECOVER yielded no A010 response
 - Persistent operations during this attempt: NONE
 - Stage 6 COMMIT2: NOT EXECUTED
