@@ -1,6 +1,6 @@
 # A-REMOTE-010 hardware validation protocol
 
-**STAGES 1–4 EXECUTED / PASS; STOPPED BEFORE STAGE 5.** One INIT transitioned the partition to initialized-empty, and one read-only RECOVER after the owner-confirmed normal reboot verified generation 0/next 1 with no incomplete transaction. Never repeat `INIT`. Current authority permits no COMMIT1, COMMIT2, ERASE, reset or flash write without a new owner decision. Practical hobby/public-beta scope applies.
+**STAGES 1–5 EXECUTED / PASS; STOPPED BEFORE STAGE 6.** One confirmed COMMIT1 transitioned to valid generation 1/next 2, and one read-only RECOVER after the owner-performed normal reboot verified the same state with no incomplete transaction. Never repeat `INIT` or `COMMIT1`. Current authority permits no COMMIT2, ERASE, reset or flash write without a new owner decision. Practical hobby/public-beta scope applies.
 
 ## Fixed identities
 
@@ -57,6 +57,7 @@ Final continuation completed 2026-10-13: the owner performed the normal reset ou
 ## Stage 5 — separately staged first record
 
 Obtain explicit owner approval for COMMIT1. Send exactly `!A010 COMMIT1 CONFIRM-A010-REMOTE-CTL-COMMIT1` once. Require before generation 0, after valid generation 1/next 2. Reboot once; send `!A010 RECOVER`; require generation 1, recoverable, no payload output, and normal UI/configuration. STOP without retry on any mismatch.
+Executed 2026-10-13 under exact owner authorization: PASS. COMMIT1 ran once with the required transition, the owner performed the proven normal hardware reset, and one read-only RECOVER verified valid generation 1/next 2/no-incomplete state with normal UI/configuration. See [Stage 5 report](../reports/A-REMOTE-010_STAGE5_FIRST_RECORD.md). Stage 6 was not executed.
 
 ## Stage 6 — separately staged successor
 

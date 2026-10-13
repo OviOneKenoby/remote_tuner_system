@@ -1,7 +1,7 @@
 # A-REMOTE-010: minimal private persistence backend
 
 - Owner: REMOTE//01; authorized executor/publisher.
-- State: STAGE 4 PASS; INITIALIZED-EMPTY STATE SURVIVED NORMAL REBOOT; STOPPED BEFORE STAGE 5.
+- State: STAGE 5 PASS; FIRST RECORD VALID AT GENERATION 1 AFTER NORMAL REBOOT; STOPPED BEFORE STAGE 6.
 - Coordination input: 3ed3ff49f8ff6ba548a8b3b23020ad6a32c4566f.
 - Objective: smallest reliable versioned persistence backend for installed64KiB remote_ctl, sufficient as a generic storage primitive for later common-API state; API not implemented.
 - References: [Owner authority](../references/A010_PRIVATE_IMPLEMENTATION_OWNER_AUTHORIZATION_2026-10-12.md); accepted A009 physical layout/recovery files, CCM1.1.0 section12.1; exact handoff/footer templates.
@@ -58,3 +58,6 @@ STOPPED — a passive COM3 check could not verify runtime or the prior reset. Th
 ## Stage 4 completed 2026-10-13T14:30:38Z
 
 PASS — the owner performed a normal hardware reset out of ROM mode and confirmed functional UI. Exactly one read-only `!A010 RECOVER` then returned one accepted A010 response with exact `remote_ctl` identity, initialized-empty schema-1 state, generation 0, next 1, no incomplete transaction, 10 used/2,006 free/1,880 available entries and `payload_logged=0`. Initialization therefore survived the confirmed normal reboot. See the [report](../reports/A-REMOTE-010_STAGE4_COMPLETE.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-010/STAGE4_RESULT.json). INIT was not repeated; no COMMIT/ERASE, flash, source-code change or executor reset occurred. Stage 5 and A-REMOTE-011 remain NOT STARTED.
+## Stage 5 first-record validation published 2026-10-13T14:40:01Z
+
+PASS — exact confirmed COMMIT1 sent once, transitioning initialized-empty generation 0/next 1 to valid-recoverable generation 1/next 2 with no incomplete transaction. After the owner used the proven normal hardware reset, one read-only RECOVER returned the same exact state, partition identity and counts (14 used/2,002 free/1,876 available); the owner confirmed functional UI and retained observable configuration. See the [report](../reports/A-REMOTE-010_STAGE5_FIRST_RECORD.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-010/STAGE5_RESULT.json). INIT/COMMIT1 were not repeated; no COMMIT2/ERASE, flash, source-code change or executor reset occurred. Stage 6 and A-REMOTE-011 remain NOT STARTED.
