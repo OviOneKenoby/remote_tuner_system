@@ -1,7 +1,7 @@
 # A-REMOTE-010: minimal private persistence backend
 
 - Owner: REMOTE//01; authorized executor/publisher.
-- State: HOST PHASE OWNER ACCEPTED; STAGE 2 DIAGNOSTIC FIRMWARE VALIDATION PASS; STOPPED BEFORE STAGE 3 AND ALL DIAGNOSTIC COMMANDS.
+- State: HOST PHASE OWNER ACCEPTED; STAGE 3 READ-ONLY UART VALIDATION PASS; READY FOR SEPARATELY AUTHORIZED INITIALIZATION.
 - Coordination input: 3ed3ff49f8ff6ba548a8b3b23020ad6a32c4566f.
 - Objective: smallest reliable versioned persistence backend for installed64KiB remote_ctl, sufficient as a generic storage primitive for later common-API state; API not implemented.
 - References: [Owner authority](../references/A010_PRIVATE_IMPLEMENTATION_OWNER_AUTHORIZATION_2026-10-12.md); accepted A009 physical layout/recovery files, CCM1.1.0 section12.1; exact handoff/footer templates.
@@ -46,3 +46,6 @@ PASS — the owner-authorized read-only preflight bound the newly enumerated dev
 ## Stage 2 diagnostic firmware validation published 2026-10-13T07:19:42Z
 
 PASS — the exact 2,503,936-byte diagnostic candidate was written once at `0x10000`, independently read back byte-identical at SHA-256 `308181d4144494734fe8fae360938f74b9f886fb4c41bff0cba9b89427e4d248`, and booted once with the exact A010 identity and `persistence_on_boot=0`. Automated boot review found no panic, watchdog, partition error or boot loop; the owner confirmed normal UI and retained observable configuration. The complete `remote_ctl` region remained 65,536 bytes of `0xFF`, exact Stage 1. See the [report](../reports/A-REMOTE-010_STAGE2_DIAGNOSTIC_FLASH.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-010/STAGE2_RESULT.json). No diagnostic command, NVS initialization, commit or erase occurred. Stage 3 and all later stages remain unexecuted; A-REMOTE-011 is NOT STARTED.
+## Stage 3 read-only UART validation published 2026-10-13T07:28:53Z
+
+PASS — exactly `!A010 INFO` and `!A010 STATUS` were sent once each. Both were accepted and returned the exact `remote_ctl` data/NVS identity at `0xE20000`/`0x10000`, erased state, schema 1, generation/next 0, no incomplete transaction, zero entry counts and `payload_logged=0`, with no unexpected error. See the [report](../reports/A-REMOTE-010_STAGE3_READ_ONLY_UART.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-010/STAGE3_RESULT.json). No source-code or firmware change and no mutating command occurred. The partition is ready for separately authorized initialization; Stage 4 and A-REMOTE-011 remain NOT STARTED.

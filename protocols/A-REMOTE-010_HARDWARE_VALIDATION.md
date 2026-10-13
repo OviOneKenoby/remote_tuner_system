@@ -1,6 +1,6 @@
 # A-REMOTE-010 hardware validation protocol
 
-**STAGES 1–2 EXECUTED / PASS; STOPPED BEFORE STAGE 3.** The exact diagnostic application is installed. Current authority permits no diagnostic command, NVS initialization, commit or erase. Execute later stages only after the owner approves the applicable stage. Practical hobby/public-beta scope applies; no power-cut, endurance or industrial campaign.
+**STAGES 1–3 EXECUTED / PASS; READY FOR SEPARATELY AUTHORIZED STAGE 4.** The exact diagnostic application is installed and read-only status passed. Current authority permits no NVS initialization, commit or erase. Execute later stages only after the owner approves the applicable stage. Practical hobby/public-beta scope applies; no power-cut, endurance or industrial campaign.
 
 ## Fixed identities
 
@@ -45,6 +45,7 @@ Reset once to normal factory boot. Require no boot loop, panic, watchdog or part
 ## Stage 3 — read-only diagnostic status
 
 Open one serial monitor at 115200. Send `!A010 INFO`, then `!A010 STATUS`. Require the exact partition identity and `state=erased`, generation 0, no payload output. Close the monitor before every ROM read/reset. STOP on any other state or any unexpected target change.
+Executed 2026-10-13 under exact owner authorization: PASS. Both commands were accepted once with exact partition identity, erased schema-1 generation-zero state, no incomplete transaction, no unexpected error and `payload_logged=0`. See [Stage 3 report](../reports/A-REMOTE-010_STAGE3_READ_ONLY_UART.md). Stage 4 was not executed.
 
 ## Stage 4 — separately staged initialization
 
