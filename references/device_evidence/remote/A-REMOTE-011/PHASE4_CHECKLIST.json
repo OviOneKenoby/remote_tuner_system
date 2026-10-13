@@ -1,0 +1,19 @@
+{
+  "task": "A-REMOTE-011",
+  "phase": 4,
+  "status": "PROCEDURE_PREPARED_NOT_EXECUTED",
+  "date": "2026-10-14",
+  "coordination_input": "47f9f06983e4267fc2cce1afc6d271336b9cde1f",
+  "tuner_candidate_commit": "18ddd3b16e305341f338afebd7dc725500ecbb73",
+  "remote": {"candidate_bytes": 2515584, "candidate_sha256": "ceae9f64329c5409fdfe92e5ac5394885010abf1cf66ac24a5ab7fcc35f11647", "write_offset": "0x10000", "write_end_inclusive": "0x27627F", "partition_table_write": false},
+  "tuner": {"candidate_bytes": 2034800, "candidate_sha256": "49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4", "write_offset": "0x10000", "write_end_inclusive": "0x200C6F", "partition_table_write": false},
+  "required_private_prewrite_evidence": ["full physical flash from both devices", "complete application partition from both devices", "TUNER default NVS 0x9000-0xDFFF", "REMOTE remote_ctl 0xE20000-0xE2FFFF", "separate-storage verified copies"],
+  "pairing_writer_present_in_accepted_candidates": false,
+  "pairing_gate": "A separately reviewed private one-shot helper and owner approval are required before provisioning.",
+  "first_hardware_stage": "read-only identity, layout and rollback capture",
+  "hardware_accessed": false,
+  "flash_written": false,
+  "persistent_state_mutated": false,
+  "operational_psk_generated": false,
+  "pr_merge_authorized": false
+}

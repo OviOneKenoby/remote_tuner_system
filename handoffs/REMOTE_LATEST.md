@@ -1,38 +1,35 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-011-PHASE3-20261013
-- Updated (UTC): 2026-10-13
+- Handoff ID: REMOTE-A-REMOTE-011-PHASE4-20261014
+- Updated (UTC): 2026-10-14
 - Task ID: A-REMOTE-011
-- Status: PHASE 3 IMPLEMENTED / BUILD VERIFIED — HARDWARE NOT RUN
+- Status: PHASE 4 COMMISSIONING PROCEDURE PREPARED - HARDWARE NOT RUN
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Coordination input: `1e11e979dbcd4d95a50cbf8ed87400ce854256b3`
+- Coordination input: `47f9f06983e4267fc2cce1afc6d271336b9cde1f`
+- TUNER candidate: `18ddd3b16e305341f338afebd7dc725500ecbb73`
 
 ## Result
 
-The accepted A-010 private source is now promoted into the active REMOTE workspace with a verified reversible private backup. The first RTCP/1 plus CCM 1.1.0 slice is implemented on both devices: authenticated identity/version, bounded capabilities, fresh volume/playback state, exact `volume.set`, correlated results, session invalidation and reconnect resynchronization.
+The reversible two-device commissioning protocol is prepared. It fixes application-only write ranges, fresh private rollback capture, read-only negotiation, one gated `volume.set`, reconnect/resynchronization, bounded TUNER MP3/A2DP/web-manager memory measurements, and byte-verifiable rollback.
 
-TUNER public implementation commit: `18ddd3b16e305341f338afebd7dc725500ecbb73`. REMOTE implementation remains private. No hardware was accessed, no firmware was flashed, no operational PSK was generated, and PR #17 remains open and unmerged.
+Actual source inspection found no pairing writer in either accepted candidate. TUNER reads `remote_pair` values read-only; REMOTE reads an A-010-backed 68-byte association and can advance only an existing valid association. Pairing therefore requires a separately reviewed private one-shot helper and owner approval. Raw NVS patching is prohibited.
 
 ## Verification
 
-- Existing A-010 focused tests: 28/28 PASS; existing RTCP/1 reference tests: 14/14 PASS.
-- New bounded codecs: TUNER 10/10 PASS; REMOTE 10/10 PASS.
-- REMOTE clean production build: PASS; 2,515,584-byte firmware; 630,144-byte OTA headroom; 47,076-byte static RAM report; diagnostics disabled.
-- TUNER v1.1.11 production environment: PASS; 2,034,800-byte firmware; 1,110,928-byte OTA headroom; 87,408-byte static RAM report; no new task.
-- Installed seven-partition layout unchanged; candidate partition hash remains `a144343580dbdadace66fccc5969d7557de3d4c4f15a61e76db205cc26348184`.
-
-## Scope guard
-
-AAC, station catalogs, playback commands, logos, UI, MQTT, SmartThings, partition layout and hardware configuration were not changed. Private REMOTE source, binaries, backups and credentials remain unpublished.
+- Phase 3 tests and builds were not rerun because source inputs did not change.
+- REMOTE candidate: 2,515,584 bytes, SHA-256 `ceae9f64329c5409fdfe92e5ac5394885010abf1cf66ac24a5ab7fcc35f11647`; only proposed application range `0x10000-0x27627F`.
+- TUNER candidate: 2,034,800 bytes, SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`; only proposed application range `0x10000-0x200C6F`.
+- Both accepted partition layouts remain unchanged and excluded from writes.
+- Existing TUNER serial `x` diagnostics expose internal free heap, minimum heap, largest internal block, main/audio task stack margins, allocation failures and web-response diagnostics.
+- No hardware access, write, pairing, persistent mutation, operational PSK generation, or PR merge occurred.
 
 ## Next owner decision
 
-Authorize or reject a staged hardware commissioning protocol. It should verify retained backups, flash only exact candidates, provision a random private pairing, test authenticated read-only negotiation/snapshot and one controlled volume change, verify reconnect/resynchronization plus MP3/A2DP/web-manager coexistence and internal heap, and retain a bounded rollback. No hardware step may begin from this handoff alone.
+Authorize or reject Stage 1 only: read-only identity/layout checks on both devices and fresh private full-flash, application, TUNER default-NVS and REMOTE `remote_ctl` rollback capture with separate-storage verification. This does not authorize flashing, provisioning, pairing, a control command, or any persistent mutation.
 
 ## Evidence
 
-- `reports/A-REMOTE-011_PHASE3_IMPLEMENTATION.md`
-- `references/device_evidence/remote/A-REMOTE-011/PHASE3_RESULT.json`
-- TUNER branch `a-remote-011-phase3` at `18ddd3b16e305341f338afebd7dc725500ecbb73`
-- Previous handoff: `archive/remote/2026-10-13T203046Z_A-REMOTE-011_REMOTE-A-REMOTE-011-PHASE2-20261013.md`
+- `protocols/A-REMOTE-011_REVERSIBLE_COMMISSIONING.md`
+- `references/device_evidence/remote/A-REMOTE-011/PHASE4_CHECKLIST.json`
+- Previous handoff: `archive/remote/2026-10-13T212132Z_A-REMOTE-011_REMOTE-A-REMOTE-011-PHASE3-20261013.md`

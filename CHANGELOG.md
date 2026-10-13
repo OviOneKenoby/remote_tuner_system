@@ -1,3 +1,9 @@
+# 2026-10-14 ? A-REMOTE-011 Phase 4 commissioning preparation
+
+- Prepared a staged, reversible two-device commissioning protocol with exact application-only write ranges, fresh private backup prerequisites, sanitized evidence gates, one controlled `volume.set`, reconnect/resynchronization, bounded TUNER MP3/A2DP/web-manager memory measurements and exact rollback steps.
+- Actual source inspection found that both accepted candidates read pairing data but expose no pairing writer. Pairing is therefore blocked pending a separately reviewed private one-shot helper and owner approval; raw NVS patching is prohibited.
+- Reused accepted Phase 3 build/test evidence without rerunning it. No device was accessed, no firmware or persistent state was changed, no operational PSK was generated, and PR #17 remains open and unmerged. The next requested authority is read-only Stage 1 only.
+
 # 2026-10-13 — A-REMOTE-011 Phase 3 implementation
 
 - Promoted the accepted A-010 private REMOTE baseline through a verified reversible backup and implemented the frozen RTCP/1 transport plus the first CCM 1.1.0 slice on REMOTE and TUNER.
