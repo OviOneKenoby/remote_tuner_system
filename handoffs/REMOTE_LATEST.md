@@ -1,60 +1,63 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-010-DONE-20261013T151911Z
-- Updated (UTC): 2026-10-13T15:19:11Z
-- Task ID: A-REMOTE-010
-- Status: DONE / OWNER ACCEPTED — PR READY FOR MERGE
+- Handoff ID: REMOTE-A-REMOTE-011-KICKOFF-20261013T153401Z
+- Updated (UTC): 2026-10-13T15:34:01Z
+- Task ID: A-REMOTE-011
+- Status: READY FOR OWNER REVIEW — IMPLEMENTATION NOT STARTED
 - Prepared by: authorized executor / coordination publisher
-- Coordination input commit: 55c13231afc802dee825d6952e6cbc34a1db5ff4
+- Coordination input commit: 8e93c702940d49583f3fdd58046503ae0b8f7354
 
 ## Milestone
-Complete practical hobby/public-beta persistence validation and restore the accepted prior firmware. Achieved: Stage 7 write/readback PASS, original firmware/UI/configuration functional, task owner accepted.
+Inspect CCM 1.1.0 and both implementations, then define the smallest common-API integration slice. Achieved as documentation; firmware implementation and hardware work were not started.
 
 ## Baseline
-- Device repository: owner-private REMOTE source; unpublished
-- Coordination branch: `remote/a-remote-010-private-backend-20261012`
-- Firmware: installed A010 diagnostic candidate; SHA-256 `308181d4144494734fe8fae360938f74b9f886fb4c41bff0cba9b89427e4d248`
-- Prior accepted state: Stage 5 PASS at valid generation 1/next 2 after normal reboot
-- Owner authorization: `references/A010_STAGE6_OWNER_AUTHORIZATION_2026-10-13.md`
+- Device repository: owner-private REMOTE source at the owner-provided workspace; preserved A-010 private source copy also inspected read only
+- Branch: private source is not published; coordination branch `remote/a-remote-011-kickoff-20261013`
+- Firmware baseline commit: REMOTE Git identity UNKNOWN; completed A-010 private source preserved separately. TUNER public v1.1.11/main `5fb92c95d228d744d1182ae3956e850c5be2f277`, executable source `124e84801b06f9e07764dabc3985a573dffaff3b`
+- Firmware version: REMOTE installed original firmware after A-010 restoration; source equivalence is not newly claimed. TUNER v1.1.11
+- Working tree at start: coordination clean at exact input; TUNER fresh clean checkout; private REMOTE workspace inspected read only
+- Contract references: CCM 1.1.0 OWNER APPROVED / FROZEN; Native API design material UNAPPROVED / UNFROZEN / NOT IMPLEMENTED; A-010 DONE / OWNER ACCEPTED
 
 ## Changes
-Exact prior firmware span restored at `0x10000`; no source, partition, default-NVS or `remote_ctl` change. Closure documentation added.
+Coordination documentation only: A-011 assignment, kickoff report, owner-scope record, status/changelog updates and this handoff. No firmware, private source, binary, hardware or contract change.
 
 ## Verification
-| Check | Result | Evidence |
-| --- | --- | --- |
-| Restore write | PASS — one exact span at `0x10000–0x273FFF` | `references/device_evidence/remote/A-REMOTE-010/STAGE7_RESULT.json` |
-| Full readback | PASS — 2,506,752 bytes and required SHA-256 | same |
-| Firmware/UI/configuration | PASS — owner confirmed after USB reconnection | same |
-| `remote_ctl` preservation | PASS — no erase/write; generation-2 records retained | same |
-| Closure review | PASS — practical hobby/public-beta result owner accepted | `reports/A-REMOTE-010_CLOSURE.md` |
-| Publication boundary | PASS — private source/binaries/backups not published | same |
+| Check | Command/procedure | Environment | Result | Evidence |
+| --- | --- | --- | --- | --- |
+| Coordination baseline | fetch/remote ref and `git rev-parse HEAD` | isolated Windows worktree | PASS, exact requested commit | branch history |
+| TUNER identity/source | fresh clone, exact tag/head, focused source and manifest inspection | public v1.1.11 checkout | PASS | `reports/A-REMOTE-011_KICKOFF.md` |
+| REMOTE components | read-only inspection of current workspace and preserved A-010 source | private Windows paths, unpublished | PASS; baseline discrepancy found | kickoff report |
+| CCM/Native boundary | frozen CCM and Native design review | coordination/private documents | PASS; transport/security still OPEN | kickoff report |
+| Firmware build/hardware | not authorized in kickoff | both devices | NOT RUN | owner scope |
 
 ## Remaining unknowns
-No task blocker remains. The USB reconnection observation is retained as an accepted practical limitation. `remote_ctl` generation-2 test records remain present.
+The wire transport, framing, endpoint/port, discovery, pairing and authorization mechanism are not approved. Exact RAM/flash deltas require implementation builds and runtime measurement. REMOTE Git identity remains unavailable, and the owner-provided current workspace is not A-010-complete.
 
 ## Shared-contract impact
-- CCM 1.1.0: NO CHANGE.
-- Native/common API: NO CHANGE; unapproved and unimplemented.
-- TUNER: not accessed or modified.
+- CCM 1.0.0: NO CHANGE; retained historically and superseded only by approved CCM 1.1.0.
+- TUNER Native API v1: NO CHANGE; design-only, UNAPPROVED / UNFROZEN / NOT IMPLEMENTED.
+- Other device impact: future milestone needs coordinated TUNER changes; none were made now.
+- Approval evidence: `references/A011_KICKOFF_OWNER_AUTHORIZATION_2026-10-13.md`; kickoff/documentation scope only.
 
 ## Blockers
-PR #16 merge requires separate explicit owner authorization.
+Owner approval is required for a concrete secure transport/framing/authorization binding and for the proposed volume-only first slice. The private implementation baseline must be reconciled to the preserved A-010 source state before editing.
 
 ## PM decision required
-Authorize or reject normal merge of PR #16.
+Approve or revise: one authorized REMOTE/TUNER session, identity/version/capability negotiation, fresh `volume.level` and `playback.state`, and `volume.set` only; choose the secure wire binding; confirm the preserved A-010 source as the private implementation baseline.
 
 ## Recommended next task
-If explicitly authorized, normally merge PR #16 and verify final main. Do not start A-REMOTE-011 automatically.
+After those decisions, implement the bounded milestone privately on REMOTE and in a separate TUNER branch, run clean builds and focused host tests, then seek separate hardware authorization. Exclude playback commands, stations/catalogs, AAC, UI, MQTT and SmartThings.
 
 ## Commit
-- Firmware/source changes: NONE.
-- Coordination publication: PR #16; final publication hash reported separately.
-- Previous handoff archived at `archive/remote/2026-10-13T151911Z_A-REMOTE-010_REMOTE-A-REMOTE-010-STAGE7-PREPARED-20261013T150305Z.md`.
+- Firmware result commit(s): NONE
+- Device changelog: NONE; no device repository modified
+- Coordination publication: `remote/a-remote-011-kickoff-20261013`; PR and final head reported after remote verification
+- Previous handoff archive: `archive/remote/2026-10-13T153401Z_A-REMOTE-011_REMOTE-A-REMOTE-010-DONE-20261013T151911Z.md`
 
 ## Hardware status
-- Physical device accessed: YES, one authorized COMMIT2 plus read-only UART verification
-- Latest result: prior firmware restored and owner-confirmed functional
-- Persistent operations: one exact firmware restore write; no `remote_ctl` erase/write
-- Stage 7 restoration: PASS / OWNER ACCEPTED
+- Physical device tested: NO
+- Board / hardware configuration: prior accepted records only; not re-inspected
+- Procedure and result: NOT RUN
+- Firmware actually flashed: no change; REMOTE prior original firmware restored, TUNER current residency not reverified
+- Build-only or simulated checks: NONE; kickoff used read-only source/build-manifest inspection

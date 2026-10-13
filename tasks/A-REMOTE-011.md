@@ -1,0 +1,16 @@
+# A-REMOTE-011: Common REMOTE-TUNER API integration kickoff
+- Owner: REMOTE//01 with coordinated TUNER//01 changes
+- State: ASSIGNED — KICKOFF ANALYSIS COMPLETE / IMPLEMENTATION AWAITING OWNER SCOPE APPROVAL
+- Coordination input commit: `8e93c702940d49583f3fdd58046503ae0b8f7354`
+- Objective: inspect CCM 1.1.0 and both current implementations, define the smallest contract-conforming end-to-end milestone, identify exact change locations and resource risks, then stop before firmware changes.
+- Baseline: coordination `main` at the exact input above; TUNER public v1.1.11 tag/main `5fb92c95d228d744d1182ae3956e850c5be2f277` (executable source `124e84801b06f9e07764dabc3985a573dffaff3b`); owner-private REMOTE source inspected read-only, with its A-010-preserved source copy treated as the required implementation baseline pending reconciliation.
+- Required references: `references/CCM_1_1_0.md`; `docs/TUNER_NATIVE_API_V1.md` in the private REMOTE source; current coordination handoffs; `reports/A-REMOTE-010_CLOSURE.md`; `reports/A-REMOTE-011_KICKOFF.md`.
+- Dependencies: A-REMOTE-010 DONE / OWNER ACCEPTED; CCM 1.1.0 OWNER APPROVED / FROZEN; owner approval of the A-011 implementation slice and a concrete secure transport/authorization binding before any executable network endpoint is added.
+- Allowed scope: read-only inspection of both source trees; English sanitized coordination documentation; proposed file-level plan and bounded resource assessment.
+- Excluded scope: firmware/source edits, builds that alter either source tree, device access, flashing, hardware changes, AAC/AAC+ work, TUNER behavior changes, REMOTE UI/configuration/sleep changes, protocol redesign, private-source/binary/credential publication, STL/manual publication, A-REMOTE-012.
+- Shared-contract guard: CCM 1.1.0 semantics remain unchanged. The existing Native API v1 material is design-only and leaves transport/framing/authorization OPEN; this task does not silently approve or implement those choices.
+- Acceptance criteria: exact applicable CCM capabilities listed; existing and missing implementation mapped; minimum milestone and exact anticipated files identified; flash/RAM risk stated from current evidence; genuine blockers separated from ordinary implementation work; new coordination PR open and unmerged.
+- Verification: inspect exact Git identities and clean TUNER checkout; inspect relevant TUNER/REMOTE source and build manifests; verify coordination-only diff; remote-check published PR head. Hardware and firmware builds are NOT RUN in this kickoff.
+- Stop/report conditions: baseline mismatch; missing A-010 source state; unresolved security/transport treated as if approved; any request to publish private material; any firmware or hardware operation.
+- Required outputs: this assignment, English kickoff report, archived prior REMOTE handoff, new complete REMOTE handoff, changelog/status entries, open coordination PR.
+- PM assignment evidence: owner instruction dated 2026-10-13 in the active session; publication is limited to this kickoff phase.
