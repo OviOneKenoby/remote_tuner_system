@@ -1,15 +1,15 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-010-STAGE6-COMMIT2-PRETX-STOP-20261013T145455Z
-- Updated (UTC): 2026-10-13T14:54:55Z
+- Handoff ID: REMOTE-A-REMOTE-010-STAGE6-PASS-20261013T145932Z
+- Updated (UTC): 2026-10-13T14:59:32Z
 - Task ID: A-REMOTE-010
-- Status: IN PROGRESS — STAGE 6 COMMIT2 STOPPED BEFORE TRANSMISSION
+- Status: IN PROGRESS — STAGE 6 PASS; GENERATION 2 VERIFIED AFTER NORMAL REBOOT
 - Prepared by: authorized executor / coordination publisher
-- Coordination input commit: 489c0900271cab9c3dc3738fed6005bb13721e4f
+- Coordination input commit: 7ea149f6d64b4b128c066cf67bda20b3b62e15c7
 
 ## Milestone
-Validate a successor record from valid generation 1. Attempt one authorized COMMIT2 from the verified generation-1 state. The runner stopped before transmission because COM3 could not be configured/opened.
+Validate a successor record from valid generation 1. Achieved: one COMMIT2 advanced to generation 2/next 3 and one RECOVER after the owner-performed normal reboot verified the same state.
 
 ## Baseline
 - Device repository: owner-private REMOTE source; unpublished
@@ -19,20 +19,20 @@ Validate a successor record from valid generation 1. Attempt one authorized COMM
 - Owner authorization: `references/A010_STAGE6_OWNER_AUTHORIZATION_2026-10-13.md`
 
 ## Changes
-No persistent or source change. COMMIT2 was not transmitted; the serial port failed before opening.
+One controlled test record was committed in `remote_ctl`, advancing authority to generation 2/next 3. No source, firmware, partition or default-NVS/configuration change.
 
 ## Verification
 | Check | Result | Evidence |
 | --- | --- | --- |
 | Port/device identity | PASS — COM3 matched expected Espressif USB identity | `reports/A-REMOTE-010_STAGE6_READ_ONLY_PRECONDITION.md` |
-| Saved RECOVER | PASS — one accepted response from a complete private capture | `references/device_evidence/remote/A-REMOTE-010/STAGE6_READ_ONLY_PRECONDITION.json` |
-| Stage 6 starting state | PASS — valid generation 1/next 2/incomplete 0 | same |
-| Capacity snapshot | PASS — 14 used, 2,002 free, 1,876 available | same |
-| COMMIT2 attempt | STOP — COM3 configure/open failed before transmission | `references/device_evidence/remote/A-REMOTE-010/STAGE6_COMMIT2_PRETRANSMISSION_STOP.json` |
-| Mutation boundary | PASS — zero command bytes; no COMMIT2 or other mutation | same |
+| Starting RECOVER | PASS — valid generation 1/next 2/incomplete 0 | `references/device_evidence/remote/A-REMOTE-010/STAGE6_RESULT.json` |
+| COMMIT2 | PASS — executed once; valid generation 2/next 3/incomplete 0 | same |
+| Normal reboot/UI | PASS — owner performed proven reset; UI/configuration retained | same |
+| Final RECOVER | PASS — generation 2/next 3 with matching 18/1,998/1,872 counts | same |
+| Mutation boundary | PASS — no repeat, erase, flash or restoration | same |
 
 ## Remaining unknowns
-COMMIT2 and all later validation steps remain unexecuted.
+Optional restoration/erase and later task work remain unexecuted.
 
 ## Shared-contract impact
 - CCM 1.1.0: NO CHANGE.
@@ -40,21 +40,21 @@ COMMIT2 and all later validation steps remain unexecuted.
 - TUNER: not accessed or modified.
 
 ## Blockers
-COM3 must become reliably openable and a new owner instruction is required before another COMMIT2 attempt.
+No Stage 6 functional blocker remains. Any later operation requires separate owner authorization.
 
 ## PM decision required
-After confirming COM3 is available, authorize or reject one new COMMIT2 attempt.
+Accept or reject Stage 6 PASS and decide the next bounded protocol step.
 
 ## Recommended next task
-If explicitly authorized after COM3 is available, attempt COMMIT2 once and stop for owner reboot only after a verified success. This is a recommendation, not authorization.
+Review the completed Stage 6 evidence before authorizing any restoration, erase or later task. This is a recommendation, not authorization.
 
 ## Commit
 - Firmware/source changes: NONE.
 - Coordination publication: PR #16; final publication hash reported separately.
-- Previous handoff archived at `archive/remote/2026-10-13T145455Z_A-REMOTE-010_REMOTE-A-REMOTE-010-STAGE6-PRECONDITION-PASS-20261013T145240Z.md`.
+- Previous handoff archived at `archive/remote/2026-10-13T145932Z_A-REMOTE-010_REMOTE-A-REMOTE-010-STAGE6-COMMIT2-PRETX-STOP-20261013T145455Z.md`.
 
 ## Hardware status
-- Physical device accessed: YES, read-only UART only
-- Latest result: COMMIT2 runner failed before opening COM3; zero bytes transmitted
-- Persistent operations during this attempt: NONE
-- Stage 6 COMMIT2: NOT EXECUTED
+- Physical device accessed: YES, one authorized COMMIT2 plus read-only UART verification
+- Latest result: generation 2/next 3 recovered after owner-performed normal reboot
+- Persistent operations: one COMMIT2 record commit; no erase, flash or restoration
+- Stage 6 COMMIT2: EXECUTED ONCE / PASS

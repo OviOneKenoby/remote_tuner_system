@@ -1,7 +1,7 @@
 # A-REMOTE-010: minimal private persistence backend
 
 - Owner: REMOTE//01; authorized executor/publisher.
-- State: STAGE 6 COMMIT2 STOPPED BEFORE TRANSMISSION; COM3 CONFIGURATION FAILED.
+- State: STAGE 6 PASS; SUCCESSOR RECORD VALID AT GENERATION 2 AFTER NORMAL REBOOT.
 - Coordination input: 3ed3ff49f8ff6ba548a8b3b23020ad6a32c4566f.
 - Objective: smallest reliable versioned persistence backend for installed64KiB remote_ctl, sufficient as a generic storage primitive for later common-API state; API not implemented.
 - References: [Owner authority](../references/A010_PRIVATE_IMPLEMENTATION_OWNER_AUTHORIZATION_2026-10-12.md); accepted A009 physical layout/recovery files, CCM1.1.0 section12.1; exact handoff/footer templates.
@@ -81,3 +81,7 @@ PASS — exactly one read-only RECOVER used the proven ten-second capture proced
 ## Stage 6 COMMIT2 pre-transmission stop — 2026-10-13T14:54:55Z
 
 STOPPED with zero command bytes transmitted. COM3 was enumerated with status OK, but the proven capture-first runner could not configure/open it; Windows returned device error 31 through pyserial. The private capture was created as an empty file and hashed. COMMIT2 was not executed, no reset or other command followed, and the last verified state remains valid generation 1/next 2. See the [report](../reports/A-REMOTE-010_STAGE6_COMMIT2_PRETRANSMISSION_STOP.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-010/STAGE6_COMMIT2_PRETRANSMISSION_STOP.json).
+
+## Stage 6 successor-record validation — 2026-10-13T14:59:32Z
+
+PASS — communication recovered; one saved read-only RECOVER reconfirmed generation 1/next 2, then exact confirmed COMMIT2 ran once and advanced to valid-recoverable generation 2/next 3/incomplete 0. After the owner used the proven normal hardware reboot and confirmed functional UI with retained configuration, exactly one saved read-only RECOVER verified generation 2/next 3/incomplete 0 and matching capacity counts. No automated reset or other mutation occurred. See the [report](../reports/A-REMOTE-010_STAGE6_SUCCESSOR_RECORD.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-010/STAGE6_RESULT.json).
