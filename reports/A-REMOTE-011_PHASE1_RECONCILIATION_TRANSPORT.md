@@ -135,7 +135,7 @@ These are planning bounds, not measured build results.
 
 - The accepted A-010 production-backend build has 649,328 bytes OTA headroom, so flash is not the expected constraint.
 - Add fixed transport queues/envelopes, peer/session state and compact persisted association/dedup state. Keep the persisted envelope far below the 4,096-byte backend maximum.
-- Sleep must deinitialize/reinitialize ESP-NOW through the existing network/power owner path, increment session generation and discard old callbacks/queued commands.
+- Sleep must close TCP through the existing network/power owner path, invalidate the authenticated session and discard old callbacks/queued commands; wake requires a fresh handshake and full resynchronization.
 - Do not write `remote_ctl` on every observation or heartbeat. Persist only association and required non-reuse/dedup state at bounded transitions.
 
 ## 5. Minimum implementation sequence

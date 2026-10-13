@@ -257,3 +257,11 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 - Published the exact controlled reconciliation procedure and retained the installed seven-partition layout, validated persistence semantics, UI, GPIO, provisioning, sleep/wake and OTA boundaries.
 - Recommended a bounded persistent TCP channel with a PSK-derived AES-GCM record layer using existing mbedTLS primitives. Rejected WSS/HTTPS because of TUNER internal-RAM pressure and ESP-NOW because the pinned IDF 4.4 coexistence table does not support receive with Classic Bluetooth.
 - Defined the minimum identity/capability/state/`volume.set` implementation sequence and private pairing decision. No firmware build/change, hardware access, credential publication or PR merge occurred.
+
+## A-REMOTE-011 Phase 2 reconciliation and record specification — 2026-10-13
+
+- Created a disposable private REMOTE copy that matches all 1,715 accepted A-010 non-generated files; the active and preserved workspaces remain unchanged.
+- Re-ran the focused A-010 suites (**28/28 PASS**) and a clean serial production build (**PASS**, 47,084-byte static RAM report, 2,496,320-byte image, 649,408-byte OTA headroom). The accepted partition binary remains exact and production diagnostics remain disabled.
+- Published RTCP/1: exact mutual PSK authentication, RFC 5869 directional derivation, AES-128-GCM record bytes, counter/session failure rules, 512-byte limit and reconnect/resynchronization behavior.
+- Published non-secret executable vectors and **14/14 PASS** focused transport tests, plus an initial bounded TUNER RAM/flash budget.
+- Corrected the obsolete Phase 1 ESP-NOW sleep sentence. No network integration, active-workspace change, TUNER change, hardware access, operational key generation, private artifact publication or PR merge occurred.
