@@ -1,7 +1,7 @@
 # A-REMOTE-010: minimal private persistence backend
 
 - Owner: REMOTE//01; authorized executor/publisher.
-- State: STAGE 5 PASS; FIRST RECORD VALID AT GENERATION 1 AFTER NORMAL REBOOT; STOPPED BEFORE STAGE 6.
+- State: STAGE 6 BLOCKED BEFORE MUTATION; UNEXPECTED READ-ONLY STORAGE ERROR REQUIRES DIAGNOSIS.
 - Coordination input: 3ed3ff49f8ff6ba548a8b3b23020ad6a32c4566f.
 - Objective: smallest reliable versioned persistence backend for installed64KiB remote_ctl, sufficient as a generic storage primitive for later common-API state; API not implemented.
 - References: [Owner authority](../references/A010_PRIVATE_IMPLEMENTATION_OWNER_AUTHORIZATION_2026-10-12.md); accepted A009 physical layout/recovery files, CCM1.1.0 section12.1; exact handoff/footer templates.
@@ -61,3 +61,7 @@ PASS — the owner performed a normal hardware reset out of ROM mode and confirm
 ## Stage 5 first-record validation published 2026-10-13T14:40:01Z
 
 PASS — exact confirmed COMMIT1 sent once, transitioning initialized-empty generation 0/next 1 to valid-recoverable generation 1/next 2 with no incomplete transaction. After the owner used the proven normal hardware reset, one read-only RECOVER returned the same exact state, partition identity and counts (14 used/2,002 free/1,876 available); the owner confirmed functional UI and retained observable configuration. See the [report](../reports/A-REMOTE-010_STAGE5_FIRST_RECORD.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-010/STAGE5_RESULT.json). INIT/COMMIT1 were not repeated; no COMMIT2/ERASE, flash, source-code change or executor reset occurred. Stage 6 and A-REMOTE-011 remain NOT STARTED.
+
+## Stage 6 precondition stop — 2026-10-13T14:43:43Z
+
+STOPPED before COMMIT2. A read-only identity check immediately before the Stage 6 authorization returned the expected A010 diagnostic and exact `remote_ctl` partition identity, but reported `storage_error`, generation 0, next 0 and zero capacity counts instead of the required valid-recoverable generation 1/next 2 state. The Stage 6 mutation precondition was therefore false. No COMMIT2, reset, RECOVER, ERASE, flash or source change was performed. See the [stop report](../reports/A-REMOTE-010_STAGE6_PRECONDITION_STOP.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-010/STAGE6_PRECONDITION_STOP.json).

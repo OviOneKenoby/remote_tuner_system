@@ -1,0 +1,40 @@
+{
+  "task": "A-REMOTE-010",
+  "stage": "Stage 6 successor record precondition",
+  "recorded_utc": "2026-10-13T14:43:43Z",
+  "result": "STOPPED_BEFORE_MUTATION",
+  "port": "COM3",
+  "usb_identity_matches_expected_espressif_device": true,
+  "read_only_command": "!A010 INFO",
+  "diagnostic_identity_confirmed": true,
+  "partition": {
+    "exists": true,
+    "type": 1,
+    "subtype": 2,
+    "offset": "0x00E20000",
+    "size": "0x10000"
+  },
+  "observed": {
+    "state": "storage_error",
+    "schema": 1,
+    "generation": 0,
+    "next_generation": 0,
+    "incomplete": false,
+    "used_entries": 0,
+    "free_entries": 0,
+    "available_entries": 0,
+    "payload_logged": false
+  },
+  "required_before_commit2": {
+    "state": "valid_recoverable",
+    "generation": 1,
+    "next_generation": 2
+  },
+  "commit2_executed": false,
+  "reset_executed": false,
+  "recover_executed": false,
+  "erase_executed": false,
+  "firmware_write": false,
+  "source_code_change": false,
+  "next_gate": "Bounded read-only diagnosis requires an owner decision before Stage 6 can resume."
+}

@@ -1,6 +1,6 @@
 # A-REMOTE-010 hardware validation protocol
 
-**STAGES 1–5 EXECUTED / PASS; STOPPED BEFORE STAGE 6.** One confirmed COMMIT1 transitioned to valid generation 1/next 2, and one read-only RECOVER after the owner-performed normal reboot verified the same state with no incomplete transaction. Never repeat `INIT` or `COMMIT1`. Current authority permits no COMMIT2, ERASE, reset or flash write without a new owner decision. Practical hobby/public-beta scope applies.
+**STAGES 1–5 EXECUTED / PASS; STAGE 6 STOPPED BEFORE MUTATION.** A subsequent read-only INFO returned `storage_error`, generation 0/next 0, so the required Stage 6 precondition was false. Never repeat `INIT` or `COMMIT1`; do not execute COMMIT2 until this discrepancy is resolved. Practical hobby/public-beta scope applies.
 
 ## Fixed identities
 
@@ -60,6 +60,8 @@ Obtain explicit owner approval for COMMIT1. Send exactly `!A010 COMMIT1 CONFIRM-
 Executed 2026-10-13 under exact owner authorization: PASS. COMMIT1 ran once with the required transition, the owner performed the proven normal hardware reset, and one read-only RECOVER verified valid generation 1/next 2/no-incomplete state with normal UI/configuration. See [Stage 5 report](../reports/A-REMOTE-010_STAGE5_FIRST_RECORD.md). Stage 6 was not executed.
 
 ## Stage 6 — separately staged successor
+
+Precondition check stopped execution on 2026-10-13: a read-only INFO returned the correct diagnostic/partition identity but `storage_error`, generation 0/next 0 rather than valid generation 1/next 2. COMMIT2 was not sent. See [stop report](../reports/A-REMOTE-010_STAGE6_PRECONDITION_STOP.md).
 
 Obtain explicit owner approval for COMMIT2. Send exactly `!A010 COMMIT2 CONFIRM-A010-REMOTE-CTL-COMMIT2` once. Require before generation 1, after valid generation 2/next 3. Reboot once; send `!A010 RECOVER`; require generation 2 and recoverable. Send `!A010 STATUS` and record safe used/free/available entry counts. Require normal UI/configuration. STOP without retry on any mismatch.
 
