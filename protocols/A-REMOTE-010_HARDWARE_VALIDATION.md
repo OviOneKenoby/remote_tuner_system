@@ -1,6 +1,6 @@
 # A-REMOTE-010 hardware validation protocol
 
-**STAGES 1–6 EXECUTED / PASS.** Communication recovered after the recorded pre-transmission port failure. One confirmed COMMIT2 advanced to valid generation 2/next 3, and one read-only RECOVER after the owner-performed normal reboot verified the same state with no incomplete transaction. Never repeat `INIT`, `COMMIT1` or `COMMIT2`. Practical hobby/public-beta scope applies.
+**STAGES 1–6 EXECUTED / PASS AND OWNER ACCEPTED; STAGE 7 PREPARED / NOT AUTHORIZED.** The restore span and recovery backup were reverified offline. Never repeat `INIT`, `COMMIT1` or `COMMIT2`; do not erase `remote_ctl`. Explicit owner authorization is required before the Stage 7 firmware-only write. Practical hobby/public-beta scope applies.
 
 ## Fixed identities
 
@@ -78,6 +78,8 @@ Obtain explicit owner approval for COMMIT2. Send exactly `!A010 COMMIT2 CONFIRM-
 ## Stage 7 — restore prior firmware
 
 Close the monitor and enter ROM mode. After explicit rollback approval, write only the verified 2,506,752-byte prior-byte restore span at `0x10000` with keep mode/frequency/size. Read back that full span and require SHA-256 `57736494ea726600c68e25ae6a8f5b3bd109f5e5c1d5d858a05afd7ee8603aca`. Reset once and require the accepted previous factory identity, normal UI and retained configuration. Do not write the table, bootloader, OTA data or default NVS.
+
+Prepared offline 2026-10-13: private restore span size/hash PASS; byte-identical to offset `0x10000`, length `0x264000`, of the verified 16 MiB backup. Exact authorized command, when separately approved, is equivalent to `esptool.py --chip esp32s3 --port <VERIFIED_COM> --baud 115200 write_flash --flash_mode keep --flash_freq keep --flash_size keep 0x10000 <PRIVATE_VERIFIED_RESTORE_SPAN>`. Its affected range ends at `0x273FFF`, far below `remote_ctl` at `0xE20000`; generation 2 and test records remain untouched. See [preparation report](../reports/A-REMOTE-010_STAGE7_RESTORATION_PREPARATION.md). No command from this stage has been executed.
 
 Diagnostic records remain in `remote_ctl` unless the owner separately authorizes Stage 8. The restored pre-A010 firmware ignores this dedicated partition.
 
