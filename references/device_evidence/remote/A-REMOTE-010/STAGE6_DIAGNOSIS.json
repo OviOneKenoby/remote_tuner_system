@@ -1,0 +1,26 @@
+{
+  "task": "A-REMOTE-010",
+  "recorded_utc": "2026-10-13T14:50:02Z",
+  "result": "INFO_EXPLAINED_RETRY_RAW_NOT_RETAINED",
+  "info_analysis": {
+    "command": "!A010 INFO",
+    "uses_recover_backend": false,
+    "non_erased_exact_partition_result": "storage_error",
+    "generation_and_capacity_fields_populated": false,
+    "evidence_of_media_corruption": false,
+    "evidence_of_generation_loss": false
+  },
+  "retry_capture_analysis": {
+    "reported_bytes": 3460,
+    "raw_file_created": false,
+    "raw_bytes_retained_after_process_exit": false,
+    "exact_transmission_reconstructable": false,
+    "retained_facts": "byte count and no matched A010 line"
+  },
+  "stage5_last_verified_state": "valid_recoverable generation 1 next 2 incomplete 0",
+  "hardware_command_during_diagnosis": false,
+  "reset_during_diagnosis": false,
+  "mutation_during_diagnosis": false,
+  "source_change": false,
+  "minimum_next_action": "One authorized read-only RECOVER using the proven ten-second procedure, with the complete raw UART buffer saved privately before parsing."
+}

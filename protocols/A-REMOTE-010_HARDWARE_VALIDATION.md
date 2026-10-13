@@ -1,6 +1,6 @@
 # A-REMOTE-010 hardware validation protocol
 
-**STAGES 1–5 EXECUTED / PASS; STAGE 6 STOPPED BEFORE MUTATION.** A subsequent read-only INFO returned `storage_error`, generation 0/next 0, so the required Stage 6 precondition was false. Never repeat `INIT` or `COMMIT1`; do not execute COMMIT2 until this discrepancy is resolved. Practical hobby/public-beta scope applies.
+**STAGES 1–5 EXECUTED / PASS; STAGE 6 PAUSED BEFORE MUTATION.** The later INFO `storage_error` is expected from INFO's intentionally non-recovering path on non-erased media and does not supersede Stage 5. A retry RECOVER response was not detected and its raw buffer was not retained. Never repeat `INIT` or `COMMIT1`; do not execute COMMIT2 until one saved read-only RECOVER verifies generation 1/next 2. Practical hobby/public-beta scope applies.
 
 ## Fixed identities
 
@@ -64,6 +64,8 @@ Executed 2026-10-13 under exact owner authorization: PASS. COMMIT1 ran once with
 Precondition check stopped execution on 2026-10-13: a read-only INFO returned the correct diagnostic/partition identity but `storage_error`, generation 0/next 0 rather than valid generation 1/next 2. COMMIT2 was not sent. See [stop report](../reports/A-REMOTE-010_STAGE6_PRECONDITION_STOP.md).
 
 An owner-authorized retry also stopped before mutation: COM3 identity remained correct, but one read-only RECOVER produced serial bytes without an A010 response. Passive follow-up found no diagnostic or fault line. The missing-output stop condition applied; COMMIT2 remained unsent. See [retry report](../reports/A-REMOTE-010_STAGE6_RETRY_STOP.md).
+
+Diagnosis corrected the interpretation of the preceding INFO: INFO uses `inspect(false)`, which returns `storage_error` for any exact, non-erased partition without opening NVS. The retry's raw 3,460-byte buffer was never persisted and cannot be inspected retrospectively. Minimum next step is one separately authorized, read-only RECOVER using the proven ten-second capture procedure, saving raw bytes privately before parsing. See [diagnosis](../reports/A-REMOTE-010_STAGE6_DIAGNOSIS.md).
 
 Obtain explicit owner approval for COMMIT2. Send exactly `!A010 COMMIT2 CONFIRM-A010-REMOTE-CTL-COMMIT2` once. Require before generation 1, after valid generation 2/next 3. Reboot once; send `!A010 RECOVER`; require generation 2 and recoverable. Send `!A010 STATUS` and record safe used/free/available entry counts. Require normal UI/configuration. STOP without retry on any mismatch.
 

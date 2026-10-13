@@ -1,7 +1,7 @@
 # A-REMOTE-010: minimal private persistence backend
 
 - Owner: REMOTE//01; authorized executor/publisher.
-- State: STAGE 6 BLOCKED BEFORE MUTATION; UNEXPECTED READ-ONLY STORAGE ERROR REQUIRES DIAGNOSIS.
+- State: STAGE 6 PAUSED BEFORE MUTATION; INFO CONCERN RESOLVED, RETRY RAW CAPTURE NOT RETAINED.
 - Coordination input: 3ed3ff49f8ff6ba548a8b3b23020ad6a32c4566f.
 - Objective: smallest reliable versioned persistence backend for installed64KiB remote_ctl, sufficient as a generic storage primitive for later common-API state; API not implemented.
 - References: [Owner authority](../references/A010_PRIVATE_IMPLEMENTATION_OWNER_AUTHORIZATION_2026-10-12.md); accepted A009 physical layout/recovery files, CCM1.1.0 section12.1; exact handoff/footer templates.
@@ -69,3 +69,7 @@ STOPPED before COMMIT2. A read-only identity check immediately before the Stage 
 ## Stage 6 retry stop — 2026-10-13T14:46:17Z
 
 STOPPED again before COMMIT2. COM3 retained the expected Espressif USB identity and status OK. Exactly one read-only RECOVER was transmitted during the authorized retry, but the received serial stream contained no A010 response; a subsequent passive three-second observation found no A010 identity or fault line. The protocol's missing-output stop condition applied, so no mutation or reset followed. See the [retry report](../reports/A-REMOTE-010_STAGE6_RETRY_STOP.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-010/STAGE6_RETRY_STOP.json).
+
+## Stage 6 evidence diagnosis — 2026-10-13T14:50:02Z
+
+The earlier INFO result is explained by diagnostic design: INFO calls the non-recovering inspection path, which reports `storage_error` for every non-erased `remote_ctl`; it confirms partition identity but cannot report the stored generation. It is not evidence of media corruption or loss of the Stage 5 record. The retry probe retained only the 3,460-byte count and filtered-match result in process memory; it did not save the raw bytes, so the device's exact transmission cannot be reconstructed. See the [diagnosis](../reports/A-REMOTE-010_STAGE6_DIAGNOSIS.md). No hardware command or source change was performed during diagnosis.

@@ -1,15 +1,15 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-010-STAGE6-RETRY-STOP-20261013T144617Z
-- Updated (UTC): 2026-10-13T14:46:17Z
+- Handoff ID: REMOTE-A-REMOTE-010-STAGE6-DIAGNOSIS-20261013T145002Z
+- Updated (UTC): 2026-10-13T14:50:02Z
 - Task ID: A-REMOTE-010
-- Status: IN PROGRESS — STAGE 6 BLOCKED BEFORE MUTATION
+- Status: IN PROGRESS — STAGE 6 PAUSED BEFORE MUTATION; INFO EXPLAINED
 - Prepared by: authorized executor / coordination publisher
-- Coordination input commit: f8a6a380bb937e0b0efb62271b144d172d3c7656
+- Coordination input commit: 6b012a082c4647a898173f14a6db08f28d476040
 
 ## Milestone
-Validate a successor record from valid generation 1. A retry stopped before COMMIT2 because one read-only RECOVER returned serial data without an A010 response, so the required valid generation 1/next 2 state could not be verified.
+Validate a successor record from valid generation 1. Diagnose retained Stage 6 evidence without touching hardware. INFO is now explained as intentionally non-recovering; the retry raw buffer was not saved, so its exact content cannot be reconstructed.
 
 ## Baseline
 - Device repository: owner-private REMOTE source; unpublished
@@ -31,7 +31,7 @@ No persistent or source change. COMMIT2 was not transmitted.
 | Mutation boundary | PASS — no COMMIT2 or other mutation | same |
 
 ## Remaining unknowns
-The prior storage error and the missing retry response remain unexplained. Current persistence authority remains unresolved.
+INFO does not indicate a storage fault. The missing retry response remains unexplained because the raw buffer was not retained. Stage 5 remains the last verified persistence state.
 
 ## Shared-contract impact
 - CCM 1.1.0: NO CHANGE.
@@ -39,21 +39,21 @@ The prior storage error and the missing retry response remain unexplained. Curre
 - TUNER: not accessed or modified.
 
 ## Blockers
-Stage 6 requires valid-recoverable generation 1/next 2. The latest read-only observation did not satisfy that precondition.
+Stage 6 requires a freshly verified valid-recoverable generation 1/next 2 state. No retained RECOVER response establishes that current state.
 
 ## PM decision required
-Authorize or reject bounded read-only diagnosis of the current `remote_ctl` state. No mutation should be authorized until the discrepancy is understood.
+Authorize or reject one saved, read-only ten-second RECOVER capture. No mutation should occur until it verifies generation 1/next 2.
 
 ## Recommended next task
-If explicitly authorized, collect one bounded read-only RECOVER/status sequence and relevant boot diagnostics, then decide whether Stage 6 can resume. This is a recommendation, not authorization.
+If explicitly authorized, run exactly one read-only RECOVER using the proven Stage 5 capture procedure, save/hash the raw buffer privately, and stop. This is a recommendation, not authorization.
 
 ## Commit
 - Firmware/source changes: NONE.
 - Coordination publication: PR #16; final publication hash reported separately.
-- Previous handoff archived at `archive/remote/2026-10-13T144617Z_A-REMOTE-010_REMOTE-A-REMOTE-010-STAGE6-PRECONDITION-STOP-20261013T144343Z.md`.
+- Previous handoff archived at `archive/remote/2026-10-13T145002Z_A-REMOTE-010_REMOTE-A-REMOTE-010-STAGE6-RETRY-STOP-20261013T144617Z.md`.
 
 ## Hardware status
 - Physical device accessed: YES, read-only UART only
-- Latest result: COM3 remained present, but the retry RECOVER yielded no A010 response
+- Latest result: evidence-only diagnosis; INFO is expected behavior, retry raw bytes unavailable
 - Persistent operations during this attempt: NONE
 - Stage 6 COMMIT2: NOT EXECUTED
