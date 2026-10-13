@@ -1,0 +1,17 @@
+A-REMOTE-010 diagnostic candidate clean build
+UTC evidence collection: 2026-10-13T06:43:09.576743+00:00
+Environment: remote01_a010_diag
+Build definition: A010_REMOTE_PERSISTENCE_DIAGNOSTIC=1
+Boot identity: build=A010_VALIDATION diagnostic=ENABLED persistence_on_boot=0
+Tools: PlatformIO 6.2.0; espressif32 6.13.0; ESP-IDF 5.5.3; xtensa-esp-elf GCC 14.2.0+20251107
+Command class: clean, serial -j1 target build; no upload target
+Result: PASS; 492.70 seconds
+RAM: 47692 / 327680 bytes
+Linker flash: 2503437 / 8388608 bytes
+Packaged firmware.bin: 2503936 bytes
+OTA slot/headroom: 3145728 / 641792 bytes
+Compiled: backend.cpp; esp_nvs_store.cpp; diagnostic.cpp; diagnostic_runtime.cpp; control_home/runtime.cpp
+ELF reachability: backend initialize/recover/commit, NVS open, Engine::execute, consume_uart_byte and announce present
+Boot persistence: NONE; boot hook logs identity only; target/backend/NVS operations require a complete !A010 command
+Partition binary: exact byte match to accepted A-REMOTE-009 partitions.bin
+Hardware access/upload/write/erase: NOT RUN

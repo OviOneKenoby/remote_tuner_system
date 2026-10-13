@@ -1,7 +1,7 @@
 # A-REMOTE-010: minimal private persistence backend
 
 - Owner: REMOTE//01; authorized executor/publisher.
-- State: IMPLEMENTED / HOST VERIFIED / READY FOR OWNER REVIEW; hardware NOT RUN / NOT AUTHORIZED.
+- State: HOST PHASE OWNER ACCEPTED; DIAGNOSTIC CANDIDATE READY FOR OWNER REVIEW; hardware NOT RUN / NOT AUTHORIZED.
 - Coordination input: 3ed3ff49f8ff6ba548a8b3b23020ad6a32c4566f.
 - Objective: smallest reliable versioned persistence backend for installed64KiB remote_ctl, sufficient as a generic storage primitive for later common-API state; API not implemented.
 - References: [Owner authority](../references/A010_PRIVATE_IMPLEMENTATION_OWNER_AUTHORIZATION_2026-10-12.md); accepted A009 physical layout/recovery files, CCM1.1.0 section12.1; exact handoff/footer templates.
@@ -35,3 +35,7 @@ Separate inspected facts, planned work, implemented work, build evidence and phy
 ## Result published 2026-10-13T03:35:07.084328+00:00
 
 PASS — private implementation / host verified / clean build; hardware not run. See [report](../reports/A-REMOTE-010_PRIVATE_BACKEND.md), [evidence](../references/device_evidence/remote/A-REMOTE-010/RESULT.json), and [unexecuted protocol](../protocols/A-REMOTE-010_HARDWARE_VALIDATION.md). PR #16 remains OPEN/unmerged. Owner acceptance and a reviewed diagnostic activation plus exact hardware-write approval are required before physical exercise. A-REMOTE-011 is NOT STARTED.
+
+## Diagnostic continuation published 2026-10-13T06:43:09.576743+00:00
+
+Owner accepted the host phase and authorized diagnostic design/implementation/review/build only. Result: PASS — diagnostic candidate implemented, 28/28 focused tests PASS, ESP-IDF adapter review PASS, clean candidate build PASS, partitions exact A-009, and zero hardware operations. See [report](../reports/A-REMOTE-010_DIAGNOSTIC_CANDIDATE.md), [evidence](../references/device_evidence/remote/A-REMOTE-010/DIAGNOSTIC_RESULT.json), and [complete unexecuted protocol](../protocols/A-REMOTE-010_HARDWARE_VALIDATION.md). PR #16 remains OPEN/unmerged; A-REMOTE-011 is NOT STARTED. Exact hardware approval remains required.

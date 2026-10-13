@@ -1,0 +1,21 @@
+{
+  "recorded_utc": "2026-10-13T06:43:09.576743+00:00",
+  "files": {
+    "DIAGNOSTIC_ARTIFACT_SHA256.json": {
+      "bytes": 1399,
+      "sha256": "2d7fe0cce4f3f1feeaacad14948a4dec111b62375b4867938d3b80690a18e5bf"
+    },
+    "DIAGNOSTIC_BUILD_SANITIZED.log": {
+      "bytes": 1062,
+      "sha256": "e608b21bf5d2e4500aaea614a5814f7958e7f1de112f26f11c5732aadb8df30a"
+    },
+    "DIAGNOSTIC_HOST_TESTS_SANITIZED.log": {
+      "bytes": 1127,
+      "sha256": "239fe4528dc8efc692c83d0794fd3120497cd70fd5e502c77e111824b7f2dd89"
+    },
+    "DIAGNOSTIC_RESULT.json": {
+      "bytes": 4078,
+      "sha256": "f904df4ca16fe3912d3d9b0a2677db97ab2fd98c22a3568430e429876c59793a"
+    }
+  }
+}

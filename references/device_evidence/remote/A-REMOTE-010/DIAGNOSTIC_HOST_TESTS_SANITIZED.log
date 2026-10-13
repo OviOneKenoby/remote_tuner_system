@@ -1,0 +1,39 @@
+A-REMOTE-010 continuation focused host tests
+Compiler: MSYS2 UCRT64 g++ 16.2.0; C++20; -Wall -Wextra -Werror -pedantic
+
+Backend regression suite:
+PASS empty_partition_initialization
+PASS first_commit
+PASS successor_commit
+PASS interrupted_before_record
+PASS interrupted_after_record_before_root
+PASS corrupted_record
+PASS corrupted_authority_root
+PASS ambiguous_duplicate_generation
+PASS capacity_exhaustion
+PASS restart_recovery_zero_emission
+PASS replay_nonmonotonic_rejection
+PASS nvs_full_version_error_handling
+PASS unknown_key_fail_closed
+PASS coherent_root_records_rollback_G1b_outside
+TOTAL 14/14 PASS
+
+Diagnostic suite:
+PASS diagnostic_disabled_state
+PASS command_parsing
+PASS confirmation_token_rejection
+PASS exact_partition_identity_guard
+PASS read_only_erased_status
+PASS read_only_valid_status
+PASS read_only_corrupt_status
+PASS read_only_ambiguous_status
+PASS explicit_initialization_sequence
+PASS first_successor_commit_sequence
+PASS out_of_sequence_commit_rejection
+PASS unsafe_erase_rejection
+PASS explicit_erase_command
+PASS no_payload_logging
+TOTAL 14/14 PASS
+
+Combined: 28/28 PASS
+Hardware access: NOT RUN
