@@ -1,7 +1,7 @@
 # A-REMOTE-010: minimal private persistence backend
 
 - Owner: REMOTE//01; authorized executor/publisher.
-- State: HOST PHASE OWNER ACCEPTED; STAGE 1 READ-ONLY HARDWARE PREFLIGHT PASS; STOPPED BEFORE UNAUTHORIZED STAGE 2 WRITE.
+- State: HOST PHASE OWNER ACCEPTED; STAGE 2 DIAGNOSTIC FIRMWARE VALIDATION PASS; STOPPED BEFORE STAGE 3 AND ALL DIAGNOSTIC COMMANDS.
 - Coordination input: 3ed3ff49f8ff6ba548a8b3b23020ad6a32c4566f.
 - Objective: smallest reliable versioned persistence backend for installed64KiB remote_ctl, sufficient as a generic storage primitive for later common-API state; API not implemented.
 - References: [Owner authority](../references/A010_PRIVATE_IMPLEMENTATION_OWNER_AUTHORIZATION_2026-10-12.md); accepted A009 physical layout/recovery files, CCM1.1.0 section12.1; exact handoff/footer templates.
@@ -43,3 +43,6 @@ Owner accepted the host phase and authorized diagnostic design/implementation/re
 ## Stage 1 read-only preflight published 2026-10-13T07:00:27Z
 
 PASS — the owner-authorized read-only preflight bound the newly enumerated device to COM3, confirmed the expected ESP32-S3 revision and 16 MiB physical flash, matched the installed seven-entry table to accepted A-009, verified all 65,536 `remote_ctl` bytes remain `0xFF`, and matched the installed factory-image bytes to the accepted pre-A010 identity. See the [report](../reports/A-REMOTE-010_STAGE1_READ_ONLY_PREFLIGHT.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-010/STAGE1_READ_ONLY_RESULT.json). No firmware flash, write, erase, NVS initialization or diagnostic command occurred. Stage 2 and all later mutation stages remain blocked pending explicit owner approval; A-REMOTE-011 is NOT STARTED.
+## Stage 2 diagnostic firmware validation published 2026-10-13T07:19:42Z
+
+PASS — the exact 2,503,936-byte diagnostic candidate was written once at `0x10000`, independently read back byte-identical at SHA-256 `308181d4144494734fe8fae360938f74b9f886fb4c41bff0cba9b89427e4d248`, and booted once with the exact A010 identity and `persistence_on_boot=0`. Automated boot review found no panic, watchdog, partition error or boot loop; the owner confirmed normal UI and retained observable configuration. The complete `remote_ctl` region remained 65,536 bytes of `0xFF`, exact Stage 1. See the [report](../reports/A-REMOTE-010_STAGE2_DIAGNOSTIC_FLASH.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-010/STAGE2_RESULT.json). No diagnostic command, NVS initialization, commit or erase occurred. Stage 3 and all later stages remain unexecuted; A-REMOTE-011 is NOT STARTED.

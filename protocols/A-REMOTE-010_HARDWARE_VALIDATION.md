@@ -1,6 +1,6 @@
 # A-REMOTE-010 hardware validation protocol
 
-**STAGE 1 READ-ONLY PREFLIGHT EXECUTED / PASS; STOPPED BEFORE STAGE 2.** Current authority permits no firmware write, NVS initialization, erase or diagnostic mutation. Execute later stages only after the owner approves the exact stage. Practical hobby/public-beta scope applies; no power-cut, endurance or industrial campaign.
+**STAGES 1–2 EXECUTED / PASS; STOPPED BEFORE STAGE 3.** The exact diagnostic application is installed. Current authority permits no diagnostic command, NVS initialization, commit or erase. Execute later stages only after the owner approves the applicable stage. Practical hobby/public-beta scope applies; no power-cut, endurance or industrial campaign.
 
 ## Fixed identities
 
@@ -37,6 +37,8 @@ After exact approval, run once:
 `esptool.py --chip esp32s3 --port <VERIFIED_COM> --baud 115200 write_flash --flash_mode keep --flash_freq keep --flash_size keep 0x10000 <PRIVATE_CANDIDATE_FIRMWARE_BIN>`
 
 No bootloader, partition table, OTA data, default NVS or `remote_ctl` image is supplied. Read back 2,503,936 bytes from `0x10000` and require candidate SHA-256 `308181d4144494734fe8fae360938f74b9f886fb4c41bff0cba9b89427e4d248`. STOP without retry on write/readback mismatch.
+
+Executed 2026-10-13 under exact owner authorization: PASS. Write and full readback matched the candidate; controlled boot identity, normal UI/configuration and unchanged erased `remote_ctl` passed. See [Stage 2 report](../reports/A-REMOTE-010_STAGE2_DIAGNOSTIC_FLASH.md). No Stage 3 or diagnostic command was executed.
 
 Reset once to normal factory boot. Require no boot loop, panic, watchdog or partition error; require the normal UI and existing observable configuration. Require the boot line `build=A010_VALIDATION diagnostic=ENABLED persistence_on_boot=0`. Before any diagnostic command, read `remote_ctl` through ROM again and require all `0xFF`; this proves candidate boot caused no persistence activity. STOP on any UI/configuration or target-byte change.
 
