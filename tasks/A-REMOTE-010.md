@@ -1,7 +1,7 @@
 # A-REMOTE-010: minimal private persistence backend
 
 - Owner: REMOTE//01; authorized executor/publisher.
-- State: STAGE 4 STOPPED / INCOMPLETE; DEVICE IN ROM DOWNLOAD MODE; NORMAL BOOT/RECOVER/UI VERIFICATION NOT COMPLETED.
+- State: STAGE 4 PASS; INITIALIZED-EMPTY STATE SURVIVED NORMAL REBOOT; STOPPED BEFORE STAGE 5.
 - Coordination input: 3ed3ff49f8ff6ba548a8b3b23020ad6a32c4566f.
 - Objective: smallest reliable versioned persistence backend for installed64KiB remote_ctl, sufficient as a generic storage primitive for later common-API state; API not implemented.
 - References: [Owner authority](../references/A010_PRIVATE_IMPLEMENTATION_OWNER_AUTHORIZATION_2026-10-12.md); accepted A009 physical layout/recovery files, CCM1.1.0 section12.1; exact handoff/footer templates.
@@ -55,3 +55,6 @@ STOPPED / INCOMPLETE — `INIT` was transmitted exactly once and passed the requ
 ## Stage 4 recovery continuation stopped 2026-10-13T08:33:00Z
 
 STOPPED — a passive COM3 check could not verify runtime or the prior reset. The one authorized reset then produced an ESP32-S3 ROM banner in `DOWNLOAD(USB/UART0)` mode and `waiting for download`, without the normal A010 identity. The guard prevented `RECOVER`; no UART recovery command was sent. `INIT` was not repeated and no COMMIT/ERASE, flash write or source-code change occurred. The device was left in ROM download mode; normal UI/configuration and reboot persistence remain NOT VERIFIED. See the [report](../reports/A-REMOTE-010_STAGE4_RECOVERY_CONTINUATION_STOP.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-010/STAGE4_RECOVERY_CONTINUATION_STOP.json). New owner authorization is required for one normal hard reset out of ROM, normal-boot/UI confirmation and one read-only RECOVER. Stage 5 and A-REMOTE-011 remain NOT STARTED.
+## Stage 4 completed 2026-10-13T14:30:38Z
+
+PASS — the owner performed a normal hardware reset out of ROM mode and confirmed functional UI. Exactly one read-only `!A010 RECOVER` then returned one accepted A010 response with exact `remote_ctl` identity, initialized-empty schema-1 state, generation 0, next 1, no incomplete transaction, 10 used/2,006 free/1,880 available entries and `payload_logged=0`. Initialization therefore survived the confirmed normal reboot. See the [report](../reports/A-REMOTE-010_STAGE4_COMPLETE.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-010/STAGE4_RESULT.json). INIT was not repeated; no COMMIT/ERASE, flash, source-code change or executor reset occurred. Stage 5 and A-REMOTE-011 remain NOT STARTED.

@@ -1,6 +1,6 @@
 # A-REMOTE-010 hardware validation protocol
 
-**STAGES 1–3 PASS; STAGE 4 STOPPED / INCOMPLETE; DEVICE CURRENTLY IN ROM DOWNLOAD MODE.** One INIT and immediate status passed. A limited recovery-continuation reset entered `DOWNLOAD(USB/UART0)`; normal boot and `RECOVER` remain unverified. Never repeat `INIT`. Current authority permits no further reset, diagnostic command, commit, erase or flash write without a new owner decision. Practical hobby/public-beta scope applies.
+**STAGES 1–4 EXECUTED / PASS; STOPPED BEFORE STAGE 5.** One INIT transitioned the partition to initialized-empty, and one read-only RECOVER after the owner-confirmed normal reboot verified generation 0/next 1 with no incomplete transaction. Never repeat `INIT`. Current authority permits no COMMIT1, COMMIT2, ERASE, reset or flash write without a new owner decision. Practical hobby/public-beta scope applies.
 
 ## Fixed identities
 
@@ -52,6 +52,7 @@ Executed 2026-10-13 under exact owner authorization: PASS. Both commands were ac
 Obtain explicit owner approval for initialization alone. Send exactly `!A010 INIT CONFIRM-A010-REMOTE-CTL-INIT` once. Require before `erased`, after `initialized_empty`, generation 0, next 1. Send `!A010 STATUS`; record entry counts. Reboot once and send `!A010 RECOVER`; require initialized empty generation 0/next 1 and normal UI/configuration. STOP without retry on any mismatch.
 Executed partially 2026-10-13: `INIT` once and immediate `STATUS` passed exactly. One serial reset signal produced no boot banner or A010 identity in 20 seconds, so the STOP rule applied. `RECOVER` was not sent and `INIT` must not be repeated. See [Stage 4 partial report](../reports/A-REMOTE-010_STAGE4_PARTIAL_INITIALIZATION.md). A new owner decision is required before reset/reboot verification or read-only recovery inspection.
 A separately authorized continuation also stopped: its one reset produced an ESP32-S3 ROM banner in `DOWNLOAD(USB/UART0)` mode and `waiting for download`, without normal A010 boot. `RECOVER` was not sent. See [Stage 4 recovery-continuation stop](../reports/A-REMOTE-010_STAGE4_RECOVERY_CONTINUATION_STOP.md). The device remains in ROM download mode pending a new owner decision for one normal hard reset and read-only recovery verification.
+Final continuation completed 2026-10-13: the owner performed the normal reset out of ROM mode and confirmed functional UI. One read-only `!A010 RECOVER` passed with exact initialized-empty generation 0/next 1/no-incomplete state and no payload logging. See [Stage 4 completion](../reports/A-REMOTE-010_STAGE4_COMPLETE.md). Stage 5 was not executed.
 
 ## Stage 5 — separately staged first record
 
