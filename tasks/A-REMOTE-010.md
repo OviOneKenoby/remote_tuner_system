@@ -1,7 +1,7 @@
 # A-REMOTE-010: minimal private persistence backend
 
 - Owner: REMOTE//01; authorized executor/publisher.
-- State: HOST PHASE OWNER ACCEPTED; DIAGNOSTIC CANDIDATE READY FOR OWNER REVIEW; hardware NOT RUN / NOT AUTHORIZED.
+- State: HOST PHASE OWNER ACCEPTED; STAGE 1 READ-ONLY HARDWARE PREFLIGHT PASS; STOPPED BEFORE UNAUTHORIZED STAGE 2 WRITE.
 - Coordination input: 3ed3ff49f8ff6ba548a8b3b23020ad6a32c4566f.
 - Objective: smallest reliable versioned persistence backend for installed64KiB remote_ctl, sufficient as a generic storage primitive for later common-API state; API not implemented.
 - References: [Owner authority](../references/A010_PRIVATE_IMPLEMENTATION_OWNER_AUTHORIZATION_2026-10-12.md); accepted A009 physical layout/recovery files, CCM1.1.0 section12.1; exact handoff/footer templates.
@@ -39,3 +39,7 @@ PASS — private implementation / host verified / clean build; hardware not run.
 ## Diagnostic continuation published 2026-10-13T06:43:09.576743+00:00
 
 Owner accepted the host phase and authorized diagnostic design/implementation/review/build only. Result: PASS — diagnostic candidate implemented, 28/28 focused tests PASS, ESP-IDF adapter review PASS, clean candidate build PASS, partitions exact A-009, and zero hardware operations. See [report](../reports/A-REMOTE-010_DIAGNOSTIC_CANDIDATE.md), [evidence](../references/device_evidence/remote/A-REMOTE-010/DIAGNOSTIC_RESULT.json), and [complete unexecuted protocol](../protocols/A-REMOTE-010_HARDWARE_VALIDATION.md). PR #16 remains OPEN/unmerged; A-REMOTE-011 is NOT STARTED. Exact hardware approval remains required.
+
+## Stage 1 read-only preflight published 2026-10-13T07:00:27Z
+
+PASS — the owner-authorized read-only preflight bound the newly enumerated device to COM3, confirmed the expected ESP32-S3 revision and 16 MiB physical flash, matched the installed seven-entry table to accepted A-009, verified all 65,536 `remote_ctl` bytes remain `0xFF`, and matched the installed factory-image bytes to the accepted pre-A010 identity. See the [report](../reports/A-REMOTE-010_STAGE1_READ_ONLY_PREFLIGHT.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-010/STAGE1_READ_ONLY_RESULT.json). No firmware flash, write, erase, NVS initialization or diagnostic command occurred. Stage 2 and all later mutation stages remain blocked pending explicit owner approval; A-REMOTE-011 is NOT STARTED.

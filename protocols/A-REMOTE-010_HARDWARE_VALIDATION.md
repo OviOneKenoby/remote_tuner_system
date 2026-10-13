@@ -1,6 +1,6 @@
 # A-REMOTE-010 hardware validation protocol
 
-**PREPARED / NOT EXECUTED.** Current authority stops before every hardware operation. Execute only after the owner approves this exact diagnostic candidate and the stated stages. Practical hobby/public-beta scope applies; no power-cut, endurance or industrial campaign.
+**STAGE 1 READ-ONLY PREFLIGHT EXECUTED / PASS; STOPPED BEFORE STAGE 2.** Current authority permits no firmware write, NVS initialization, erase or diagnostic mutation. Execute later stages only after the owner approves the exact stage. Practical hobby/public-beta scope applies; no power-cut, endurance or industrial campaign.
 
 ## Fixed identities
 
@@ -25,6 +25,8 @@ Verify both full-backup copies, original table sector, restore span and every ca
 4. Read flash identity and require physical 16 MiB. Record tool version and sanitized chip/revision result; keep MAC private.
 5. Read `0x8000–0x8FFF`; require the accepted seven-entry A-009 table. Read `0xE20000–0xE2FFFF`; require 65,536 bytes of `0xFF`. Read the current factory-image range and require the accepted prior identity where reproducible.
 6. Confirm ROM/USB recovery remains available without JTAG. STOP on device, flash, table, target-region, security or backup mismatch.
+
+Executed 2026-10-13 under exact owner authorization: PASS. See [Stage 1 report](../reports/A-REMOTE-010_STAGE1_READ_ONLY_PREFLIGHT.md). No Stage 2 or later command was executed.
 
 Return the preflight to the owner and obtain explicit approval before Stage 2. Read-only approval does not authorize flashing.
 
