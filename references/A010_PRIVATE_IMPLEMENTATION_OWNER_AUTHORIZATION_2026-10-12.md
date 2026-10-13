@@ -1,0 +1,7 @@
+# A010 private implementation owner authorization
+
+Coordination input `3ed3ff49f8ff6ba548a8b3b23020ad6a32c4566f`. Owner instruction2026-10-12.
+
+Owner authorizes A-REMOTE-010 assignment and private implementation, focused host tests and a clean serial build at practical hobby/public-beta assurance. Dedicated installed remote_ctl data/nvs partition only,0xE20000/0x10000. No hardware access, flash/write/erase, default NVS migration, partition-layout change, common API, TUNER, MQTT/SmartThings/UI, A011 or reopening A008/A009. Stop before any future hardware write and request explicit approval. Publish only English sanitized reports/test results/hashes/protocol in new OPEN/unmerged PR; private source/secrets/payloads/full images remain unpublished.
+
+Required: explicit schema and bounded envelopes, persistent monotonic non-reuse, crash-consistent record/root commits, corrupt/incomplete/ambiguous detection and fail-closed, explicit erased initialization, safe NVS error handling/no automatic erase, no payload logging. Preserve CCM1.1.0/G1a; coherent deliberate domain rollback remains G1b OUTSIDE. Cover required initialization/commit/interruption/corruption/duplicate/capacity/recovery/replay tests with independent emission witness. Integrate without boot-time partition initialization or user-visible activation. Hash firmware/ELF/map/table, record size/headroom/tools and label selection. Prepare unexecuted backup-bound owner hardware protocol with exact-artifact gates and bounded rollback.
