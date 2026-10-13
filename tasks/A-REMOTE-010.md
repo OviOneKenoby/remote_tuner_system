@@ -1,7 +1,7 @@
 # A-REMOTE-010: minimal private persistence backend
 
 - Owner: REMOTE//01; authorized executor/publisher.
-- State: STAGE 6 PAUSED BEFORE MUTATION; INFO CONCERN RESOLVED, RETRY RAW CAPTURE NOT RETAINED.
+- State: STAGE 6 PRECONDITION PASS; VALID GENERATION 1 VERIFIED; STOPPED BEFORE COMMIT2.
 - Coordination input: 3ed3ff49f8ff6ba548a8b3b23020ad6a32c4566f.
 - Objective: smallest reliable versioned persistence backend for installed64KiB remote_ctl, sufficient as a generic storage primitive for later common-API state; API not implemented.
 - References: [Owner authority](../references/A010_PRIVATE_IMPLEMENTATION_OWNER_AUTHORIZATION_2026-10-12.md); accepted A009 physical layout/recovery files, CCM1.1.0 section12.1; exact handoff/footer templates.
@@ -73,3 +73,7 @@ STOPPED again before COMMIT2. COM3 retained the expected Espressif USB identity 
 ## Stage 6 evidence diagnosis — 2026-10-13T14:50:02Z
 
 The earlier INFO result is explained by diagnostic design: INFO calls the non-recovering inspection path, which reports `storage_error` for every non-erased `remote_ctl`; it confirms partition identity but cannot report the stored generation. It is not evidence of media corruption or loss of the Stage 5 record. The retry probe retained only the 3,460-byte count and filtered-match result in process memory; it did not save the raw bytes, so the device's exact transmission cannot be reconstructed. See the [diagnosis](../reports/A-REMOTE-010_STAGE6_DIAGNOSIS.md). No hardware command or source change was performed during diagnosis.
+
+## Stage 6 read-only precondition verification — 2026-10-13T14:52:40Z
+
+PASS — exactly one read-only RECOVER used the proven ten-second capture procedure and returned valid-recoverable generation 1, next 2, incomplete 0, with 14 used/2,002 free/1,876 available entries and no unexpected error. The complete 250-byte private UART capture was saved before parsing and hashed. No COMMIT2 or other mutation, reset, flash or source change occurred. See the [report](../reports/A-REMOTE-010_STAGE6_READ_ONLY_PRECONDITION.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-010/STAGE6_READ_ONLY_PRECONDITION.json).

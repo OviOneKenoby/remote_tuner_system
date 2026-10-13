@@ -1,15 +1,15 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-010-STAGE6-DIAGNOSIS-20261013T145002Z
-- Updated (UTC): 2026-10-13T14:50:02Z
+- Handoff ID: REMOTE-A-REMOTE-010-STAGE6-PRECONDITION-PASS-20261013T145240Z
+- Updated (UTC): 2026-10-13T14:52:40Z
 - Task ID: A-REMOTE-010
-- Status: IN PROGRESS — STAGE 6 PAUSED BEFORE MUTATION; INFO EXPLAINED
+- Status: IN PROGRESS — STAGE 6 PRECONDITION PASS; STOPPED BEFORE COMMIT2
 - Prepared by: authorized executor / coordination publisher
-- Coordination input commit: 6b012a082c4647a898173f14a6db08f28d476040
+- Coordination input commit: 9ba1bf659e77205f4dee7fdb8eca49f863510b98
 
 ## Milestone
-Validate a successor record from valid generation 1. Diagnose retained Stage 6 evidence without touching hardware. INFO is now explained as intentionally non-recovering; the retry raw buffer was not saved, so its exact content cannot be reconstructed.
+Validate a successor record from valid generation 1. Verify the current persistence authority read-only with a saved ten-second capture. Achieved: one RECOVER confirmed valid generation 1/next 2/incomplete 0.
 
 ## Baseline
 - Device repository: owner-private REMOTE source; unpublished
@@ -19,19 +19,19 @@ Validate a successor record from valid generation 1. Diagnose retained Stage 6 e
 - Owner authorization: `references/A010_STAGE6_OWNER_AUTHORIZATION_2026-10-13.md`
 
 ## Changes
-No persistent or source change. COMMIT2 was not transmitted.
+No persistent or source change. One read-only RECOVER was transmitted; COMMIT2 was not transmitted.
 
 ## Verification
 | Check | Result | Evidence |
 | --- | --- | --- |
-| Port/device identity | PASS — COM3 matched expected Espressif USB identity | `reports/A-REMOTE-010_STAGE6_PRECONDITION_STOP.md` |
-| Diagnostic/partition identity | PASS — A010 response; exact data/NVS offset and size | `references/device_evidence/remote/A-REMOTE-010/STAGE6_PRECONDITION_STOP.json` |
-| Stage 6 starting state | FAIL — `storage_error`, generation 0/next 0 | same |
-| Retry RECOVER | STOP — one transmission, no A010 response | `references/device_evidence/remote/A-REMOTE-010/STAGE6_RETRY_STOP.json` |
+| Port/device identity | PASS — COM3 matched expected Espressif USB identity | `reports/A-REMOTE-010_STAGE6_READ_ONLY_PRECONDITION.md` |
+| Saved RECOVER | PASS — one accepted response from a complete private capture | `references/device_evidence/remote/A-REMOTE-010/STAGE6_READ_ONLY_PRECONDITION.json` |
+| Stage 6 starting state | PASS — valid generation 1/next 2/incomplete 0 | same |
+| Capacity snapshot | PASS — 14 used, 2,002 free, 1,876 available | same |
 | Mutation boundary | PASS — no COMMIT2 or other mutation | same |
 
 ## Remaining unknowns
-INFO does not indicate a storage fault. The missing retry response remains unexplained because the raw buffer was not retained. Stage 5 remains the last verified persistence state.
+COMMIT2, successor recovery and later restoration/erase steps remain unexecuted.
 
 ## Shared-contract impact
 - CCM 1.1.0: NO CHANGE.
@@ -39,21 +39,21 @@ INFO does not indicate a storage fault. The missing retry response remains unexp
 - TUNER: not accessed or modified.
 
 ## Blockers
-Stage 6 requires a freshly verified valid-recoverable generation 1/next 2 state. No retained RECOVER response establishes that current state.
+No functional blocker remains for COMMIT2, but it requires separate explicit owner authorization.
 
 ## PM decision required
-Authorize or reject one saved, read-only ten-second RECOVER capture. No mutation should occur until it verifies generation 1/next 2.
+Authorize or reject the single Stage 6 COMMIT2 mutation now that generation 1/next 2 is freshly verified.
 
 ## Recommended next task
-If explicitly authorized, run exactly one read-only RECOVER using the proven Stage 5 capture procedure, save/hash the raw buffer privately, and stop. This is a recommendation, not authorization.
+If explicitly authorized, send COMMIT2 exactly once, require generation 2/next 3/incomplete 0, then stop for the owner-performed normal reboot. This is a recommendation, not authorization.
 
 ## Commit
 - Firmware/source changes: NONE.
 - Coordination publication: PR #16; final publication hash reported separately.
-- Previous handoff archived at `archive/remote/2026-10-13T145002Z_A-REMOTE-010_REMOTE-A-REMOTE-010-STAGE6-RETRY-STOP-20261013T144617Z.md`.
+- Previous handoff archived at `archive/remote/2026-10-13T145240Z_A-REMOTE-010_REMOTE-A-REMOTE-010-STAGE6-DIAGNOSIS-20261013T145002Z.md`.
 
 ## Hardware status
 - Physical device accessed: YES, read-only UART only
-- Latest result: evidence-only diagnosis; INFO is expected behavior, retry raw bytes unavailable
+- Latest result: one saved read-only RECOVER verified valid generation 1/next 2
 - Persistent operations during this attempt: NONE
 - Stage 6 COMMIT2: NOT EXECUTED
