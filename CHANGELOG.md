@@ -1,3 +1,9 @@
+# 2026-10-13 — A-REMOTE-011 Phase 3 implementation
+
+- Promoted the accepted A-010 private REMOTE baseline through a verified reversible backup and implemented the frozen RTCP/1 transport plus the first CCM 1.1.0 slice on REMOTE and TUNER.
+- Recorded focused tests, clean production builds, artifact hashes, flash/RAM deltas and the remaining runtime coexistence risk. TUNER implementation is on commit `18ddd3b16e305341f338afebd7dc725500ecbb73`; REMOTE source and all binaries remain private.
+- Hardware was not accessed or flashed, no operational PSK was created, and PR #17 remains open and unmerged pending a separate commissioning decision.
+
 # Coordination changelog
 
 ## 2026-10-08 — Starter package

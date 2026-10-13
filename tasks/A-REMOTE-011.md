@@ -1,16 +1,16 @@
 # A-REMOTE-011: Common REMOTE-TUNER API integration kickoff
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: IN PROGRESS — PHASE 2 RECONCILIATION/SPECIFICATION PASS / NETWORK INTEGRATION NOT STARTED
+- State: IN PROGRESS - PHASE 3 IMPLEMENTED / BUILD VERIFIED / HARDWARE NOT RUN
 - Coordination input commit: `8e93c702940d49583f3fdd58046503ae0b8f7354`
-- Objective: inspect CCM 1.1.0 and both current implementations, define the smallest contract-conforming end-to-end milestone, identify exact change locations and resource risks, then stop before firmware changes.
-- Baseline: coordination `main` at the exact input above; TUNER public v1.1.11 tag/main `5fb92c95d228d744d1182ae3956e850c5be2f277` (executable source `124e84801b06f9e07764dabc3985a573dffaff3b`); owner-private REMOTE source inspected read-only, with its A-010-preserved source copy treated as the required implementation baseline pending reconciliation.
+- Objective: implement the frozen RTCP/1 transport and first CCM 1.1.0 REMOTE-TUNER integration slice, verify both builds and stop before hardware commissioning.
+- Baseline: coordination main `8e93c702940d49583f3fdd58046503ae0b8f7354`; Phase 2 coordination input `1e11e979dbcd4d95a50cbf8ed87400ce854256b3`; TUNER v1.1.11 `5fb92c95d228d744d1182ae3956e850c5be2f277`; accepted A-010 private REMOTE source.
 - Required references: `references/CCM_1_1_0.md`; `docs/TUNER_NATIVE_API_V1.md` in the private REMOTE source; current coordination handoffs; `reports/A-REMOTE-010_CLOSURE.md`; `reports/A-REMOTE-011_KICKOFF.md`; `reports/A-REMOTE-011_PHASE1_RECONCILIATION_TRANSPORT.md`.
-- Dependencies: A-REMOTE-010 DONE / OWNER ACCEPTED; CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 Phase 2 profile specified; separate owner approval still required before active-workspace promotion or executable network integration.
-- Allowed scope: private disposable-copy reconciliation to accepted A-010; focused host tests; clean REMOTE production build; exact bounded authenticated-TCP record specification and non-secret vectors; English sanitized coordination publication.
-- Excluded scope: active REMOTE workspace changes, TUNER/REMOTE network integration, operational PSK generation, device access, flashing, hardware changes, AAC/AAC+ work, UI redesign, CCM semantic changes, private-source/binary/credential publication, STL/manual publication, A-REMOTE-012.
-- Shared-contract guard: CCM 1.1.0 semantics remain unchanged. The existing Native API v1 material is design-only and leaves transport/framing/authorization OPEN; this task does not silently approve or implement those choices.
-- Acceptance criteria: disposable copy exactly matches accepted A-010; focused A-010 tests and clean production build pass with diagnostics disabled; exact RTCP/1 bytes, limits and failure handling are specified; public vectors/tests pass; initial TUNER budget is explicit; coordination PR remains open and unmerged.
-- Verification: 1,715/1,715 files exact with zero differences; A-010 tests 28/28 PASS; clean `remote01 -j1` build PASS; RTCP/1 tests 14/14 PASS; sanitized publication and remote PR head verified. Hardware is NOT RUN.
+- Dependencies: A-REMOTE-010 DONE / OWNER ACCEPTED; CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 Phase 2 profile specified; Phase 3 source implementation is complete; separate owner approval is required before hardware commissioning.
+- Allowed scope: backed-up active-workspace promotion; private REMOTE and public TUNER RTCP/1 integration; first CCM functional slice; focused host tests and clean builds; English sanitized coordination publication.
+- Excluded scope: operational PSK generation, device access, flashing, hardware changes, AAC/AAC+ work, stations, playback commands, UI redesign, MQTT, SmartThings, CCM semantic changes, private-source/binary/credential publication, STL/manual publication, A-REMOTE-012.
+- Shared-contract guard: CCM 1.1.0 semantics and the frozen RTCP/1 Phase 2 profile remain unchanged; the implementation adds only the approved first functional slice.
+- Acceptance criteria: active private source is reversibly promoted; exact RTCP/1 and first CCM slice compile on both devices; focused tests and clean builds pass; memory/flash deltas are recorded; coordination PR remains open and unmerged; hardware is not run.
+- Verification: 1,715/1,715 promotion baseline files exact; existing A-010 tests 28/28 PASS; RTCP/1 tests 14/14 PASS; new codec tests 20/20 PASS; clean REMOTE and TUNER production builds PASS. Hardware is NOT RUN.
 - Stop/report conditions: baseline mismatch; missing A-010 source state; unresolved security/transport treated as if approved; any request to publish private material; any firmware or hardware operation.
-- Required outputs: Phase 2 report, exact RTCP/1 specification and public vectors/tests, sanitized evidence, archived prior handoff, current handoff, changelog/status entries, updated open coordination PR.
-- PM assignment evidence: owner instructions dated 2026-10-13 in the active session; Phase 2 authorizes disposable private reconciliation, host/build verification and the exact record specification, stopping before firmware network integration.
+- Required outputs: Phase 3 implementation report, sanitized evidence, archived prior handoff, current handoff, changelog/status entries and updated open coordination PR.
+- PM assignment evidence: owner instructions dated 2026-10-13 in the active session; Phase 3 authorizes backed-up promotion, private/public source implementation and build verification, stopping before hardware operations.

@@ -1,0 +1,40 @@
+{
+  "task": "A-REMOTE-011",
+  "phase": 3,
+  "status": "IMPLEMENTED_BUILD_VERIFIED_HARDWARE_NOT_RUN",
+  "date": "2026-10-13",
+  "tuner_commit": "18ddd3b16e305341f338afebd7dc725500ecbb73",
+  "tests": {
+    "a010_unchanged": "28/28 PASS",
+    "rtcp_reference_unchanged": "14/14 PASS",
+    "tuner_codec": "10/10 PASS",
+    "remote_codec": "10/10 PASS"
+  },
+  "remote": {
+    "build": "PASS",
+    "linked_flash_bytes": 2515085,
+    "firmware_bytes": 2515584,
+    "ota_headroom_bytes": 630144,
+    "static_ram_bytes": 47076,
+    "firmware_sha256": "ceae9f64329c5409fdfe92e5ac5394885010abf1cf66ac24a5ab7fcc35f11647",
+    "elf_sha256": "fa06311f2e1e60971c6fa6ef7907ef7c5793f79dff833d1abf6bf60960b4d5c4",
+    "map_sha256": "c24be41275e1b66377b2e8a138719b857bdb8b6dc94f04fb8b4211cdffd5f549",
+    "partitions_sha256": "a144343580dbdadace66fccc5969d7557de3d4c4f15a61e76db205cc26348184",
+    "diagnostics_enabled": false
+  },
+  "tuner": {
+    "build": "PASS",
+    "linked_flash_bytes": 2028225,
+    "firmware_bytes": 2034800,
+    "ota_headroom_bytes": 1110928,
+    "static_ram_bytes": 87408,
+    "firmware_sha256": "49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4",
+    "elf_sha256": "9d650ec9e55ef4e249117c09356be26b04561412dd6fe39bcd15587080f9c778",
+    "map_sha256": "8735b3bd642f8a47c0cb57bbec602f297944777ecc507a918574b747fc62d22e",
+    "partitions_sha256": "aaae2888c5a6a348004b5b436f47abb25ae32e72d9003902955a998eda723edd"
+  },
+  "hardware_accessed": false,
+  "firmware_flashed": false,
+  "operational_psk_created": false,
+  "private_material_published": false
+}
