@@ -1,7 +1,7 @@
 # A-REMOTE-010: minimal private persistence backend
 
 - Owner: REMOTE//01; authorized executor/publisher.
-- State: HOST PHASE OWNER ACCEPTED; STAGE 3 READ-ONLY UART VALIDATION PASS; READY FOR SEPARATELY AUTHORIZED INITIALIZATION.
+- State: STAGE 4 STOPPED / INCOMPLETE; INIT AND IMMEDIATE STATUS PASS; REBOOT/RECOVER/UI VERIFICATION NOT COMPLETED.
 - Coordination input: 3ed3ff49f8ff6ba548a8b3b23020ad6a32c4566f.
 - Objective: smallest reliable versioned persistence backend for installed64KiB remote_ctl, sufficient as a generic storage primitive for later common-API state; API not implemented.
 - References: [Owner authority](../references/A010_PRIVATE_IMPLEMENTATION_OWNER_AUTHORIZATION_2026-10-12.md); accepted A009 physical layout/recovery files, CCM1.1.0 section12.1; exact handoff/footer templates.
@@ -49,3 +49,6 @@ PASS — the exact 2,503,936-byte diagnostic candidate was written once at `0x10
 ## Stage 3 read-only UART validation published 2026-10-13T07:28:53Z
 
 PASS — exactly `!A010 INFO` and `!A010 STATUS` were sent once each. Both were accepted and returned the exact `remote_ctl` data/NVS identity at `0xE20000`/`0x10000`, erased state, schema 1, generation/next 0, no incomplete transaction, zero entry counts and `payload_logged=0`, with no unexpected error. See the [report](../reports/A-REMOTE-010_STAGE3_READ_ONLY_UART.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-010/STAGE3_RESULT.json). No source-code or firmware change and no mutating command occurred. The partition is ready for separately authorized initialization; Stage 4 and A-REMOTE-011 remain NOT STARTED.
+## Stage 4 controlled initialization partial result published 2026-10-13T07:37:58Z
+
+STOPPED / INCOMPLETE — `INIT` was transmitted exactly once and passed the required erased to initialized-empty transition at generation 0/next 1; immediate `STATUS` independently passed with exact partition identity and 10 used/2,006 free/1,880 available entries. One serial reset signal then produced no boot banner or A010 identity within 20 seconds. The required STOP applied: `RECOVER` was not sent, `INIT` was not retried, and post-reboot UI/configuration remain NOT VERIFIED. See the [report](../reports/A-REMOTE-010_STAGE4_PARTIAL_INITIALIZATION.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-010/STAGE4_PARTIAL_RESULT.json). No COMMIT/ERASE, firmware flash or source-code change occurred. Owner decision is required for reset/reboot verification and read-only RECOVER; A-REMOTE-011 is NOT STARTED.

@@ -1,6 +1,6 @@
 # A-REMOTE-010 hardware validation protocol
 
-**STAGES 1–3 EXECUTED / PASS; READY FOR SEPARATELY AUTHORIZED STAGE 4.** The exact diagnostic application is installed and read-only status passed. Current authority permits no NVS initialization, commit or erase. Execute later stages only after the owner approves the applicable stage. Practical hobby/public-beta scope applies; no power-cut, endurance or industrial campaign.
+**STAGES 1–3 PASS; STAGE 4 STOPPED / INCOMPLETE AFTER ONE SUCCESSFUL INIT AND IMMEDIATE STATUS.** Reboot was not verified and `RECOVER` was not sent. Never repeat `INIT`. Current authority permits no further reset, diagnostic command, commit or erase without a new owner decision. Practical hobby/public-beta scope applies; no power-cut, endurance or industrial campaign.
 
 ## Fixed identities
 
@@ -50,6 +50,7 @@ Executed 2026-10-13 under exact owner authorization: PASS. Both commands were ac
 ## Stage 4 — separately staged initialization
 
 Obtain explicit owner approval for initialization alone. Send exactly `!A010 INIT CONFIRM-A010-REMOTE-CTL-INIT` once. Require before `erased`, after `initialized_empty`, generation 0, next 1. Send `!A010 STATUS`; record entry counts. Reboot once and send `!A010 RECOVER`; require initialized empty generation 0/next 1 and normal UI/configuration. STOP without retry on any mismatch.
+Executed partially 2026-10-13: `INIT` once and immediate `STATUS` passed exactly. One serial reset signal produced no boot banner or A010 identity in 20 seconds, so the STOP rule applied. `RECOVER` was not sent and `INIT` must not be repeated. See [Stage 4 partial report](../reports/A-REMOTE-010_STAGE4_PARTIAL_INITIALIZATION.md). A new owner decision is required before reset/reboot verification or read-only recovery inspection.
 
 ## Stage 5 — separately staged first record
 
