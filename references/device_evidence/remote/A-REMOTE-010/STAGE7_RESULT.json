@@ -1,0 +1,43 @@
+{
+  "task": "A-REMOTE-010",
+  "stage": "Stage 7 prior-firmware restoration",
+  "recorded_utc": "2026-10-13T15:19:11Z",
+  "result": "PASS_OWNER_ACCEPTED",
+  "write": {
+    "executed_count": 1,
+    "flash_start": "0x10000",
+    "flash_end_inclusive": "0x273FFF",
+    "length_bytes": 2506752,
+    "restore_sha256": "57736494ea726600c68e25ae6a8f5b3bd109f5e5c1d5d858a05afd7ee8603aca",
+    "esptool_data_hash_verified": true,
+    "private_log_size": 4856,
+    "private_log_sha256": "1590d64fa0e3cdb47ecd522522fd918f4d813f4462ce0531b4589ddde1eed68e"
+  },
+  "readback": {
+    "flash_start": "0x10000",
+    "length_bytes": 2506752,
+    "sha256": "57736494ea726600c68e25ae6a8f5b3bd109f5e5c1d5d858a05afd7ee8603aca",
+    "byte_match": true,
+    "private_log_size": 33734,
+    "private_log_sha256": "3d3a9199012f488541eacbc7588f935cef656602b91681e927db07a5fb54b593"
+  },
+  "boot": {
+    "first_normal_reset_started_device": false,
+    "usb_disconnect_reconnect_performed_by_owner": true,
+    "normal_operation_restored": true,
+    "original_firmware_boot_confirmed": true,
+    "ui_functional": true,
+    "configuration_retained": true,
+    "new_investigation_requested": false
+  },
+  "remote_ctl": {
+    "written_or_erased": false,
+    "last_verified_generation": 2,
+    "test_records_preserved": true
+  },
+  "other_flash_region_supplied": false,
+  "source_change": false,
+  "private_binary_published": false,
+  "pr_merged": false,
+  "a_remote_011_started": false
+}

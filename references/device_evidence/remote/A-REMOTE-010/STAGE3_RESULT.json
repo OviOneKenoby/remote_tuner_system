@@ -1,0 +1,63 @@
+{
+  "task": "A-REMOTE-010",
+  "stage": "Stage 3 read-only UART diagnostic validation",
+  "recorded_utc": "2026-10-13T07:28:53Z",
+  "stage_input_commit": "06439250ffb8fe2ff9502823461228afa32c6537",
+  "result": "PASS",
+  "port": "COM3",
+  "baud": 115200,
+  "commands": [
+    {
+      "command": "!A010 INFO",
+      "executions": 1,
+      "response_count": 1,
+      "accepted": true,
+      "partition_exists": true,
+      "type": 1,
+      "subtype": 2,
+      "offset": "0x00E20000",
+      "size": "0x10000",
+      "state": "erased",
+      "schema": 1,
+      "generation": 0,
+      "next_generation": 0,
+      "incomplete": false,
+      "used_entries": 0,
+      "free_entries": 0,
+      "available_entries": 0,
+      "payload_logged": false,
+      "unexpected_error": false
+    },
+    {
+      "command": "!A010 STATUS",
+      "executions": 1,
+      "response_count": 1,
+      "accepted": true,
+      "partition_exists": true,
+      "type": 1,
+      "subtype": 2,
+      "offset": "0x00E20000",
+      "size": "0x10000",
+      "state": "erased",
+      "schema": 1,
+      "generation": 0,
+      "next_generation": 0,
+      "incomplete": false,
+      "used_entries": 0,
+      "free_entries": 0,
+      "available_entries": 0,
+      "payload_logged": false,
+      "unexpected_error": false
+    }
+  ],
+  "private_capture": {
+    "size": 460,
+    "sha256": "733707773f0ead4d659f26b8a2a5feca0f377095baa33eced6e75a9fdfb272ab",
+    "published": false
+  },
+  "mutating_commands_executed": [],
+  "firmware_write": false,
+  "source_code_change": false,
+  "ready_for_separately_authorized_initialization": true,
+  "next_gate": "Stage 4 INIT remains unexecuted and requires explicit owner authorization."
+}

@@ -1,0 +1,21 @@
+{
+  "generated_utc": "2026-10-13T03:35:07.084328+00:00",
+  "files": {
+    "ARTIFACT_SHA256.json": {
+      "bytes": 992,
+      "sha256": "745219c0b43d623883f576316eb32642ae32c907cfddf81fc65f4d3eebe8501b"
+    },
+    "BUILD_SANITIZED.log": {
+      "bytes": 883,
+      "sha256": "ee19cfdbd3e58440b6ae0774efafccd7ce57654e14b40af531b7170fed0d68bb"
+    },
+    "HOST_TESTS_SANITIZED.log": {
+      "bytes": 464,
+      "sha256": "b08231f38bb8b7f041fb44113b325b341bce6158a1ca0941c60bf8429a7acf15"
+    },
+    "RESULT.json": {
+      "bytes": 3920,
+      "sha256": "7e44ab94b911c841ffcb0419da605747a99b3b9949075a859c8e77f6db793f03"
+    }
+  }
+}

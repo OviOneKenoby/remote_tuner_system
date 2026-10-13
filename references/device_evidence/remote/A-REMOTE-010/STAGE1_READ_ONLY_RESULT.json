@@ -1,0 +1,62 @@
+{
+  "task": "A-REMOTE-010",
+  "stage": "Stage 1 read-only hardware preflight",
+  "recorded_utc": "2026-10-13T07:00:27Z",
+  "candidate_publication_commit": "a1f7b3bb69b4bfa3823c3ba3c5a27c0958a4ab85",
+  "result": "PASS",
+  "port": "COM3",
+  "tool": "esptool.py 4.11.0",
+  "device": {
+    "chip": "ESP32-S3 (QFN56)",
+    "revision": "v0.2",
+    "crystal_mhz": 40,
+    "embedded_psram": "8 MB AP_3v3",
+    "usb_mode": "USB-Serial/JTAG",
+    "physical_flash_bytes": 16777216,
+    "mac_published": false
+  },
+  "installed_partition_table": {
+    "sector_offset": "0x8000",
+    "sector_size": 4096,
+    "sector_sha256": "fd62ef669cdbab98ac5372777a686d8dcd9813f7eb5302a67cc5136e96e90f69",
+    "table_prefix_size": 3072,
+    "table_prefix_sha256": "a144343580dbdadace66fccc5969d7557de3d4c4f15a61e76db205cc26348184",
+    "accepted_a009_match": true,
+    "erased_padding_bytes": 1024,
+    "erased_padding_non_ff_bytes": 0,
+    "decoded_entry_count": 7,
+    "remote_ctl": {
+      "type_subtype": "data/nvs",
+      "offset": "0xE20000",
+      "size": "0x10000"
+    },
+    "overlap_or_bounds_error": false
+  },
+  "remote_ctl_read": {
+    "offset": "0xE20000",
+    "size": 65536,
+    "sha256": "71189f7fb6aed638640078fba3a35fda6c39c8962e74dcc75935aac948da9063",
+    "non_ff_bytes": 0,
+    "verdict": "erased"
+  },
+  "installed_factory_read": {
+    "offset": "0x10000",
+    "size": 2485824,
+    "sha256": "7e8d77c21898014fbd7ea625cf2d25aa7f77941d5ba1d24484090f7361279afb",
+    "accepted_pre_a010_identity_match": true,
+    "image_checksum_valid": true,
+    "image_validation_hash_valid": true,
+    "source_equivalence_claimed": false
+  },
+  "rom_usb_recovery_available_without_jtag": true,
+  "commands": {
+    "identity_reads": 2,
+    "flash_reads": 3,
+    "flash_writes": 0,
+    "flash_erases": 0,
+    "diagnostic_commands": 0,
+    "nvs_initializations": 0
+  },
+  "private_material_published": false,
+  "next_gate": "Explicit owner approval is required before Stage 2 candidate firmware flashing."
+}

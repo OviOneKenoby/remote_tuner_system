@@ -1,0 +1,49 @@
+{
+  "task": "A-REMOTE-010",
+  "stage": "Stage 4 controlled initialization and reboot recovery",
+  "recorded_utc": "2026-10-13T14:30:38Z",
+  "stage_input_commit": "ee6a29bffe0bea5bc6eca8df1975a7390d612c5e",
+  "result": "PASS",
+  "normal_reset": {
+    "performed_by": "owner",
+    "out_of_rom_download_mode": true,
+    "ui_functional_confirmed": true
+  },
+  "recover": {
+    "command": "!A010 RECOVER",
+    "transmitted_count": 1,
+    "response_count": 1,
+    "accepted": true,
+    "diagnostic_firmware_response_verified": true,
+    "partition_exists": true,
+    "type": 1,
+    "subtype": 2,
+    "offset": "0x00E20000",
+    "size": "0x10000",
+    "state": "initialized_empty",
+    "schema": 1,
+    "generation": 0,
+    "next_generation": 1,
+    "incomplete": false,
+    "used_entries": 10,
+    "free_entries": 2006,
+    "available_entries": 1880,
+    "payload_logged": false,
+    "unexpected_error": false
+  },
+  "initialization_survived_reboot": true,
+  "configuration_retained": "OWNER CONFIRMED through functional UI; no setting mutation performed",
+  "initialization_repeated": false,
+  "additional_reset_performed_by_executor": false,
+  "commit1_executed": false,
+  "commit2_executed": false,
+  "erase_executed": false,
+  "firmware_write": false,
+  "source_code_change": false,
+  "private_capture": {
+    "size": 250,
+    "sha256": "79e80674da21c216f99a13854aa2cb6a37c48a21edde74ca07dfd546f5f7c521",
+    "published": false
+  },
+  "next_gate": "Stage 5 COMMIT1 remains unexecuted and requires explicit owner authorization."
+}

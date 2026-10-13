@@ -1,0 +1,15 @@
+A-REMOTE-010 private clean serial build
+UTC evidence collection: 2026-10-13T03:35:07.084328+00:00
+Environment: PlatformIO 6.2.0; espressif32 6.13.0; ESP-IDF 5.5.3; xtensa-esp-elf GCC 14.2.0+20251107
+Command class: clean, serial -j1 target build; no upload target
+Result: PASS; final attempt 1/1; 512.09 seconds
+Selected component: remote_persistence
+Compiled: remote_persistence/backend.cpp; remote_persistence/esp_nvs_store.cpp
+Linked dormant symbols: Backend::recover(); EspNvsStore::open(); backend and adapter linker anchors
+Runtime caller: none; normal boot does not open or write remote_ctl
+RAM report: 47084 / 327680 bytes
+Flash report: 2495897 / 8388608 bytes (linker measure)
+Packaged firmware.bin: 2496400 bytes
+OTA slot/headroom: 3145728 / 649328 bytes
+Partition binary: exact byte match to accepted A-REMOTE-009 partitions.bin
+Hardware access/upload/write/erase: NOT RUN

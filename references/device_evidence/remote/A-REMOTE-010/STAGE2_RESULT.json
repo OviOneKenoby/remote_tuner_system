@@ -1,0 +1,59 @@
+{
+  "task": "A-REMOTE-010",
+  "stage": "Stage 2 diagnostic firmware flashing",
+  "recorded_utc": "2026-10-13T07:19:42Z",
+  "result": "PASS",
+  "port": "COM3",
+  "tool": "esptool.py 4.11.0",
+  "device_identity_match": true,
+  "recovery_backup": {
+    "size": 16777216,
+    "sha256": "f6d806e0c19e545951f2e75ab8b9373a89215a58f2cb8b0a3c21f3d759e3bdb8",
+    "reverified_before_write": true,
+    "published": false
+  },
+  "write": {
+    "command": "esptool.py --chip esp32s3 --port COM3 --baud 115200 write_flash --flash_mode keep --flash_freq keep --flash_size keep 0x10000 <PRIVATE_CANDIDATE_FIRMWARE_BIN>",
+    "exit_code": 0,
+    "address": "0x10000",
+    "image_size": 2503936,
+    "image_last_byte": "0x2734FF",
+    "affected_sector_span": "0x10000-0x273FFF",
+    "firmware_sha256": "308181d4144494734fe8fae360938f74b9f886fb4c41bff0cba9b89427e4d248",
+    "tool_hash_verified": true
+  },
+  "readback": {
+    "exit_code": 0,
+    "size": 2503936,
+    "sha256": "308181d4144494734fe8fae360938f74b9f886fb4c41bff0cba9b89427e4d248",
+    "byte_identical_to_candidate": true
+  },
+  "boot": {
+    "controlled_boot_count": 1,
+    "factory_offset_observed": true,
+    "diagnostic_identity_exact": "build=A010_VALIDATION diagnostic=ENABLED persistence_on_boot=0",
+    "diagnostic_identity_count": 1,
+    "panic_observed": false,
+    "watchdog_observed": false,
+    "partition_error_observed": false,
+    "boot_loop_observed": false,
+    "owner_ui_verdict": "normal",
+    "owner_configuration_verdict": "existing observable configuration retained"
+  },
+  "remote_ctl_post_boot": {
+    "offset": "0xE20000",
+    "size": 65536,
+    "sha256": "71189f7fb6aed638640078fba3a35fda6c39c8962e74dcc75935aac948da9063",
+    "non_ff_bytes": 0,
+    "unchanged_from_stage1": true,
+    "verdict": "erased and uninitialized"
+  },
+  "prohibited_regions_supplied_to_write_command": [],
+  "diagnostic_commands_executed": [],
+  "nvs_initializations": 0,
+  "commits": 0,
+  "erases": 0,
+  "rollback_required": false,
+  "private_material_published": false,
+  "next_gate": "Stage 3 and every persistent diagnostic stage remain unexecuted and require the protocol's applicable owner authorization."
+}

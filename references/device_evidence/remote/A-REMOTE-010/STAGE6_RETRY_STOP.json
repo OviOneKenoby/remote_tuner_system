@@ -1,0 +1,21 @@
+{
+  "task": "A-REMOTE-010",
+  "stage": "Stage 6 authorized retry",
+  "recorded_utc": "2026-10-13T14:46:17Z",
+  "result": "STOPPED_BEFORE_MUTATION",
+  "port": "COM3",
+  "usb_identity_matches_expected_espressif_device": true,
+  "port_status": "OK",
+  "read_only_recover_transmitted_count": 1,
+  "serial_bytes_received": 3460,
+  "a010_response_count": 0,
+  "passive_followup_seconds": 3,
+  "passive_bytes_received": 320,
+  "passive_a010_or_fault_lines": 0,
+  "commit2_executed": false,
+  "reset_executed": false,
+  "erase_executed": false,
+  "firmware_write": false,
+  "source_code_change": false,
+  "stop_reason": "The required valid generation-1 precondition could not be verified because the read-only RECOVER response was missing."
+}

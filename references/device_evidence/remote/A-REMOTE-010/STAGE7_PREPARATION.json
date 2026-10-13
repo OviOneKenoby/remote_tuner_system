@@ -1,0 +1,39 @@
+{
+  "task": "A-REMOTE-010",
+  "stage": "Stage 7 firmware restoration preparation",
+  "recorded_utc": "2026-10-13T15:03:05Z",
+  "result": "READY_NOT_AUTHORIZED",
+  "restore_span": {
+    "flash_start": "0x10000",
+    "flash_end_inclusive": "0x273FFF",
+    "length_bytes": 2506752,
+    "length_hex": "0x264000",
+    "sha256": "57736494ea726600c68e25ae6a8f5b3bd109f5e5c1d5d858a05afd7ee8603aca",
+    "equals_verified_backup_slice": true
+  },
+  "factory_image_prefix": {
+    "length_bytes": 2485824,
+    "sha256": "7e8d77c21898014fbd7ea625cf2d25aa7f77941d5ba1d24484090f7361279afb",
+    "matches_accepted_pre_A010_identity": true
+  },
+  "full_backup": {
+    "length_bytes": 16777216,
+    "sha256": "f6d806e0c19e545951f2e75ab8b9373a89215a58f2cb8b0a3c21f3d759e3bdb8"
+  },
+  "write_address": "0x10000",
+  "flash_mode": "keep",
+  "flash_frequency": "keep",
+  "flash_size": "keep",
+  "remote_ctl": {
+    "start": "0xE20000",
+    "size": "0x10000",
+    "overlaps_restore_span": false,
+    "preserve_generation": 2,
+    "erase_authorized": false
+  },
+  "hardware_access": false,
+  "flash_executed": false,
+  "source_change": false,
+  "pr_merge": false,
+  "a_remote_011_started": false
+}

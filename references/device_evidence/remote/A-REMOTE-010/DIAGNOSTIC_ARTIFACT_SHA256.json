@@ -1,0 +1,41 @@
+{
+  "recorded_utc": "2026-10-13T06:43:09.576743+00:00",
+  "scope": "Private A-REMOTE-010 diagnostic candidate; artifacts remain private and were not published.",
+  "environment": "remote01_a010_diag",
+  "build_definition": "A010_REMOTE_PERSISTENCE_DIAGNOSTIC=1",
+  "artifacts": {
+    "firmware.bin": {
+      "bytes": 2503936,
+      "sha256": "308181d4144494734fe8fae360938f74b9f886fb4c41bff0cba9b89427e4d248"
+    },
+    "firmware.elf": {
+      "bytes": 18601112,
+      "sha256": "d987f5e988ed07ed1b07ef33749108048f5bce4eb047af8de948795b518a7c94"
+    },
+    "firmware.map": {
+      "bytes": 14973417,
+      "sha256": "5179002f97c56f3debd78dc9a4fd7d923a0f750078164fe08b430fd1ba6c03f2"
+    },
+    "partitions.bin": {
+      "bytes": 3072,
+      "sha256": "a144343580dbdadace66fccc5969d7557de3d4c4f15a61e76db205cc26348184"
+    },
+    "bootloader.bin": {
+      "bytes": 20832,
+      "sha256": "bcb42f4af313d0cdaa10668711f0a82b809073a603cc4ab2d2a34cc2d0ac8bf0"
+    }
+  },
+  "firmware_ota": {
+    "linker_flash_bytes": 2503437,
+    "firmware_bytes": 2503936,
+    "ota_slot_bytes": 3145728,
+    "ota_headroom_bytes": 641792
+  },
+  "restore_span": {
+    "source": "owner-retained verified A-009 full backup; bytes remain private",
+    "flash_start": "0x10000",
+    "flash_end_inclusive": "0x273FFF",
+    "bytes": 2506752,
+    "sha256": "57736494ea726600c68e25ae6a8f5b3bd109f5e5c1d5d858a05afd7ee8603aca"
+  }
+}

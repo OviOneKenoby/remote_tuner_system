@@ -1,0 +1,22 @@
+{
+  "task": "A-REMOTE-010",
+  "stage": "Stage 6 COMMIT2",
+  "recorded_utc": "2026-10-13T14:54:55Z",
+  "result": "STOPPED_BEFORE_TRANSMISSION",
+  "port": "COM3",
+  "port_enumerated": true,
+  "port_status": "OK",
+  "failure_phase": "serial port configure/open",
+  "exception_type": "SerialException",
+  "platform_error": "Windows device error 31",
+  "command_bytes_transmitted": 0,
+  "commit2_executed": false,
+  "private_capture_size": 0,
+  "private_capture_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "retry_executed": false,
+  "reset_executed": false,
+  "other_command_executed": false,
+  "firmware_write": false,
+  "source_code_change": false,
+  "last_verified_state": "valid_recoverable generation 1 next 2 incomplete 0"
+}
