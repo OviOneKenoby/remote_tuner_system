@@ -1,0 +1,29 @@
+{
+  "stage": "A-REMOTE-011 Stage 3B targeted TUNER helper correction",
+  "verdict": "PASS_BUILD_ONLY",
+  "failure_cause": "A boolean Preferences read-only open could not distinguish an absent namespace from a genuine NVS error.",
+  "correction": {
+    "absent_namespace_result": "empty",
+    "other_open_errors": "fail_closed",
+    "key_read_errors": "fail_closed",
+    "partial_states": "fail_closed",
+    "production_reader_changed": false
+  },
+  "tests": {
+    "passed": 22,
+    "total": 22
+  },
+  "firmware": {
+    "bytes": 2026736,
+    "hex_bytes": "0x1EECF0",
+    "sha256": "b866918f5a63586c5ed28cb192d71a9b63c886b6d10cf0fdd4cc5a5e6198c7a7",
+    "static_ram_bytes": 86032,
+    "linked_program_bytes": 2020165,
+    "application_slot_headroom_bytes": 1125563
+  },
+  "original_capsules_unchanged": true,
+  "hardware_accessed": false,
+  "firmware_flashed": false,
+  "capsule_transmitted": false,
+  "next_gate": "Separately authorize corrected TUNER helper installation and one transmission of the retained original TUNER capsule."
+}

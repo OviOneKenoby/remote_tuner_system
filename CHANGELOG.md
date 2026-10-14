@@ -1,3 +1,9 @@
+# 2026-10-14 -- A-REMOTE-011 Stage 3B targeted TUNER helper correction
+
+- Corrected only the private commissioning helper's empty-store probe: ESP-IDF `ESP_ERR_NVS_NOT_FOUND` now identifies an absent unprovisioned namespace, while all other open/read errors and partial states remain fail-closed.
+- Focused tests passed 22/22 and a clean commissioning build passed. The corrected 2,026,736-byte firmware has SHA-256 `b866918f5a63586c5ed28cb192d71a9b63c886b6d10cf0fdd4cc5a5e6198c7a7`.
+- The original private capsules remain unchanged. No hardware access, flash, capsule transmission, NVS mutation, REMOTE change or PR merge occurred; PR #17 remains open.
+
 # 2026-10-14 ? A-REMOTE-011 Stage 3B TUNER pairing stopped
 
 - Verified retained TUNER rollback evidence, the accepted five-entry layout, REMOTE active generation 2, the current private TUNER locator and the exact commissioning image; generated one private matching capsule pair with the operating-system CSPRNG.

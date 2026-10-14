@@ -1,29 +1,29 @@
-﻿# REMOTE//01 handoff
+# REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE3B-20261014
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE3B-CORRECTION-20261014
 - Updated (UTC): 2026-10-14
 - Task ID: A-REMOTE-011
-- Status: STAGE 3B STOPPED -- TUNER PAIRING INCOMPLETE
+- Status: STAGE 3B CORRECTION BUILD PASS -- HARDWARE RETRY UNAUTHORIZED
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `205a45009a28fd3e1f65ec98d67c4766ba1bec1c`
+- Input head: `d6e87b8026bbba6c32a44c783b8792d909b7842c`
 
 ## Result
 
-The retained TUNER rollback evidence, installed-layout authority, REMOTE active generation 2, private TUNER locator and accepted commissioning image were verified. One matching private capsule pair was generated. The exact TUNER helper was installed and independently read back successfully.
+The private TUNER commissioning helper now distinguishes the ESP-IDF absent-namespace result from genuine NVS errors. Only absence is treated as empty. Open/read errors and partial or malformed pairing state continue to fail closed. The production pairing reader and unrelated NVS code were not changed.
 
-The TUNER capsule was transmitted exactly once and returned sanitized `storage_error`. Source review shows that the helper interpreted the absent `remote_pair` namespace as a storage failure and returned before any pairing-data write. TUNER pairing is incomplete; REMOTE was not provisioned or accessed.
+Focused tests passed 22/22 and the clean commissioning build passed. The exact corrected artifact identity is recorded in the correction report. Both original private capsules remain unchanged.
 
 ## Scope guard
 
-No automatic retry, recovery capsule, production restore, erase, RTCP command or PR merge occurred. The helper remains installed and both original capsules remain private.
+No hardware was accessed, no firmware was flashed, no capsule was retransmitted, and no TUNER NVS or REMOTE state was modified. PR #17 remains open and unmerged.
 
 ## Next owner decision
 
-Review and authorize or reject a narrowly corrected private TUNER helper, its focused verification, and a separately gated second transmission that reuses the retained original capsule. REMOTE provisioning remains unauthorized.
+Authorize or reject application-only installation of the exact corrected TUNER helper, exact readback verification and one transmission of the retained original TUNER capsule. REMOTE provisioning remains separately gated.
 
 ## Evidence
 
-- `reports/A-REMOTE-011_STAGE3B_TUNER_PAIRING.md`
-- `references/device_evidence/remote/A-REMOTE-011/STAGE3B_RESULT.json`
-- Previous report: `reports/A-REMOTE-011_STAGE3A_PAIRING_HELPER.md`
+- `reports/A-REMOTE-011_STAGE3B_TUNER_HELPER_CORRECTION.md`
+- `references/device_evidence/remote/A-REMOTE-011/STAGE3B_CORRECTION_RESULT.json`
+- Prior stopped attempt: `reports/A-REMOTE-011_STAGE3B_TUNER_PAIRING.md`
