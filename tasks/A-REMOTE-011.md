@@ -1,6 +1,6 @@
 # A-REMOTE-011: Common REMOTE-TUNER API integration kickoff
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: IN PROGRESS - STAGE 4 PASS / STAGE 5 BLOCKED BEFORE SOURCE EDIT / ENCODER ROUTE AND GPIO IDENTITY MISSING
+- State: IN PROGRESS - STAGE 4 PASS / STAGE 5 BLOCKED / OWNER-SELECTED GPIO4 CONFLICTS WITH ACTIVE BATTERY SENSING
 - Coordination input commit: `8e93c702940d49583f3fdd58046503ae0b8f7354`
 - Objective: implement the frozen RTCP/1 transport and first CCM 1.1.0 REMOTE-TUNER integration slice, verify both builds and stop before hardware commissioning.
 - Baseline: coordination main `8e93c702940d49583f3fdd58046503ae0b8f7354`; Phase 2 coordination input `1e11e979dbcd4d95a50cbf8ed87400ce854256b3`; TUNER v1.1.11 `5fb92c95d228d744d1182ae3956e850c5be2f277`; accepted A-010 private REMOTE source.
@@ -26,3 +26,7 @@ A live authenticated session passed the read-only precondition check, but the pr
 ## Stage 5 encoder routing blocked before source edit 2026-10-14
 
 The active and preserved private sources contain only a host-tested quadrature model. They contain no production encoder sampler, GPIO identity, event consumer, LVGL encoder device or context router. The implementation therefore stopped before editing rather than guessing hardware or changing navigation semantics. No tests/builds were run because no valid source change existed; no hardware/control action occurred. See the [routing blocker report](../reports/A-REMOTE-011_STAGE5_ENCODER_ROUTING_BLOCKER.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-011/STAGE5_ENCODER_ROUTING_BLOCKER.json).
+
+## Stage 5 owner pin assignment rejected after hardware verification 2026-10-14
+
+The owner identified the encoder as GPIO4 CLK / GPIO5 DT and reserved GPIO1. The official Waveshare V2 schematic labels IO4 `BAT_ADC`, and the active private firmware continuously uses ADC1 channel 3 with a compile-time GPIO4 mapping for main-battery sensing. GPIO1 separately remains ADC1 channel 0 for external-power sensing. The requested pair therefore fails the mandatory conflict check. A transient private implementation passed focused tests and built, but is rejected and non-deployable; every transient source edit was reverted. No hardware or control operation occurred. See the [GPIO conflict report](../reports/A-REMOTE-011_STAGE5_ENCODER_GPIO_CONFLICT.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-011/STAGE5_ENCODER_GPIO_CONFLICT.json).

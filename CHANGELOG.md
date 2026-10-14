@@ -1,3 +1,9 @@
+# 2026-10-14 -- A-REMOTE-011 Stage 5 blocked by encoder GPIO conflict
+
+- Recorded the owner-selected GPIO4 CLK / GPIO5 DT assignment and GPIO1 reservation for Waveshare ESP32-S3-Touch-LCD-3.49B V2 PCB Rev1.1.
+- Official schematic and active-source checks agree that GPIO4 is `BAT_ADC`, actively sampled as ADC1 channel 3. GPIO1 separately remains the external-power ADC input. The requested encoder pair is therefore unsafe and was not enabled.
+- A bounded transient private candidate passed focused tests and built, but is rejected and non-deployable; all source edits were reverted. No hardware, flash, pairing/NVS or RTCP control operation occurred. PR #17 remains open.
+
 # 2026-10-14 -- A-REMOTE-011 Stage 5 encoder routing blocked before source edit
 
 - Inspected the active private REMOTE source and preserved A-010/A-011 copies. All contain the bounded host-side quadrature model, but none contains a production encoder sampler, encoder GPIO identity, encoder event consumer, LVGL encoder input or UI-context router.
