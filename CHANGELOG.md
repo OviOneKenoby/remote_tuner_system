@@ -363,3 +363,8 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 - Continued only the work blocked by the earlier COM5 access failure. Restored the accepted 2,034,800-byte TUNER production application once at `0x10000`; exact readback matched SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`. The completed REMOTE restoration was not repeated.
 - Both production applications boot normally with retained pairing/configuration and owner-confirmed normal UI. Authenticated RTCP/1 negotiated CCM 1.1.0 identity, the bounded capability set and continuing fresh `volume.level`/`playback.state` snapshots.
 - Diagnostics showed one active session, advancing capability/lifecycle evidence, and zero command dispatches or transport-result errors. No RTCP control command, unrelated flash write, source change or PR merge occurred. PR #17 remains open pending a separate owner decision on the optional one-command `volume.set` stage.
+# 2026-10-14 -- A-REMOTE-011 Stage 5 encoder implementation stopped at build
+
+- Recorded owner approval of GPIO2/J6-3 for encoder A, GPIO5/J6-6 for encoder B and J6-9 GND for common; the wiring remains physically unverified.
+- The private HOME-only encoder-to-CCM-volume path passed 5/5 focused routing/admission cases and the existing decoder passed 19/19 cases, but the one clean production build failed because `user_app` could not resolve the shared `physical_input/model.hpp` header.
+- Stopped at the first unexpected build failure. No second build, hardware access, flash, pairing/NVS change or live control command occurred; no firmware size, hash or headroom is available.

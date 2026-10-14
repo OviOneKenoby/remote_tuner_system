@@ -10,7 +10,7 @@ This map combines the official Waveshare V2 schematic and interface table with t
 - **CONFIRMED USED**: connected by the V2 schematic and used by current production firmware or established owner hardware.
 - **CONFIRMED BOARD FUNCTION**: connected by the V2 schematic; the related production feature may be dormant.
 - **CANDIDATE FREE**: direct expansion pad, no other onboard function shown in the V2 schematic, no current production claim, and not an ESP32-S3 strapping pin.
-- **OWNER SELECTED / PENDING**: proposed use; no wiring or firmware activation has occurred.
+- **OWNER APPROVED / PHYSICALLY UNVERIFIED**: approved for implementation, but wiring and electrical behavior have not been commissioned.
 - **UNKNOWN**: the reviewed evidence does not establish availability.
 
 ## Expansion-pad identification
@@ -21,13 +21,13 @@ Pin numbers follow the `J3` and `J6` pin-1 markers in the official V2 schematic 
 | --- | --- | --- |
 | J6-1 | GPIO0 | CONFIRMED BOARD FUNCTION: BOOT0 and ESP32-S3 strapping pin; unavailable for encoder use. |
 | J6-2 | GPIO1 | CONFIRMED USED: owner-installed external-power ADC sensing. |
-| J6-3 | GPIO2 | CANDIDATE FREE: direct MCU GPIO breakout; no other V2 schematic load or production claim found. |
+| J6-3 | GPIO2 | OWNER APPROVED / PHYSICALLY UNVERIFIED: encoder A/CLK; direct MCU GPIO breakout with no other V2 schematic load or production claim found. |
 | J6-4 | GPIO3 | CONFIRMED BOARD FUNCTION: direct breakout, but ESP32-S3 strapping pin; unavailable for encoder use. |
 | J6-5 | GPIO4 | CONFIRMED USED: `BAT_ADC`, ADC1 channel 3. |
-| J6-6 | GPIO5 | CANDIDATE FREE: direct MCU GPIO breakout; no other V2 schematic load or production claim found. |
+| J6-6 | GPIO5 | OWNER APPROVED / PHYSICALLY UNVERIFIED: encoder B/DT; direct MCU GPIO breakout with no other V2 schematic load or production claim found. |
 | J6-7 | VBUS | Power net; not a GPIO. |
 | J6-8 | 3V3 | Regulated supply; not an encoder signal. |
-| J6-9 | GND | Preferred encoder common connection. |
+| J6-9 | GND | OWNER APPROVED / PHYSICALLY UNVERIFIED: encoder common. |
 | J6-10 | USB D- / GPIO19 | CONFIRMED USED: native USB; unavailable. |
 | J6-11 | USB D+ / GPIO20 | CONFIRMED USED: native USB; unavailable. |
 | J3-1 | VBAT | Battery rail; not a GPIO. |
@@ -48,10 +48,10 @@ Pin numbers follow the `J3` and `J6` pin-1 markers in the official V2 schematic 
 | --- | --- | --- |
 | 0 | BOOT0, J6-1, strapping pin | Reserved; do not use. |
 | 1 | External-power ADC1 channel 0, J6-2 | CONFIRMED USED. |
-| 2 | Direct breakout J6-3; no other schematic load | CANDIDATE FREE. |
+| 2 | Direct breakout J6-3; encoder A/CLK | OWNER APPROVED / PHYSICALLY UNVERIFIED; input only with internal pull-up. |
 | 3 | Direct breakout J6-4, strapping pin | Reserved; do not use. |
 | 4 | Battery divider `BAT_ADC`, ADC1 channel 3, J6-5 | CONFIRMED USED. |
-| 5 | Direct breakout J6-6; no other schematic load | CANDIDATE FREE. |
+| 5 | Direct breakout J6-6; encoder B/DT | OWNER APPROVED / PHYSICALLY UNVERIFIED; input only with internal pull-up. |
 | 6, 7, 15, 45, 46 | Onboard I2S/audio nets; GPIO45 and GPIO46 are also strapping pins | Reserved from encoder use. |
 | 8 | TCA9554 shared interrupt for touch/IMU/RTC and wake | CONFIRMED USED. |
 | 9-14 | LCD QSPI CS, clock and data 0-3 | CONFIRMED USED. |
@@ -67,11 +67,11 @@ Pin numbers follow the `J3` and `J6` pin-1 markers in the official V2 schematic 
 
 The TCA9554 expander outputs and inputs are already assigned to touch interrupt, backlight enable, IMU interrupts, RTC interrupt, LCD reset, system power hold and audio mode. They are not encoder candidates.
 
-## Preferred encoder wiring proposal
+## Approved encoder wiring
 
-Status: **OWNER SELECTED / PENDING APPROVAL; not wired or enabled.**
+Status: **OWNER APPROVED / PHYSICALLY UNVERIFIED; not wired, flashed or commissioned.**
 
-| Encoder terminal | Proposed board connection | Electrical mode |
+| Encoder terminal | Approved board connection | Electrical mode |
 | --- | --- | --- |
 | A / CLK | GPIO2, expansion pad **J6-3** | Input only, internal 3.3 V pull-up. |
 | B / DT | GPIO5, expansion pad **J6-6** | Input only, internal 3.3 V pull-up. |
@@ -80,7 +80,7 @@ Status: **OWNER SELECTED / PENDING APPROVAL; not wired or enabled.**
 
 GPIO2/GPIO5 is the preferred pair because both signals are direct J6 breakouts, neither has another load in the V2 schematic, neither is an ESP32-S3 strapping pin, and neither is claimed by the current production firmware. GPIO0 and GPIO3 are rejected because they are strapping pins. GPIO1 and GPIO4 are rejected because they are active analog inputs. The remaining exposed J3/J6 GPIOs are tied to USB, UART, I2C or SD functions.
 
-Before implementation, the owner must approve this exact wiring and confirm the physical `J6` pin-1 orientation. Later commissioning must confirm clockwise/counterclockwise polarity and the mechanical transitions-per-detent convention; swapping A and B in wiring or configuration requires a separate explicit decision based on that observation.
+The owner approved this exact wiring for private implementation. Physical commissioning must still confirm the `J6` pin-1 orientation, clockwise/counterclockwise polarity and the mechanical transitions-per-detent convention. Swapping A and B in wiring or configuration requires a separate explicit decision based on that observation.
 
 ## Sources
 
