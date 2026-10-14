@@ -1,3 +1,9 @@
+# 2026-10-14 ? A-REMOTE-011 Stage 2B TUNER installation
+
+- Installed the exact TUNER Phase 3 application from `18ddd3b16e305341f338afebd7dc725500ecbb73` once at `0x10000` using stable 921600-baud esptool communication. Independent 2,034,800-byte readback matched SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`.
+- Offline comparison explained the post-boot NVS delta as one valid 29-byte append-only framework DHCP-state entry. No pre-existing configuration entry changed and no pairing namespace exists; the owner accepted the delta.
+- Owner functional confirmation passed UI/controls, retained Wi-Fi, MP3, Bluetooth A2DP, web manager during Bluetooth, stations, favorites and recent items. Pairing/PSK/RTCP control and Stage 3 were not started; REMOTE was unchanged; PR #17 remains open and unmerged.
+
 # 2026-10-14 ? A-REMOTE-011 Stage 2A REMOTE installation
 
 - Installed the exact Phase 3 REMOTE application once at `0x10000`; independent 2,515,584-byte readback matched candidate SHA-256 `ceae9f64329c5409fdfe92e5ac5394885010abf1cf66ac24a5ab7fcc35f11647`.
