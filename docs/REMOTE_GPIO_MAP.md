@@ -1,6 +1,6 @@
 # REMOTE//01 GPIO map
 
-Date: 2026-10-14  
+Date: 2026-10-14
 Board: Waveshare ESP32-S3-Touch-LCD-3.49B V2, PCB Rev1.1
 
 ## Evidence and status vocabulary
