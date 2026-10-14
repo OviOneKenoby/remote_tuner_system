@@ -368,3 +368,9 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 - Recorded owner approval of GPIO2/J6-3 for encoder A, GPIO5/J6-6 for encoder B and J6-9 GND for common; the wiring remains physically unverified.
 - The private HOME-only encoder-to-CCM-volume path passed 5/5 focused routing/admission cases and the existing decoder passed 19/19 cases, but the one clean production build failed because `user_app` could not resolve the shared `physical_input/model.hpp` header.
 - Stopped at the first unexpected build failure. No second build, hardware access, flash, pairing/NVS change or live control command occurred; no firmware size, hash or headroom is available.
+
+# 2026-10-14 -- A-REMOTE-011 Stage 5 include-path correction remained blocked
+
+- Registered the existing shared include tree as a private header-only `physical_input` component dependency without absolute paths or global include changes.
+- The one authorized production build retained the original `physical_input/model.hpp` resolution failure while compiling `user_app`; no distinct compiler error appeared.
+- Stopped without another correction or build. Previously passing tests were not repeated, and no deployable firmware or hardware/control operation exists.

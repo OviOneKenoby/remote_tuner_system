@@ -1,6 +1,6 @@
 # A-REMOTE-011: Common REMOTE-TUNER API integration kickoff
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: IN PROGRESS - STAGE 4 PASS / STAGE 5 IMPLEMENTED PRIVATELY, STOPPED AT FIRST PRODUCTION-BUILD FAILURE
+- State: IN PROGRESS - STAGE 4 PASS / STAGE 5 INCLUDE-PATH CORRECTION ATTEMPT FAILED WITH ORIGINAL ERROR
 - Coordination input commit: `8e93c702940d49583f3fdd58046503ae0b8f7354`
 - Objective: implement the frozen RTCP/1 transport and first CCM 1.1.0 REMOTE-TUNER integration slice, verify both builds and stop before hardware commissioning.
 - Baseline: coordination main `8e93c702940d49583f3fdd58046503ae0b8f7354`; Phase 2 coordination input `1e11e979dbcd4d95a50cbf8ed87400ce854256b3`; TUNER v1.1.11 `5fb92c95d228d744d1182ae3956e850c5be2f277`; accepted A-010 private REMOTE source.
@@ -38,3 +38,7 @@ Official V2 schematic/interface evidence and the active production source identi
 ## Stage 5 approved encoder implementation stopped at build 2026-10-14
 
 The owner approved GPIO2/J6-3, GPIO5/J6-6 and J6-9 GND. The bounded private implementation passed 5/5 encoder/admission cases and the existing quadrature suite passed 19/19 cases. The one clean production build then stopped at its first failure: `user_app` could not resolve the existing shared `physical_input/model.hpp` header because its component include path does not expose the private root include directory. No correction or second build was attempted. No firmware artifact, hardware action or live command exists. See the [stop report](../reports/A-REMOTE-011_STAGE5_ENCODER_IMPLEMENTATION_STOP.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-011/STAGE5_ENCODER_IMPLEMENTATION_STOP.json).
+
+## Stage 5 include-path correction result 2026-10-14
+
+The private shared include tree was registered as a header-only ESP-IDF component and added to `user_app` private requirements. Exactly one production build was run and retained the original `fatal error: physical_input/model.hpp: No such file or directory` diagnostic. No distinct build error appeared; no additional correction, build or test was run. No firmware artifact or hardware operation exists. See the [result report](../reports/A-REMOTE-011_STAGE5_INCLUDE_PATH_RESULT.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_INCLUDE_PATH_RESULT.json).
