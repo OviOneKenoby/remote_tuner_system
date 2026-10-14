@@ -1,3 +1,9 @@
+# 2026-10-14 ? A-REMOTE-011 Stage 1 read-only hardware capture
+
+- Stage 1 PASS separately for REMOTE//01 and TUNER//01: chip/flash identity, installed partition layouts, complete private flash/application backups, direct rollback-region reads, hashes and ROM/USB recovery access were verified.
+- Installed partition bytes match the accepted REMOTE seven-entry and TUNER five-entry artifacts. Direct table, persistence and candidate-range reads match their full-backup slices. TUNER installed firmware is structurally valid but not claimed byte-identical to the historical v1.1.11 artifact; the fresh readback is the rollback authority.
+- No write, erase, flash, pairing, PSK generation, NVS/remote_ctl mutation, RTCP control, merge or later commissioning stage occurred. Stage 2 remains unauthorized and separate-storage copy verification remains a pre-write prerequisite.
+
 # 2026-10-14 ? A-REMOTE-011 Phase 4 commissioning preparation
 
 - Prepared a staged, reversible two-device commissioning protocol with exact application-only write ranges, fresh private backup prerequisites, sanitized evidence gates, one controlled `volume.set`, reconnect/resynchronization, bounded TUNER MP3/A2DP/web-manager memory measurements and exact rollback steps.

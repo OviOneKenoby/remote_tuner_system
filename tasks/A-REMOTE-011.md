@@ -1,16 +1,16 @@
 # A-REMOTE-011: Common REMOTE-TUNER API integration kickoff
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: IN PROGRESS - PHASE 4 COMMISSIONING PROCEDURE PREPARED / HARDWARE NOT RUN
+- State: IN PROGRESS - STAGE 1 READ-ONLY HARDWARE PREFLIGHT PASS / STAGE 2 UNAUTHORIZED
 - Coordination input commit: `8e93c702940d49583f3fdd58046503ae0b8f7354`
 - Objective: implement the frozen RTCP/1 transport and first CCM 1.1.0 REMOTE-TUNER integration slice, verify both builds and stop before hardware commissioning.
 - Baseline: coordination main `8e93c702940d49583f3fdd58046503ae0b8f7354`; Phase 2 coordination input `1e11e979dbcd4d95a50cbf8ed87400ce854256b3`; TUNER v1.1.11 `5fb92c95d228d744d1182ae3956e850c5be2f277`; accepted A-010 private REMOTE source.
 - Required references: `references/CCM_1_1_0.md`; `docs/TUNER_NATIVE_API_V1.md` in the private REMOTE source; current coordination handoffs; `reports/A-REMOTE-010_CLOSURE.md`; `reports/A-REMOTE-011_KICKOFF.md`; `reports/A-REMOTE-011_PHASE1_RECONCILIATION_TRANSPORT.md`.
-- Dependencies: A-REMOTE-010 DONE / OWNER ACCEPTED; CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 Phase 2 profile specified; Phase 3 source implementation is complete; Phase 4 procedure is prepared; separate owner approval is required before read-only Stage 1.
+- Dependencies: A-REMOTE-010 DONE / OWNER ACCEPTED; CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 Phase 2 profile specified; Phase 3 source implementation is complete; Phase 4 procedure is prepared; Stage 1 read-only preflight is complete; separate owner approval and separate-storage backup verification are required before Stage 2.
 - Allowed scope: backed-up active-workspace promotion; private REMOTE and public TUNER RTCP/1 integration; first CCM functional slice; focused host tests and clean builds; English sanitized coordination publication.
 - Excluded scope: operational PSK generation, device access, flashing, hardware changes, AAC/AAC+ work, stations, playback commands, UI redesign, MQTT, SmartThings, CCM semantic changes, private-source/binary/credential publication, STL/manual publication, A-REMOTE-012.
 - Shared-contract guard: CCM 1.1.0 semantics and the frozen RTCP/1 Phase 2 profile remain unchanged; the implementation adds only the approved first functional slice.
 - Acceptance criteria: active private source is reversibly promoted; exact RTCP/1 and first CCM slice compile on both devices; focused tests and clean builds pass; memory/flash deltas are recorded; coordination PR remains open and unmerged; hardware is not run.
-- Verification: Phase 3 evidence retained without rerun. Candidate hashes and exact application-only write ranges reverified; installed layouts remain write-excluded. Actual code inspection found read-only association loaders but no pairing writer, so provisioning is gated on a separately reviewed private helper. Hardware is NOT RUN.
+- Verification: Phase 3 evidence retained without rerun. Candidate hashes and exact application-only write ranges reverified; installed layouts remain write-excluded. Actual code inspection found read-only association loaders but no pairing writer, so provisioning is gated on a separately reviewed private helper. Stage 1 hardware read-only capture PASS for both devices; no persistent operation occurred.
 - Stop/report conditions: baseline mismatch; missing A-010 source state; unresolved security/transport treated as if approved; any request to publish private material; any firmware or hardware operation.
 - Required outputs: reversible commissioning protocol, sanitized evidence checklist, archived prior handoff, current handoff, changelog/status entries and updated open coordination PR.
 - PM assignment evidence: owner instructions dated 2026-10-13 in the active session; Phase 3 authorizes backed-up promotion, private/public source implementation and build verification, stopping before hardware operations.
