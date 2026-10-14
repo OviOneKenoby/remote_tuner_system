@@ -1,6 +1,6 @@
 # A-REMOTE-011: Common REMOTE-TUNER API integration kickoff
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: IN PROGRESS - STAGE 4 PASS / STAGE 5 INCLUDE-PATH CORRECTION ATTEMPT FAILED WITH ORIGINAL ERROR
+- State: IN PROGRESS - STAGE 4 PASS / STAGE 5 PRIVATE IMPLEMENTATION AND PRODUCTION BUILD PASS, HARDWARE COMMISSIONING NOT STARTED
 - Coordination input commit: `8e93c702940d49583f3fdd58046503ae0b8f7354`
 - Objective: implement the frozen RTCP/1 transport and first CCM 1.1.0 REMOTE-TUNER integration slice, verify both builds and stop before hardware commissioning.
 - Baseline: coordination main `8e93c702940d49583f3fdd58046503ae0b8f7354`; Phase 2 coordination input `1e11e979dbcd4d95a50cbf8ed87400ce854256b3`; TUNER v1.1.11 `5fb92c95d228d744d1182ae3956e850c5be2f277`; accepted A-010 private REMOTE source.
@@ -42,3 +42,7 @@ The owner approved GPIO2/J6-3, GPIO5/J6-6 and J6-9 GND. The bounded private impl
 ## Stage 5 include-path correction result 2026-10-14
 
 The private shared include tree was registered as a header-only ESP-IDF component and added to `user_app` private requirements. Exactly one production build was run and retained the original `fatal error: physical_input/model.hpp: No such file or directory` diagnostic. No distinct build error appeared; no additional correction, build or test was run. No firmware artifact or hardware operation exists. See the [result report](../reports/A-REMOTE-011_STAGE5_INCLUDE_PATH_RESULT.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_INCLUDE_PATH_RESULT.json).
+
+## Stage 5 component discovery resolved 2026-10-14
+
+Generated metadata proved that the failed build tree predated the new header-only component: it omitted both `physical_input` and the shared include directory from `user_app`. Preserving and displacing only that generated tree forced fresh discovery. The one authorized production build passed; the private 2,518,496-byte application has SHA-256 `58d09a4d7b39a287d80b48270b5236986657f27fb716692b77ff4af3e573cab7` and 627,232 bytes of 3 MiB OTA headroom. Previously passing tests were not repeated because no relevant source changed. No hardware or live command occurred. See the [resolution report](../reports/A-REMOTE-011_STAGE5_COMPONENT_DISCOVERY_RESOLVED.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_COMPONENT_DISCOVERY_RESULT.json).
