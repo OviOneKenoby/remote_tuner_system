@@ -1,29 +1,29 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE1-20261014
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE2A-20261014
 - Updated (UTC): 2026-10-14
 - Task ID: A-REMOTE-011
-- Status: STAGE 1 READ-ONLY HARDWARE PREFLIGHT PASS ? STAGE 2 UNAUTHORIZED
+- Status: STAGE 2A REMOTE PASS ? STAGE 2B TUNER UNAUTHORIZED
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Procedure input: `f0d4eced37ddaa5e05566b0b7c77a23a87d67665`
+- Stage 2A publication input: `67859a5fe4ce02253a19fe078bcd01cbb266eba1`
 
 ## Result
 
-REMOTE//01 and TUNER//01 each passed read-only chip/flash identity, partition-layout, complete private backup, independent rollback-region comparison and ROM/USB recovery-access checks. Raw captures, MAC addresses, private paths, NVS/remote_ctl contents and binaries remain private.
+The exact Phase 3 REMOTE application was installed once at `0x10000`. Its independent 2,515,584-byte readback matched SHA-256 `ceae9f64329c5409fdfe92e5ac5394885010abf1cf66ac24a5ab7fcc35f11647`. The 65,536-byte `remote_ctl` partition remained byte-identical to Stage 1.
 
-REMOTE has the installed seven-entry table, retained generation-2 `remote_ctl` state and the A-010 restored application identity. TUNER has the expected five-entry table and a structurally valid installed application; byte identity to the historical v1.1.11 artifact is not claimed, so the fresh readback is the rollback authority.
+Normal factory boot and Wi-Fi passed. The unpaired A-011 client remained disabled and reported no unconfigured storage write. The owner confirmed the normal UI, stored configuration and one ordinary sleep/wake cycle without changing settings.
 
 ## Scope guard
 
-No flash write, erase, firmware installation, partition update, pairing, PSK generation, NVS or `remote_ctl` mutation, RTCP command, source change or PR merge occurred. Stage 2 is not authorized.
+No bootloader, partition-table, default-NVS, OTA-metadata or `remote_ctl` write occurred. No PSK, pairing or RTCP control command occurred. TUNER was not accessed or modified. PR #17 remains open and unmerged.
 
 ## Next owner decision
 
-After placing both verified backup sets on owner-controlled separate storage and reverifying their hashes, authorize or reject Stage 2 application-only installation. Pairing remains blocked by the separately documented absence of a provisioning writer and is not part of Stage 2.
+Authorize or reject Stage 2B TUNER application-only installation. This handoff does not authorize TUNER access or write, pairing provisioning, later commissioning stages or merge.
 
 ## Evidence
 
-- `reports/A-REMOTE-011_STAGE1_HARDWARE_PREFLIGHT.md`
-- `references/device_evidence/remote/A-REMOTE-011/STAGE1_RESULT.json`
-- Previous handoff: `archive/remote/2026-10-14T171549Z_A-REMOTE-011_REMOTE-A-REMOTE-011-PHASE4-20261014.md`
+- `reports/A-REMOTE-011_STAGE2A_REMOTE_INSTALL.md`
+- `references/device_evidence/remote/A-REMOTE-011/STAGE2A_RESULT.json`
+- Previous handoff: `archive/remote/2026-10-14T173105Z_A-REMOTE-011_REMOTE-A-REMOTE-011-STAGE1-20261014.md`

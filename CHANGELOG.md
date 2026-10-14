@@ -1,3 +1,9 @@
+# 2026-10-14 ? A-REMOTE-011 Stage 2A REMOTE installation
+
+- Installed the exact Phase 3 REMOTE application once at `0x10000`; independent 2,515,584-byte readback matched candidate SHA-256 `ceae9f64329c5409fdfe92e5ac5394885010abf1cf66ac24a5ab7fcc35f11647`.
+- `remote_ctl` remained byte-identical to Stage 1. Normal factory boot, Wi-Fi and disabled-unpaired RTCP state passed; the owner confirmed normal UI, retained configuration and one ordinary sleep/wake cycle.
+- Bootloader, partition table, default NVS, OTA metadata and TUNER were not written. No pairing, PSK or RTCP command occurred. Stage 2B remains unauthorized; PR #17 remains open and unmerged.
+
 # 2026-10-14 ? A-REMOTE-011 Stage 1 read-only hardware capture
 
 - Stage 1 PASS separately for REMOTE//01 and TUNER//01: chip/flash identity, installed partition layouts, complete private flash/application backups, direct rollback-region reads, hashes and ROM/USB recovery access were verified.
