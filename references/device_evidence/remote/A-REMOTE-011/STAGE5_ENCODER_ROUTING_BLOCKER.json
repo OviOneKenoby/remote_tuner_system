@@ -1,0 +1,21 @@
+{
+  "stage": "A-REMOTE-011 Stage 5 REMOTE encoder volume control",
+  "verdict": "BLOCKED_BEFORE_SOURCE_EDIT",
+  "active_and_preserved_sources_agree": true,
+  "existing_host_quadrature_model": true,
+  "production_encoder_sampler": false,
+  "production_encoder_gpio_identity": false,
+  "production_encoder_event_consumer": false,
+  "lvgl_encoder_input_registered": false,
+  "unambiguous_volume_context_route": false,
+  "private_source_files_changed": 0,
+  "tests_run": 0,
+  "production_builds_run": 0,
+  "control_commands_transmitted": 0,
+  "hardware_operations": 0,
+  "required_owner_input": [
+    "Accepted existing encoder A/B GPIO and electrical configuration or exact owning driver/API",
+    "Accepted detent convention",
+    "UI context rule distinguishing HOME volume from navigation elsewhere"
+  ]
+}

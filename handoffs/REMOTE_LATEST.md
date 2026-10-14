@@ -1,14 +1,16 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-CONTROL-STOP-20261014
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-ENCODER-ROUTING-BLOCKER-20261014
 - Updated (UTC): 2026-10-14
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 STOPPED BEFORE TRANSMISSION -- PRODUCTION VOLUME INTENT PATH MISSING
+- Status: STAGE 5 BLOCKED BEFORE SOURCE EDIT -- PRODUCTION ENCODER ROUTE/GPIO IDENTITY MISSING
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
 - Input head: `89945b3ccf38051826a3d5b5cb472f67bfd9b16a`
 
 ## Result
+
+The authorized implementation review found no production encoder sampler, GPIO identity, event consumer, LVGL encoder input or UI-context router in either the active source or preserved A-010/A-011 copies. Only the bounded host-side quadrature model exists. The required control context is therefore ambiguous, and source editing stopped rather than inventing GPIOs or changing navigation semantics. No source, build, test, hardware or control operation followed.
 
 Stage 5 stopped before transmission. A live authenticated session remained healthy with zero dispatches, but source review showed that the production REMOTE has no volume intent or `volume.set` request-construction path. The RTCP adapter implements the operation, yet neither the production facade nor its input surfaces can invoke it. No control command or mutation occurred.
 
@@ -24,10 +26,12 @@ No `volume.set` or other RTCP control command was issued. No bootloader, partiti
 
 ## Next owner decision
 
-Authorize or reject a narrow REMOTE source change that wires one bounded volume intent into the existing CCM/RTCP `volume.set` implementation. Stage 5 sent no command and must not be retried until that implementation is built and reviewed.
+Provide the accepted existing encoder A/B GPIO/electrical identity or owning driver/API, its detent convention, and the UI context rule that distinguishes HOME volume from navigation elsewhere. No implementation or Stage 5 retry can proceed without those facts.
 
 ## Evidence
 
+- `reports/A-REMOTE-011_STAGE5_ENCODER_ROUTING_BLOCKER.md`
+- `references/device_evidence/remote/A-REMOTE-011/STAGE5_ENCODER_ROUTING_BLOCKER.json`
 - `reports/A-REMOTE-011_STAGE5_CONTROL_STOP.md`
 - `references/device_evidence/remote/A-REMOTE-011/STAGE5_STOP_RESULT.json`
 - `reports/A-REMOTE-011_STAGE4_COMPLETE.md`

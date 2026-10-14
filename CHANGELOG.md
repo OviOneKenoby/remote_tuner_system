@@ -1,3 +1,8 @@
+# 2026-10-14 -- A-REMOTE-011 Stage 5 encoder routing blocked before source edit
+
+- Inspected the active private REMOTE source and preserved A-010/A-011 copies. All contain the bounded host-side quadrature model, but none contains a production encoder sampler, encoder GPIO identity, encoder event consumer, LVGL encoder input or UI-context router.
+- Stopped rather than inventing GPIO assignments or changing navigation semantics outside the HOME control context. No private source change, test, build, hardware operation or `volume.set` occurred.
+- PR #17 remains open. Owner input is required for the accepted existing encoder hardware/driver identity, detent convention and UI context rule before implementation can proceed.
 # 2026-10-14 -- A-REMOTE-011 Stage 5 stopped before transmission
 
 - Confirmed the live authenticated session remained healthy with a current capability revision, connected network, intact Core owner invariant, zero failed allocations and zero command dispatches.
