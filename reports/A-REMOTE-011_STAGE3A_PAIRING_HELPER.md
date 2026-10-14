@@ -1,8 +1,8 @@
-# A-REMOTE-011 Stage 3A: private one-shot pairing helper
+﻿# A-REMOTE-011 Stage 3A: private one-shot pairing helper
 
 ## Verdict
 
-**PASS — IMPLEMENTED AND BUILD VERIFIED; NOT EXECUTED ON HARDWARE.** Two private commissioning-only firmware variants and private offline tooling now implement the minimum storage writes required by the existing production pairing readers. No operational pairing identifier or PSK was generated. No device was accessed, flashed, paired or sent an RTCP command.
+**PASS â€” IMPLEMENTED AND BUILD VERIFIED; NOT EXECUTED ON HARDWARE.** Two private commissioning-only firmware variants and private offline tooling now implement the minimum storage writes required by the existing production pairing readers. No operational pairing identifier or PSK was generated. No device was accessed, flashed, paired or sent an RTCP command.
 
 ## Stored fields and isolation
 
@@ -22,8 +22,8 @@ Both helpers accept one fixed 112-byte binary capsule with a target discriminato
 ## Verification
 
 - Private capsule and policy tests: **16/16 PASS**.
-- REMOTE commissioning build: PASS; firmware 2,517,136 bytes; SHA-256 `a55ef1b54818821089956f0bec17f37df5c88087dcdb1407bb65c64db21091d4`; static RAM 47,196 bytes; 628,592 bytes remain in its 3 MiB application slot.
-- TUNER commissioning build: PASS; firmware 2,026,800 bytes; SHA-256 `94955b3445ea832139704798a9cc3f5e6db2cce2d20671cd6b26f94b8ec7771b`; static RAM 86,032 bytes; 1,118,928 bytes remain in its 3 MiB application slot.
+- REMOTE commissioning build: PASS; firmware 2,517,248 bytes; SHA-256 `acb1948f791557e4a82adfde5228871e8a5e3602b937fff407426966031696a2`; static RAM 47,196 bytes; 628,480 bytes remain in its 3 MiB application slot.
+- TUNER commissioning build: PASS; firmware 2,026,864 bytes; SHA-256 `8b239db4d8cdee712341a68fa12fb6ea521bc4c6b8eed62020832517d8c5d111`; static RAM 86,032 bytes; 1,118,864 bytes remain in its 3 MiB application slot.
 - Normal REMOTE production build: PASS with commissioning disabled; static RAM 47,084 bytes.
 - Normal TUNER production build: PASS with commissioning disabled; static RAM 85,912 bytes.
 - Focused scan of all new helper/tool files found no embedded credential, token or private-key material.
@@ -42,3 +42,4 @@ This sequence is prepared and **not authorized for execution**:
 8. Verify normal UI/configuration first, then begin the separately authorized read-only identity/capability/state commissioning stage. No `volume.set` belongs to pairing provisioning.
 
 The private implementation and binaries remain outside GitHub. PR #17 remains open and unmerged. The next owner decision is whether to authorize the first operation of this sequence: application-only installation of the TUNER commissioning helper after private capsule generation and pre-write hash verification.
+

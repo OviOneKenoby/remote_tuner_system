@@ -1,23 +1,23 @@
-{
+﻿{
   "task": "A-REMOTE-011",
   "stage": "3A",
   "verdict": "PASS_IMPLEMENTED_BUILD_VERIFIED_NOT_EXECUTED",
   "host_tests": { "passed": 16, "failed": 0 },
   "remote": {
     "commissioning_build": "PASS",
-    "firmware_bytes": 2517136,
-    "firmware_sha256": "a55ef1b54818821089956f0bec17f37df5c88087dcdb1407bb65c64db21091d4",
+    "firmware_bytes": 2517248,
+    "firmware_sha256": "acb1948f791557e4a82adfde5228871e8a5e3602b937fff407426966031696a2",
     "static_ram_bytes": 47196,
-    "slot_headroom_bytes": 628592,
+    "slot_headroom_bytes": 628480,
     "production_build": "PASS",
     "production_commissioning_enabled": false
   },
   "tuner": {
     "commissioning_build": "PASS",
-    "firmware_bytes": 2026800,
-    "firmware_sha256": "94955b3445ea832139704798a9cc3f5e6db2cce2d20671cd6b26f94b8ec7771b",
+    "firmware_bytes": 2026864,
+    "firmware_sha256": "8b239db4d8cdee712341a68fa12fb6ea521bc4c6b8eed62020832517d8c5d111",
     "static_ram_bytes": 86032,
-    "slot_headroom_bytes": 1118928,
+    "slot_headroom_bytes": 1118864,
     "production_build": "PASS",
     "production_commissioning_enabled": false
   },
@@ -28,3 +28,4 @@
   "pr": 17,
   "pr_merged": false
 }
+
