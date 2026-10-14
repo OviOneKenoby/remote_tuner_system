@@ -1,4 +1,4 @@
-﻿{
+{
   "task": "A-REMOTE-011",
   "stage": "3A",
   "verdict": "PASS_IMPLEMENTED_BUILD_VERIFIED_NOT_EXECUTED",
@@ -28,4 +28,3 @@
   "pr": 17,
   "pr_merged": false
 }
-

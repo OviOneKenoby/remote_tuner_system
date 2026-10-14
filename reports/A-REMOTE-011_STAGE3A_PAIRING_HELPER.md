@@ -1,4 +1,4 @@
-﻿# A-REMOTE-011 Stage 3A: private one-shot pairing helper
+# A-REMOTE-011 Stage 3A: private one-shot pairing helper
 
 ## Verdict
 
@@ -42,4 +42,3 @@ This sequence is prepared and **not authorized for execution**:
 8. Verify normal UI/configuration first, then begin the separately authorized read-only identity/capability/state commissioning stage. No `volume.set` belongs to pairing provisioning.
 
 The private implementation and binaries remain outside GitHub. PR #17 remains open and unmerged. The next owner decision is whether to authorize the first operation of this sequence: application-only installation of the TUNER commissioning helper after private capsule generation and pre-write hash verification.
-
