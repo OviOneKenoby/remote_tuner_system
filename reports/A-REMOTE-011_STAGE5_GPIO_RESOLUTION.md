@@ -1,6 +1,7 @@
 # A-REMOTE-011 Stage 5 GPIO resolution
 
-Date: 2026-10-14  
+Date: 2026-10-14
+
 Verdict: **WIRING PROPOSAL READY FOR OWNER APPROVAL; implementation remains stopped.**
 
 The official V2 schematic, Waveshare interface table, ESP32-S3 strapping rules and current production source were cross-checked. The earlier GPIO4/GPIO5 assignment remains rejected because GPIO4 is the active battery ADC. GPIO1 remains occupied by owner-installed external-power sensing.
