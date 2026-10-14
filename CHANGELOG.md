@@ -1,3 +1,9 @@
+# 2026-10-14 -- A-REMOTE-011 Stage 5 GPIO resolution proposal
+
+- Published the evidence-based REMOTE GPIO map for Waveshare V2/PCB Rev1.1, separating confirmed board/firmware assignments from candidate and owner-selected uses.
+- Proposed GPIO2/J6-3 for encoder A, GPIO5/J6-6 for encoder B and J6-9 GND for common. Both GPIOs are direct expansion breakouts with no other schematic load, production claim or ESP32-S3 strapping role.
+- No source edit, build, test or hardware operation occurred. Implementation remains stopped pending owner approval of the exact wiring and physical J6 orientation.
+
 # 2026-10-14 -- A-REMOTE-011 Stage 5 blocked by encoder GPIO conflict
 
 - Recorded the owner-selected GPIO4 CLK / GPIO5 DT assignment and GPIO1 reservation for Waveshare ESP32-S3-Touch-LCD-3.49B V2 PCB Rev1.1.

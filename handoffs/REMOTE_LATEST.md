@@ -2,33 +2,42 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-ENCODER-GPIO-CONFLICT-20261014
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-GPIO-RESOLUTION-20261014
 - Updated (UTC): 2026-10-14
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 BLOCKED -- GPIO4 CONFLICTS WITH ACTIVE BATTERY SENSING
+- Status: STAGE 5 GPIO PROPOSAL READY -- OWNER WIRING APPROVAL REQUIRED
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `4864eba87e46677d58ac5e5e5e0fff4c9aaba6c8`
+- Input head: `d4123f5e2baed4b0c3649d1ad1d87627a810fbda`
 
 ## Result
 
-The owner selected GPIO4 for encoder CLK and GPIO5 for DT on Waveshare ESP32-S3-Touch-LCD-3.49B V2 PCB Rev1.1, while reserving GPIO1. Hardware and source verification found a real conflict: the official schematic labels IO4 `BAT_ADC`; the active private firmware samples its main-battery divider on ADC1 channel 3 and asserts that this channel maps to GPIO4. GPIO1 separately remains ADC1 channel 0 for external-power sensing. GPIO5 had no direct active-source claim, but the requested pair cannot be enabled.
+The official Waveshare V2 schematic/interface table, ESP32-S3 strapping rules and current production source were reconciled into `docs/REMOTE_GPIO_MAP.md`. GPIO1 remains occupied by external-power sensing and GPIO4 by `BAT_ADC`. GPIO0 and GPIO3 are exposed on J6 but are strapping pins. All LCD, touch, shared interrupt, power, USB, UART, system-I2C, SD and onboard audio nets remain reserved.
 
-A bounded transient private encoder-to-volume implementation passed focused tests and a production build. Its image is explicitly rejected and non-deployable because it assumes the conflicting GPIO4 assignment. All transient source edits were reverted, leaving no Stage 5 change in the production private source.
+The preferred encoder proposal is:
 
-Stage 4 remains PASS. Both production devices remain paired and synchronized, and zero `volume.set` commands have been dispatched.
+- A/CLK: GPIO2 at J6-3;
+- B/DT: GPIO5 at J6-6;
+- common: GND at J6-9;
+- input-only with internal 3.3 V pull-ups;
+- push button not connected.
+
+GPIO2 and GPIO5 are direct MCU expansion breakouts with no other V2 schematic load, current production claim or strapping role. This is an owner-selected proposal pending physical wiring approval. The owner must confirm J6 pin-1 orientation before soldering. Direction and transitions per detent remain later commissioning observations.
+
+Stage 4 remains PASS. The rejected GPIO4/GPIO5 transient candidate remains non-deployable and its source edits remain reverted.
 
 ## Scope guard
 
-No device was accessed. No firmware was flashed. No live control command, pairing/NVS change, GPIO remap, battery-sense change, TUNER change or contract change occurred. Private source and binaries remain private. PR #17 remains open and unmerged.
+No production source was edited. No test, build, device access, firmware flash, live command, pairing/NVS change or wiring operation occurred. Private source and binaries remain private. PR #17 remains open and unmerged.
 
 ## Next owner decision
 
-Choose an alternative encoder CLK GPIO verified free on this PCB and in the active firmware, or explicitly authorize redesign of the battery-sense function. GPIO5 can remain a candidate only after the complete replacement pair is checked. No firmware installation or physical encoder test is ready for authorization.
+Approve or reject the exact GPIO2/J6-3 A, GPIO5/J6-6 B and J6-9 GND wiring. Implementation must not resume until that decision is explicit.
 
 ## Evidence
 
-- `reports/A-REMOTE-011_STAGE5_ENCODER_GPIO_CONFLICT.md`
-- `references/device_evidence/remote/A-REMOTE-011/STAGE5_ENCODER_GPIO_CONFLICT.json`
-- Historical routing blocker: `reports/A-REMOTE-011_STAGE5_ENCODER_ROUTING_BLOCKER.md`
+- `docs/REMOTE_GPIO_MAP.md`
+- `reports/A-REMOTE-011_STAGE5_GPIO_RESOLUTION.md`
+- `references/device_evidence/remote/A-REMOTE-011/STAGE5_GPIO_RESOLUTION.json`
+- Historical conflict: `reports/A-REMOTE-011_STAGE5_ENCODER_GPIO_CONFLICT.md`
 - Historical control stop: `reports/A-REMOTE-011_STAGE5_CONTROL_STOP.md`
 - Stage 4 completion: `reports/A-REMOTE-011_STAGE4_COMPLETE.md`

@@ -1,6 +1,6 @@
 # A-REMOTE-011: Common REMOTE-TUNER API integration kickoff
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: IN PROGRESS - STAGE 4 PASS / STAGE 5 BLOCKED / OWNER-SELECTED GPIO4 CONFLICTS WITH ACTIVE BATTERY SENSING
+- State: IN PROGRESS - STAGE 4 PASS / STAGE 5 GPIO2-J6-3 AND GPIO5-J6-6 PROPOSAL AWAITING OWNER WIRING APPROVAL
 - Coordination input commit: `8e93c702940d49583f3fdd58046503ae0b8f7354`
 - Objective: implement the frozen RTCP/1 transport and first CCM 1.1.0 REMOTE-TUNER integration slice, verify both builds and stop before hardware commissioning.
 - Baseline: coordination main `8e93c702940d49583f3fdd58046503ae0b8f7354`; Phase 2 coordination input `1e11e979dbcd4d95a50cbf8ed87400ce854256b3`; TUNER v1.1.11 `5fb92c95d228d744d1182ae3956e850c5be2f277`; accepted A-010 private REMOTE source.
@@ -30,3 +30,7 @@ The active and preserved private sources contain only a host-tested quadrature m
 ## Stage 5 owner pin assignment rejected after hardware verification 2026-10-14
 
 The owner identified the encoder as GPIO4 CLK / GPIO5 DT and reserved GPIO1. The official Waveshare V2 schematic labels IO4 `BAT_ADC`, and the active private firmware continuously uses ADC1 channel 3 with a compile-time GPIO4 mapping for main-battery sensing. GPIO1 separately remains ADC1 channel 0 for external-power sensing. The requested pair therefore fails the mandatory conflict check. A transient private implementation passed focused tests and built, but is rejected and non-deployable; every transient source edit was reverted. No hardware or control operation occurred. See the [GPIO conflict report](../reports/A-REMOTE-011_STAGE5_ENCODER_GPIO_CONFLICT.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-011/STAGE5_ENCODER_GPIO_CONFLICT.json).
+
+## Stage 5 GPIO resolution proposal 2026-10-14
+
+Official V2 schematic/interface evidence and the active production source identify GPIO2/J6-3 and GPIO5/J6-6 as the only accessible J6 pair without onboard loads, production claims or ESP32-S3 strapping roles. J6-9 is the proposed ground common. The complete map rejects GPIO0/GPIO3 strapping pins and occupied GPIO1/GPIO4, and preserves every LCD, touch, power, USB, UART, I2C, SD and audio net. No source, build, test or hardware action occurred. Owner approval of the exact wiring and physical J6 orientation is required before implementation. See the [GPIO map](../docs/REMOTE_GPIO_MAP.md), [investigation report](../reports/A-REMOTE-011_STAGE5_GPIO_RESOLUTION.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-011/STAGE5_GPIO_RESOLUTION.json).
