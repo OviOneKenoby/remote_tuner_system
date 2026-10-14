@@ -1,6 +1,6 @@
 # A-REMOTE-011: Common REMOTE-TUNER API integration kickoff
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: IN PROGRESS - STAGE 4 PASS / PRODUCTION RESTORED / AUTHENTICATED READ-ONLY RTCP VERIFIED / CONTROL COMMAND UNAUTHORIZED
+- State: IN PROGRESS - STAGE 4 PASS / STAGE 5 STOPPED BEFORE TRANSMISSION / REMOTE VOLUME INTENT PATH MISSING
 - Coordination input commit: `8e93c702940d49583f3fdd58046503ae0b8f7354`
 - Objective: implement the frozen RTCP/1 transport and first CCM 1.1.0 REMOTE-TUNER integration slice, verify both builds and stop before hardware commissioning.
 - Baseline: coordination main `8e93c702940d49583f3fdd58046503ae0b8f7354`; Phase 2 coordination input `1e11e979dbcd4d95a50cbf8ed87400ce854256b3`; TUNER v1.1.11 `5fb92c95d228d744d1182ae3956e850c5be2f277`; accepted A-010 private REMOTE source.
@@ -18,3 +18,7 @@
 ## Stage 4 completed 2026-10-14
 
 PASS at the approved practical hobby/public-beta level. Both accepted production applications were restored at `0x10000` and independently read back with their accepted hashes. Pairing and ordinary configuration remained present, both devices booted normally, and the owner confirmed normal UI. The paired devices established an authenticated RTCP/1 session, accepted the exact CCM 1.1.0 identity/capability sequence, and continued receiving fresh bounded `volume.level` and `playback.state` snapshots. Zero RTCP control commands were dispatched. See the [completion report](../reports/A-REMOTE-011_STAGE4_COMPLETE.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-011/STAGE4_RESULT.json). The earlier stopped report remains historical evidence. A single controlled `volume.set` remains separately gated and unexecuted; PR #17 remains open and unmerged.
+
+## Stage 5 stopped before transmission 2026-10-14
+
+A live authenticated session passed the read-only precondition check, but the production REMOTE has no wired volume intent or `volume.set` request-construction path. The CCM/RTCP adapter implements validated correlated delivery; the production facade exposes only previous/toggle/next, and the serial development hook refuses commands in RTCP mode. Zero commands were transmitted and no state was mutated. See the [stop report](../reports/A-REMOTE-011_STAGE5_CONTROL_STOP.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-011/STAGE5_STOP_RESULT.json). A narrow source implementation and build require a separate owner decision before Stage 5 can resume.

@@ -1,3 +1,8 @@
+# 2026-10-14 -- A-REMOTE-011 Stage 5 stopped before transmission
+
+- Confirmed the live authenticated session remained healthy with a current capability revision, connected network, intact Core owner invariant, zero failed allocations and zero command dispatches.
+- Stopped before transmission because the production REMOTE has no volume intent or `volume.set` request-construction path. The operation exists in the CCM/RTCP adapter, but the facade exposes only previous/toggle/next and the development serial hook rejects commands in RTCP mode.
+- No control command, firmware change, pairing/NVS/settings mutation or hardware write occurred. PR #17 remains open; the minimum next decision is whether to authorize a narrow REMOTE volume-intent implementation and build.
 # 2026-10-14 -- A-REMOTE-011 Stage 4 complete
 
 - Continued only the work blocked by the earlier COM5 access failure. Restored the accepted 2,034,800-byte TUNER production application once at `0x10000`; exact readback matched SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`. The completed REMOTE restoration was not repeated.
