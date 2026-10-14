@@ -1,29 +1,29 @@
-# REMOTE//01 handoff
+﻿# REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE2B-20261014
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE3A-20261014
 - Updated (UTC): 2026-10-14
 - Task ID: A-REMOTE-011
-- Status: STAGE 2A REMOTE PASS / STAGE 2B TUNER PASS ? STAGE 3 UNAUTHORIZED
+- Status: STAGE 3A PRIVATE HELPER PASS — PAIRING/FLASHING UNAUTHORIZED
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Stage 2B publication input: `076cbabd379ee6482c7c13649ccf68a77c54ae4d`
+- Input head: `2ebc9c9c53750d26490e6153dae1a0c929cf03fc`
 
 ## Result
 
-Both Phase 3 applications are now installed and independently read back with exact candidate hashes. TUNER Stage 2B used source commit `18ddd3b16e305341f338afebd7dc725500ecbb73`; its 2,034,800-byte readback matched SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`.
+Private commissioning-only helpers now match the existing TUNER `remote_pair` reader and REMOTE A-010 association reader. They use a bounded binary capsule, fixed sanitized results, one-shot refusal and explicit recovery capsules for narrowly recognized partial state. TUNER changes only the two approved keys; REMOTE commits through A-010 at the recovered next generation.
 
-The TUNER default-NVS delta was investigated offline: one valid 29-byte append-only framework DHCP-state entry, with all pre-existing configuration bytes unchanged and no pairing namespace. The owner accepted the delta and confirmed normal UI/controls, retained Wi-Fi, MP3, Bluetooth A2DP, web manager during Bluetooth, stations, favorites and recent items.
+Focused tests passed 16/16. Commissioning and normal production builds passed for both devices. Commissioning is disabled in normal builds. Firmware hashes, RAM use and application-slot headroom are recorded in the Stage 3A report.
 
 ## Scope guard
 
-No PSK was generated, pairing was not provisioned, no RTCP control command was issued, and Stage 3 was not started. PR #17 remains open and unmerged.
+No operational pairing identifier or PSK was generated. No hardware was accessed or flashed, no persistent pairing write or RTCP command occurred, and private source/binaries remain unpublished. PR #17 remains open and unmerged.
 
 ## Next owner decision
 
-Authorize or reject preparation of the minimal private one-shot pairing helper required by the published commissioning procedure. This handoff does not authorize pairing, persistent provisioning, Stage 3 execution or merge.
+Review the exact prepared sequence and separately authorize or reject its first persistent stage: private credential/capsule generation followed by application-only TUNER helper installation and one TUNER pairing write. REMOTE helper installation and pairing remain separately gated.
 
 ## Evidence
 
-- `reports/A-REMOTE-011_STAGE2B_TUNER_INSTALL.md`
-- `references/device_evidence/remote/A-REMOTE-011/STAGE2B_RESULT.json`
-- Previous handoff: `archive/remote/2026-10-14T174150Z_A-REMOTE-011_REMOTE-A-REMOTE-011-STAGE2A-20261014.md`
+- `reports/A-REMOTE-011_STAGE3A_PAIRING_HELPER.md`
+- `references/device_evidence/remote/A-REMOTE-011/STAGE3A_RESULT.json`
+- Previous handoff: `archive/remote/2026-10-14T220000Z_A-REMOTE-011_REMOTE-A-REMOTE-011-STAGE2B-20261014.md`

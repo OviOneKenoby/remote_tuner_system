@@ -1,3 +1,9 @@
+# 2026-10-14 — A-REMOTE-011 Stage 3A private pairing helper
+
+- Implemented private commissioning-only helpers matching the existing TUNER Preferences reader and REMOTE A-010 association reader, with fixed binary capsules, one-shot refusal, explicit partial-state recovery and no secret output.
+- Focused capsule/policy tests passed 16/16; commissioning and normal production builds passed for both devices with ample application-slot headroom and commissioning disabled in normal builds.
+- No operational credentials were generated, no hardware was accessed, and no pairing data was written. PR #17 remains open and unmerged pending separate authorization for any helper flashing or provisioning.
+
 # 2026-10-14 ? A-REMOTE-011 Stage 2B TUNER installation
 
 - Installed the exact TUNER Phase 3 application from `18ddd3b16e305341f338afebd7dc725500ecbb73` once at `0x10000` using stable 921600-baud esptool communication. Independent 2,034,800-byte readback matched SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`.
