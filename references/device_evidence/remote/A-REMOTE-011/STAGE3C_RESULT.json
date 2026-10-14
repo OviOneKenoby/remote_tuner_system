@@ -1,0 +1,31 @@
+{
+  "stage": "A-REMOTE-011 Stage 3C REMOTE pairing",
+  "verdict": "PASS",
+  "helper": {
+    "bytes": 2517248,
+    "sha256": "acb1948f791557e4a82adfde5228871e8a5e3602b937fff407426966031696a2",
+    "offset": "0x10000",
+    "readback_match": true,
+    "esptool_baud": 921600
+  },
+  "pre_provision_remote_ctl": {
+    "bytes": 65536,
+    "matches_accepted_capture": true,
+    "accepted_state": "healthy_recoverable",
+    "accepted_active_generation": 2,
+    "accepted_incomplete_transaction": false
+  },
+  "provisioning": {
+    "original_capsule_unchanged": true,
+    "expected_active_generation": 2,
+    "transmissions": 1,
+    "sanitized_result": "complete",
+    "secret_output": false,
+    "automatic_retry": false
+  },
+  "remote_helper_remains_installed": true,
+  "production_firmware_restored": false,
+  "tuner_modified": false,
+  "rtcp_command_issued": false,
+  "next_gate": "Authorize staged production-firmware restoration and read-only authenticated integration verification."
+}

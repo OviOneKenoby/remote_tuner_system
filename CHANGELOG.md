@@ -1,3 +1,9 @@
+# 2026-10-14 -- A-REMOTE-011 Stage 3C REMOTE pairing complete
+
+- Installed the exact 2,517,248-byte REMOTE commissioning helper once at `0x10000` using 921600-baud esptool communication; exact readback matched SHA-256 `acb1948f791557e4a82adfde5228871e8a5e3602b937fff407426966031696a2`.
+- The read-only 64 KiB `remote_ctl` pre-provision capture matched the accepted healthy generation-2 baseline byte-for-byte. The unchanged original REMOTE capsule was then transmitted exactly once and returned sanitized `complete`.
+- Both pairing stores are now provisioned. No retry, TUNER modification, production restore, RTCP command or PR merge occurred; PR #17 remains open.
+
 # 2026-10-14 -- A-REMOTE-011 Stage 3B TUNER pairing complete
 
 - Installed the corrected 2,026,736-byte TUNER commissioning application once at `0x10000` using 921600-baud esptool communication; exact readback matched SHA-256 `b866918f5a63586c5ed28cb192d71a9b63c886b6d10cf0fdd4cc5a5e6198c7a7`.
