@@ -1,6 +1,6 @@
 # A-REMOTE-011: Common REMOTE-TUNER API integration kickoff
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: IN PROGRESS - STAGE 2A REMOTE PASS / STAGE 2B TUNER PASS / STAGE 3A PRIVATE HELPER PASS / PAIRING UNAUTHORIZED
+- State: IN PROGRESS - STAGE 4 PASS / PRODUCTION RESTORED / AUTHENTICATED READ-ONLY RTCP VERIFIED / CONTROL COMMAND UNAUTHORIZED
 - Coordination input commit: `8e93c702940d49583f3fdd58046503ae0b8f7354`
 - Objective: implement the frozen RTCP/1 transport and first CCM 1.1.0 REMOTE-TUNER integration slice, verify both builds and stop before hardware commissioning.
 - Baseline: coordination main `8e93c702940d49583f3fdd58046503ae0b8f7354`; Phase 2 coordination input `1e11e979dbcd4d95a50cbf8ed87400ce854256b3`; TUNER v1.1.11 `5fb92c95d228d744d1182ae3956e850c5be2f277`; accepted A-010 private REMOTE source.
@@ -14,3 +14,7 @@
 - Stop/report conditions: baseline mismatch; missing A-010 source state; unresolved security/transport treated as if approved; any request to publish private material; any firmware or hardware operation.
 - Required outputs: reversible commissioning protocol, sanitized evidence checklist, archived prior handoff, current handoff, changelog/status entries and updated open coordination PR.
 - PM assignment evidence: owner instructions dated 2026-10-13 in the active session; Phase 3 authorizes backed-up promotion, private/public source implementation and build verification, stopping before hardware operations.
+
+## Stage 4 completed 2026-10-14
+
+PASS at the approved practical hobby/public-beta level. Both accepted production applications were restored at `0x10000` and independently read back with their accepted hashes. Pairing and ordinary configuration remained present, both devices booted normally, and the owner confirmed normal UI. The paired devices established an authenticated RTCP/1 session, accepted the exact CCM 1.1.0 identity/capability sequence, and continued receiving fresh bounded `volume.level` and `playback.state` snapshots. Zero RTCP control commands were dispatched. See the [completion report](../reports/A-REMOTE-011_STAGE4_COMPLETE.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-011/STAGE4_RESULT.json). The earlier stopped report remains historical evidence. A single controlled `volume.set` remains separately gated and unexecuted; PR #17 remains open and unmerged.

@@ -1,0 +1,41 @@
+{
+  "stage": "A-REMOTE-011 Stage 4 production restoration and authenticated read-only verification",
+  "verdict": "PASS",
+  "supersedes": "STAGE4_STOPPED_RESULT.json",
+  "remote": {
+    "production_bytes": 2515584,
+    "production_sha256": "ceae9f64329c5409fdfe92e5ac5394885010abf1cf66ac24a5ab7fcc35f11647",
+    "write_offset": "0x10000",
+    "readback_match": true,
+    "association_preserved": true,
+    "normal_ui_and_configuration_owner_confirmed": true
+  },
+  "tuner": {
+    "production_bytes": 2034800,
+    "production_sha256": "49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4",
+    "write_offset": "0x10000",
+    "readback_match": true,
+    "pairing_preserved": true,
+    "normal_ui_and_configuration_owner_confirmed": true
+  },
+  "rtcp_read_only": {
+    "authenticated_session": true,
+    "ccm_version": "1.1.0",
+    "capabilities_verified": ["volume.level", "playback.state", "volume.set"],
+    "fresh_volume_and_playback_snapshots": true,
+    "session": 1,
+    "capability_revision_first": 232,
+    "capability_revision_second": 240,
+    "lifecycle_first": 58,
+    "lifecycle_second": 60,
+    "command_dispatches": 0,
+    "control_command_issued": false
+  },
+  "writes": [
+    {"device": "REMOTE", "offset": "0x10000", "length": "0x266280"},
+    {"device": "TUNER", "offset": "0x10000", "length": "0x1F0C70"}
+  ],
+  "private_material_published": false,
+  "pr_merge_performed": false,
+  "next_gate": "Explicit owner decision for the optional single controlled volume.set commissioning stage."
+}
