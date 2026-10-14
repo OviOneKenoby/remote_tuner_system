@@ -1,3 +1,9 @@
+# 2026-10-14 ? A-REMOTE-011 Stage 3B TUNER pairing stopped
+
+- Verified retained TUNER rollback evidence, the accepted five-entry layout, REMOTE active generation 2, the current private TUNER locator and the exact commissioning image; generated one private matching capsule pair with the operating-system CSPRNG.
+- Installed and independently read back the 2,026,864-byte TUNER commissioning application at `0x10000`; SHA-256 matched `8b239db4d8cdee712341a68fa12fb6ea521bc4c6b8eed62020832517d8c5d111`.
+- The single authorized TUNER capsule transmission returned sanitized `storage_error`. Source review shows the helper stopped at its initial read-only missing-namespace check before any pairing write. No retry, REMOTE provisioning, restore or RTCP command occurred; PR #17 remains open and unmerged.
+
 # 2026-10-14 — A-REMOTE-011 Stage 3A private pairing helper
 
 - Implemented private commissioning-only helpers matching the existing TUNER Preferences reader and REMOTE A-010 association reader, with fixed binary capsules, one-shot refusal, explicit partial-state recovery and no secret output.

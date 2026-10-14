@@ -1,29 +1,29 @@
 ﻿# REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE3A-20261014
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE3B-20261014
 - Updated (UTC): 2026-10-14
 - Task ID: A-REMOTE-011
-- Status: STAGE 3A PRIVATE HELPER PASS — PAIRING/FLASHING UNAUTHORIZED
+- Status: STAGE 3B STOPPED -- TUNER PAIRING INCOMPLETE
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `2ebc9c9c53750d26490e6153dae1a0c929cf03fc`
+- Input head: `205a45009a28fd3e1f65ec98d67c4766ba1bec1c`
 
 ## Result
 
-Private commissioning-only helpers now match the existing TUNER `remote_pair` reader and REMOTE A-010 association reader. They use a bounded binary capsule, fixed sanitized results, one-shot refusal and explicit recovery capsules for narrowly recognized partial state. TUNER changes only the two approved keys; REMOTE commits through A-010 at the recovered next generation.
+The retained TUNER rollback evidence, installed-layout authority, REMOTE active generation 2, private TUNER locator and accepted commissioning image were verified. One matching private capsule pair was generated. The exact TUNER helper was installed and independently read back successfully.
 
-Focused tests passed 16/16. Commissioning and normal production builds passed for both devices. Commissioning is disabled in normal builds. Firmware hashes, RAM use and application-slot headroom are recorded in the Stage 3A report.
+The TUNER capsule was transmitted exactly once and returned sanitized `storage_error`. Source review shows that the helper interpreted the absent `remote_pair` namespace as a storage failure and returned before any pairing-data write. TUNER pairing is incomplete; REMOTE was not provisioned or accessed.
 
 ## Scope guard
 
-No operational pairing identifier or PSK was generated. No hardware was accessed or flashed, no persistent pairing write or RTCP command occurred, and private source/binaries remain unpublished. PR #17 remains open and unmerged.
+No automatic retry, recovery capsule, production restore, erase, RTCP command or PR merge occurred. The helper remains installed and both original capsules remain private.
 
 ## Next owner decision
 
-Review the exact prepared sequence and separately authorize or reject its first persistent stage: private credential/capsule generation followed by application-only TUNER helper installation and one TUNER pairing write. REMOTE helper installation and pairing remain separately gated.
+Review and authorize or reject a narrowly corrected private TUNER helper, its focused verification, and a separately gated second transmission that reuses the retained original capsule. REMOTE provisioning remains unauthorized.
 
 ## Evidence
 
-- `reports/A-REMOTE-011_STAGE3A_PAIRING_HELPER.md`
-- `references/device_evidence/remote/A-REMOTE-011/STAGE3A_RESULT.json`
-- Previous handoff: `archive/remote/2026-10-14T220000Z_A-REMOTE-011_REMOTE-A-REMOTE-011-STAGE2B-20261014.md`
+- `reports/A-REMOTE-011_STAGE3B_TUNER_PAIRING.md`
+- `references/device_evidence/remote/A-REMOTE-011/STAGE3B_RESULT.json`
+- Previous report: `reports/A-REMOTE-011_STAGE3A_PAIRING_HELPER.md`
