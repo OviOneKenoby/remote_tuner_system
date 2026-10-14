@@ -1,29 +1,29 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE3C-COMPLETE-20261014
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE4-STOPPED-20261014
 - Updated (UTC): 2026-10-14
 - Task ID: A-REMOTE-011
-- Status: STAGE 3C PAIRING PASS -- PRODUCTION RESTORATION PENDING
+- Status: STAGE 4 STOPPED -- REMOTE RESTORED, TUNER RESTORATION NOT STARTED
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `143ac3c144ef55611aff8190f6fdcf22d2557abf`
+- Input head: `89945b3ccf38051826a3d5b5cb472f67bfd9b16a`
 
 ## Result
 
-The accepted REMOTE commissioning helper was installed application-only and its exact readback matched the approved artifact. The complete `remote_ctl` partition matched the accepted healthy generation-2 pre-provision baseline byte-for-byte. The retained original REMOTE capsule was transmitted exactly once and returned sanitized `result=complete`.
+The accepted REMOTE production application was restored once and exact readback matched. Its boot log confirmed the application at `0x10000` and the association remained configured without a provisioning write.
 
-Both TUNER and REMOTE pairing stores are now provisioned with the same retained private association. The REMOTE helper remains installed; no retry occurred.
+TUNER restoration did not start because Windows denied opening busy COM5. The failure preceded ROM connection, erase and write; zero TUNER flash bytes were written. The TUNER commissioning helper remains installed and its pairing record remains provisioned. No retry occurred.
 
 ## Scope guard
 
-TUNER was not accessed or modified in Stage 3C. No production-firmware restoration, RTCP command, unrelated NVS/partition write, erase or PR merge occurred. Private capsules, device identifiers and captures remain unpublished.
+Authenticated RTCP/1 read-only verification was not reached. No TUNER mutation, RTCP command, unrelated partition/NVS write, erase or PR merge occurred. Owner-visible REMOTE UI/configuration confirmation remains pending.
 
 ## Next owner decision
 
-Authorize or reject the staged production-firmware restoration and subsequent read-only authenticated identity/capability/state verification. Any control mutation remains separately gated.
+After the process holding COM5 is closed, authorize or reject the unexecuted TUNER application-only restoration and remaining Stage 4 read-only verification. REMOTE restoration must not be repeated without a separate concrete need.
 
 ## Evidence
 
-- `reports/A-REMOTE-011_STAGE3C_REMOTE_PAIRING.md`
-- `references/device_evidence/remote/A-REMOTE-011/STAGE3C_RESULT.json`
-- TUNER pairing result: `reports/A-REMOTE-011_STAGE3B_TUNER_PAIRING_COMPLETE.md`
+- `reports/A-REMOTE-011_STAGE4_RESTORATION_STOPPED.md`
+- `references/device_evidence/remote/A-REMOTE-011/STAGE4_STOPPED_RESULT.json`
+- Pairing result: `reports/A-REMOTE-011_STAGE3C_REMOTE_PAIRING.md`

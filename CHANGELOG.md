@@ -1,3 +1,9 @@
+# 2026-10-14 -- A-REMOTE-011 Stage 4 stopped at TUNER port-open failure
+
+- Restored the accepted 2,515,584-byte REMOTE production application once at `0x10000`; exact readback matched SHA-256 `ceae9f64329c5409fdfe92e5ac5394885010abf1cf66ac24a5ab7fcc35f11647`, normal boot was observed and the association remained configured.
+- TUNER restoration did not start: esptool could not open busy COM5 and returned `Access is denied` before ROM connection, erase or write. Zero TUNER flash bytes were written and no retry occurred.
+- Authenticated RTCP/1 read-only verification was not reached. PR #17 remains open and unmerged pending a new owner decision for the unexecuted TUNER restoration and remaining checks.
+
 # 2026-10-14 -- A-REMOTE-011 Stage 3C REMOTE pairing complete
 
 - Installed the exact 2,517,248-byte REMOTE commissioning helper once at `0x10000` using 921600-baud esptool communication; exact readback matched SHA-256 `acb1948f791557e4a82adfde5228871e8a5e3602b937fff407426966031696a2`.
