@@ -1,29 +1,29 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE3B-CORRECTION-20261014
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE3B-COMPLETE-20261014
 - Updated (UTC): 2026-10-14
 - Task ID: A-REMOTE-011
-- Status: STAGE 3B CORRECTION BUILD PASS -- HARDWARE RETRY UNAUTHORIZED
+- Status: STAGE 3B TUNER PAIRING PASS -- REMOTE UNPROVISIONED
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `d6e87b8026bbba6c32a44c783b8792d909b7842c`
+- Input head: `2394574b84eb3cbe5a92d3130b44683ec2f1de18`
 
 ## Result
 
-The private TUNER commissioning helper now distinguishes the ESP-IDF absent-namespace result from genuine NVS errors. Only absence is treated as empty. Open/read errors and partial or malformed pairing state continue to fail closed. The production pairing reader and unrelated NVS code were not changed.
+The corrected private TUNER helper was installed application-only and its exact readback matched the approved candidate. The retained original TUNER capsule was transmitted exactly once and returned sanitized `result=complete`. No retry occurred.
 
-Focused tests passed 22/22 and the clean commissioning build passed. The exact corrected artifact identity is recorded in the correction report. Both original private capsules remain unchanged.
+TUNER pairing storage is provisioned and the corrected helper remains installed. REMOTE was disconnected, unaccessed and unprovisioned.
 
 ## Scope guard
 
-No hardware was accessed, no firmware was flashed, no capsule was retransmitted, and no TUNER NVS or REMOTE state was modified. PR #17 remains open and unmerged.
+No production-firmware restoration, REMOTE change, RTCP command, erase or PR merge occurred. Both private capsules remain unpublished and the retained REMOTE capsule remains unused.
 
 ## Next owner decision
 
-Authorize or reject application-only installation of the exact corrected TUNER helper, exact readback verification and one transmission of the retained original TUNER capsule. REMOTE provisioning remains separately gated.
+Authorize or reject the separately gated REMOTE commissioning-helper installation and exactly one transmission of the retained original REMOTE capsule. TUNER production restoration remains deferred until directed by the staged procedure.
 
 ## Evidence
 
-- `reports/A-REMOTE-011_STAGE3B_TUNER_HELPER_CORRECTION.md`
-- `references/device_evidence/remote/A-REMOTE-011/STAGE3B_CORRECTION_RESULT.json`
-- Prior stopped attempt: `reports/A-REMOTE-011_STAGE3B_TUNER_PAIRING.md`
+- `reports/A-REMOTE-011_STAGE3B_TUNER_PAIRING_COMPLETE.md`
+- `references/device_evidence/remote/A-REMOTE-011/STAGE3B_COMPLETE_RESULT.json`
+- Corrected helper report: `reports/A-REMOTE-011_STAGE3B_TUNER_HELPER_CORRECTION.md`

@@ -1,0 +1,25 @@
+{
+  "stage": "A-REMOTE-011 Stage 3B corrected TUNER pairing execution",
+  "verdict": "PASS",
+  "coordination_input": "2394574b84eb3cbe5a92d3130b44683ec2f1de18",
+  "helper": {
+    "bytes": 2026736,
+    "sha256": "b866918f5a63586c5ed28cb192d71a9b63c886b6d10cf0fdd4cc5a5e6198c7a7",
+    "offset": "0x10000",
+    "readback_match": true,
+    "esptool_baud": 921600
+  },
+  "provisioning": {
+    "original_capsule_unchanged": true,
+    "transmissions": 1,
+    "sanitized_result": "complete",
+    "secret_output": false,
+    "automatic_retry": false
+  },
+  "tuner_helper_remains_installed": true,
+  "production_firmware_restored": false,
+  "remote_accessed": false,
+  "remote_provisioned": false,
+  "rtcp_command_issued": false,
+  "next_gate": "Separately authorize REMOTE helper installation and exactly one retained REMOTE-capsule transmission."
+}

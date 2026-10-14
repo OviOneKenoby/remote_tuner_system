@@ -1,3 +1,9 @@
+# 2026-10-14 -- A-REMOTE-011 Stage 3B TUNER pairing complete
+
+- Installed the corrected 2,026,736-byte TUNER commissioning application once at `0x10000` using 921600-baud esptool communication; exact readback matched SHA-256 `b866918f5a63586c5ed28cb192d71a9b63c886b6d10cf0fdd4cc5a5e6198c7a7`.
+- Transmitted the unchanged retained TUNER capsule exactly once after helper readiness; sanitized result was `complete`. No retry occurred.
+- TUNER helper remains installed and TUNER pairing is provisioned. REMOTE was disconnected and unmodified; no production restore, RTCP command or PR merge occurred. PR #17 remains open.
+
 # 2026-10-14 -- A-REMOTE-011 Stage 3B targeted TUNER helper correction
 
 - Corrected only the private commissioning helper's empty-store probe: ESP-IDF `ESP_ERR_NVS_NOT_FOUND` now identifies an absent unprovisioned namespace, while all other open/read errors and partial states remain fail-closed.
