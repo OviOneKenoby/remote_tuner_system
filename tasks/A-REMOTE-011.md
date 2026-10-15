@@ -1,6 +1,6 @@
 # A-REMOTE-011: Common REMOTE-TUNER API integration kickoff
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: IN PROGRESS - STAGE 5 CORRECTION IMPLEMENTED / BUILD FAILED / FIX PENDING
+- State: IN PROGRESS - STAGE 5 CORRECTED DIAGNOSTIC CANDIDATE BUILD PASS / NOT INSTALLED
 - Coordination input commit: `8e93c702940d49583f3fdd58046503ae0b8f7354`
 - Objective: implement the frozen RTCP/1 transport and first CCM 1.1.0 REMOTE-TUNER integration slice, verify both builds and stop before hardware commissioning.
 - Baseline: coordination main `8e93c702940d49583f3fdd58046503ae0b8f7354`; Phase 2 coordination input `1e11e979dbcd4d95a50cbf8ed87400ce854256b3`; TUNER v1.1.11 `5fb92c95d228d744d1182ae3956e850c5be2f277`; accepted A-010 private REMOTE source.
@@ -82,3 +82,7 @@ Owner observation demonstrated that the installed binding changed the brightness
 ## Stage 5 brightness restoration and admission diagnostics stopped at build 2026-10-15
 
 The private implementation restored the original brightness callback, preserved the existing authoritative HOME volume label/bar and added named, bounded read-only encoder/admission diagnostics without changing control semantics. Focused checks passed 8/8 cases with 53 assertions. The one production build failed at a demonstrated 39-versus-40 diagnostics array-length mismatch and stopped before correction or retry. No firmware artifact or hardware action exists. See the [stop report](../reports/A-REMOTE-011_STAGE5_BRIGHTNESS_ADMISSION_IMPLEMENTATION_STOP.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_BRIGHTNESS_ADMISSION_IMPLEMENTATION_STOP.json).
+
+## Stage 5 diagnostic array-size correction 2026-10-15
+
+The Core diagnostics declaration alone was corrected from 39 to 40 entries after confirming the initializer and JSON table both contain 40 fields. Exactly one production build passed; tests were not repeated. The private 2,520,640-byte candidate has SHA-256 `9edbfc968dbfe3dea66ab4d8932bb2e9389df670874510264b99fc9b5b51f98a`, 625,088 bytes OTA headroom and 47,212 bytes static RAM. It is not installed. See the [build report](../reports/A-REMOTE-011_STAGE5_DIAGNOSTIC_ARRAY_FIX.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_DIAGNOSTIC_ARRAY_FIX.json).

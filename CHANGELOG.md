@@ -1,3 +1,9 @@
+# 2026-10-15 -- A-REMOTE-011 Stage 5 diagnostic array-size fix
+
+- Confirmed 40 diagnostic initializer fields and 40 JSON names, then changed only the Core values declaration from 39 to 40 entries.
+- Exactly one production build passed. The private 2,520,640-byte application has SHA-256 `9edbfc968dbfe3dea66ab4d8932bb2e9389df670874510264b99fc9b5b51f98a`, 625,088 bytes of 3 MiB OTA headroom and 47,212 bytes static RAM.
+- Passing tests were not repeated. No hardware, flash, command or TUNER operation occurred; installation remains separately gated.
+
 # 2026-10-15 -- A-REMOTE-011 Stage 5 brightness/admission implementation stopped at build
 
 - Privately restored the generated brightness slider's original `setUpduty` binding and kept the existing authoritative HOME volume label/bar independent. Added bounded read-only encoder and exact volume-admission diagnostics without changing admission semantics.
