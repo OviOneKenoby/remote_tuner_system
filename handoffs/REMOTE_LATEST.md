@@ -2,12 +2,12 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RTCP-DIAGNOSTIC-COMPILE-RETRY-STOP-20261015
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RTCP-DIAGNOSTIC-SCHEMA-BOUND-STOP-20261015
 - Updated (UTC): 2026-10-15
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 HANDSHAKE DIAGNOSTICS IMPLEMENTED / SINGLE COMPILE RETRY FAILED
+- Status: STAGE 5 DIAGNOSTIC MODEL TEST PASS / STATUS-SCHEMA SIZE BOUND FAILURE
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `97a52301fad1f15d27943b401ee79816091b010c`
+- Input head: `120a15ce84e5a6df2096cebfa4f2257895824c7c`
 
 ## Result
 
@@ -71,3 +71,9 @@ The previously proposed single retry has now been consumed and failed identicall
 ## Authorized single compilation retry result
 
 The compiler executable, working directory, source, include root, diagnostic header and writable output location were verified before the unchanged retry. The single authorized compilation again exited 1, emitted zero stdout and zero stderr, and produced no executable. No focused test or production build ran. The result demonstrates a repeatable immediate host compiler-process failure for this command but supplies no compiler diagnostic that attributes it to source. No additional retry, source change or hardware action occurred. The implementation remains unverified and installation remains blocked.
+
+## Compiler environment resolution and focused-test result
+
+The owner demonstrated that the missing MSYS2 UCRT64 runtime directory in the Windows process PATH caused the silent compiler exits. Prepending that directory only for the test process resolved the host failure. The focused RTCP diagnostic model then compiled and passed 6/6 assertions.
+
+The next affected status-schema compilation exposed the first source-level blocker: the expanded Core snapshot makes `diagnostics::Snapshots` 1,120 bytes, exceeding the existing 1,024-byte static limit. The mandatory stop applied before any source correction or production build. The smallest next decision is whether to authorize a bounded representation change that retains all requested diagnostics within the existing snapshot/storage budget, followed by the failed schema check and one production build. Installation remains separately gated.

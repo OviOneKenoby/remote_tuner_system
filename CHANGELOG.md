@@ -1,3 +1,8 @@
+# 2026-10-15 -- A-REMOTE-011 compiler environment resolved; schema bound failure
+
+- Applied the owner-validated process-only PATH correction for MSYS2 UCRT64. The focused RTCP diagnostic model compiled and passed 6/6 assertions.
+- The next focused status-schema compilation demonstrated that the added fields expand `diagnostics::Snapshots` to 1,120 bytes, exceeding its existing 1,024-byte static bound. Stopped before correction or production build; no hardware operation occurred.
+
 # 2026-10-15 -- A-REMOTE-011 focused diagnostic compilation retry failed
 
 - Verified the unchanged focused-test compiler, working directory, source, include tree, diagnostic header and writable output location, then used the single authorized retry.
