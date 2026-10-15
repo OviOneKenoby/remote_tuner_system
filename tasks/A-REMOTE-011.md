@@ -1,6 +1,6 @@
 # A-REMOTE-011: Common REMOTE-TUNER API integration kickoff
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: IN PROGRESS - STAGE 5 APPLICATION INSTALLED / CONTROL TEST NOT STARTED
+- State: IN PROGRESS - STAGE 5 VOLUME SLIDER CANDIDATE BUILD PASS / NOT INSTALLED
 - Coordination input commit: `8e93c702940d49583f3fdd58046503ae0b8f7354`
 - Objective: implement the frozen RTCP/1 transport and first CCM 1.1.0 REMOTE-TUNER integration slice, verify both builds and stop before hardware commissioning.
 - Baseline: coordination main `8e93c702940d49583f3fdd58046503ae0b8f7354`; Phase 2 coordination input `1e11e979dbcd4d95a50cbf8ed87400ce854256b3`; TUNER v1.1.11 `5fb92c95d228d744d1182ae3956e850c5be2f277`; accepted A-010 private REMOTE source.
@@ -70,3 +70,7 @@ The owner permanently excluded microSD and approved GPIO38-41 as four input-only
 ## Stage 5 EC11 installation 2026-10-15
 
 The accepted application was installed once at `0x10000` and an exact 2,518,896-byte readback matched SHA-256 `6aca8931fcd08b91fcf489bd6d77212cbb0d4c762e70a657d7abec6911ab8e95`. Read-only post-boot evidence showed connected stored networking, valid main/external voltage observations, IMU readiness, an active authenticated session and zero control dispatches. No intentional rotation, KEY test or `volume.set` occurred. Encoder direction/detent convention, visual UI/configuration confirmation and the one-detent control test remain owner-gated. See the [commissioning report](../reports/A-REMOTE-011_STAGE5_EC11_COMMISSIONING.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_EC11_COMMISSIONING.json).
+
+## Stage 5 existing volume slider binding 2026-10-15
+
+The private REMOTE source now drives the existing generated 0-255 LVGL slider only from authoritative CCM `volume.level` snapshots on the LVGL timer. Every supported 0-100 step has a distinct slider position; unavailable state visually disables the indicator. Touch command generation and optimistic encoder movement are absent, while local TUNER changes follow the same observation path. Focused tests passed 2/2 with 211 assertions and one production build passed. The 2,518,656-byte private candidate has SHA-256 `af11826c7d19051a7584ee1f70eebf43efb427d1e55b116e5928a75877ec05eb`, 627,072 bytes OTA headroom and 47,180 bytes static RAM. It is not installed. See the [implementation report](../reports/A-REMOTE-011_STAGE5_VOLUME_SLIDER_BINDING.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_VOLUME_SLIDER_BINDING.json).

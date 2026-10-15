@@ -1,3 +1,9 @@
+# 2026-10-15 -- A-REMOTE-011 Stage 5 existing volume slider binding
+
+- Reused the existing 0-255 LVGL mock-up slider as a display-only view of authoritative CCM `volume.level`; its former backlight callback is no longer bound and touch command generation is disabled.
+- The LVGL timer maps all 101 supported 0-100 volume steps to distinct slider positions. It updates only from copied TUNER observations and visually disables the indicator for unknown, stale or disconnected state; encoder intent remains on the unchanged CCM path with no optimistic UI movement.
+- Focused tests passed 2/2 with 211 assertions. One production build passed: 2,518,656 bytes, SHA-256 `af11826c7d19051a7584ee1f70eebf43efb427d1e55b116e5928a75877ec05eb`, 627,072 bytes OTA headroom and 47,180 bytes static RAM. No hardware or live command occurred.
+
 # 2026-10-15 -- A-REMOTE-011 Stage 5 EC11 installation
 
 - Installed the accepted 2,518,896-byte REMOTE application once at `0x10000` using 921600-baud esptool communication; exact readback matched SHA-256 `6aca8931fcd08b91fcf489bd6d77212cbb0d4c762e70a657d7abec6911ab8e95`.

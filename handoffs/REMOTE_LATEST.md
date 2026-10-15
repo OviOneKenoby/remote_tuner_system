@@ -2,30 +2,31 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-EC11-INSTALL-20261015
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-VOLUME-SLIDER-20261015
 - Updated (UTC): 2026-10-15
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 APPLICATION INSTALLED -- CONTROL TEST NOT STARTED
+- Status: STAGE 5 VOLUME SLIDER CANDIDATE BUILD PASS -- NOT INSTALLED
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `c5db0de3f5cff915b86ebb904fad179e5f05c561`
+- Input head: `95a1ec8b40d47ceca7dc34cd584a516ad566c4c3`
 
 ## Result
 
-The owner confirmed the EC11 is connected to the approved GPIO2/GPIO5/GPIO38 wiring. The accepted 2,518,896-byte application was installed once at `0x10000` using 921600-baud esptool communication. Exact readback matched SHA-256 `6aca8931fcd08b91fcf489bd6d77212cbb0d4c762e70a657d7abec6911ab8e95`; no retry or unrelated flash operation occurred.
+The private implementation reuses the generated LVGL `screen_slider_1` widget and its existing 0-255 range. The LVGL timer is the sole widget owner and updates the indicator only from copied, authoritative CCM `volume.level` observations. All 101 supported TUNER volume levels map to distinct slider positions. Unknown, stale or disconnected state visually disables the indicator.
 
-Two read-only post-boot snapshots showed connected stored networking, ready storage, valid main and external voltage sensing, a ready IMU, an active authenticated session with advancing capability revisions, and zero control dispatches or applied results.
+The former backlight callback is no longer bound. The slider is non-clickable, non-focusable and cannot originate a command. Encoder input remains on the existing bounded CCM `volume.set` route and does not move the slider optimistically. A local TUNER volume change reaches the same display path through the next authoritative observation.
+
+Focused tests passed 2/2 with 211 assertions. One production build passed. The private application is 2,518,656 bytes with SHA-256 `af11826c7d19051a7584ee1f70eebf43efb427d1e55b116e5928a75877ec05eb`; the unchanged 3 MiB OTA slot retains 627,072 bytes and PlatformIO reports 47,180 bytes static RAM.
 
 ## Scope guard
 
-No intentional encoder rotation, KEY press, `volume.set`, pairing/NVS change, TUNER modification, private binary/source publication or PR merge occurred. Encoder direction and detent convention remain physically unverified. The KEY has no application action and its logical event is not exposed by current diagnostics. BUTTON_1 through BUTTON_3 remain unconnected and untested.
+No hardware access, flash operation, live control command, TUNER modification, pairing/NVS/GPIO change, unrelated test, private source/binary publication or PR merge occurred. The previously installed candidate remains on REMOTE; this new slider candidate is not installed.
 
-## Next owner checkpoint
+## Next owner decision
 
-Confirm the normal UI and retained configuration. If those checks pass, separately authorize one controlled adjacent encoder detent test on HOME, with the TUNER at a safe audible volume. That test may transmit exactly one `volume.set`; it must stop on the first unexpected direction, detent count, session or result behavior.
+Authorize or reject application-only installation of the exact slider candidate. After exact readback and ordinary boot/synchronization checks, a separately controlled encoder rotation may verify physical direction, detent convention, correlated `volume.set` and authoritative slider movement.
 
 ## Evidence
 
-- `reports/A-REMOTE-011_STAGE5_EC11_COMMISSIONING.md`
-- `references/device_evidence/remote/A-REMOTE-011/STAGE5_EC11_COMMISSIONING.json`
-- Previous implementation: `reports/A-REMOTE-011_STAGE5_BUTTON_INPUT_IMPLEMENTATION.md`
-- GPIO record: `docs/REMOTE_GPIO_MAP.md`
+- `reports/A-REMOTE-011_STAGE5_VOLUME_SLIDER_BINDING.md`
+- `references/device_evidence/remote/A-REMOTE-011/STAGE5_VOLUME_SLIDER_BINDING.json`
+- Prior installation: `reports/A-REMOTE-011_STAGE5_EC11_COMMISSIONING.md`

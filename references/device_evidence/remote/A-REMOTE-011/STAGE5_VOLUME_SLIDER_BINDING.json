@@ -1,0 +1,36 @@
+{
+  "task": "A-REMOTE-011",
+  "stage": "Stage 5 existing LVGL volume slider binding",
+  "date_utc": "2026-10-15",
+  "verdict": "IMPLEMENTED_TESTED_BUILD_PASS_NOT_INSTALLED",
+  "binding": {
+    "existing_widget_reused": true,
+    "slider_min": 0,
+    "slider_max": 255,
+    "ccm_volume_min": 0,
+    "ccm_volume_max": 100,
+    "distinct_supported_positions": 101,
+    "ui_task_only": true,
+    "authoritative_observation_only": true,
+    "touch_commands_disabled": true,
+    "optimistic_update": false
+  },
+  "tests": {
+    "passed": 2,
+    "failed": 0,
+    "assertions": 211
+  },
+  "build": {
+    "environment": "remote01",
+    "result": "PASS",
+    "firmware_size_bytes": 2518656,
+    "firmware_sha256": "af11826c7d19051a7584ee1f70eebf43efb427d1e55b116e5928a75877ec05eb",
+    "ota_slot_size_bytes": 3145728,
+    "ota_headroom_bytes": 627072,
+    "static_ram_bytes": 47180,
+    "platformio_flash_bytes": 2518157
+  },
+  "hardware_access": false,
+  "live_control_commands": 0,
+  "privacy": "No private source, binary, credential, device identifier or private path is published."
+}
