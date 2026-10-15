@@ -1,3 +1,9 @@
+# 2026-10-15 -- A-REMOTE-011 Stage 5 EC11 installation
+
+- Installed the accepted 2,518,896-byte REMOTE application once at `0x10000` using 921600-baud esptool communication; exact readback matched SHA-256 `6aca8931fcd08b91fcf489bd6d77212cbb0d4c762e70a657d7abec6911ab8e95`.
+- Two post-boot read-only snapshots showed connected stored networking, valid voltage sensing, IMU readiness, an active authenticated session with advancing capability revisions, and zero control dispatches.
+- Stopped before intentional encoder rotation, KEY testing or any `volume.set`. Direction and detent convention remain physically unverified; owner visual confirmation and separate control-test authorization are required. PR #17 remains open.
+
 # 2026-10-14 -- A-REMOTE-011 Stage 5 GPIO resolution proposal
 
 - Published the evidence-based REMOTE GPIO map for Waveshare V2/PCB Rev1.1, separating confirmed board/firmware assignments from candidate and owner-selected uses.

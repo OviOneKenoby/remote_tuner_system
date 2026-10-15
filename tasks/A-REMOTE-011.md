@@ -1,6 +1,6 @@
 # A-REMOTE-011: Common REMOTE-TUNER API integration kickoff
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: IN PROGRESS - STAGE 5 BUTTON INPUT IMPLEMENTATION BUILD PASS / HARDWARE COMMISSIONING NOT STARTED
+- State: IN PROGRESS - STAGE 5 APPLICATION INSTALLED / CONTROL TEST NOT STARTED
 - Coordination input commit: `8e93c702940d49583f3fdd58046503ae0b8f7354`
 - Objective: implement the frozen RTCP/1 transport and first CCM 1.1.0 REMOTE-TUNER integration slice, verify both builds and stop before hardware commissioning.
 - Baseline: coordination main `8e93c702940d49583f3fdd58046503ae0b8f7354`; Phase 2 coordination input `1e11e979dbcd4d95a50cbf8ed87400ce854256b3`; TUNER v1.1.11 `5fb92c95d228d744d1182ae3956e850c5be2f277`; accepted A-010 private REMOTE source.
@@ -66,3 +66,7 @@ The official V2 schematic shows fitted 10 kOhm pull-ups on SD CS/D3 GPIO38, CMD 
 ## Stage 5 physical button input implementation 2026-10-15
 
 The owner permanently excluded microSD and approved GPIO38-41 as four input-only active-low controls. The private source now exposes typed `ENCODER_KEY`, `BUTTON_1`, `BUTTON_2` and `BUTTON_3` press events with bounded debounce, no held repeat, no application action and no CCM/RTCP dispatch. Focused checks and the affected shared model passed, GPIO/SD ownership checks passed and one clean production build passed. The 2,518,896-byte candidate has SHA-256 `6aca8931fcd08b91fcf489bd6d77212cbb0d4c762e70a657d7abec6911ab8e95`, 626,832 bytes of OTA headroom and 47,172 bytes static RAM use. No hardware access or persistent mutation occurred. See the [implementation report](../reports/A-REMOTE-011_STAGE5_BUTTON_INPUT_IMPLEMENTATION.md), [GPIO map](../docs/REMOTE_GPIO_MAP.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_BUTTON_INPUT_IMPLEMENTATION.json).
+
+## Stage 5 EC11 installation 2026-10-15
+
+The accepted application was installed once at `0x10000` and an exact 2,518,896-byte readback matched SHA-256 `6aca8931fcd08b91fcf489bd6d77212cbb0d4c762e70a657d7abec6911ab8e95`. Read-only post-boot evidence showed connected stored networking, valid main/external voltage observations, IMU readiness, an active authenticated session and zero control dispatches. No intentional rotation, KEY test or `volume.set` occurred. Encoder direction/detent convention, visual UI/configuration confirmation and the one-detent control test remain owner-gated. See the [commissioning report](../reports/A-REMOTE-011_STAGE5_EC11_COMMISSIONING.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_EC11_COMMISSIONING.json).
