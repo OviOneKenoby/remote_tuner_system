@@ -1,0 +1,22 @@
+{
+  "task": "A-REMOTE-011",
+  "stage": "Stage 5 diagnostic firmware installation",
+  "date_utc": "2026-10-15",
+  "verdict": "STOPPED_BEFORE_ROM_CONNECTION",
+  "candidate": {
+    "size_bytes": 2520640,
+    "sha256": "9edbfc968dbfe3dea66ab4d8932bb2e9389df670874510264b99fc9b5b51f98a",
+    "verified": true
+  },
+  "rollback_backup_verified": true,
+  "device_enumerated": true,
+  "windows_device_status": "OK",
+  "esptool_result": "serial configuration/open failed with Windows device error 31",
+  "rom_connection_reached": false,
+  "write_attempted": false,
+  "flash_bytes_written": 0,
+  "automatic_retry": false,
+  "encoder_rotations": 0,
+  "control_commands": 0,
+  "privacy": "No private path, device identifier, credential, source or binary is published."
+}

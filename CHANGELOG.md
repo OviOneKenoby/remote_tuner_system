@@ -1,3 +1,9 @@
+# 2026-10-15 -- A-REMOTE-011 Stage 5 diagnostic installation stopped before ROM connection
+
+- Reverified the accepted 2,520,640-byte candidate and retained private rollback backup.
+- The healthy enumerated USB serial/JTAG interface failed its first read-only esptool open with Windows device error 31. The stop occurred before ROM connection, erase or write; zero flash bytes changed.
+- No automatic retry, readback, boot check, encoder rotation or control command occurred. Owner action is required before a separately requested retry.
+
 # 2026-10-15 -- A-REMOTE-011 Stage 5 diagnostic array-size fix
 
 - Confirmed 40 diagnostic initializer fields and 40 JSON names, then changed only the Core values declaration from 39 to 40 entries.

@@ -2,31 +2,29 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-DIAGNOSTIC-ARRAY-FIX-20261015
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-DIAGNOSTIC-INSTALL-STOP-20261015
 - Updated (UTC): 2026-10-15
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 CORRECTED DIAGNOSTIC CANDIDATE BUILD PASS -- NOT INSTALLED
+- Status: STAGE 5 DIAGNOSTIC INSTALL STOPPED BEFORE ROM CONNECTION
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `0873e1068dfdfa1e82416a7abdb7e7353cfc8e9c`
+- Input head: `533c673e3d5a1858912f5b75df64080bc3439c54`
 
 ## Result
 
-The diagnostics Core array declaration was the sole demonstrated build defect: it declared 39 entries while the initializer and JSON field-name table each contained 40. The declaration alone was corrected to 40. Field order, types, decisions and diagnostic semantics remain unchanged.
+The accepted 2,520,640-byte private candidate and retained rollback backup reverified. Windows enumerated the expected Espressif native USB serial/JTAG interfaces and reported them healthy, but the first read-only esptool identity operation failed while configuring/opening the serial port with Windows device error 31.
 
-Exactly one production build passed. The private application is 2,520,640 bytes with SHA-256 `9edbfc968dbfe3dea66ab4d8932bb2e9389df670874510264b99fc9b5b51f98a`; the unchanged 3 MiB OTA slot retains 625,088 bytes and PlatformIO reports 47,212 bytes static RAM.
-
-The candidate restores the original brightness-slider callback, preserves the existing authoritative HOME volume label/bar and adds bounded read-only encoder/admission diagnostics. Previously passing focused tests were not repeated because their inputs did not change.
+The operation stopped before ROM connection, stub upload, erase or write. Zero flash bytes changed. Installation, exact readback, boot verification, brightness/HOME verification and encoder/admission baseline capture were not reached.
 
 ## Scope guard
 
-No hardware access, flash operation, live control command, TUNER change, GPIO/NVS/pairing/protocol change, private source/binary publication or PR merge occurred. The currently installed failed-validation firmware remains unchanged.
+No automatic retry, encoder rotation, control command, source/build change, TUNER operation, NVS/pairing/partition change, private publication or PR merge occurred. The currently installed failed-validation firmware remains unchanged.
 
-## Next owner decision
+## Next owner action
 
-Authorize or reject application-only installation of the exact private candidate. If installed and read back successfully, authorize one controlled encoder detent while capturing the new read-only diagnostics. Stop on the first unexpected admission, direction or detent result.
+Close any serial monitor or process holding the interface, or reconnect/wake REMOTE if needed, then explicitly request a retry of the unexecuted installation. The controlled encoder detent remains separately gated after a successful installation and baseline capture.
 
 ## Evidence
 
-- `reports/A-REMOTE-011_STAGE5_DIAGNOSTIC_ARRAY_FIX.md`
-- `references/device_evidence/remote/A-REMOTE-011/STAGE5_DIAGNOSTIC_ARRAY_FIX.json`
-- Prior implementation stop: `reports/A-REMOTE-011_STAGE5_BRIGHTNESS_ADMISSION_IMPLEMENTATION_STOP.md`
+- `reports/A-REMOTE-011_STAGE5_DIAGNOSTIC_INSTALL_STOP.md`
+- `references/device_evidence/remote/A-REMOTE-011/STAGE5_DIAGNOSTIC_INSTALL_STOP.json`
+- Candidate build: `reports/A-REMOTE-011_STAGE5_DIAGNOSTIC_ARRAY_FIX.md`

@@ -1,6 +1,6 @@
 # A-REMOTE-011: Common REMOTE-TUNER API integration kickoff
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: IN PROGRESS - STAGE 5 CORRECTED DIAGNOSTIC CANDIDATE BUILD PASS / NOT INSTALLED
+- State: IN PROGRESS - STAGE 5 DIAGNOSTIC INSTALL STOPPED BEFORE ROM CONNECTION
 - Coordination input commit: `8e93c702940d49583f3fdd58046503ae0b8f7354`
 - Objective: implement the frozen RTCP/1 transport and first CCM 1.1.0 REMOTE-TUNER integration slice, verify both builds and stop before hardware commissioning.
 - Baseline: coordination main `8e93c702940d49583f3fdd58046503ae0b8f7354`; Phase 2 coordination input `1e11e979dbcd4d95a50cbf8ed87400ce854256b3`; TUNER v1.1.11 `5fb92c95d228d744d1182ae3956e850c5be2f277`; accepted A-010 private REMOTE source.
@@ -86,3 +86,7 @@ The private implementation restored the original brightness callback, preserved 
 ## Stage 5 diagnostic array-size correction 2026-10-15
 
 The Core diagnostics declaration alone was corrected from 39 to 40 entries after confirming the initializer and JSON table both contain 40 fields. Exactly one production build passed; tests were not repeated. The private 2,520,640-byte candidate has SHA-256 `9edbfc968dbfe3dea66ab4d8932bb2e9389df670874510264b99fc9b5b51f98a`, 625,088 bytes OTA headroom and 47,212 bytes static RAM. It is not installed. See the [build report](../reports/A-REMOTE-011_STAGE5_DIAGNOSTIC_ARRAY_FIX.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_DIAGNOSTIC_ARRAY_FIX.json).
+
+## Stage 5 diagnostic installation stopped before ROM connection 2026-10-15
+
+The accepted candidate and retained rollback backup reverified, but the first read-only esptool identity operation failed while configuring/opening the healthy enumerated USB interface with Windows device error 31. The attempt stopped before ROM connection, erase or write. Zero flash bytes changed; installation, readback, boot checks and diagnostic baseline were not reached. See the [stop report](../reports/A-REMOTE-011_STAGE5_DIAGNOSTIC_INSTALL_STOP.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_DIAGNOSTIC_INSTALL_STOP.json).
