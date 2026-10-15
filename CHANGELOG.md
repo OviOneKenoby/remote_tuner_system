@@ -1,3 +1,9 @@
+# 2026-10-15 -- A-REMOTE-011 Stage 5 slider/encoder diagnosis
+
+- Marked Stage 5 hardware validation FAIL. The only generated LVGL slider is conclusively the 0-255 brightness control; no separate LVGL volume slider exists. The HOME volume presentation is an authoritative numeric label plus a plain indicator bar.
+- Read-only runtime evidence after owner rotation showed an active synchronized session, 59 local request rejections and zero Core ingress/RTCP dispatches. Sampling, complete-cycle decoding and HOME routing therefore reached local admission; current diagnostics cannot distinguish the exact failed readiness/volume/bounds/in-flight gate.
+- Required next work is limited to restoring the brightness binding and adding bounded read-only admission/encoder diagnostics before another controlled detent. No source edit, build, flash, command or TUNER change occurred during diagnosis.
+
 # 2026-10-15 -- A-REMOTE-011 Stage 5 existing volume slider binding
 
 - Reused the existing 0-255 LVGL mock-up slider as a display-only view of authoritative CCM `volume.level`; its former backlight callback is no longer bound and touch command generation is disabled.

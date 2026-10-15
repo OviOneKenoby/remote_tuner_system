@@ -2,31 +2,31 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-VOLUME-SLIDER-20261015
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-SLIDER-ENCODER-DIAGNOSIS-20261015
 - Updated (UTC): 2026-10-15
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 VOLUME SLIDER CANDIDATE BUILD PASS -- NOT INSTALLED
+- Status: STAGE 5 HARDWARE VALIDATION FAIL -- CORRECTION PENDING
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `95a1ec8b40d47ceca7dc34cd584a516ad566c4c3`
+- Input head: `0f1a68a6a62897c1674620fa71f0042183b14ba6`
 
-## Result
+## Demonstrated findings
 
-The private implementation reuses the generated LVGL `screen_slider_1` widget and its existing 0-255 range. The LVGL timer is the sole widget owner and updates the indicator only from copied, authoritative CCM `volume.level` observations. All 101 supported TUNER volume levels map to distinct slider positions. Unknown, stale or disconnected state visually disables the indicator.
+The installed candidate bound CCM volume to the wrong widget. The generated hierarchy contains exactly one LVGL slider, `screen_slider_1`: its label, 0-255 range and original `setUpduty` callback identify it as the brightness control. No separate LVGL volume slider exists. The custom HOME page instead uses an authoritative numeric label and a plain non-interactive indicator bar for volume.
 
-The former backlight callback is no longer bound. The slider is non-clickable, non-focusable and cannot originate a command. Encoder input remains on the existing bounded CCM `volume.set` route and does not move the slider optimistically. A local TUNER volume change reaches the same display path through the next authoritative observation.
+The encoder path progressed farther than the visual symptom suggested. After owner rotation, a read-only snapshot showed an active synchronized session, advancing capability revision, 59 local HOME-channel request rejections, zero Core ingress events and zero RTCP dispatches/results. GPIO sampling, complete-cycle decoding and HOME routing therefore reached `control_home::request`; the request stopped at its bounded local admission checks.
 
-Focused tests passed 2/2 with 211 assertions. One production build passed. The private application is 2,518,656 bytes with SHA-256 `af11826c7d19051a7584ee1f70eebf43efb427d1e55b116e5928a75877ec05eb`; the unchanged 3 MiB OTA slot retains 627,072 bytes and PlatformIO reports 47,180 bytes static RAM.
+Current diagnostics do not expose the copied snapshot's volume-known, volume-set, boundary or outstanding fields and do not count rejection reasons. The exact failed admission predicate, physical direction and detent convention remain unresolved.
+
+## Required correction
+
+Restore the brightness slider's original clickability, label and `setUpduty` callback and remove its CCM binding. Do not add a new volume slider or alter the layout without owner approval. Add only bounded read-only encoder-cycle and admission-reason diagnostics before another controlled detent test.
 
 ## Scope guard
 
-No hardware access, flash operation, live control command, TUNER modification, pairing/NVS/GPIO change, unrelated test, private source/binary publication or PR merge occurred. The previously installed candidate remains on REMOTE; this new slider candidate is not installed.
-
-## Next owner decision
-
-Authorize or reject application-only installation of the exact slider candidate. After exact readback and ordinary boot/synchronization checks, a separately controlled encoder rotation may verify physical direction, detent convention, correlated `volume.set` and authoritative slider movement.
+No source edit, build, flash, persistent mutation, intentional control command, TUNER change, pairing/NVS/protocol change or PR merge occurred during diagnosis. PR #17 remains open and unmerged.
 
 ## Evidence
 
-- `reports/A-REMOTE-011_STAGE5_VOLUME_SLIDER_BINDING.md`
-- `references/device_evidence/remote/A-REMOTE-011/STAGE5_VOLUME_SLIDER_BINDING.json`
-- Prior installation: `reports/A-REMOTE-011_STAGE5_EC11_COMMISSIONING.md`
+- `reports/A-REMOTE-011_STAGE5_SLIDER_ENCODER_DIAGNOSIS.md`
+- `references/device_evidence/remote/A-REMOTE-011/STAGE5_SLIDER_ENCODER_DIAGNOSIS.json`
+- Historical installed-candidate report: `reports/A-REMOTE-011_STAGE5_VOLUME_SLIDER_BINDING.md`

@@ -1,6 +1,6 @@
 # A-REMOTE-011: Common REMOTE-TUNER API integration kickoff
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: IN PROGRESS - STAGE 5 VOLUME SLIDER CANDIDATE BUILD PASS / NOT INSTALLED
+- State: IN PROGRESS - STAGE 5 HARDWARE VALIDATION FAIL / CORRECTION PENDING
 - Coordination input commit: `8e93c702940d49583f3fdd58046503ae0b8f7354`
 - Objective: implement the frozen RTCP/1 transport and first CCM 1.1.0 REMOTE-TUNER integration slice, verify both builds and stop before hardware commissioning.
 - Baseline: coordination main `8e93c702940d49583f3fdd58046503ae0b8f7354`; Phase 2 coordination input `1e11e979dbcd4d95a50cbf8ed87400ce854256b3`; TUNER v1.1.11 `5fb92c95d228d744d1182ae3956e850c5be2f277`; accepted A-010 private REMOTE source.
@@ -74,3 +74,7 @@ The accepted application was installed once at `0x10000` and an exact 2,518,896-
 ## Stage 5 existing volume slider binding 2026-10-15
 
 The private REMOTE source now drives the existing generated 0-255 LVGL slider only from authoritative CCM `volume.level` snapshots on the LVGL timer. Every supported 0-100 step has a distinct slider position; unavailable state visually disables the indicator. Touch command generation and optimistic encoder movement are absent, while local TUNER changes follow the same observation path. Focused tests passed 2/2 with 211 assertions and one production build passed. The 2,518,656-byte private candidate has SHA-256 `af11826c7d19051a7584ee1f70eebf43efb427d1e55b116e5928a75877ec05eb`, 627,072 bytes OTA headroom and 47,180 bytes static RAM. It is not installed. See the [implementation report](../reports/A-REMOTE-011_STAGE5_VOLUME_SLIDER_BINDING.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_VOLUME_SLIDER_BINDING.json).
+
+## Stage 5 hardware validation failure and diagnosis 2026-10-15
+
+Owner observation demonstrated that the installed binding changed the brightness slider and encoder rotation produced no volume control. The generated hierarchy contains only that 0-255 brightness slider; the separate HOME volume display is a numeric label plus a plain indicator bar. Read-only runtime evidence after owner rotation recorded 59 local request rejections with an active session but zero Core ingress or RTCP dispatches, locating the encoder stop at local CCM admission after sampling/decoding/HOME routing. The exact failed admission predicate is not exposed. Brightness restoration and bounded read-only rejection diagnostics require separate authorization. See the [diagnosis](../reports/A-REMOTE-011_STAGE5_SLIDER_ENCODER_DIAGNOSIS.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_SLIDER_ENCODER_DIAGNOSIS.json).
