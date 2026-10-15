@@ -1,3 +1,9 @@
+# 2026-10-15 -- A-REMOTE-011 Stage 5 brightness/admission implementation stopped at build
+
+- Privately restored the generated brightness slider's original `setUpduty` binding and kept the existing authoritative HOME volume label/bar independent. Added bounded read-only encoder and exact volume-admission diagnostics without changing admission semantics.
+- Focused UI, admission and affected encoder checks passed 8/8 cases with 53 total assertions.
+- The single production build failed because the diagnostics Core array was declared for 39 entries while the implementation and JSON names supply 40. Stopped without correction or a second build; no candidate artifact or hardware action exists.
+
 # 2026-10-15 -- A-REMOTE-011 Stage 5 slider/encoder diagnosis
 
 - Marked Stage 5 hardware validation FAIL. The only generated LVGL slider is conclusively the 0-255 brightness control; no separate LVGL volume slider exists. The HOME volume presentation is an authoritative numeric label plus a plain indicator bar.

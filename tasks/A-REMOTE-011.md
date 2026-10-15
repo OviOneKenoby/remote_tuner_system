@@ -1,6 +1,6 @@
 # A-REMOTE-011: Common REMOTE-TUNER API integration kickoff
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: IN PROGRESS - STAGE 5 HARDWARE VALIDATION FAIL / CORRECTION PENDING
+- State: IN PROGRESS - STAGE 5 CORRECTION IMPLEMENTED / BUILD FAILED / FIX PENDING
 - Coordination input commit: `8e93c702940d49583f3fdd58046503ae0b8f7354`
 - Objective: implement the frozen RTCP/1 transport and first CCM 1.1.0 REMOTE-TUNER integration slice, verify both builds and stop before hardware commissioning.
 - Baseline: coordination main `8e93c702940d49583f3fdd58046503ae0b8f7354`; Phase 2 coordination input `1e11e979dbcd4d95a50cbf8ed87400ce854256b3`; TUNER v1.1.11 `5fb92c95d228d744d1182ae3956e850c5be2f277`; accepted A-010 private REMOTE source.
@@ -78,3 +78,7 @@ The private REMOTE source now drives the existing generated 0-255 LVGL slider on
 ## Stage 5 hardware validation failure and diagnosis 2026-10-15
 
 Owner observation demonstrated that the installed binding changed the brightness slider and encoder rotation produced no volume control. The generated hierarchy contains only that 0-255 brightness slider; the separate HOME volume display is a numeric label plus a plain indicator bar. Read-only runtime evidence after owner rotation recorded 59 local request rejections with an active session but zero Core ingress or RTCP dispatches, locating the encoder stop at local CCM admission after sampling/decoding/HOME routing. The exact failed admission predicate is not exposed. Brightness restoration and bounded read-only rejection diagnostics require separate authorization. See the [diagnosis](../reports/A-REMOTE-011_STAGE5_SLIDER_ENCODER_DIAGNOSIS.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_SLIDER_ENCODER_DIAGNOSIS.json).
+
+## Stage 5 brightness restoration and admission diagnostics stopped at build 2026-10-15
+
+The private implementation restored the original brightness callback, preserved the existing authoritative HOME volume label/bar and added named, bounded read-only encoder/admission diagnostics without changing control semantics. Focused checks passed 8/8 cases with 53 assertions. The one production build failed at a demonstrated 39-versus-40 diagnostics array-length mismatch and stopped before correction or retry. No firmware artifact or hardware action exists. See the [stop report](../reports/A-REMOTE-011_STAGE5_BRIGHTNESS_ADMISSION_IMPLEMENTATION_STOP.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_BRIGHTNESS_ADMISSION_IMPLEMENTATION_STOP.json).
