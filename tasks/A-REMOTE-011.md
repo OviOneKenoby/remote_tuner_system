@@ -1,6 +1,6 @@
 # A-REMOTE-011: Common REMOTE-TUNER API integration kickoff
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: IN PROGRESS - STAGE 4 PASS / STAGE 5 PRIVATE IMPLEMENTATION AND PRODUCTION BUILD PASS, HARDWARE COMMISSIONING NOT STARTED
+- State: IN PROGRESS - STAGE 5 BUILD PASS / MOTION-WAKE REPORT DIAGNOSED OFFLINE, READ-ONLY RUNTIME VERIFICATION REQUIRED
 - Coordination input commit: `8e93c702940d49583f3fdd58046503ae0b8f7354`
 - Objective: implement the frozen RTCP/1 transport and first CCM 1.1.0 REMOTE-TUNER integration slice, verify both builds and stop before hardware commissioning.
 - Baseline: coordination main `8e93c702940d49583f3fdd58046503ae0b8f7354`; Phase 2 coordination input `1e11e979dbcd4d95a50cbf8ed87400ce854256b3`; TUNER v1.1.11 `5fb92c95d228d744d1182ae3956e850c5be2f277`; accepted A-010 private REMOTE source.
@@ -46,3 +46,7 @@ The private shared include tree was registered as a header-only ESP-IDF componen
 ## Stage 5 component discovery resolved 2026-10-14
 
 Generated metadata proved that the failed build tree predated the new header-only component: it omitted both `physical_input` and the shared include directory from `user_app`. Preserving and displacing only that generated tree forced fresh discovery. The one authorized production build passed; the private 2,518,496-byte application has SHA-256 `58d09a4d7b39a287d80b48270b5236986657f27fb716692b77ff4af3e573cab7` and 627,232 bytes of 3 MiB OTA headroom. Previously passing tests were not repeated because no relevant source changed. No hardware or live command occurred. See the [resolution report](../reports/A-REMOTE-011_STAGE5_COMPONENT_DISCOVERY_RESOLVED.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_COMPONENT_DISCOVERY_RESULT.json).
+
+## Motion-wake regression diagnosis 2026-10-15
+
+No A-011 source regression was demonstrated: the active IMU, expander, GPIO8 wake and power path is byte-identical to preserved A-010/A-011 baselines and the core files from the earlier owner motion-wake PASS snapshot. Wake-on-motion remains enabled, but initialization runs only once per boot and an initialization or status-read failure disables the motion path until reboot. Earlier evidence records the same `IMU_WOM=0` failed-lift state without a proven root cause. Current runtime evidence is required. No source, build or hardware action occurred. See the [diagnosis](../reports/A-REMOTE-011_MOTION_WAKE_DIAGNOSIS.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/MOTION_WAKE_DIAGNOSIS.json).

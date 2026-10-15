@@ -380,3 +380,9 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 - Demonstrated that the prior build tree omitted the newly registered `physical_input` component and its shared include directory because PlatformIO reused stale generated component-discovery metadata.
 - Preserved and displaced only the generated `remote01` build tree, then performed one fresh production build: PASS. The 2,518,496-byte private application has SHA-256 `58d09a4d7b39a287d80b48270b5236986657f27fb716692b77ff4af3e573cab7` and 627,232 bytes of 3 MiB OTA headroom.
 - No relevant test source changed, so passing tests were not rerun. No hardware, flash, TUNER, pairing/NVS or live control operation occurred.
+# 2026-10-15 -- REMOTE motion-wake regression diagnosis
+
+- Compared the active A-011 IMU, expander, GPIO8 wake and power path with preserved A-010/A-011 baselines and the earlier owner-validated snapshot; the relevant implementation is unchanged, so no A-011 source regression was demonstrated.
+- Confirmed that wake-on-motion is configured and enabled, but QMI initialization is attempted only once per boot and any initialization or later status-read failure disables the motion path for that boot. Historical evidence records the same `IMU_WOM=0` failed-lift condition followed by working wake after reboot, with exact cause unresolved.
+- No source, build or hardware action occurred. The minimum next step is a read-only diagnostics snapshot before and after one lift to distinguish disabled IMU initialization, lost motion detection and post-detection display wake behavior.
+
