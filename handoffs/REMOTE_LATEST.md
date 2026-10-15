@@ -2,26 +2,28 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RTCP-RECONNECTION-RETRY-20261015
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RTCP-TRANSPORT-DIAGNOSIS-20261015
 - Updated (UTC): 2026-10-15
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 BOTH DEVICES REACHABLE / RTCP PRE-CAPABILITY BLOCK / CONTROL TEST BLOCKED
+- Status: STAGE 5 TCP LISTENER AVAILABLE / RTCP SERVER-HELLO BOUNDARY FAILING / CONTROL TEST BLOCKED
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `277c1112062deadf02e184b4757913e8355e483d`
+- Input head: `5e11726be3c028cd1efde76bdbdcc7e615fdeb64`
 
 ## Result
 
-The diagnostic application installation and exact readback remain PASS. On the owner-requested read-only retry, both REMOTE and the privately provisioned TUNER endpoint were reachable at their expected LAN addresses, and both reported connected Wi-Fi. This supersedes the immediately preceding endpoint-unreachable observation as a temporary outage.
+The diagnostic application installation and exact readback remain PASS. Both devices remain reachable at their expected LAN addresses with working Wi-Fi. One owner-authorized bounded TCP probe established a connection to the exact provisioned TUNER RTCP port in 35 ms and closed without sending data. The TUNER listener and TCP path are therefore available.
 
-Two new REMOTE snapshots four seconds apart still reported the volume channel disconnected, no authoritative volume, no `volume.set` capability, no in-flight request and zero dispatches. Capability revision and lifecycle counters continued advancing through the existing automatic reconnection cycle. The block is therefore after ordinary Wi-Fi/IP reachability but before successful authenticated capability negotiation and snapshot delivery. Current diagnostics do not expose the RTCP socket/handshake substate, so they cannot safely distinguish listener acceptance, server-hello authentication or the first encrypted identity exchange. A temporary whole-device/network outage is no longer the current explanation; an RTCP listener, pairing-load or handshake-path failure remains possible, but none is individually demonstrated.
+REMOTE snapshots continued to show failed reconnect lifecycle advancement with no authenticated connection, authoritative volume, `volume.set` capability, in-flight request, invalid/refused result or dispatch. The retained original commissioning capsules have valid structure and match each other on endpoint port, pairing identifier and PSK without reading or exposing the secret values. Stage 4 had previously proved these same provisioned identities could authenticate.
+
+The first proven failure boundary is now after TCP establishment and before REMOTE completes its authenticated-connect transition. In the implemented client, that transition requires receipt and validation of the TUNER server hello and successful transmission of the client finish. Capability and encrypted identity negotiation occur later and were not reached. Existing status and retained logs do not expose whether the server hello was absent/truncated or its proof validation failed, so neither pairing corruption nor a specific cryptographic defect is demonstrated.
 
 ## Scope guard
 
-Only existing automatic client behavior and read-only LAN/diagnostic observations were used. No manual connection retry, encoder rotation, control command, source/build/flash change, TUNER operation, NVS/pairing/partition change, private publication or PR merge occurred.
+Only existing automatic client behavior, read-only LAN/status evidence and one zero-payload TCP establishment probe were used. No repeated probe, RTCP payload, manual reconnect loop, encoder rotation, control command, source/build/flash change, NVS/pairing/configuration change, secret publication or PR merge occurred.
 
 ## Next owner action
 
-Keep both devices online and do not rotate the encoder. The minimum next diagnostic is separately authorized read-only transport-stage visibility from the existing RTCP endpoints: socket/listener state, pairing-load success and handshake transition/failure reason. Existing public status does not expose those fields, and the current TUNER source emits no RTCP stage log, so exact substage identification requires either temporary bounded instrumentation and a build or an owner-approved equivalent network observation. Pairing reset or regeneration is not justified by the present evidence.
+Keep both devices online and do not rotate the encoder. The smallest supported next step is bounded, secret-free REMOTE instrumentation recording only: TCP connected, client hello completely sent, server hello byte count received, server-hello framing valid, server proof valid, client finish completely sent, and first identity response accepted. Counters plus one last-failure enum are sufficient. REMOTE is the minimum device because its current authenticated-connect transition is the missing boundary; TUNER instrumentation is unnecessary unless REMOTE proves that it sent a valid client finish. This requires a separately authorized source change, build and application-only installation. Pairing reset or regeneration is not justified.
 
 ## Evidence
 
@@ -47,3 +49,13 @@ Keep both devices online and do not rotate the encoder. The minimum next diagnos
 - Exact boundary: after IP reachability and before authenticated capability/snapshot completion.
 - Diagnostic limit: current status does not expose TCP connect, server hello, client finish or encrypted identity substates; no exact substage can be claimed.
 - Earlier endpoint-unreachable classification: temporary and superseded for current state.
+
+## RTCP transport diagnosis
+
+- Configured endpoint and retained capsule association: structurally consistent; matching secret fields verified privately without disclosure.
+- Single bounded TCP probe: established in 35 ms; zero payload bytes sent; no repeat.
+- TUNER RTCP listener and TCP route: available.
+- REMOTE built-in reconnects: continue to fail before the authenticated-connect event.
+- First proven failure boundary: server-hello/authentication transition after TCP establishment and before capability or encrypted identity negotiation.
+- Not distinguishable from current evidence: missing/truncated server hello versus failed server-proof validation versus client-finish send failure.
+- Minimum instrumentation: REMOTE-only bounded stage counters and last-failure enum for TCP connect, client-hello send, server-hello receive/framing/proof, client-finish send and identity response. No key, nonce, proof, identifier or payload logging.
