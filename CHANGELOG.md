@@ -402,3 +402,9 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 - Verified that GPIO38/J3-8, GPIO39/J3-9, GPIO40/J3-10 and GPIO41/J3-11 each share a microSD signal with a fitted 10 kOhm pull-up to 3.3 V.
 - Classified all four as SAFE WITH CONDITIONS for independent active-low buttons: the socket must remain empty, SDMMC/SDSPI must remain disabled, and the pins must be input-only contacts to GND.
 - Confirmed that the active private application does not initialize SD or claim GPIO38-41, and that current sleep/wake continues to use GPIO8 only. No source implementation, build, test or hardware operation occurred.
+
+# 2026-10-15 -- A-REMOTE-011 Stage 5 physical button inputs
+
+- Recorded the owner's permanent microSD exclusion and approved GPIO38-41/J3-8 through J3-11 as input-only active-low physical buttons using the fitted 10 kOhm pull-ups.
+- Implemented four typed, debounced, no-repeat press events in the private REMOTE source without assigning application actions or dispatching CCM/RTCP commands.
+- Focused button checks passed 3/3, the affected shared model passed 19/19 with zero allocations, GPIO ownership checks passed and one clean production build passed. The 2,518,896-byte candidate has SHA-256 `6aca8931fcd08b91fcf489bd6d77212cbb0d4c762e70a657d7abec6911ab8e95`, 626,832 bytes of OTA headroom and 47,172 bytes static RAM use.

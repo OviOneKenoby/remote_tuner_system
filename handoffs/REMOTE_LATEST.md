@@ -2,34 +2,34 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-SD-GPIO-BUTTON-REUSE-20261015
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-BUTTON-INPUT-20261015
 - Updated (UTC): 2026-10-15
 - Task ID: A-REMOTE-011
-- Status: SD GPIO BUTTON REUSE VERIFIED WITH CONDITIONS -- OWNER WIRING APPROVAL PENDING
+- Status: STAGE 5 BUTTON INPUT IMPLEMENTATION BUILD PASS -- HARDWARE COMMISSIONING NOT STARTED
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `c80b79268aabbfaef00c737a7a5da250ed3f6b1f`
+- Input head: `9df28bbee2b0d567537fe13bd376dd132f3516f6`
 
 ## Result
 
-The official Waveshare V2 schematic shows GPIO38/J3-8 SD CS/D3, GPIO39/J3-9 SD CMD, GPIO40/J3-10 SD DAT0 and GPIO41/J3-11 SD CLK. Each signal has a fitted 10 kOhm pull-up to 3.3 V. The optional R27 SD_CS-to-GND link and DAT1/DAT2 pull-up positions are unpopulated.
+The owner permanently excluded microSD functionality and approved GPIO38/J3-8, GPIO39/J3-9, GPIO40/J3-10 and GPIO41/J3-11 as input-only active-low physical buttons using the board's fitted 10 kOhm pull-ups. The socket must remain empty and SDMMC/SDSPI initialization and card mounting remain prohibited.
 
-The active private application defines these board pins but does not initialize SDMMC/SDSPI or mount a card. Custom `sdcard_bsp` and `codec_board` components are excluded. Framework SD libraries in dependency metadata do not create a runtime claim on the pins. GPIO38-41 are not boot strapping pins, and current light-sleep wake uses GPIO8 only.
+The private REMOTE source now exposes four typed logical press identities: `ENCODER_KEY`, `BUTTON_1`, `BUTTON_2` and `BUTTON_3`. A fixed 20 ms debounce produces one event per press and no repeat while held. Boot-held inputs produce no unsolicited event. The runtime handler intentionally assigns no application action and dispatches no CCM/RTCP command. The existing GPIO2/GPIO5 encoder volume path remains intact; GPIO1, GPIO4 and GPIO8 behavior is unchanged.
 
-All four proposed button GPIOs are **SAFE WITH CONDITIONS**: the microSD socket must remain empty, SD support must remain disabled, and the GPIOs must be input-only active-low contacts to GND. The fitted 10 kOhm pull-ups already provide the released-high state. The buttons will not wake the device under the current power design. Inserting a card while these buttons are connected is prohibited because both would share active SD nets.
+Focused button checks passed 3/3 with 10 assertions. The affected shared physical-input suite passed 19/19 with 24,627 assertions, 1,000 cycles and zero allocations. GPIO ownership checks confirmed input-only configuration, custom SD-component exclusion and zero selected application SD initialization references.
 
-Proposed wiring pending owner approval: encoder KEY GPIO38/J3-8; Button 1 GPIO39/J3-9; Button 2 GPIO40/J3-10; Button 3 GPIO41/J3-11; common GND preferably J3-3. Existing encoder A GPIO2/J6-3, B GPIO5/J6-6 and common J6-9 remain unchanged. GPIO1 external-power sensing and GPIO4 `BAT_ADC` remain unchanged. No button actions are assigned.
+One clean `remote01` build passed. The private application is 2,518,896 bytes with SHA-256 `6aca8931fcd08b91fcf489bd6d77212cbb0d4c762e70a657d7abec6911ab8e95`; each unchanged 3 MiB OTA slot retains 626,832 bytes of headroom. PlatformIO reported 47,172 bytes static RAM use and 2,518,401 bytes flash use.
 
 ## Scope guard
 
-This was a read-only investigation. No private source implementation, build, test, flash operation, hardware access, TUNER change, encoder-routing change, pairing/NVS mutation, protocol change or PR merge occurred. PR #17 remains open and unmerged.
+No hardware access, flash operation, NVS/pairing change, TUNER change, CCM/RTCP semantic change, button action assignment, private source/binary publication or PR merge occurred. The wiring remains owner-approved but physically unverified. PR #17 remains open and unmerged.
 
 ## Next owner decision
 
-Approve or reject the proposed four-button wiring and the permanent no-microSD condition. Button actions and any wake behavior require separate scope.
+Authorize or reject hardware installation and commissioning of the Stage 5 candidate. Commissioning should verify J3 orientation, idle-high inputs, each independent identity, debounce/no-repeat behavior and ordinary UI, touch, encoder, motion-wake and sleep operation. Firmware flashing remains separately gated.
 
 ## Evidence
 
 - `docs/REMOTE_GPIO_MAP.md`
-- `reports/A-REMOTE-011_SD_GPIO_BUTTON_REUSE.md`
-- `references/device_evidence/remote/A-REMOTE-011/SD_GPIO_BUTTON_REUSE.json`
-- Official Waveshare V2 schematic SHA-256: `fc82f639dec6ecf9644634c4eba48fff52d9143d62f60aae6d83e9505b9469bf`
+- `reports/A-REMOTE-011_STAGE5_BUTTON_INPUT_IMPLEMENTATION.md`
+- `references/device_evidence/remote/A-REMOTE-011/STAGE5_BUTTON_INPUT_IMPLEMENTATION.json`
+- Prior electrical investigation: `reports/A-REMOTE-011_SD_GPIO_BUTTON_REUSE.md`

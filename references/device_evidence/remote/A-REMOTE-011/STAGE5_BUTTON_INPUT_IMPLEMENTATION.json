@@ -1,0 +1,50 @@
+{
+  "task": "A-REMOTE-011",
+  "stage": "Stage 5 physical button input implementation",
+  "date": "2026-10-15",
+  "verdict": "PASS",
+  "pins": {
+    "ENCODER_KEY": "GPIO38/J3-8",
+    "BUTTON_1": "GPIO39/J3-9",
+    "BUTTON_2": "GPIO40/J3-10",
+    "BUTTON_3": "GPIO41/J3-11"
+  },
+  "behavior": {
+    "active_low": true,
+    "input_only": true,
+    "debounce_ms": 20,
+    "repeat_while_held": false,
+    "application_actions_assigned": false,
+    "rtcp_commands_dispatched": 0,
+    "microSD_permanently_excluded": true
+  },
+  "tests": {
+    "button_cases_passed": 3,
+    "button_cases_failed": 0,
+    "button_assertions": 10,
+    "shared_model_cases_passed": 19,
+    "shared_model_cases_failed": 0,
+    "shared_model_assertions": 24627,
+    "shared_model_cycles": 1000,
+    "hot_path_allocations": 0,
+    "gpio_ownership": "PASS"
+  },
+  "build": {
+    "environment": "remote01",
+    "clean": true,
+    "result": "PASS",
+    "firmware_size": 2518896,
+    "firmware_sha256": "6aca8931fcd08b91fcf489bd6d77212cbb0d4c762e70a657d7abec6911ab8e95",
+    "ota_slot_size": 3145728,
+    "ota_headroom": 626832,
+    "static_ram_bytes": 47172,
+    "platformio_flash_bytes": 2518401
+  },
+  "operations": {
+    "hardware_access": false,
+    "flash_writes": 0,
+    "nvs_or_pairing_changes": false,
+    "tuner_changes": false,
+    "protocol_changes": false
+  }
+}

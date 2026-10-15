@@ -84,7 +84,7 @@ The owner approved this exact wiring for private implementation. Physical commis
 
 ## Proposed SD-pin button reuse
 
-Status: **ELECTRICALLY VERIFIED / OWNER APPROVAL PENDING.** No button action is assigned and no firmware or hardware change has been made.
+Status: **OWNER APPROVED / PHYSICALLY UNVERIFIED.** The input implementation is build-verified; no button action is assigned and no hardware change has been made.
 
 | Control | Proposed board connection | Schematic net | Verdict |
 | --- | --- | --- | --- |
@@ -97,6 +97,8 @@ Status: **ELECTRICALLY VERIFIED / OWNER APPROVAL PENDING.** No button action is 
 The conditions apply to all four inputs: leave the microSD socket empty; do not initialize an SDMMC or SDSPI host; configure the GPIOs as inputs and never drive them; connect only normally-open contacts to GND; and retain the fitted 10 kOhm board pull-ups. Additional strong external pull-ups are unnecessary. The unpopulated `R27` link adds no load. Inserting a card while buttons use these nets would place the contacts directly on live SD signals and is outside the approved configuration.
 
 The active private application contains only dormant SD pin definitions. Its custom `sdcard_bsp` and `codec_board` components are excluded, and no selected application source initializes SDMMC/SDSPI or mounts a card. Framework SD libraries present in generated dependency metadata do not claim GPIO38-41 at runtime. Current boot strapping does not use GPIO38-41. Current sleep/wake logic arms GPIO8 only, so these proposed buttons neither conflict with nor provide wake capability; adding button wake behavior would require a separate power-management decision.
+
+The owner permanently excluded microSD functionality for this project configuration. Production firmware initializes GPIO38-41 as input-only active-low button signals and leaves the fitted 10 kOhm pull-ups in control. SDMMC/SDSPI initialization and card mounting remain prohibited. This decision is physically unverified until separately authorized installation and commissioning.
 
 ## Sources
 
