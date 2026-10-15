@@ -37,10 +37,10 @@ Pin numbers follow the `J3` and `J6` pin-1 markers in the official V2 schematic 
 | J3-5 | GPIO47 | CONFIRMED USED: system I2C SDA. |
 | J3-6 | GPIO44 | CONFIRMED USED: UART RX/console. |
 | J3-7 | GPIO43 | CONFIRMED USED: UART TX/console. |
-| J3-8 | GPIO38 | CONFIRMED BOARD FUNCTION: SD CS/D3. |
-| J3-9 | GPIO39 | CONFIRMED BOARD FUNCTION: SD CMD/MOSI. |
-| J3-10 | GPIO40 | CONFIRMED BOARD FUNCTION: SD D0/MISO. |
-| J3-11 | GPIO41 | CONFIRMED BOARD FUNCTION: SD CLK. |
+| J3-8 | GPIO38 | SD CS/D3 through fitted 10 kOhm pull-up to 3.3 V; **SAFE WITH CONDITIONS** for an active-low button. |
+| J3-9 | GPIO39 | SD CMD/MOSI through fitted 10 kOhm pull-up to 3.3 V; **SAFE WITH CONDITIONS** for an active-low button. |
+| J3-10 | GPIO40 | SD D0/MISO through fitted 10 kOhm pull-up to 3.3 V; **SAFE WITH CONDITIONS** for an active-low button. |
+| J3-11 | GPIO41 | SD CLK through fitted 10 kOhm pull-up to 3.3 V; **SAFE WITH CONDITIONS** for an active-low button. |
 
 ## MCU GPIO assignments
 
@@ -60,7 +60,7 @@ Pin numbers follow the `J3` and `J6` pin-1 markers in the official V2 schematic 
 | 19, 20 | Native USB D-/D+ and J6-10/J6-11 | CONFIRMED USED. |
 | 21 | LCD TE | CONFIRMED BOARD FUNCTION; reserved. |
 | 22-37 | Not usable as general external GPIO on this board/package; includes flash/PSRAM resources and invalid ESP32-S3 GPIO numbers | Reserved. |
-| 38-41 | SD interface and J3-8 through J3-11 | CONFIRMED BOARD FUNCTION; reserved. |
+| 38-41 | SD interface and J3-8 through J3-11; each net has a fitted 10 kOhm pull-up to 3.3 V | **SAFE WITH CONDITIONS** for active-low buttons when the microSD socket remains empty and firmware never initializes SDMMC/SDSPI. |
 | 42 | LCD backlight PWM | CONFIRMED USED. |
 | 43, 44 | UART console and J3-7/J3-6 | CONFIRMED USED. |
 | 47, 48 | System I2C SDA/SCL and J3-5/J3-4 | CONFIRMED USED. |
@@ -81,6 +81,22 @@ Status: **OWNER APPROVED / PHYSICALLY UNVERIFIED; not wired, flashed or commissi
 GPIO2/GPIO5 is the preferred pair because both signals are direct J6 breakouts, neither has another load in the V2 schematic, neither is an ESP32-S3 strapping pin, and neither is claimed by the current production firmware. GPIO0 and GPIO3 are rejected because they are strapping pins. GPIO1 and GPIO4 are rejected because they are active analog inputs. The remaining exposed J3/J6 GPIOs are tied to USB, UART, I2C or SD functions.
 
 The owner approved this exact wiring for private implementation. Physical commissioning must still confirm the `J6` pin-1 orientation, clockwise/counterclockwise polarity and the mechanical transitions-per-detent convention. Swapping A and B in wiring or configuration requires a separate explicit decision based on that observation.
+
+## Proposed SD-pin button reuse
+
+Status: **ELECTRICALLY VERIFIED / OWNER APPROVAL PENDING.** No button action is assigned and no firmware or hardware change has been made.
+
+| Control | Proposed board connection | Schematic net | Verdict |
+| --- | --- | --- | --- |
+| Encoder KEY | GPIO38, **J3-8** | SD CS/D3, fitted 10 kOhm pull-up to 3.3 V | **SAFE WITH CONDITIONS** |
+| Button 1 | GPIO39, **J3-9** | SD CMD/MOSI, fitted 10 kOhm pull-up to 3.3 V | **SAFE WITH CONDITIONS** |
+| Button 2 | GPIO40, **J3-10** | SD D0/MISO, fitted 10 kOhm pull-up to 3.3 V | **SAFE WITH CONDITIONS** |
+| Button 3 | GPIO41, **J3-11** | SD CLK, fitted 10 kOhm pull-up to 3.3 V | **SAFE WITH CONDITIONS** |
+| Button common | GND, preferably **J3-3** | Ground | Required |
+
+The conditions apply to all four inputs: leave the microSD socket empty; do not initialize an SDMMC or SDSPI host; configure the GPIOs as inputs and never drive them; connect only normally-open contacts to GND; and retain the fitted 10 kOhm board pull-ups. Additional strong external pull-ups are unnecessary. The unpopulated `R27` link adds no load. Inserting a card while buttons use these nets would place the contacts directly on live SD signals and is outside the approved configuration.
+
+The active private application contains only dormant SD pin definitions. Its custom `sdcard_bsp` and `codec_board` components are excluded, and no selected application source initializes SDMMC/SDSPI or mounts a card. Framework SD libraries present in generated dependency metadata do not claim GPIO38-41 at runtime. Current boot strapping does not use GPIO38-41. Current sleep/wake logic arms GPIO8 only, so these proposed buttons neither conflict with nor provide wake capability; adding button wake behavior would require a separate power-management decision.
 
 ## Sources
 

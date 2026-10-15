@@ -396,3 +396,9 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 - Opened the verified REMOTE UART passively at 115200 baud with DTR/RTS inactive; the owner performed one normal reboot.
 - Native USB disconnected during reboot and the Windows monitor stopped on `ClearCommError` before receiving data. The zero-byte capture proves no QMI stage was observed, so the exact initialization failure remains unresolved.
 - One post-boot read-only status snapshot reported `IMU=1` and zero bus errors, demonstrating that the same installed firmware recovered IMU readiness after reboot. No repeated reboot, mutation or source/build operation occurred.
+
+# 2026-10-15 -- A-REMOTE-011 SD GPIO button reuse investigation
+
+- Verified that GPIO38/J3-8, GPIO39/J3-9, GPIO40/J3-10 and GPIO41/J3-11 each share a microSD signal with a fitted 10 kOhm pull-up to 3.3 V.
+- Classified all four as SAFE WITH CONDITIONS for independent active-low buttons: the socket must remain empty, SDMMC/SDSPI must remain disabled, and the pins must be input-only contacts to GND.
+- Confirmed that the active private application does not initialize SD or claim GPIO38-41, and that current sleep/wake continues to use GPIO8 only. No source implementation, build, test or hardware operation occurred.

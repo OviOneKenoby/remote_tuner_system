@@ -1,0 +1,33 @@
+{
+  "task": "A-REMOTE-011",
+  "date": "2026-10-15",
+  "scope": "read-only SD GPIO button reuse investigation",
+  "board": "Waveshare ESP32-S3-Touch-LCD-3.49B V2, PCB Rev1.1",
+  "schematic_sha256": "fc82f639dec6ecf9644634c4eba48fff52d9143d62f60aae6d83e9505b9469bf",
+  "verdicts": {
+    "GPIO38_J3_8": "SAFE WITH CONDITIONS",
+    "GPIO39_J3_9": "SAFE WITH CONDITIONS",
+    "GPIO40_J3_10": "SAFE WITH CONDITIONS",
+    "GPIO41_J3_11": "SAFE WITH CONDITIONS"
+  },
+  "conditions": [
+    "microSD socket remains empty",
+    "SDMMC and SDSPI remain uninitialized",
+    "GPIOs are input-only active-low contacts to GND",
+    "fitted 10 kOhm pull-ups remain in circuit",
+    "button actions remain unassigned"
+  ],
+  "runtime_findings": {
+    "custom_sd_components_selected": false,
+    "application_sd_initialization_found": false,
+    "current_button_wake_source": false,
+    "current_wake_gpio": 8
+  },
+  "operations": {
+    "private_source_modified": false,
+    "builds": 0,
+    "tests": 0,
+    "hardware_access": false,
+    "flash_writes": 0
+  }
+}
