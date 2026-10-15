@@ -2,29 +2,29 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-DIAGNOSTIC-INSTALL-STOP-20261015
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-DIAGNOSTIC-INSTALL-RESULT-20261015
 - Updated (UTC): 2026-10-15
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 DIAGNOSTIC INSTALL STOPPED BEFORE ROM CONNECTION
+- Status: STAGE 5 DIAGNOSTIC APPLICATION INSTALLED / CONTROL TEST BLOCKED
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `533c673e3d5a1858912f5b75df64080bc3439c54`
+- Input head: `1cf5b1b2ea50459cf021d19fc01be54fc8a619fb`
 
 ## Result
 
-The accepted 2,520,640-byte private candidate and retained rollback backup reverified. Windows enumerated the expected Espressif native USB serial/JTAG interfaces and reported them healthy, but the first read-only esptool identity operation failed while configuring/opening the serial port with Windows device error 31.
+After owner USB recovery, the healthy interface established a ROM connection to the expected ESP32-S3 with 16 MiB flash. The accepted private candidate and rollback image reverified. The 2,520,640-byte application was written once at `0x10000` and an exact readback matched SHA-256 `9edbfc968dbfe3dea66ab4d8932bb2e9389df670874510264b99fc9b5b51f98a`.
 
-The operation stopped before ROM connection, stub upload, erase or write. Zero flash bytes changed. Installation, exact readback, boot verification, brightness/HOME verification and encoder/admission baseline capture were not reached.
+The application runs with stored networking and valid voltage observations. Baseline diagnostics recorded zero encoder transitions, detents, volume intents and command dispatches. The volume channel nevertheless remained disconnected with no authoritative volume observation or `volume.set` capability, so authenticated RTCP volume synchronization is not confirmed and the encoder test cannot proceed.
 
 ## Scope guard
 
-No automatic retry, encoder rotation, control command, source/build change, TUNER operation, NVS/pairing/partition change, private publication or PR merge occurred. The currently installed failed-validation firmware remains unchanged.
+No automatic retry, encoder rotation, control command, source/build change, TUNER operation, NVS/pairing/partition change, private publication or PR merge occurred.
 
 ## Next owner action
 
-Close any serial monitor or process holding the interface, or reconnect/wake REMOTE if needed, then explicitly request a retry of the unexecuted installation. The controlled encoder detent remains separately gated after a successful installation and baseline capture.
+Confirm the normal UI, retained settings, restored brightness behavior and existing HOME volume presentation. Restore or verify the paired TUNER/RTCP connection before separately authorizing a single encoder detent; no detent should be attempted while the volume channel is unavailable.
 
 ## Evidence
 
-- `reports/A-REMOTE-011_STAGE5_DIAGNOSTIC_INSTALL_STOP.md`
-- `references/device_evidence/remote/A-REMOTE-011/STAGE5_DIAGNOSTIC_INSTALL_STOP.json`
+- `reports/A-REMOTE-011_STAGE5_DIAGNOSTIC_INSTALL_RESULT.md`
+- `references/device_evidence/remote/A-REMOTE-011/STAGE5_DIAGNOSTIC_INSTALL_RESULT.json`
 - Candidate build: `reports/A-REMOTE-011_STAGE5_DIAGNOSTIC_ARRAY_FIX.md`

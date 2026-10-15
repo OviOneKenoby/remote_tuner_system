@@ -1,3 +1,8 @@
+# 2026-10-15 -- A-REMOTE-011 Stage 5 diagnostic application installed; control test blocked
+
+- Recovered the healthy USB interface, verified the expected ESP32-S3/16 MiB identity, candidate and retained rollback image, then wrote the accepted 2,520,640-byte application once at `0x10000` using 921600 baud. Exact readback matched SHA-256 `9edbfc968dbfe3dea66ab4d8932bb2e9389df670874510264b99fc9b5b51f98a`; no retry occurred.
+- The application boots with stored networking and valid voltage observations. Baseline diagnostics recorded zero encoder transitions, intents and dispatches, but the volume channel remained disconnected with no authoritative volume or `volume.set` capability. RTCP volume synchronization is not confirmed, so no encoder rotation or command was attempted. Owner visual checks remain pending.
+
 # 2026-10-15 -- A-REMOTE-011 Stage 5 diagnostic installation stopped before ROM connection
 
 - Reverified the accepted 2,520,640-byte candidate and retained private rollback backup.

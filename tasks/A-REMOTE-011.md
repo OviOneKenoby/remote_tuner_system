@@ -1,6 +1,6 @@
 # A-REMOTE-011: Common REMOTE-TUNER API integration kickoff
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: IN PROGRESS - STAGE 5 DIAGNOSTIC INSTALL STOPPED BEFORE ROM CONNECTION
+- State: IN PROGRESS - STAGE 5 DIAGNOSTIC APPLICATION INSTALLED / CONTROL TEST BLOCKED
 - Coordination input commit: `8e93c702940d49583f3fdd58046503ae0b8f7354`
 - Objective: implement the frozen RTCP/1 transport and first CCM 1.1.0 REMOTE-TUNER integration slice, verify both builds and stop before hardware commissioning.
 - Baseline: coordination main `8e93c702940d49583f3fdd58046503ae0b8f7354`; Phase 2 coordination input `1e11e979dbcd4d95a50cbf8ed87400ce854256b3`; TUNER v1.1.11 `5fb92c95d228d744d1182ae3956e850c5be2f277`; accepted A-010 private REMOTE source.
@@ -90,3 +90,7 @@ The Core diagnostics declaration alone was corrected from 39 to 40 entries after
 ## Stage 5 diagnostic installation stopped before ROM connection 2026-10-15
 
 The accepted candidate and retained rollback backup reverified, but the first read-only esptool identity operation failed while configuring/opening the healthy enumerated USB interface with Windows device error 31. The attempt stopped before ROM connection, erase or write. Zero flash bytes changed; installation, readback, boot checks and diagnostic baseline were not reached. See the [stop report](../reports/A-REMOTE-011_STAGE5_DIAGNOSTIC_INSTALL_STOP.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_DIAGNOSTIC_INSTALL_STOP.json).
+
+## Stage 5 diagnostic application installed; control test blocked 2026-10-15
+
+After USB recovery, the expected ESP32-S3/16 MiB identity, accepted candidate and rollback image reverified. The 2,520,640-byte application was written once at `0x10000`; exact readback matched SHA-256 `9edbfc968dbfe3dea66ab4d8932bb2e9389df670874510264b99fc9b5b51f98a`. The application runs with stored networking and valid voltage observations. The baseline recorded zero encoder activity or commands, but the volume channel remained disconnected with no authoritative volume or `volume.set` capability, so authenticated RTCP volume synchronization is not confirmed and the physical detent test remains blocked. Owner visual confirmation also remains pending. See the [installation result](../reports/A-REMOTE-011_STAGE5_DIAGNOSTIC_INSTALL_RESULT.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_DIAGNOSTIC_INSTALL_RESULT.json).
