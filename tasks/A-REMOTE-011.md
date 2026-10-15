@@ -1,6 +1,6 @@
 # A-REMOTE-011: Common REMOTE-TUNER API integration kickoff
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: IN PROGRESS - STAGE 5 BUILD PASS / MOTION-WAKE REPORT DIAGNOSED OFFLINE, READ-ONLY RUNTIME VERIFICATION REQUIRED
+- State: IN PROGRESS - STAGE 5 BUILD PASS / MOTION-WAKE CURRENT BOOT IMU INITIALIZATION FAILURE CONFIRMED
 - Coordination input commit: `8e93c702940d49583f3fdd58046503ae0b8f7354`
 - Objective: implement the frozen RTCP/1 transport and first CCM 1.1.0 REMOTE-TUNER integration slice, verify both builds and stop before hardware commissioning.
 - Baseline: coordination main `8e93c702940d49583f3fdd58046503ae0b8f7354`; Phase 2 coordination input `1e11e979dbcd4d95a50cbf8ed87400ce854256b3`; TUNER v1.1.11 `5fb92c95d228d744d1182ae3956e850c5be2f277`; accepted A-010 private REMOTE source.
@@ -50,3 +50,7 @@ Generated metadata proved that the failed build tree predated the new header-onl
 ## Motion-wake regression diagnosis 2026-10-15
 
 No A-011 source regression was demonstrated: the active IMU, expander, GPIO8 wake and power path is byte-identical to preserved A-010/A-011 baselines and the core files from the earlier owner motion-wake PASS snapshot. Wake-on-motion remains enabled, but initialization runs only once per boot and an initialization or status-read failure disables the motion path until reboot. Earlier evidence records the same `IMU_WOM=0` failed-lift state without a proven root cause. Current runtime evidence is required. No source, build or hardware action occurred. See the [diagnosis](../reports/A-REMOTE-011_MOTION_WAKE_DIAGNOSIS.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/MOTION_WAKE_DIAGNOSIS.json).
+
+## Motion-wake runtime result 2026-10-15
+
+One read-only snapshot from the verified running REMOTE reported display idle, `IMU=0`, zero motion events, four wakes, zero runtime bus errors and last sleep cause zero. The mandatory stop applied before movement, so no lift or snapshot B occurred. The combination of IMU not ready and zero runtime bus errors classifies the current failure at boot wake-on-motion initialization; the exact failed QMI stage requires a separately authorized passive UART capture during a normal reboot. See the [runtime result](../reports/A-REMOTE-011_MOTION_WAKE_RUNTIME_RESULT.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/MOTION_WAKE_RUNTIME_RESULT.json).

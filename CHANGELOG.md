@@ -386,3 +386,8 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 - Confirmed that wake-on-motion is configured and enabled, but QMI initialization is attempted only once per boot and any initialization or later status-read failure disables the motion path for that boot. Historical evidence records the same `IMU_WOM=0` failed-lift condition followed by working wake after reboot, with exact cause unresolved.
 - No source, build or hardware action occurred. The minimum next step is a read-only diagnostics snapshot before and after one lift to distinguish disabled IMU initialization, lost motion detection and post-detection display wake behavior.
 
+# 2026-10-15 -- REMOTE motion-wake runtime diagnosis stopped at snapshot A
+
+- Captured one read-only diagnostics snapshot from the verified running REMOTE before movement: display idle, IMU not ready, zero motion events, four wakes, zero runtime bus errors and last sleep cause zero.
+- Applied the mandatory stop immediately; no lift was requested and no snapshot B was captured. `IMU=0` with zero runtime bus errors classifies the current failure at boot wake-on-motion initialization, before motion detection or display wake handling.
+- The exact failed QMI stage requires one separately authorized passive UART capture during an owner-performed normal reboot. No reboot, source/build, flash/NVS or control action occurred.

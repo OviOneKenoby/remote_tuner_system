@@ -1,0 +1,27 @@
+{
+  "task": "A-REMOTE-011",
+  "topic": "REMOTE motion wake runtime diagnosis",
+  "date": "2026-10-15",
+  "verdict": "FAIL_CURRENT_BOOT_IMU_DISABLED",
+  "snapshot_a": {
+    "method": "existing_read_only_http_status",
+    "power_state": 1,
+    "power_state_name": "DISPLAY_IDLE",
+    "imu_ready": 0,
+    "motion_events": 0,
+    "wake_count": 4,
+    "bus_errors": 0,
+    "last_sleep_cause": 0,
+    "age_ms": 53,
+    "private_capture_sha256": "9e75b3cfced0ca12125f3302890d3931ef68f9dcb9b7252d75e87c901aea4af3"
+  },
+  "snapshot_b": "NOT_TAKEN_STOP_CONDITION_IMU_FALSE",
+  "lift_requested": false,
+  "classification": "boot_wake_on_motion_initialization_failure",
+  "exact_failed_initialization_stage": "requires_separately_authorized_passive_normal_reboot_uart_capture",
+  "reboot": false,
+  "source_edit": false,
+  "build": false,
+  "flash_or_nvs_write": false,
+  "pr": { "number": 17, "status": "OPEN_UNMERGED" }
+}
