@@ -391,3 +391,8 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 - Captured one read-only diagnostics snapshot from the verified running REMOTE before movement: display idle, IMU not ready, zero motion events, four wakes, zero runtime bus errors and last sleep cause zero.
 - Applied the mandatory stop immediately; no lift was requested and no snapshot B was captured. `IMU=0` with zero runtime bus errors classifies the current failure at boot wake-on-motion initialization, before motion detection or display wake handling.
 - The exact failed QMI stage requires one separately authorized passive UART capture during an owner-performed normal reboot. No reboot, source/build, flash/NVS or control action occurred.
+# 2026-10-15 -- REMOTE passive boot diagnosis
+
+- Opened the verified REMOTE UART passively at 115200 baud with DTR/RTS inactive; the owner performed one normal reboot.
+- Native USB disconnected during reboot and the Windows monitor stopped on `ClearCommError` before receiving data. The zero-byte capture proves no QMI stage was observed, so the exact initialization failure remains unresolved.
+- One post-boot read-only status snapshot reported `IMU=1` and zero bus errors, demonstrating that the same installed firmware recovered IMU readiness after reboot. No repeated reboot, mutation or source/build operation occurred.

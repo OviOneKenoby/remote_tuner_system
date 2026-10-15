@@ -1,0 +1,34 @@
+{
+  "task": "A-REMOTE-011",
+  "topic": "REMOTE motion wake passive boot diagnosis",
+  "date": "2026-10-15",
+  "verdict": "EXACT_STAGE_INCONCLUSIVE_REBOOT_RESTORED_IMU_READY",
+  "uart": {
+    "baud": 115200,
+    "passive": true,
+    "dtr": false,
+    "rts": false,
+    "owner_reboots": 1,
+    "failure": "native USB disconnect caused Windows ClearCommError before data capture; monitor did not auto-reconnect",
+    "capture_bytes": 0,
+    "capture_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "power_wom_lines": 0
+  },
+  "post_boot_status": {
+    "method": "existing_read_only_http_status",
+    "power_state": 1,
+    "power_state_name": "DISPLAY_IDLE",
+    "imu_ready": 1,
+    "motion_events": 0,
+    "wake_count": 0,
+    "bus_errors": 0,
+    "last_sleep_cause": 0,
+    "private_capture_sha256": "d5539160792fe278f81b5a183d70955a31130be05fb47e730bd55659b1488b82"
+  },
+  "demonstrated": "same installed firmware changed from IMU not ready before reboot to IMU ready after one normal reboot",
+  "exact_failed_qmi_stage": "not_captured",
+  "automated_reset": false,
+  "source_or_build_change": false,
+  "flash_or_nvs_write": false,
+  "pr": { "number": 17, "status": "OPEN_UNMERGED" }
+}
