@@ -2,12 +2,12 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RTCP-FIX-INSTALL-STOP-20261016
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RTCP-FIX-INSTALLED-20261016
 - Updated (UTC): 2026-10-16
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 RTCP FIX INSTALLATION STOPPED BEFORE IDENTITY
+- Status: STAGE 5 RTCP FIX INSTALLED; IDENTITY RESPONSE BLOCKED
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `90b5f3ebf3451cc63a74b58dea17223a40e4429e`
+- Input head: `40cd098042ab9c9412afe0b9e8702de1b191f654`
 
 ## Result
 
@@ -117,3 +117,11 @@ The narrowly scoped readiness suite passed 9/9 cases. The single production buil
 ## Corrected RTCP firmware installation stop
 
 The accepted private application and retained rollback backup reverified. Windows enumerated the expected Espressif USB interface and no serial-monitor process was identified, but the required esptool ROM identity check failed while opening/configuring the port with Windows device error 31. The operation stopped before device identity, erase, application write or readback. Zero flash bytes changed, and no runtime RTCP observation was possible. Owner action is to restore the USB serial connection and separately authorize a retry.
+
+## Corrected RTCP firmware installation retry
+
+The verified REMOTE ESP32-S3 and 16 MiB flash identity matched the retained rollback evidence. The accepted application was written once at `0x10000`; exact 2,522,848-byte readback matched SHA-256 `cdda9773981a3d5dd5008d1380d50f6738a4796fc6a12430f4b3521b666b08f7`. Normal boot exposed stored Wi-Fi, the existing UI service and valid voltage telemetry.
+
+The nonblocking-connect correction worked: diagnostics recorded TCP ready, client hello sent, complete 56-byte server hello received, framing valid, server proof valid, client finish sent and encrypted identity request sent. No identity response was received or accepted. The session then disconnected and the existing automatic reconnect policy continued. Capability negotiation and fresh `volume.level`/`volume.set` availability were therefore not reached.
+
+The first demonstrated remaining failure boundary is after the authenticated client finish and encrypted identity request, before receipt of the TUNER identity response. No control command, encoder rotation, source/build change, TUNER change, pairing/NVS/partition change or PR merge occurred. Further diagnosis or encoder testing requires separate owner authorization.

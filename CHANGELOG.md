@@ -497,3 +497,9 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 - Reverified the accepted 2,522,848-byte application and SHA-256 `cdda9773981a3d5dd5008d1380d50f6738a4796fc6a12430f4b3521b666b08f7`, plus the retained verified 16 MiB rollback backup.
 - Windows enumerated the expected Espressif USB interface, but the required read-only ROM identity check could not open the port and returned Windows device error 31. The mandatory stop applied before identity confirmation, erase, write or readback.
 - Zero flash bytes changed. No RTCP, encoder/control, TUNER, pairing/NVS/partition or other hardware operation occurred.
+
+# 2026-10-16 -- A-REMOTE-011 corrected RTCP firmware installation retry
+
+- Verified REMOTE identity and the retained rollback backup, then installed the accepted 2,522,848-byte application once at `0x10000`. Exact readback matched SHA-256 `cdda9773981a3d5dd5008d1380d50f6738a4796fc6a12430f4b3521b666b08f7`.
+- Normal boot, stored Wi-Fi, UI service and voltage telemetry were available. Read-only RTCP diagnostics confirmed TCP readiness, completed client hello, valid server frame/proof, completed client finish and completed encrypted identity request.
+- Full synchronization did not complete: no identity response was received or accepted, and capabilities/fresh volume remained unavailable before automatic reconnect. No encoder/control, TUNER, pairing/NVS/partition or unrelated operation occurred.
