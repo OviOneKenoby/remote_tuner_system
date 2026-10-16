@@ -2,12 +2,12 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-IDENTITY-RESPONSE-DIAGNOSIS-20261016
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-TUNER-DIAGNOSTICS-BUILD-STOP-20261016
 - Updated (UTC): 2026-10-16
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 IDENTITY RESPONSE FAILURE BOUNDED; SERVER OBSERVATION REQUIRED
+- Status: STAGE 5 TUNER DIAGNOSTICS IMPLEMENTED; PRODUCTION BUILD NOT RUN
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `245315f5d345379d6824ba8ac5bf4121f40d62b8`
+- Input head: `bdabcfc199ed78844cab186b608834f97b65319a`
 
 ## Result
 
@@ -135,3 +135,11 @@ Static comparison found the implementations aligned on the previously working St
 The first proven boundary is therefore: REMOTE locally submitted the complete encrypted identity request, while no identity-response header arrived before disconnect/reconnect. The exact cause remains unknown. Plausible locations are request delivery, TUNER header/session/counter validation, GCM authentication, request dispatch, response creation or response write; these remain hypotheses.
 
 The smallest next observation is bounded, secret-free TUNER-side counters and one close-reason code for: client finish accepted, record header/full record received, header/session/counter valid, GCM valid, identity request accepted, response generated and complete response write. REMOTE changes, pairing reset and protocol probes are not justified. This observation requires separate authorization for TUNER instrumentation, build and application-only installation.
+
+## Minimal TUNER diagnostics implementation build stop
+
+The private TUNER server now has a 60-byte fixed diagnostic structure with saturating counters for client-finish acceptance; record header/full receipt; framing, session and counter validation; GCM acceptance; identity dispatch, response generation and complete write; plus timeout, EOF, transport error, close count and last close reason. The existing `/api/diagnostics` endpoint exposes only these counters/codes. No secret, identifier, nonce, proof or packet content is stored or logged, and protocol behavior is unchanged.
+
+The focused model passed 4/4. The single build itself succeeded with a 2,031,568-byte image, SHA-256 `a058ef716e9d866d8e2165bbe8364d8badd7fec53452fe673bb906f0f46a08da`, 1,114,160 bytes of nominal 3 MiB slot headroom and 85,968 bytes reported static RAM. However, it used the default `esp32-dev` environment; the accepted installed/Stage 4 production baseline uses `esp32-lwip-psram`. The artifact is therefore rejected and must not be installed or treated as production verification. The first-unexpected-result stop prevented a second build.
+
+The minimum next action is one separately authorized build of the unchanged diagnostic source with `esp32-lwip-psram`. No hardware or persistent operation occurred.

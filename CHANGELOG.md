@@ -503,3 +503,9 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 - Verified REMOTE identity and the retained rollback backup, then installed the accepted 2,522,848-byte application once at `0x10000`. Exact readback matched SHA-256 `cdda9773981a3d5dd5008d1380d50f6738a4796fc6a12430f4b3521b666b08f7`.
 - Normal boot, stored Wi-Fi, UI service and voltage telemetry were available. Read-only RTCP diagnostics confirmed TCP readiness, completed client hello, valid server frame/proof, completed client finish and completed encrypted identity request.
 - Full synchronization did not complete: no identity response was received or accepted, and capabilities/fresh volume remained unavailable before automatic reconnect. No encoder/control, TUNER, pairing/NVS/partition or unrelated operation occurred.
+
+# 2026-10-16 -- A-REMOTE-011 minimal TUNER RTCP diagnostics build stop
+
+- Added private fixed-size, secret-free TUNER RTCP diagnostic state for client-finish acceptance, record receipt/validation, GCM acceptance, identity dispatch/response/write and close causes. The existing read-only diagnostics endpoint exposes only counters and a close-reason code.
+- The focused model passed 4/4 and occupies 60 bytes. The single build completed, but used PlatformIO's default `esp32-dev` environment rather than the accepted Stage 4 `esp32-lwip-psram` production environment; its artifact is rejected as non-production evidence.
+- Stopped without a second build. No deployable candidate, hardware access, flash, pairing/NVS change, protocol operation or PR merge occurred.
