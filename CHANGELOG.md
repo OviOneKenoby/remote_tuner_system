@@ -1,3 +1,8 @@
+# 2026-10-16 -- A-REMOTE-011 snapshot budget fixed; production build stopped at storage guard
+
+- Restored the 40-field Core array and represented all requested RTCP handshake evidence in a fixed 16-byte substructure with saturating counters. `diagnostics::Snapshots` is exactly 1,024 bytes; no limit increase, allocation or protocol behavior change.
+- Focused diagnostics schema passed 9/9 cases with 9,086 assertions; RTCP diagnostic model passed 6/6 assertions. The single production build then failed its next guard because `diagnostics::Storage` is 8,208 bytes versus the existing 8,192-byte maximum. Stopped without correction or rebuild; no firmware artifact or hardware operation exists.
+
 # 2026-10-15 -- A-REMOTE-011 compiler environment resolved; schema bound failure
 
 - Applied the owner-validated process-only PATH correction for MSYS2 UCRT64. The focused RTCP diagnostic model compiled and passed 6/6 assertions.

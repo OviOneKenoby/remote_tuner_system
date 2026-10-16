@@ -2,12 +2,12 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RTCP-DIAGNOSTIC-SCHEMA-BOUND-STOP-20261015
-- Updated (UTC): 2026-10-15
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RTCP-DIAGNOSTIC-STORAGE-GUARD-STOP-20261016
+- Updated (UTC): 2026-10-16
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 DIAGNOSTIC MODEL TEST PASS / STATUS-SCHEMA SIZE BOUND FAILURE
+- Status: STAGE 5 FOCUSED TESTS PASS / PRODUCTION BUILD STOPPED AT STORAGE SIZE GUARD
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `120a15ce84e5a6df2096cebfa4f2257895824c7c`
+- Input head: `4a73b5074396bfc92784374a576e08bd7c4fff89`
 
 ## Result
 
@@ -77,3 +77,11 @@ The compiler executable, working directory, source, include root, diagnostic hea
 The owner demonstrated that the missing MSYS2 UCRT64 runtime directory in the Windows process PATH caused the silent compiler exits. Prepending that directory only for the test process resolved the host failure. The focused RTCP diagnostic model then compiled and passed 6/6 assertions.
 
 The next affected status-schema compilation exposed the first source-level blocker: the expanded Core snapshot makes `diagnostics::Snapshots` 1,120 bytes, exceeding the existing 1,024-byte static limit. The mandatory stop applied before any source correction or production build. The smallest next decision is whether to authorize a bounded representation change that retains all requested diagnostics within the existing snapshot/storage budget, followed by the failed schema check and one production build. Installation remains separately gated.
+
+## Snapshot representation correction and production-build stop
+
+The authorized minimum correction restores the existing 40-element Core values array and stores all requested RTCP handshake evidence in a fixed 16-byte member with ten saturating counters. `diagnostics::Snapshots` is exactly 1,024 bytes. The representation adds no allocation and leaves locking, API behavior and RTCP behavior unchanged.
+
+The diagnostics schema passed 9/9 cases with 9,086 assertions, and the RTCP diagnostic model passed 6/6 assertions under the corrected process PATH. The single production build then stopped because the containing `diagnostics::Storage` is 8,208 bytes, exceeding its separate existing 8,192-byte guard by 16 bytes. No correction or second build occurred; firmware size, SHA-256, OTA headroom and final static RAM are unavailable.
+
+The minimum next owner decision is whether to authorize a verified 16-byte reduction within the existing diagnostics storage representation, without increasing the 8,192-byte limit, followed by one production build. Installation remains blocked and separately gated.
