@@ -2,12 +2,12 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RTCP-DIAGNOSTIC-STORAGE-GUARD-STOP-20261016
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RTCP-DIAGNOSTIC-CANDIDATE-20261016
 - Updated (UTC): 2026-10-16
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 FOCUSED TESTS PASS / PRODUCTION BUILD STOPPED AT STORAGE SIZE GUARD
+- Status: STAGE 5 BOUNDED RTCP HANDSHAKE DIAGNOSTIC CANDIDATE BUILD PASS
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `4a73b5074396bfc92784374a576e08bd7c4fff89`
+- Input head: `5f51094a9c337b3390b19103a1d9f1ca349a8a08`
 
 ## Result
 
@@ -84,4 +84,10 @@ The authorized minimum correction restores the existing 40-element Core values a
 
 The diagnostics schema passed 9/9 cases with 9,086 assertions, and the RTCP diagnostic model passed 6/6 assertions under the corrected process PATH. The single production build then stopped because the containing `diagnostics::Storage` is 8,208 bytes, exceeding its separate existing 8,192-byte guard by 16 bytes. No correction or second build occurred; firmware size, SHA-256, OTA headroom and final static RAM are unavailable.
 
-The minimum next owner decision is whether to authorize a verified 16-byte reduction within the existing diagnostics storage representation, without increasing the 8,192-byte limit, followed by one production build. Installation remains blocked and separately gated.
+The authorized 16-byte storage correction and single production build are now complete; the historical stop above remains evidence only. Installation remains separately gated.
+
+## Storage correction and final build result
+
+The overflow originated exactly from 1,024-byte `Snapshots`, 4,112-byte `Ring` and the 3,072-byte response buffer; no additional padding was present. Reducing only the response buffer by 16 bytes makes `diagnostics::Storage` exactly 8,192 bytes. Complete status serialization remains verified within the 3,056-byte buffer. Both existing size guards, fixed allocation, locking, security and RTCP semantics are preserved.
+
+The directly affected schema/layout suite passed 9/9 cases with 9,087 assertions. The single production build passed. Private firmware: 2,522,560 bytes, SHA-256 `ac5e259eb8c57029e897b0106d44851d085b7d29ebc7d7bf827089dfadaf1a4d`; OTA headroom 623,168 bytes; static RAM 47,212 bytes. No hardware operation occurred. Separate owner authorization is required before application-only installation and runtime handshake diagnosis.

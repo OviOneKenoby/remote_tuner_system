@@ -1,3 +1,8 @@
+# 2026-10-16 -- A-REMOTE-011 bounded handshake diagnostic candidate build PASS
+
+- Layout inspection proved the 16-byte overflow was exactly 1,024-byte `Snapshots` + 4,112-byte `Ring` + 3,072-byte response buffer. Reduced only the response buffer to 3,056 bytes; `Snapshots` remains 1,024 and `Storage` is exactly 8,192 bytes. Limits, guards, locking, allocation and RTCP semantics remain unchanged.
+- Direct schema/layout verification passed 9/9 cases with 9,087 assertions. The single production build passed: private firmware 2,522,560 bytes, SHA-256 `ac5e259eb8c57029e897b0106d44851d085b7d29ebc7d7bf827089dfadaf1a4d`, 623,168 bytes OTA headroom and 47,212 bytes static RAM. No hardware operation occurred; installation is separately gated.
+
 # 2026-10-16 -- A-REMOTE-011 snapshot budget fixed; production build stopped at storage guard
 
 - Restored the 40-field Core array and represented all requested RTCP handshake evidence in a fixed 16-byte substructure with saturating counters. `diagnostics::Snapshots` is exactly 1,024 bytes; no limit increase, allocation or protocol behavior change.
