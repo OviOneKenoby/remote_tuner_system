@@ -2,12 +2,12 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-TUNER-DIAGNOSTICS-BUILD-STOP-20261016
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-TUNER-DIAGNOSTICS-PRODUCTION-BUILD-PASS-20261016
 - Updated (UTC): 2026-10-16
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 TUNER DIAGNOSTICS IMPLEMENTED; PRODUCTION BUILD NOT RUN
+- Status: STAGE 5 TUNER DIAGNOSTICS PRODUCTION BUILD PASS; INSTALLATION NOT AUTHORIZED
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `bdabcfc199ed78844cab186b608834f97b65319a`
+- Input head: `4e9a587d9c5fce345c03bb33c87e1ef50025e3b2`
 
 ## Result
 
@@ -143,3 +143,11 @@ The private TUNER server now has a 60-byte fixed diagnostic structure with satur
 The focused model passed 4/4. The single build itself succeeded with a 2,031,568-byte image, SHA-256 `a058ef716e9d866d8e2165bbe8364d8badd7fec53452fe673bb906f0f46a08da`, 1,114,160 bytes of nominal 3 MiB slot headroom and 85,968 bytes reported static RAM. However, it used the default `esp32-dev` environment; the accepted installed/Stage 4 production baseline uses `esp32-lwip-psram`. The artifact is therefore rejected and must not be installed or treated as production verification. The first-unexpected-result stop prevented a second build.
 
 The minimum next action is one separately authorized build of the unchanged diagnostic source with `esp32-lwip-psram`. No hardware or persistent operation occurred.
+
+## TUNER diagnostics production build correction
+
+PlatformIO configuration and the accepted Phase 3 baseline confirm `esp32-lwip-psram` as the TUNER production environment. It extends the established UART-probe environment for board `esp32dev` (Espressif ESP32 Dev Module) and enables the required PSRAM/lwIP allocation path. The unchanged private source completed the single authorized build successfully.
+
+The production firmware is 2,036,400 bytes with SHA-256 `f193863f6d2966cc0797b9bdd2144971fb7b4bfc5bb9b1b4c07ff4840cf4a21c`. PlatformIO reports flash usage of 2,029,825/3,145,728 bytes (64.5%) and static RAM usage of 87,464/327,680 bytes (26.7%). Binary-length headroom in the 3 MiB application slot is 1,109,328 bytes. The already-passing focused model remains 4/4 PASS, and the bounded diagnostic storage remains exactly 60 bytes; tests were not repeated because their inputs did not change.
+
+The earlier `esp32-dev` artifact remains rejected. No source/configuration change, hardware access, flash operation, pairing/NVS/partition mutation or control command occurred. Installing this private diagnostic firmware requires separate owner authorization.

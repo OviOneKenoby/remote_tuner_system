@@ -1,3 +1,8 @@
+# 2026-10-16 -- A-REMOTE-011 TUNER diagnostics production build PASS
+
+- Verified `esp32-lwip-psram` as the accepted TUNER production environment (`esp32dev`, Espressif ESP32 Dev Module) and ran the single authorized unchanged-source build. PASS: firmware 2,036,400 bytes, SHA-256 `f193863f6d2966cc0797b9bdd2144971fb7b4bfc5bb9b1b4c07ff4840cf4a21c`; flash 2,029,825/3,145,728 bytes (64.5%), binary slot headroom 1,109,328 bytes; static RAM 87,464/327,680 bytes (26.7%).
+- The focused diagnostic model remains 4/4 PASS and its fixed storage remains 60 bytes. The prior `esp32-dev` artifact remains rejected. No source, device or persistent-state change occurred; installation requires separate owner authorization.
+
 # 2026-10-16 -- A-REMOTE-011 diagnostic installation stopped before ROM identity
 
 - Reverified the accepted 2,522,560-byte candidate and retained 16 MiB rollback backup. Windows enumerated the expected Espressif interface as healthy, but the first read-only esptool operation could not open it and returned device error 31.
