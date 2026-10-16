@@ -2,12 +2,12 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RTCP-FIX-INSTALLED-20261016
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-IDENTITY-RESPONSE-DIAGNOSIS-20261016
 - Updated (UTC): 2026-10-16
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 RTCP FIX INSTALLED; IDENTITY RESPONSE BLOCKED
+- Status: STAGE 5 IDENTITY RESPONSE FAILURE BOUNDED; SERVER OBSERVATION REQUIRED
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `40cd098042ab9c9412afe0b9e8702de1b191f654`
+- Input head: `245315f5d345379d6824ba8ac5bf4121f40d62b8`
 
 ## Result
 
@@ -125,3 +125,13 @@ The verified REMOTE ESP32-S3 and 16 MiB flash identity matched the retained roll
 The nonblocking-connect correction worked: diagnostics recorded TCP ready, client hello sent, complete 56-byte server hello received, framing valid, server proof valid, client finish sent and encrypted identity request sent. No identity response was received or accepted. The session then disconnected and the existing automatic reconnect policy continued. Capability negotiation and fresh `volume.level`/`volume.set` availability were therefore not reached.
 
 The first demonstrated remaining failure boundary is after the authenticated client finish and encrypted identity request, before receipt of the TUNER identity response. No control command, encoder rotation, source/build change, TUNER change, pairing/NVS/partition change or PR merge occurred. Further diagnosis or encoder testing requires separate owner authorization.
+
+## Missing identity-response source diagnosis
+
+REMOTE's `identity_request_sent` counter advances only after `lwip_send` accepts every byte of the encrypted record into the local TCP stack. It does not prove peer receipt or processing. Existing REMOTE evidence proves zero identity-response header bytes reached its parser, but the subsequent reconnect resets the displayed last-failure category; the retained counters cannot distinguish prior timeout, EOF or peer close. TUNER currently exposes no RTCP receive/authentication/close diagnostics.
+
+Static comparison found the implementations aligned on the previously working Stage 4 path: client-finish transcript, directional HKDF labels, session identifier, record type/version, counter 1, c2s nonce, 28-byte authenticated header, four-byte identity request and identity response format. TUNER should validate the record header/session/counter, authenticate AES-GCM, accept the identity request, build the response and write it before advancing its transmit counter. No framing, sequence or cryptographic mismatch was demonstrated.
+
+The first proven boundary is therefore: REMOTE locally submitted the complete encrypted identity request, while no identity-response header arrived before disconnect/reconnect. The exact cause remains unknown. Plausible locations are request delivery, TUNER header/session/counter validation, GCM authentication, request dispatch, response creation or response write; these remain hypotheses.
+
+The smallest next observation is bounded, secret-free TUNER-side counters and one close-reason code for: client finish accepted, record header/full record received, header/session/counter valid, GCM valid, identity request accepted, response generated and complete response write. REMOTE changes, pairing reset and protocol probes are not justified. This observation requires separate authorization for TUNER instrumentation, build and application-only installation.
