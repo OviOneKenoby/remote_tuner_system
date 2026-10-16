@@ -1,0 +1,29 @@
+{
+  "task": "A-REMOTE-011",
+  "topic": "REMOTE motion wake regression diagnosis",
+  "date": "2026-10-15",
+  "verdict": "NO_A011_SOURCE_REGRESSION_DEMONSTRATED_RUNTIME_STATE_REQUIRED",
+  "comparisons": {
+    "a010_reconciled_power_path": "byte_identical",
+    "a011_phase2_power_path": "byte_identical",
+    "pre_promotion_power_path": "byte_identical",
+    "published_a001_core_power_files": "byte_identical"
+  },
+  "configured_path": {
+    "imu": "QMI8658",
+    "i2c_address": "0x6B",
+    "threshold_mg": 200,
+    "odr_hz_approx": 21,
+    "event": "INT1 through TCA9554 EXIO2 to shared ESP32-S3 GPIO8",
+    "awake_irq": "falling_edge",
+    "sleep_wake": "gpio8_low_level_light_sleep"
+  },
+  "confirmed_limitation": "QMI wake-on-motion initialization is attempted once per boot; initialization or status-read failure disables the motion path for the remainder of that boot",
+  "historical_match": "earlier IMU_WOM=0/sleep_ready=0 failed-lift boot followed by working lift wake after reboot; exact cause remained unknown",
+  "current_exact_cause": "not_demonstrated_without_runtime_evidence",
+  "minimum_next_verification": "two read-only diagnostics snapshots before and after one deliberate lift, followed only if needed by a separately authorized passive normal-boot UART capture",
+  "source_edit": false,
+  "build": false,
+  "hardware_access": false,
+  "pr": { "number": 17, "status": "OPEN_UNMERGED" }
+}

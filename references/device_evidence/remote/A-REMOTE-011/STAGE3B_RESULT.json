@@ -1,0 +1,26 @@
+{
+  "stage": "A-REMOTE-011 Stage 3B TUNER-only pairing provisioning",
+  "verdict": "STOPPED",
+  "helper": {
+    "bytes": 2026864,
+    "sha256": "8b239db4d8cdee712341a68fa12fb6ea521bc4c6b8eed62020832517d8c5d111",
+    "offset": "0x10000",
+    "readback_match": true,
+    "esptool_baud": 921600
+  },
+  "capsules": {
+    "generated_sets": 1,
+    "files": 2,
+    "bytes_each": 112,
+    "secret_output": false,
+    "tuner_transmissions": 1,
+    "remote_transmissions": 0
+  },
+  "sanitized_result": "storage_error",
+  "pairing_complete": false,
+  "pairing_write_reached": false,
+  "automatic_retry": false,
+  "remote_accessed": false,
+  "rtcp_command_issued": false,
+  "next_gate": "Review a corrected private helper and separately authorize any second TUNER transmission using the retained original capsules."
+}

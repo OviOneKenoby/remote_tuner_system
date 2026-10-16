@@ -1,0 +1,26 @@
+{
+  "task": "A-REMOTE-011",
+  "stage": "Stage 5 brightness restoration and volume admission diagnostics",
+  "date_utc": "2026-10-15",
+  "verdict": "FOCUSED_TESTS_PASS_PRODUCTION_BUILD_FAIL_STOPPED",
+  "focused_tests": {
+    "ui": {"passed": 1, "failed": 0, "assertions": 8},
+    "admission": {"passed": 2, "failed": 0, "assertions": 20},
+    "encoder": {"passed": 5, "failed": 0, "assertions": 25}
+  },
+  "production_build": {
+    "result": "FAIL",
+    "first_error": "diagnostics Core array length 39 conflicts with 40 supplied values and field names",
+    "second_build_attempted": false,
+    "firmware_artifact_available": false
+  },
+  "preserved": {
+    "brightness_callback_restored": true,
+    "home_volume_presentation_authoritative": true,
+    "admission_semantics_changed": false,
+    "automatic_retry_added": false
+  },
+  "hardware_access": false,
+  "live_control_commands": 0,
+  "privacy": "No private source, binary, credential, device identifier or private path is published."
+}

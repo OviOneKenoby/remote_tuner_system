@@ -1,0 +1,27 @@
+{
+  "stage": "A-REMOTE-011 Stage 4 production restoration and authenticated read-only verification",
+  "verdict": "STOPPED",
+  "remote": {
+    "production_bytes": 2515584,
+    "production_sha256": "ceae9f64329c5409fdfe92e5ac5394885010abf1cf66ac24a5ab7fcc35f11647",
+    "write_offset": "0x10000",
+    "write_completed": true,
+    "readback_match": true,
+    "boot_application_offset": "0x10000",
+    "association_configured": true,
+    "owner_ui_confirmation": "pending"
+  },
+  "tuner": {
+    "production_bytes": 2034800,
+    "production_sha256": "49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4",
+    "write_started": false,
+    "bytes_written": 0,
+    "stop_reason": "COM5 open failed with Access is denied",
+    "commissioning_helper_remains_installed": true,
+    "pairing_preserved": true
+  },
+  "authenticated_read_only_verification_reached": false,
+  "rtcp_command_issued": false,
+  "automatic_retry": false,
+  "next_gate": "Clear the COM5 owner and separately authorize the unexecuted TUNER restoration and remaining Stage 4 read-only verification."
+}

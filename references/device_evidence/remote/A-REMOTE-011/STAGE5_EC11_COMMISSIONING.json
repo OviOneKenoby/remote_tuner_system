@@ -1,0 +1,29 @@
+{
+  "task": "A-REMOTE-011",
+  "stage": "Stage 5 EC11 hardware commissioning",
+  "date_utc": "2026-10-15",
+  "verdict": "INSTALLATION_PASS_CONTROL_TEST_NOT_STARTED",
+  "firmware": {
+    "size_bytes": 2518896,
+    "sha256": "6aca8931fcd08b91fcf489bd6d77212cbb0d4c762e70a657d7abec6911ab8e95",
+    "offset": "0x10000",
+    "flash_baud": 921600,
+    "write_attempts": 1,
+    "exact_readback_match": true
+  },
+  "post_boot_read_only": {
+    "snapshots": 2,
+    "network_connected": true,
+    "stored_configuration_ready": true,
+    "authenticated_session_active": true,
+    "capability_revision_advanced": true,
+    "main_voltage_valid": true,
+    "external_voltage_valid": true,
+    "imu_ready": true,
+    "failed_allocations": 0,
+    "control_dispatches": 0,
+    "control_results_applied": 0
+  },
+  "not_executed": ["intentional_encoder_rotation", "encoder_detent_or_direction_test", "key_press", "volume.set", "additional_button_test", "tuner_modification", "pairing_or_nvs_change"],
+  "privacy": "No binary, credential, device identifier, private path, network name, address or payload is published."
+}

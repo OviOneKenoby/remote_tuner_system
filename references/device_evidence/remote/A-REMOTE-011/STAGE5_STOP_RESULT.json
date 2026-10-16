@@ -1,0 +1,18 @@
+{
+  "stage": "A-REMOTE-011 Stage 5 first controlled volume.set",
+  "verdict": "STOPPED_BEFORE_TRANSMISSION",
+  "precondition": {
+    "authenticated_session": 1,
+    "capability_revision": 732,
+    "network_connected": true,
+    "core_owner_ok": true,
+    "failed_allocations": 0,
+    "command_dispatches": 0
+  },
+  "blocker": "Production REMOTE has no wired volume intent or volume.set request-construction path.",
+  "implemented_but_unreachable": "Validated correlated CCM volume.set through the RTCP adapter/client.",
+  "control_commands_transmitted": 0,
+  "persistent_mutations": 0,
+  "source_changes": 0,
+  "next_gate": "Owner authorization for a narrow REMOTE volume-intent implementation and build before renewed hardware validation."
+}

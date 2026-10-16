@@ -1,0 +1,98 @@
+# A-REMOTE-011: Common REMOTE-TUNER API integration and Stage 5 commissioning
+- Owner: REMOTE//01 with coordinated TUNER//01 changes
+- State: STAGE 5 HARDWARE COMMISSIONING PASS / READY FOR OWNER MERGE REVIEW
+- Coordination input commit: `8e93c702940d49583f3fdd58046503ae0b8f7354`
+- Objective: implement and commission the frozen RTCP/1 transport and first CCM 1.1.0 REMOTE-TUNER integration slice through the approved Stage 5 encoder-volume scope.
+- Baseline: coordination main `8e93c702940d49583f3fdd58046503ae0b8f7354`; Phase 2 coordination input `1e11e979dbcd4d95a50cbf8ed87400ce854256b3`; TUNER v1.1.11 `5fb92c95d228d744d1182ae3956e850c5be2f277`; accepted A-010 private REMOTE source.
+- Required references: `references/CCM_1_1_0.md`; `docs/TUNER_NATIVE_API_V1.md` in the private REMOTE source; current coordination handoffs; `reports/A-REMOTE-010_CLOSURE.md`; `reports/A-REMOTE-011_KICKOFF.md`; `reports/A-REMOTE-011_PHASE1_RECONCILIATION_TRANSPORT.md`.
+- Dependencies: A-REMOTE-010 DONE / OWNER ACCEPTED; CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 Phase 2 profile specified. A-REMOTE-011 implementation, pairing, application-only commissioning and the approved Stage 5 hardware checks are complete; their individual owner authorizations and limits remain preserved in the historical record.
+- Completed scope: backed-up active-workspace promotion; private REMOTE and public TUNER RTCP/1 integration; first CCM functional slice; focused tests and builds; reversible device commissioning; authenticated state synchronization; and Stage 5 EC11 volume-control hardware validation.
+- Excluded or unassigned scope: AAC/AAC+ work, stations, playback commands beyond the approved volume slice, additional physical-button actions, UI redesign, MQTT, SmartThings, CCM semantic changes, private-source/binary/credential publication, STL/manual publication and any later milestone.
+- Shared-contract guard: CCM 1.1.0 semantics and the frozen RTCP/1 Phase 2 profile remain unchanged; the implementation adds only the approved first functional slice.
+- Acceptance criteria: satisfied for the approved Stage 5 scope. The final private REMOTE application is 2,523,936 bytes at `0x10000`, SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`, with exact readback PASS and 621,792 bytes OTA headroom. Owner-observed EC11 direction, individual detents, rapid detents, direction reversal, RTCP synchronization, cleared in-flight state and sleep/wake no-replay behavior passed.
+- Verification: Stage 1 through Stage 5 evidence is retained. Pairing and commissioning were performed only under their recorded owner authorizations. Stage 5 hardware commissioning is PASS at the approved practical hobby/public-beta level. The validated private firmware and rollback evidence remain unpublished.
+- Current stop/report conditions: do not reopen engineering work, alter firmware or hardware, publish private material, merge PR #17 without explicit owner authorization, or begin another milestone.
+- Required outputs: reversible commissioning protocol, sanitized evidence checklist, archived prior handoff, current handoff, changelog/status entries and updated open coordination PR.
+- PM assignment evidence: owner instructions and scoped follow-up authorizations dated 2026-10-13 through 2026-10-16 in the retained task, handoff, report and evidence history.
+
+The dated sections below are historical execution records. Their former stop points, requested authorizations and proposed next actions are superseded by the completed Stage 5 PASS above; they are retained as evidence and are not current instructions.
+
+## Stage 4 completed 2026-10-14
+
+PASS at the approved practical hobby/public-beta level. Both accepted production applications were restored at `0x10000` and independently read back with their accepted hashes. Pairing and ordinary configuration remained present, both devices booted normally, and the owner confirmed normal UI. The paired devices established an authenticated RTCP/1 session, accepted the exact CCM 1.1.0 identity/capability sequence, and continued receiving fresh bounded `volume.level` and `playback.state` snapshots. Zero RTCP control commands were dispatched. See the [completion report](../reports/A-REMOTE-011_STAGE4_COMPLETE.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-011/STAGE4_RESULT.json). The earlier stopped report remains historical evidence. A single controlled `volume.set` remains separately gated and unexecuted; PR #17 remains open and unmerged.
+
+## Stage 5 stopped before transmission 2026-10-14
+
+A live authenticated session passed the read-only precondition check, but the production REMOTE has no wired volume intent or `volume.set` request-construction path. The CCM/RTCP adapter implements validated correlated delivery; the production facade exposes only previous/toggle/next, and the serial development hook refuses commands in RTCP mode. Zero commands were transmitted and no state was mutated. See the [stop report](../reports/A-REMOTE-011_STAGE5_CONTROL_STOP.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-011/STAGE5_STOP_RESULT.json). A narrow source implementation and build require a separate owner decision before Stage 5 can resume.
+
+## Stage 5 encoder routing blocked before source edit 2026-10-14
+
+The active and preserved private sources contain only a host-tested quadrature model. They contain no production encoder sampler, GPIO identity, event consumer, LVGL encoder device or context router. The implementation therefore stopped before editing rather than guessing hardware or changing navigation semantics. No tests/builds were run because no valid source change existed; no hardware/control action occurred. See the [routing blocker report](../reports/A-REMOTE-011_STAGE5_ENCODER_ROUTING_BLOCKER.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-011/STAGE5_ENCODER_ROUTING_BLOCKER.json).
+
+## Stage 5 owner pin assignment rejected after hardware verification 2026-10-14
+
+The owner identified the encoder as GPIO4 CLK / GPIO5 DT and reserved GPIO1. The official Waveshare V2 schematic labels IO4 `BAT_ADC`, and the active private firmware continuously uses ADC1 channel 3 with a compile-time GPIO4 mapping for main-battery sensing. GPIO1 separately remains ADC1 channel 0 for external-power sensing. The requested pair therefore fails the mandatory conflict check. A transient private implementation passed focused tests and built, but is rejected and non-deployable; every transient source edit was reverted. No hardware or control operation occurred. See the [GPIO conflict report](../reports/A-REMOTE-011_STAGE5_ENCODER_GPIO_CONFLICT.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-011/STAGE5_ENCODER_GPIO_CONFLICT.json).
+
+## Stage 5 GPIO resolution proposal 2026-10-14
+
+Official V2 schematic/interface evidence and the active production source identify GPIO2/J6-3 and GPIO5/J6-6 as the only accessible J6 pair without onboard loads, production claims or ESP32-S3 strapping roles. J6-9 is the proposed ground common. The complete map rejects GPIO0/GPIO3 strapping pins and occupied GPIO1/GPIO4, and preserves every LCD, touch, power, USB, UART, I2C, SD and audio net. No source, build, test or hardware action occurred. Owner approval of the exact wiring and physical J6 orientation is required before implementation. See the [GPIO map](../docs/REMOTE_GPIO_MAP.md), [investigation report](../reports/A-REMOTE-011_STAGE5_GPIO_RESOLUTION.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-011/STAGE5_GPIO_RESOLUTION.json).
+
+## Stage 5 approved encoder implementation stopped at build 2026-10-14
+
+The owner approved GPIO2/J6-3, GPIO5/J6-6 and J6-9 GND. The bounded private implementation passed 5/5 encoder/admission cases and the existing quadrature suite passed 19/19 cases. The one clean production build then stopped at its first failure: `user_app` could not resolve the existing shared `physical_input/model.hpp` header because its component include path does not expose the private root include directory. No correction or second build was attempted. No firmware artifact, hardware action or live command exists. See the [stop report](../reports/A-REMOTE-011_STAGE5_ENCODER_IMPLEMENTATION_STOP.md) and [sanitized result](../references/device_evidence/remote/A-REMOTE-011/STAGE5_ENCODER_IMPLEMENTATION_STOP.json).
+
+## Stage 5 include-path correction result 2026-10-14
+
+The private shared include tree was registered as a header-only ESP-IDF component and added to `user_app` private requirements. Exactly one production build was run and retained the original `fatal error: physical_input/model.hpp: No such file or directory` diagnostic. No distinct build error appeared; no additional correction, build or test was run. No firmware artifact or hardware operation exists. See the [result report](../reports/A-REMOTE-011_STAGE5_INCLUDE_PATH_RESULT.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_INCLUDE_PATH_RESULT.json).
+
+## Stage 5 component discovery resolved 2026-10-14
+
+Generated metadata proved that the failed build tree predated the new header-only component: it omitted both `physical_input` and the shared include directory from `user_app`. Preserving and displacing only that generated tree forced fresh discovery. The one authorized production build passed; the private 2,518,496-byte application has SHA-256 `58d09a4d7b39a287d80b48270b5236986657f27fb716692b77ff4af3e573cab7` and 627,232 bytes of 3 MiB OTA headroom. Previously passing tests were not repeated because no relevant source changed. No hardware or live command occurred. See the [resolution report](../reports/A-REMOTE-011_STAGE5_COMPONENT_DISCOVERY_RESOLVED.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_COMPONENT_DISCOVERY_RESULT.json).
+
+## Motion-wake regression diagnosis 2026-10-15
+
+No A-011 source regression was demonstrated: the active IMU, expander, GPIO8 wake and power path is byte-identical to preserved A-010/A-011 baselines and the core files from the earlier owner motion-wake PASS snapshot. Wake-on-motion remains enabled, but initialization runs only once per boot and an initialization or status-read failure disables the motion path until reboot. Earlier evidence records the same `IMU_WOM=0` failed-lift state without a proven root cause. Current runtime evidence is required. No source, build or hardware action occurred. See the [diagnosis](../reports/A-REMOTE-011_MOTION_WAKE_DIAGNOSIS.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/MOTION_WAKE_DIAGNOSIS.json).
+
+## Motion-wake runtime result 2026-10-15
+
+One read-only snapshot from the verified running REMOTE reported display idle, `IMU=0`, zero motion events, four wakes, zero runtime bus errors and last sleep cause zero. The mandatory stop applied before movement, so no lift or snapshot B occurred. The combination of IMU not ready and zero runtime bus errors classifies the current failure at boot wake-on-motion initialization; the exact failed QMI stage requires a separately authorized passive UART capture during a normal reboot. See the [runtime result](../reports/A-REMOTE-011_MOTION_WAKE_RUNTIME_RESULT.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/MOTION_WAKE_RUNTIME_RESULT.json).
+
+## Motion-wake passive boot result 2026-10-15
+
+The owner performed one normal reboot while the verified serial interface was passively open at 115200 baud with DTR/RTS inactive. Native USB disconnected and the Windows monitor terminated before receiving bytes, so the exact `POWER_WOM` failure stage from the preceding boot was not captured. After re-enumeration, one read-only status snapshot reported `IMU=1` and zero bus errors. The same installed firmware therefore recovered IMU readiness after reboot, confirming an intermittent boot-state difference without establishing its precise QMI transaction. No second reboot or mutation occurred. See the [passive boot result](../reports/A-REMOTE-011_MOTION_WAKE_PASSIVE_BOOT_RESULT.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/MOTION_WAKE_PASSIVE_BOOT_RESULT.json).
+
+## SD GPIO button reuse investigation 2026-10-15
+
+The official V2 schematic shows fitted 10 kOhm pull-ups on SD CS/D3 GPIO38, CMD GPIO39, DAT0 GPIO40 and CLK GPIO41, all exposed on J3-8 through J3-11. The active application does not initialize SD or claim these GPIOs. Each pin is therefore SAFE WITH CONDITIONS for an independent active-low button: keep the socket empty, keep SDMMC/SDSPI disabled and configure the pins as inputs only. Current wake remains on GPIO8; the proposed buttons do not add wake behavior. No implementation, build, test or hardware action occurred. See the [investigation report](../reports/A-REMOTE-011_SD_GPIO_BUTTON_REUSE.md), [GPIO map](../docs/REMOTE_GPIO_MAP.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/SD_GPIO_BUTTON_REUSE.json).
+
+## Stage 5 physical button input implementation 2026-10-15
+
+The owner permanently excluded microSD and approved GPIO38-41 as four input-only active-low controls. The private source now exposes typed `ENCODER_KEY`, `BUTTON_1`, `BUTTON_2` and `BUTTON_3` press events with bounded debounce, no held repeat, no application action and no CCM/RTCP dispatch. Focused checks and the affected shared model passed, GPIO/SD ownership checks passed and one clean production build passed. The 2,518,896-byte candidate has SHA-256 `6aca8931fcd08b91fcf489bd6d77212cbb0d4c762e70a657d7abec6911ab8e95`, 626,832 bytes of OTA headroom and 47,172 bytes static RAM use. No hardware access or persistent mutation occurred. See the [implementation report](../reports/A-REMOTE-011_STAGE5_BUTTON_INPUT_IMPLEMENTATION.md), [GPIO map](../docs/REMOTE_GPIO_MAP.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_BUTTON_INPUT_IMPLEMENTATION.json).
+
+## Stage 5 EC11 installation 2026-10-15
+
+The accepted application was installed once at `0x10000` and an exact 2,518,896-byte readback matched SHA-256 `6aca8931fcd08b91fcf489bd6d77212cbb0d4c762e70a657d7abec6911ab8e95`. Read-only post-boot evidence showed connected stored networking, valid main/external voltage observations, IMU readiness, an active authenticated session and zero control dispatches. No intentional rotation, KEY test or `volume.set` occurred. Encoder direction/detent convention, visual UI/configuration confirmation and the one-detent control test remain owner-gated. See the [commissioning report](../reports/A-REMOTE-011_STAGE5_EC11_COMMISSIONING.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_EC11_COMMISSIONING.json).
+
+## Stage 5 existing volume slider binding 2026-10-15
+
+The private REMOTE source now drives the existing generated 0-255 LVGL slider only from authoritative CCM `volume.level` snapshots on the LVGL timer. Every supported 0-100 step has a distinct slider position; unavailable state visually disables the indicator. Touch command generation and optimistic encoder movement are absent, while local TUNER changes follow the same observation path. Focused tests passed 2/2 with 211 assertions and one production build passed. The 2,518,656-byte private candidate has SHA-256 `af11826c7d19051a7584ee1f70eebf43efb427d1e55b116e5928a75877ec05eb`, 627,072 bytes OTA headroom and 47,180 bytes static RAM. It is not installed. See the [implementation report](../reports/A-REMOTE-011_STAGE5_VOLUME_SLIDER_BINDING.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_VOLUME_SLIDER_BINDING.json).
+
+## Stage 5 hardware validation failure and diagnosis 2026-10-15
+
+Owner observation demonstrated that the installed binding changed the brightness slider and encoder rotation produced no volume control. The generated hierarchy contains only that 0-255 brightness slider; the separate HOME volume display is a numeric label plus a plain indicator bar. Read-only runtime evidence after owner rotation recorded 59 local request rejections with an active session but zero Core ingress or RTCP dispatches, locating the encoder stop at local CCM admission after sampling/decoding/HOME routing. The exact failed admission predicate is not exposed. Brightness restoration and bounded read-only rejection diagnostics require separate authorization. See the [diagnosis](../reports/A-REMOTE-011_STAGE5_SLIDER_ENCODER_DIAGNOSIS.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_SLIDER_ENCODER_DIAGNOSIS.json).
+
+## Stage 5 brightness restoration and admission diagnostics stopped at build 2026-10-15
+
+The private implementation restored the original brightness callback, preserved the existing authoritative HOME volume label/bar and added named, bounded read-only encoder/admission diagnostics without changing control semantics. Focused checks passed 8/8 cases with 53 assertions. The one production build failed at a demonstrated 39-versus-40 diagnostics array-length mismatch and stopped before correction or retry. No firmware artifact or hardware action exists. See the [stop report](../reports/A-REMOTE-011_STAGE5_BRIGHTNESS_ADMISSION_IMPLEMENTATION_STOP.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_BRIGHTNESS_ADMISSION_IMPLEMENTATION_STOP.json).
+
+## Stage 5 diagnostic array-size correction 2026-10-15
+
+The Core diagnostics declaration alone was corrected from 39 to 40 entries after confirming the initializer and JSON table both contain 40 fields. Exactly one production build passed; tests were not repeated. The private 2,520,640-byte candidate has SHA-256 `9edbfc968dbfe3dea66ab4d8932bb2e9389df670874510264b99fc9b5b51f98a`, 625,088 bytes OTA headroom and 47,212 bytes static RAM. It is not installed. See the [build report](../reports/A-REMOTE-011_STAGE5_DIAGNOSTIC_ARRAY_FIX.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_DIAGNOSTIC_ARRAY_FIX.json).
+
+## Stage 5 diagnostic installation stopped before ROM connection 2026-10-15
+
+The accepted candidate and retained rollback backup reverified, but the first read-only esptool identity operation failed while configuring/opening the healthy enumerated USB interface with Windows device error 31. The attempt stopped before ROM connection, erase or write. Zero flash bytes changed; installation, readback, boot checks and diagnostic baseline were not reached. See the [stop report](../reports/A-REMOTE-011_STAGE5_DIAGNOSTIC_INSTALL_STOP.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_DIAGNOSTIC_INSTALL_STOP.json).
+
+## Stage 5 diagnostic application installed; control test blocked 2026-10-15
+
+After USB recovery, the expected ESP32-S3/16 MiB identity, accepted candidate and rollback image reverified. The 2,520,640-byte application was written once at `0x10000`; exact readback matched SHA-256 `9edbfc968dbfe3dea66ab4d8932bb2e9389df670874510264b99fc9b5b51f98a`. The application runs with stored networking and valid voltage observations. The baseline recorded zero encoder activity or commands, but the volume channel remained disconnected with no authoritative volume or `volume.set` capability, so authenticated RTCP volume synchronization is not confirmed and the physical detent test remains blocked. Owner visual confirmation also remains pending. See the [installation result](../reports/A-REMOTE-011_STAGE5_DIAGNOSTIC_INSTALL_RESULT.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-011/STAGE5_DIAGNOSTIC_INSTALL_RESULT.json).

@@ -1,10 +1,10 @@
 # Shared contract status
-Updated: 2026-10-11T17:37:47Z
-Authority: D-001 through D-004; historical starting facts retained. Recovered artifact/provenance is indexed in references/device_evidence/remote/A-REMOTE-001/INDEX.md; no new approval or conformance claim.
+Updated: 2026-10-13T15:34:01Z
+Authority: D-001 through D-008 and the recorded CCM 1.1.0 owner approval; historical starting facts retained.
 
 | Contract | Version | Approval | Freeze | Implementation |
 | --- | --- | --- | --- | --- |
-| Common Control Model (CCM) | 1.0.0 | OWNER APPROVED | FROZEN | Current device conformance NOT VERIFIED here |
+| Common Control Model (CCM) | 1.1.0 | OWNER APPROVED | FROZEN | REMOTE Core/backend subsets exist; full two-device conformance NOT VERIFIED |
 | TUNER Native API | v1 | UNAPPROVED | UNFROZEN | NOT IMPLEMENTED |
 
 Current TUNER final baseline: v1.1.11, main/tag/merge `5fb92c95d228d744d1182ae3956e850c5be2f277`; executable source `124e84801b06f9e07764dabc3985a573dffaff3b`, build_git_id `124e84801b06`, explicit `esp32-lwip-psram`. [Exact artifact/accepted hardware scope and limits](reports/TUNER_V1_1_11_RECONCILIATION.md); D-005. Initial audited `371cdebce7ba2648ea71636d5bdb5d738b42e680` /1.1.0 is historical D-003, not current state. No new conformance or Native approval.
@@ -13,7 +13,7 @@ Common phase: Phase A contract reconciliation + TUNER correctness/control-state 
 ## Reference register
 | Reference | Required artifact | Available here |
 | --- | --- | --- |
-| REF-CCM | Actual owner-approved frozen CCM 1.0.0 and original approval record | YES; recovered frozen artifact SHA-256 7a46f9fffe706476de458aac078d0af1c94844df339248d3f9f4b5cf033011d7 and original approval excerpt in REMOTE A-001 evidence; timestamp/signature limits retained |
+| REF-CCM | Current owner-approved frozen CCM plus historical revision | YES; `references/CCM_1_1_0.md` is current, with 1.0.0 and its provenance retained historically |
 | REF-API | Native candidate with revision/hash | YES; pre-audit candidate.1, historical/unapproved; reconciled version not yet available |
 | REF-AUDIT | TUNER audit for exact baseline | YES; supplied 2026-10-07 audit and companion records, hashes in references/INDEX.md |
 | REF-HANDOFF | Canonical cross-device requirements and O01-O17 | YES; supplied 2026-10-07 handoff, normative obligations not implementation |
@@ -130,3 +130,6 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 
 ## A010 diagnostic candidate ready for owner review — 2026-10-13T06:43:09.576743+00:00
 **PASS — DIAGNOSTIC CANDIDATE IMPLEMENTED / HOST VERIFIED / CLEAN BUILD; HARDWARE NOT RUN.** [Report](reports/A-REMOTE-010_DIAGNOSTIC_CANDIDATE.md), [task](tasks/A-REMOTE-010.md), [evidence](references/device_evidence/remote/A-REMOTE-010/DIAGNOSTIC_RESULT.json), [protocol](protocols/A-REMOTE-010_HARDWARE_VALIDATION.md), [owner scope](references/A010_DIAGNOSTIC_CONTINUATION_OWNER_AUTHORIZATION_2026-10-13.md). Normal build diagnostic disabled; candidate `remote01_a010_diag` only. Exact `!A010` UART commands, per-mutation confirmation tokens and fixed remote_ctl identity guard. Boot persistence activity NONE. Tests 28/28 PASS; adapter review PASS; clean build PASS; firmware 2,503,936 bytes / 641,792 bytes OTA headroom; table exact A009. No hardware/source/artifact/payload/secret publication, no upload/write/erase, no TUNER/common API/layout change. PR16 OPEN/unmerged; A010 continues awaiting exact hardware decision; A011 NOT STARTED; CCM frozen, Native unapproved, O01–O17/common gate OPEN.
+# A-REMOTE-011 kickoff — 2026-10-13T15:34:01Z
+
+CCM 1.1.0 remains OWNER APPROVED / FROZEN. Read-only inspection confirms neither device implements a common wire API. The Native API document remains design-only: transport, framing, discovery and authorization are OPEN. [A-011 kickoff](reports/A-REMOTE-011_KICKOFF.md) proposes a minimum first milestone of one authorized session, identity/version/capability negotiation, fresh `volume.level` and `playback.state`, and `volume.set` only. This is READY FOR OWNER REVIEW and not implementation approval. No endpoint, message encoding or security mechanism is approved by this publication; O01-O17 and the common gate remain OPEN / NOT PASSED.

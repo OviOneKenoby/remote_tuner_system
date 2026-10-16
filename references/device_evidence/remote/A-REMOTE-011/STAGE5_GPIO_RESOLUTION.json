@@ -1,0 +1,29 @@
+{
+  "task": "A-REMOTE-011",
+  "stage": "5 GPIO resolution",
+  "date": "2026-10-14",
+  "board": "Waveshare ESP32-S3-Touch-LCD-3.49B V2 PCB Rev1.1",
+  "verdict": "PROPOSAL_READY_OWNER_APPROVAL_REQUIRED",
+  "preferred_pair": {
+    "encoder_a_clk": "GPIO2 / J6-3",
+    "encoder_b_dt": "GPIO5 / J6-6",
+    "common": "J6-9 / GND",
+    "mode": "input-only with internal 3.3 V pull-ups",
+    "push": "not connected"
+  },
+  "rejected": {
+    "GPIO0": "BOOT0 strapping pin",
+    "GPIO1": "active external-power ADC",
+    "GPIO3": "ESP32-S3 strapping pin",
+    "GPIO4": "active BAT_ADC"
+  },
+  "schematic_sha256": "fc82f639dec6ecf9644634c4eba48fff52d9143d62f60aae6d83e9505b9469bf",
+  "production_source_changes": 0,
+  "builds": 0,
+  "tests": 0,
+  "hardware_access": false,
+  "flash_writes": 0,
+  "control_commands": 0,
+  "pr": 17,
+  "pr_state": "OPEN_UNMERGED"
+}

@@ -1,0 +1,28 @@
+{
+  "task": "A-REMOTE-011",
+  "stage": "Stage 5 diagnostic array-size correction",
+  "date_utc": "2026-10-15",
+  "verdict": "PRODUCTION_BUILD_PASS_NOT_INSTALLED",
+  "correction": {
+    "declaration_before": 39,
+    "declaration_after": 40,
+    "initializer_fields": 40,
+    "json_field_names": 40,
+    "field_order_changed": false,
+    "diagnostic_semantics_changed": false
+  },
+  "build": {
+    "attempts": 1,
+    "result": "PASS",
+    "firmware_size_bytes": 2520640,
+    "firmware_sha256": "9edbfc968dbfe3dea66ab4d8932bb2e9389df670874510264b99fc9b5b51f98a",
+    "ota_slot_size_bytes": 3145728,
+    "ota_headroom_bytes": 625088,
+    "static_ram_bytes": 47212,
+    "platformio_flash_bytes": 2520133
+  },
+  "tests_repeated": 0,
+  "hardware_access": false,
+  "live_control_commands": 0,
+  "privacy": "No private source, binary, credential, device identifier or private path is published."
+}

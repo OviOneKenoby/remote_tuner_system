@@ -1,0 +1,36 @@
+{
+  "task": "A-REMOTE-011",
+  "stage": "Stage 5 component discovery resolution",
+  "date": "2026-10-14",
+  "verdict": "PASS",
+  "root_cause": "stale generated ESP-IDF component-discovery metadata created before the physical_input component directory existed",
+  "pre_correction_metadata": {
+    "physical_input_component_present": false,
+    "shared_include_present_for_user_app": false
+  },
+  "correction": "preserved and displaced only the generated remote01 build directory, forcing fresh component discovery",
+  "post_correction_metadata": {
+    "physical_input_component_present": true,
+    "shared_include_present_for_user_app": true
+  },
+  "production_build": {
+    "attempts_after_demonstrated_correction": 1,
+    "environment": "remote01",
+    "platform": "espressif32 6.13.0",
+    "framework": "ESP-IDF 5.5.3",
+    "result": "PASS",
+    "duration_seconds": 150.28,
+    "static_ram_bytes": 47172,
+    "flash_metric_bytes": 2517997,
+    "firmware_size_bytes": 2518496,
+    "firmware_sha256": "58d09a4d7b39a287d80b48270b5236986657f27fb716692b77ff4af3e573cab7",
+    "ota_slot_bytes": 3145728,
+    "ota_headroom_bytes": 627232
+  },
+  "tests_rerun": false,
+  "hardware_access": false,
+  "flash_write": false,
+  "live_volume_set": false,
+  "tuner_modified": false,
+  "pr": { "number": 17, "status": "OPEN_UNMERGED" }
+}

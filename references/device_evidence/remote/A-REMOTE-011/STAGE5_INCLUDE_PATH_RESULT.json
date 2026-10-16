@@ -1,0 +1,27 @@
+{
+  "task": "A-REMOTE-011",
+  "stage": "Stage 5 include-path correction",
+  "date": "2026-10-14",
+  "verdict": "FAIL_SAME_HEADER_RESOLUTION_ERROR",
+  "private_change": {
+    "component_registration": "components/physical_input/CMakeLists.txt",
+    "consumer_dependency": "physical_input added to user_app PRIV_REQUIRES",
+    "absolute_or_global_include_workaround": false
+  },
+  "production_build": {
+    "attempts_after_correction": 1,
+    "environment": "remote01",
+    "platform": "espressif32 6.13.0",
+    "framework": "ESP-IDF 5.5.3",
+    "result": "FAIL",
+    "error": "fatal error: physical_input/model.hpp: No such file or directory",
+    "distinct_error": false,
+    "firmware_artifact": false
+  },
+  "tests_rerun": false,
+  "hardware_access": false,
+  "flash_write": false,
+  "live_volume_set": false,
+  "tuner_modified": false,
+  "pr": { "number": 17, "status": "OPEN_UNMERGED" }
+}

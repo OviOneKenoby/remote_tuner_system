@@ -1,20 +1,24 @@
 # Project synchronization
-Updated 2026-10-11T17:37:47Z; coordination input `531aa8cd0435ed9813ab39664888992583df0d28`.
+Updated 2026-10-13T15:34:01Z; coordination input `8e93c702940d49583f3fdd58046503ae0b8f7354`.
 Common phase: Phase A contract reconciliation + TUNER correctness/control-state foundation.
 Common gate: **OPEN / NOT PASSED**. No automatic task dispatch.
 
 ## Current state - supersedes historical status below
+### A-REMOTE-011 kickoff — 2026-10-13T15:34:01Z
+
+**READY FOR OWNER REVIEW — IMPLEMENTATION NOT STARTED.** [Assignment](tasks/A-REMOTE-011.md) and [kickoff report](reports/A-REMOTE-011_KICKOFF.md) map CCM 1.1.0 to TUNER v1.1.11 and the private REMOTE implementation. Proposed first slice: authorized identity/version/capability session, fresh `volume.level` and `playback.state`, and correlated `volume.set` only. Playback/station/catalog/AAC/UI work is excluded. No wire API exists today; Native transport/framing/authorization remain OPEN and require owner approval. The named REMOTE workspace is not A-010-complete; preserved A-010 source must be the baseline or be privately reconciled. No firmware/build/hardware operation or contract change occurred. A-010 remains DONE / OWNER ACCEPTED.
+
 | Item | Current state | Evidence / limit |
 | --- | --- | --- |
-| CCM 1.0.0 | OWNER APPROVED / FROZEN | Recovered frozen artifact/provenance retained; full device conformance NOT VERIFIED |
+| CCM 1.1.0 | OWNER APPROVED / FROZEN | Current approved revision; historical 1.0.0 retained; full two-device conformance NOT VERIFIED |
 | Native API v1 | UNAPPROVED / UNFROZEN / NOT IMPLEMENTED | O01-O17 OPEN; no new shared approval |
 | TUNER | Final v1.1.11; main/tag/merge `5fb92c95d228d744d1182ae3956e850c5be2f277` | [Current report](reports/TUNER_V1_1_11_RECONCILIATION.md); executable source `124e84801b06f9e07764dabc3985a573dffaff3b`, build_git_id `124e84801b06`; explicit `esp32-lwip-psram`, default `esp32-dev` remains |
 | TUNER artifact | BIN SHA256 `796221b3521800eb5d6e41f6932c81f600ea9f6e57e9bbc240640c9e8522dbf2`; ELF SHA256 `c1bc29571b7ac59d12bab006ec0761464cebb4c76e7f14686606c73866f7c209` | Public final release/PR5/assets verified; prior 1.1.0/1,999,408-byte reports historical |
 | TUNER hardware | Owner functional BT SBC/web/diagnostics/ping/recovery PASS in two boots | Three transient 1622-byte DMA failures each; strict zero-failure FAIL; no persistent NO_MEM/headNULL/retained refs; TX/ref/free recover. SUSTAINED01 3m44.566s, not 30min; B01/B03/B06/B04 empty/stale physical PENDING; full B04/B02/B05/B07-B11 unresolved |
 | REMOTE A003 | Executed; host PASS 13/3859/87; production qualification FAIL/BLOCKED | [Report](reports/A-REMOTE-003.md); typical 3228>3072, max 44284; old valid anchor counterexample; hardware NOT RUN |
 | REMOTE A004 | Executed; host delivery reviewed; READY FOR REVIEW / production integration BLOCKED | [Report](reports/A-REMOTE-004.md); conditional PASS 12/7805/562; max6383, reserve796, raw15510; 24KiB conditional only, occupancy cases fail |
-| REMOTE blocker | Concrete qualified monotonic durable root/CAS and ordered records absent | G1-G4 assumptions; unqualified backend GLOBAL_BLOCK. Actual occupancy/fragmentation/GC/root costs, physical ordering/power-loss/latency/endurance/RAM/frame UNKNOWN |
-| REMOTE hardware/artifacts | NOT RUN for A003/A004 | Source/BIN/flashed correspondence UNKNOWN; historical ADC optimization hardware FAIL, rollback residency PENDING |
+| REMOTE persistence | A-010 DONE / OWNER ACCEPTED at practical hobby/public-beta level | Validated private `remote_ctl` backend; generation 2 test records retained; original firmware restored; private source preserved |
+| REMOTE A-011 blocker | Secure wire binding and exact private implementation baseline require owner decisions | Native transport/framing/authorization remain OPEN; named workspace lacks preserved A-010 backend/layout source state |
 
 ## Current task dispositions
 | Task | Disposition |
@@ -24,6 +28,8 @@ Common gate: **OPEN / NOT PASSED**. No automatic task dispatch.
 | [A-TUNER-003](tasks/A-TUNER-003.md) | Software integration/artifact delivery reviewed; case-specific physical matrix PENDING |
 | [A-REMOTE-003](tasks/A-REMOTE-003.md) | Execution DONE; production qualification FAIL/BLOCKED |
 | [A-REMOTE-004](tasks/A-REMOTE-004.md) | Execution DONE; host delivery reviewed; READY FOR REVIEW / production integration BLOCKED |
+| [A-REMOTE-010](tasks/A-REMOTE-010.md) | DONE / OWNER ACCEPTED; PR #16 merged at coordination baseline `8e93c702940d49583f3fdd58046503ae0b8f7354` |
+| [A-REMOTE-011](tasks/A-REMOTE-011.md) | Kickoff analysis READY FOR OWNER REVIEW; firmware implementation NOT STARTED |
 | A-PM-003 | Reconciliation/review documentation publication; final SHA reported after remote verification |
 | D1-D5 | UNASSIGNED / NOT IMPLEMENTED; Native not authorized |
 

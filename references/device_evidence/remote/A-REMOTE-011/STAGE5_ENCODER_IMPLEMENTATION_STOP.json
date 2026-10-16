@@ -1,0 +1,29 @@
+{
+  "task": "A-REMOTE-011",
+  "stage": "Stage 5 encoder implementation",
+  "date": "2026-10-14",
+  "verdict": "STOPPED_AT_FIRST_PRODUCTION_BUILD_FAILURE",
+  "approved_gpio": {
+    "a_clk": "GPIO2/J6-3",
+    "b_dt": "GPIO5/J6-6",
+    "common": "J6-9/GND",
+    "electrical_mode": "input_only_internal_pullups",
+    "physical_status": "unverified"
+  },
+  "focused_tests": {
+    "encoder_volume": { "passed": 5, "failed": 0, "assertions": 25 },
+    "quadrature_model": { "passed": 19, "failed": 0, "assertions": 21621, "randomized_cycles": 1000, "allocations": 0 }
+  },
+  "production_build": {
+    "clean": "PASS",
+    "build": "FAIL",
+    "first_failure": "user_app cannot resolve physical_input/model.hpp because the private root include directory is not in that ESP-IDF component include path",
+    "second_attempt": false,
+    "firmware_artifact": false
+  },
+  "hardware_access": false,
+  "flash_write": false,
+  "live_volume_set": false,
+  "tuner_modified": false,
+  "pr": { "number": 17, "status": "OPEN_UNMERGED" }
+}

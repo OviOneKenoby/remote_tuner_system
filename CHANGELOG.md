@@ -1,3 +1,182 @@
+# 2026-10-16 -- A-REMOTE-011 RTCP freshness-policy correction build PASS
+
+- Corrected only the private REMOTE RTCP field registration so `volume.level` and `playback.state` use the same 2,000 ms verified-sequence freshness contract as their authenticated RTCP observations. CCM's exact policy validation remains unchanged; unrelated capabilities and RTCP behavior are untouched.
+- Focused regression PASS: 1/1 case, 6 assertions, proving the matching policy is admitted and the former mismatch remains rejected. The single `remote01` production build passed: firmware 2,522,912 bytes, SHA-256 `7382e69ce03544b5282cd4d38cece0a01fd8a74b8e739823676dbf3fac5165b9`; 622,816 bytes OTA headroom; static RAM 47,212/327,680 bytes (14.4%). No hardware operation occurred; installation requires separate owner authorization.
+
+# 2026-10-16 -- A-REMOTE-011 TUNER diagnostic commissioning PASS
+
+- Mandatory preflight identified the expected TUNER ESP32 on its CH340 interface, reverified the 2,036,400-byte `esp32-lwip-psram` candidate and rollback evidence, confirmed the installed production image byte-for-byte, and confirmed `app0` at `0x10000` with 3 MiB capacity. The diagnostic application was written once at `0x10000`; exact readback matched SHA-256 `f193863f6d2966cc0797b9bdd2144971fb7b4bfc5bb9b1b4c07ff4840cf4a21c`.
+- TUNER booted with retained Wi-Fi, audio service and RTCP listener. Bounded diagnostics show client finish, complete encrypted records, framing/session/counter validation, GCM authentication, identity dispatch, identity-response generation and complete writes all succeeding; timeout, EOF, transport-error and close counters remain zero. REMOTE now receives and accepts identity responses with no handshake failure, but fresh volume/capability state remains unavailable. The first remaining boundary is after identity acceptance, outside the instrumented TUNER identity path. No control command, pairing/NVS/partition change or retry occurred.
+
+# 2026-10-16 -- A-REMOTE-011 TUNER diagnostics production build PASS
+
+- Verified `esp32-lwip-psram` as the accepted TUNER production environment (`esp32dev`, Espressif ESP32 Dev Module) and ran the single authorized unchanged-source build. PASS: firmware 2,036,400 bytes, SHA-256 `f193863f6d2966cc0797b9bdd2144971fb7b4bfc5bb9b1b4c07ff4840cf4a21c`; flash 2,029,825/3,145,728 bytes (64.5%), binary slot headroom 1,109,328 bytes; static RAM 87,464/327,680 bytes (26.7%).
+- The focused diagnostic model remains 4/4 PASS and its fixed storage remains 60 bytes. The prior `esp32-dev` artifact remains rejected. No source, device or persistent-state change occurred; installation requires separate owner authorization.
+
+# 2026-10-16 -- A-REMOTE-011 diagnostic installation stopped before ROM identity
+
+- Reverified the accepted 2,522,560-byte candidate and retained 16 MiB rollback backup. Windows enumerated the expected Espressif interface as healthy, but the first read-only esptool operation could not open it and returned device error 31.
+- Stopped before ROM identity, erase, write or readback. Zero flash bytes changed; boot and RTCP handshake diagnosis were not reached. No automatic retry occurred.
+
+# 2026-10-16 -- A-REMOTE-011 bounded handshake diagnostic candidate build PASS
+
+- Layout inspection proved the 16-byte overflow was exactly 1,024-byte `Snapshots` + 4,112-byte `Ring` + 3,072-byte response buffer. Reduced only the response buffer to 3,056 bytes; `Snapshots` remains 1,024 and `Storage` is exactly 8,192 bytes. Limits, guards, locking, allocation and RTCP semantics remain unchanged.
+- Direct schema/layout verification passed 9/9 cases with 9,087 assertions. The single production build passed: private firmware 2,522,560 bytes, SHA-256 `ac5e259eb8c57029e897b0106d44851d085b7d29ebc7d7bf827089dfadaf1a4d`, 623,168 bytes OTA headroom and 47,212 bytes static RAM. No hardware operation occurred; installation is separately gated.
+
+# 2026-10-16 -- A-REMOTE-011 snapshot budget fixed; production build stopped at storage guard
+
+- Restored the 40-field Core array and represented all requested RTCP handshake evidence in a fixed 16-byte substructure with saturating counters. `diagnostics::Snapshots` is exactly 1,024 bytes; no limit increase, allocation or protocol behavior change.
+- Focused diagnostics schema passed 9/9 cases with 9,086 assertions; RTCP diagnostic model passed 6/6 assertions. The single production build then failed its next guard because `diagnostics::Storage` is 8,208 bytes versus the existing 8,192-byte maximum. Stopped without correction or rebuild; no firmware artifact or hardware operation exists.
+
+# 2026-10-15 -- A-REMOTE-011 compiler environment resolved; schema bound failure
+
+- Applied the owner-validated process-only PATH correction for MSYS2 UCRT64. The focused RTCP diagnostic model compiled and passed 6/6 assertions.
+- The next focused status-schema compilation demonstrated that the added fields expand `diagnostics::Snapshots` to 1,120 bytes, exceeding its existing 1,024-byte static bound. Stopped before correction or production build; no hardware operation occurred.
+
+# 2026-10-15 -- A-REMOTE-011 focused diagnostic compilation retry failed
+
+- Verified the unchanged focused-test compiler, working directory, source, include tree, diagnostic header and writable output location, then used the single authorized retry.
+- The compiler again exited 1 with zero stdout/stderr and no executable. Stopped without further retry; tests and the production build were not run. No source, hardware or TUNER change occurred.
+
+# 2026-10-15 -- A-REMOTE-011 bounded RTCP handshake diagnostics stopped at test compilation
+
+- Added private fixed-size, secret-free stage/failure diagnostics for TCP connection, client hello, server hello framing/proof, client finish and encrypted identity receipt/acceptance. Protocol behavior, timeouts, reconnect policy, cryptography and CCM semantics are unchanged.
+- The first focused host-test compilation exited 1 without diagnostic output and produced no executable. Stopped without retry; the production build was not started, so no candidate artifact or resource result exists. No hardware or TUNER operation occurred.
+
+# 2026-10-15 -- A-REMOTE-011 Stage 5 diagnostic application installed; control test blocked
+
+- Recovered the healthy USB interface, verified the expected ESP32-S3/16 MiB identity, candidate and retained rollback image, then wrote the accepted 2,520,640-byte application once at `0x10000` using 921600 baud. Exact readback matched SHA-256 `9edbfc968dbfe3dea66ab4d8932bb2e9389df670874510264b99fc9b5b51f98a`; no retry occurred.
+- The application boots with stored networking and valid voltage observations. Baseline diagnostics recorded zero encoder transitions, intents and dispatches, but the volume channel remained disconnected with no authoritative volume or `volume.set` capability. RTCP volume synchronization is not confirmed, so no encoder rotation or command was attempted. Owner visual checks remain pending.
+
+# 2026-10-15 -- A-REMOTE-011 Stage 5 diagnostic installation stopped before ROM connection
+
+- Reverified the accepted 2,520,640-byte candidate and retained private rollback backup.
+- The healthy enumerated USB serial/JTAG interface failed its first read-only esptool open with Windows device error 31. The stop occurred before ROM connection, erase or write; zero flash bytes changed.
+- No automatic retry, readback, boot check, encoder rotation or control command occurred. Owner action is required before a separately requested retry.
+
+# 2026-10-15 -- A-REMOTE-011 Stage 5 diagnostic array-size fix
+
+- Confirmed 40 diagnostic initializer fields and 40 JSON names, then changed only the Core values declaration from 39 to 40 entries.
+- Exactly one production build passed. The private 2,520,640-byte application has SHA-256 `9edbfc968dbfe3dea66ab4d8932bb2e9389df670874510264b99fc9b5b51f98a`, 625,088 bytes of 3 MiB OTA headroom and 47,212 bytes static RAM.
+- Passing tests were not repeated. No hardware, flash, command or TUNER operation occurred; installation remains separately gated.
+
+# 2026-10-15 -- A-REMOTE-011 Stage 5 brightness/admission implementation stopped at build
+
+- Privately restored the generated brightness slider's original `setUpduty` binding and kept the existing authoritative HOME volume label/bar independent. Added bounded read-only encoder and exact volume-admission diagnostics without changing admission semantics.
+- Focused UI, admission and affected encoder checks passed 8/8 cases with 53 total assertions.
+- The single production build failed because the diagnostics Core array was declared for 39 entries while the implementation and JSON names supply 40. Stopped without correction or a second build; no candidate artifact or hardware action exists.
+
+# 2026-10-15 -- A-REMOTE-011 Stage 5 slider/encoder diagnosis
+
+- Marked Stage 5 hardware validation FAIL. The only generated LVGL slider is conclusively the 0-255 brightness control; no separate LVGL volume slider exists. The HOME volume presentation is an authoritative numeric label plus a plain indicator bar.
+- Read-only runtime evidence after owner rotation showed an active synchronized session, 59 local request rejections and zero Core ingress/RTCP dispatches. Sampling, complete-cycle decoding and HOME routing therefore reached local admission; current diagnostics cannot distinguish the exact failed readiness/volume/bounds/in-flight gate.
+- Required next work is limited to restoring the brightness binding and adding bounded read-only admission/encoder diagnostics before another controlled detent. No source edit, build, flash, command or TUNER change occurred during diagnosis.
+
+# 2026-10-15 -- A-REMOTE-011 Stage 5 existing volume slider binding
+
+- Reused the existing 0-255 LVGL mock-up slider as a display-only view of authoritative CCM `volume.level`; its former backlight callback is no longer bound and touch command generation is disabled.
+- The LVGL timer maps all 101 supported 0-100 volume steps to distinct slider positions. It updates only from copied TUNER observations and visually disables the indicator for unknown, stale or disconnected state; encoder intent remains on the unchanged CCM path with no optimistic UI movement.
+- Focused tests passed 2/2 with 211 assertions. One production build passed: 2,518,656 bytes, SHA-256 `af11826c7d19051a7584ee1f70eebf43efb427d1e55b116e5928a75877ec05eb`, 627,072 bytes OTA headroom and 47,180 bytes static RAM. No hardware or live command occurred.
+
+# 2026-10-15 -- A-REMOTE-011 Stage 5 EC11 installation
+
+- Installed the accepted 2,518,896-byte REMOTE application once at `0x10000` using 921600-baud esptool communication; exact readback matched SHA-256 `6aca8931fcd08b91fcf489bd6d77212cbb0d4c762e70a657d7abec6911ab8e95`.
+- Two post-boot read-only snapshots showed connected stored networking, valid voltage sensing, IMU readiness, an active authenticated session with advancing capability revisions, and zero control dispatches.
+- Stopped before intentional encoder rotation, KEY testing or any `volume.set`. Direction and detent convention remain physically unverified; owner visual confirmation and separate control-test authorization are required. PR #17 remains open.
+
+# 2026-10-14 -- A-REMOTE-011 Stage 5 GPIO resolution proposal
+
+- Published the evidence-based REMOTE GPIO map for Waveshare V2/PCB Rev1.1, separating confirmed board/firmware assignments from candidate and owner-selected uses.
+- Proposed GPIO2/J6-3 for encoder A, GPIO5/J6-6 for encoder B and J6-9 GND for common. Both GPIOs are direct expansion breakouts with no other schematic load, production claim or ESP32-S3 strapping role.
+- No source edit, build, test or hardware operation occurred. Implementation remains stopped pending owner approval of the exact wiring and physical J6 orientation.
+
+# 2026-10-14 -- A-REMOTE-011 Stage 5 blocked by encoder GPIO conflict
+
+- Recorded the owner-selected GPIO4 CLK / GPIO5 DT assignment and GPIO1 reservation for Waveshare ESP32-S3-Touch-LCD-3.49B V2 PCB Rev1.1.
+- Official schematic and active-source checks agree that GPIO4 is `BAT_ADC`, actively sampled as ADC1 channel 3. GPIO1 separately remains the external-power ADC input. The requested encoder pair is therefore unsafe and was not enabled.
+- A bounded transient private candidate passed focused tests and built, but is rejected and non-deployable; all source edits were reverted. No hardware, flash, pairing/NVS or RTCP control operation occurred. PR #17 remains open.
+
+# 2026-10-14 -- A-REMOTE-011 Stage 5 encoder routing blocked before source edit
+
+- Inspected the active private REMOTE source and preserved A-010/A-011 copies. All contain the bounded host-side quadrature model, but none contains a production encoder sampler, encoder GPIO identity, encoder event consumer, LVGL encoder input or UI-context router.
+- Stopped rather than inventing GPIO assignments or changing navigation semantics outside the HOME control context. No private source change, test, build, hardware operation or `volume.set` occurred.
+- PR #17 remains open. Owner input is required for the accepted existing encoder hardware/driver identity, detent convention and UI context rule before implementation can proceed.
+# 2026-10-14 -- A-REMOTE-011 Stage 5 stopped before transmission
+
+- Confirmed the live authenticated session remained healthy with a current capability revision, connected network, intact Core owner invariant, zero failed allocations and zero command dispatches.
+- Stopped before transmission because the production REMOTE has no volume intent or `volume.set` request-construction path. The operation exists in the CCM/RTCP adapter, but the facade exposes only previous/toggle/next and the development serial hook rejects commands in RTCP mode.
+- No control command, firmware change, pairing/NVS/settings mutation or hardware write occurred. PR #17 remains open; the minimum next decision is whether to authorize a narrow REMOTE volume-intent implementation and build.
+# 2026-10-14 -- A-REMOTE-011 Stage 4 complete
+
+- Continued only the work blocked by the earlier COM5 access failure. Restored the accepted 2,034,800-byte TUNER production application once at `0x10000`; exact readback matched SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`. The completed REMOTE restoration was not repeated.
+- Both production applications boot normally with retained pairing/configuration and owner-confirmed normal UI. Authenticated RTCP/1 negotiated CCM 1.1.0 identity, the bounded capability set and continuing fresh `volume.level`/`playback.state` snapshots.
+- Diagnostics showed one active session, advancing capability/lifecycle evidence, and zero command dispatches or transport-result errors. No RTCP control command, unrelated flash write, source change or PR merge occurred. PR #17 remains open pending a separate owner decision on the optional one-command `volume.set` stage.
+# 2026-10-14 -- A-REMOTE-011 Stage 4 stopped at TUNER port-open failure
+
+- Restored the accepted 2,515,584-byte REMOTE production application once at `0x10000`; exact readback matched SHA-256 `ceae9f64329c5409fdfe92e5ac5394885010abf1cf66ac24a5ab7fcc35f11647`, normal boot was observed and the association remained configured.
+- TUNER restoration did not start: esptool could not open busy COM5 and returned `Access is denied` before ROM connection, erase or write. Zero TUNER flash bytes were written and no retry occurred.
+- Authenticated RTCP/1 read-only verification was not reached. PR #17 remains open and unmerged pending a new owner decision for the unexecuted TUNER restoration and remaining checks.
+
+# 2026-10-14 -- A-REMOTE-011 Stage 3C REMOTE pairing complete
+
+- Installed the exact 2,517,248-byte REMOTE commissioning helper once at `0x10000` using 921600-baud esptool communication; exact readback matched SHA-256 `acb1948f791557e4a82adfde5228871e8a5e3602b937fff407426966031696a2`.
+- The read-only 64 KiB `remote_ctl` pre-provision capture matched the accepted healthy generation-2 baseline byte-for-byte. The unchanged original REMOTE capsule was then transmitted exactly once and returned sanitized `complete`.
+- Both pairing stores are now provisioned. No retry, TUNER modification, production restore, RTCP command or PR merge occurred; PR #17 remains open.
+
+# 2026-10-14 -- A-REMOTE-011 Stage 3B TUNER pairing complete
+
+- Installed the corrected 2,026,736-byte TUNER commissioning application once at `0x10000` using 921600-baud esptool communication; exact readback matched SHA-256 `b866918f5a63586c5ed28cb192d71a9b63c886b6d10cf0fdd4cc5a5e6198c7a7`.
+- Transmitted the unchanged retained TUNER capsule exactly once after helper readiness; sanitized result was `complete`. No retry occurred.
+- TUNER helper remains installed and TUNER pairing is provisioned. REMOTE was disconnected and unmodified; no production restore, RTCP command or PR merge occurred. PR #17 remains open.
+
+# 2026-10-14 -- A-REMOTE-011 Stage 3B targeted TUNER helper correction
+
+- Corrected only the private commissioning helper's empty-store probe: ESP-IDF `ESP_ERR_NVS_NOT_FOUND` now identifies an absent unprovisioned namespace, while all other open/read errors and partial states remain fail-closed.
+- Focused tests passed 22/22 and a clean commissioning build passed. The corrected 2,026,736-byte firmware has SHA-256 `b866918f5a63586c5ed28cb192d71a9b63c886b6d10cf0fdd4cc5a5e6198c7a7`.
+- The original private capsules remain unchanged. No hardware access, flash, capsule transmission, NVS mutation, REMOTE change or PR merge occurred; PR #17 remains open.
+
+# 2026-10-14 ? A-REMOTE-011 Stage 3B TUNER pairing stopped
+
+- Verified retained TUNER rollback evidence, the accepted five-entry layout, REMOTE active generation 2, the current private TUNER locator and the exact commissioning image; generated one private matching capsule pair with the operating-system CSPRNG.
+- Installed and independently read back the 2,026,864-byte TUNER commissioning application at `0x10000`; SHA-256 matched `8b239db4d8cdee712341a68fa12fb6ea521bc4c6b8eed62020832517d8c5d111`.
+- The single authorized TUNER capsule transmission returned sanitized `storage_error`. Source review shows the helper stopped at its initial read-only missing-namespace check before any pairing write. No retry, REMOTE provisioning, restore or RTCP command occurred; PR #17 remains open and unmerged.
+
+# 2026-10-14 — A-REMOTE-011 Stage 3A private pairing helper
+
+- Implemented private commissioning-only helpers matching the existing TUNER Preferences reader and REMOTE A-010 association reader, with fixed binary capsules, one-shot refusal, explicit partial-state recovery and no secret output.
+- Focused capsule/policy tests passed 16/16; commissioning and normal production builds passed for both devices with ample application-slot headroom and commissioning disabled in normal builds.
+- No operational credentials were generated, no hardware was accessed, and no pairing data was written. PR #17 remains open and unmerged pending separate authorization for any helper flashing or provisioning.
+
+# 2026-10-14 ? A-REMOTE-011 Stage 2B TUNER installation
+
+- Installed the exact TUNER Phase 3 application from `18ddd3b16e305341f338afebd7dc725500ecbb73` once at `0x10000` using stable 921600-baud esptool communication. Independent 2,034,800-byte readback matched SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`.
+- Offline comparison explained the post-boot NVS delta as one valid 29-byte append-only framework DHCP-state entry. No pre-existing configuration entry changed and no pairing namespace exists; the owner accepted the delta.
+- Owner functional confirmation passed UI/controls, retained Wi-Fi, MP3, Bluetooth A2DP, web manager during Bluetooth, stations, favorites and recent items. Pairing/PSK/RTCP control and Stage 3 were not started; REMOTE was unchanged; PR #17 remains open and unmerged.
+
+# 2026-10-14 ? A-REMOTE-011 Stage 2A REMOTE installation
+
+- Installed the exact Phase 3 REMOTE application once at `0x10000`; independent 2,515,584-byte readback matched candidate SHA-256 `ceae9f64329c5409fdfe92e5ac5394885010abf1cf66ac24a5ab7fcc35f11647`.
+- `remote_ctl` remained byte-identical to Stage 1. Normal factory boot, Wi-Fi and disabled-unpaired RTCP state passed; the owner confirmed normal UI, retained configuration and one ordinary sleep/wake cycle.
+- Bootloader, partition table, default NVS, OTA metadata and TUNER were not written. No pairing, PSK or RTCP command occurred. Stage 2B remains unauthorized; PR #17 remains open and unmerged.
+
+# 2026-10-14 ? A-REMOTE-011 Stage 1 read-only hardware capture
+
+- Stage 1 PASS separately for REMOTE//01 and TUNER//01: chip/flash identity, installed partition layouts, complete private flash/application backups, direct rollback-region reads, hashes and ROM/USB recovery access were verified.
+- Installed partition bytes match the accepted REMOTE seven-entry and TUNER five-entry artifacts. Direct table, persistence and candidate-range reads match their full-backup slices. TUNER installed firmware is structurally valid but not claimed byte-identical to the historical v1.1.11 artifact; the fresh readback is the rollback authority.
+- No write, erase, flash, pairing, PSK generation, NVS/remote_ctl mutation, RTCP control, merge or later commissioning stage occurred. Stage 2 remains unauthorized and separate-storage copy verification remains a pre-write prerequisite.
+
+# 2026-10-14 ? A-REMOTE-011 Phase 4 commissioning preparation
+
+- Prepared a staged, reversible two-device commissioning protocol with exact application-only write ranges, fresh private backup prerequisites, sanitized evidence gates, one controlled `volume.set`, reconnect/resynchronization, bounded TUNER MP3/A2DP/web-manager memory measurements and exact rollback steps.
+- Actual source inspection found that both accepted candidates read pairing data but expose no pairing writer. Pairing is therefore blocked pending a separately reviewed private one-shot helper and owner approval; raw NVS patching is prohibited.
+- Reused accepted Phase 3 build/test evidence without rerunning it. No device was accessed, no firmware or persistent state was changed, no operational PSK was generated, and PR #17 remains open and unmerged. The next requested authority is read-only Stage 1 only.
+
+# 2026-10-13 — A-REMOTE-011 Phase 3 implementation
+
+- Promoted the accepted A-010 private REMOTE baseline through a verified reversible backup and implemented the frozen RTCP/1 transport plus the first CCM 1.1.0 slice on REMOTE and TUNER.
+- Recorded focused tests, clean production builds, artifact hashes, flash/RAM deltas and the remaining runtime coexistence risk. TUNER implementation is on commit `18ddd3b16e305341f338afebd7dc725500ecbb73`; REMOTE source and all binaries remain private.
+- Hardware was not accessed or flashed, no operational PSK was created, and PR #17 remains open and unmerged pending a separate commissioning decision.
+
 # Coordination changelog
 
 ## 2026-10-08 — Starter package
@@ -244,3 +423,144 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 **PRACTICAL HOBBY/PUBLIC-BETA VALIDATION ACCEPTED; RESTORATION READY / NOT AUTHORIZED.** [Preparation](reports/A-REMOTE-010_STAGE7_RESTORATION_PREPARATION.md), [sanitized evidence](references/device_evidence/remote/A-REMOTE-010/STAGE7_PREPARATION.json), [owner decision](references/A010_OWNER_ACCEPTANCE_AND_CLOSURE_PREPARATION_2026-10-13.md). Private 2,506,752-byte restore span for `0x10000–0x273FFF` reverified at SHA-256 `57736494ea726600c68e25ae6a8f5b3bd109f5e5c1d5d858a05afd7ee8603aca`, byte-identical to the verified backup slice; full backup identity reverified. Range is disjoint from `remote_ctl` at `0xE20000`; generation 2/test records will be preserved. No hardware access/write/reset/erase or source change. PR16 OPEN/unmerged; explicit owner authorization required before Stage 7 flash; A011 NOT STARTED.
 ## A010 Stage 7 and closure — 2026-10-13T15:19:11Z
 **DONE / OWNER ACCEPTED — PRACTICAL HOBBY/PUBLIC-BETA HARDWARE VALIDATION COMPLETE.** [Stage 7 result](reports/A-REMOTE-010_STAGE7_RESTORATION_RESULT.md), [sanitized evidence](references/device_evidence/remote/A-REMOTE-010/STAGE7_RESULT.json), [closure report](reports/A-REMOTE-010_CLOSURE.md), [owner confirmation](references/A010_STAGE7_OWNER_CONFIRMATION_2026-10-13.md). Exact restore span written once at `0x10000`; complete 2,506,752-byte readback matched SHA-256 `57736494ea726600c68e25ae6a8f5b3bd109f5e5c1d5d858a05afd7ee8603aca`. First attempted normal reset did not start REMOTE; USB disconnect/reconnect restored normal operation. Owner confirmed original firmware boot, functional UI and retained configuration and declined a new investigation. No other region supplied/written; `remote_ctl` generation 2/test records preserved; no ERASE/source change. PR16 READY FOR MERGE but OPEN/unmerged pending separate authorization. A011 NOT STARTED.
+# A-REMOTE-011 kickoff — 2026-10-13
+
+- Added the English A-REMOTE-011 assignment and kickoff analysis from coordination baseline `8e93c702940d49583f3fdd58046503ae0b8f7354`.
+- Inspected TUNER v1.1.11 and private REMOTE/A-010 source read only; documented reusable components, missing wire/API binding, exact prospective files and RAM/flash risks.
+- Proposed a bounded first slice (`volume.set`, `volume.level`, `playback.state`, identity/capability/session handling) for owner review. No firmware, hardware, contract or private-source publication occurred.
+- Archived the completed A-REMOTE-010 handoff and published the A-REMOTE-011 kickoff handoff.
+
+## A-REMOTE-011 Phase 1 reconciliation and transport decision — 2026-10-13
+
+- Compared the active and preserved A-010 private REMOTE trees without changing either: 1,695 scoped files identical, 11 preserved-only files and six changed files.
+- Published the exact controlled reconciliation procedure and retained the installed seven-partition layout, validated persistence semantics, UI, GPIO, provisioning, sleep/wake and OTA boundaries.
+- Recommended a bounded persistent TCP channel with a PSK-derived AES-GCM record layer using existing mbedTLS primitives. Rejected WSS/HTTPS because of TUNER internal-RAM pressure and ESP-NOW because the pinned IDF 4.4 coexistence table does not support receive with Classic Bluetooth.
+- Defined the minimum identity/capability/state/`volume.set` implementation sequence and private pairing decision. No firmware build/change, hardware access, credential publication or PR merge occurred.
+
+## A-REMOTE-011 Phase 2 reconciliation and record specification — 2026-10-13
+
+- Created a disposable private REMOTE copy that matches all 1,715 accepted A-010 non-generated files; the active and preserved workspaces remain unchanged.
+- Re-ran the focused A-010 suites (**28/28 PASS**) and a clean serial production build (**PASS**, 47,084-byte static RAM report, 2,496,320-byte image, 649,408-byte OTA headroom). The accepted partition binary remains exact and production diagnostics remain disabled.
+- Published RTCP/1: exact mutual PSK authentication, RFC 5869 directional derivation, AES-128-GCM record bytes, counter/session failure rules, 512-byte limit and reconnect/resynchronization behavior.
+- Published non-secret executable vectors and **14/14 PASS** focused transport tests, plus an initial bounded TUNER RAM/flash budget.
+- Corrected the obsolete Phase 1 ESP-NOW sleep sentence. No network integration, active-workspace change, TUNER change, hardware access, operational key generation, private artifact publication or PR merge occurred.
+# 2026-10-14 -- A-REMOTE-011 Stage 4 complete
+
+- Continued only the work blocked by the earlier COM5 access failure. Restored the accepted 2,034,800-byte TUNER production application once at `0x10000`; exact readback matched SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`. The completed REMOTE restoration was not repeated.
+- Both production applications boot normally with retained pairing/configuration and owner-confirmed normal UI. Authenticated RTCP/1 negotiated CCM 1.1.0 identity, the bounded capability set and continuing fresh `volume.level`/`playback.state` snapshots.
+- Diagnostics showed one active session, advancing capability/lifecycle evidence, and zero command dispatches or transport-result errors. No RTCP control command, unrelated flash write, source change or PR merge occurred. PR #17 remains open pending a separate owner decision on the optional one-command `volume.set` stage.
+# 2026-10-14 -- A-REMOTE-011 Stage 5 encoder implementation stopped at build
+
+- Recorded owner approval of GPIO2/J6-3 for encoder A, GPIO5/J6-6 for encoder B and J6-9 GND for common; the wiring remains physically unverified.
+- The private HOME-only encoder-to-CCM-volume path passed 5/5 focused routing/admission cases and the existing decoder passed 19/19 cases, but the one clean production build failed because `user_app` could not resolve the shared `physical_input/model.hpp` header.
+- Stopped at the first unexpected build failure. No second build, hardware access, flash, pairing/NVS change or live control command occurred; no firmware size, hash or headroom is available.
+
+# 2026-10-14 -- A-REMOTE-011 Stage 5 include-path correction remained blocked
+
+- Registered the existing shared include tree as a private header-only `physical_input` component dependency without absolute paths or global include changes.
+- The one authorized production build retained the original `physical_input/model.hpp` resolution failure while compiling `user_app`; no distinct compiler error appeared.
+- Stopped without another correction or build. Previously passing tests were not repeated, and no deployable firmware or hardware/control operation exists.
+
+# 2026-10-14 -- A-REMOTE-011 Stage 5 component discovery resolved
+
+- Demonstrated that the prior build tree omitted the newly registered `physical_input` component and its shared include directory because PlatformIO reused stale generated component-discovery metadata.
+- Preserved and displaced only the generated `remote01` build tree, then performed one fresh production build: PASS. The 2,518,496-byte private application has SHA-256 `58d09a4d7b39a287d80b48270b5236986657f27fb716692b77ff4af3e573cab7` and 627,232 bytes of 3 MiB OTA headroom.
+- No relevant test source changed, so passing tests were not rerun. No hardware, flash, TUNER, pairing/NVS or live control operation occurred.
+# 2026-10-15 -- REMOTE motion-wake regression diagnosis
+
+- Compared the active A-011 IMU, expander, GPIO8 wake and power path with preserved A-010/A-011 baselines and the earlier owner-validated snapshot; the relevant implementation is unchanged, so no A-011 source regression was demonstrated.
+- Confirmed that wake-on-motion is configured and enabled, but QMI initialization is attempted only once per boot and any initialization or later status-read failure disables the motion path for that boot. Historical evidence records the same `IMU_WOM=0` failed-lift condition followed by working wake after reboot, with exact cause unresolved.
+- No source, build or hardware action occurred. The minimum next step is a read-only diagnostics snapshot before and after one lift to distinguish disabled IMU initialization, lost motion detection and post-detection display wake behavior.
+
+# 2026-10-15 -- REMOTE motion-wake runtime diagnosis stopped at snapshot A
+
+- Captured one read-only diagnostics snapshot from the verified running REMOTE before movement: display idle, IMU not ready, zero motion events, four wakes, zero runtime bus errors and last sleep cause zero.
+- Applied the mandatory stop immediately; no lift was requested and no snapshot B was captured. `IMU=0` with zero runtime bus errors classifies the current failure at boot wake-on-motion initialization, before motion detection or display wake handling.
+- The exact failed QMI stage requires one separately authorized passive UART capture during an owner-performed normal reboot. No reboot, source/build, flash/NVS or control action occurred.
+# 2026-10-15 -- REMOTE passive boot diagnosis
+
+- Opened the verified REMOTE UART passively at 115200 baud with DTR/RTS inactive; the owner performed one normal reboot.
+- Native USB disconnected during reboot and the Windows monitor stopped on `ClearCommError` before receiving data. The zero-byte capture proves no QMI stage was observed, so the exact initialization failure remains unresolved.
+- One post-boot read-only status snapshot reported `IMU=1` and zero bus errors, demonstrating that the same installed firmware recovered IMU readiness after reboot. No repeated reboot, mutation or source/build operation occurred.
+
+# 2026-10-15 -- A-REMOTE-011 SD GPIO button reuse investigation
+
+- Verified that GPIO38/J3-8, GPIO39/J3-9, GPIO40/J3-10 and GPIO41/J3-11 each share a microSD signal with a fitted 10 kOhm pull-up to 3.3 V.
+- Classified all four as SAFE WITH CONDITIONS for independent active-low buttons: the socket must remain empty, SDMMC/SDSPI must remain disabled, and the pins must be input-only contacts to GND.
+- Confirmed that the active private application does not initialize SD or claim GPIO38-41, and that current sleep/wake continues to use GPIO8 only. No source implementation, build, test or hardware operation occurred.
+
+# 2026-10-15 -- A-REMOTE-011 Stage 5 physical button inputs
+
+- Recorded the owner's permanent microSD exclusion and approved GPIO38-41/J3-8 through J3-11 as input-only active-low physical buttons using the fitted 10 kOhm pull-ups.
+- Implemented four typed, debounced, no-repeat press events in the private REMOTE source without assigning application actions or dispatching CCM/RTCP commands.
+- Focused button checks passed 3/3, the affected shared model passed 19/19 with zero allocations, GPIO ownership checks passed and one clean production build passed. The 2,518,896-byte candidate has SHA-256 `6aca8931fcd08b91fcf489bd6d77212cbb0d4c762e70a657d7abec6911ab8e95`, 626,832 bytes of OTA headroom and 47,172 bytes static RAM use.
+
+# 2026-10-16 -- A-REMOTE-011 Stage 5 diagnostic installation and RTCP diagnosis
+
+- Installed the accepted 2,522,560-byte REMOTE diagnostic application once at `0x10000`; exact-length readback matched SHA-256 `ac5e259eb8c57029e897b0106d44851d085b7d29ebc7d7bf827089dfadaf1a4d`. The retained 16 MiB rollback backup and device identity were verified before the write.
+- Normal boot, stored Wi-Fi, UI service, voltage telemetry and IMU readiness were observed. TUNER remained reachable, while bounded diagnostics showed repeated TCP establishment followed by client-hello send failure: stage `tcp_connected`, failure `send`, error `EINPROGRESS`, zero completed client hellos and zero received server-hello bytes.
+- Source correlation demonstrates premature treatment of a nonblocking connect as complete when `SO_ERROR` is zero without first waiting for socket writability. Authentication, identity, capabilities and state synchronization were not reached; pairing corruption is not indicated. No TUNER, pairing/NVS/partition, encoder/control or protocol operation occurred.
+
+# 2026-10-16 -- A-REMOTE-011 nonblocking TCP completion correction
+
+- Corrected the private REMOTE RTCP client to require socket writability before evaluating `SO_ERROR` and sending the client hello. Pending, interrupted, timed-out and failed connection outcomes retain the existing bounded deadline, reconnect and cleanup behavior.
+- The focused readiness regression suite passed 9/9. One production build passed: 2,522,848-byte private application, SHA-256 `cdda9773981a3d5dd5008d1380d50f6738a4796fc6a12430f4b3521b666b08f7`, 622,880 bytes of 3 MiB OTA headroom and 47,212 bytes static RAM.
+- No hardware access, flash, TUNER, pairing/NVS/partition, encoder/control or protocol-message operation occurred. Installation remains separately gated.
+
+# 2026-10-16 -- A-REMOTE-011 corrected RTCP installation stopped before write
+
+- Reverified the accepted 2,522,848-byte application and SHA-256 `cdda9773981a3d5dd5008d1380d50f6738a4796fc6a12430f4b3521b666b08f7`, plus the retained verified 16 MiB rollback backup.
+- Windows enumerated the expected Espressif USB interface, but the required read-only ROM identity check could not open the port and returned Windows device error 31. The mandatory stop applied before identity confirmation, erase, write or readback.
+- Zero flash bytes changed. No RTCP, encoder/control, TUNER, pairing/NVS/partition or other hardware operation occurred.
+
+# 2026-10-16 -- A-REMOTE-011 corrected RTCP firmware installation retry
+
+- Verified REMOTE identity and the retained rollback backup, then installed the accepted 2,522,848-byte application once at `0x10000`. Exact readback matched SHA-256 `cdda9773981a3d5dd5008d1380d50f6738a4796fc6a12430f4b3521b666b08f7`.
+- Normal boot, stored Wi-Fi, UI service and voltage telemetry were available. Read-only RTCP diagnostics confirmed TCP readiness, completed client hello, valid server frame/proof, completed client finish and completed encrypted identity request.
+- Full synchronization did not complete: no identity response was received or accepted, and capabilities/fresh volume remained unavailable before automatic reconnect. No encoder/control, TUNER, pairing/NVS/partition or unrelated operation occurred.
+
+# 2026-10-16 -- A-REMOTE-011 minimal TUNER RTCP diagnostics build stop
+
+- Added private fixed-size, secret-free TUNER RTCP diagnostic state for client-finish acceptance, record receipt/validation, GCM acceptance, identity dispatch/response/write and close causes. The existing read-only diagnostics endpoint exposes only counters and a close-reason code.
+- The focused model passed 4/4 and occupies 60 bytes. The single build completed, but used PlatformIO's default `esp32-dev` environment rather than the accepted Stage 4 `esp32-lwip-psram` production environment; its artifact is rejected as non-production evidence.
+- Stopped without a second build. No deployable candidate, hardware access, flash, pairing/NVS change, protocol operation or PR merge occurred.
+
+# 2026-10-16 -- A-REMOTE-011 CCM policy installation and admission result
+
+- Verified the REMOTE ESP32-S3 identity, retained 16 MiB rollback backup and accepted 2,522,912-byte application, then wrote it once at `0x10000`. Exact-length readback matched SHA-256 `7382e69ce03544b5282cd4d38cece0a01fd8a74b8e739823676dbf3fac5165b9`.
+- Normal boot exposed retained Wi-Fi/configuration, valid voltage telemetry and the existing UI service. TUNER diagnostics confirmed a new authenticated identity session, capability exchange and continuing validated encrypted records with no transport, authentication or framing error.
+- CCM still did not admit `volume.level`: the adapter constructs `{percent,100}` without reducing the rational, while Core requires a normalized reduced value. The failed volume publish short-circuits the following `playback.state` publish, and `volume.set` remains gated by the absent authoritative volume. The HOME indicator therefore cannot reflect an admitted authoritative value.
+- No encoder/key action, control command, TUNER change, pairing/NVS/partition mutation, source change, build retry or PR merge occurred. A separately authorized adapter correction and focused verification are required.
+
+# 2026-10-16 -- A-REMOTE-011 volume command pipeline repair candidate
+
+- Hardware evidence confirmed working encoder transitions/detents and a persistent single-command latch: locally accepted volume intents could remain outstanding after a definite Core rejection because the immediate result and later Core lifecycle were not returned to the HOME channel. The real-mode `dispatches=0` field was excluded as evidence because it is a fixed placeholder.
+- The private repair canonically reduces observation and command percentages, submits volume/playback observations independently, tracks the exact outstanding intent token, releases only a matching definite no-execution failure, and retains confirmed/uncertain commands until authoritative target state or session invalidation. No timeout, retry, protocol relaxation or unbounded storage was added.
+- Focused results: volume admission/lifecycle 3/3 PASS (42 assertions), RTCP rational/admission 2/2 PASS (221 assertions), HOME/Core path 40/40 PASS (3,548 assertions). One `remote01` production build passed: 2,523,504 bytes, SHA-256 `4d084c074d74f7ba366f868d52eb45cbe3fb4a517980842c80fc4405efded57d`, 622,224 bytes OTA headroom and 47,228 bytes static RAM.
+- No hardware access, flash, TUNER change, pairing/NVS/partition mutation or live control command occurred. Physical encoder-to-TUNER direction, bounded two-detent behavior, authoritative feedback and sleep/reconnect handling remain pending separately authorized commissioning.
+
+# 2026-10-16 -- A-REMOTE-011 rapid encoder accumulation candidate
+
+- Physical commissioning of the prior candidate proved the persistent latch repair and single-detent control, but rapid detents were discarded locally while a command awaited authoritative feedback: 34 decoded detents produced 34 intents, only 25 local acceptances, and the last rejection was `IN_FLIGHT`.
+- Replaced that rejection with one bounded desired-volume byte. Detents update the clamped target while exactly one command remains in flight; each next one-step command is created only after authoritative observation of the preceding target. Direction reversal changes the target, definite no-execution failure cancels pending input, and uncertain outcomes remain blocked without retry. Disconnect, sleep/session or capability invalidation cancels pending input.
+- Focused tests passed: accumulator/lifecycle 5/5 (132 assertions), encoder routing 5/5 (26 assertions), HOME/Core 40/40 (3,548 assertions), and RTCP rational/admission 2/2 (221 assertions). Production `remote01` build PASS: 2,523,904 bytes, SHA-256 `89ada9b2ff6f339398e3cb0470395dfbc37637bfca97d788e74190258db414de`, 621,824 bytes OTA headroom, 47,228 bytes static RAM.
+- No hardware access or flash occurred. Five-fast-detent behavior, reversal, authoritative settling and sleep/reconnect cancellation require separately authorized physical commissioning.
+
+# 2026-10-16 -- A-REMOTE-011 pending-capability projection correction
+
+- Hardware retest of the accumulator candidate still lost rapid steps: 19 decoded intents yielded seven local acceptances, with the final rejection `VOLUME_SET_UNAVAILABLE`. Source reproduction showed that `Session::snapshot()` forcibly cleared `volume_set` whenever the RTCP adapter had a pending command, so later detents were rejected before reaching the accumulator.
+- Preserved capability truth during a pending command while continuing to disable unrelated playback actions. The accumulator still emits only one command at a time. Replaced the real-mode mock placeholder in the existing `dispatches` diagnostic with a bounded count of RTCP volume submissions accepted by the client.
+- Full native regression PASS: Core 69/69, profile 6/6, HOME 41/41, hardening 26/26, ingress 18/18, power 19/19, plus all network, diagnostics, physical-input, WoM, stack, OTA and UI boundary suites. Focused accumulator remains 5/5 (132 assertions). Production build PASS: 2,523,936 bytes, SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`, 621,792 bytes OTA headroom and 47,228 bytes static RAM.
+- No hardware access or flash occurred. Software build/test status PASS; hardware fast-rotation status FAIL / pending retest.
+
+# 2026-10-16 -- A-REMOTE-011 pending-capability candidate installation
+
+- Verified the REMOTE ESP32-S3 identity, exact private candidate and retained 16 MiB rollback backup, then wrote only the 2,523,936-byte application at `0x10000` once using 921600-baud esptool communication.
+- Exact readback matched SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`. Read-only status confirmed stored Wi-Fi/configuration, valid voltage telemetry, RTCP complete, authoritative volume, `volume.set` available and no command in flight.
+- No encoder/key input, control command, TUNER change, pairing/NVS/partition mutation or retry occurred. Hardware fast-rotation acceptance remains pending the controlled owner test.
+
+# 2026-10-16 -- A-REMOTE-011 Stage 5 hardware commissioning PASS
+
+- Owner-verified physical commissioning PASS for EC11 detection/direction, individual detents, five rapid down detents from 95% to 90%, rapid reversal of three down plus two up from 95% to 94%, RTCP submission and authoritative volume synchronization, absence of a persistent `IN_FLIGHT` latch, and sleep/wake without stale replay.
+- The direction-reversal result is owner-verified; cumulative diagnostic counters included additional rotations and are not represented as an isolated counter delta.
+- Validated rollback baseline: REMOTE application at `0x10000`, 2,523,936 bytes, SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`, exact flash readback PASS and 621,792 bytes OTA headroom. Stage 5 hardware commissioning is PASS for this scope.

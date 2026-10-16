@@ -1,0 +1,34 @@
+{
+  "task": "A-REMOTE-011",
+  "stage": "Stage 5 wrong-slider and encoder diagnosis",
+  "date_utc": "2026-10-15",
+  "verdict": "HARDWARE_VALIDATION_FAIL_DIAGNOSIS_COMPLETE",
+  "ui": {
+    "generated_slider_count": 1,
+    "selected_widget": "screen_slider_1",
+    "demonstrated_role": "brightness",
+    "generated_range": [0, 255],
+    "separate_lvgl_volume_slider_exists": false,
+    "existing_volume_presentation": "HOME numeric label plus non-interactive object bar",
+    "required_correction": "restore original brightness binding and keep CCM volume independent"
+  },
+  "encoder": {
+    "gpio_inputs": [2, 5],
+    "sampling_period_ms": 2,
+    "active_session": true,
+    "capability_revision_advancing": true,
+    "local_channel_rejections": 59,
+    "core_ingress_posted": 0,
+    "rtcp_dispatches": 0,
+    "applied_results": 0,
+    "demonstrated_stop_boundary": "control_home request admission before Core dispatch",
+    "exact_rejection_reason": "not exposed by current diagnostics"
+  },
+  "operations": {
+    "source_edits": 0,
+    "builds": 0,
+    "flash_writes": 0,
+    "intentional_control_commands": 0
+  },
+  "privacy": "No credential, address, device identifier, private path, source or binary is published."
+}

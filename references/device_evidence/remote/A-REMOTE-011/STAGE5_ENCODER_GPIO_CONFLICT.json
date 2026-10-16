@@ -1,0 +1,39 @@
+{
+  "task": "A-REMOTE-011",
+  "stage": "5 encoder GPIO verification",
+  "date": "2026-10-14",
+  "verdict": "BLOCKED_GPIO_CONFLICT",
+  "board": "Waveshare ESP32-S3-Touch-LCD-3.49B V2 PCB Rev1.1",
+  "owner_assignment": {
+    "encoder_clk": "GPIO4",
+    "encoder_dt": "GPIO5",
+    "common": "GND",
+    "input_mode": "3.3 V internal pull-ups",
+    "reserved": "GPIO1"
+  },
+  "conflict": {
+    "pin": "GPIO4",
+    "schematic_net": "BAT_ADC",
+    "active_firmware_use": "main battery ADC1 channel 3",
+    "gpio1_use": "external-power sensing on ADC1 channel 0",
+    "gpio5_claim_found": false
+  },
+  "transient_private_candidate": {
+    "status": "REJECTED_NON_DEPLOYABLE",
+    "focused_encoder_tests": "5/5 PASS; 31 assertions",
+    "quadrature_tests": "19/19 PASS; 21621 assertions; zero allocations",
+    "production_build": "PASS",
+    "firmware_size_bytes": 2518640,
+    "firmware_sha256": "735b07feeb2705110a2f4b4482283ebbb3a6c148cacff069d89f2da341462f03",
+    "ota_slot_bytes": 3145728,
+    "headroom_bytes": 627088,
+    "warning": "Private invalid artifact; must not be flashed or published."
+  },
+  "final_private_source_changes": 0,
+  "hardware_access": false,
+  "flash_writes": 0,
+  "control_commands": 0,
+  "pairing_or_nvs_changes": 0,
+  "pr": 17,
+  "pr_state": "OPEN_UNMERGED"
+}
