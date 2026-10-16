@@ -2,14 +2,24 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-VOLUME-PIPELINE-REPAIR-CANDIDATE-20261016
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RAPID-ENCODER-ACCUMULATION-CANDIDATE-20261016
 - Updated (UTC): 2026-10-16
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 VOLUME PIPELINE REPAIR BUILT; HARDWARE COMMISSIONING PENDING
+- Status: STAGE 5 RAPID ENCODER ACCUMULATION BUILT; HARDWARE COMMISSIONING PENDING
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `14174c34cb553863419e1c943d052fb4c8ab1404`
+- Input head: `1db3f962bd9e91613f64b8b5cc6f9f9d215a5ce2`
 
 ## Result
+
+Physical testing of the installed prior repair confirmed correct single-detent control and no persistent latch. Rapid detents still lost steps because `Channel::volume_admission()` rejected every detent while `volume_outstanding` was true. The hardware evidence isolated the loss before Core/RTCP: all 34 detents produced intents, but only 25 were locally accepted, with `IN_FLIGHT` as the observed rejection. The mock-only real-mode dispatch counter was not used.
+
+The private correction uses one fixed desired-volume byte plus a validity flag; memory remains bounded regardless of rotation rate. Rapid detents adjust that clamped target. Only one one-step command exists at a time, and the next command is emitted only after a fresh authoritative observation reaches the previous target. Rapid reversal adjusts the desired target. A matching definite no-execution failure cancels pending changes; confirmed commands wait for authoritative state; uncertain delivery remains blocked; disconnect, session/capability change and sleep invalidation cancel pending changes. No timeout, automatic retry, optimistic UI update or weakened CCM precondition was introduced.
+
+Tests passed: accumulator/admission/lifecycle 5/5 with 132 assertions; encoder routing 5/5 with 26 assertions; actual HOME/Core/Facade path 40/40 with 3,548 assertions; RTCP rational/admission 2/2 with 221 assertions. One production `remote01` build passed. Private candidate: 2,523,904 bytes; SHA-256 `89ada9b2ff6f339398e3cb0470395dfbc37637bfca97d788e74190258db414de`; 621,824 bytes of 3 MiB OTA headroom; 47,228/327,680 bytes static RAM.
+
+No hardware access or flash occurred. Commission only after separate owner authorization: verify the exact candidate and rollback image; write/read back only the application at `0x10000`; confirm boot, RTCP READY and authoritative volume; from a verified 95% start apply five fast down detents and require 90%, five accepted intents and no outstanding operation after settling; test three down plus two up as net one down; then perform one normal sleep/wake or reconnect and require no stale command replay. Stop on the first mismatch and do not retry control commands automatically.
+
+## Prior pipeline repair
 
 Hardware diagnostics prove that EC11 transitions, detents and intents reach the HOME channel. They also prove that one locally accepted volume intent remained in flight and blocked later detents. Source inspection established the responsible lifecycle defect: `Channel::request()` latched the intent, while the runtime discarded both the immediate `Facade::handle()` result and later request lifecycle; only connection/session/capability changes or an exact target observation could clear it. Existing `CORE_REFUSED` events are consistent with this path, although the bounded historical event ring cannot identify the original token. The real-mode `dispatches` value is intentionally always zero and was not used.
 
