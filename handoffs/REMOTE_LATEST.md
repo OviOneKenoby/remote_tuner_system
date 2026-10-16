@@ -2,12 +2,12 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RTCP-DIAGNOSTIC-INSTALL-RETRY-20261016
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RTCP-CONNECT-FIX-20261016
 - Updated (UTC): 2026-10-16
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 DIAGNOSTIC INSTALLED; RTCP CONNECT COMPLETION DEFECT IDENTIFIED
+- Status: STAGE 5 RTCP CONNECT COMPLETION FIX BUILT; INSTALLATION PENDING
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `a8d3cc7b88c7b7031ecf1dcf6866271054747e50`
+- Input head: `d9607dc0552b4db932842be1c020299a8afd2b4b`
 
 ## Result
 
@@ -107,3 +107,9 @@ After normal boot, read-only status showed stored Wi-Fi connected, the UI servic
 Source correlation identifies the first demonstrated cause: the nonblocking client checks `SO_ERROR` immediately and treats zero as completed connection without first waiting for socket writability. It then attempts the client-hello send while the connection is still in progress. This is a REMOTE connection-completion state defect before authentication; it does not demonstrate pairing corruption or a TUNER listener failure.
 
 The minimum corrective action is to gate successful nonblocking connection completion on writable readiness and then confirm `SO_ERROR == 0`, preserving existing timeouts and reconnect policy. That source correction, build and installation require separate owner authorization. No source change, TUNER change, pairing/NVS/partition operation, encoder rotation, control command or PR merge occurred in this step.
+
+## Nonblocking TCP completion correction
+
+The private REMOTE client now polls the connecting socket for writability without blocking, keeps the existing three-second connection deadline, and reads `SO_ERROR` only after readiness. Pending and interrupted checks remain pending; timeout follows the existing diagnostic/cleanup path; socket and option failures remain explicit. Client-hello construction and transmission cannot begin until readiness plus `SO_ERROR == 0` confirm connection completion. RTCP messages, cryptography, authentication, retry timing and allocation behavior are unchanged.
+
+The narrowly scoped readiness suite passed 9/9 cases. The single production build passed. Private artifact: 2,522,848 bytes, SHA-256 `cdda9773981a3d5dd5008d1380d50f6738a4796fc6a12430f4b3521b666b08f7`; 622,880 bytes of 3 MiB OTA headroom; 47,212 bytes static RAM. No hardware access or persistent operation occurred. Application-only installation and runtime confirmation require separate owner authorization.
