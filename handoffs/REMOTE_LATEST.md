@@ -2,14 +2,24 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RAPID-ENCODER-ACCUMULATION-CANDIDATE-20261016
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-PENDING-CAPABILITY-PROJECTION-CANDIDATE-20261016
 - Updated (UTC): 2026-10-16
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 RAPID ENCODER ACCUMULATION BUILT; HARDWARE COMMISSIONING PENDING
+- Status: SOFTWARE BUILD/TEST PASS; HARDWARE FAST ROTATION FAIL / PENDING RETEST
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `1db3f962bd9e91613f64b8b5cc6f9f9d215a5ce2`
+- Input head: `d7d59daecb670d0b76e8203a0dfb990d677a925f`
 
 ## Result
+
+The accumulator candidate was installed and single-detent control remained correct, but hardware fast rotation still failed. The decisive snapshot recorded 19 detents/intents, seven local acceptances, final admission `VOLUME_SET_UNAVAILABLE`, no outstanding command, and unchanged session/capability revision. Source-level reproduction identified the missing test condition: `development::Session::snapshot()` cleared `volume_set` whenever `pending()` was true. Because `Channel::volume_admission()` requires that flag, every detent arriving during the active RTCP command was rejected before it could update the desired target. The prior unit tests supplied capability-ready snapshots directly and therefore did not exercise the Session wrapper's pending-state projection.
+
+The minimum correction leaves authoritative `volume.set` capability visible while a command is pending. Playback actions remain disabled during that interval. Safety remains in the Channel: rapid detents only update one bounded desired-volume byte, one command remains in flight, and the next step waits for authoritative target observation. Definite failure, uncertainty, disconnect, session/capability change and sleep retain the prior safe behavior. The existing real-mode `dispatches` status field now reports actual RTCP client-accepted volume submissions instead of the historical constant zero; it remains a bounded counter and does not imply remote execution.
+
+Focused reproduction and accumulator tests passed: 5/5 with 132 assertions; HOME integration 41/41 with 3,560 assertions. Full native regression passed: Core 69/69 (2,425 assertions), profile 6/6, hardening 26/26 (278,368 assertions), ingress 18/18 (22,189 assertions), power 19/19 (19,236 assertions), network 17/17, network-sleep 9/9, external-power 11/11, portal 15/15, diagnostics 9/9, physical-input 19/19, both WoM modes 7/7, both stack modes 7/7, OTA preflight 8/8, and all remaining boundary/publication suites. One `remote01` production build passed. Private candidate: 2,523,936 bytes; SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`; 621,792 bytes OTA headroom; 47,228/327,680 bytes static RAM.
+
+No hardware access or flash occurred. For the separately authorized retest, verify and install only this exact application at `0x10000`, verify exact readback, boot and wait for RTCP READY. Capture `encoder_detents`, `volume_intents`, `volume_intents_accepted`, `volume_admission`, `dispatches`, `volume_value`, `volume_in_flight`, session/revision and event cursor. From authoritative 95%, apply five fast down detents and wait for settling. Require all three input counters to increase by five, actual RTCP submissions eventually to increase by five, authoritative volume 90%, no outstanding operation and no new Core refusal. Then test three down plus two up for net 94%, followed by one sleep/wake or reconnect with no stale replay. Stop at the first mismatch; do not retry commands automatically.
+
+## Prior accumulator candidate
 
 Physical testing of the installed prior repair confirmed correct single-detent control and no persistent latch. Rapid detents still lost steps because `Channel::volume_admission()` rejected every detent while `volume_outstanding` was true. The hardware evidence isolated the loss before Core/RTCP: all 34 detents produced intents, but only 25 were locally accepted, with `IN_FLIGHT` as the observed rejection. The mock-only real-mode dispatch counter was not used.
 
