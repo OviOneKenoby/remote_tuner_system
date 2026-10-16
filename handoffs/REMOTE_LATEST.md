@@ -2,12 +2,12 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-POST-IDENTITY-ADMISSION-DIAGNOSIS-20261016
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RTCP-FRESHNESS-CORRECTION-BUILD-PASS-20261016
 - Updated (UTC): 2026-10-16
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 POST-IDENTITY SNAPSHOT ADMISSION DEFECT PROVEN; CORRECTION NOT AUTHORIZED
+- Status: STAGE 5 RTCP FRESHNESS CORRECTION BUILD PASS; INSTALLATION NOT AUTHORIZED
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `365221831b3bb0d766113caa808ad518493dfa0f`
+- Input head: `589e0d8569a788aa7ec887681d48b72819dd75e8`
 
 ## Result
 
@@ -169,3 +169,11 @@ The first failing transition is local REMOTE snapshot admission. The installed f
 This is a rejected-observation defect, not a missing capability or snapshot message. The same descriptor/observation mismatch exists in the Stage 4 source path; the retained Stage 4 evidence established authenticated wire exchange but did not expose these later Core-admission fields, so it does not demonstrate successful admission against this mismatch.
 
 The smallest corrective action is to register the two RTCP field capabilities with the exact live RTCP freshness policy already emitted by `RtcpDevice` (2,000 ms, verified sequence, matching source-clock contract), leaving CCM, RTCP framing and TUNER unchanged. That source correction, focused admission test and REMOTE build require separate owner authorization.
+
+## RTCP capability freshness-policy correction
+
+The private REMOTE source now defines one fixed RTCP freshness policy and uses it for both registration and observation of `volume.level` and `playback.state`: 2,000 ms, verified sequence, and source-clock contract `same authenticated request/reply sample`. No Core admission rule was relaxed, and no unrelated capability, protocol, cryptographic, timeout or reconnect behavior changed.
+
+Changed private files: `components/control_home/include/control_home/rtcp_device.hpp`, `components/control_home/rtcp_device.cpp`, and `tests/control/rtcp_freshness_tests.cpp`. The focused regression passed 1/1 case with 6 assertions, demonstrating admission of the matching authenticated policy and rejection of the former mismatch. The single production `remote01` build passed. Private firmware: 2,522,912 bytes, SHA-256 `7382e69ce03544b5282cd4d38cece0a01fd8a74b8e739823676dbf3fac5165b9`; 622,816 bytes of 3 MiB OTA headroom; static RAM 47,212/327,680 bytes (14.4%).
+
+No hardware access, flash operation, TUNER change, pairing/NVS/partition mutation, encoder action or control command occurred. Application-only installation and read-only synchronization verification require separate owner authorization.

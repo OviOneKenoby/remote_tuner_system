@@ -1,3 +1,8 @@
+# 2026-10-16 -- A-REMOTE-011 RTCP freshness-policy correction build PASS
+
+- Corrected only the private REMOTE RTCP field registration so `volume.level` and `playback.state` use the same 2,000 ms verified-sequence freshness contract as their authenticated RTCP observations. CCM's exact policy validation remains unchanged; unrelated capabilities and RTCP behavior are untouched.
+- Focused regression PASS: 1/1 case, 6 assertions, proving the matching policy is admitted and the former mismatch remains rejected. The single `remote01` production build passed: firmware 2,522,912 bytes, SHA-256 `7382e69ce03544b5282cd4d38cece0a01fd8a74b8e739823676dbf3fac5165b9`; 622,816 bytes OTA headroom; static RAM 47,212/327,680 bytes (14.4%). No hardware operation occurred; installation requires separate owner authorization.
+
 # 2026-10-16 -- A-REMOTE-011 TUNER diagnostic commissioning PASS
 
 - Mandatory preflight identified the expected TUNER ESP32 on its CH340 interface, reverified the 2,036,400-byte `esp32-lwip-psram` candidate and rollback evidence, confirmed the installed production image byte-for-byte, and confirmed `app0` at `0x10000` with 3 MiB capacity. The diagnostic application was written once at `0x10000`; exact readback matched SHA-256 `f193863f6d2966cc0797b9bdd2144971fb7b4bfc5bb9b1b4c07ff4840cf4a21c`.
