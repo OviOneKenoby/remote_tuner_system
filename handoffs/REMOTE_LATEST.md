@@ -2,14 +2,24 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-PENDING-CAPABILITY-CANDIDATE-INSTALLED-20261016
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-HARDWARE-COMMISSIONING-PASS-20261016
 - Updated (UTC): 2026-10-16
 - Task ID: A-REMOTE-011
-- Status: CANDIDATE INSTALLED/READBACK PASS; HARDWARE FAST ROTATION PENDING RETEST
+- Status: STAGE 5 HARDWARE COMMISSIONING PASS; VALIDATED ROLLBACK BASELINE
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `51b3d281af2e006c4e54276c96c1038940ae74ce`
+- Input head: `56979e3113ea81839d0ac6e60f71fa35b021f1ae`
 
 ## Result
+
+A-REMOTE-011 Stage 5 hardware commissioning is PASS for the verified scope. The owner confirmed correct EC11 detection and direction, correct individual one-step volume changes, five rapid down detents changing authoritative TUNER volume from 95% to 90%, and rapid reversal of three down plus two up changing 95% to 94%. RTCP command submission and authoritative volume synchronization passed, no persistent `IN_FLIGHT` latch remained, and one sleep/wake cycle produced no stale command replay.
+
+The direction-reversal result is owner-verified. The cumulative diagnostics observed during commissioning also contain additional rotations, so they are retained as supporting operational evidence rather than claimed as an isolated five-detent counter delta.
+
+Validated REMOTE rollback baseline: application offset `0x10000`; size 2,523,936 bytes; SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`; exact flash readback PASS; OTA headroom 621,792 bytes. Preserve this private application and existing rollback evidence. No firmware/source/build/flash operation occurred during final acceptance.
+
+Remaining open items: PR #17 remains open and unmerged pending owner disposition; no later A-REMOTE-011 milestone has been started. Previously documented out-of-scope items, including unassigned additional button actions and the separate intermittent motion-wake initialization observation, remain unchanged.
+
+## Installation evidence
 
 The expected REMOTE ESP32-S3 identity, accepted candidate and retained 16 MiB rollback backup were verified. The 2,523,936-byte application was written once at `0x10000`; exact readback matched SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`. No other flash range was written.
 

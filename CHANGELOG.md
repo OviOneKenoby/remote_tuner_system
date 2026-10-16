@@ -558,3 +558,9 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 - Verified the REMOTE ESP32-S3 identity, exact private candidate and retained 16 MiB rollback backup, then wrote only the 2,523,936-byte application at `0x10000` once using 921600-baud esptool communication.
 - Exact readback matched SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`. Read-only status confirmed stored Wi-Fi/configuration, valid voltage telemetry, RTCP complete, authoritative volume, `volume.set` available and no command in flight.
 - No encoder/key input, control command, TUNER change, pairing/NVS/partition mutation or retry occurred. Hardware fast-rotation acceptance remains pending the controlled owner test.
+
+# 2026-10-16 -- A-REMOTE-011 Stage 5 hardware commissioning PASS
+
+- Owner-verified physical commissioning PASS for EC11 detection/direction, individual detents, five rapid down detents from 95% to 90%, rapid reversal of three down plus two up from 95% to 94%, RTCP submission and authoritative volume synchronization, absence of a persistent `IN_FLIGHT` latch, and sleep/wake without stale replay.
+- The direction-reversal result is owner-verified; cumulative diagnostic counters included additional rotations and are not represented as an isolated counter delta.
+- Validated rollback baseline: REMOTE application at `0x10000`, 2,523,936 bytes, SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`, exact flash readback PASS and 621,792 bytes OTA headroom. Stage 5 hardware commissioning is PASS for this scope.
