@@ -552,3 +552,9 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 - Preserved capability truth during a pending command while continuing to disable unrelated playback actions. The accumulator still emits only one command at a time. Replaced the real-mode mock placeholder in the existing `dispatches` diagnostic with a bounded count of RTCP volume submissions accepted by the client.
 - Full native regression PASS: Core 69/69, profile 6/6, HOME 41/41, hardening 26/26, ingress 18/18, power 19/19, plus all network, diagnostics, physical-input, WoM, stack, OTA and UI boundary suites. Focused accumulator remains 5/5 (132 assertions). Production build PASS: 2,523,936 bytes, SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`, 621,792 bytes OTA headroom and 47,228 bytes static RAM.
 - No hardware access or flash occurred. Software build/test status PASS; hardware fast-rotation status FAIL / pending retest.
+
+# 2026-10-16 -- A-REMOTE-011 pending-capability candidate installation
+
+- Verified the REMOTE ESP32-S3 identity, exact private candidate and retained 16 MiB rollback backup, then wrote only the 2,523,936-byte application at `0x10000` once using 921600-baud esptool communication.
+- Exact readback matched SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`. Read-only status confirmed stored Wi-Fi/configuration, valid voltage telemetry, RTCP complete, authoritative volume, `volume.set` available and no command in flight.
+- No encoder/key input, control command, TUNER change, pairing/NVS/partition mutation or retry occurred. Hardware fast-rotation acceptance remains pending the controlled owner test.

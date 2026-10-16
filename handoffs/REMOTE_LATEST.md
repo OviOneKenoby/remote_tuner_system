@@ -2,14 +2,20 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-PENDING-CAPABILITY-PROJECTION-CANDIDATE-20261016
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-PENDING-CAPABILITY-CANDIDATE-INSTALLED-20261016
 - Updated (UTC): 2026-10-16
 - Task ID: A-REMOTE-011
-- Status: SOFTWARE BUILD/TEST PASS; HARDWARE FAST ROTATION FAIL / PENDING RETEST
+- Status: CANDIDATE INSTALLED/READBACK PASS; HARDWARE FAST ROTATION PENDING RETEST
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `d7d59daecb670d0b76e8203a0dfb990d677a925f`
+- Input head: `51b3d281af2e006c4e54276c96c1038940ae74ce`
 
 ## Result
+
+The expected REMOTE ESP32-S3 identity, accepted candidate and retained 16 MiB rollback backup were verified. The 2,523,936-byte application was written once at `0x10000`; exact readback matched SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`. No other flash range was written.
+
+After boot, the read-only diagnostics service reported stored Wi-Fi/configuration, valid voltage telemetry, RTCP stage complete, an authoritative volume, `volume.set` available and no volume command in flight. No encoder rotation, key press or RTCP control command was performed. The next step is the already documented controlled five-detent and reversal retest; hardware fast-rotation remains pending until owner-observed confirmation.
+
+## Candidate implementation evidence
 
 The accumulator candidate was installed and single-detent control remained correct, but hardware fast rotation still failed. The decisive snapshot recorded 19 detents/intents, seven local acceptances, final admission `VOLUME_SET_UNAVAILABLE`, no outstanding command, and unchanged session/capability revision. Source-level reproduction identified the missing test condition: `development::Session::snapshot()` cleared `volume_set` whenever `pending()` was true. Because `Channel::volume_admission()` requires that flag, every detent arriving during the active RTCP command was rejected before it could update the desired target. The prior unit tests supplied capability-ready snapshots directly and therefore did not exercise the Session wrapper's pending-state projection.
 
