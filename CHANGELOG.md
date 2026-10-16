@@ -1,3 +1,8 @@
+# 2026-10-16 -- A-REMOTE-011 diagnostic installation stopped before ROM identity
+
+- Reverified the accepted 2,522,560-byte candidate and retained 16 MiB rollback backup. Windows enumerated the expected Espressif interface as healthy, but the first read-only esptool operation could not open it and returned device error 31.
+- Stopped before ROM identity, erase, write or readback. Zero flash bytes changed; boot and RTCP handshake diagnosis were not reached. No automatic retry occurred.
+
 # 2026-10-16 -- A-REMOTE-011 bounded handshake diagnostic candidate build PASS
 
 - Layout inspection proved the 16-byte overflow was exactly 1,024-byte `Snapshots` + 4,112-byte `Ring` + 3,072-byte response buffer. Reduced only the response buffer to 3,056 bytes; `Snapshots` remains 1,024 and `Storage` is exactly 8,192 bytes. Limits, guards, locking, allocation and RTCP semantics remain unchanged.

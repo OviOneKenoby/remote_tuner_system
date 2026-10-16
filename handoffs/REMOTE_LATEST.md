@@ -2,12 +2,12 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RTCP-DIAGNOSTIC-CANDIDATE-20261016
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RTCP-DIAGNOSTIC-INSTALL-STOP-20261016
 - Updated (UTC): 2026-10-16
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 BOUNDED RTCP HANDSHAKE DIAGNOSTIC CANDIDATE BUILD PASS
+- Status: STAGE 5 DIAGNOSTIC INSTALL STOPPED BEFORE ROM IDENTITY
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `5f51094a9c337b3390b19103a1d9f1ca349a8a08`
+- Input head: `71fc9e43cc850b6274b75154b3f6995f71f37c67`
 
 ## Result
 
@@ -91,3 +91,9 @@ The authorized 16-byte storage correction and single production build are now co
 The overflow originated exactly from 1,024-byte `Snapshots`, 4,112-byte `Ring` and the 3,072-byte response buffer; no additional padding was present. Reducing only the response buffer by 16 bytes makes `diagnostics::Storage` exactly 8,192 bytes. Complete status serialization remains verified within the 3,056-byte buffer. Both existing size guards, fixed allocation, locking, security and RTCP semantics are preserved.
 
 The directly affected schema/layout suite passed 9/9 cases with 9,087 assertions. The single production build passed. Private firmware: 2,522,560 bytes, SHA-256 `ac5e259eb8c57029e897b0106d44851d085b7d29ebc7d7bf827089dfadaf1a4d`; OTA headroom 623,168 bytes; static RAM 47,212 bytes. No hardware operation occurred. Separate owner authorization is required before application-only installation and runtime handshake diagnosis.
+
+## Diagnostic installation stop
+
+The accepted candidate and retained 16 MiB rollback backup reverified. Windows enumerated the expected Espressif native USB interface and reported it healthy, but the first read-only esptool identity operation failed while opening/configuring the port with Windows device error 31. The operation stopped before ROM identity, erase, write or readback. Zero flash bytes changed, and no boot or RTCP diagnostic observation occurred.
+
+The minimum next action is for the owner to close any serial monitor or reconnect REMOTE, then separately request a retry. No automatic retry is authorized.
