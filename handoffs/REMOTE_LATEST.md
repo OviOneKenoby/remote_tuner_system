@@ -2,12 +2,12 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-TUNER-DIAGNOSTICS-COMMISSIONING-PASS-20261016
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-POST-IDENTITY-ADMISSION-DIAGNOSIS-20261016
 - Updated (UTC): 2026-10-16
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 TUNER DIAGNOSTICS INSTALLED; IDENTITY PATH PASS; POST-IDENTITY STATE BLOCKED
+- Status: STAGE 5 POST-IDENTITY SNAPSHOT ADMISSION DEFECT PROVEN; CORRECTION NOT AUTHORIZED
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `0312cb3d78e6588f07440c4ca775707d79d2e795`
+- Input head: `365221831b3bb0d766113caa808ad518493dfa0f`
 
 ## Result
 
@@ -159,3 +159,13 @@ Mandatory preflight identified the expected TUNER ESP32 through its physical CH3
 TUNER booted with retained Wi-Fi, its audio service and RTCP listener available. Its bounded diagnostics recorded successful client-finish acceptance, complete encrypted-record receipt, framing/session/counter validation, GCM authentication, identity dispatch, identity-response generation and complete response writes. Timeout, EOF, transport-error and session-close counters remained zero. REMOTE diagnostics concurrently recorded identity-response receipt and acceptance with no RTCP failure or platform error.
 
 No failure exists in the instrumented TUNER identity path. The remaining demonstrated boundary is later: REMOTE is connected and accepts identity, but still lacks a fresh authoritative volume and `volume.set` capability. The evidence does not identify its post-identity cause. No source/build change, flash retry, pairing/NVS/partition operation, encoder action or control command occurred. Any corrective investigation requires separate owner authorization.
+
+## Post-identity capability and volume synchronization diagnosis
+
+The expected sequence is identity request/response, capability request/response, initial snapshot request/response, then periodic snapshots while READY. Current bounded evidence proves that identity acceptance advances the REMOTE client, the capability exchange completes, the client reaches its complete/READY diagnostic stage, and TUNER continues receiving, validating and answering post-identity encrypted records. TUNER recorded no timeout, EOF, transport error or close; REMOTE remained connected with no RTCP failure.
+
+The first failing transition is local REMOTE snapshot admission. The installed field descriptors are created through `MockAdapter::readable` with a 5,000 ms freshness bound and source-clock contract `bounded synthetic acquisition`. `RtcpDevice` submits live RTCP observations with a 2,000 ms bound and source-clock contract `same authenticated request/reply sample`. Core admission requires the observation freshness policy to equal the registered capability policy exactly, so it rejects every otherwise valid snapshot before selecting `volume.level` or `playback.state`. Diagnostics consequently show connected/READY negotiation but `volume_known=0`; the facade intentionally keeps `volume_set=0` until an authoritative volume is selected.
+
+This is a rejected-observation defect, not a missing capability or snapshot message. The same descriptor/observation mismatch exists in the Stage 4 source path; the retained Stage 4 evidence established authenticated wire exchange but did not expose these later Core-admission fields, so it does not demonstrate successful admission against this mismatch.
+
+The smallest corrective action is to register the two RTCP field capabilities with the exact live RTCP freshness policy already emitted by `RtcpDevice` (2,000 ms, verified sequence, matching source-clock contract), leaving CCM, RTCP framing and TUNER unchanged. That source correction, focused admission test and REMOTE build require separate owner authorization.
