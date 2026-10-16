@@ -1,19 +1,21 @@
-# A-REMOTE-011: Common REMOTE-TUNER API integration kickoff
+# A-REMOTE-011: Common REMOTE-TUNER API integration and Stage 5 commissioning
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: IN PROGRESS - STAGE 5 DIAGNOSTIC APPLICATION INSTALLED / CONTROL TEST BLOCKED
+- State: STAGE 5 HARDWARE COMMISSIONING PASS / READY FOR OWNER MERGE REVIEW
 - Coordination input commit: `8e93c702940d49583f3fdd58046503ae0b8f7354`
-- Objective: implement the frozen RTCP/1 transport and first CCM 1.1.0 REMOTE-TUNER integration slice, verify both builds and stop before hardware commissioning.
+- Objective: implement and commission the frozen RTCP/1 transport and first CCM 1.1.0 REMOTE-TUNER integration slice through the approved Stage 5 encoder-volume scope.
 - Baseline: coordination main `8e93c702940d49583f3fdd58046503ae0b8f7354`; Phase 2 coordination input `1e11e979dbcd4d95a50cbf8ed87400ce854256b3`; TUNER v1.1.11 `5fb92c95d228d744d1182ae3956e850c5be2f277`; accepted A-010 private REMOTE source.
 - Required references: `references/CCM_1_1_0.md`; `docs/TUNER_NATIVE_API_V1.md` in the private REMOTE source; current coordination handoffs; `reports/A-REMOTE-010_CLOSURE.md`; `reports/A-REMOTE-011_KICKOFF.md`; `reports/A-REMOTE-011_PHASE1_RECONCILIATION_TRANSPORT.md`.
-- Dependencies: A-REMOTE-010 DONE / OWNER ACCEPTED; CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 Phase 2 profile specified; Phase 3 source implementation is complete; Phase 4 procedure is prepared; Stage 1 and both Stage 2 installations passed; the private Stage 3A helper is implemented and build verified; separate owner approval is required before credential generation, helper flashing or pairing writes.
-- Allowed scope: backed-up active-workspace promotion; private REMOTE and public TUNER RTCP/1 integration; first CCM functional slice; focused host tests and clean builds; English sanitized coordination publication.
-- Excluded scope: operational PSK generation, device access, flashing, hardware changes, AAC/AAC+ work, stations, playback commands, UI redesign, MQTT, SmartThings, CCM semantic changes, private-source/binary/credential publication, STL/manual publication, A-REMOTE-012.
+- Dependencies: A-REMOTE-010 DONE / OWNER ACCEPTED; CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 Phase 2 profile specified. A-REMOTE-011 implementation, pairing, application-only commissioning and the approved Stage 5 hardware checks are complete; their individual owner authorizations and limits remain preserved in the historical record.
+- Completed scope: backed-up active-workspace promotion; private REMOTE and public TUNER RTCP/1 integration; first CCM functional slice; focused tests and builds; reversible device commissioning; authenticated state synchronization; and Stage 5 EC11 volume-control hardware validation.
+- Excluded or unassigned scope: AAC/AAC+ work, stations, playback commands beyond the approved volume slice, additional physical-button actions, UI redesign, MQTT, SmartThings, CCM semantic changes, private-source/binary/credential publication, STL/manual publication and any later milestone.
 - Shared-contract guard: CCM 1.1.0 semantics and the frozen RTCP/1 Phase 2 profile remain unchanged; the implementation adds only the approved first functional slice.
-- Acceptance criteria: active private source is reversibly promoted; exact RTCP/1 and first CCM slice compile on both devices; focused tests and clean builds pass; memory/flash deltas are recorded; coordination PR remains open and unmerged; hardware is not run.
-- Verification: Phase 3 evidence retained. Stage 2A and 2B passed. Stage 3A implemented private compile-time helpers matching both production readers; 16/16 focused host tests and commissioning plus normal builds passed. One-shot and explicit partial-recovery gates preserve unrelated TUNER NVS and REMOTE A-010 generation history. No credentials were generated and pairing remains absent.
-- Stop/report conditions: baseline mismatch; missing A-010 source state; unresolved security/transport treated as if approved; any request to publish private material; any firmware or hardware operation.
+- Acceptance criteria: satisfied for the approved Stage 5 scope. The final private REMOTE application is 2,523,936 bytes at `0x10000`, SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`, with exact readback PASS and 621,792 bytes OTA headroom. Owner-observed EC11 direction, individual detents, rapid detents, direction reversal, RTCP synchronization, cleared in-flight state and sleep/wake no-replay behavior passed.
+- Verification: Stage 1 through Stage 5 evidence is retained. Pairing and commissioning were performed only under their recorded owner authorizations. Stage 5 hardware commissioning is PASS at the approved practical hobby/public-beta level. The validated private firmware and rollback evidence remain unpublished.
+- Current stop/report conditions: do not reopen engineering work, alter firmware or hardware, publish private material, merge PR #17 without explicit owner authorization, or begin another milestone.
 - Required outputs: reversible commissioning protocol, sanitized evidence checklist, archived prior handoff, current handoff, changelog/status entries and updated open coordination PR.
-- PM assignment evidence: owner instructions dated 2026-10-13 in the active session; Phase 3 authorizes backed-up promotion, private/public source implementation and build verification, stopping before hardware operations.
+- PM assignment evidence: owner instructions and scoped follow-up authorizations dated 2026-10-13 through 2026-10-16 in the retained task, handoff, report and evidence history.
+
+The dated sections below are historical execution records. Their former stop points, requested authorizations and proposed next actions are superseded by the completed Stage 5 PASS above; they are retained as evidence and are not current instructions.
 
 ## Stage 4 completed 2026-10-14
 

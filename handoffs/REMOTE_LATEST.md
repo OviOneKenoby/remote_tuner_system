@@ -19,6 +19,14 @@ Validated REMOTE rollback baseline: application offset `0x10000`; size 2,523,936
 
 Remaining open items: PR #17 remains open and unmerged pending owner disposition; no later A-REMOTE-011 milestone has been started. Previously documented out-of-scope items, including unassigned additional button actions and the separate intermittent motion-wake initialization observation, remain unchanged.
 
+## Current next action
+
+Owner review and an explicit merge decision for PR #17 are the only current A-REMOTE-011 action. No firmware, hardware, pairing, control, diagnostic or commissioning operation is pending under this handoff.
+
+## Historical and superseded execution record
+
+Everything below this heading is retained to preserve the complete investigation, correction and commissioning history. Statements below that request authorization, describe a blocker, prescribe a test or name a next action applied only at their recorded point in time. They are superseded by the Stage 5 PASS above and must not be treated as current instructions.
+
 ## Installation evidence
 
 The expected REMOTE ESP32-S3 identity, accepted candidate and retained 16 MiB rollback backup were verified. The 2,523,936-byte application was written once at `0x10000`; exact readback matched SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`. No other flash range was written.
@@ -75,7 +83,7 @@ The first proven failure boundary is now after TCP establishment and before REMO
 
 Only existing automatic client behavior, read-only LAN/status evidence and one zero-payload TCP establishment probe were used. No repeated probe, RTCP payload, manual reconnect loop, encoder rotation, control command, source/build/flash change, NVS/pairing/configuration change, secret publication or PR merge occurred.
 
-## Next owner action
+## Historical next owner action (superseded)
 
 Keep both devices online and do not rotate the encoder. The smallest supported next step is bounded, secret-free REMOTE instrumentation recording only: TCP connected, client hello completely sent, server hello byte count received, server-hello framing valid, server proof valid, client finish completely sent, and first identity response accepted. Counters plus one last-failure enum are sufficient. REMOTE is the minimum device because its current authenticated-connect transition is the missing boundary; TUNER instrumentation is unnecessary unless REMOTE proves that it sent a valid client finish. This requires a separately authorized source change, build and application-only installation. Pairing reset or regeneration is not justified.
 
