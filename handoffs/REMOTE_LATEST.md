@@ -2,14 +2,22 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RTCP-FRESHNESS-CORRECTION-BUILD-PASS-20261016
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-CCM-POLICY-INSTALL-VOLUME-NORMALIZATION-BLOCK-20261016
 - Updated (UTC): 2026-10-16
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 RTCP FRESHNESS CORRECTION BUILD PASS; INSTALLATION NOT AUTHORIZED
+- Status: STAGE 5 POLICY FIX INSTALLED; RTCP READY; VOLUME RATIONAL ADMISSION BLOCKED
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `589e0d8569a788aa7ec887681d48b72819dd75e8`
+- Input head: `1db69be6af95b56fb21d167d945fac6a5a6451ac`
 
 ## Result
+
+The accepted 2,522,912-byte REMOTE application was installed once at `0x10000` after device, rollback and partition preflight. Exact readback matched SHA-256 `7382e69ce03544b5282cd4d38cece0a01fd8a74b8e739823676dbf3fac5165b9`. Normal boot retained stored Wi-Fi/configuration, valid voltage telemetry and the existing UI service.
+
+Read-only evidence confirms authenticated RTCP identity, completed capability negotiation and continuing validated encrypted records. The installed freshness-policy correction is active, but CCM still reports no authoritative volume or `volume.set` capability. The first failing admission condition is exact: `RtcpDevice` constructs `volume.level` as the unreduced rational `{percent,100}`, while Core requires a normalized reduced rational. Because the snapshot handler combines the volume and playback publishes with short-circuit `&&`, the rejected volume also prevents submission of `playback.state`. The HOME volume indicator cannot display an admitted authoritative value.
+
+No encoder rotation, key press, control command, TUNER change, source/build operation, pairing/NVS/partition mutation or PR merge occurred. The minimum next action is a separately authorized adapter correction that reduces the volume rational before publication, with one focused admission regression and one REMOTE production build. Core strictness and TUNER behavior should remain unchanged.
+
+## Historical context
 
 The diagnostic application installation and exact readback remain PASS. Both devices remain reachable at their expected LAN addresses with working Wi-Fi. One owner-authorized bounded TCP probe established a connection to the exact provisioned TUNER RTCP port in 35 ms and closed without sending data. The TUNER listener and TCP path are therefore available.
 

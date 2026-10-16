@@ -524,3 +524,10 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 - Added private fixed-size, secret-free TUNER RTCP diagnostic state for client-finish acceptance, record receipt/validation, GCM acceptance, identity dispatch/response/write and close causes. The existing read-only diagnostics endpoint exposes only counters and a close-reason code.
 - The focused model passed 4/4 and occupies 60 bytes. The single build completed, but used PlatformIO's default `esp32-dev` environment rather than the accepted Stage 4 `esp32-lwip-psram` production environment; its artifact is rejected as non-production evidence.
 - Stopped without a second build. No deployable candidate, hardware access, flash, pairing/NVS change, protocol operation or PR merge occurred.
+
+# 2026-10-16 -- A-REMOTE-011 CCM policy installation and admission result
+
+- Verified the REMOTE ESP32-S3 identity, retained 16 MiB rollback backup and accepted 2,522,912-byte application, then wrote it once at `0x10000`. Exact-length readback matched SHA-256 `7382e69ce03544b5282cd4d38cece0a01fd8a74b8e739823676dbf3fac5165b9`.
+- Normal boot exposed retained Wi-Fi/configuration, valid voltage telemetry and the existing UI service. TUNER diagnostics confirmed a new authenticated identity session, capability exchange and continuing validated encrypted records with no transport, authentication or framing error.
+- CCM still did not admit `volume.level`: the adapter constructs `{percent,100}` without reducing the rational, while Core requires a normalized reduced value. The failed volume publish short-circuits the following `playback.state` publish, and `volume.set` remains gated by the absent authoritative volume. The HOME indicator therefore cannot reflect an admitted authoritative value.
+- No encoder/key action, control command, TUNER change, pairing/NVS/partition mutation, source change, build retry or PR merge occurred. A separately authorized adapter correction and focused verification are required.
