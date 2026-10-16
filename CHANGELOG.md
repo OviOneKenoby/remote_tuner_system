@@ -1,3 +1,8 @@
+# 2026-10-16 -- A-REMOTE-011 TUNER diagnostic commissioning PASS
+
+- Mandatory preflight identified the expected TUNER ESP32 on its CH340 interface, reverified the 2,036,400-byte `esp32-lwip-psram` candidate and rollback evidence, confirmed the installed production image byte-for-byte, and confirmed `app0` at `0x10000` with 3 MiB capacity. The diagnostic application was written once at `0x10000`; exact readback matched SHA-256 `f193863f6d2966cc0797b9bdd2144971fb7b4bfc5bb9b1b4c07ff4840cf4a21c`.
+- TUNER booted with retained Wi-Fi, audio service and RTCP listener. Bounded diagnostics show client finish, complete encrypted records, framing/session/counter validation, GCM authentication, identity dispatch, identity-response generation and complete writes all succeeding; timeout, EOF, transport-error and close counters remain zero. REMOTE now receives and accepts identity responses with no handshake failure, but fresh volume/capability state remains unavailable. The first remaining boundary is after identity acceptance, outside the instrumented TUNER identity path. No control command, pairing/NVS/partition change or retry occurred.
+
 # 2026-10-16 -- A-REMOTE-011 TUNER diagnostics production build PASS
 
 - Verified `esp32-lwip-psram` as the accepted TUNER production environment (`esp32dev`, Espressif ESP32 Dev Module) and ran the single authorized unchanged-source build. PASS: firmware 2,036,400 bytes, SHA-256 `f193863f6d2966cc0797b9bdd2144971fb7b4bfc5bb9b1b4c07ff4840cf4a21c`; flash 2,029,825/3,145,728 bytes (64.5%), binary slot headroom 1,109,328 bytes; static RAM 87,464/327,680 bytes (26.7%).

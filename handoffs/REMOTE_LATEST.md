@@ -2,12 +2,12 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-TUNER-DIAGNOSTICS-PRODUCTION-BUILD-PASS-20261016
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-TUNER-DIAGNOSTICS-COMMISSIONING-PASS-20261016
 - Updated (UTC): 2026-10-16
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 TUNER DIAGNOSTICS PRODUCTION BUILD PASS; INSTALLATION NOT AUTHORIZED
+- Status: STAGE 5 TUNER DIAGNOSTICS INSTALLED; IDENTITY PATH PASS; POST-IDENTITY STATE BLOCKED
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `4e9a587d9c5fce345c03bb33c87e1ef50025e3b2`
+- Input head: `0312cb3d78e6588f07440c4ca775707d79d2e795`
 
 ## Result
 
@@ -151,3 +151,11 @@ PlatformIO configuration and the accepted Phase 3 baseline confirm `esp32-lwip-p
 The production firmware is 2,036,400 bytes with SHA-256 `f193863f6d2966cc0797b9bdd2144971fb7b4bfc5bb9b1b4c07ff4840cf4a21c`. PlatformIO reports flash usage of 2,029,825/3,145,728 bytes (64.5%) and static RAM usage of 87,464/327,680 bytes (26.7%). Binary-length headroom in the 3 MiB application slot is 1,109,328 bytes. The already-passing focused model remains 4/4 PASS, and the bounded diagnostic storage remains exactly 60 bytes; tests were not repeated because their inputs did not change.
 
 The earlier `esp32-dev` artifact remains rejected. No source/configuration change, hardware access, flash operation, pairing/NVS/partition mutation or control command occurred. Installing this private diagnostic firmware requires separate owner authorization.
+
+## TUNER diagnostic firmware commissioning
+
+Mandatory preflight identified the expected TUNER ESP32 through its physical CH340 interface, reverified the accepted private candidate and complete rollback evidence, confirmed the installed production application against its accepted hash, and decoded the verified table with `app0` at `0x10000` and size 3 MiB. The 2,036,400-byte diagnostic application was written once at `0x10000` using 921600-baud esptool communication. Exact readback matched SHA-256 `f193863f6d2966cc0797b9bdd2144971fb7b4bfc5bb9b1b4c07ff4840cf4a21c`.
+
+TUNER booted with retained Wi-Fi, its audio service and RTCP listener available. Its bounded diagnostics recorded successful client-finish acceptance, complete encrypted-record receipt, framing/session/counter validation, GCM authentication, identity dispatch, identity-response generation and complete response writes. Timeout, EOF, transport-error and session-close counters remained zero. REMOTE diagnostics concurrently recorded identity-response receipt and acceptance with no RTCP failure or platform error.
+
+No failure exists in the instrumented TUNER identity path. The remaining demonstrated boundary is later: REMOTE is connected and accepts identity, but still lacks a fresh authoritative volume and `volume.set` capability. The evidence does not identify its post-identity cause. No source/build change, flash retry, pairing/NVS/partition operation, encoder action or control command occurred. Any corrective investigation requires separate owner authorization.
