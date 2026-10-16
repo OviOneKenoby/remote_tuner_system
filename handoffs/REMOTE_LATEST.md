@@ -2,14 +2,24 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-CCM-POLICY-INSTALL-VOLUME-NORMALIZATION-BLOCK-20261016
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-VOLUME-PIPELINE-REPAIR-CANDIDATE-20261016
 - Updated (UTC): 2026-10-16
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 POLICY FIX INSTALLED; RTCP READY; VOLUME RATIONAL ADMISSION BLOCKED
+- Status: STAGE 5 VOLUME PIPELINE REPAIR BUILT; HARDWARE COMMISSIONING PENDING
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `1db69be6af95b56fb21d167d945fac6a5a6451ac`
+- Input head: `14174c34cb553863419e1c943d052fb4c8ab1404`
 
 ## Result
+
+Hardware diagnostics prove that EC11 transitions, detents and intents reach the HOME channel. They also prove that one locally accepted volume intent remained in flight and blocked later detents. Source inspection established the responsible lifecycle defect: `Channel::request()` latched the intent, while the runtime discarded both the immediate `Facade::handle()` result and later request lifecycle; only connection/session/capability changes or an exact target observation could clear it. Existing `CORE_REFUSED` events are consistent with this path, although the bounded historical event ring cannot identify the original token. The real-mode `dispatches` value is intentionally always zero and was not used.
+
+The private repair tracks the exact volume-intent token. Immediate Core rejection and terminal Core outcomes proven to have executed nothing release only that matching token. Stale or unrelated outcomes cannot clear it. Confirmed commands remain protected until authoritative volume reaches the target; uncertain delivery remains blocked until authoritative state or session invalidation, preventing blind retry. Both command and observation percentages use canonical reduced rationals, and volume/playback observation submissions are independent. CCM validation, authentication, freshness, bounds, ordering and single-in-flight behavior remain strict.
+
+Focused verification passed: volume admission/lifecycle 3/3 (42 assertions), RTCP rational/admission 2/2 (221 assertions), and the actual HOME/Core/Facade path 40/40 (3,548 assertions). One production `remote01` build passed. Private candidate: 2,523,504 bytes; SHA-256 `4d084c074d74f7ba366f868d52eb45cbe3fb4a517980842c80fc4405efded57d`; 622,224 bytes of 3 MiB OTA headroom; 47,228/327,680 bytes static RAM.
+
+No hardware access, flash, TUNER change, pairing/NVS/partition mutation or live volume command occurred. The physical result remains unverified. Separate authorization is required to install this exact application, confirm RTCP synchronization, then test one detent in each direction and a bounded two-detent volume-down sequence at 100%, including authoritative feedback and one sleep/reconnect cycle with no stale replay.
+
+## Prior installation result
 
 The accepted 2,522,912-byte REMOTE application was installed once at `0x10000` after device, rollback and partition preflight. Exact readback matched SHA-256 `7382e69ce03544b5282cd4d38cece0a01fd8a74b8e739823676dbf3fac5165b9`. Normal boot retained stored Wi-Fi/configuration, valid voltage telemetry and the existing UI service.
 
