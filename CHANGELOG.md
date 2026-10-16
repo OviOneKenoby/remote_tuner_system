@@ -491,3 +491,9 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 - Corrected the private REMOTE RTCP client to require socket writability before evaluating `SO_ERROR` and sending the client hello. Pending, interrupted, timed-out and failed connection outcomes retain the existing bounded deadline, reconnect and cleanup behavior.
 - The focused readiness regression suite passed 9/9. One production build passed: 2,522,848-byte private application, SHA-256 `cdda9773981a3d5dd5008d1380d50f6738a4796fc6a12430f4b3521b666b08f7`, 622,880 bytes of 3 MiB OTA headroom and 47,212 bytes static RAM.
 - No hardware access, flash, TUNER, pairing/NVS/partition, encoder/control or protocol-message operation occurred. Installation remains separately gated.
+
+# 2026-10-16 -- A-REMOTE-011 corrected RTCP installation stopped before write
+
+- Reverified the accepted 2,522,848-byte application and SHA-256 `cdda9773981a3d5dd5008d1380d50f6738a4796fc6a12430f4b3521b666b08f7`, plus the retained verified 16 MiB rollback backup.
+- Windows enumerated the expected Espressif USB interface, but the required read-only ROM identity check could not open the port and returned Windows device error 31. The mandatory stop applied before identity confirmation, erase, write or readback.
+- Zero flash bytes changed. No RTCP, encoder/control, TUNER, pairing/NVS/partition or other hardware operation occurred.

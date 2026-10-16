@@ -2,12 +2,12 @@
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RTCP-CONNECT-FIX-20261016
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RTCP-FIX-INSTALL-STOP-20261016
 - Updated (UTC): 2026-10-16
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 RTCP CONNECT COMPLETION FIX BUILT; INSTALLATION PENDING
+- Status: STAGE 5 RTCP FIX INSTALLATION STOPPED BEFORE IDENTITY
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `d9607dc0552b4db932842be1c020299a8afd2b4b`
+- Input head: `90b5f3ebf3451cc63a74b58dea17223a40e4429e`
 
 ## Result
 
@@ -113,3 +113,7 @@ The minimum corrective action is to gate successful nonblocking connection compl
 The private REMOTE client now polls the connecting socket for writability without blocking, keeps the existing three-second connection deadline, and reads `SO_ERROR` only after readiness. Pending and interrupted checks remain pending; timeout follows the existing diagnostic/cleanup path; socket and option failures remain explicit. Client-hello construction and transmission cannot begin until readiness plus `SO_ERROR == 0` confirm connection completion. RTCP messages, cryptography, authentication, retry timing and allocation behavior are unchanged.
 
 The narrowly scoped readiness suite passed 9/9 cases. The single production build passed. Private artifact: 2,522,848 bytes, SHA-256 `cdda9773981a3d5dd5008d1380d50f6738a4796fc6a12430f4b3521b666b08f7`; 622,880 bytes of 3 MiB OTA headroom; 47,212 bytes static RAM. No hardware access or persistent operation occurred. Application-only installation and runtime confirmation require separate owner authorization.
+
+## Corrected RTCP firmware installation stop
+
+The accepted private application and retained rollback backup reverified. Windows enumerated the expected Espressif USB interface and no serial-monitor process was identified, but the required esptool ROM identity check failed while opening/configuring the port with Windows device error 31. The operation stopped before device identity, erase, application write or readback. Zero flash bytes changed, and no runtime RTCP observation was possible. Owner action is to restore the USB serial connection and separately authorize a retry.
