@@ -479,3 +479,9 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 - Recorded the owner's permanent microSD exclusion and approved GPIO38-41/J3-8 through J3-11 as input-only active-low physical buttons using the fitted 10 kOhm pull-ups.
 - Implemented four typed, debounced, no-repeat press events in the private REMOTE source without assigning application actions or dispatching CCM/RTCP commands.
 - Focused button checks passed 3/3, the affected shared model passed 19/19 with zero allocations, GPIO ownership checks passed and one clean production build passed. The 2,518,896-byte candidate has SHA-256 `6aca8931fcd08b91fcf489bd6d77212cbb0d4c762e70a657d7abec6911ab8e95`, 626,832 bytes of OTA headroom and 47,172 bytes static RAM use.
+
+# 2026-10-16 -- A-REMOTE-011 Stage 5 diagnostic installation and RTCP diagnosis
+
+- Installed the accepted 2,522,560-byte REMOTE diagnostic application once at `0x10000`; exact-length readback matched SHA-256 `ac5e259eb8c57029e897b0106d44851d085b7d29ebc7d7bf827089dfadaf1a4d`. The retained 16 MiB rollback backup and device identity were verified before the write.
+- Normal boot, stored Wi-Fi, UI service, voltage telemetry and IMU readiness were observed. TUNER remained reachable, while bounded diagnostics showed repeated TCP establishment followed by client-hello send failure: stage `tcp_connected`, failure `send`, error `EINPROGRESS`, zero completed client hellos and zero received server-hello bytes.
+- Source correlation demonstrates premature treatment of a nonblocking connect as complete when `SO_ERROR` is zero without first waiting for socket writability. Authentication, identity, capabilities and state synchronization were not reached; pairing corruption is not indicated. No TUNER, pairing/NVS/partition, encoder/control or protocol operation occurred.

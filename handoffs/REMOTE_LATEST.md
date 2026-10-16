@@ -1,13 +1,13 @@
-﻿# REMOTE//01 handoff
+# REMOTE//01 handoff
 
 ## Metadata
 
-- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RTCP-DIAGNOSTIC-INSTALL-STOP-20261016
+- Handoff ID: REMOTE-A-REMOTE-011-STAGE5-RTCP-DIAGNOSTIC-INSTALL-RETRY-20261016
 - Updated (UTC): 2026-10-16
 - Task ID: A-REMOTE-011
-- Status: STAGE 5 DIAGNOSTIC INSTALL STOPPED BEFORE ROM IDENTITY
+- Status: STAGE 5 DIAGNOSTIC INSTALLED; RTCP CONNECT COMPLETION DEFECT IDENTIFIED
 - Coordination branch: `remote/a-remote-011-kickoff-20261013`, PR #17
-- Input head: `71fc9e43cc850b6274b75154b3f6995f71f37c67`
+- Input head: `a8d3cc7b88c7b7031ecf1dcf6866271054747e50`
 
 ## Result
 
@@ -97,3 +97,13 @@ The directly affected schema/layout suite passed 9/9 cases with 9,087 assertions
 The accepted candidate and retained 16 MiB rollback backup reverified. Windows enumerated the expected Espressif native USB interface and reported it healthy, but the first read-only esptool identity operation failed while opening/configuring the port with Windows device error 31. The operation stopped before ROM identity, erase, write or readback. Zero flash bytes changed, and no boot or RTCP diagnostic observation occurred.
 
 The minimum next action is for the owner to close any serial monitor or reconnect REMOTE, then separately request a retry. No automatic retry is authorized.
+
+## Diagnostic installation retry and first proven RTCP failure
+
+The expected REMOTE ESP32-S3 identity, 16 MiB flash and retained rollback backup were verified. The accepted application was written once at `0x10000`. An exact 2,522,560-byte readback matched SHA-256 `ac5e259eb8c57029e897b0106d44851d085b7d29ebc7d7bf827089dfadaf1a4d`.
+
+After normal boot, read-only status showed stored Wi-Fi connected, the UI service available, valid battery/external-power telemetry and IMU ready. TUNER was reachable. Across two snapshots, RTCP attempts and successful TCP-connect counters advanced together, but completed client-hello remained zero; server-hello bytes and all later handshake counters remained zero. The stable diagnostic result was stage `tcp_connected`, failure `send`, platform error 119 (`EINPROGRESS`). No authenticated session, fresh volume or `volume.set` capability was established.
+
+Source correlation identifies the first demonstrated cause: the nonblocking client checks `SO_ERROR` immediately and treats zero as completed connection without first waiting for socket writability. It then attempts the client-hello send while the connection is still in progress. This is a REMOTE connection-completion state defect before authentication; it does not demonstrate pairing corruption or a TUNER listener failure.
+
+The minimum corrective action is to gate successful nonblocking connection completion on writable readiness and then confirm `SO_ERROR == 0`, preserving existing timeouts and reconnect policy. That source correction, build and installation require separate owner authorization. No source change, TUNER change, pairing/NVS/partition operation, encoder rotation, control command or PR merge occurred in this step.
