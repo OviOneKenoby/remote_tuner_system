@@ -1,3 +1,9 @@
+# 2026-10-17 -- A-REMOTE-012 final pre-commissioning review READY
+
+- Confirmed that TUNER's physical-encoder lag had an independent source-level cause: one queued detent per loop followed by a synchronous e-paper refresh. The existing `5391beef5e7ba264362ea19f2fdd93202308fa55` candidate already contains the bounded correction; no source change, retest or rebuild was needed in this review.
+- Rehashed both A-012 candidates, exact A-011 application rollbacks and matching primary/local full-flash captures. Clarified the distinct TUNER pre-A-011 installed capture, accepted A-011 production image, temporary diagnostic image and rejected non-identical reconstruction.
+- Published the final TUNER-first commissioning checklist. Physical audible/UI targets, rapid-detent/reversal/boundary behavior, reconnect/sleep safety and MP3/A2DP/web-manager regression remain NOT RUN. No hardware access or flash occurred.
+
 # 2026-10-17 -- A-REMOTE-012 low-latency volume control SOFTWARE PASS / HARDWARE PENDING
 
 - Source analysis proved that one-percent command serialization and periodic post-result snapshot scheduling dominated the observed rapid-encoder delay. The existing CCM `volume.set` wire operation already accepts absolute canonical percentages, so no CCM/RTCP semantic or wire change was required.

@@ -1,7 +1,7 @@
 # A-REMOTE-012: Low-Latency Volume Control
 
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: SOFTWARE PASS / HARDWARE PENDING
+- State: READY FOR HARDWARE COMMISSIONING / HARDWARE PENDING
 - Coordination baseline: `437e79cdfd6b7febf001271a32467191d84b20d2`
 - TUNER source baseline: `18ddd3b16e305341f338afebd7dc725500ecbb73`
 - TUNER candidate source: `5391beef5e7ba264362ea19f2fdd93202308fa55`
@@ -24,4 +24,4 @@ See [software validation and commissioning report](../reports/A-REMOTE-012_LOW_L
 
 ## Current stop
 
-Do not flash either device. Owner authorization is required for application-only installation and physical latency commissioning. Status remains SOFTWARE PASS / HARDWARE PENDING.
+The final pre-commissioning review reverified both candidates, exact application rollback images, matching local full-flash captures and the source-demonstrated TUNER local-encoder correction. Before the first write, reconnect and verify the previously populated owner-controlled external backup. Do not flash either device without separate owner authorization. Status is READY FOR HARDWARE COMMISSIONING / HARDWARE PENDING.

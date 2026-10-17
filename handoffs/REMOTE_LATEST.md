@@ -1,15 +1,15 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-012-SOFTWARE-PASS-20261017T060600Z
-- Updated (UTC): 2026-10-17T06:06:00Z
+- Handoff ID: REMOTE-A-REMOTE-012-PRECOMMISSIONING-READY-20261017T071500Z
+- Updated (UTC): 2026-10-17T07:15:00Z
 - Task ID: A-REMOTE-012
-- Status: READY FOR REVIEW - SOFTWARE PASS / HARDWARE PENDING
+- Status: READY FOR HARDWARE COMMISSIONING / HARDWARE PENDING
 - Prepared by: REMOTE//01 executor with coordinated TUNER//01 implementation
 - Coordination input commit: 437e79cdfd6b7febf001271a32467191d84b20d2
 
 ## Milestone
-Implement and verify the low-latency EC11 volume path without weakening CCM 1.1.0 or RTCP/1. Software acceptance is achieved; audible/UI timing and coexistence on physical hardware are NOT RUN and remain the acceptance gate.
+Implement and verify the low-latency EC11 volume path without weakening CCM 1.1.0 or RTCP/1, then complete the rollback and artifact preflight. Software and pre-commissioning review are complete; audible/UI timing and coexistence on physical hardware are NOT RUN and remain the acceptance gate.
 
 ## Baseline
 - Device repository: private REMOTE workspace; source remains unpublished
@@ -34,6 +34,8 @@ Private source now coalesces admitted detents into a bounded absolute desired-vo
 ## Remaining unknowns
 Physical detent-to-audio, continued-rotation and authoritative-UI latency are NOT RUN. The under-100 ms audible, under-50 ms provisional-UI and 250 ms final-target requirements require the published hardware procedure. Runtime heap/stack under paired MP3 and A2DP with the web manager active must also be observed. Unassigned physical-button functions and intermittent QMI8658 motion-wake initialization remain outside this task.
 
+The retained REMOTE full-flash primary and local copy are each 16,777,216 bytes and match SHA-256 `31fd537c4bf534b101e74ed582bf0aa909235686207da29ad61413f21688b43d`. The owner-controlled external backup was populated previously but is not currently attached; reconnecting and verifying it is required before the first write.
+
 ## Shared-contract impact
 - CCM 1.0.0: NO CHANGE; historical revision remains preserved and CCM 1.1.0 remains the current frozen contract.
 - TUNER Native API v1: NO CHANGE; A-REMOTE-012 uses the accepted RTCP/1 binding.
@@ -41,10 +43,10 @@ Physical detent-to-audio, continued-rotation and authoritative-UI latency are NO
 - Approval evidence: owner A-REMOTE-012 mission and performance override dated 2026-10-16 authorize both source trees and builds, but no physical flashing.
 
 ## Blockers
-Physical installation and measured latency require explicit owner authorization. No software blocker is known.
+Physical installation and measured latency require explicit owner authorization. The external backup must be reconnected and verified during the pre-write check. No software blocker is known.
 
 ## PM decision required
-Review the software result and authorize or reject the application-only two-device commissioning checklist. No merge or hardware authority is implied.
+Authorize or reject the published TUNER-first application-only commissioning checklist. No merge or hardware authority is implied.
 
 ## Recommended next task
 Commission TUNER first and REMOTE second using exact private hashes; measure audible and UI latency, submission count, final authority, MP3/A2DP/web coexistence and rollback readiness. This recommendation is not authorization.
@@ -53,7 +55,7 @@ Commission TUNER first and REMOTE second using exact private hashes; measure aud
 - Firmware result commit(s): REMOTE private source is uncommitted/git-less; TUNER public source `5391beef5e7ba264362ea19f2fdd93202308fa55`
 - Device changelog: private REMOTE and public TUNER changelogs updated; sanitized coordination `CHANGELOG.md` updated
 - Coordination publication: branch `remote/a-remote-012-low-latency`; PR and final coordination hash reported in publication message
-- Previous handoff archive: `archive/remote/2026-10-16T192300Z_A-REMOTE-011_REMOTE-A-REMOTE-011-STAGE5-HARDWARE-COMMISSIONING-PASS-20261016.md`
+- Previous handoff archive: `archive/remote/2026-10-17T071500Z_A-REMOTE-012_REMOTE-A-REMOTE-012-SOFTWARE-PASS-20261017T060600Z.md`
 
 ## Hardware status
 - Physical device tested: NO

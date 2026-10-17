@@ -2,7 +2,7 @@
 
 ## Verdict
 
-**SOFTWARE PASS / HARDWARE PENDING.** Both production builds pass, the bounded REMOTE model meets the new targets under a controlled 30 ms simulated command/observation delay, and the owner-reported TUNER-local lag has a source-demonstrated scheduling cause with a bounded correction. No device was accessed or flashed. Audible and UI latency must be measured on the paired hardware before acceptance.
+**READY FOR HARDWARE COMMISSIONING.** Both production builds pass, the bounded REMOTE model meets the new targets under a controlled 30 ms simulated command/observation delay, and the owner-reported TUNER-local lag has a source-demonstrated scheduling cause with a bounded correction. Candidate identities, application rollback images and full-flash recovery captures have been reverified. No device was accessed or flashed. Audible and UI latency must be measured on the paired hardware before acceptance.
 
 ## Verified cause
 
@@ -84,6 +84,25 @@ The controlled host model uses 15 detents over 56 ms and a 30 ms command/observa
 
 Against the accepted A-011 production baselines, REMOTE adds 1,232 binary bytes and 160 static-RAM bytes; TUNER adds 1,200 binary bytes and 40 static-RAM bytes. Candidate binaries and rollback images remain private.
 
+The TUNER binary was built from public commit `5391beef5e7ba264362ea19f2fdd93202308fa55`; its embedded build identity contains `5391beef5e7b`. REMOTE is a private Git-less workspace, so it has no source commit identity. Its preserved candidate matches the current production build byte-for-byte, and a private final scoped manifest records the eight changed source files plus `platformio.ini` and `partitions.csv`. This supports scoped source-to-artifact traceability without claiming a nonexistent REMOTE Git commit or publishing private hashes.
+
+## Final rollback review
+
+The following private evidence was rehashed read-only on 2026-10-17:
+
+| Device / role | Bytes | SHA-256 | Recovery status |
+| --- | ---: | --- | --- |
+| REMOTE A-011 application rollback | 2,523,936 | `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d` | Exact application rollback at `0x10000` |
+| REMOTE Stage 1 full flash | 16,777,216 | `31fd537c4bf534b101e74ed582bf0aa909235686207da29ad61413f21688b43d` | Primary and local copy match; complete recovery remains separately authorized |
+| TUNER accepted A-011 production application | 2,034,800 | `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4` | Exact post-pairing application rollback at `0x10000` |
+| TUNER Stage 1 pre-A-011 installed capture | 2,034,800 | `4dc7347191a38a18fe76b1635b446a485443ac6d06406bb6f53d303cd105b88a` | Fresh device readback and full-flash slice; not claimed byte-identical to a historical release artifact |
+| TUNER temporary A-011 diagnostic application | 2,036,400 | `f193863f6d2966cc0797b9bdd2144971fb7b4bfc5bb9b1b4c07ff4840cf4a21c` | Exact diagnostic-state rollback only; not the preferred production rollback |
+| TUNER Stage 1 full flash | 4,194,304 | `4a980e0887fab052389c233429d9cdf398720e119f2b51141a4fcfb8aa5914f6` | Primary and local copy match; complete recovery remains separately authorized |
+
+The coordination baseline identifies TUNER firmware v1.1.11; no evidence supports relabeling the Stage 1 capture as v1.1.0. The reconstructed 2,034,800-byte application with SHA-256 `7b36921cf0b313f63b9b53b4083685dfd7e78c72cd41f4f554bb302e04d6b6fb` remains rejected as an exact rollback image because its bytes differ.
+
+Stage 1 previously copied all eight rollback-critical files to separate physical USB storage with expected sizes. That USB device is not attached during this review, so those external copies were not rehashed. Reconnecting the owner-controlled storage and verifying its retained files is a mandatory pre-write checkpoint; it does not invalidate the independently matching primary and local full-flash captures.
+
 ## Rejected intermediate artifacts
 
 The first TUNER candidate build preceded its source commit and therefore embedded the prior Git identifier. Its 2,035,536-byte binary, SHA-256 `71c40924a935fb098ba3718aeafc48c6531f5c2048b479e410076bf302b35d52`, is rejected. The RTCP-only candidate was rebuilt from committed source before the later local-encoder finding produced the final candidate.
@@ -102,16 +121,17 @@ CCM strict validation, exact freshness, authenticated provenance, RTCP encryptio
 
 Either update order fails safely and remains functional. Install TUNER first, verify ordinary audio/UI/web behavior, then install REMOTE to minimize time in the slower mixed pair.
 
-## Reversible commissioning checklist
+## Hardware acceptance procedure
 
-1. Reverify private candidate and rollback sizes/hashes and the existing full-flash backups. Identify one device at a time through ROM identity.
-2. Install TUNER candidate only at `0x10000`, length `0x1F1120`; exact readback must match the candidate hash. Do not touch bootloader, partition table, OTA data, NVS or pairing.
-3. Verify TUNER UI/settings, MP3, Bluetooth A2DP, Wi-Fi and web manager including Bluetooth coexistence. Confirm RTCP listener and record idle timing counters.
-4. Install REMOTE candidate only at `0x10000`, length `0x2687F0`; exact readback must match the candidate hash. Preserve `remote_ctl`, default NVS, pairing and partitions.
-5. Verify REMOTE UI/settings, voltage telemetry, sleep/wake and authenticated identity/capability/state synchronization.
-6. Measure separately: detent-to-audible change, detent-to-provisional UI, command-to-authoritative UI and final authority after the last of 15 rapid detents. Record TUNER apply/response counters and REMOTE submission count.
-7. Require under 100 ms first and continued audible response, under 50 ms provisional UI, no optimistic authority, and final target within 250 ms after the last detent. Confirm materially fewer than 15 submissions for a rapid 15-detent burst, one in flight and no residual pending state.
-8. Exercise rapid reversal, minimum/maximum clamping, a local TUNER volume change, one disconnect/reconnect and one sleep/wake. Require correct final authority and no replay.
-9. On boot/audio/UI/pairing/memory or timing failure, stop. Restore only the affected application at `0x10000`: REMOTE rollback length `0x268320`, or TUNER rollback length `0x1F0C70`; verify exact readback. Full-flash restoration remains a separately authorized recovery action.
+1. Connect one device at a time. Verify ROM identity, physical flash size and installed partition table. Rehash the exact candidate and application rollback, verify the primary full-flash capture, and reconnect/verify the owner-controlled external backup before the first write.
+2. Install TUNER first, application only at `0x10000`, length `0x1F1120`. Exact readback must match SHA-256 `0680e8f2c6bfb8b1149ab1a8baec56fa80a7995d0401bf74463ff1f0d1143c1a`. Do not touch bootloader, partition table, OTA data, NVS or pairing.
+3. Confirm normal TUNER boot, settings, Wi-Fi, MP3 playback, Bluetooth A2DP and web manager including operation while Bluetooth is active. Confirm RTCP listener and bounded timing counters.
+4. Measure the TUNER physical encoder separately: first and continued detent-to-audible latency, 15 rapid detents, direction reversal and 0/100 boundary clamping. Require first and continued audible response under 100 ms and the final 15-step target within 250 ms after the last detent.
+5. Only after TUNER passes, install REMOTE application at `0x10000`, length `0x2687F0`. Exact readback must match SHA-256 `afd8b426b37cdac5bfd32abf4ee9fbf70c91e3a28ebdf74ae482871572dcdef4`. Preserve `remote_ctl`, default NVS, pairing and partitions.
+6. Confirm normal REMOTE boot, UI/settings, voltage telemetry, sleep/wake and authenticated identity/capability/state synchronization.
+7. Measure REMOTE detent-to-audible change, detent-to-provisional UI, command-to-authoritative UI and final authority after 15 rapid detents. Require under 100 ms first and continued audible response, under 50 ms provisional UI, and final target within 250 ms after the last detent. Confirm fewer than 15 RTCP submissions for a rapid burst, one in flight and no residual pending state.
+8. Exercise rapid direction reversal and minimum/maximum boundaries. Confirm the provisional target reconciles to authoritative TUNER volume without stale replay, unsafe retry or command flooding.
+9. Exercise one disconnect/reconnect and one REMOTE sleep/wake. Require resynchronization without replay. Recheck MP3 and Bluetooth A2DP audio plus the active web manager after paired operation.
+10. On boot, audio, UI, pairing, memory or timing failure, stop. Restore only the affected application at `0x10000`: REMOTE length `0x268320` with SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`, or TUNER length `0x1F0C70` with SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`; verify exact readback. Full-flash restoration remains a separately authorized recovery operation.
 
 No step above has been executed on hardware for A-REMOTE-012.

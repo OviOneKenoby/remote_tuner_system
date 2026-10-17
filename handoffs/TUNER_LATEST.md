@@ -1,15 +1,15 @@
 # TUNER//01 handoff
 
 ## Metadata
-- Handoff ID: TUNER-A-REMOTE-012-SOFTWARE-PASS-20261017T060600Z
-- Updated (UTC): 2026-10-17T06:06:00Z
+- Handoff ID: TUNER-A-REMOTE-012-PRECOMMISSIONING-READY-20261017T071500Z
+- Updated (UTC): 2026-10-17T07:15:00Z
 - Task ID: A-REMOTE-012
-- Status: READY FOR REVIEW - SOFTWARE PASS / HARDWARE PENDING
+- Status: READY FOR HARDWARE COMMISSIONING / HARDWARE PENDING
 - Prepared by: coordinated A-REMOTE-012 executor
 - Coordination input commit: 437e79cdfd6b7febf001271a32467191d84b20d2
 
 ## Milestone
-Reduce both local-encoder and RTCP volume latency while preserving audio, Bluetooth, web-manager and RTCP behavior. Source/build verification is achieved; physical coexistence and latency are NOT RUN.
+Reduce both local-encoder and RTCP volume latency while preserving audio, Bluetooth, web-manager and RTCP behavior, then complete artifact and rollback preflight. Source/build and pre-commissioning review are complete; physical coexistence and latency are NOT RUN.
 
 ## Baseline
 - Device repository: https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio
@@ -35,6 +35,8 @@ The local encoder ISR still performs bounded quadrature queuing, while the appli
 ## Remaining unknowns
 Actual local detent-to-audio and RTCP detent-to-audio timing, e-paper behavior, loop jitter, internal heap/largest block and stack margin during MP3 and Bluetooth A2DP with active web manager are NOT RUN. Hardware must prove the under-100 ms audible target and absence of audio/UI/web regressions.
 
+Rollback identities remain deliberately distinct. The accepted A-011 production application is 2,034,800 bytes with SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`. The Stage 1 pre-A-011 installed capture has SHA-256 `4dc7347191a38a18fe76b1635b446a485443ac6d06406bb6f53d303cd105b88a`; the temporary diagnostic application has SHA-256 `f193863f6d2966cc0797b9bdd2144971fb7b4bfc5bb9b1b4c07ff4840cf4a21c`. The non-identical reconstruction remains rejected. Primary and local 4,194,304-byte full-flash captures match SHA-256 `4a980e0887fab052389c233429d9cdf398720e119f2b51141a4fcfb8aa5914f6`.
+
 ## Shared-contract impact
 - CCM 1.0.0: NO CHANGE; current implementation remains under frozen CCM 1.1.0.
 - TUNER Native API v1: NO CHANGE; no Native endpoint or semantic was added.
@@ -42,10 +44,10 @@ Actual local detent-to-audio and RTCP detent-to-audio timing, e-paper behavior, 
 - Approval evidence: owner A-REMOTE-012 mission and performance override dated 2026-10-16 authorize source/build work on both devices, excluding flash.
 
 ## Blockers
-Physical application installation and latency/coexistence measurements require owner authorization. No software blocker is known.
+Physical application installation and latency/coexistence measurements require owner authorization. The previously populated external backup must be reconnected and verified before writing. No software blocker is known.
 
 ## PM decision required
-Review the candidate and authorize or reject TUNER-first application-only commissioning. No merge or flash is implied.
+Authorize or reject TUNER-first application-only commissioning. No merge or flash is implied.
 
 ## Recommended next task
 Install the exact TUNER candidate at `0x10000`, verify exact readback and ordinary UI/settings/MP3/A2DP/Wi-Fi/web behavior, then proceed to REMOTE only if TUNER passes. This recommendation is not authorization.
@@ -54,7 +56,7 @@ Install the exact TUNER candidate at `0x10000`, verify exact readback and ordina
 - Firmware result commit(s): `5391beef5e7ba264362ea19f2fdd93202308fa55`
 - Device changelog: TUNER source `CHANGELOG.md` and coordination `CHANGELOG.md` record the result
 - Coordination publication: branch `remote/a-remote-012-low-latency`; PR and final coordination hash reported in publication message
-- Previous handoff archive: `archive/tuner/2026-10-16T192300Z_A-PM-003_TUNER-A-PM-004-20261011T175133Z.md`
+- Previous handoff archive: `archive/tuner/2026-10-17T071500Z_A-REMOTE-012_TUNER-A-REMOTE-012-SOFTWARE-PASS-20261017T060600Z.md`
 
 ## Hardware status
 - Physical device tested: NO
