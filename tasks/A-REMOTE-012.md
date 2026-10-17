@@ -1,7 +1,7 @@
 # A-REMOTE-012: Low-Latency Volume Control
 
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: CONNECTION-STABILITY CORRECTION BUILT / HARDWARE VALIDATION REQUIRED
+- State: CONNECTION-STABILITY CORRECTION INSTALLED / RTCP STABILITY FAIL
 - Coordination baseline: `437e79cdfd6b7febf001271a32467191d84b20d2`
 - TUNER source baseline: `18ddd3b16e305341f338afebd7dc725500ecbb73`
 - TUNER candidate source: `073b65963e3ed8e3438bc34134f5a903fce995de`
@@ -9,7 +9,7 @@
 - Engineering targets on a healthy local network: first and continued audible response under 100 ms; final 15-detent target within 250 ms after the last detent; clearly provisional local UI response under 50 ms.
 - Scope: private REMOTE target accumulation, RTCP scheduling and provisional UI; public TUNER RTCP cadence, local encoder/audio scheduling, deferred e-paper feedback and bounded timing evidence; focused/integration regression; production builds; reversible commissioning plan.
 - Exclusions: physical flashing, pairing/NVS/partition changes, CCM or RTCP wire changes, AAC/AAC+, unassigned physical-button actions, intermittent QMI8658 motion-wake work, UI redesign and unrelated refactoring.
-- Acceptance: software verification is complete. Physical audible/UI timing and MP3/A2DP/web-manager coexistence remain required before owner acceptance.
+- Acceptance: software verification and exact application installation are complete. The required awake paired stability observation failed; physical audible/UI timing and MP3/A2DP/web-manager coexistence remain blocked pending a separately authorized lifecycle correction.
 - Rollback baseline: REMOTE 2,523,936-byte application, SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`; TUNER 2,034,800-byte application, SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`. Both remain private and independently retained.
 
 ## Result
@@ -39,3 +39,9 @@ Two later bounded TUNER snapshots demonstrate that authentication, identity, cap
 Source inspection confirms that the same main loop owns RTCP and synchronous GxEPD2 BUSY waits. The panel driver already supplies a cooperative busy callback. TUNER commit `073b65963e3ed8e3438bc34134f5a903fce995de` registers that callback to poll RTCP and yield while the panel is busy, retaining the existing owner and fixed buffers. It also reads buffered application input before classifying the unchanged idle deadline, so a complete request present at the boundary is processed while incomplete input still times out. No task, queue, dynamic allocation, buffer increase, timeout relaxation, protocol change or REMOTE change was introduced.
 
 Focused scheduling, deadline, latency and diagnostic verification passed 54 checks/assertions. The production `esp32-lwip-psram` build passed: 2,037,152 bytes, SHA-256 `19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8`, 1,108,576 bytes application-slot headroom and unchanged 87,512-byte static RAM. No hardware was accessed or flashed. Hardware validation is still required to confirm stable READY state across e-paper updates, normal REMOTE sleep/wake and reconnect, plus MP3/A2DP/web-manager regression.
+
+## Hardware validation of the scheduling correction
+
+The owner authorized one application-only TUNER installation. Candidate, local rollback and separate-USB rollback identities all passed preflight. Only the application at `0x10000` was written, and independent 2,037,152-byte readback matched SHA-256 `19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8`. The device booted normally with retained Wi-Fi and initialized audio service. The embedded build ID is `fda5f1ad1e5e`, reflecting the parent HEAD visible when this accepted artifact was built before commit `073b65963e3ed8e3438bc34134f5a903fce995de`; the accepted artifact is bound by its exact size and hash.
+
+The passive paired observation did not meet the stability gate. Over approximately five minutes, TUNER accepted connections and peer EOFs each increased by 262 while all 523 additional snapshot requests completed. Server timeouts, partial/failed writes, allocation failures and Wi-Fi disconnects remained zero. REMOTE session generation increased by 245 and the final snapshot was disconnected with no authoritative volume or `volume.set`; no command was outstanding. TUNER maximum loop time improved from the historical 5,983 ms to a cumulative 1,738 ms maximum, so the installed correction mitigates the demonstrated scheduling stall but does not remove the repeated peer-closure lifecycle. Stop before volume-performance tests or another firmware change. The next action requires a separately scoped lifecycle diagnosis/correction based on this evidence.
