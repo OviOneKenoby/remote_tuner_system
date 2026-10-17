@@ -1,65 +1,62 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-012-NETWORK-STATUS-FIX-2026-10-17T181203Z
-- Updated (UTC): 2026-10-17T18:12:03Z
+- Handoff ID: REMOTE-A-REMOTE-012-VOLUME-RECONCILIATION-FIX-2026-10-17T184055Z
+- Updated (UTC): 2026-10-17T18:40:55Z
 - Task ID: A-REMOTE-012
 - Status: READY FOR REVIEW
 - Prepared by: coordinated A-REMOTE-012 executor
-- Coordination input commit: `6ed4f4868e974494190e096a39a4d6713f4d4a52`
+- Coordination input commit: `9e685ab1c49c8e8cbf2ed7d0ccccefc3db884af5`
 
 ## Milestone
-Correct the confirmed false `network_lost` RTCP teardown without changing protocol or control semantics, add deterministic lifecycle regressions and produce one verified REMOTE production candidate. Software acceptance passed; hardware installation remains separately gated.
+Correct the demonstrated loss of accepted rapid encoder detents during post-result authoritative reconciliation, retain bounded coalescing and produce one verified REMOTE production candidate. Software acceptance passed; corrected-candidate hardware installation remains separately gated.
 
 ## Baseline
 - Device repository: private REMOTE workspace; source remains unpublished
 - Branch: NONE - active private workspace is Git-less
 - Firmware baseline commit: UNKNOWN - Git-less source
-- Firmware version: installed lifecycle diagnostic application, 2,525,696 bytes, SHA-256 `a421cb73411a19bf650c78de6bf048faf6e4ac65019f4180ab3de097c40cd798`
-- Working tree at start: existing private A-REMOTE-012 lifecycle diagnostic source and validated low-latency implementation
-- Contract references: CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 Phase 2; coordination input `6ed4f4868e974494190e096a39a4d6713f4d4a52`
+- Firmware version: installed network-status correction, 2,525,808 bytes, SHA-256 `1ca95a1abe31e990d28d125f0994610f88dc554efa8acb744cef866759033477`
+- Working tree at start: existing private A-REMOTE-012 network-status correction source and validated low-latency implementation
+- Contract references: CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 Phase 2; coordination input `9e685ab1c49c8e8cbf2ed7d0ccccefc3db884af5`
 
 ## Changes
-Added a fixed `NetworkStatusGate` to the REMOTE RTCP client. A transient unavailable zero-wait network snapshot now preserves the live socket and generation baseline. A confirmed disconnected snapshot still closes immediately with `network_lost`. A connected snapshot with a changed generation closes an active transport; when no transport exists after sleep/wake, the current generation is adopted before reconnecting. Close diagnostics and all existing security, timeout, retry, pairing and volume behavior remain unchanged.
-
-Private files changed: `components/rtcp_client/client.cpp`, `components/rtcp_client/include/rtcp_client/client.hpp`, new `network_status.hpp`, new `tests/rtcp_client/network_status_tests.cpp`, and `tests/rtcp_client/lifecycle_policy_tests.py`.
+`Channel::publish()` now classifies confirmed divergent authority only when the incoming authoritative volume changed from the previously published value. This prevents the 5 ms owner loop's unchanged pre-command snapshot from clearing a newer accumulated target before the 1 s RTCP acquisition refresh. A genuinely changed divergent value still cancels obsolete local intent. Private files changed: `components/control_home/include/control_home/api.hpp` and `tests/control/volume_admission_tests.cpp`.
 
 ## Verification
 | Check | Command/procedure | Environment | Result | Evidence |
 | --- | --- | --- | --- | --- |
-| Network decision model | Compile/run `network_status_tests.cpp` | GCC 16.2.0 with UCRT64 PATH | PASS; 15 checks, 142 assertions | `references/device_evidence/remote/A-REMOTE-012/REMOTE_NETWORK_STATUS_FIX_BUILD.json` |
-| RTCP lifecycle and support suites | Lifecycle policy, diagnostic, I/O, readiness and association/wire tests | Native host | PASS; 13 + 9 + 5 + 9 + 11 checks | same evidence |
-| Sleep/wake and network lifecycle | Power, network-sleep and boundary tests | Native host | PASS; 19/19 + 9/9 + 1/1, 24,319 assertions | same evidence |
-| Production build | `pio run -e remote01` | Espressif32 6.13.0, ESP-IDF 5.5.3 | PASS; 2,525,808 bytes, SHA-256 `1ca95a1abe31e990d28d125f0994610f88dc554efa8acb744cef866759033477` | same evidence |
-| Memory/slot | PlatformIO size plus exact binary length | `remote01`, 3 MiB application slot | PASS; 47,388-byte static RAM, 619,920-byte slot headroom | same evidence |
+| Hardware reproduction | Exactly ten downward detents from 53%, compare bounded counters and authority | Installed prior A-REMOTE-012 candidate | FAIL reproduced: 10 accepted, 5 submissions, final 48%, expected 43%, no operation in flight | `references/device_evidence/remote/A-REMOTE-012/REMOTE_VOLUME_RECONCILIATION_FIX.json` |
+| Volume reconciliation regression | Compile/run `volume_admission_tests.cpp` | GCC 16.2.0 with UCRT64 PATH | PASS; 9/9, 196 assertions; ten-detent final 43%; reversal PASS | same evidence |
+| Production build | PlatformIO `run -e remote01` | Espressif32 6.13.0, ESP-IDF 5.5.3 | PASS; 2,525,824 bytes, SHA-256 `3f46c3ccfd45b29985bbda37f1357a8f36831c17066bd0a33952f238936290bf` | same evidence |
+| Memory/slot | PlatformIO size plus exact binary length | `remote01`, 3 MiB application slot | PASS; 47,388-byte static RAM, 619,904-byte slot headroom | same evidence |
 
 ## Remaining unknowns
-Physical stability after the correction is NOT VERIFIED. Real confirmed Wi-Fi loss, normal sleep/wake, RTCP recovery and the final volume latency/coexistence criteria require a separately authorized installation and bounded hardware test. The existing installed diagnostic firmware remains active.
+The corrected candidate is NOT physically installed. Exact ten-detent accumulation, rapid reversal, audible latency, authoritative settling, sleep/wake replay safety and MP3/A2DP/web-manager coexistence require bounded hardware validation.
 
 ## Shared-contract impact
 - CCM 1.0.0: NO CHANGE; current project contract remains CCM 1.1.0 OWNER APPROVED / FROZEN.
 - TUNER Native API v1: NO CHANGE.
-- Other device impact: NONE in source or firmware; TUNER remains on its installed A-REMOTE-012 scheduling candidate.
-- Approval evidence: owner authorized the minimum REMOTE correction, affected tests, one production build and sanitized PR #18 documentation; hardware flashing remains prohibited.
+- Other device impact: NONE; TUNER source and firmware are unchanged.
+- Approval evidence: owner authorized the demonstrated REMOTE reconciliation correction, targeted regression, one production build and necessary PR #18 documentation; flashing remains prohibited.
 
 ## Blockers
-Hardware acceptance is blocked only on explicit owner authorization to install the exact candidate and perform the bounded passive paired stability test.
+Hardware acceptance requires explicit owner authorization to install the exact corrected REMOTE candidate and run the bounded control test.
 
 ## PM decision required
-Authorize one REMOTE application-only installation of the 2,525,808-byte candidate at `0x10000`, exact readback, normal boot verification and one no-input awake stability window. Do not authorize volume commands until stable authority passes.
+Authorize one REMOTE application-only installation of the 2,525,824-byte candidate at `0x10000`, exact readback, normal boot verification, one isolated ten-detent 53% to 43% test and one rapid reversal test. Keep TUNER unchanged.
 
 ## Recommended next task
-Revalidate the existing rollback sets and device identity, install only the candidate application, require SHA-256 readback, then compare close/session/network counters over five minutes with TUNER unchanged.
+After normal rollback/device preflight, install only the corrected application, require exact readback, then capture before/after detent, accepted-intent, dispatch, authority and in-flight fields. Stop on any lost accepted detent or stale replay.
 
 ## Commit
 - Firmware result commit(s): NONE - private REMOTE workspace is Git-less; candidate bound by exact size/hash
-- Device changelog: private workspace has no public source changelog; coordination `CHANGELOG.md` records the result
+- Device changelog: private source workspace has no public source commit; coordination `CHANGELOG.md` records the result
 - Coordination publication: branch `remote/a-remote-012-low-latency`, PR #18; final coordination hash reported after publication
-- Previous handoff archive: `archive/remote/2026-10-17T181203Z_A-REMOTE-012_REMOTE-LIFECYCLE-ROOT-CAUSE.md`
+- Previous handoff archive: `archive/remote/2026-10-17T184055Z_A-REMOTE-012_NETWORK-STATUS-FIX.md`
 
 ## Hardware status
-- Physical device tested: NO
+- Physical device tested: YES for the installed prior network-status candidate and defect reproduction; NO for the corrected candidate
 - Board / hardware configuration: Waveshare ESP32-S3-Touch-LCD-3.49B V2, PCB Rev1.1; layout and GPIO state unchanged
-- Procedure and result: NOT RUN; hardware access and flashing prohibited
-- Firmware actually flashed: unchanged installed lifecycle diagnostic, 2,525,696 bytes, SHA-256 `a421cb73411a19bf650c78de6bf048faf6e4ac65019f4180ab3de097c40cd798`
-- Build-only or simulated checks: affected native suites and one `remote01` production build PASS
+- Procedure and result: prior candidate installation/readback/essential boot PASS; ten accepted downward detents reproduced final 48% instead of expected 43%
+- Firmware actually flashed: 2,525,808 bytes, SHA-256 `1ca95a1abe31e990d28d125f0994610f88dc554efa8acb744cef866759033477`
+- Build-only or simulated checks: focused reconciliation 9/9 PASS, 196 assertions; one `remote01` production build PASS

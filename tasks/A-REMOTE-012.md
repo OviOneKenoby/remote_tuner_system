@@ -1,7 +1,7 @@
 # A-REMOTE-012: Low-Latency Volume Control
 
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: REMOTE LIFECYCLE CORRECTION SOFTWARE PASS / HARDWARE PENDING
+- State: VOLUME RECONCILIATION CORRECTION SOFTWARE PASS / HARDWARE PENDING
 - Coordination baseline: `437e79cdfd6b7febf001271a32467191d84b20d2`
 - TUNER source baseline: `18ddd3b16e305341f338afebd7dc725500ecbb73`
 - TUNER candidate source: `073b65963e3ed8e3438bc34134f5a903fce995de`
@@ -9,7 +9,7 @@
 - Engineering targets on a healthy local network: first and continued audible response under 100 ms; final 15-detent target within 250 ms after the last detent; clearly provisional local UI response under 50 ms.
 - Scope: private REMOTE target accumulation, RTCP scheduling and provisional UI; public TUNER RTCP cadence, local encoder/audio scheduling, deferred e-paper feedback and bounded timing evidence; focused/integration regression; production builds; reversible commissioning plan.
 - Exclusions: physical flashing, pairing/NVS/partition changes, CCM or RTCP wire changes, AAC/AAC+, unassigned physical-button actions, intermittent QMI8658 motion-wake work, UI redesign and unrelated refactoring.
-- Acceptance: software verification and exact diagnostic application installation are complete. The bounded hardware observation confirmed a REMOTE network-status sampling defect; physical audible/UI timing and MP3/A2DP/web-manager coexistence remain blocked pending a separately authorized correction and stability retest.
+- Acceptance: the network-status correction was installed with exact readback and normal boot. A controlled ten-detent hardware test then proved that unchanged pre-command authoritative snapshots discarded a newer accumulated local target. The narrow reconciliation correction is host-tested and build-verified; physical audible/UI timing and MP3/A2DP/web-manager coexistence remain pending installation and retest.
 - Rollback baseline: REMOTE 2,523,936-byte application, SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`; TUNER 2,034,800-byte application, SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`. Both remain private and independently retained.
 
 ## Result
