@@ -1,0 +1,74 @@
+{
+  "task": "A-REMOTE-012",
+  "date": "2026-10-17",
+  "status": "SOFTWARE_PASS_HARDWARE_PENDING",
+  "coordination_baseline": "437e79cdfd6b7febf001271a32467191d84b20d2",
+  "tuner_source_commit": "5391beef5e7ba264362ea19f2fdd93202308fa55",
+  "root_cause": [
+    "one_percent_command_serialization",
+    "periodic_post_result_snapshot_wait",
+    "main_loop_service_cadence",
+    "local_one_detent_per_loop_drain",
+    "local_synchronous_epaper_refresh_per_detent"
+  ],
+  "protocol_wire_changed": false,
+  "one_command_in_flight": true,
+  "automatic_retry": false,
+  "hardware_access": false,
+  "simulation_ms": {
+    "input_span": 56,
+    "first_command": 0,
+    "first_audio": 30,
+    "final_after_last": 34,
+    "ui_refresh": 20,
+    "submissions": 3
+  },
+  "tests": {
+    "remote_volume": {
+      "cases": "8/8",
+      "assertions": 164
+    },
+    "remote_ui": {
+      "cases": "1/1",
+      "assertions": 11
+    },
+    "tuner_ccm": {
+      "checks": "16/16"
+    },
+    "tuner_latency_policy": {
+      "cases": "1/1",
+      "assertions": 9
+    },
+    "tuner_local_target": {
+      "checks": "10/10"
+    },
+    "tuner_local_latency_policy": {
+      "checks": "10/10"
+    },
+    "remote_full_relevant": "PASS"
+  },
+  "artifacts": {
+    "remote": {
+      "bytes": 2525168,
+      "sha256": "afd8b426b37cdac5bfd32abf4ee9fbf70c91e3a28ebdf74ae482871572dcdef4",
+      "slot_headroom": 620560,
+      "static_ram": 47388
+    },
+    "tuner": {
+      "bytes": 2036000,
+      "sha256": "0680e8f2c6bfb8b1149ab1a8baec56fa80a7995d0401bf74463ff1f0d1143c1a",
+      "slot_headroom": 1109728,
+      "static_ram": 87448
+    }
+  },
+  "rollback": {
+    "remote": {
+      "bytes": 2523936,
+      "sha256": "38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d"
+    },
+    "tuner": {
+      "bytes": 2034800,
+      "sha256": "49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4"
+    }
+  }
+}

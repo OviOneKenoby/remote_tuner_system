@@ -1,63 +1,64 @@
 # TUNER//01 handoff
 
 ## Metadata
-- Handoff ID: TUNER-A-PM-004-20261011T175133Z
-- Updated (UTC): 2026-10-11T17:51:33Z
-- Task ID: A-PM-003
-- Status: ACCEPTED
-- Prepared by: PM authorized current-state reconciliation publisher
-- Coordination input commit: 531aa8cd0435ed9813ab39664888992583df0d28
+- Handoff ID: TUNER-A-REMOTE-012-SOFTWARE-PASS-20261017T060600Z
+- Updated (UTC): 2026-10-17T06:06:00Z
+- Task ID: A-REMOTE-012
+- Status: READY FOR REVIEW - SOFTWARE PASS / HARDWARE PENDING
+- Prepared by: coordinated A-REMOTE-012 executor
+- Coordination input commit: 437e79cdfd6b7febf001271a32467191d84b20d2
 
 ## Milestone
-Current final v1.1.11 identity/owner functional acceptance reconciled; historical A-TUNER003 preserved, case-specific physical matrix PENDING. [PM review](../reports/A-PM-003_RECONCILIATION.md); documentation/host scope only, common gate OPEN/NOT PASSED.
+Reduce both local-encoder and RTCP volume latency while preserving audio, Bluetooth, web-manager and RTCP behavior. Source/build verification is achieved; physical coexistence and latency are NOT RUN.
 
 ## Baseline
 - Device repository: https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio
-- Branch: main, public ref checked
-- Firmware baseline commit: 5fb92c95d228d744d1182ae3956e850c5be2f277 (release main/tag); executable source 124e84801b06f9e07764dabc3985a573dffaff3b
-- Firmware version: final release v1.1.11; validated1.1.11-psram-validation/build124e84801b06, explicit esp32-lwip-psram, default esp32-dev remains
-- Working tree at start: Device NOT INSPECTED by PM; isolated coordination checkout clean at input; no live device edits
-- Contract references: CCM1.0.0 OWNER APPROVED/FROZEN; Nativev1 UNAPPROVED/UNFROZEN/NOT IMPLEMENTED; D-001/D-002/D-005, O01-O17 OPEN
+- Branch: baseline `a-remote-011-phase3`; candidate `a-remote-012-low-latency`
+- Firmware baseline commit: 18ddd3b16e305341f338afebd7dc725500ecbb73
+- Firmware version: v1.1.11 with accepted A-011 RTCP integration
+- Working tree at start: clean at baseline; accepted 2,034,800-byte production artifact and retained rollback copies verified
+- Contract references: CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 Phase 2 profile; coordination input `437e79cdfd6b7febf001271a32467191d84b20d2`
 
 ## Changes
-Coordination-only PR7/8/9 integration, statuses/review/reports/task dispositions; latest handoff replaced after byte-exact archive. No device change by publisher. [Current TUNER report](../reports/TUNER_V1_1_11_RECONCILIATION.md) supersedes old baseline.
+The local encoder ISR still performs bounded quadrature queuing, while the application now handles input before network/web work and atomically coalesces queued detents into one bounded absolute 5% audio target. The synchronous e-paper overlay is rendered once after 250 ms of encoder quiet rather than after every detent; menu navigation remains one event per detent. Read-only diagnostics separate local setter duration and deferred display state. RTCP runs before and after the web-manager turn with a 2 ms loop delay and its own apply/response counters. Protocol, crypto, pairing, response framing and audio backend semantics are unchanged.
 
 ## Verification
 | Check | Command/procedure | Environment | Result | Evidence |
 | --- | --- | --- | --- | --- |
-| Review/provenance | all PR files/conversations; evidence SHA manifests/Git archive bytes | isolated Windows/Git2.55.0.windows.2 | PASS preservation; conversations empty | [PM index](../references/pm/2026-10-11/INDEX.md) |
-| Host qualification | python -B run_qualification.py in exported A003/A004 prototypes | Windows/Python3.13.13/fake backend | PASS13/3859/87 and12/7805/562; production FAIL/BLOCKED/conditional BLOCKED | PM index rerun logs/matrices |
-| Public TUNER identity | git ls-remote, PR5/main/tag/release metadata, five downloaded asset SHA checks | read-only public release | PASS exact artifacts, no new build | [TUNER report](../reports/TUNER_V1_1_11_RECONCILIATION.md) |
-| Physical evidence | read pinned FINAL_VALIDATION/TEST01/SUSTAINED01; no PM rerun | reported WROVER/PSRAM explicit profile; REMOTE NOT RUN | TUNER limited functional PASS, zero-DMA FAIL; REMOTE NOT RUN | PM index pinned reports |
-| Coordination validation | Git-blob manifest, template fields/headings, archive bytes/active links | isolated checkout | VALIDATION.json; final remote SHA reported separately | [Validation](../references/pm/2026-10-11/VALIDATION.json) |
+| Absolute-volume handler | native build/run of `test_ccm_wire.cpp` | GCC 16.2.0, C++17, Windows amd64 | PASS 16/16 | `reports/A-REMOTE-012_LOW_LATENCY_SOFTWARE.md` |
+| Scheduling/timing ownership | `python tests/test_rtcp_latency_policy.py` | Python 3.13, Windows amd64 | PASS 1/1, 9 assertions | `reports/A-REMOTE-012_LOW_LATENCY_SOFTWARE.md` |
+| Local target/bounds | native build/run of `test_local_volume_target.cpp` | GCC 16.2.0, C++17, Windows amd64 | PASS 10/10 | `reports/A-REMOTE-012_LOW_LATENCY_SOFTWARE.md` |
+| Local scheduling policy | `python tests/test_local_volume_latency_policy.py` | Python 3.13, Windows amd64 | PASS 10/10 | `reports/A-REMOTE-012_LOW_LATENCY_SOFTWARE.md` |
+| Production build | PlatformIO `run -e esp32-lwip-psram` from committed source | Espressif32 7.0.1, Arduino-ESP32 2.0.17, ESP32 | PASS; 2,036,000 bytes, SHA-256 `0680e8f2c6bfb8b1149ab1a8baec56fa80a7995d0401bf74463ff1f0d1143c1a`; RAM 87,448 | `references/device_evidence/remote/A-REMOTE-012/SOFTWARE_RESULT.json` |
+| Rollback identity | direct size/SHA-256 of retained private copies | Windows SHA-256 | PASS; 2,034,800 bytes, SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4` | private evidence; hash recorded in report |
 
 ## Remaining unknowns
-Current local flashed residency NOT VERIFIED; zero-DMA FAIL,30-minute soak NOT COMPLETED; B01/B03/B06/B04 empty/stale physical PENDING; fullB04/B02/B05/B07-B11 unresolved; endurance/resources outside windows UNKNOWN.
+Actual local detent-to-audio and RTCP detent-to-audio timing, e-paper behavior, loop jitter, internal heap/largest block and stack margin during MP3 and Bluetooth A2DP with active web manager are NOT RUN. Hardware must prove the under-100 ms audible target and absence of audio/UI/web regressions.
 
 ## Shared-contract impact
-- CCM 1.0.0: NO CHANGE; frozen semantics/original approval retained
-- TUNER Native API v1: NO CHANGE; UNAPPROVED/UNFROZEN/NOT IMPLEMENTED
-- Other device impact: NONE; no device edits or inferred acceptance/automatic dependency completion
-- Approval evidence: [technical reconciliation scope](../references/PM_RECONCILIATION_SCOPE_2026-10-11.md), D-005 limited TUNER factual acceptance; NONE for Native/shared/production approval
+- CCM 1.0.0: NO CHANGE; current implementation remains under frozen CCM 1.1.0.
+- TUNER Native API v1: NO CHANGE; no Native endpoint or semantic was added.
+- Other device impact: new and old REMOTE firmware remain wire-compatible; only new REMOTE performs target coalescing.
+- Approval evidence: owner A-REMOTE-012 mission and performance override dated 2026-10-16 authorize source/build work on both devices, excluding flash.
 
 ## Blockers
-NONE for factual publication; case-specific physical matrix PENDING, remaining resource/shared gates unresolved. Common gate OPEN/NOT PASSED, O01-O17 OPEN.
+Physical application installation and latency/coexistence measurements require owner authorization. No software blocker is known.
 
 ## PM decision required
-Separately authorize exact concrete backend feasibility/qualification mission. No D1 authorization. Shared changes still require both-device review and explicit owner approval.
+Review the candidate and authorize or reject TUNER-first application-only commissioning. No merge or flash is implied.
 
 ## Recommended next task
-A-REMOTE-005 recommendation only: read-only concrete G0-G4 feasibility/design and isolated host fault/capacity qualification, exact scope in PM report. No production Core/NVS/credentials/flash/partition/Native or automatic D1-D5; physical synthetic tests require separate owner authorization. TUNER case-specific physical regression remains separate PENDING; no execution now.
+Install the exact TUNER candidate at `0x10000`, verify exact readback and ordinary UI/settings/MP3/A2DP/Wi-Fi/web behavior, then proceed to REMOTE only if TUNER passes. This recommendation is not authorization.
 
 ## Commit
-- Firmware result commit(s): 5fb92c95d228d744d1182ae3956e850c5be2f277 (release main/tag); executable source 124e84801b06f9e07764dabc3985a573dffaff3b
-- Device changelog: TUNER CHANGELOG at final release merge; no PM edit
-- Coordination publication: pm/reconcile-20261011; PR7/8/9 merge hashes in PM review; final SHA after remote verification
-- Previous handoff archive: [archive/tuner/2026-10-11T175133Z_A-PM-004_TUNER-A-PM-003-20261011T173747Z.md](../archive/tuner/2026-10-11T175133Z_A-PM-004_TUNER-A-PM-003-20261011T173747Z.md)
+- Firmware result commit(s): `5391beef5e7ba264362ea19f2fdd93202308fa55`
+- Device changelog: TUNER source `CHANGELOG.md` and coordination `CHANGELOG.md` record the result
+- Coordination publication: branch `remote/a-remote-012-low-latency`; PR and final coordination hash reported in publication message
+- Previous handoff archive: `archive/tuner/2026-10-16T192300Z_A-PM-003_TUNER-A-PM-004-20261011T175133Z.md`
 
 ## Hardware status
-- Physical device tested: YES in prior owner evidence; NO by PM this round
-- Board / hardware configuration: reported ESP32-WROVER/PSRAM, Wi-Fi TX dynamic32/cache4, Bluetooth SBC; exact wiring not re-inspected
-- Procedure and result: prior TEST01/SUSTAINED01 functional PASS; three1622-byte DMA failures each,zero-failure FAIL,sustained3m44.566s not30min
-- Firmware actually flashed: prior boots source124e84801b06f9e07764dabc3985a573dffaff3b/build124e84801b06 and verified release BIN/ELF; current residency NOT VERIFIED
-- Build-only or simulated checks: isolated Python fake models; read-only prior TUNER build evidence; no PM target build/flash
+- Physical device tested: NO
+- Board / hardware configuration: accepted classic ESP32 TUNER with 4 MiB flash and `esp32-lwip-psram` profile; exact device identity not accessed in this task
+- Procedure and result: NOT RUN; reversible commissioning checklist prepared
+- Firmware actually flashed: current residency NOT VERIFIED in A-REMOTE-012; retained production rollback is 2,034,800 bytes, SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`
+- Build-only or simulated checks: focused handler, local-target and scheduling checks plus the committed-source production build listed above
