@@ -1,0 +1,54 @@
+{
+  "task": "A-REMOTE-012",
+  "recorded_utc": "2026-10-17T17:47:48Z",
+  "coordination_input": "2dd69af384920e3866f53ffaa5c41810945542e8",
+  "classification": "EXACT_CLOSE_INITIATOR_UNKNOWN_DIAGNOSTIC_BUILD_READY",
+  "evidence": {
+    "remote_session_delta": 245,
+    "remote_sleep_request_delta": 2,
+    "remote_wake_delta": 1,
+    "remote_network_generation_delta": 4,
+    "tuner_connection_delta": 262,
+    "tuner_peer_eof_delta": 262,
+    "tuner_snapshot_request_delta": 523,
+    "tuner_snapshot_completion_delta": 523,
+    "tuner_timeout_delta": 0,
+    "tuner_partial_write_delta": 0,
+    "tuner_failed_write_delta": 0,
+    "tuner_allocation_failure_delta": 0,
+    "tuner_wifi_disconnect_delta": 0
+  },
+  "candidate": {
+    "environment": "remote01",
+    "application_offset": "0x10000",
+    "size_bytes": 2525696,
+    "sha256": "a421cb73411a19bf650c78de6bf048faf6e4ac65019f4180ab3de097c40cd798",
+    "elf_sha256": "d3119212d1f565a03cd785b8d95b97f928bae10a4046c643d7d397c2727b3181",
+    "ota_slot_bytes": 3145728,
+    "ota_headroom_bytes": 620032,
+    "linked_flash_bytes": 2525201,
+    "static_ram_bytes": 47388
+  },
+  "verification": {
+    "rtcp_diagnostic": "9/9 PASS",
+    "read_status": "5/5 PASS",
+    "connect_readiness": "9/9 PASS",
+    "wire_and_repeated_snapshots": "11/11 PASS",
+    "lifecycle_policy": "10/10 PASS",
+    "diagnostics_schema": "9/9 PASS; 9089 assertions",
+    "volume_admission": "8/8 PASS; 164 assertions",
+    "encoder_session_invalidation": "5/5 PASS; 26 assertions",
+    "power_lifecycle": "19/19 PASS; 19236 assertions",
+    "network_sleep": "9/9 PASS; 5062 assertions",
+    "production_build": "PASS"
+  },
+  "constraints": {
+    "protocol_behavior_changed": false,
+    "dynamic_diagnostic_allocation": false,
+    "hardware_accessed": false,
+    "firmware_flashed": false,
+    "control_command_sent": false,
+    "private_binary_published": false,
+    "root_cause_fixed": false
+  }
+}

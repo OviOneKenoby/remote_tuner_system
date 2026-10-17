@@ -1,7 +1,7 @@
 # A-REMOTE-012: Low-Latency Volume Control
 
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: CONNECTION-STABILITY CORRECTION INSTALLED / RTCP STABILITY FAIL
+- State: REMOTE LIFECYCLE DIAGNOSTIC BUILD READY / HARDWARE PENDING
 - Coordination baseline: `437e79cdfd6b7febf001271a32467191d84b20d2`
 - TUNER source baseline: `18ddd3b16e305341f338afebd7dc725500ecbb73`
 - TUNER candidate source: `073b65963e3ed8e3438bc34134f5a903fce995de`
@@ -45,3 +45,15 @@ Focused scheduling, deadline, latency and diagnostic verification passed 54 chec
 The owner authorized one application-only TUNER installation. Candidate, local rollback and separate-USB rollback identities all passed preflight. Only the application at `0x10000` was written, and independent 2,037,152-byte readback matched SHA-256 `19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8`. The device booted normally with retained Wi-Fi and initialized audio service. The embedded build ID is `fda5f1ad1e5e`, reflecting the parent HEAD visible when this accepted artifact was built before commit `073b65963e3ed8e3438bc34134f5a903fce995de`; the accepted artifact is bound by its exact size and hash.
 
 The passive paired observation did not meet the stability gate. Over approximately five minutes, TUNER accepted connections and peer EOFs each increased by 262 while all 523 additional snapshot requests completed. Server timeouts, partial/failed writes, allocation failures and Wi-Fi disconnects remained zero. REMOTE session generation increased by 245 and the final snapshot was disconnected with no authoritative volume or `volume.set`; no command was outstanding. TUNER maximum loop time improved from the historical 5,983 ms to a cumulative 1,738 ms maximum, so the installed correction mitigates the demonstrated scheduling stall but does not remove the repeated peer-closure lifecycle. Stop before volume-performance tests or another firmware change. The next action requires a separately scoped lifecycle diagnosis/correction based on this evidence.
+
+## REMOTE lifecycle investigation
+
+The authorized source and evidence review does not support treating the churn as expected sleep/wake behavior. During the failed stability interval, REMOTE recorded 245 new session generations, but only two sleep requests, one wake and four network-generation changes. TUNER completed every snapshot request and recorded no timeout, partial/failed write, allocation failure or Wi-Fi disconnect. Its peer-EOF count therefore locates the boundary at peer-side or transport teardown, without proving that REMOTE application logic deliberately closed each socket.
+
+Every REMOTE close path converges on `Client::close()`. Before this investigation, a later successful stage cleared the previous failure, suspend and network-loss closes had no reason, and the receive helper did not distinguish orderly EOF from a socket error. No retained field could identify which branch produced the observed closures. The exact initiating condition therefore remains **UNKNOWN**; no speculative timing, buffer or retry change was made.
+
+The private diagnostic candidate retains the last explicit close reason and a saturating close count in existing fixed diagnostic storage. It classifies suspend, network loss, connect failure/timeout, response timeout, peer EOF, short read, invalid frame, proof failure, send/receive failure, crypto failure, unexpected record and queue failure. EOF and socket errors are now classified separately. The added public status fields are numeric and disclose no endpoint, identity, nonce, proof, key or payload. `Snapshots` remains 1,024 bytes and diagnostic storage remains within its existing 8,192-byte bound.
+
+Affected tests passed, including repeated authoritative snapshot parsing, timeout/EOF/error classification, session invalidation, sleep/wake fencing, network pause/resume and stale-intent rejection. The production `remote01` build passed at 2,525,696 bytes with SHA-256 `a421cb73411a19bf650c78de6bf048faf6e4ac65019f4180ab3de097c40cd798`, 620,032 bytes of the 3 MiB application slot free and unchanged 47,388-byte static RAM. No device was accessed or flashed.
+
+The minimum hardware validation is application-only installation after normal rollback preflight, exact readback, then one bounded awake observation with no input. Capture initial/final REMOTE `rtcp_close_reason`, `rtcp_close_count`, session/power/network counters and matching TUNER connection/EOF counters. Stop after the first classified recurrence. Only that observation can select a correction; volume-performance tests remain blocked until stable fresh authority is restored.
