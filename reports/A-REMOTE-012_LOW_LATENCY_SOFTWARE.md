@@ -2,7 +2,26 @@
 
 ## Verdict
 
-**DIAGNOSTIC CANDIDATE READY / HARDWARE DIAGNOSIS PENDING.** The pre-commissioning software and rollback verification remain valid, both low-latency applications passed exact readback, and TUNER local audible response is fast. Paired REMOTE control acceptance remains blocked because no first state snapshot becomes authoritative after capability acceptance. A bounded TUNER diagnostic candidate is now built to locate the exact server/transport boundary; it has not been installed and does not claim a root-cause correction.
+**CONNECTION-STABILITY CORRECTION BUILT / HARDWARE VALIDATION REQUIRED.** Later installed diagnostics prove repeated successful authentication and snapshots together with deadline-driven disconnects during long TUNER application-loop turns. The smallest source correction services RTCP cooperatively during synchronous e-paper BUSY waits and preserves every protocol, security and ownership invariant. Build and focused regression evidence pass; the correction is not installed and physical stability remains unverified.
+
+## RTCP connection-instability root cause and correction
+
+Two later read-only TUNER captures changed the diagnosis from a permanent post-identity failure to persistent-connection instability. Counters rose from 20 to 104 accepted connections, 18 to 66 accepted client finishes, and 86 to 259 snapshot requests and completions. The later capture records 24 server idle timeouts and 79 peer EOFs, which together account for 103 of 104 accepted connections; one connection was current or otherwise not closed at capture time. No partial/failed response write, allocation failure, lwIP `nomem`, or TUNER Wi-Fi disconnect was observed. Free internal heap was 91,548 bytes with a 77,812-byte largest block. Authentication, identity, capability exchange, snapshots, and two volume commands all succeeded at least intermittently. Memory exhaustion and a permanently broken handshake are therefore rejected as causes by the available evidence.
+
+The confirmed scheduling defect is that TUNER's single Arduino application loop owns RTCP polling and also performs synchronous e-paper refreshes. Its measured maximum turn was 5,983 ms. REMOTE closes an awaited response after the unchanged 3,000 ms deadline, while TUNER closes an idle record session after the unchanged 5,000 ms deadline. Thus a long loop turn can cause REMOTE to close first and TUNER subsequently to observe EOF, or cause TUNER to classify idle timeout before consuming an already buffered request. GxEPD2's selected panel driver performs a synchronous BUSY wait and exposes a cooperative callback specifically during that wait. The exact historical 5,983 ms sample was not phase-tagged, so it cannot be assigned to one named refresh call; the e-paper starvation path itself is source-proven and covers every panel BUSY wait. Browser/network operations may still cause deliberate reconnects during exceptional long operations.
+
+TUNER commit [`073b65963e3ed8e3438bc34134f5a903fce995de`](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/commit/073b65963e3ed8e3438bc34134f5a903fce995de) applies the bounded correction:
+
+- `src/display.h` and `src/display.cpp` expose the existing GxEPD2 BUSY callback without new storage.
+- `src/main.cpp` registers one callback after Wi-Fi setup; while the panel is busy it calls the existing nonblocking RTCP poll on the same application owner and yields for 1 ms.
+- `src/rtcp_server.cpp` reads available bytes before record-idle expiry and processes a complete buffered record at the boundary; incomplete input retains the original timeout.
+- `tests/test_rtcp_display_service_policy.py` verifies owner-preserving callback registration, yielding, read-before-timeout ordering and unchanged handshake deadline.
+
+No new task, queue, dynamic allocation, buffer, retry, timeout extension, framing, cryptography, pairing, CCM, audio or REMOTE behavior was added. Normal REMOTE SYSTEM_SLEEP still intentionally invalidates its session, so some reconnects around actual sleep/wake are expected. Existing counters do not tag each peer EOF with REMOTE sleep state; hardware validation must distinguish the expected lifecycle from residual awake-state churn. The occasional partial REMOTE HTTP status response occurs on separate REMOTE tasks and is not proven to share the TUNER main-loop cause.
+
+Focused verification passed: new display-service policy 9/9; existing RTCP latency policy 10/10; local-volume scheduling policy 10/10; diagnostic integration/redaction policy 14/14; diagnostic state model 11/11. One `esp32-lwip-psram` production build passed. The private candidate is 2,037,152 bytes, SHA-256 `19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8`, with 1,108,576 bytes of the 3 MiB slot remaining. Linked flash is 2,030,581 bytes and static RAM remains 87,512 / 327,680 bytes, a measured 0-byte static-RAM increase over the diagnostic build. The private ELF is 29,789,148 bytes, SHA-256 `697c8ef0662842f7daebd0e3c5c98f675e97b2274f9bdd83cc8f606a6d456367`.
+
+No device was accessed or flashed. Required hardware validation is an application-only TUNER installation with exact readback, followed by awake-state READY/snapshot stability across full and partial e-paper updates, one expected REMOTE sleep/wake invalidation and resynchronization, and MP3/A2DP/web-manager regression. The validated application/full-flash rollback evidence and pairing remain compatible and unchanged.
 
 ## Post-installation diagnostic update
 

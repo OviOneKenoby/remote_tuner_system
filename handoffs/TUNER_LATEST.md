@@ -1,63 +1,62 @@
-﻿# TUNER//01 handoff
+# TUNER//01 handoff
 
 ## Metadata
-- Handoff ID: TUNER-A-REMOTE-012-POST-IDENTITY-DIAGNOSTIC-INSTALLED-20261017T135118Z
-- Updated (UTC): 2026-10-17T13:51:18Z
+- Handoff ID: TUNER-A-REMOTE-012-CONNECTION-STABILITY-BUILD-READY-2026-10-17T141401Z
+- Updated (UTC): 2026-10-17T14:14:01Z
 - Task ID: A-REMOTE-012
-- Status: BLOCKED / TARGET RTCP PATH NOT EXERCISED
+- Status: READY FOR REVIEW
 - Prepared by: coordinated A-REMOTE-012 executor
-- Coordination input commit: 5d36ad19bd05db4a2a9c8ef541f151aca75e3020
+- Coordination input commit: c1703bc2cb279d283ce6a8cc0814a633d239b8b0
 
 ## Milestone
-Install the bounded post-identity diagnostic candidate and capture one snapshot after a natural REMOTE connection attempt. Installation passed; the snapshot completed, but no REMOTE TCP connection reached TUNER.
+Identify and correct the repeated RTCP disconnect mechanism. The source-proven cooperative scheduling correction, targeted tests and production build pass; physical installation and validation are not run.
 
 ## Baseline
 - Device repository: https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio
 - Branch: `a-remote-012-low-latency`
-- Firmware baseline commit: `5391beef5e7ba264362ea19f2fdd93202308fa55`
-- Firmware version: v1.1.11 plus A-REMOTE-012 diagnostics
-- Working tree at start: clean; source commit `fda5f1ad1e5ebb9e83238cdbaa3ad79564e40842`
-- Contract references: CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 Phase 2; coordination input `5d36ad19bd05db4a2a9c8ef541f151aca75e3020`
+- Firmware baseline commit: `fda5f1ad1e5ebb9e83238cdbaa3ad79564e40842`
+- Firmware version: v1.1.11 plus A-REMOTE-012 low-latency and bounded diagnostics
+- Working tree at start: clean
+- Contract references: CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 Phase 2; coordination input `c1703bc2cb279d283ce6a8cc0814a633d239b8b0`
 
 ## Changes
-No source change. All eight rollback-critical local/external files were verified. The diagnostic application was written once at `0x10000` and independently read back exactly. No bootloader, partition, NVS or pairing data was changed.
+At `073b65963e3ed8e3438bc34134f5a903fce995de`, `display.h/.cpp` expose GxEPD2's existing BUSY callback, `main.cpp` polls RTCP and yields during that wait, and `rtcp_server.cpp` consumes complete buffered records before applying the unchanged idle deadline. One focused policy regression and the device changelog were added. No task, allocation, timeout, protocol, crypto, pairing or audio change.
 
 ## Verification
 | Check | Command/procedure | Environment | Result | Evidence |
 | --- | --- | --- | --- | --- |
-| Rollback preflight | Rehash eight local and eight external files against published identities | Internal storage plus separate USB storage | PASS; zero mismatches | `references/device_evidence/remote/A-REMOTE-012/POST_IDENTITY_DIAGNOSTIC_INSTALLATION.json` |
-| ROM/slot preflight | `chip_id`, `flash_id`, accepted partition evidence | esptool 4.11.0, 921600 baud | PASS; expected TUNER and 4 MiB flash, candidate fits 3 MiB slot | same evidence |
-| Application installation | `write_flash --flash_mode keep --flash_freq keep --flash_size keep 0x10000` | COM port retained privately | PASS, single write | same evidence |
-| Independent readback | `read_flash 0x10000 2036992` and SHA-256 | esptool 4.11.0, 921600 baud | PASS; exact expected hash | same evidence |
-| Read-only diagnostic | Exactly one serial `x` snapshot | Existing 115200-baud console | COMPLETE; Wi-Fi connected, healthy heap, zero RTCP connections/records/snapshot requests | same evidence |
+| Counter/source diagnosis | Reconcile two installed diagnostic captures; trace main loop, RTCP deadlines and GxEPD2 BUSY path | Commit `fda5f1a`, GxEPD2 1.6.9 | PASS; starvation and closure mechanisms demonstrated | `references/device_evidence/remote/A-REMOTE-012/CONNECTION_STABILITY_CORRECTION.json` |
+| Focused regressions | New display-service policy plus existing RTCP/local scheduling and diagnostic checks | Python 3, GCC 16.2.0/UCRT64 | PASS; 54 checks/assertions | same evidence |
+| Production build | `pio run -e esp32-lwip-psram` | PlatformIO, `esp32dev`, espressif32 7.0.1 | PASS; 2,037,152 bytes, expected SHA-256 | same evidence |
+| Physical stability | NOT RUN; no hardware access or flash | Physical TUNER/REMOTE pair | NOT RUN | same evidence |
 
 ## Remaining unknowns
-The original post-identity failure remains unclassified. This boot received no REMOTE TCP connection, so none of the new snapshot request, response-write or allocation diagnostics were exercised.
+The historical 5,983 ms loop sample was not phase-tagged to one named refresh, although the synchronous panel starvation path is source-proven. Browser operations can still cause explicit bounded reconnects. Exact residual awake-state and sleep-related disconnect rates require hardware validation.
 
 ## Shared-contract impact
 - CCM 1.0.0: NO CHANGE.
 - TUNER Native API v1: NO CHANGE.
-- Other device impact: REMOTE source, firmware and persistent state were unchanged; one read-only status request timed out.
-- Approval evidence: owner authorized this exact application-only installation, readback and single read-only snapshot.
+- Other device impact: protocol-compatible with installed REMOTE; REMOTE source and firmware unchanged.
+- Approval evidence: owner authorized source correction, targeted tests/builds and PR #18 documentation; hardware remained prohibited.
 
 ## Blockers
-REMOTE must be demonstrated online before another separately authorized bounded observation. No retry loop or protocol probe is authorized by this result.
+No software/build blocker. Separate owner authorization is required to flash and physically validate this candidate.
 
 ## PM decision required
-Authorize one further read-only observation after REMOTE reachability is established, or separately authorize restoration of the accepted TUNER application.
+Authorize one application-only TUNER installation at `0x10000` after exact candidate and rollback verification.
 
 ## Recommended next task
-With REMOTE awake and reachable, allow one normal automatic RTCP attempt, capture exactly one TUNER `x` snapshot, correlate the bounded counters and stop.
+Install the candidate once, verify exact readback, then pass read-only READY/snapshot stability through full and partial e-paper work before one expected REMOTE sleep/wake resynchronization and normal MP3/A2DP/web-manager regression.
 
 ## Commit
-- Firmware result commit(s): `fda5f1ad1e5ebb9e83238cdbaa3ad79564e40842`
-- Device changelog: TUNER build changelog unchanged during commissioning; coordination changelog updated
+- Firmware result commit(s): `073b65963e3ed8e3438bc34134f5a903fce995de`
+- Device changelog: `CHANGELOG.md` at `073b65963e3ed8e3438bc34134f5a903fce995de`
 - Coordination publication: branch `remote/a-remote-012-low-latency`, PR #18; final coordination hash reported after publication
-- Previous handoff archive: `archive/tuner/2026-10-17T135118Z_A-REMOTE-012_TUNER-DIAGNOSTIC-BUILD-READY.md`
+- Previous handoff archive: `archive/tuner/2026-10-17T141401Z_A-REMOTE-012_POST-IDENTITY-DIAGNOSTIC-INSTALLED.md`
 
 ## Hardware status
-- Physical device tested: YES
-- Board / hardware configuration: expected classic ESP32 TUNER revision, 4 MiB flash, unchanged partition table
-- Procedure and result: application-only write and exact readback PASS; normal firmware boot and Wi-Fi PASS; single snapshot complete; target RTCP path not exercised
-- Firmware actually flashed: source `fda5f1ad1e5ebb9e83238cdbaa3ad79564e40842`, 2,036,992 bytes, SHA-256 `18d59b75cbf481b517b09fd274207e2271cdd42a0a146f56eafeca2e8a1196d3`
-- Build-only or simulated checks: prior 11/11 + 14/14 + 9/9 + 16/16 PASS and production build PASS; not repeated
+- Physical device tested: NO for this correction
+- Board / hardware configuration: classic ESP32 TUNER, 4 MiB flash, unchanged 3 MiB application slot
+- Procedure and result: NOT RUN; no device access
+- Firmware actually flashed: diagnostic commit `fda5f1ad1e5ebb9e83238cdbaa3ad79564e40842`, 2,036,992 bytes, remains installed
+- Build-only or simulated checks: candidate 2,037,152 bytes, SHA-256 `19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8`; headroom 1,108,576; static RAM 87,512; focused checks PASS

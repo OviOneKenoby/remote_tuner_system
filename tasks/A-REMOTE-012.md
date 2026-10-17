@@ -1,10 +1,10 @@
 # A-REMOTE-012: Low-Latency Volume Control
 
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: DIAGNOSTIC FIRMWARE INSTALLED / POST-IDENTITY PATH NOT EXERCISED
+- State: CONNECTION-STABILITY CORRECTION BUILT / HARDWARE VALIDATION REQUIRED
 - Coordination baseline: `437e79cdfd6b7febf001271a32467191d84b20d2`
 - TUNER source baseline: `18ddd3b16e305341f338afebd7dc725500ecbb73`
-- TUNER candidate source: `5391beef5e7ba264362ea19f2fdd93202308fa55`
+- TUNER candidate source: `073b65963e3ed8e3438bc34134f5a903fce995de`
 - Objective: make EC11 volume control feel like a local control while retaining CCM 1.1.0 and RTCP/1 authority, correlation, replay protection, session fencing and fail-closed behavior.
 - Engineering targets on a healthy local network: first and continued audible response under 100 ms; final 15-detent target within 250 ms after the last detent; clearly provisional local UI response under 50 ms.
 - Scope: private REMOTE target accumulation, RTCP scheduling and provisional UI; public TUNER RTCP cadence, local encoder/audio scheduling, deferred e-paper feedback and bounded timing evidence; focused/integration regression; production builds; reversible commissioning plan.
@@ -22,7 +22,7 @@ The HOME value uses `authoritative>desired` while pending and retains the author
 
 See [software validation and commissioning report](../reports/A-REMOTE-012_LOW_LATENCY_SOFTWARE.md) and [sanitized evidence](../references/device_evidence/remote/A-REMOTE-012/SOFTWARE_RESULT.json).
 
-## Current stop
+## Historical diagnostic stop
 
 Both A-REMOTE-012 applications were installed with exact application readback PASS. TUNER boots normally and its local audio-volume response is fast; the e-paper refresh remains visibly slower. REMOTE and TUNER are reachable, and REMOTE completes mutual authentication, accepts identity and accepts the capability response. No first state snapshot becomes authoritative, so `volume.level` remains unknown, `volume.set` remains unavailable and the session never becomes usable for control. Later automatic reconnects have also ended after client hello with EOF.
 
@@ -31,3 +31,11 @@ Source comparison shows no A-REMOTE-012 change to RTCP framing, cryptography, id
 That bounded instrumentation is now implemented and built at TUNER commit `fda5f1ad1e5ebb9e83238cdbaa3ad79564e40842`. Focused diagnostics and relevant regressions pass; the production candidate is 2,036,992 bytes with SHA-256 `18d59b75cbf481b517b09fd274207e2271cdd42a0a146f56eafeca2e8a1196d3`, 1,108,736 bytes slot headroom and 87,512 bytes static RAM. No hardware was accessed. The next gate is an owner-authorized TUNER application-only installation followed by one passive automatic-handshake observation and one existing read-only serial snapshot. Root cause remains unproven.
 
 The owner subsequently authorized that installation. All eight local/external rollback-critical files matched their recorded identities, the expected 4 MiB TUNER was identified, and only the application was written at `0x10000`. Independent 2,036,992-byte readback matched the candidate hash exactly. The single authorized `x` snapshot reported connected Wi-Fi and healthy memory but `connections=0`, `client_finishes=0`, `records=0`, `snapshot_requests=0`, and no allocation failure. A single read-only REMOTE diagnostics request timed out. This run therefore stops before TUNER TCP acceptance and cannot classify the post-identity snapshot failure. A future observation requires REMOTE to be demonstrably online; no reconnect loop or control command is authorized by this result.
+
+## Current status
+
+Two later bounded TUNER snapshots demonstrate that authentication, identity, capabilities and authoritative snapshots succeed repeatedly, but the persistent connection is starved by long TUNER application-loop turns. In the later snapshot, 104 accepted connections account for 24 TUNER idle timeouts, 79 peer EOFs and one current/remaining connection. All 259 snapshot requests completed; partial writes, failed writes, allocation failures, network `nomem` and TUNER Wi-Fi disconnects remained zero. The measured 5,983 ms maximum loop turn exceeds both REMOTE's unchanged 3,000 ms awaited-response deadline and TUNER's unchanged 5,000 ms record-idle deadline.
+
+Source inspection confirms that the same main loop owns RTCP and synchronous GxEPD2 BUSY waits. The panel driver already supplies a cooperative busy callback. TUNER commit `073b65963e3ed8e3438bc34134f5a903fce995de` registers that callback to poll RTCP and yield while the panel is busy, retaining the existing owner and fixed buffers. It also reads buffered application input before classifying the unchanged idle deadline, so a complete request present at the boundary is processed while incomplete input still times out. No task, queue, dynamic allocation, buffer increase, timeout relaxation, protocol change or REMOTE change was introduced.
+
+Focused scheduling, deadline, latency and diagnostic verification passed 54 checks/assertions. The production `esp32-lwip-psram` build passed: 2,037,152 bytes, SHA-256 `19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8`, 1,108,576 bytes application-slot headroom and unchanged 87,512-byte static RAM. No hardware was accessed or flashed. Hardware validation is still required to confirm stable READY state across e-paper updates, normal REMOTE sleep/wake and reconnect, plus MP3/A2DP/web-manager regression.

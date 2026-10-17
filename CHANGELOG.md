@@ -1,3 +1,9 @@
+# 2026-10-17 -- A-REMOTE-012 RTCP connection-starvation correction BUILT / HARDWARE PENDING
+
+- Later TUNER captures prove intermittent successful authentication and 259/259 completed snapshots, alongside 24 server idle timeouts and 79 peer EOFs across 104 accepted connections. No partial/failed write, allocation failure, network `nomem` or Wi-Fi disconnect occurred. The 5,983 ms maximum TUNER loop turn exceeds REMOTE's unchanged 3,000 ms response deadline and TUNER's unchanged 5,000 ms idle deadline.
+- Source inspection confirmed RTCP polling and synchronous GxEPD2 BUSY waits share the application owner. Public TUNER commit `073b65963e3ed8e3438bc34134f5a903fce995de` uses the driver's existing cooperative BUSY callback to service RTCP and yield, and consumes a complete buffered application record before idle-timeout classification. No task, allocation, buffer, retry, timeout, protocol, crypto, CCM, pairing, audio or REMOTE change was introduced.
+- Focused scheduling/deadline/diagnostic checks passed 54 checks/assertions. The `esp32-lwip-psram` production build passed: 2,037,152 bytes, SHA-256 `19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8`, 1,108,576-byte slot headroom and unchanged 87,512-byte static RAM. No hardware operation occurred; stable READY behavior across e-paper refresh and expected sleep/wake reconnects remains to be physically validated.
+
 # 2026-10-17 -- A-REMOTE-012 TUNER post-identity diagnostic installation VERIFIED / TARGET PATH NOT EXERCISED
 
 - Reverified all eight rollback-critical files on separate physical USB storage and their local counterparts against the recorded sizes and SHA-256 identities. ROM preflight identified the expected TUNER ESP32 revision and 4 MiB flash; the candidate fit the unchanged 3 MiB application slot.

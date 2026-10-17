@@ -1,61 +1,61 @@
-﻿# REMOTE//01 handoff
+# REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-012-TUNER-DIAGNOSTIC-INCONCLUSIVE-20261017T135118Z
-- Updated (UTC): 2026-10-17T13:51:18Z
+- Handoff ID: REMOTE-A-REMOTE-012-CONNECTION-STABILITY-BUILD-READY-2026-10-17T141401Z
+- Updated (UTC): 2026-10-17T14:14:01Z
 - Task ID: A-REMOTE-012
-- Status: BLOCKED / REMOTE ONLINE OBSERVATION REQUIRED
-- Prepared by: REMOTE//01 executor with coordinated TUNER//01 commissioning
-- Coordination input commit: 5d36ad19bd05db4a2a9c8ef541f151aca75e3020
+- Status: READY FOR REVIEW
+- Prepared by: coordinated A-REMOTE-012 executor
+- Coordination input commit: c1703bc2cb279d283ce6a8cc0814a633d239b8b0
 
 ## Milestone
-Use the installed bounded TUNER diagnostics to locate the first post-identity snapshot failure. Installation and exact readback passed, but the target RTCP path was not exercised because no REMOTE connection reached TUNER during the single authorized observation.
+Identify and correct repeated RTCP disconnections without weakening CCM/RTCP. Source diagnosis and the TUNER-only correction are complete; physical stability validation is not run.
 
 ## Baseline
 - Device repository: private REMOTE workspace; source remains unpublished
-- Branch: NONE - active private workspace is git-less
-- Firmware baseline commit: UNKNOWN - git-less source
+- Branch: NONE - active private workspace is Git-less
+- Firmware baseline commit: UNKNOWN - Git-less source
 - Firmware version: installed A-REMOTE-012 candidate, 2,525,168 bytes, SHA-256 `afd8b426b37cdac5bfd32abf4ee9fbf70c91e3a28ebdf74ae482871572dcdef4`
 - Working tree at start: NOT MODIFIED
-- Contract references: CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 Phase 2 profile; coordination input `5d36ad19bd05db4a2a9c8ef541f151aca75e3020`
+- Contract references: CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 Phase 2; coordination input `c1703bc2cb279d283ce6a8cc0814a633d239b8b0`
 
 ## Changes
-No REMOTE firmware or persistent state change. One read-only request to the existing REMOTE diagnostic endpoint timed out while correlating the TUNER snapshot.
+NONE to REMOTE. Source evidence confirms the unchanged 3,000 ms awaited-response deadline and intentional session invalidation on network loss/SYSTEM_SLEEP. The correction is confined to TUNER cooperative scheduling.
 
 ## Verification
 | Check | Command/procedure | Environment | Result | Evidence |
 | --- | --- | --- | --- | --- |
-| TUNER installation | ROM identity, application-only write at `0x10000`, independent exact-span readback | ESP32, esptool 4.11.0, 921600 baud | PASS; 2,036,992 bytes and expected SHA-256 | `references/device_evidence/remote/A-REMOTE-012/POST_IDENTITY_DIAGNOSTIC_INSTALLATION.json` |
-| TUNER read-only snapshot | Exactly one serial `x` command | Existing 115200-baud console | COMPLETE; zero RTCP connections/records/snapshot requests | same evidence |
-| REMOTE correlation | One request to existing read-only diagnostics | Private LAN | TIMEOUT | same evidence |
+| Lifecycle/source trace | Inspect existing RTCP timeout, reconnect, suspend and sleep paths | Private REMOTE source, read-only | PASS; timeout and expected sleep invalidation distinguished | `reports/A-REMOTE-012_LOW_LATENCY_SOFTWARE.md` |
+| Cross-device counter reconciliation | Compare two owner-provided bounded TUNER captures with REMOTE session/reconnect counters | Installed A-REMOTE-012 devices | PASS; intermittent success plus deadline-driven churn | `references/device_evidence/remote/A-REMOTE-012/CONNECTION_STABILITY_CORRECTION.json` |
+| Hardware validation of correction | NOT RUN; new TUNER candidate was not flashed | Physical pair | NOT RUN | same evidence |
 
 ## Remaining unknowns
-Whether REMOTE was awake and network-serviceable during the observation is unverified. Because TUNER accepted no TCP connection, this run does not determine whether the original post-identity snapshot failure occurs during request delivery, response construction/write or REMOTE admission.
+Existing counters do not tag each TUNER peer EOF with REMOTE sleep state. The occasional partial REMOTE HTTP diagnostic response is on separate REMOTE tasks and has no proven common cause. Hardware validation must distinguish awake-state stability from expected sleep/wake reconnects.
 
 ## Shared-contract impact
-- CCM 1.0.0: NO CHANGE.
+- CCM 1.0.0: NO CHANGE; admission, authority, correlation and replay rules remain intact.
 - TUNER Native API v1: NO CHANGE.
-- Other device impact: TUNER runs diagnostic-only instrumentation with unchanged protocol behavior; REMOTE remains unchanged and fail-closed.
-- Approval evidence: owner authorized one application-only TUNER diagnostic installation, exact readback, one automatic attempt and one read-only `x` snapshot.
+- Other device impact: a new compatible TUNER application candidate requires separate installation authorization; REMOTE remains unchanged.
+- Approval evidence: owner authorized A-REMOTE-012 source corrections, affected tests/builds and documentation, while prohibiting hardware access and flash.
 
 ## Blockers
-A future bounded observation requires REMOTE to be demonstrably online before one natural automatic RTCP attempt. Additional reconnect loops, control commands or firmware changes are not authorized.
+Physical proof that the corrected TUNER remains READY across e-paper work and reconnects correctly after REMOTE sleep/wake requires separate owner authorization to install the TUNER application.
 
 ## PM decision required
-Authorize a new bounded read-only observation only after REMOTE online status is established, or defer and restore the accepted TUNER application under separate authorization.
+Authorize application-only installation of TUNER commit `073b65963e3ed8e3438bc34134f5a903fce995de` candidate after exact rollback/candidate preflight, or retain the installed diagnostic build.
 
 ## Recommended next task
-Confirm REMOTE is awake and reachable without mutation, permit one natural RTCP connection attempt, then capture one TUNER `x` snapshot and stop.
+Install only the verified TUNER application, require exact readback, then observe stable authenticated snapshots across full/partial display updates, one REMOTE sleep/wake cycle and MP3/A2DP/web-manager regression. Send no intentional volume command until read-only stability passes.
 
 ## Commit
-- Firmware result commit(s): TUNER `fda5f1ad1e5ebb9e83238cdbaa3ad79564e40842`; REMOTE unchanged
-- Device changelog: TUNER diagnostic build changelog unchanged during commissioning; coordination changelog updated
+- Firmware result commit(s): TUNER `073b65963e3ed8e3438bc34134f5a903fce995de`; REMOTE unchanged
+- Device changelog: TUNER `CHANGELOG.md` at `073b65963e3ed8e3438bc34134f5a903fce995de`
 - Coordination publication: branch `remote/a-remote-012-low-latency`, PR #18; final coordination hash reported after publication
-- Previous handoff archive: `archive/remote/2026-10-17T135118Z_A-REMOTE-012_REMOTE-TUNER-DIAGNOSTIC-READY.md`
+- Previous handoff archive: `archive/remote/2026-10-17T141401Z_A-REMOTE-012_REMOTE-TUNER-DIAGNOSTIC-INCONCLUSIVE.md`
 
 ## Hardware status
-- Physical device tested: YES, TUNER only
-- Board / hardware configuration: expected classic ESP32 TUNER revision, 4 MiB flash; paired REMOTE unchanged
-- Procedure and result: all local/external rollback files verified; application-only installation and exact readback PASS; one snapshot complete but target RTCP path not exercised
-- Firmware actually flashed: TUNER source `fda5f1ad1e5ebb9e83238cdbaa3ad79564e40842`, 2,036,992 bytes, SHA-256 `18d59b75cbf481b517b09fd274207e2271cdd42a0a146f56eafeca2e8a1196d3`
-- Build-only or simulated checks: prior diagnostic 11/11, redaction 14/14, RTCP scheduling 9/9, CCM wire 16/16 and production build PASS; not repeated
+- Physical device tested: NO for this correction
+- Board / hardware configuration: TUNER classic ESP32 with 4 MiB flash; REMOTE installed configuration unchanged
+- Procedure and result: NOT RUN; no device access
+- Firmware actually flashed: REMOTE remains the installed 2,525,168-byte A-REMOTE-012 candidate; TUNER remains diagnostic commit `fda5f1ad1e5ebb9e83238cdbaa3ad79564e40842`
+- Build-only or simulated checks: TUNER focused 54 checks/assertions PASS; production build PASS
