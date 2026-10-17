@@ -1,7 +1,7 @@
 # A-REMOTE-012: Low-Latency Volume Control
 
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: READY FOR HARDWARE COMMISSIONING / HARDWARE PENDING
+- State: HARDWARE INSTALLED / RTCP POST-IDENTITY SYNCHRONIZATION BLOCKED
 - Coordination baseline: `437e79cdfd6b7febf001271a32467191d84b20d2`
 - TUNER source baseline: `18ddd3b16e305341f338afebd7dc725500ecbb73`
 - TUNER candidate source: `5391beef5e7ba264362ea19f2fdd93202308fa55`
@@ -24,4 +24,6 @@ See [software validation and commissioning report](../reports/A-REMOTE-012_LOW_L
 
 ## Current stop
 
-The final pre-commissioning review reverified both candidates, exact application rollback images, matching local full-flash captures and the source-demonstrated TUNER local-encoder correction. Before the first write, reconnect and verify the previously populated owner-controlled external backup. Do not flash either device without separate owner authorization. Status is READY FOR HARDWARE COMMISSIONING / HARDWARE PENDING.
+Both A-REMOTE-012 applications were installed with exact application readback PASS. TUNER boots normally and its local audio-volume response is fast; the e-paper refresh remains visibly slower. REMOTE and TUNER are reachable, and REMOTE completes mutual authentication, accepts identity and accepts the capability response. No first state snapshot becomes authoritative, so `volume.level` remains unknown, `volume.set` remains unavailable and the session never becomes usable for control. Later automatic reconnects have also ended after client hello with EOF.
+
+Source comparison shows no A-REMOTE-012 change to RTCP framing, cryptography, identity, capability or snapshot encoding. The first proven failure boundary is after accepted capabilities and before a first snapshot is admitted. TUNER internal heap was observed at 2,304 bytes free with a 948-byte largest block, but no allocation failure or causal link was observed; low heap is a material risk signal, not the demonstrated root cause. Current diagnostics cannot distinguish request receipt, response construction/write failure, transport closure or REMOTE-side snapshot rejection. Stop before further firmware changes, flashing or control commands. The minimum next step is separately authorized, bounded TUNER server instrumentation for record type/stage, response-write result, close reason and allocation-failure delta.

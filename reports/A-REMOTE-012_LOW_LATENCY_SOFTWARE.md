@@ -2,7 +2,17 @@
 
 ## Verdict
 
-**READY FOR HARDWARE COMMISSIONING.** Both production builds pass, the bounded REMOTE model meets the new targets under a controlled 30 ms simulated command/observation delay, and the owner-reported TUNER-local lag has a source-demonstrated scheduling cause with a bounded correction. Candidate identities, application rollback images and full-flash recovery captures have been reverified. No device was accessed or flashed. Audible and UI latency must be measured on the paired hardware before acceptance.
+**HARDWARE INSTALLED / RTCP POST-IDENTITY SYNCHRONIZATION BLOCKED.** The pre-commissioning software and rollback verification remain valid, both candidate applications passed exact readback, and TUNER local audible response is fast. Paired REMOTE control acceptance cannot proceed because no first state snapshot becomes authoritative after capability acceptance. The exact server/transport boundary requires bounded TUNER diagnostics before a behavioral correction is justified.
+
+## Post-installation diagnostic update
+
+Both candidates were subsequently installed with exact application readback PASS. TUNER boots normally, and owner observation confirms fast local audible volume response while e-paper refresh remains slower. REMOTE and TUNER are reachable. REMOTE diagnostics demonstrate TCP establishment, mutual authentication, accepted identity and an accepted capability response: diagnostic stage `complete` is assigned only after the capability parser succeeds. The initial state snapshot does not become authoritative, leaving `volume.level` unknown and `volume.set` unavailable. Later automatic reconnect attempts have also ended after client hello with EOF. No intentional control command was sent.
+
+The first proven failure boundary is therefore **after accepted capabilities and before successful admission of the first snapshot**. A source comparison against the working A-REMOTE-011 implementation found no A-REMOTE-012 change to RTCP record framing, cryptography, identity, capability or snapshot encoding. A-REMOTE-012 adds fixed timing counters and changes main-loop scheduling; TUNER static RAM increased by 40 bytes.
+
+TUNER was observed with 2,304 bytes of free internal heap and a 948-byte largest block. This is serious resource pressure, but it is not proof of causation: identity and capability responses completed under the same firmware, no allocation-failure evidence is exposed by the current read-only web diagnostics, and no source-level allocation failure was observed. The server uses fixed 556-byte receive/transmit members and bounded 512-byte stack buffers. Current diagnostics do not identify whether the snapshot request reached TUNER, response construction or the single-call socket write failed, the session closed, or REMOTE received and rejected a snapshot.
+
+The minimum safe next action is a separately authorized, bounded TUNER diagnostic correction before changing transport behavior: fixed counters/state for application request kind, snapshot dispatch, response construction, requested/written byte counts, close reason, and allocation-failure count delta with free/largest internal heap sampled only on failure. Expected persistent RAM impact is approximately 48-64 bytes with no dynamic allocation. Focused tests should cover identity/capability/snapshot progression, partial/failed response writes, timeout/EOF closure, counter saturation and secret-free serialization. If that evidence proves a partial socket write, the subsequent correction should use a bounded fixed-buffer transmit offset and existing deadline; if it proves allocation pressure, memory should be recovered from demonstrated owners rather than relaxing RTCP security or CCM admission.
 
 ## Verified cause
 
