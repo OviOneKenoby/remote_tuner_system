@@ -26,7 +26,7 @@ Correct the demonstrated loss of accepted rapid encoder detents during post-resu
 | Check | Command/procedure | Environment | Result | Evidence |
 | --- | --- | --- | --- | --- |
 | Hardware reproduction | Exactly ten downward detents from 53%, compare bounded counters and authority | Installed prior A-REMOTE-012 candidate | FAIL reproduced: 10 accepted, 5 submissions, final 48%, expected 43%, no operation in flight | `references/device_evidence/remote/A-REMOTE-012/REMOTE_VOLUME_RECONCILIATION_FIX.json` |
-| Volume reconciliation regression | Compile/run `volume_admission_tests.cpp` | GCC 16.2.0 with UCRT64 PATH | PASS; 9/9, 196 assertions; ten-detent final 43%; reversal PASS | same evidence |
+| Volume reconciliation regression | Compile/run `volume_admission_tests.cpp` | GCC 16.2.0 with UCRT64 PATH | PASS; 9/9, 238 assertions; equal ten-detent slow/rapid sequences both final 43%; reversal PASS | same evidence |
 | Production build | PlatformIO `run -e remote01` | Espressif32 6.13.0, ESP-IDF 5.5.3 | PASS; 2,525,824 bytes, SHA-256 `3f46c3ccfd45b29985bbda37f1357a8f36831c17066bd0a33952f238936290bf` | same evidence |
 | Memory/slot | PlatformIO size plus exact binary length | `remote01`, 3 MiB application slot | PASS; 47,388-byte static RAM, 619,904-byte slot headroom | same evidence |
 
@@ -59,4 +59,4 @@ After normal rollback/device preflight, install only the corrected application, 
 - Board / hardware configuration: Waveshare ESP32-S3-Touch-LCD-3.49B V2, PCB Rev1.1; layout and GPIO state unchanged
 - Procedure and result: prior candidate installation/readback/essential boot PASS; ten accepted downward detents reproduced final 48% instead of expected 43%
 - Firmware actually flashed: 2,525,808 bytes, SHA-256 `1ca95a1abe31e990d28d125f0994610f88dc554efa8acb744cef866759033477`
-- Build-only or simulated checks: focused reconciliation 9/9 PASS, 196 assertions; one `remote01` production build PASS
+- Build-only or simulated checks: focused reconciliation 9/9 PASS, 238 assertions; one `remote01` production build PASS before the test-only slow/rapid comparison
