@@ -1,63 +1,60 @@
 # TUNER//01 handoff
 
 ## Metadata
-- Handoff ID: TUNER-A-PM-004-20261011T175133Z
-- Updated (UTC): 2026-10-11T17:51:33Z
-- Task ID: A-PM-003
-- Status: ACCEPTED
-- Prepared by: PM authorized current-state reconciliation publisher
-- Coordination input commit: 531aa8cd0435ed9813ab39664888992583df0d28
+- Handoff ID: TUNER-A-REMOTE-012-REMOTE-FIX-BUILD-2026-10-17T181203Z
+- Updated (UTC): 2026-10-17T18:12:03Z
+- Task ID: A-REMOTE-012
+- Status: BLOCKED
+- Prepared by: coordinated A-REMOTE-012 executor
+- Coordination input commit: `6ed4f4868e974494190e096a39a4d6713f4d4a52`
 
 ## Milestone
-Current final v1.1.11 identity/owner functional acceptance reconciled; historical A-TUNER003 preserved, case-specific physical matrix PENDING. [PM review](../reports/A-PM-003_RECONCILIATION.md); documentation/host scope only, common gate OPEN/NOT PASSED.
+Preserve TUNER unchanged while the confirmed REMOTE false network-loss defect is corrected and built. The REMOTE software candidate passed; no TUNER work was required or performed.
 
 ## Baseline
 - Device repository: https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio
-- Branch: main, public ref checked
-- Firmware baseline commit: 5fb92c95d228d744d1182ae3956e850c5be2f277 (release main/tag); executable source 124e84801b06f9e07764dabc3985a573dffaff3b
-- Firmware version: final release v1.1.11; validated1.1.11-psram-validation/build124e84801b06, explicit esp32-lwip-psram, default esp32-dev remains
-- Working tree at start: Device NOT INSPECTED by PM; isolated coordination checkout clean at input; no live device edits
-- Contract references: CCM1.0.0 OWNER APPROVED/FROZEN; Nativev1 UNAPPROVED/UNFROZEN/NOT IMPLEMENTED; D-001/D-002/D-005, O01-O17 OPEN
+- Branch: `a-remote-012-low-latency`
+- Firmware baseline commit: `073b65963e3ed8e3438bc34134f5a903fce995de`
+- Firmware version: installed A-REMOTE-012 scheduling/diagnostic application, 2,037,152 bytes, SHA-256 `19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8`
+- Working tree at start: NOT INSPECTED; no TUNER change authorized or made
+- Contract references: CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 Phase 2; coordination input `6ed4f4868e974494190e096a39a4d6713f4d4a52`
 
 ## Changes
-Coordination-only PR7/8/9 integration, statuses/review/reports/task dispositions; latest handoff replaced after byte-exact archive. No device change by publisher. [Current TUNER report](../reports/TUNER_V1_1_11_RECONCILIATION.md) supersedes old baseline.
+NONE to TUNER. The REMOTE client now preserves a live RTCP socket during transient network-status mutex contention while retaining teardown for confirmed network loss or generation change.
 
 ## Verification
 | Check | Command/procedure | Environment | Result | Evidence |
 | --- | --- | --- | --- | --- |
-| Review/provenance | all PR files/conversations; evidence SHA manifests/Git archive bytes | isolated Windows/Git2.55.0.windows.2 | PASS preservation; conversations empty | [PM index](../references/pm/2026-10-11/INDEX.md) |
-| Host qualification | python -B run_qualification.py in exported A003/A004 prototypes | Windows/Python3.13.13/fake backend | PASS13/3859/87 and12/7805/562; production FAIL/BLOCKED/conditional BLOCKED | PM index rerun logs/matrices |
-| Public TUNER identity | git ls-remote, PR5/main/tag/release metadata, five downloaded asset SHA checks | read-only public release | PASS exact artifacts, no new build | [TUNER report](../reports/TUNER_V1_1_11_RECONCILIATION.md) |
-| Physical evidence | read pinned FINAL_VALIDATION/TEST01/SUSTAINED01; no PM rerun | reported WROVER/PSRAM explicit profile; REMOTE NOT RUN | TUNER limited functional PASS, zero-DMA FAIL; REMOTE NOT RUN | PM index pinned reports |
-| Coordination validation | Git-blob manifest, template fields/headings, archive bytes/active links | isolated checkout | VALIDATION.json; final remote SHA reported separately | [Validation](../references/pm/2026-10-11/VALIDATION.json) |
+| TUNER source/build/hardware | NOT RUN; no TUNER change required | NOT APPLICABLE | NOT RUN | `references/device_evidence/remote/A-REMOTE-012/REMOTE_NETWORK_STATUS_FIX_BUILD.json` |
+| Cross-device compatibility | Review unchanged RTCP close/protocol boundary | Existing CCM 1.1.0 / RTCP/1 implementation | PASS at source level; no wire or TUNER behavior changed | same evidence |
 
 ## Remaining unknowns
-Current local flashed residency NOT VERIFIED; zero-DMA FAIL,30-minute soak NOT COMPLETED; B01/B03/B06/B04 empty/stale physical PENDING; fullB04/B02/B05/B07-B11 unresolved; endurance/resources outside windows UNKNOWN.
+Paired hardware stability and final MP3/A2DP/web-manager/volume-latency acceptance remain unverified until the REMOTE candidate is separately installed and tested.
 
 ## Shared-contract impact
-- CCM 1.0.0: NO CHANGE; frozen semantics/original approval retained
-- TUNER Native API v1: NO CHANGE; UNAPPROVED/UNFROZEN/NOT IMPLEMENTED
-- Other device impact: NONE; no device edits or inferred acceptance/automatic dependency completion
-- Approval evidence: [technical reconciliation scope](../references/PM_RECONCILIATION_SCOPE_2026-10-11.md), D-005 limited TUNER factual acceptance; NONE for Native/shared/production approval
+- CCM 1.0.0: NO CHANGE; current project contract remains CCM 1.1.0 OWNER APPROVED / FROZEN.
+- TUNER Native API v1: NO CHANGE.
+- Other device impact: REMOTE has a build-verified correction awaiting hardware authorization.
+- Approval evidence: owner authorized REMOTE source correction/build only and explicitly prohibited TUNER modification or flashing.
 
 ## Blockers
-NONE for factual publication; case-specific physical matrix PENDING, remaining resource/shared gates unresolved. Common gate OPEN/NOT PASSED, O01-O17 OPEN.
+Final paired acceptance depends on owner-authorized REMOTE installation and stability verification. No TUNER blocker or corrective action is identified.
 
 ## PM decision required
-Separately authorize exact concrete backend feasibility/qualification mission. No D1 authorization. Shared changes still require both-device review and explicit owner approval.
+NONE for TUNER. Keep its installed candidate unchanged during the REMOTE test.
 
 ## Recommended next task
-A-REMOTE-005 recommendation only: read-only concrete G0-G4 feasibility/design and isolated host fault/capacity qualification, exact scope in PM report. No production Core/NVS/credentials/flash/partition/Native or automatic D1-D5; physical synthetic tests require separate owner authorization. TUNER case-specific physical regression remains separate PENDING; no execution now.
+Observe TUNER connection/EOF counters read-only during the later authorized REMOTE stability test; do not rebuild or flash TUNER.
 
 ## Commit
-- Firmware result commit(s): 5fb92c95d228d744d1182ae3956e850c5be2f277 (release main/tag); executable source 124e84801b06f9e07764dabc3985a573dffaff3b
-- Device changelog: TUNER CHANGELOG at final release merge; no PM edit
-- Coordination publication: pm/reconcile-20261011; PR7/8/9 merge hashes in PM review; final SHA after remote verification
-- Previous handoff archive: [archive/tuner/2026-10-11T175133Z_A-PM-004_TUNER-A-PM-003-20261011T173747Z.md](../archive/tuner/2026-10-11T175133Z_A-PM-004_TUNER-A-PM-003-20261011T173747Z.md)
+- Firmware result commit(s): TUNER unchanged at `073b65963e3ed8e3438bc34134f5a903fce995de`
+- Device changelog: unchanged TUNER `CHANGELOG.md` at that commit
+- Coordination publication: branch `remote/a-remote-012-low-latency`, PR #18; final coordination hash reported after publication
+- Previous handoff archive: `archive/tuner/2026-10-17T181203Z_A-REMOTE-012_REMOTE-CLOSE-CORRELATION.md`
 
 ## Hardware status
-- Physical device tested: YES in prior owner evidence; NO by PM this round
-- Board / hardware configuration: reported ESP32-WROVER/PSRAM, Wi-Fi TX dynamic32/cache4, Bluetooth SBC; exact wiring not re-inspected
-- Procedure and result: prior TEST01/SUSTAINED01 functional PASS; three1622-byte DMA failures each,zero-failure FAIL,sustained3m44.566s not30min
-- Firmware actually flashed: prior boots source124e84801b06f9e07764dabc3985a573dffaff3b/build124e84801b06 and verified release BIN/ELF; current residency NOT VERIFIED
-- Build-only or simulated checks: isolated Python fake models; read-only prior TUNER build evidence; no PM target build/flash
+- Physical device tested: NO
+- Board / hardware configuration: existing classic ESP32 TUNER, 4 MiB flash and 3 MiB application slot unchanged
+- Procedure and result: NOT RUN; no TUNER access authorized
+- Firmware actually flashed: unchanged 2,037,152-byte candidate, SHA-256 `19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8`
+- Build-only or simulated checks: NOT RUN for TUNER; REMOTE-only tests/build recorded separately

@@ -1,0 +1,47 @@
+{
+  "task": "A-REMOTE-012",
+  "date": "2026-10-17",
+  "status": "INSTALLED_EXACT_READBACK_TARGET_PATH_NOT_EXERCISED",
+  "source_commit": "fda5f1ad1e5ebb9e83238cdbaa3ad79564e40842",
+  "application": {
+    "offset": "0x10000",
+    "bytes": 2036992,
+    "sha256": "18d59b75cbf481b517b09fd274207e2271cdd42a0a146f56eafeca2e8a1196d3",
+    "write_exit": 0,
+    "exact_readback_match": true
+  },
+  "preflight": {
+    "expected_tuner_identity": true,
+    "physical_flash_bytes": 4194304,
+    "application_slot_bytes": 3145728,
+    "local_rollback_files_verified": 8,
+    "external_usb_rollback_files_verified": 8,
+    "rollback_mismatches": 0
+  },
+  "snapshot": {
+    "captured_once": true,
+    "complete": true,
+    "bytes": 3131,
+    "sha256": "c1a4420fee0e22578cca87e83fcff6b4d0d43ed54d67da6d0ff889d01dfb5790",
+    "wifi_connected": true,
+    "free_internal_bytes": 110412,
+    "largest_internal_block_bytes": 106484,
+    "allocation_failures": 0,
+    "rtcp_connections": 0,
+    "client_finishes": 0,
+    "records": 0,
+    "snapshot_requests": 0,
+    "snapshot_completions": 0,
+    "partial_writes": 0,
+    "failed_writes": 0,
+    "timeouts": 0,
+    "eofs": 0,
+    "allocation_failure_delta": 0
+  },
+  "remote_correlation": {
+    "single_read_only_status_request": "TIMEOUT",
+    "remote_firmware_changed": false
+  },
+  "conclusion": "The bounded run stopped before TUNER TCP acceptance and did not exercise the post-identity snapshot path.",
+  "prohibited_actions_performed": false
+}
