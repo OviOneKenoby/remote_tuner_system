@@ -1,15 +1,15 @@
-# REMOTE//01 handoff
+﻿# REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-012-TUNER-DIAGNOSTIC-READY-20261017T071246Z
-- Updated (UTC): 2026-10-17T07:12:46Z
+- Handoff ID: REMOTE-A-REMOTE-012-TUNER-DIAGNOSTIC-INCONCLUSIVE-20261017T135118Z
+- Updated (UTC): 2026-10-17T13:51:18Z
 - Task ID: A-REMOTE-012
-- Status: BLOCKED / TUNER DIAGNOSTIC INSTALLATION PENDING
-- Prepared by: REMOTE//01 executor with coordinated TUNER//01 implementation
-- Coordination input commit: c070cd941e2a639988c864f8bc9b53bc27c7e47f
+- Status: BLOCKED / REMOTE ONLINE OBSERVATION REQUIRED
+- Prepared by: REMOTE//01 executor with coordinated TUNER//01 commissioning
+- Coordination input commit: 5d36ad19bd05db4a2a9c8ef541f151aca75e3020
 
 ## Milestone
-Identify why paired synchronization stops after capability acceptance. The minimum TUNER diagnostic candidate is built; hardware observation is not yet authorized or run.
+Use the installed bounded TUNER diagnostics to locate the first post-identity snapshot failure. Installation and exact readback passed, but the target RTCP path was not exercised because no REMOTE connection reached TUNER during the single authorized observation.
 
 ## Baseline
 - Device repository: private REMOTE workspace; source remains unpublished
@@ -17,46 +17,45 @@ Identify why paired synchronization stops after capability acceptance. The minim
 - Firmware baseline commit: UNKNOWN - git-less source
 - Firmware version: installed A-REMOTE-012 candidate, 2,525,168 bytes, SHA-256 `afd8b426b37cdac5bfd32abf4ee9fbf70c91e3a28ebdf74ae482871572dcdef4`
 - Working tree at start: NOT MODIFIED
-- Contract references: CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 Phase 2 profile; coordination input `c070cd941e2a639988c864f8bc9b53bc27c7e47f`
+- Contract references: CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 Phase 2 profile; coordination input `5d36ad19bd05db4a2a9c8ef541f151aca75e3020`
 
 ## Changes
-No REMOTE change. TUNER now has a bounded diagnostic build that can distinguish snapshot request/response/write/close boundaries without changing protocol behavior.
+No REMOTE firmware or persistent state change. One read-only request to the existing REMOTE diagnostic endpoint timed out while correlating the TUNER snapshot.
 
 ## Verification
 | Check | Command/procedure | Environment | Result | Evidence |
 | --- | --- | --- | --- | --- |
-| Existing failure boundary | Existing read-only diagnostics | Installed paired devices | Capability acceptance PASS; first authoritative snapshot BLOCKED | `reports/A-REMOTE-012_LOW_LATENCY_SOFTWARE.md` |
-| TUNER diagnostic model | Native focused test | GCC 16.2.0, Windows amd64 | PASS 11/11 | `references/device_evidence/remote/A-REMOTE-012/POST_IDENTITY_DIAGNOSTICS_BUILD.json` |
-| Redaction/integration | Focused source policy | Python 3.13 | PASS 14/14 | same evidence |
-| TUNER production build | PlatformIO `esp32-lwip-psram` | ESP32 / board `esp32dev` | PASS | same evidence |
+| TUNER installation | ROM identity, application-only write at `0x10000`, independent exact-span readback | ESP32, esptool 4.11.0, 921600 baud | PASS; 2,036,992 bytes and expected SHA-256 | `references/device_evidence/remote/A-REMOTE-012/POST_IDENTITY_DIAGNOSTIC_INSTALLATION.json` |
+| TUNER read-only snapshot | Exactly one serial `x` command | Existing 115200-baud console | COMPLETE; zero RTCP connections/records/snapshot requests | same evidence |
+| REMOTE correlation | One request to existing read-only diagnostics | Private LAN | TIMEOUT | same evidence |
 
 ## Remaining unknowns
-Whether TUNER receives the snapshot request, constructs and completely writes its response, encounters an allocation failure, or closes first remains unknown until the diagnostic candidate is separately installed and observed. REMOTE hardware must not be changed for that observation.
+Whether REMOTE was awake and network-serviceable during the observation is unverified. Because TUNER accepted no TCP connection, this run does not determine whether the original post-identity snapshot failure occurs during request delivery, response construction/write or REMOTE admission.
 
 ## Shared-contract impact
-- CCM 1.0.0: NO CHANGE; CCM 1.1.0 remains frozen.
+- CCM 1.0.0: NO CHANGE.
 - TUNER Native API v1: NO CHANGE.
-- Other device impact: REMOTE remains fail-closed with volume unknown and no control capability.
-- Approval evidence: owner authorized TUNER diagnostic source/build only; no hardware write was authorized.
+- Other device impact: TUNER runs diagnostic-only instrumentation with unchanged protocol behavior; REMOTE remains unchanged and fail-closed.
+- Approval evidence: owner authorized one application-only TUNER diagnostic installation, exact readback, one automatic attempt and one read-only `x` snapshot.
 
 ## Blockers
-TUNER diagnostic application installation and one read-only automatic-handshake observation require separate owner authorization.
+A future bounded observation requires REMOTE to be demonstrably online before one natural automatic RTCP attempt. Additional reconnect loops, control commands or firmware changes are not authorized.
 
 ## PM decision required
-Authorize or reject the minimal TUNER application-only diagnostic commissioning procedure in the report.
+Authorize a new bounded read-only observation only after REMOTE online status is established, or defer and restore the accepted TUNER application under separate authorization.
 
 ## Recommended next task
-Install the exact TUNER diagnostic candidate, verify readback, allow one automatic handshake, capture one serial `x` snapshot and stop. Do not issue control commands or alter REMOTE.
+Confirm REMOTE is awake and reachable without mutation, permit one natural RTCP connection attempt, then capture one TUNER `x` snapshot and stop.
 
 ## Commit
 - Firmware result commit(s): TUNER `fda5f1ad1e5ebb9e83238cdbaa3ad79564e40842`; REMOTE unchanged
-- Device changelog: TUNER and coordination changelogs updated
-- Coordination publication: branch `remote/a-remote-012-low-latency`, PR #18; final hash reported after publication
-- Previous handoff archive: `archive/remote/2026-10-17T071246Z_A-REMOTE-012_REMOTE-POST-IDENTITY-BLOCKED.md`
+- Device changelog: TUNER diagnostic build changelog unchanged during commissioning; coordination changelog updated
+- Coordination publication: branch `remote/a-remote-012-low-latency`, PR #18; final coordination hash reported after publication
+- Previous handoff archive: `archive/remote/2026-10-17T135118Z_A-REMOTE-012_REMOTE-TUNER-DIAGNOSTIC-READY.md`
 
 ## Hardware status
-- Physical device tested: NO for this diagnostic candidate
-- Board / hardware configuration: paired REMOTE/TUNER configuration unchanged
-- Procedure and result: source/test/build only; diagnostic hardware observation NOT RUN
-- Firmware actually flashed: existing A-REMOTE-012 applications remain installed; no change
-- Build-only or simulated checks: TUNER diagnostic 11/11, redaction 14/14, RTCP scheduling 9/9, CCM wire 16/16, production build PASS
+- Physical device tested: YES, TUNER only
+- Board / hardware configuration: expected classic ESP32 TUNER revision, 4 MiB flash; paired REMOTE unchanged
+- Procedure and result: all local/external rollback files verified; application-only installation and exact readback PASS; one snapshot complete but target RTCP path not exercised
+- Firmware actually flashed: TUNER source `fda5f1ad1e5ebb9e83238cdbaa3ad79564e40842`, 2,036,992 bytes, SHA-256 `18d59b75cbf481b517b09fd274207e2271cdd42a0a146f56eafeca2e8a1196d3`
+- Build-only or simulated checks: prior diagnostic 11/11, redaction 14/14, RTCP scheduling 9/9, CCM wire 16/16 and production build PASS; not repeated

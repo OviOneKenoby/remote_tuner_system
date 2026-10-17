@@ -1,7 +1,7 @@
 # A-REMOTE-012: Low-Latency Volume Control
 
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: DIAGNOSTIC CANDIDATE READY / HARDWARE DIAGNOSIS PENDING
+- State: DIAGNOSTIC FIRMWARE INSTALLED / POST-IDENTITY PATH NOT EXERCISED
 - Coordination baseline: `437e79cdfd6b7febf001271a32467191d84b20d2`
 - TUNER source baseline: `18ddd3b16e305341f338afebd7dc725500ecbb73`
 - TUNER candidate source: `5391beef5e7ba264362ea19f2fdd93202308fa55`
@@ -29,3 +29,5 @@ Both A-REMOTE-012 applications were installed with exact application readback PA
 Source comparison shows no A-REMOTE-012 change to RTCP framing, cryptography, identity, capability or snapshot encoding. The first proven failure boundary is after accepted capabilities and before a first snapshot is admitted. TUNER internal heap was observed at 2,304 bytes free with a 948-byte largest block, but no allocation failure or causal link was observed; low heap is a material risk signal, not the demonstrated root cause. Current diagnostics cannot distinguish request receipt, response construction/write failure, transport closure or REMOTE-side snapshot rejection. Stop before further firmware changes, flashing or control commands. The minimum next step is separately authorized, bounded TUNER server instrumentation for record type/stage, response-write result, close reason and allocation-failure delta.
 
 That bounded instrumentation is now implemented and built at TUNER commit `fda5f1ad1e5ebb9e83238cdbaa3ad79564e40842`. Focused diagnostics and relevant regressions pass; the production candidate is 2,036,992 bytes with SHA-256 `18d59b75cbf481b517b09fd274207e2271cdd42a0a146f56eafeca2e8a1196d3`, 1,108,736 bytes slot headroom and 87,512 bytes static RAM. No hardware was accessed. The next gate is an owner-authorized TUNER application-only installation followed by one passive automatic-handshake observation and one existing read-only serial snapshot. Root cause remains unproven.
+
+The owner subsequently authorized that installation. All eight local/external rollback-critical files matched their recorded identities, the expected 4 MiB TUNER was identified, and only the application was written at `0x10000`. Independent 2,036,992-byte readback matched the candidate hash exactly. The single authorized `x` snapshot reported connected Wi-Fi and healthy memory but `connections=0`, `client_finishes=0`, `records=0`, `snapshot_requests=0`, and no allocation failure. A single read-only REMOTE diagnostics request timed out. This run therefore stops before TUNER TCP acceptance and cannot classify the post-identity snapshot failure. A future observation requires REMOTE to be demonstrably online; no reconnect loop or control command is authorized by this result.

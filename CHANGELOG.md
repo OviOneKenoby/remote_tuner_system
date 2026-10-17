@@ -1,3 +1,9 @@
+# 2026-10-17 -- A-REMOTE-012 TUNER post-identity diagnostic installation VERIFIED / TARGET PATH NOT EXERCISED
+
+- Reverified all eight rollback-critical files on separate physical USB storage and their local counterparts against the recorded sizes and SHA-256 identities. ROM preflight identified the expected TUNER ESP32 revision and 4 MiB flash; the candidate fit the unchanged 3 MiB application slot.
+- Installed only the 2,036,992-byte TUNER diagnostic application at `0x10000`. Independent full-span readback matched SHA-256 `18d59b75cbf481b517b09fd274207e2271cdd42a0a146f56eafeca2e8a1196d3` exactly. Booted firmware reported source identity `fda5f1ad1e5e` with connected Wi-Fi, healthy heap and zero allocation failures.
+- Exactly one serial `x` snapshot showed zero accepted RTCP connections, client finishes, records and snapshot requests. One read-only REMOTE status request timed out. This observation stops before TUNER TCP acceptance and therefore does not exercise or classify the intended post-identity snapshot boundary. No control command, REMOTE change, NVS/pairing/partition change or speculative correction occurred.
+
 # 2026-10-17 -- A-REMOTE-012 final pre-commissioning review READY
 
 - Confirmed that TUNER's physical-encoder lag had an independent source-level cause: one queued detent per loop followed by a synchronous e-paper refresh. The existing `5391beef5e7ba264362ea19f2fdd93202308fa55` candidate already contains the bounded correction; no source change, retest or rebuild was needed in this review.

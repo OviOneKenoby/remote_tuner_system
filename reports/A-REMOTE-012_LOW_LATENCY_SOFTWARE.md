@@ -1,4 +1,4 @@
-# A-REMOTE-012 low-latency volume control - software validation and commissioning plan
+﻿# A-REMOTE-012 low-latency volume control - software validation and commissioning plan
 
 ## Verdict
 
@@ -169,4 +169,14 @@ Either update order fails safely and remains functional. Install TUNER first, ve
 9. Exercise one disconnect/reconnect and one REMOTE sleep/wake. Require resynchronization without replay. Recheck MP3 and Bluetooth A2DP audio plus the active web manager after paired operation.
 10. On boot, audio, UI, pairing, memory or timing failure, stop. Restore only the affected application at `0x10000`: REMOTE length `0x268320` with SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`, or TUNER length `0x1F0C70` with SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`; verify exact readback. Full-flash restoration remains a separately authorized recovery operation.
 
-No step above has been executed on hardware for A-REMOTE-012.
+At the time this checklist was published, none of its hardware steps had been executed. The later bounded diagnostic installation is recorded below.
+
+## Post-identity diagnostic commissioning result
+
+On 2026-10-17 the owner authorized the bounded TUNER diagnostic installation. The complete eight-file rollback set on separate physical USB storage and the matching local files were reverified against their recorded sizes and SHA-256 identities. ROM preflight identified the expected classic ESP32 TUNER revision with 4 MiB flash. The 2,036,992-byte diagnostic candidate fit the unchanged 3 MiB application slot.
+
+Only the application range beginning at `0x10000` was written. Independent full-span readback matched SHA-256 `18d59b75cbf481b517b09fd274207e2271cdd42a0a146f56eafeca2e8a1196d3`. The normal application then reported build identity `fda5f1ad1e5e`, connected Wi-Fi, 110,412 bytes free internal heap, a 106,484-byte largest block, and zero allocation failures.
+
+Exactly one existing read-only serial `x` snapshot was captured. Its RTCP diagnostic line reported stage/request/close zero, zero connections, zero client finishes, zero records, zero snapshot requests/completions, zero partial or failed writes, and zero timeout/EOF/allocation deltas. A single read-only request to the existing REMOTE diagnostic endpoint timed out. Thus the intended automatic RTCP exchange did not reach TUNER during this bounded observation. The first proven boundary for this run is before TUNER TCP acceptance; it provides no evidence for or against response construction, response writes or allocation failure in the post-identity snapshot path.
+
+The minimum next action is a separately controlled observation with REMOTE first demonstrated online, followed by one natural automatic connection and one TUNER `x` snapshot. Do not loop reconnects, issue control commands or infer that the instrumentation fixed the original defect.
