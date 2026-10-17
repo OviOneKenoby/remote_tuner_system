@@ -1,7 +1,7 @@
 # A-REMOTE-012: Low-Latency Volume Control
 
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: REMOTE LIFECYCLE ROOT CAUSE CONFIRMED / CORRECTION PENDING
+- State: REMOTE LIFECYCLE CORRECTION SOFTWARE PASS / HARDWARE PENDING
 - Coordination baseline: `437e79cdfd6b7febf001271a32467191d84b20d2`
 - TUNER source baseline: `18ddd3b16e305341f338afebd7dc725500ecbb73`
 - TUNER candidate source: `073b65963e3ed8e3438bc34134f5a903fce995de`
@@ -64,4 +64,10 @@ The approved 2,525,696-byte diagnostic application was installed only at `0x1000
 
 Across 313 seconds, all 61 read-only HTTP samples succeeded. REMOTE remained ACTIVE or DISPLAY_IDLE and never entered SYSTEM_SLEEP. Its RTCP close count increased by 158, session by 153 and attempts by 158; all 56 samples containing a close-count change retained `network_lost`. At the same time, the network manager remained CONNECTED with zero reconnects and zero errors.
 
-Source inspection proves the cause: `network_manager::read_status()` deliberately performs a zero-wait mutex acquisition and returns `false` during ordinary snapshot contention, while `rtcp_client::Client::poll()` combines that transient unavailability with `!net.connected` and immediately closes an established socket as `network_lost`. TUNER consequently records peer EOF. The minimum correction is to distinguish status-unavailable from an explicit disconnected snapshot: retain the socket and poll again on transient read failure, but preserve immediate closure for an authoritative disconnected status. Targeted contention/disconnect/sleep/session tests and a production REMOTE build are required before another installation. No correction has yet been implemented.
+Source inspection proves the cause: `network_manager::read_status()` deliberately performs a zero-wait mutex acquisition and returns `false` during ordinary snapshot contention, while `rtcp_client::Client::poll()` combines that transient unavailability with `!net.connected` and immediately closes an established socket as `network_lost`. TUNER consequently records peer EOF. The minimum correction is to distinguish status-unavailable from an explicit disconnected snapshot: retain the socket and poll again on transient read failure, but preserve immediate closure for an authoritative disconnected status. At that diagnostic checkpoint, no correction had been implemented; the implemented result follows below.
+
+## REMOTE lifecycle correction
+
+The private REMOTE client now distinguishes unavailable, usable, disconnected and generation-changed network observations with one fixed-state gate. Status unavailability does not mutate the generation baseline or transport. Confirmed disconnection still closes immediately. A generation change closes an active transport, while wake/reconnect with no active socket adopts the new generation before connecting. Existing close reasons, session fencing, retry policy, timeouts, crypto, wire format, pairing and volume semantics are unchanged.
+
+Focused verification passed: network gate 15 checks/142 assertions; lifecycle policy 13 checks; RTCP diagnostics 9, I/O classification 5, connect readiness 9, association/wire 11; power 19/19 with 19,236 assertions; network sleep 9/9 with 5,062 assertions; boundary audit 1/1 with 21 assertions. The one production build passed at 2,525,808 bytes, SHA-256 `1ca95a1abe31e990d28d125f0994610f88dc554efa8acb744cef866759033477`, 619,920 bytes slot headroom and 47,388 bytes static RAM. No hardware was accessed. The next gate is owner authorization for application-only REMOTE installation and a passive paired stability retest.

@@ -1,0 +1,53 @@
+{
+  "task": "A-REMOTE-012",
+  "recorded_utc": "2026-10-17T18:12:03Z",
+  "coordination_input": "6ed4f4868e974494190e096a39a4d6713f4d4a52",
+  "scope": "REMOTE false network-loss teardown correction",
+  "implementation": {
+    "status_unavailable": "retain current transport and wait for a later status sample",
+    "confirmed_disconnected": "close immediately with network_lost and invalidate the session",
+    "connected_generation_changed": "close an active transport immediately with network_lost",
+    "wake_without_active_transport": "adopt the current network generation before reconnecting",
+    "dynamic_allocation": false,
+    "protocol_or_timeout_change": false
+  },
+  "changed_private_files": [
+    "components/rtcp_client/client.cpp",
+    "components/rtcp_client/include/rtcp_client/client.hpp",
+    "components/rtcp_client/include/rtcp_client/network_status.hpp",
+    "tests/rtcp_client/network_status_tests.cpp",
+    "tests/rtcp_client/lifecycle_policy_tests.py"
+  ],
+  "tests": {
+    "network_status_gate": {"passed": 15, "failed": 0, "assertions": 142},
+    "lifecycle_policy": {"passed": 13, "failed": 0},
+    "rtcp_diagnostic": {"passed": 9, "failed": 0},
+    "rtcp_io_status": {"passed": 5, "failed": 0},
+    "connect_readiness": {"passed": 9, "failed": 0},
+    "association_and_wire": {"passed": 11, "failed": 0},
+    "power_lifecycle": {"passed": 19, "failed": 0, "assertions": 19236},
+    "network_sleep": {"passed": 9, "failed": 0, "assertions": 5062},
+    "network_sleep_boundary": {"passed": 1, "failed": 0, "assertions": 21}
+  },
+  "production_build": {
+    "environment": "remote01",
+    "platform": "Espressif32 6.13.0",
+    "framework": "ESP-IDF 5.5.3",
+    "result": "PASS",
+    "firmware_bytes": 2525808,
+    "firmware_sha256": "1ca95a1abe31e990d28d125f0994610f88dc554efa8acb744cef866759033477",
+    "application_offset": "0x10000",
+    "application_slot_bytes": 3145728,
+    "application_headroom_bytes": 619920,
+    "linked_flash_bytes": 2525305,
+    "static_ram_bytes": 47388,
+    "static_ram_capacity_bytes": 327680
+  },
+  "hardware": {
+    "accessed": false,
+    "flashed": false,
+    "installed_remote_firmware_unchanged": "a421cb73411a19bf650c78de6bf048faf6e4ac65019f4180ab3de097c40cd798",
+    "tuner_modified": false
+  },
+  "status": "SOFTWARE PASS; HARDWARE INSTALLATION PENDING OWNER APPROVAL"
+}

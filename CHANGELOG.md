@@ -622,3 +622,9 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 - Installed only the 2,525,696-byte REMOTE lifecycle diagnostic application at `0x10000`; independent full-span readback matched SHA-256 `a421cb73411a19bf650c78de6bf048faf6e4ac65019f4180ab3de097c40cd798`.
 - Normal boot, retained stored Wi-Fi, valid voltage telemetry and RTCP startup passed. During a 313-second no-input window, all 61 read-only status samples succeeded and REMOTE never entered system sleep, yet close count increased by 158, session by 153 and every sampled close transition retained reason `network_lost`.
 - Network diagnostics remained connected with zero reconnects and zero errors. Source inspection confirms `network_manager::read_status()` is a zero-wait mutex snapshot; `Client::poll()` incorrectly treats transient snapshot contention as actual network loss and closes the established socket. This explains the retained TUNER peer-EOF pattern. No correction, TUNER write or control command was performed; PR #18 remains open.
+
+# 2026-10-17 -- A-REMOTE-012 false network-loss correction built
+
+- Corrected only the REMOTE RTCP network-status gate. A transient zero-wait status snapshot miss now leaves the transport unchanged; an authoritative disconnected snapshot and a connected network-generation change still close the active socket with the existing `network_lost` reason and session invalidation.
+- Added fixed-state deterministic coverage for contention, sustained connectivity, confirmed loss, generation change and wake adoption. Affected RTCP, power and network-sleep checks passed.
+- The single `remote01` production build passed: 2,525,808 bytes, SHA-256 `1ca95a1abe31e990d28d125f0994610f88dc554efa8acb744cef866759033477`, 619,920 bytes application-slot headroom and unchanged 47,388-byte static RAM. No REMOTE or TUNER hardware was accessed or flashed; installation remains separately gated.
