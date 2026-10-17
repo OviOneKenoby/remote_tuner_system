@@ -1,7 +1,7 @@
 # A-REMOTE-012: Low-Latency Volume Control
 
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: REMOTE LIFECYCLE DIAGNOSTIC BUILD READY / HARDWARE PENDING
+- State: REMOTE LIFECYCLE ROOT CAUSE CONFIRMED / CORRECTION PENDING
 - Coordination baseline: `437e79cdfd6b7febf001271a32467191d84b20d2`
 - TUNER source baseline: `18ddd3b16e305341f338afebd7dc725500ecbb73`
 - TUNER candidate source: `073b65963e3ed8e3438bc34134f5a903fce995de`
@@ -9,7 +9,7 @@
 - Engineering targets on a healthy local network: first and continued audible response under 100 ms; final 15-detent target within 250 ms after the last detent; clearly provisional local UI response under 50 ms.
 - Scope: private REMOTE target accumulation, RTCP scheduling and provisional UI; public TUNER RTCP cadence, local encoder/audio scheduling, deferred e-paper feedback and bounded timing evidence; focused/integration regression; production builds; reversible commissioning plan.
 - Exclusions: physical flashing, pairing/NVS/partition changes, CCM or RTCP wire changes, AAC/AAC+, unassigned physical-button actions, intermittent QMI8658 motion-wake work, UI redesign and unrelated refactoring.
-- Acceptance: software verification and exact application installation are complete. The required awake paired stability observation failed; physical audible/UI timing and MP3/A2DP/web-manager coexistence remain blocked pending a separately authorized lifecycle correction.
+- Acceptance: software verification and exact diagnostic application installation are complete. The bounded hardware observation confirmed a REMOTE network-status sampling defect; physical audible/UI timing and MP3/A2DP/web-manager coexistence remain blocked pending a separately authorized correction and stability retest.
 - Rollback baseline: REMOTE 2,523,936-byte application, SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`; TUNER 2,034,800-byte application, SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`. Both remain private and independently retained.
 
 ## Result
@@ -57,3 +57,11 @@ The private diagnostic candidate retains the last explicit close reason and a sa
 Affected tests passed, including repeated authoritative snapshot parsing, timeout/EOF/error classification, session invalidation, sleep/wake fencing, network pause/resume and stale-intent rejection. The production `remote01` build passed at 2,525,696 bytes with SHA-256 `a421cb73411a19bf650c78de6bf048faf6e4ac65019f4180ab3de097c40cd798`, 620,032 bytes of the 3 MiB application slot free and unchanged 47,388-byte static RAM. No device was accessed or flashed.
 
 The minimum hardware validation is application-only installation after normal rollback preflight, exact readback, then one bounded awake observation with no input. Capture initial/final REMOTE `rtcp_close_reason`, `rtcp_close_count`, session/power/network counters and matching TUNER connection/EOF counters. Stop after the first classified recurrence. Only that observation can select a correction; volume-performance tests remain blocked until stable fresh authority is restored.
+
+## Confirmed REMOTE lifecycle defect
+
+The approved 2,525,696-byte diagnostic application was installed only at `0x10000`; independent readback matched SHA-256 `a421cb73411a19bf650c78de6bf048faf6e4ac65019f4180ab3de097c40cd798`. Local and separate-USB rollback sets passed their recorded size/hash checks, and the previously installed 2,525,168-byte application was preserved with its expected hash.
+
+Across 313 seconds, all 61 read-only HTTP samples succeeded. REMOTE remained ACTIVE or DISPLAY_IDLE and never entered SYSTEM_SLEEP. Its RTCP close count increased by 158, session by 153 and attempts by 158; all 56 samples containing a close-count change retained `network_lost`. At the same time, the network manager remained CONNECTED with zero reconnects and zero errors.
+
+Source inspection proves the cause: `network_manager::read_status()` deliberately performs a zero-wait mutex acquisition and returns `false` during ordinary snapshot contention, while `rtcp_client::Client::poll()` combines that transient unavailability with `!net.connected` and immediately closes an established socket as `network_lost`. TUNER consequently records peer EOF. The minimum correction is to distinguish status-unavailable from an explicit disconnected snapshot: retain the socket and poll again on transient read failure, but preserve immediate closure for an authoritative disconnected status. Targeted contention/disconnect/sleep/session tests and a production REMOTE build are required before another installation. No correction has yet been implemented.
