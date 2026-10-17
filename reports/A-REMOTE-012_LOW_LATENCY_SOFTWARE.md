@@ -2,7 +2,7 @@
 
 ## Verdict
 
-**HARDWARE INSTALLED / RTCP POST-IDENTITY SYNCHRONIZATION BLOCKED.** The pre-commissioning software and rollback verification remain valid, both candidate applications passed exact readback, and TUNER local audible response is fast. Paired REMOTE control acceptance cannot proceed because no first state snapshot becomes authoritative after capability acceptance. The exact server/transport boundary requires bounded TUNER diagnostics before a behavioral correction is justified.
+**DIAGNOSTIC CANDIDATE READY / HARDWARE DIAGNOSIS PENDING.** The pre-commissioning software and rollback verification remain valid, both low-latency applications passed exact readback, and TUNER local audible response is fast. Paired REMOTE control acceptance remains blocked because no first state snapshot becomes authoritative after capability acceptance. A bounded TUNER diagnostic candidate is now built to locate the exact server/transport boundary; it has not been installed and does not claim a root-cause correction.
 
 ## Post-installation diagnostic update
 
@@ -13,6 +13,31 @@ The first proven failure boundary is therefore **after accepted capabilities and
 TUNER was observed with 2,304 bytes of free internal heap and a 948-byte largest block. This is serious resource pressure, but it is not proof of causation: identity and capability responses completed under the same firmware, no allocation-failure evidence is exposed by the current read-only web diagnostics, and no source-level allocation failure was observed. The server uses fixed 556-byte receive/transmit members and bounded 512-byte stack buffers. Current diagnostics do not identify whether the snapshot request reached TUNER, response construction or the single-call socket write failed, the session closed, or REMOTE received and rejected a snapshot.
 
 The minimum safe next action is a separately authorized, bounded TUNER diagnostic correction before changing transport behavior: fixed counters/state for application request kind, snapshot dispatch, response construction, requested/written byte counts, close reason, and allocation-failure count delta with free/largest internal heap sampled only on failure. Expected persistent RAM impact is approximately 48-64 bytes with no dynamic allocation. Focused tests should cover identity/capability/snapshot progression, partial/failed response writes, timeout/EOF closure, counter saturation and secret-free serialization. If that evidence proves a partial socket write, the subsequent correction should use a bounded fixed-buffer transmit offset and existing deadline; if it proves allocation pressure, memory should be recovered from demonstrated owners rather than relaxing RTCP security or CCM admission.
+
+## Post-identity diagnostic candidate
+
+The authorized TUNER-only diagnostic source change is complete at commit `fda5f1ad1e5ebb9e83238cdbaa3ad79564e40842`. A fixed 60-byte state object records only bounded enums, counters, requested/written response lengths, internal free/largest heap and allocation-failure count deltas. It retains no payload, key, nonce, proof, pairing identifier, address or device identity and performs no dynamic diagnostic allocation. The existing serial `x` snapshot prints one compact `rtcp_diag` line; the web diagnostics document was deliberately not enlarged under the observed heap pressure.
+
+Instrumentation covers accepted connections, accepted client finish, received application request type, snapshot requests/completions, response build and exact socket-write byte count, partial/zero writes, timeout/EOF and validation close categories, heap at accept/request/close, and allocation failures occurring across the application-response write. Protocol framing, cryptography, counters, timeouts, connection policy, audio and volume behavior are unchanged.
+
+Focused results:
+
+- RTCP diagnostic state model: 11/11 PASS, including normal identity/capability/snapshot progression, partial write, zero write, allocation delta, timeout, EOF and saturation.
+- Diagnostic integration/redaction policy: 14/14 PASS.
+- Existing RTCP scheduling policy: 9/9 PASS.
+- Existing CCM wire regression: 16/16 PASS.
+
+One production build using `esp32-lwip-psram` and board `esp32dev` passed. The exact private firmware artifact is 2,036,992 bytes, SHA-256 `18d59b75cbf481b517b09fd274207e2271cdd42a0a146f56eafeca2e8a1196d3`; its application-slot headroom is 1,108,736 bytes. Static RAM is 87,512 / 327,680 bytes, an increase of 64 bytes over the installed A-REMOTE-012 candidate and 104 bytes over A-REMOTE-011. The private ELF SHA-256 is `c32bc7023b6ea91b1deee96e1a3b568d2813aa703cc9db9f41cc959bb55db2`; map SHA-256 is `ecba389e4b77e4a7ee3f2f1c8556de2aa23c5e33127bd901c1b3bc3814591281`.
+
+### Minimal commissioning procedure
+
+1. Separately authorize TUNER hardware access. Verify the physical TUNER, current installed A-REMOTE-012 application, retained exact rollback and candidate size/hash.
+2. Write only the 2,036,992-byte (`0x1F1500`) TUNER application at `0x10000`; do not erase or write bootloader, partition table, OTA metadata, default NVS or pairing. Read back exactly that range and require the candidate SHA-256.
+3. Boot normally with REMOTE powered. Send no control command and do not rotate either encoder. Allow only the existing automatic connection attempt.
+4. Capture one existing read-only serial `x` snapshot after the attempt. Preserve the private full capture and publish only the compact diagnostic counters.
+5. Interpret the first boundary once: no snapshot request means REMOTE did not deliver it; a request without completion plus partial/failed bytes identifies response transmission; a positive allocation delta identifies an observed allocation failure; a completed snapshot with REMOTE still unknown moves the boundary to REMOTE receipt/admission; timeout/EOF records the close category. Stop after the observation without reconnect loops or speculative correction.
+
+No hardware operation was performed for this diagnostic candidate, and no root-cause fix is claimed.
 
 ## Verified cause
 

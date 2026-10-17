@@ -585,3 +585,9 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 - REMOTE reached authenticated identity and accepted the capability response, but no first snapshot became authoritative; `volume.level` stayed unknown and `volume.set` unavailable. Later automatic reconnects ended after client hello with EOF. The first proven boundary is after capability acceptance and before first-snapshot admission.
 - A source comparison found no A-REMOTE-012 change to RTCP framing, crypto, identity, capability or snapshot encoding. TUNER internal heap was observed at 2,304 bytes free with a 948-byte largest block, but current evidence contains no allocation failure or causal link. The exact cause remains unproven.
 - No source/build/flash/pairing/NVS/partition/control operation occurred during this diagnosis. The minimum next step is separately authorized bounded TUNER stage/write/close/allocation-failure instrumentation; PR #18 remains open and unmerged.
+
+# 2026-10-17 -- A-REMOTE-012 bounded TUNER snapshot diagnostics
+
+- Added a fixed 60-byte, secret-free TUNER RTCP diagnostic state at source commit `fda5f1ad1e5ebb9e83238cdbaa3ad79564e40842`; it records request progression, snapshot completion, exact response-write counts, close category, heap observations and allocation-failure deltas through the existing read-only serial snapshot. No protocol, crypto, audio, pairing or volume behavior changed.
+- Focused diagnostic model 11/11, integration/redaction 14/14, existing RTCP scheduling 9/9 and CCM wire 16/16 PASS. One `esp32-lwip-psram` production build passed.
+- Candidate: 2,036,992 bytes, SHA-256 `18d59b75cbf481b517b09fd274207e2271cdd42a0a146f56eafeca2e8a1196d3`, 1,108,736 bytes slot headroom and 87,512 bytes static RAM. No device access or flash occurred; root cause remains unproven and installation is separately gated.

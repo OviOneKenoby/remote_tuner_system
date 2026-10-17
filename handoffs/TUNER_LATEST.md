@@ -1,63 +1,63 @@
 # TUNER//01 handoff
 
 ## Metadata
-- Handoff ID: TUNER-A-REMOTE-012-SNAPSHOT-BOUNDARY-UNKNOWN-20261017T070350Z
-- Updated (UTC): 2026-10-17T07:03:50Z
+- Handoff ID: TUNER-A-REMOTE-012-POST-IDENTITY-DIAGNOSTIC-BUILD-20261017T071246Z
+- Updated (UTC): 2026-10-17T07:12:46Z
 - Task ID: A-REMOTE-012
-- Status: BLOCKED
+- Status: READY FOR HARDWARE DIAGNOSTIC REVIEW
 - Prepared by: coordinated A-REMOTE-012 executor
-- Coordination input commit: efb136350cefc9491dd1bdd41632f729e54f35b9
+- Coordination input commit: c070cd941e2a639988c864f8bc9b53bc27c7e47f
 
 ## Milestone
-Validate low-latency local and REMOTE volume control. TUNER installation and local audible response passed, but paired RTCP synchronization stops after capability acceptance and before a first authoritative snapshot.
+Add the smallest bounded evidence needed to locate the first post-capability snapshot failure. Source, focused tests and production build pass; installation is not authorized or run.
 
 ## Baseline
 - Device repository: https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio
 - Branch: `a-remote-012-low-latency`
-- Firmware baseline commit: 18ddd3b16e305341f338afebd7dc725500ecbb73
-- Firmware version: v1.1.11 plus A-REMOTE-012 candidate commit `5391beef5e7ba264362ea19f2fdd93202308fa55`
-- Working tree at start: clean; no source modification during this diagnosis
-- Contract references: CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 Phase 2 profile; coordination input `efb136350cefc9491dd1bdd41632f729e54f35b9`
+- Firmware baseline commit: 5391beef5e7ba264362ea19f2fdd93202308fa55
+- Firmware version: v1.1.11 plus A-REMOTE-012
+- Working tree at start: clean; final source commit `fda5f1ad1e5ebb9e83238cdbaa3ad79564e40842`
+- Contract references: CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 Phase 2; coordination input `c070cd941e2a639988c864f8bc9b53bc27c7e47f`
 
 ## Changes
-Documentation only. No TUNER source, configuration, pairing, partition or firmware change occurred.
+Added `src/rtcp_diagnostics.h`, integrated its fixed 60-byte state in `src/rtcp_server.h/.cpp`, and exposed one compact line through the existing serial snapshot in `src/main.cpp`. Added focused model and redaction/integration tests. The state records bounded request type, snapshot progression, response requested/written bytes, partial/failed writes, close reason, heap and allocation-failure delta. It stores no secret or payload and performs no dynamic diagnostic allocation.
 
 ## Verification
 | Check | Command/procedure | Environment | Result | Evidence |
 | --- | --- | --- | --- | --- |
-| Installed candidate | Prior application-only write and exact-length readback | classic ESP32, 4 MiB | PASS; 2,036,000 bytes, SHA-256 `0680e8f2c6bfb8b1149ab1a8baec56fa80a7995d0401bf74463ff1f0d1143c1a` | Owner-authorized commissioning record; private readback retained |
-| Local volume behavior | Owner physical observation | installed A-REMOTE-012 TUNER | PASS for rapid audible response; e-paper remains slower | `reports/A-REMOTE-012_LOW_LATENCY_SOFTWARE.md` |
-| RTCP progression | Existing REMOTE read-only diagnostics | Paired private LAN | Identity and capability acceptance PASS; first snapshot unavailable | `reports/A-REMOTE-012_LOW_LATENCY_SOFTWARE.md` |
-| Resource observation | Existing TUNER read-only diagnostics | MP3 playback/runtime | 2,304 bytes internal free, 948-byte largest block; causal link NOT VERIFIED | `reports/A-REMOTE-012_LOW_LATENCY_SOFTWARE.md` |
-| Source comparison | `git diff` from A-011 baseline to candidate | TUNER public source | No RTCP framing, crypto, identity, capability or snapshot encoding change | `reports/A-REMOTE-012_LOW_LATENCY_SOFTWARE.md` |
+| Diagnostic model | native compile/run `tests/test_rtcp_diagnostics.cpp` | GCC 16.2.0, C++17 | PASS 11/11 | `references/device_evidence/remote/A-REMOTE-012/POST_IDENTITY_DIAGNOSTICS_BUILD.json` |
+| Integration/redaction | `python tests/test_rtcp_diagnostics_policy.py` | Python 3.13 | PASS 14/14 | same evidence |
+| RTCP scheduling regression | `python tests/test_rtcp_latency_policy.py` | Python 3.13 | PASS 9/9 | same evidence |
+| CCM wire regression | native `test_ccm_wire.cpp` plus `src/ccm_wire.cpp` | GCC 16.2.0, C++17 | PASS 16/16 | same evidence |
+| Production build | PlatformIO `run -e esp32-lwip-psram` | Espressif32 7.0.1, board `esp32dev` | PASS; 2,036,992 bytes, SHA-256 `18d59b75cbf481b517b09fd274207e2271cdd42a0a146f56eafeca2e8a1196d3` | same evidence |
 
 ## Remaining unknowns
-Current server diagnostics do not expose application request kind, snapshot dispatch, write byte count, close reason or allocation-failure delta. They cannot determine whether the snapshot request arrived, the response was built/written, or the transport closed. Low heap alone is not accepted as root cause.
+Hardware has not shown which new counter/stage stops. Root cause remains unknown. The observed 2,304-byte free heap and 948-byte largest block remain non-causal evidence until allocation/write diagnostics demonstrate a relationship.
 
 ## Shared-contract impact
 - CCM 1.0.0: NO CHANGE; CCM 1.1.0 remains frozen.
 - TUNER Native API v1: NO CHANGE.
-- Other device impact: REMOTE remains fail-closed with volume unknown and no control capability.
-- Approval evidence: owner authorized read-only diagnosis; no further source/build/flash scope is implied.
+- Other device impact: no wire or behavior change; REMOTE needs no firmware change for diagnosis.
+- Approval evidence: owner authorized diagnostic source changes, tests and production build only.
 
 ## Blockers
-The first snapshot transition is not observable on TUNER. A minimum bounded diagnostic source/build step requires separate owner authorization; installation would require another explicit authorization.
+Application installation and one passive automatic-handshake observation require separate owner authorization.
 
 ## PM decision required
-Authorize or reject fixed secret-free counters/state for request type, response construction/write, close reason and allocation-failure delta. Estimated static RAM: 48-64 bytes; dynamic allocation: none.
+Authorize or reject application-only installation at `0x10000`, exact readback and one serial `x` snapshot with no control commands.
 
 ## Recommended next task
-Implement the bounded diagnostics, test identity/capability/snapshot progression plus partial/failed writes and timeout/EOF closure, then perform one production build. Preserve protocol behavior and existing rollback artifacts.
+Follow the five-step minimal commissioning procedure in `reports/A-REMOTE-012_LOW_LATENCY_SOFTWARE.md`, then stop with the first proven server/transport boundary.
 
 ## Commit
-- Firmware result commit(s): `5391beef5e7ba264362ea19f2fdd93202308fa55`
-- Device changelog: coordination `CHANGELOG.md`; TUNER source unchanged
+- Firmware result commit(s): `fda5f1ad1e5ebb9e83238cdbaa3ad79564e40842`
+- Device changelog: TUNER `CHANGELOG.md` and coordination `CHANGELOG.md`
 - Coordination publication: branch `remote/a-remote-012-low-latency`, PR #18; final hash reported after publication
-- Previous handoff archive: `archive/tuner/2026-10-17T070350Z_A-REMOTE-012_TUNER-PRECOMMISSIONING-READY.md`
+- Previous handoff archive: `archive/tuner/2026-10-17T071246Z_A-REMOTE-012_TUNER-SNAPSHOT-BOUNDARY-UNKNOWN.md`
 
 ## Hardware status
-- Physical device tested: YES
-- Board / hardware configuration: accepted classic ESP32 TUNER, 4 MiB flash, `esp32-lwip-psram` production profile
-- Procedure and result: installation/readback PASS; normal boot and fast local audible response observed; paired first-snapshot synchronization BLOCKED
-- Firmware actually flashed: A-REMOTE-012 application from `5391beef5e7ba264362ea19f2fdd93202308fa55`, 2,036,000 bytes, SHA-256 `0680e8f2c6bfb8b1149ab1a8baec56fa80a7995d0401bf74463ff1f0d1143c1a`, at `0x10000`
-- Build-only or simulated checks: preserved in `reports/A-REMOTE-012_LOW_LATENCY_SOFTWARE.md`; none repeated
+- Physical device tested: NO for this candidate
+- Board / hardware configuration: accepted classic ESP32 TUNER, 4 MiB flash, `esp32-lwip-psram`
+- Procedure and result: source/test/build PASS; commissioning NOT RUN
+- Firmware actually flashed: installed A-REMOTE-012 candidate remains unchanged
+- Build-only or simulated checks: 11/11 + 14/14 + 9/9 + 16/16 PASS; production build PASS; static RAM 87,512 bytes; headroom 1,108,736 bytes
