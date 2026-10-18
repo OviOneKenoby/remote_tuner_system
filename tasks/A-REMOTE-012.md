@@ -1,15 +1,15 @@
 # A-REMOTE-012: Low-Latency Volume Control
 
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: FINAL ACCEPTANCE BLOCKED / A2DP COEXISTENCE REGRESSION REPRODUCED
+- State: ACCEPTED / READY FOR MERGE
 - Coordination baseline: `437e79cdfd6b7febf001271a32467191d84b20d2`
 - TUNER source baseline: `18ddd3b16e305341f338afebd7dc725500ecbb73`
-- TUNER candidate source: `073b65963e3ed8e3438bc34134f5a903fce995de`
+- TUNER final source: `24395bad10bbca23da5de75062faaf423c453ada`
 - Objective: make EC11 volume control feel like a local control while retaining CCM 1.1.0 and RTCP/1 authority, correlation, replay protection, session fencing and fail-closed behavior.
-- Engineering targets on a healthy local network: first and continued audible response under 100 ms; final 15-detent target within 250 ms after the last detent; clearly provisional local UI response under 50 ms.
+- Engineering targets were used during development. For final A-REMOTE-012 acceptance, quantitative latency measurement is OWNER WAIVED; the owner accepts the observed functional encoder, UI and audible response. The waiver does not apply automatically to later milestones.
 - Scope: private REMOTE target accumulation, RTCP scheduling and provisional UI; public TUNER RTCP cadence, local encoder/audio scheduling, deferred e-paper feedback and bounded timing evidence; focused/integration regression; production builds; reversible commissioning plan.
 - Exclusions: physical flashing, pairing/NVS/partition changes, CCM or RTCP wire changes, AAC/AAC+, unassigned physical-button actions, intermittent QMI8658 motion-wake work, UI redesign and unrelated refactoring.
-- Acceptance: both final applications are installed with exact readback evidence. Rapid ten-detent reconciliation, direction reversal, Wi-Fi reprovisioning with pairing retention, normal sleep/wake reconnection and post-wake encoder volume control are hardware PASS. The uninterrupted five-minute ACTIVE RTCP window and MP3 coexistence now pass. Quantitative first-response/15-detent/UI timing remains not measurable, and current-firmware Bluetooth A2DP disables TUNER web/RTCP reachability in the reproduced run; both remain mandatory blockers before merge.
+- Acceptance: OWNER ACCEPTED / READY FOR MERGE. Final applications have exact readback evidence. Rapid volume reconciliation, direction reversal, uninterrupted ACTIVE RTCP stability, MP3 coexistence, post-fix Bluetooth A2DP/web/RTCP coexistence, pairing retention and sleep/wake recovery are hardware PASS. Quantitative latency is WAIVED BY OWNER and was not measured.
 - Rollback baseline: REMOTE 2,523,936-byte application, SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`; TUNER 2,034,800-byte application, SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`. Both remain private and independently retained.
 
 ## Result
@@ -72,7 +72,7 @@ The private REMOTE client now distinguishes unavailable, usable, disconnected an
 
 Focused verification passed: network gate 15 checks/142 assertions; lifecycle policy 13 checks; RTCP diagnostics 9, I/O classification 5, connect readiness 9, association/wire 11; power 19/19 with 19,236 assertions; network sleep 9/9 with 5,062 assertions; boundary audit 1/1 with 21 assertions. The one production build passed at 2,525,808 bytes, SHA-256 `1ca95a1abe31e990d28d125f0994610f88dc554efa8acb744cef866759033477`, 619,920 bytes slot headroom and 47,388 bytes static RAM. No hardware was accessed. The next gate is owner authorization for application-only REMOTE installation and a passive paired stability retest.
 
-## Final hardware review
+## Historical pre-fix final hardware review
 
 The final REMOTE sleep-lifecycle application is installed: 2,526,848 bytes, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`, with 618,880 bytes OTA headroom and 47,388 bytes static RAM. TUNER remains the accepted 2,037,152-byte `esp32-lwip-psram` application from commit `073b65963e3ed8e3438bc34134f5a903fce995de`, SHA-256 `19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8`, with 1,108,576 bytes slot headroom and 87,512 bytes static RAM.
 
@@ -84,10 +84,22 @@ After automatic SYSTEM_SLEEP, REMOTE reconnected and the physical encoder again 
 
 This is a partial final acceptance. The five-minute observation was interrupted by SYSTEM_SLEEP and is not an awake-stability test. Quantitative hardware evidence for first audible response below 100 ms, the final 15-detent target within 250 ms, and provisional UI response below 50 ms is still absent. Current-firmware MP3 playback and Bluetooth A2DP with the web manager active also remain unverified. PR #18 is therefore not ready to merge; no additional diagnosis or firmware change is warranted unless one of these bounded tests reproduces a defect.
 
-## Final hardware acceptance execution — 2026-10-18
+## Historical pre-fix final hardware acceptance execution ? 2026-10-18
 
 The uninterrupted ACTIVE test passed for 307 seconds: 61/61 status samples were successful and ACTIVE; RTCP close, attempt and session counters had zero deltas; fresh volume authority remained available. MP3 coexistence also passed with owner-confirmed uninterrupted audio, 31/31 TUNER web responses, 31/31 REMOTE responses and no RTCP or allocation regression.
 
 The installed firmware cannot quantitatively measure the three latency targets. It has no synchronized physical-detent, audible-output and display-update timestamps. This criterion is **BLOCKED / NOT MEASURABLE**, not PASS. The minimum non-firmware method is synchronized high-speed video/audio capture with a visible encoder marker; otherwise separately approved instrumentation is required.
 
 Bluetooth A2DP coexistence is **FAIL / BLOCKED**. During owner-confirmed audible playback, all ten bounded TUNER web requests timed out, RTCP never became READY, REMOTE close count increased by 16 and attempts by 15, while REMOTE HTTP/Wi-Fi remained healthy. TCP 46411, the source-defined TUNER RTCP listener, timed out once. This proves a TUNER-side network/service availability boundary before RTCP handshake, but not its internal cause. A subsequent COM5 open unexpectedly reset TUNER through the USB serial bridge; no persistent data changed, and web service recovered for 12/12 post-boot checks. PR #18 remains NO-GO and unmerged.
+
+## Final acceptance ? 2026-10-18
+
+A-REMOTE-012 is **ACCEPTED — READY FOR MERGE**. Historical FAIL sections above remain the record of pre-fix behavior and are not reclassified.
+
+The TUNER A2DP/network failure was reproduced with internal free heap falling from 102,308 to 10,224 bytes while Arduino-ESP32 initialized the compile-time BTDM controller for a Classic-only A2DP use case. TUNER commit 24395bad10bbca23da5de75062faaf423c453ada releases unused BLE controller memory before first Bluetooth initialization and explicitly initializes/enables Classic mode while preserving the restartable A2DP lifecycle.
+
+The installed TUNER application is 2,037,648 bytes at `0x10000`, SHA-256 6310a960f96c382d653a5b44f1b8e828f15985b59a40111308c475cf084c72a1, with 1,108,080 bytes slot headroom and 87,512 bytes static DRAM. Independent exact-span readback, normal boot, retained configuration/pairing and rollback preflight passed. REMOTE remains the verified 2,526,848-byte application at `0x10000`, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`, with 618,880 bytes OTA headroom and 47,388 bytes static RAM.
+
+Final hardware evidence: uninterrupted ACTIVE RTCP 307 seconds/61 samples with zero close, attempt or session delta; MP3 coexistence 12/12 final and 31/31 extended checks; post-fix A2DP 24/24 TUNER diagnostics and web-manager responses, zero Wi-Fi disconnect/lost-IP delta, audible playback, automatic RTCP recovery after REMOTE wake, and stable session 20 after recovery. One transient freshness interval recovered on the next sample without reconnect. No stronger continuous guarantee is claimed.
+
+**Quantitative latency: WAIVED BY OWNER — functional responsiveness accepted on hardware.** The earlier <100 ms, <250 ms and <50 ms targets were not measured or claimed as passed. This waiver applies only to A-REMOTE-012.

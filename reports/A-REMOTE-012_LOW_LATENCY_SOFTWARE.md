@@ -1,8 +1,8 @@
-﻿# A-REMOTE-012 low-latency volume control - software validation and commissioning plan
+# A-REMOTE-012 low-latency volume control - software validation and commissioning plan
 
 ## Verdict
 
-**CONNECTION-STABILITY CORRECTION BUILT / HARDWARE VALIDATION REQUIRED.** Later installed diagnostics prove repeated successful authentication and snapshots together with deadline-driven disconnects during long TUNER application-loop turns. The smallest source correction services RTCP cooperatively during synchronous e-paper BUSY waits and preserves every protocol, security and ownership invariant. Build and focused regression evidence pass; the correction is not installed and physical stability remains unverified.
+**ACCEPTED ? READY FOR MERGE.** Final hardware acceptance covers uninterrupted ACTIVE RTCP stability, rapid volume correctness, MP3 coexistence, and post-fix Bluetooth A2DP web/RTCP coexistence for the recorded windows. TUNER commit `24395bad10bbca23da5de75062faaf423c453ada` is installed with exact readback. Quantitative latency is WAIVED BY OWNER for A-REMOTE-012 and was not measured. Historical failures and corrections below remain preserved.
 
 ## RTCP connection-instability root cause and correction
 
@@ -260,7 +260,7 @@ The focused deterministic suite passed 9/9 with 238 assertions. It compares iden
 
 Minimum hardware validation remains application-only installation after the existing rollback/device preflight and exact readback, followed by one isolated 53% to 43% ten-detent test and one rapid direction reversal. Record before/after detent, accepted-intent, dispatch, authoritative-volume and in-flight fields. Require every accepted detent in the final target, no residual in-flight state and no stale replay after one sleep/wake. Audible latency and MP3/A2DP/web-manager coexistence remain separate A-REMOTE-012 acceptance items.
 
-## Final validation review — 2026-10-18
+## Historical pre-fix final validation review ? 2026-10-18
 
 The final REMOTE sleep-lifecycle candidate is installed with its accepted identity: 2,526,848 bytes, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`, 618,880 bytes OTA headroom and 47,388 bytes static RAM. TUNER remains the installed 2,037,152-byte candidate from source commit `073b65963e3ed8e3438bc34134f5a903fce995de`, SHA-256 `19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8`, 1,108,576 bytes slot headroom and 87,512 bytes static RAM. CCM 1.1.0, RTCP/1 authenticated framing, counters, replay protection, one-in-flight fencing and old/new firmware wire compatibility remain unchanged.
 
@@ -288,11 +288,11 @@ The owner reports zero REMOTE Wi-Fi reconnects and errors after reprovisioning. 
 | E-paper feedback | KNOWN LIMITATION | Local audio changes rapidly; e-paper refresh remains visibly slower and is intentionally deferred. |
 | Motion wake | KNOWN SEPARATE LIMITATION | Intermittent QMI8658 initialization remains outside A-REMOTE-012 and is not a volume/RTCP merge criterion. |
 
-### Remaining merge gate
+### Historical pre-fix remaining merge gate
 
 PR #18 remains **NO-GO** pending only: (1) one uninterrupted five-minute awake RTCP window on the replacement WLAN with no unexplained session churn; (2) measured first-response, 15-detent settling and provisional-UI latency against the accepted targets; and (3) latest-firmware MP3 plus Bluetooth A2DP/web-manager coexistence. Do not start another investigation unless one of these bounded checks reproduces a functional failure.
 
-## Final hardware acceptance results — 2026-10-18
+## Historical pre-fix final hardware acceptance results ? 2026-10-18
 
 | Check | Result | Evidence |
 | --- | --- | --- |
@@ -303,3 +303,25 @@ PR #18 remains **NO-GO** pending only: (1) one uninterrupted five-minute awake R
 | Bluetooth A2DP plus web manager and RTCP | HARDWARE FAIL / BLOCKED | 0/10 TUNER web responses within three seconds; RTCP READY 0/10, +16 closes and +15 attempts; source-defined TCP 46411 probe timed out while REMOTE Wi-Fi/HTTP stayed healthy. |
 
 The first proven Bluetooth failure boundary is TUNER network/service availability before RTCP TCP acceptance. Source confirms the listener port is 46411 and both RTCP polling and web handling are main-loop services. Existing evidence does not distinguish Wi-Fi/BT coexistence loss from main-loop starvation or another TUNER runtime condition. An attempted COM5 diagnostic open unexpectedly reset TUNER through the USB serial bridge, invalidating collection of the pre-reset TUNER counters; no flash or persistent state changed. After boot, ping and web service passed 12/12 checks. No corrective development is authorized by this record. PR #18 remains **NO-GO**.
+
+## Final owner acceptance and post-fix coexistence ? 2026-10-18
+
+Historical failure evidence above remains unchanged. The confirmed A2DP outage correlated Classic A2DP activation with internal free heap falling from 102,308 to 10,224 bytes while Arduino-ESP32 initialized unused BLE resources through BTDM. Source commit 24395bad10bbca23da5de75062faaf423c453ada performs a one-time BLE memory release before controller initialization and starts the controller in Classic-only mode, retaining restartable A2DP shutdown/start behavior.
+
+The esp32-lwip-psram production build passed at 2,037,648 bytes, SHA-256 6310a960f96c382d653a5b44f1b8e828f15985b59a40111308c475cf084c72a1, 1,108,080 bytes application-slot headroom and 87,512 bytes static DRAM. Application-only installation and independent exact-span readback passed. Local and separate-storage rollback files matched their recorded sizes and hashes.
+
+| Criterion | Final classification | Evidence / limit |
+| --- | --- | --- |
+| Uninterrupted ACTIVE RTCP stability | HARDWARE PASS | 307 seconds; 61/61 samples; zero close, attempt and session delta; zero HTTP failure. |
+| Encoder and volume correctness | HARDWARE PASS | Individual/rapid/reversal behavior, exact authoritative reconciliation, no persistent in-flight state, and post-wake control verified. |
+| MP3 coexistence | HARDWARE PASS | Final 12/12 TUNER HTTP/web/REMOTE RTCP-ready observations; earlier extended 31/31 paired checks with uninterrupted audible playback. |
+| Bluetooth A2DP audibility | HARDWARE PASS | Owner confirmed active audible playback. |
+| Bluetooth A2DP web coexistence | HARDWARE PASS | Post-fix 24/24 TUNER diagnostics and 24/24 web-manager requests; zero Wi-Fi disconnect/lost-IP delta. |
+| Bluetooth A2DP RTCP coexistence | HARDWARE PASS for recorded window | REMOTE remained synchronized before sleep and recovered automatically after wake; session remained 20 in the post-wake window. One transient freshness interval cleared at the next sample without reconnect. |
+| Firmware installation/readback | HARDWARE PASS | Exact TUNER span 2,037,648 bytes at `0x10000` matched the accepted SHA-256; normal boot and services passed. |
+| RTCP security/protocol compatibility | SOURCE/HARDWARE PASS | No wire, cryptographic, pairing or CCM semantic change; authenticated synchronization and authoritative state observed. |
+| Quantitative latency | WAIVED BY OWNER | Functional responsiveness accepted on hardware. The <100/<250/<50 ms targets were not measured and are not claimed as passed. Waiver is limited to A-REMOTE-012. |
+| E-paper response | KNOWN LIMITATION | Display refresh remains slower than local audio response; accepted for this milestone. |
+| Motion wake | SEPARATE KNOWN LIMITATION | Intermittent QMI8658 initialization remains outside A-REMOTE-012. |
+
+Final disposition: **ACCEPTED — READY FOR MERGE**. Do not infer a stronger continuous A2DP RTCP guarantee than the recorded evidence. Rollback artifacts remain private and preserved.

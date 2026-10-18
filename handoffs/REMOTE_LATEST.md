@@ -1,37 +1,63 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-012-FINAL-ACCEPTANCE-2026-10-18T132935Z
-- Updated (UTC): 2026-10-18T13:29:35Z
+- Handoff ID: REMOTE-A-REMOTE-012-ACCEPTED-2026-10-18T165659Z
+- Updated (UTC): 2026-10-18T16:56:59Z
 - Task ID: A-REMOTE-012
-- Status: BLOCKED / NO-GO
-- Coordination input commit: `d9e573cb6cbd07368c877d711c97be27abc4ffb4`
+- Status: ACCEPTED
+- Prepared by: coordinated A-REMOTE-012 executor
+- Coordination input commit: `2aef37bcce307db450d164c456fefa6b9d219ba4`
 
-## Current result
-The uninterrupted five-minute ACTIVE RTCP test and MP3 coexistence test pass. Quantitative latency remains not measurable with current instrumentation. Bluetooth A2DP audio is audible, but TUNER web and RTCP services became unreachable, so the coexistence criterion fails and PR #18 is not ready to merge.
+## Milestone
+Complete low-latency volume correctness, transport lifecycle correction and paired hardware acceptance. Achieved at the owner-approved hobby/public-beta level; PR #18 is ready for merge review.
 
-## Validation matrix
-| Criterion | Classification | Evidence |
-| --- | --- | --- |
-| Uninterrupted ACTIVE RTCP stability | HARDWARE PASS | 307 s; 61/61 ACTIVE samples; zero close, attempt and session deltas; authority available. |
-| MP3 audio with REMOTE, RTCP and web manager | HARDWARE PASS | Owner confirmed uninterrupted audio; 31/31 TUNER web and REMOTE status responses; zero RTCP churn. |
-| Audible response <100 ms | BLOCKED / NOT MEASURABLE | No synchronized physical-input/audio timestamp. |
-| Fifteen-detent final authority <250 ms | BLOCKED / NOT MEASURABLE | No timestamp tied to the final physical detent and authoritative completion. |
-| Provisional UI <50 ms | BLOCKED / NOT MEASURABLE | No physical display-update timestamp. |
-| Bluetooth A2DP audibility | HARDWARE PASS | Owner confirmed connected, active and audible playback. |
-| Bluetooth A2DP plus web manager | HARDWARE FAIL | 0/10 bounded web requests completed within 3 s. |
-| Bluetooth A2DP plus RTCP | HARDWARE FAIL | READY 0/10; +16 closes, +15 attempts; TCP 46411 probe timed out. |
+## Baseline
+- Device repository: private REMOTE workspace; source is not published
+- Branch: NONE (Git-less private workspace)
+- Firmware baseline commit: UNKNOWN (Git-less); artifact identity is authoritative
+- Firmware version: 2,526,848 bytes, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`
+- Working tree at start: private source unchanged during final TUNER correction/acceptance
+- Contract references: CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 accepted binding
 
-## Failure boundary
-REMOTE remained ACTIVE, Wi-Fi connected and HTTP-responsive. Source defines TUNER RTCP on TCP 46411. Both that port and TUNER HTTP were unreachable during A2DP, locating the first proven boundary on TUNER before RTCP acceptance. The internal cause is unknown. Opening COM5 for the requested read-only diagnostic unexpectedly reset TUNER via CH340; pre-reset TUNER counters were lost. No persistent write occurred. TUNER ping/web recovered in 12/12 post-boot checks.
+## Changes
+NONE to REMOTE in final acceptance. Earlier A-REMOTE-012 REMOTE corrections and their history remain documented.
 
-## Required next decisions
-1. Keep PR #18 open and unmerged.
-2. Authorize only a bounded TUNER-side Bluetooth coexistence diagnosis if the regression is to be corrected. Capture diagnostics without opening a reset-inducing serial session, or configure the interface to avoid DTR/RTS transitions.
-3. Measure the latency targets with synchronized external equipment, or separately approve minimal firmware timing instrumentation.
+## Verification
+| Check | Command/procedure | Environment | Result | Evidence |
+| --- | --- | --- | --- | --- |
+| ACTIVE RTCP stability | 307-second continuous ACTIVE observation | Physical pair | PASS; 61/61, zero close/attempt/session delta | `references/device_evidence/remote/A-REMOTE-012/FINAL_ACCEPTANCE_POST_FIX_2026-10-18.json` |
+| Volume behavior | Physical rapid detents, reversal and post-wake use | Physical pair | PASS | same evidence |
+| MP3 coexistence | Bounded HTTP/RTCP observation with audible playback | Physical pair | PASS; final 12/12 and extended 31/31 | same evidence |
+| A2DP coexistence | Post-fix web/RTCP observation with audible playback | Physical pair | PASS for recorded windows | same evidence |
+| Quantitative latency | Owner acceptance decision | Owner decision | WAIVED for A-REMOTE-012; not measured | same evidence |
 
-## Preserved baselines
-- REMOTE: 2,526,848 bytes, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`.
-- TUNER: 2,037,152 bytes, source `073b65963e3ed8e3438bc34134f5a903fce995de`, SHA-256 `19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8`.
-- No source/build/flash/NVS/pairing/partition change occurred in this acceptance run.
-- Previous handoff archived at `archive/remote/2026-10-18T132935Z_A-REMOTE-012_REMOTE-A-REMOTE-012-FINAL-VALIDATION-2026-10-18T112320Z.md`.
+## Remaining unknowns
+No merge blocker. Quantitative latency was waived and not measured. The recorded A2DP windows do not establish an unlimited-duration guarantee. E-paper latency and intermittent QMI8658 motion wake remain known limitations outside this task.
+
+## Shared-contract impact
+- CCM 1.0.0: NO CHANGE; CCM 1.1.0 remains current OWNER APPROVED / FROZEN
+- TUNER Native API v1: NO CHANGE
+- Other device impact: TUNER Classic-only Bluetooth correction is compatible with existing RTCP/CCM behavior
+- Approval evidence: owner final acceptance and A-REMOTE-012-only latency waiver recorded in `references/device_evidence/remote/A-REMOTE-012/FINAL_ACCEPTANCE_POST_FIX_2026-10-18.json`
+
+## Blockers
+NONE for PR #18 merge review.
+
+## PM decision required
+Owner authorization is required to merge PR #18.
+
+## Recommended next task
+NONE assigned. Handle physical button functions separately from the intermittent motion-wake issue.
+
+## Commit
+- Firmware result commit(s): REMOTE NONE (Git-less); artifact SHA-256 above; TUNER `24395bad10bbca23da5de75062faaf423c453ada`
+- Device changelog: coordination `CHANGELOG.md`; TUNER source commit above
+- Coordination publication: branch `remote/a-remote-012-low-latency`, PR #18
+- Previous handoff archive: `archive/remote/2026-10-18T165659Z_A-REMOTE-012_REMOTE-A-REMOTE-012-FINAL-ACCEPTANCE-2026-10-18T132935Z.md`
+
+## Hardware status
+- Physical device tested: YES
+- Board / hardware configuration: Waveshare ESP32-S3-Touch-LCD-3.49B V2 PCB Rev1.1; established encoder mapping unchanged
+- Procedure and result: final matrix PASS except owner-waived quantitative latency and stated limitations
+- Firmware actually flashed: REMOTE 2,526,848 bytes at `0x10000`, SHA-256 above
+- Build-only or simulated checks: prior focused A-REMOTE-012 suites PASS; no build repeated in final documentation

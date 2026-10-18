@@ -1,3 +1,10 @@
+# 2026-10-18 -- A-REMOTE-012 OWNER ACCEPTED / READY FOR MERGE
+
+- Preserved the historical A2DP coexistence FAIL and documented its verified resource boundary: Classic A2DP activation under BTDM reduced internal free heap from 102,308 to 10,224 bytes and TUNER network services became unreachable while Wi-Fi remained associated.
+- TUNER commit `24395bad10bbca23da5de75062faaf423c453ada` releases unused BLE controller memory and starts Classic-only Bluetooth while retaining restartable A2DP behavior. Production artifact: 2,037,648 bytes, SHA-256 `6310a960f96c382d653a5b44f1b8e828f15985b59a40111308c475cf084c72a1`, 1,108,080-byte slot headroom and 87,512-byte static DRAM. Application-only installation, independent exact readback, boot and rollback verification PASS.
+- Final hardware acceptance: ACTIVE RTCP 307 seconds/61 samples with zero churn; MP3 coexistence final 12/12 and extended 31/31; post-fix A2DP 24/24 TUNER diagnostics and web-manager responses with zero Wi-Fi disconnect/lost-IP delta, audible playback, and automatic REMOTE RTCP recovery after wake. One transient freshness interval recovered at the next sample without reconnect.
+- Quantitative latency is **WAIVED BY OWNER for A-REMOTE-012**. Functional encoder, UI and audible response are accepted; the <100/<250/<50 ms thresholds were not measured or claimed as passed. Historical failures remain historical; rollback artifacts remain private and preserved. PR #18 is ready for owner-authorized merge.
+
 # 2026-10-18 -- A-REMOTE-012 final acceptance: AWAKE PASS / LATENCY BLOCKED / A2DP COEXISTENCE FAIL
 
 - A 307-second replacement-WLAN capture produced 61/61 successful REMOTE status samples, all in ACTIVE power state. RTCP session, close count and connection-attempt count were unchanged; authoritative volume and `volume.set` remained available throughout. This satisfies the uninterrupted five-minute awake RTCP stability criterion. Physical touch on a non-action HOME area every 20 seconds used the existing activity path and changed no persistent setting.

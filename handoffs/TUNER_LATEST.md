@@ -1,64 +1,63 @@
 # TUNER//01 handoff
 
 ## Metadata
-- Handoff ID: TUNER-A-REMOTE-012-FINAL-VALIDATION-2026-10-18T112320Z
-- Updated (UTC): 2026-10-18T11:23:20Z
+- Handoff ID: TUNER-A-REMOTE-012-ACCEPTED-2026-10-18T165659Z
+- Updated (UTC): 2026-10-18T16:56:59Z
 - Task ID: A-REMOTE-012
-- Status: READY FOR REVIEW
+- Status: ACCEPTED
 - Prepared by: coordinated A-REMOTE-012 executor
-- Coordination input commit: `a029eb12a22474f09cbcad73ddb9bce3789097ac`
+- Coordination input commit: `2aef37bcce307db450d164c456fefa6b9d219ba4`
 
 ## Milestone
-Record final paired behavior after REMOTE sleep-lifecycle installation and both-device Wi-Fi reprovisioning. TUNER remains compatible, authenticated and controllable after REMOTE sleep/wake. Final A-REMOTE-012 acceptance still requires bounded latest-firmware audio/coexistence and quantitative latency evidence.
+Correct the reproduced A2DP/network coexistence failure and complete final paired validation. Achieved for the recorded hobby/public-beta acceptance scope.
 
 ## Baseline
 - Device repository: https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio
 - Branch: `a-remote-012-low-latency`
-- Firmware baseline commit: `073b65963e3ed8e3438bc34134f5a903fce995de`
-- Firmware version: installed A-REMOTE-012 scheduling/diagnostic application, 2,037,152 bytes, SHA-256 `19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8`; embedded build `fda5f1ad1e5e`
-- Working tree at start: TUNER source inspected read-only; no firmware modification authorized or performed
-- Contract references: CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 Phase 2; A-REMOTE-012 accepted implementation scope
+- Firmware baseline commit: `24395bad10bbca23da5de75062faaf423c453ada`
+- Firmware version: embedded build `24395bad10bb`; 2,037,648 bytes; SHA-256 `6310a960f96c382d653a5b44f1b8e828f15985b59a40111308c475cf084c72a1`
+- Working tree at start: clean; correction committed and published
+- Contract references: CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 accepted binding
 
 ## Changes
-NONE to TUNER source or firmware. Documentation records the owner-verified replacement-WLAN RSSI, retained RTCP association, post-REMOTE-wake synchronization and remaining acceptance gaps.
+`src/audio.cpp` releases unused BLE controller memory before first initialization and starts the controller explicitly in Classic-only mode. `tests/test_bluetooth_classic_memory_policy.py` provides focused source-policy coverage. Restartable A2DP lifecycle and unrelated audio/network behavior remain unchanged.
 
 ## Verification
 | Check | Command/procedure | Environment | Result | Evidence |
 | --- | --- | --- | --- | --- |
-| Replacement WLAN | Owner connected TUNER and read current status | Physical TUNER | PASS; RSSI -56 dBm | `references/device_evidence/remote/A-REMOTE-012/FINAL_VALIDATION_2026-10-18.json` |
-| RTCP association after REMOTE reprovisioning | Normal automatic pairing/session establishment | Physical pair | PASS; association retained and fresh volume control available | same evidence |
-| Post-wake volume control | REMOTE automatic SYSTEM_SLEEP, wake and physical encoder use | Physical pair | PASS | same evidence |
-| Local encoder audible response | Owner physical observation | Physical TUNER | PASS qualitatively; e-paper remains slower | prior A-REMOTE-012 evidence and current owner confirmation |
-| Quantitative latency | Measure accepted timing targets | Physical pair | NOT RUN | same evidence |
-| Latest audio/coexistence regression | MP3 plus Bluetooth A2DP with web manager active | Physical TUNER | NOT RUN | same evidence |
+| Focused policy test | Existing committed test | Host | PASS; 10/10 | TUNER commit `24395bad10bbca23da5de75062faaf423c453ada` |
+| Production build | `pio run -e esp32-lwip-psram` | Production PlatformIO environment | PASS; 2,037,648 bytes; 1,108,080-byte headroom; 87,512-byte static DRAM | `references/device_evidence/remote/A-REMOTE-012/FINAL_ACCEPTANCE_POST_FIX_2026-10-18.json` |
+| Installation/readback | Application-only write at `0x10000`, exact-span readback | Physical TUNER | PASS; SHA-256 exact | same evidence |
+| MP3 coexistence | HTTP/web/RTCP observation with audible playback | Physical pair | PASS | same evidence |
+| A2DP coexistence | 24-sample diagnostic/web observation and post-wake RTCP check | Physical pair | PASS for recorded windows | same evidence |
 
 ## Remaining unknowns
-The current build still lacks measured first-audible and 15-detent settling latency. MP3 playback and Bluetooth A2DP with the web manager active have not been rerun on the final A-REMOTE-012 pair. The latest five-minute paired observation included REMOTE sleep and is not an awake-only transport-stability result.
+No merge blocker. Quantitative latency is owner-waived and not measured. Long-duration A2DP behavior beyond the recorded windows is not claimed. E-paper feedback remains slower than audio response.
 
 ## Shared-contract impact
-- CCM 1.0.0: NO CHANGE; current contract remains CCM 1.1.0 OWNER APPROVED / FROZEN.
-- TUNER Native API v1: NO CHANGE.
-- Other device impact: REMOTE now runs the accepted sleep-lifecycle correction and reconnects successfully after normal sleep.
-- Approval evidence: owner supplied final hardware observations and requested documentation/review only.
+- CCM 1.0.0: NO CHANGE; CCM 1.1.0 remains current OWNER APPROVED / FROZEN
+- TUNER Native API v1: NO CHANGE
+- Other device impact: REMOTE firmware and pairing unchanged; authenticated RTCP recovery verified
+- Approval evidence: owner final acceptance and A-REMOTE-012-only latency waiver recorded in `references/device_evidence/remote/A-REMOTE-012/FINAL_ACCEPTANCE_POST_FIX_2026-10-18.json`
 
 ## Blockers
-No demonstrated TUNER defect. PR #18 merge remains gated by the three bounded cross-device evidence items.
+NONE for PR #18 merge review.
 
 ## PM decision required
-Do not merge yet. Complete measured latency, uninterrupted awake stability and current-firmware MP3/A2DP/web-manager coexistence.
+Owner authorization is required to merge PR #18.
 
 ## Recommended next task
-Run the bounded coexistence and timing checks without source changes. Investigate only if a reproducible functional failure appears.
+NONE assigned. Preserve rollback artifacts; schedule later work independently.
 
 ## Commit
-- Firmware result commit(s): TUNER `073b65963e3ed8e3438bc34134f5a903fce995de`
-- Device changelog: unchanged TUNER `CHANGELOG.md` at that commit
-- Coordination publication: branch `remote/a-remote-012-low-latency`, PR #18; final coordination hash reported after publication
-- Previous handoff archive: `archive/tuner/2026-10-18T112320Z_A-REMOTE-012_TUNER-A-REMOTE-012-REMOTE-FIX-BUILD-2026-10-17T181203Z.md`
+- Firmware result commit(s): `24395bad10bbca23da5de75062faaf423c453ada`
+- Device changelog: TUNER source commit and coordination `CHANGELOG.md`
+- Coordination publication: branch `remote/a-remote-012-low-latency`, PR #18
+- Previous handoff archive: `archive/tuner/2026-10-18T165659Z_A-REMOTE-012_TUNER-A-REMOTE-012-FINAL-VALIDATION-2026-10-18T112320Z.md`
 
 ## Hardware status
 - Physical device tested: YES
-- Board / hardware configuration: existing classic ESP32 TUNER, 4 MiB flash and 3 MiB application slot unchanged
-- Procedure and result: replacement WLAN, retained RTCP pairing and post-REMOTE-wake volume control PASS; current MP3/A2DP/web-manager regression and measured latency NOT RUN
-- Firmware actually flashed: 2,037,152-byte application, SHA-256 `19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8`
-- Build-only or simulated checks: prior focused scheduling/deadline/latency diagnostics PASS; no test or build repeated in this review
+- Board / hardware configuration: existing classic ESP32 TUNER; 4 MiB flash; unchanged 3 MiB application slot
+- Procedure and result: exact readback, boot, MP3 and post-fix A2DP HTTP/RTCP coexistence PASS for recorded scope
+- Firmware actually flashed: 2,037,648-byte application at `0x10000`, SHA-256 above
+- Build-only or simulated checks: focused policy test 10/10 and production build PASS

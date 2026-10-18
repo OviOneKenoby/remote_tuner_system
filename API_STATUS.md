@@ -133,3 +133,7 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 # A-REMOTE-011 kickoff — 2026-10-13T15:34:01Z
 
 CCM 1.1.0 remains OWNER APPROVED / FROZEN. Read-only inspection confirms neither device implements a common wire API. The Native API document remains design-only: transport, framing, discovery and authorization are OPEN. [A-011 kickoff](reports/A-REMOTE-011_KICKOFF.md) proposes a minimum first milestone of one authorized session, identity/version/capability negotiation, fresh `volume.level` and `playback.state`, and `volume.set` only. This is READY FOR OWNER REVIEW and not implementation approval. No endpoint, message encoding or security mechanism is approved by this publication; O01-O17 and the common gate remain OPEN / NOT PASSED.
+
+## A-REMOTE-012 final acceptance — 2026-10-18
+
+A-REMOTE-012 is **ACCEPTED — READY FOR MERGE** on PR #18. TUNER correction commit 24395bad10bbca23da5de75062faaf423c453ada is published and the installed 2,037,648-byte application independently matches SHA-256 6310a960f96c382d653a5b44f1b8e828f15985b59a40111308c475cf084c72a1. The final matrix records ACTIVE RTCP, volume correctness, MP3 and post-fix A2DP web/RTCP coexistence PASS for their recorded windows. Quantitative latency is WAIVED BY OWNER for this milestone and was not measured. Historical failures remain preserved. Merge still requires explicit owner authorization.
