@@ -1,8 +1,8 @@
 {
   "task": "A-REMOTE-012",
-  "recorded_utc": "2026-10-18T09:37:22Z",
-  "coordination_input": "81e875f64d6fc5ec85fda11b758fbb2082ee7b61",
-  "scope": "Bounded REMOTE RTCP timing diagnostics only; no transport behavior change",
+  "recorded_utc": "2026-10-18T09:48:10Z",
+  "coordination_input": "0ddffb34c1832b5988b9c53fde5852b5b2b4e531",
+  "scope": "Bounded RTCP timing diagnosis and minimum REMOTE sleep-order correction; no protocol or TUNER change",
   "changed_private_files": [
     "components/rtcp_client/include/rtcp_client/diagnostic.hpp",
     "components/rtcp_client/client.cpp",
@@ -11,7 +11,9 @@
     "components/diagnostics/model.cpp",
     "components/network_manager/runtime.cpp",
     "tests/rtcp_client/diagnostic_tests.cpp",
-    "tests/control/diagnostics_tests.cpp"
+    "tests/control/diagnostics_tests.cpp",
+    "components/power_management/runtime.cpp",
+    "tests/control/network_sleep_boundary_tests.py"
   ],
   "status_fields": {
     "rtcp_poll_last_ms": "32 ms ceiling units, saturated at 8160 ms",
@@ -47,12 +49,14 @@
     "platform": "Espressif32 6.13.0",
     "framework": "ESP-IDF 5.5.3",
     "result": "PASS",
-    "firmware_bytes": 2526800,
-    "firmware_sha256": "a466336cd4fc3bc0e7d911ef2f50a6cf07a2e970d1dfbde5099fd1170eaf65b3",
+    "firmware_bytes": 2526848,
+    "firmware_sha256": "b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da",
     "application_offset": "0x10000",
     "application_slot_bytes": 3145728,
-    "application_headroom_bytes": 618928,
-    "linked_flash_bytes": 2526297
+    "application_headroom_bytes": 618880,
+    "linked_flash_bytes": 2526345,
+    "static_ram_bytes": 47388,
+    "installed": false
   },
   "hardware": {
     "installed": true,
@@ -63,7 +67,7 @@
     "external_rollback_files_verified": 9,
     "tuner_modified": false
   },
-  "status": "BLOCKED ON SYNCHRONIZED TUNER EVIDENCE; NO CORRECTION JUSTIFIED",
+  "status": "ROOT CAUSE CONFIRMED; REMOTE CORRECTION BUILT; HARDWARE INSTALLATION PENDING",
   "five_minute_observation": {
     "close_count": {
       "initial": 58,
@@ -92,17 +96,99 @@
     "timeouts_with_unread": 0
   },
   "investigation": {
-    "root_cause": "NOT YET PROVEN",
+    "root_cause": "CONFIRMED",
     "confirmed": [
-      "REMOTE Client::poll scheduling starvation is excluded for the measured interval by the retained 64 ms maximum.",
-      "Successful session growth excludes a permanent pairing, cryptographic, framing or capability mismatch.",
-      "Connect timeout, ready-state response timeout and receive ECONNRESET are separate transport boundaries and do not prove one common cause.",
-      "A queued-byte value of -1 is unavailable evidence, not an empty receive queue.",
-      "No A-REMOTE-012 TUNER protocol change explains the intermittent behavior."
+      "REMOTE stopped Wi-Fi and incremented network generation before asking Core to park.",
+      "Core refused that sleep attempt because an RTCP request was pending; REMOTE immediately restarted Wi-Fi.",
+      "The paired TUNER observation recorded peer EOF and timeout growth with complete snapshot writes and no allocation or Wi-Fi failure.",
+      "The correction preserves successful sleep fencing while preventing network mutation on the demonstrated pending-Core refusal."
     ],
-    "minimum_missing_observation": "Synchronized start/end TUNER serial x snapshots and REMOTE status snapshots during one short passive window; compare listener accepts, handshake finishes, records, snapshot completions, TUNER timeout/EOF/write/loop/web/Wi-Fi counters against each REMOTE close.",
-    "source_changed": false,
-    "tests_run": false,
-    "build_run": false
+    "minimum_missing_observation": "Install the verified REMOTE candidate and validate awake stability plus one normal sleep/wake cycle.",
+    "source_changed": true,
+    "tests_run": true,
+    "build_run": true
+  },
+  "synchronized_observation": {
+    "remote_initial": {
+      "close_count": 105,
+      "close_reason": 5,
+      "attempts": 106,
+      "tcp_connected": 13,
+      "identity_accepted": 11,
+      "session": 12,
+      "capability_revision": 485,
+      "network_generation": 13,
+      "sleep_requests": 6,
+      "sleep_rounds": 0
+    },
+    "remote_final": {
+      "close_count": 108,
+      "close_reason": 2,
+      "attempts": 109,
+      "tcp_connected": 16,
+      "identity_accepted": 11,
+      "session": 12,
+      "capability_revision": 497,
+      "network_generation": 15,
+      "sleep_requests": 7,
+      "sleep_rounds": 0
+    },
+    "tuner_initial": {
+      "connections": 8,
+      "client_finishes": 8,
+      "records": 678,
+      "snapshot_requests": 662,
+      "snapshot_completions": 662,
+      "timeouts": 0,
+      "eofs": 7,
+      "partial_writes": 0,
+      "failed_writes": 0,
+      "allocation_failure_delta": 0
+    },
+    "tuner_final": {
+      "connections": 13,
+      "client_finishes": 9,
+      "records": 688,
+      "snapshot_requests": 670,
+      "snapshot_completions": 670,
+      "timeouts": 3,
+      "eofs": 10,
+      "partial_writes": 0,
+      "failed_writes": 0,
+      "allocation_failure_delta": 0
+    },
+    "passive_remote_log": [
+      "NETWORK_SLEEP prepare=READY; generation incremented",
+      "Core park refused with pending RTCP request",
+      "NETWORK_SLEEP resume=STARTED; generation incremented"
+    ],
+    "secrets_published": false
+  },
+  "correction": {
+    "root_cause": "CONFIRMED: automatic sleep stopped Wi-Fi before Core park; a normal pending-RTCP refusal then resumed Wi-Fi, generating repeated transport teardown and reconnect bursts.",
+    "change": "Gate network sleep preparation behind successful Core parking. Pending Core refusal leaves Wi-Fi and the active transport untouched.",
+    "protocol_change": false,
+    "tuner_change": false,
+    "tests": [
+      {
+        "suite": "sleep-boundary integration guard",
+        "passed": 1,
+        "failed": 0,
+        "assertions": 23
+      },
+      {
+        "suite": "network-sleep model",
+        "passed": 9,
+        "failed": 0,
+        "assertions": 5062
+      },
+      {
+        "suite": "power lifecycle",
+        "passed": 19,
+        "failed": 0,
+        "assertions": 19236
+      }
+    ],
+    "hardware_validation": "NOT RUN; corrected candidate is build-only and requires separate owner authorization."
   }
 }
