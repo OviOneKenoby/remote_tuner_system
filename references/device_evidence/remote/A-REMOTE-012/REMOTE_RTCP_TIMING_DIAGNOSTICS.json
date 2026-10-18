@@ -1,0 +1,44 @@
+{
+  "task": "A-REMOTE-012",
+  "recorded_utc": "2026-10-18T02:59:42Z",
+  "coordination_input": "81e875f64d6fc5ec85fda11b758fbb2082ee7b61",
+  "scope": "Bounded REMOTE RTCP timing diagnostics only; no transport behavior change",
+  "changed_private_files": [
+    "components/rtcp_client/include/rtcp_client/diagnostic.hpp",
+    "components/rtcp_client/client.cpp",
+    "components/control_home/runtime.cpp",
+    "components/diagnostics/include/diagnostics/model.hpp",
+    "components/diagnostics/model.cpp",
+    "components/network_manager/runtime.cpp",
+    "tests/rtcp_client/diagnostic_tests.cpp",
+    "tests/control/diagnostics_tests.cpp"
+  ],
+  "status_fields": {
+    "rtcp_poll_last_ms": "32 ms ceiling units, saturated at 8160 ms",
+    "rtcp_poll_max_ms": "32 ms ceiling units, saturated at 8160 ms",
+    "rtcp_timeout_state": "retained Client::State numeric value at last response timeout",
+    "rtcp_timeout_elapsed_ms": "32 ms ceiling units, saturated at 8160 ms",
+    "rtcp_timeout_queued_bytes": "nonblocking FIONREAD result, exact through 65534; -1 unavailable",
+    "rtcp_timeouts_with_unread": "saturating public count through 255"
+  },
+  "retention": "Last timeout state, elapsed time and queued bytes change only on response_timeout and survive successful reconnection diagnostics.",
+  "memory": {"snapshots_bytes": 1024, "diagnostic_storage_bytes": 8192, "static_ram_bytes": 47388, "static_ram_capacity_bytes": 327680},
+  "tests": [
+    {"suite": "RTCP timing diagnostic retention", "passed": 13, "failed": 0, "assertions": 13},
+    {"suite": "diagnostic schema and storage", "passed": 9, "failed": 0, "assertions": 9096}
+  ],
+  "production_build": {
+    "environment": "remote01",
+    "platform": "Espressif32 6.13.0",
+    "framework": "ESP-IDF 5.5.3",
+    "result": "PASS",
+    "firmware_bytes": 2526800,
+    "firmware_sha256": "a466336cd4fc3bc0e7d911ef2f50a6cf07a2e970d1dfbde5099fd1170eaf65b3",
+    "application_offset": "0x10000",
+    "application_slot_bytes": 3145728,
+    "application_headroom_bytes": 618928,
+    "linked_flash_bytes": 2526297
+  },
+  "hardware": {"accessed": false, "flashed": false, "tuner_modified": false},
+  "status": "SOFTWARE PASS; REMOTE INSTALLATION AND READ-ONLY OBSERVATION PENDING OWNER AUTHORIZATION"
+}
