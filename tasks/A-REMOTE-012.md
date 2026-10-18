@@ -1,7 +1,7 @@
 # A-REMOTE-012: Low-Latency Volume Control
 
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: VOLUME RECONCILIATION CORRECTION SOFTWARE PASS / HARDWARE PENDING
+- State: HARDWARE FUNCTIONAL PASS / FINAL PERFORMANCE AND AWAKE-STABILITY EVIDENCE PENDING
 - Coordination baseline: `437e79cdfd6b7febf001271a32467191d84b20d2`
 - TUNER source baseline: `18ddd3b16e305341f338afebd7dc725500ecbb73`
 - TUNER candidate source: `073b65963e3ed8e3438bc34134f5a903fce995de`
@@ -9,7 +9,7 @@
 - Engineering targets on a healthy local network: first and continued audible response under 100 ms; final 15-detent target within 250 ms after the last detent; clearly provisional local UI response under 50 ms.
 - Scope: private REMOTE target accumulation, RTCP scheduling and provisional UI; public TUNER RTCP cadence, local encoder/audio scheduling, deferred e-paper feedback and bounded timing evidence; focused/integration regression; production builds; reversible commissioning plan.
 - Exclusions: physical flashing, pairing/NVS/partition changes, CCM or RTCP wire changes, AAC/AAC+, unassigned physical-button actions, intermittent QMI8658 motion-wake work, UI redesign and unrelated refactoring.
-- Acceptance: the network-status correction was installed with exact readback and normal boot. A controlled ten-detent hardware test then proved that unchanged pre-command authoritative snapshots discarded a newer accumulated local target. The narrow reconciliation correction is host-tested and build-verified; physical audible/UI timing and MP3/A2DP/web-manager coexistence remain pending installation and retest.
+- Acceptance: both final applications are installed with exact readback evidence. Rapid ten-detent reconciliation, direction reversal, Wi-Fi reprovisioning with pairing retention, normal sleep/wake reconnection and post-wake encoder volume control are hardware PASS. Quantitative first-response/15-detent/UI timing, an uninterrupted five-minute awake RTCP stability window on the replacement WLAN, and current-firmware MP3/A2DP/web-manager coexistence remain mandatory before merge.
 - Rollback baseline: REMOTE 2,523,936-byte application, SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`; TUNER 2,034,800-byte application, SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`. Both remain private and independently retained.
 
 ## Result
@@ -71,3 +71,15 @@ Source inspection proves the cause: `network_manager::read_status()` deliberatel
 The private REMOTE client now distinguishes unavailable, usable, disconnected and generation-changed network observations with one fixed-state gate. Status unavailability does not mutate the generation baseline or transport. Confirmed disconnection still closes immediately. A generation change closes an active transport, while wake/reconnect with no active socket adopts the new generation before connecting. Existing close reasons, session fencing, retry policy, timeouts, crypto, wire format, pairing and volume semantics are unchanged.
 
 Focused verification passed: network gate 15 checks/142 assertions; lifecycle policy 13 checks; RTCP diagnostics 9, I/O classification 5, connect readiness 9, association/wire 11; power 19/19 with 19,236 assertions; network sleep 9/9 with 5,062 assertions; boundary audit 1/1 with 21 assertions. The one production build passed at 2,525,808 bytes, SHA-256 `1ca95a1abe31e990d28d125f0994610f88dc554efa8acb744cef866759033477`, 619,920 bytes slot headroom and 47,388 bytes static RAM. No hardware was accessed. The next gate is owner authorization for application-only REMOTE installation and a passive paired stability retest.
+
+## Final hardware review
+
+The final REMOTE sleep-lifecycle application is installed: 2,526,848 bytes, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`, with 618,880 bytes OTA headroom and 47,388 bytes static RAM. TUNER remains the accepted 2,037,152-byte `esp32-lwip-psram` application from commit `073b65963e3ed8e3438bc34134f5a903fce995de`, SHA-256 `19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8`, with 1,108,576 bytes slot headroom and 87,512 bytes static RAM.
+
+Owner verification on the replacement WLAN reports TUNER at -56 dBm and REMOTE at -60 dBm, zero REMOTE Wi-Fi reconnects/errors, retained RTCP pairing, fresh volume authority and `volume.set`, and no outstanding command. The synchronized old-WLAN investigation measured TUNER at -68/-69 dBm and REMOTE at -77 to -80 dBm. Weak signal contributed to the earlier instability but was not isolated as its sole cause; two source-proven REMOTE lifecycle defects were also corrected.
+
+Wi-Fi reprovisioning used the existing Wi-Fi-only reset and protected captive portal. It erased only the default-NVS `remote_wifi/credentials` record, then used the setup AP at `192.168.4.1`; unrelated default-NVS data and the dedicated `remote_ctl` pairing store were preserved. No password or pairing material is recorded here.
+
+After automatic SYSTEM_SLEEP, REMOTE reconnected and the physical encoder again controlled TUNER volume. The reported post-wake snapshot was READY (`volume_connected=1`, `volume_known=1`, `volume_set=1`) with session 3 and no outstanding operation. Close reason 11 means `receive_failed`, while intentional suspend is reason 1. Because the diagnostic retains only the last close reason, value 11 cannot classify both recorded closes and does not contradict the successful recovery.
+
+This is a partial final acceptance. The five-minute observation was interrupted by SYSTEM_SLEEP and is not an awake-stability test. Quantitative hardware evidence for first audible response below 100 ms, the final 15-detent target within 250 ms, and provisional UI response below 50 ms is still absent. Current-firmware MP3 playback and Bluetooth A2DP with the web manager active also remain unverified. PR #18 is therefore not ready to merge; no additional diagnosis or firmware change is warranted unless one of these bounded tests reproduces a defect.

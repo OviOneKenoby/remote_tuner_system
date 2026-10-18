@@ -1,0 +1,71 @@
+{
+  "task": "A-REMOTE-012",
+  "recorded_utc": "2026-10-18T11:23:20Z",
+  "coordination_input": "a029eb12a22474f09cbcad73ddb9bce3789097ac",
+  "evidence_origin": "owner-reported hardware results plus source inspection and previously published evidence",
+  "network": {
+    "ssid_publication": "owner-selected replacement WLAN; password not recorded",
+    "previous_synchronized_rssi_dbm": {
+      "remote": [-78, -80],
+      "remote_passive_reconnect": -77,
+      "tuner": [-68, -69]
+    },
+    "replacement_rssi_dbm": {
+      "remote": -60,
+      "tuner": -56
+    },
+    "remote_reconnects": 0,
+    "remote_errors": 0,
+    "weak_signal_conclusion": "contributing factor, not established as sole cause"
+  },
+  "wifi_reprovisioning": {
+    "result": "PASS",
+    "erased_record": "default-NVS remote_wifi/credentials only",
+    "portal_address": "192.168.4.1",
+    "unrelated_default_nvs_preserved": true,
+    "remote_ctl_preserved": true,
+    "rtcp_pairing_preserved": true,
+    "secrets_published": false
+  },
+  "remote_firmware": {
+    "bytes": 2526848,
+    "sha256": "b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da",
+    "application_offset": "0x10000",
+    "ota_headroom_bytes": 618880,
+    "static_ram_bytes": 47388
+  },
+  "tuner_firmware": {
+    "source_commit": "073b65963e3ed8e3438bc34134f5a903fce995de",
+    "embedded_build_id": "fda5f1ad1e5e",
+    "bytes": 2037152,
+    "sha256": "19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8",
+    "slot_headroom_bytes": 1108576,
+    "static_ram_bytes": 87512
+  },
+  "post_wake_snapshot": {
+    "session": 3,
+    "rtcp_close_count": 2,
+    "rtcp_close_reason": 11,
+    "rtcp_close_reason_name": "receive_failed",
+    "rtcp_attempts": 3,
+    "rtcp_poll_max_ms": 64,
+    "volume_connected": true,
+    "volume_known": true,
+    "volume_set": true,
+    "outstanding_volume_command": false
+  },
+  "hardware_results": {
+    "wifi_reprovisioning": "PASS",
+    "rtcp_pairing_preservation": "PASS",
+    "automatic_reconnection_after_sleep": "PASS",
+    "encoder_after_wake": "PASS",
+    "volume_control_after_wake": "PASS"
+  },
+  "limitations": [
+    "The five-minute observation included automatic SYSTEM_SLEEP and is not an uninterrupted awake-state stability test.",
+    "The diagnostic retains only the latest close reason, so it cannot classify both recorded closures.",
+    "Physical latency targets have not been measured.",
+    "Latest-firmware MP3 and Bluetooth A2DP with web-manager coexistence remain unverified."
+  ],
+  "merge_recommendation": "NO-GO pending the three bounded validation items; no reproducible blocking defect is currently demonstrated"
+}

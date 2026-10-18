@@ -259,3 +259,35 @@ The private correction changes only that classification: external-change reconci
 The focused deterministic suite passed 9/9 with 238 assertions. It compares identical ten-detent sequences from 53%: the slow sequence completes authority after every detent, while the rapid sequence accepts new detents during in-flight commands and interleaves confirmed results with unchanged and fresh snapshots. Both must settle at 43%. It also covers rapid down/up reversal without losing the net accepted target. This confirms the rate-dependent boundary without changing the EC11 decoder. One production `remote01` build passed before the test-only comparison was added: firmware 2,525,824 bytes, SHA-256 `3f46c3ccfd45b29985bbda37f1357a8f36831c17066bd0a33952f238936290bf`, 619,904 bytes free in the 3 MiB application slot and 47,388 bytes static RAM. Changed private files are `components/control_home/include/control_home/api.hpp` and `tests/control/volume_admission_tests.cpp`. No TUNER file or hardware was changed.
 
 Minimum hardware validation remains application-only installation after the existing rollback/device preflight and exact readback, followed by one isolated 53% to 43% ten-detent test and one rapid direction reversal. Record before/after detent, accepted-intent, dispatch, authoritative-volume and in-flight fields. Require every accepted detent in the final target, no residual in-flight state and no stale replay after one sleep/wake. Audible latency and MP3/A2DP/web-manager coexistence remain separate A-REMOTE-012 acceptance items.
+
+## Final validation review — 2026-10-18
+
+The final REMOTE sleep-lifecycle candidate is installed with its accepted identity: 2,526,848 bytes, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`, 618,880 bytes OTA headroom and 47,388 bytes static RAM. TUNER remains the installed 2,037,152-byte candidate from source commit `073b65963e3ed8e3438bc34134f5a903fce995de`, SHA-256 `19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8`, 1,108,576 bytes slot headroom and 87,512 bytes static RAM. CCM 1.1.0, RTCP/1 authenticated framing, counters, replay protection, one-in-flight fencing and old/new firmware wire compatibility remain unchanged.
+
+Both devices were moved to the owner-selected replacement WLAN. The final synchronized old-WLAN investigation recorded REMOTE at -78 to -80 dBm, with a passive reconnect at -77 dBm, and TUNER at -68/-69 dBm. The replacement WLAN reports REMOTE at -60 dBm and TUNER at -56 dBm. This improvement and the resulting functional session support weak Wi-Fi as a contributing factor to previous transport instability. It is not a controlled proof that signal strength was the sole cause: the history also contains confirmed REMOTE status-contention and sleep-order defects.
+
+The current Wi-Fi change path is a limited destructive reset of the single default-NVS key `remote_wifi/credentials`, initiated by the existing serial arm/confirm flow, followed by the protected setup AP and `http://192.168.4.1`. A candidate credential is stored only after successful connection. The operation does not erase other default-NVS keys or the dedicated `remote_ctl` partition. Hardware confirms that the RTCP association, pairing identifier and PSK remained usable after reprovisioning. No Wi-Fi password, RTCP secret, capsule or private payload is published.
+
+The owner reports zero REMOTE Wi-Fi reconnects and errors after reprovisioning. REMOTE entered SYSTEM_SLEEP during the five-minute observation, then woke, reconnected, reacquired identity/capabilities/fresh state, and exposed `volume_connected=1`, `volume_known=1`, `volume_set=1` with no outstanding command. The physical encoder controlled TUNER volume after wake. These are hardware PASS for reprovisioning, association retention, automatic sleep/wake reconnection and post-wake control.
+
+`CloseReason` is zero-based. Value 11 is `receive_failed`, set only when nonblocking `lwip_recv` reports a socket error other than would-block. Intentional Core suspension calls `Client::suspend()` and records reason 1. The post-wake diagnostic retained two total closes and last reason 11, but it retains no per-close history and the supplied snapshot has no correlated socket errno/event time. It therefore cannot show whether either close was the intentional suspend, nor prove a continuing firmware defect. A transient connection reset around the network/power transition is consistent with the value; the successful authenticated recovery and fresh authority are the material functional result.
+
+### Validation matrix
+
+| Criterion | Classification | Evidence / limit |
+| --- | --- | --- |
+| REMOTE final application identity and resource budget | HARDWARE/SOURCE VERIFIED PASS | Exact installed candidate identity retained; 2,526,848 bytes, 618,880-byte OTA headroom, 47,388-byte static RAM. |
+| TUNER final application identity and resource budget | HARDWARE/SOURCE VERIFIED PASS | Installed candidate 2,037,152 bytes, 1,108,576-byte slot headroom, 87,512-byte static RAM. |
+| RTCP security and compatibility | SOURCE VERIFIED PASS | No wire/crypto/pairing change; mutual authentication, identity, capabilities and fresh state work on hardware. |
+| Wi-Fi reprovisioning and limited erase domain | HARDWARE VERIFIED PASS | New WLAN connected; only Wi-Fi credential record replaced; unrelated data and RTCP pairing retained. |
+| Rapid volume correctness | HARDWARE VERIFIED PASS | Ten rapid down detents and rapid direction reversal previously reached the exact final authority with no persistent in-flight state. |
+| Sleep/wake reconnection and post-wake control | HARDWARE VERIFIED PASS | Automatic sleep occurred; wake restored authenticated authority and encoder volume control. |
+| Uninterrupted awake RTCP stability | NOT YET TESTED | The five-minute observation included SYSTEM_SLEEP; it cannot satisfy the awake-only window. |
+| Physical latency targets | NOT YET TESTED quantitatively | Local TUNER audio and REMOTE control feel responsive, but <100 ms first response, <250 ms final 15-detent target and <50 ms provisional UI were not measured. |
+| Latest MP3/A2DP/web-manager coexistence | NOT YET TESTED | Earlier A-011 behavior is historical; latest A-012 pair still needs the bounded regression. |
+| E-paper feedback | KNOWN LIMITATION | Local audio changes rapidly; e-paper refresh remains visibly slower and is intentionally deferred. |
+| Motion wake | KNOWN SEPARATE LIMITATION | Intermittent QMI8658 initialization remains outside A-REMOTE-012 and is not a volume/RTCP merge criterion. |
+
+### Remaining merge gate
+
+PR #18 remains **NO-GO** pending only: (1) one uninterrupted five-minute awake RTCP window on the replacement WLAN with no unexplained session churn; (2) measured first-response, 15-detent settling and provisional-UI latency against the accepted targets; and (3) latest-firmware MP3 plus Bluetooth A2DP/web-manager coexistence. Do not start another investigation unless one of these bounded checks reproduces a functional failure.
