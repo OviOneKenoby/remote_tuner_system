@@ -1,7 +1,7 @@
 # A-REMOTE-012: Low-Latency Volume Control
 
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: HARDWARE FUNCTIONAL PASS / FINAL PERFORMANCE AND AWAKE-STABILITY EVIDENCE PENDING
+- State: FINAL ACCEPTANCE BLOCKED / A2DP COEXISTENCE REGRESSION REPRODUCED
 - Coordination baseline: `437e79cdfd6b7febf001271a32467191d84b20d2`
 - TUNER source baseline: `18ddd3b16e305341f338afebd7dc725500ecbb73`
 - TUNER candidate source: `073b65963e3ed8e3438bc34134f5a903fce995de`
@@ -9,7 +9,7 @@
 - Engineering targets on a healthy local network: first and continued audible response under 100 ms; final 15-detent target within 250 ms after the last detent; clearly provisional local UI response under 50 ms.
 - Scope: private REMOTE target accumulation, RTCP scheduling and provisional UI; public TUNER RTCP cadence, local encoder/audio scheduling, deferred e-paper feedback and bounded timing evidence; focused/integration regression; production builds; reversible commissioning plan.
 - Exclusions: physical flashing, pairing/NVS/partition changes, CCM or RTCP wire changes, AAC/AAC+, unassigned physical-button actions, intermittent QMI8658 motion-wake work, UI redesign and unrelated refactoring.
-- Acceptance: both final applications are installed with exact readback evidence. Rapid ten-detent reconciliation, direction reversal, Wi-Fi reprovisioning with pairing retention, normal sleep/wake reconnection and post-wake encoder volume control are hardware PASS. Quantitative first-response/15-detent/UI timing, an uninterrupted five-minute awake RTCP stability window on the replacement WLAN, and current-firmware MP3/A2DP/web-manager coexistence remain mandatory before merge.
+- Acceptance: both final applications are installed with exact readback evidence. Rapid ten-detent reconciliation, direction reversal, Wi-Fi reprovisioning with pairing retention, normal sleep/wake reconnection and post-wake encoder volume control are hardware PASS. The uninterrupted five-minute ACTIVE RTCP window and MP3 coexistence now pass. Quantitative first-response/15-detent/UI timing remains not measurable, and current-firmware Bluetooth A2DP disables TUNER web/RTCP reachability in the reproduced run; both remain mandatory blockers before merge.
 - Rollback baseline: REMOTE 2,523,936-byte application, SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`; TUNER 2,034,800-byte application, SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`. Both remain private and independently retained.
 
 ## Result
@@ -83,3 +83,11 @@ Wi-Fi reprovisioning used the existing Wi-Fi-only reset and protected captive po
 After automatic SYSTEM_SLEEP, REMOTE reconnected and the physical encoder again controlled TUNER volume. The reported post-wake snapshot was READY (`volume_connected=1`, `volume_known=1`, `volume_set=1`) with session 3 and no outstanding operation. Close reason 11 means `receive_failed`, while intentional suspend is reason 1. Because the diagnostic retains only the last close reason, value 11 cannot classify both recorded closes and does not contradict the successful recovery.
 
 This is a partial final acceptance. The five-minute observation was interrupted by SYSTEM_SLEEP and is not an awake-stability test. Quantitative hardware evidence for first audible response below 100 ms, the final 15-detent target within 250 ms, and provisional UI response below 50 ms is still absent. Current-firmware MP3 playback and Bluetooth A2DP with the web manager active also remain unverified. PR #18 is therefore not ready to merge; no additional diagnosis or firmware change is warranted unless one of these bounded tests reproduces a defect.
+
+## Final hardware acceptance execution — 2026-10-18
+
+The uninterrupted ACTIVE test passed for 307 seconds: 61/61 status samples were successful and ACTIVE; RTCP close, attempt and session counters had zero deltas; fresh volume authority remained available. MP3 coexistence also passed with owner-confirmed uninterrupted audio, 31/31 TUNER web responses, 31/31 REMOTE responses and no RTCP or allocation regression.
+
+The installed firmware cannot quantitatively measure the three latency targets. It has no synchronized physical-detent, audible-output and display-update timestamps. This criterion is **BLOCKED / NOT MEASURABLE**, not PASS. The minimum non-firmware method is synchronized high-speed video/audio capture with a visible encoder marker; otherwise separately approved instrumentation is required.
+
+Bluetooth A2DP coexistence is **FAIL / BLOCKED**. During owner-confirmed audible playback, all ten bounded TUNER web requests timed out, RTCP never became READY, REMOTE close count increased by 16 and attempts by 15, while REMOTE HTTP/Wi-Fi remained healthy. TCP 46411, the source-defined TUNER RTCP listener, timed out once. This proves a TUNER-side network/service availability boundary before RTCP handshake, but not its internal cause. A subsequent COM5 open unexpectedly reset TUNER through the USB serial bridge; no persistent data changed, and web service recovered for 12/12 post-boot checks. PR #18 remains NO-GO and unmerged.

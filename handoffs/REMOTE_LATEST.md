@@ -1,65 +1,37 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-012-FINAL-VALIDATION-2026-10-18T112320Z
-- Updated (UTC): 2026-10-18T11:23:20Z
+- Handoff ID: REMOTE-A-REMOTE-012-FINAL-ACCEPTANCE-2026-10-18T132935Z
+- Updated (UTC): 2026-10-18T13:29:35Z
 - Task ID: A-REMOTE-012
-- Status: READY FOR REVIEW
-- Prepared by: coordinated A-REMOTE-012 executor
-- Coordination input commit: `a029eb12a22474f09cbcad73ddb9bce3789097ac`
+- Status: BLOCKED / NO-GO
+- Coordination input commit: `d9e573cb6cbd07368c877d711c97be27abc4ffb4`
 
-## Milestone
-Complete final A-REMOTE-012 review after installation of the sleep-lifecycle correction and Wi-Fi reprovisioning. Functional hardware checks pass for pairing retention, sleep/wake reconnection and post-wake volume control. Final merge acceptance remains incomplete because the observation was not an uninterrupted awake RTCP window and the quantitative latency and latest coexistence checks remain unmeasured.
+## Current result
+The uninterrupted five-minute ACTIVE RTCP test and MP3 coexistence test pass. Quantitative latency remains not measurable with current instrumentation. Bluetooth A2DP audio is audible, but TUNER web and RTCP services became unreachable, so the coexistence criterion fails and PR #18 is not ready to merge.
 
-## Baseline
-- Device repository: private REMOTE workspace; source inspected read-only
-- Branch: NONE (Git-less private workspace)
-- Firmware baseline commit: UNKNOWN (Git-less); artifact identity is authoritative
-- Firmware version: installed REMOTE application, 2,526,848 bytes, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`
-- Working tree at start: private firmware workspace inspected read-only; coordination branch clean at `a029eb12a22474f09cbcad73ddb9bce3789097ac`
-- Contract references: CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 Phase 2; A-REMOTE-012 accepted implementation scope
+## Validation matrix
+| Criterion | Classification | Evidence |
+| --- | --- | --- |
+| Uninterrupted ACTIVE RTCP stability | HARDWARE PASS | 307 s; 61/61 ACTIVE samples; zero close, attempt and session deltas; authority available. |
+| MP3 audio with REMOTE, RTCP and web manager | HARDWARE PASS | Owner confirmed uninterrupted audio; 31/31 TUNER web and REMOTE status responses; zero RTCP churn. |
+| Audible response <100 ms | BLOCKED / NOT MEASURABLE | No synchronized physical-input/audio timestamp. |
+| Fifteen-detent final authority <250 ms | BLOCKED / NOT MEASURABLE | No timestamp tied to the final physical detent and authoritative completion. |
+| Provisional UI <50 ms | BLOCKED / NOT MEASURABLE | No physical display-update timestamp. |
+| Bluetooth A2DP audibility | HARDWARE PASS | Owner confirmed connected, active and audible playback. |
+| Bluetooth A2DP plus web manager | HARDWARE FAIL | 0/10 bounded web requests completed within 3 s. |
+| Bluetooth A2DP plus RTCP | HARDWARE FAIL | READY 0/10; +16 closes, +15 attempts; TCP 46411 probe timed out. |
 
-## Changes
-Documentation only. Recorded owner-verified replacement-WLAN operation, limited Wi-Fi NVS erasure, retained RTCP pairing, automatic sleep/wake recovery and post-wake encoder control. No firmware source, binary, NVS, pairing, partition or device operation occurred in this review.
+## Failure boundary
+REMOTE remained ACTIVE, Wi-Fi connected and HTTP-responsive. Source defines TUNER RTCP on TCP 46411. Both that port and TUNER HTTP were unreachable during A2DP, locating the first proven boundary on TUNER before RTCP acceptance. The internal cause is unknown. Opening COM5 for the requested read-only diagnostic unexpectedly reset TUNER via CH340; pre-reset TUNER counters were lost. No persistent write occurred. TUNER ping/web recovered in 12/12 post-boot checks.
 
-## Verification
-| Check | Command/procedure | Environment | Result | Evidence |
-| --- | --- | --- | --- | --- |
-| Close reason mapping | Inspect `rtcp_client::CloseReason`, `Client::receive`, `Client::poll`, `Client::suspend` | Current private REMOTE source | PASS: 11=`receive_failed`; intentional suspend=1 | `references/device_evidence/remote/A-REMOTE-012/FINAL_VALIDATION_2026-10-18.json` |
-| Wi-Fi reprovisioning | Owner performed existing Wi-Fi-only reset and protected captive-portal setup | Physical REMOTE | PASS; replacement WLAN connected, reconnects/errors 0 | same evidence |
-| Association retention | Observe authenticated RTCP session after reprovisioning | Physical REMOTE/TUNER | PASS; pairing retained, fresh volume and `volume.set` available | same evidence |
-| Sleep/wake recovery | Normal automatic SYSTEM_SLEEP, owner wake, observe RTCP and encoder | Physical REMOTE/TUNER | PASS; automatic reconnect and post-wake volume control | same evidence |
-| Awake stability | Five-minute observation | Physical pair | NOT RUN as specified; REMOTE entered SYSTEM_SLEEP during the interval | same evidence |
-| Quantitative latency | Measure audible/UI/15-detent targets | Physical pair | NOT RUN | same evidence |
-| Latest coexistence regression | MP3 plus Bluetooth A2DP with web manager active | Physical pair | NOT RUN | same evidence |
+## Required next decisions
+1. Keep PR #18 open and unmerged.
+2. Authorize only a bounded TUNER-side Bluetooth coexistence diagnosis if the regression is to be corrected. Capture diagnostics without opening a reset-inducing serial session, or configure the interface to avoid DTR/RTS transitions.
+3. Measure the latency targets with synchronized external equipment, or separately approve minimal firmware timing instrumentation.
 
-## Remaining unknowns
-An uninterrupted five-minute awake RTCP window on the replacement WLAN is not recorded. Physical first-response, 15-detent settling and provisional-UI latency are not measured. Current-firmware MP3 and Bluetooth A2DP with the web manager active are not retested. The retained close diagnostic stores only the last reason, so it cannot classify both observed closes.
-
-## Shared-contract impact
-- CCM 1.0.0: NO CHANGE; CCM 1.1.0 remains OWNER APPROVED / FROZEN.
-- TUNER Native API v1: NO CHANGE.
-- Other device impact: TUNER source and firmware remain unchanged; current mutual authentication and state synchronization pass.
-- Approval evidence: owner supplied final hardware observations and requested documentation/review only.
-
-## Blockers
-PR #18 merge is blocked only by the three bounded evidence gaps listed above. No reproducible firmware defect is currently demonstrated.
-
-## PM decision required
-Do not merge yet. Complete the awake-stability, quantitative latency and current-firmware coexistence checks; merge may be reconsidered if all pass.
-
-## Recommended next task
-Run only the three bounded acceptance checks. Do not start another debugging cycle unless a check reproduces a functional defect.
-
-## Commit
-- Firmware result commit(s): REMOTE NONE (Git-less); installed artifact SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`
-- Device changelog: coordination `CHANGELOG.md`; private firmware source unchanged
-- Coordination publication: branch `remote/a-remote-012-low-latency`, PR #18; final coordination hash reported after publication
-- Previous handoff archive: `archive/remote/2026-10-18T112320Z_A-REMOTE-012_REMOTE-A-REMOTE-012-SLEEP-RTCP-FIX-2026-10-18T094810Z.md`
-
-## Hardware status
-- Physical device tested: YES
-- Board / hardware configuration: Waveshare ESP32-S3-Touch-LCD-3.49B V2, PCB Rev1.1; installed encoder GPIO mapping unchanged
-- Procedure and result: owner-verified Wi-Fi reprovisioning, pairing retention, automatic sleep/wake reconnection and encoder volume after wake PASS; uninterrupted awake stability and measured latency NOT RUN
-- Firmware actually flashed: 2,526,848-byte application at `0x10000`, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`
-- Build-only or simulated checks: prior targeted sleep/network/power suites PASS; production build PASS; no tests or build repeated in this review
+## Preserved baselines
+- REMOTE: 2,526,848 bytes, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`.
+- TUNER: 2,037,152 bytes, source `073b65963e3ed8e3438bc34134f5a903fce995de`, SHA-256 `19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8`.
+- No source/build/flash/NVS/pairing/partition change occurred in this acceptance run.
+- Previous handoff archived at `archive/remote/2026-10-18T132935Z_A-REMOTE-012_REMOTE-A-REMOTE-012-FINAL-VALIDATION-2026-10-18T112320Z.md`.

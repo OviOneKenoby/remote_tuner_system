@@ -291,3 +291,15 @@ The owner reports zero REMOTE Wi-Fi reconnects and errors after reprovisioning. 
 ### Remaining merge gate
 
 PR #18 remains **NO-GO** pending only: (1) one uninterrupted five-minute awake RTCP window on the replacement WLAN with no unexplained session churn; (2) measured first-response, 15-detent settling and provisional-UI latency against the accepted targets; and (3) latest-firmware MP3 plus Bluetooth A2DP/web-manager coexistence. Do not start another investigation unless one of these bounded checks reproduces a functional failure.
+
+## Final hardware acceptance results — 2026-10-18
+
+| Check | Result | Evidence |
+| --- | --- | --- |
+| Five-minute uninterrupted ACTIVE RTCP stability | HARDWARE PASS | 307 seconds, 61/61 ACTIVE samples, zero close/attempt/session deltas, fresh volume authority throughout. |
+| MP3 plus web/RTCP coexistence | HARDWARE PASS | Owner-confirmed uninterrupted audio; 31/31 TUNER web and 31/31 REMOTE status responses; zero RTCP churn or allocation failures. |
+| Quantitative <100/<250/<50 ms targets | BLOCKED / NOT MEASURABLE | Current firmware lacks synchronized timestamps for physical detent, audible output and physical UI update. Existing counters establish correctness but cannot establish latency. |
+| Bluetooth A2DP audio | HARDWARE PASS for audibility | Owner confirmed connected, active and audible playback. |
+| Bluetooth A2DP plus web manager and RTCP | HARDWARE FAIL / BLOCKED | 0/10 TUNER web responses within three seconds; RTCP READY 0/10, +16 closes and +15 attempts; source-defined TCP 46411 probe timed out while REMOTE Wi-Fi/HTTP stayed healthy. |
+
+The first proven Bluetooth failure boundary is TUNER network/service availability before RTCP TCP acceptance. Source confirms the listener port is 46411 and both RTCP polling and web handling are main-loop services. Existing evidence does not distinguish Wi-Fi/BT coexistence loss from main-loop starvation or another TUNER runtime condition. An attempted COM5 diagnostic open unexpectedly reset TUNER through the USB serial bridge, invalidating collection of the pre-reset TUNER counters; no flash or persistent state changed. After boot, ping and web service passed 12/12 checks. No corrective development is authorized by this record. PR #18 remains **NO-GO**.

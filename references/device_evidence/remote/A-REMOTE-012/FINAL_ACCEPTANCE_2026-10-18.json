@@ -1,0 +1,47 @@
+{
+  "task": "A-REMOTE-012",
+  "recorded_utc": "2026-10-18T13:29:35Z",
+  "classification": "NO-GO",
+  "awake_stability": {
+    "result": "PASS",
+    "duration_seconds": 307,
+    "samples": 61,
+    "active_samples": 61,
+    "http_failures": 0,
+    "rtcp_close_delta": 0,
+    "rtcp_attempt_delta": 0,
+    "session_delta": 0,
+    "authority_available_all_samples": true
+  },
+  "mp3_coexistence": {
+    "result": "PASS",
+    "owner_audio_uninterrupted": true,
+    "duration_seconds": 60,
+    "tuner_web_success": "31/31",
+    "remote_status_success": "31/31",
+    "rtcp_churn": 0,
+    "allocation_failure_delta": 0
+  },
+  "latency": {
+    "result": "BLOCKED_NOT_MEASURABLE",
+    "reason": "no synchronized physical-detent, audible-output, authoritative-completion or physical-display timestamps"
+  },
+  "bluetooth_coexistence": {
+    "audio": "PASS_OWNER_CONFIRMED",
+    "web": "FAIL_0_OF_10_WITHIN_3_SECONDS",
+    "rtcp": "FAIL_READY_0_OF_10",
+    "remote_close_delta": 16,
+    "remote_attempt_delta": 15,
+    "configured_rtcp_port": 46411,
+    "single_tcp_probe": "TIMEOUT",
+    "remote_wifi_and_http": "HEALTHY"
+  },
+  "diagnosis": {
+    "first_proven_boundary": "TUNER network/service availability before RTCP TCP acceptance",
+    "root_cause": "UNPROVEN",
+    "serial_capture_limitation": "opening COM5 unexpectedly reset TUNER through the serial bridge; pre-reset runtime counters unavailable",
+    "persistent_mutation": false,
+    "post_boot_ping_web": "PASS_12_OF_12"
+  },
+  "merge_recommendation": "NO-GO"
+}
