@@ -1,6 +1,6 @@
 {
   "task": "A-REMOTE-012",
-  "recorded_utc": "2026-10-18T02:59:42Z",
+  "recorded_utc": "2026-10-18T09:37:22Z",
   "coordination_input": "81e875f64d6fc5ec85fda11b758fbb2082ee7b61",
   "scope": "Bounded REMOTE RTCP timing diagnostics only; no transport behavior change",
   "changed_private_files": [
@@ -22,10 +22,25 @@
     "rtcp_timeouts_with_unread": "saturating public count through 255"
   },
   "retention": "Last timeout state, elapsed time and queued bytes change only on response_timeout and survive successful reconnection diagnostics.",
-  "memory": {"snapshots_bytes": 1024, "diagnostic_storage_bytes": 8192, "static_ram_bytes": 47388, "static_ram_capacity_bytes": 327680},
+  "memory": {
+    "snapshots_bytes": 1024,
+    "diagnostic_storage_bytes": 8192,
+    "static_ram_bytes": 47388,
+    "static_ram_capacity_bytes": 327680
+  },
   "tests": [
-    {"suite": "RTCP timing diagnostic retention", "passed": 13, "failed": 0, "assertions": 13},
-    {"suite": "diagnostic schema and storage", "passed": 9, "failed": 0, "assertions": 9096}
+    {
+      "suite": "RTCP timing diagnostic retention",
+      "passed": 13,
+      "failed": 0,
+      "assertions": 13
+    },
+    {
+      "suite": "diagnostic schema and storage",
+      "passed": 9,
+      "failed": 0,
+      "assertions": 9096
+    }
   ],
   "production_build": {
     "environment": "remote01",
@@ -39,6 +54,55 @@
     "application_headroom_bytes": 618928,
     "linked_flash_bytes": 2526297
   },
-  "hardware": {"accessed": false, "flashed": false, "tuner_modified": false},
-  "status": "SOFTWARE PASS; REMOTE INSTALLATION AND READ-ONLY OBSERVATION PENDING OWNER AUTHORIZATION"
+  "hardware": {
+    "installed": true,
+    "application_only": true,
+    "readback_bytes": 2526800,
+    "readback_sha256": "a466336cd4fc3bc0e7d911ef2f50a6cf07a2e970d1dfbde5099fd1170eaf65b3",
+    "readback_match": true,
+    "external_rollback_files_verified": 9,
+    "tuner_modified": false
+  },
+  "status": "BLOCKED ON SYNCHRONIZED TUNER EVIDENCE; NO CORRECTION JUSTIFIED",
+  "five_minute_observation": {
+    "close_count": {
+      "initial": 58,
+      "final": 98
+    },
+    "attempts": {
+      "initial": 59,
+      "final": 99
+    },
+    "session": {
+      "initial": 1,
+      "final": 5
+    },
+    "poll_last_ms": {
+      "initial": 32,
+      "final": 32
+    },
+    "poll_max_ms": {
+      "initial": 64,
+      "final": 64
+    },
+    "final_close_reason": 11,
+    "retained_timeout_state": 7,
+    "retained_timeout_elapsed_ms": 3008,
+    "retained_timeout_queued_bytes": -1,
+    "timeouts_with_unread": 0
+  },
+  "investigation": {
+    "root_cause": "NOT YET PROVEN",
+    "confirmed": [
+      "REMOTE Client::poll scheduling starvation is excluded for the measured interval by the retained 64 ms maximum.",
+      "Successful session growth excludes a permanent pairing, cryptographic, framing or capability mismatch.",
+      "Connect timeout, ready-state response timeout and receive ECONNRESET are separate transport boundaries and do not prove one common cause.",
+      "A queued-byte value of -1 is unavailable evidence, not an empty receive queue.",
+      "No A-REMOTE-012 TUNER protocol change explains the intermittent behavior."
+    ],
+    "minimum_missing_observation": "Synchronized start/end TUNER serial x snapshots and REMOTE status snapshots during one short passive window; compare listener accepts, handshake finishes, records, snapshot completions, TUNER timeout/EOF/write/loop/web/Wi-Fi counters against each REMOTE close.",
+    "source_changed": false,
+    "tests_run": false,
+    "build_run": false
+  }
 }
