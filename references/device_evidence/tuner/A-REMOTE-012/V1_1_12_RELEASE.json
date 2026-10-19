@@ -1,7 +1,7 @@
 {
   "recorded_utc": "2026-10-19T15:59:25Z",
   "task": "A-REMOTE-012",
-  "status": "OWNER ACCEPTED / READY FOR MERGE",
+  "status": "CLOSED / ACCEPTED",
   "tuner": {
     "version": "1.1.12",
     "executable_source_commit": "d112dd0bbef7d86bd22090ec75d76cad3be77677",
@@ -39,5 +39,7 @@
     "Bounded hobby/public-beta validation is not an endurance or industrial qualification campaign.",
     "AAC/AAC+ remains unresolved and outside A-REMOTE-012."
   ],
-  "privacy": "No firmware backup, NVS content, credential, pairing material, MAC address or device identifier is included."
+  "privacy": "No firmware backup, NVS content, credential, pairing material, MAC address or device identifier is included.",
+  "coordination_merge_commit": "449d4fd7190b23d48e1374176ae69bd1c1a7038b",
+  "closure_recorded_utc": "2026-10-19T16:05:33Z"
 }

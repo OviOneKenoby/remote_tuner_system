@@ -1,5 +1,5 @@
 # Shared contract status
-Updated: 2026-10-13T15:34:01Z
+Updated: 2026-10-19T16:05:33Z
 Authority: D-001 through D-008 and the recorded CCM 1.1.0 owner approval; historical starting facts retained.
 
 | Contract | Version | Approval | Freeze | Implementation |
@@ -7,7 +7,7 @@ Authority: D-001 through D-008 and the recorded CCM 1.1.0 owner approval; histor
 | Common Control Model (CCM) | 1.1.0 | OWNER APPROVED | FROZEN | REMOTE Core/backend subsets exist; full two-device conformance NOT VERIFIED |
 | TUNER Native API | v1 | UNAPPROVED | UNFROZEN | NOT IMPLEMENTED |
 
-Current TUNER final baseline: v1.1.11, main/tag/merge `5fb92c95d228d744d1182ae3956e850c5be2f277`; executable source `124e84801b06f9e07764dabc3985a573dffaff3b`, build_git_id `124e84801b06`, explicit `esp32-lwip-psram`. [Exact artifact/accepted hardware scope and limits](reports/TUNER_V1_1_11_RECONCILIATION.md); D-005. Initial audited `371cdebce7ba2648ea71636d5bdb5d738b42e680` /1.1.0 is historical D-003, not current state. No new conformance or Native approval.
+Current TUNER final baseline: v1.1.12, main/tag/integration merge `4977b49756820edc149acbe1abe4d387a96aa992`; executable source `d112dd0bbef7d86bd22090ec75d76cad3be77677`, build ID `d112dd0bbef7`, explicit `esp32-lwip-psram`. Exact application: 2,037,632 bytes, SHA-256 `6d7f2ebfa833bd09f287b8a7024071d736dfb2bf02356f889de94d7b980fdf6a`; [release](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/releases/tag/v1.1.12) and [A-REMOTE-012 report](reports/A-REMOTE-012_LOW_LATENCY_SOFTWARE.md). v1.1.11 and the initial 1.1.0 audit remain historical. CCM 1.1.0 remains frozen; no Native approval change.
 Common phase: Phase A contract reconciliation + TUNER correctness/control-state foundation.
 
 ## Reference register

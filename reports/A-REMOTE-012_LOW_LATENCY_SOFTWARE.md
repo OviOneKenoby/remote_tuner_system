@@ -2,7 +2,7 @@
 
 ## Verdict
 
-**ACCEPTED ? READY FOR MERGE.** Final hardware acceptance covers uninterrupted ACTIVE RTCP stability, rapid volume correctness, MP3 coexistence, and post-fix Bluetooth A2DP web/RTCP coexistence for the recorded windows. TUNER v1.1.12 executable source `d112dd0bbef7d86bd22090ec75d76cad3be77677` is installed with exact readback and merged at `4977b49756820edc149acbe1abe4d387a96aa992`; the exact release asset is published under `v1.1.12`. Quantitative latency is WAIVED BY OWNER for A-REMOTE-012 and was not measured. Historical failures and corrections below remain preserved.
+**CLOSED / ACCEPTED.** Coordination PR #18 merged normally at `449d4fd7190b23d48e1374176ae69bd1c1a7038b`. Final hardware acceptance covers uninterrupted ACTIVE RTCP stability, rapid volume correctness, MP3 coexistence, and post-fix Bluetooth A2DP web/RTCP coexistence for the recorded windows. TUNER v1.1.12 executable source `d112dd0bbef7d86bd22090ec75d76cad3be77677` is installed with exact readback and merged at `4977b49756820edc149acbe1abe4d387a96aa992`; the exact release asset is published under `v1.1.12`. Quantitative latency is WAIVED BY OWNER for A-REMOTE-012 and was not measured. Historical failures and corrections below remain preserved.
 
 
 ## v1.1.12 exact release validation ? 2026-10-19

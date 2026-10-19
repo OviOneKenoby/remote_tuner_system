@@ -1,9 +1,14 @@
 # Project synchronization
-Updated 2026-10-13T15:34:01Z; coordination input `8e93c702940d49583f3fdd58046503ae0b8f7354`.
-Common phase: Phase A contract reconciliation + TUNER correctness/control-state foundation.
-Common gate: **OPEN / NOT PASSED**. No automatic task dispatch.
+Updated 2026-10-19T16:05:33Z; coordination input `449d4fd7190b23d48e1374176ae69bd1c1a7038b`.
+Common phase: A-REMOTE-012 closed after accepted REMOTE/TUNER common-control and low-latency integration.
+Common gate: **A-REMOTE-012 CLOSED / ACCEPTED**. No automatic next task.
 
 ## Current state - supersedes historical status below
+### A-REMOTE-012 closure ? 2026-10-19
+
+Coordination PR #18 merged normally at `449d4fd7190b23d48e1374176ae69bd1c1a7038b`. TUNER v1.1.12 is published from executable source `d112dd0bbef7d86bd22090ec75d76cad3be77677` and integration merge `4977b49756820edc149acbe1abe4d387a96aa992`; the exact released application is 2,037,632 bytes with SHA-256 `6d7f2ebfa833bd09f287b8a7024071d736dfb2bf02356f889de94d7b980fdf6a`. Final hardware evidence covers MP3, A2DP, mode recovery, HTTP/RTCP coexistence, sleep/wake and encoder volume behavior at the approved hobby/public-beta level. Quantitative latency is owner-waived and not claimed as measured. REMOTE firmware and rollback artifacts remain unchanged. No new milestone is assigned.
+
+## Historical current-state snapshot - 2026-10-13
 ### A-REMOTE-011 kickoff — 2026-10-13T15:34:01Z
 
 **READY FOR OWNER REVIEW — IMPLEMENTATION NOT STARTED.** [Assignment](tasks/A-REMOTE-011.md) and [kickoff report](reports/A-REMOTE-011_KICKOFF.md) map CCM 1.1.0 to TUNER v1.1.11 and the private REMOTE implementation. Proposed first slice: authorized identity/version/capability session, fresh `volume.level` and `playback.state`, and correlated `volume.set` only. Playback/station/catalog/AAC/UI work is excluded. No wire API exists today; Native transport/framing/authorization remain OPEN and require owner approval. The named REMOTE workspace is not A-010-complete; preserved A-010 source must be the baseline or be privately reconciled. No firmware/build/hardware operation or contract change occurred. A-010 remains DONE / OWNER ACCEPTED.

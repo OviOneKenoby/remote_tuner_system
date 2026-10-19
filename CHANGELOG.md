@@ -1,3 +1,9 @@
+# 2026-10-19 -- A-REMOTE-012 CLOSED / ACCEPTED
+
+- Coordination PR #18 merged normally into `main` at `449d4fd7190b23d48e1374176ae69bd1c1a7038b` after exact-head, base, mergeability, review/check and release verification.
+- Active task, API and synchronization pointers now identify TUNER v1.1.12 and the closed milestone. Historical failures, corrections, evidence and the owner-approved quantitative-latency waiver remain unchanged.
+- REMOTE firmware, TUNER release assets, NVS, pairing, credentials, partitions and private rollback artifacts were not modified during closure. No next milestone was assigned.
+
 # 2026-10-19 -- TUNER v1.1.12 RELEASED / A-REMOTE-012 READY FOR MERGE
 
 - The exact one-line version change is source commit `d112dd0bbef7d86bd22090ec75d76cad3be77677`; the embedded version is `1.1.12` and build ID is `d112dd0bbef7`. The A-REMOTE-012 TUNER chain was merged normally by [TUNER PR #6](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/6) into `main` at `4977b49756820edc149acbe1abe4d387a96aa992`.

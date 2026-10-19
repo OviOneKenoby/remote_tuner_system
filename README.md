@@ -63,7 +63,11 @@ This ZIP does not publish a repository, connect accounts, grant filesystem acces
 Read MANUAL_SETUP.md for the exact initialization and publication steps.
 
 
-## Current coordination state - 2026-10-11
+## Current coordination state - 2026-10-19
+
+A-REMOTE-012 is **CLOSED / ACCEPTED**. Coordination PR [#18](https://github.com/OviOneKenoby/remote_tuner_system/pull/18) merged normally into `main` at `449d4fd7190b23d48e1374176ae69bd1c1a7038b`. TUNER `v1.1.12` is published from executable source `d112dd0bbef7d86bd22090ec75d76cad3be77677` and TUNER integration merge `4977b49756820edc149acbe1abe4d387a96aa992`; the exact 2,037,632-byte application SHA-256 is `6d7f2ebfa833bd09f287b8a7024071d736dfb2bf02356f889de94d7b980fdf6a`. REMOTE firmware and private rollback artifacts remain unchanged. Quantitative latency is owner-waived for A-REMOTE-012 and was not measured. Historical failures and evidence remain preserved. No next milestone is assigned.
+
+## Historical coordination state - 2026-10-11
 TUNER final v1.1.11 supersedes the initial baseline; [current report](reports/TUNER_V1_1_11_RECONCILIATION.md). PR7/8/9 evidence integrated; REMOTE A003 production qualification FAIL/BLOCKED and A004 conditional host PASS / production BLOCKED. [PROJECT_SYNC](PROJECT_SYNC.md), [PM review](reports/A-PM-003_RECONCILIATION.md), [evidence index](references/pm/2026-10-11/INDEX.md) record exact identity/limits. CCM/Native/O01-O17/common gate unchanged; no automatic D1/device authorization.
 
 ## D-006 owner approval and CCM1.1.0 publication - 2026-10-11

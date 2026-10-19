@@ -1,7 +1,7 @@
 # A-REMOTE-012: Low-Latency Volume Control
 
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: ACCEPTED / READY FOR MERGE
+- State: CLOSED / ACCEPTED
 - Coordination baseline: `437e79cdfd6b7febf001271a32467191d84b20d2`
 - TUNER source baseline: `18ddd3b16e305341f338afebd7dc725500ecbb73`
 - TUNER executable source: `d112dd0bbef7d86bd22090ec75d76cad3be77677`; official `main` integration merge: `4977b49756820edc149acbe1abe4d387a96aa992`; release: [`v1.1.12`](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/releases/tag/v1.1.12)
@@ -9,7 +9,7 @@
 - Engineering targets were used during development. For final A-REMOTE-012 acceptance, quantitative latency measurement is OWNER WAIVED; the owner accepts the observed functional encoder, UI and audible response. The waiver does not apply automatically to later milestones.
 - Scope: private REMOTE target accumulation, RTCP scheduling and provisional UI; public TUNER RTCP cadence, local encoder/audio scheduling, deferred e-paper feedback and bounded timing evidence; focused/integration regression; production builds; reversible commissioning plan.
 - Exclusions: physical flashing, pairing/NVS/partition changes, CCM or RTCP wire changes, AAC/AAC+, unassigned physical-button actions, intermittent QMI8658 motion-wake work, UI redesign and unrelated refactoring.
-- Acceptance: OWNER ACCEPTED / READY FOR MERGE. Final applications have exact readback evidence. Rapid volume reconciliation, direction reversal, uninterrupted ACTIVE RTCP stability, MP3 coexistence, post-fix Bluetooth A2DP/web/RTCP coexistence, pairing retention and sleep/wake recovery are hardware PASS. Quantitative latency is WAIVED BY OWNER and was not measured.
+- Acceptance: CLOSED / OWNER ACCEPTED. Coordination PR #18 merged normally at `449d4fd7190b23d48e1374176ae69bd1c1a7038b`. Final applications have exact readback evidence. Rapid volume reconciliation, direction reversal, uninterrupted ACTIVE RTCP stability, MP3 coexistence, post-fix Bluetooth A2DP/web/RTCP coexistence, pairing retention and sleep/wake recovery are hardware PASS. Quantitative latency is WAIVED BY OWNER and was not measured.
 - Rollback baseline: REMOTE 2,523,936-byte application, SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`; TUNER 2,034,800-byte application, SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`. Both remain private and independently retained.
 
 
