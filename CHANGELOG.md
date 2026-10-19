@@ -13,6 +13,7 @@
 
 # 2026-10-19 -- REMOTE public baseline audit correction / documentation synchronized
 
+- REMOTE follow-up PR #2 corrected the current D-009 sentence after owner approval and merged normally at `d0a6ae556d8cbd9da5d90896b54573a45a48af69`; public `main` now points to that final documentation merge.
 - Verified the source-bearing `OviOneKenoby/REMOTE-01` commit `a06608085332255989f49b85be720a4a731cdfa1`; its 1,642 meaningful firmware files have zero substantive differences from the active local A-REMOTE-012 source after line-ending normalization. REMOTE documentation PR #1 merged normally at `1626504d87430cf868bcce267800a2d5ed9a48c1` without changing firmware source or configuration.
 - Preserved the initial audit concern as superseded history. Waveshare's official `06_WIFI_STA` documentation publishes the exact `esp_wifi_bsp` Wi-Fi literals as vendor sample credentials, so they are not evidence of personal or operational credential disclosure. The component remains excluded from the effective build. No rotation, component removal or history rewrite is required from this finding.
 - The reachable-history scan found no operational RTCP secret, private key, API token, flash/NVS dump, rollback backup or REMOTE application binary. Absolute local paths and historical private-LAN addresses remain documentation hygiene items.
