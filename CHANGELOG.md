@@ -1,3 +1,10 @@
+# 2026-10-19 -- A-REMOTE-013 PLANNING / OWNER REVIEW
+
+- Audited the actual TUNER v1.1.12 and private REMOTE source paths for playback, Bluetooth, stations, Favorites/Recent, Radio Browser, metadata, inputs, UI, persistence and lifecycle behavior. A-REMOTE-012 remains CLOSED / ACCEPTED.
+- Published a source-backed capability matrix, end-to-end control-path/protocol gap analysis, measured resource/risk assessment, incremental implementation plan and unexecuted hardware checklist. The accepted RTCP binding remains volume-focused; no Native API or web-manager capability is treated as implemented REMOTE control.
+- Proposed D-009 for a minimal additive playback-control RTCP profile and D-010 for durable station catalogs and selected-station logo boundaries. Both are PENDING OWNER REVIEW; CCM 1.1.0 remains frozen, Native v1 remains unapproved/unimplemented and O01-O17 remain open.
+- No firmware source, build, device, release, pairing, credential, NVS, partition or persistent-storage change occurred.
+
 # 2026-10-19 -- A-REMOTE-012 CLOSED / ACCEPTED
 
 - Coordination PR #18 merged normally into `main` at `449d4fd7190b23d48e1374176ae69bd1c1a7038b` after exact-head, base, mergeability, review/check and release verification.

@@ -54,6 +54,40 @@ All entries OPEN / UNRESOLVED. Importing/grouping them issues no new owner appro
 | O16 | Reset/persistence domains | Foundational design | OPEN |
 | O17 | Security/legacy coexistence | Resource/security-dependent; before API freeze | OPEN |
 
+### D-009: A-REMOTE-013 additive RTCP playback-control profile
+- Date (UTC): 2026-10-19
+- Task / proposal ID: A-REMOTE-013 Phase 1
+- State: PROPOSED / OWNER REVIEW
+- Problem and evidence: the accepted RTCP binding carries authenticated volume control and playback observation, while TUNER local radio play/pause/previous/next and REMOTE HOME controls are not connected; [gap analysis](reports/A-REMOTE-013_CONTROL_PATH_AND_PROTOCOL_GAPS.md).
+- Exact proposed change: specify additive capability bits and RTCP request/result messages for `playback.play`, `playback.pause`, `playback.previous` and `playback.next`, plus bounded authoritative current-station/title/playback observations. Retain existing framing, 512-byte plaintext limit, authenticated counters, single-in-flight correlation, session fencing, no automatic retry and volume-only compatibility. Stop/mute/source/BT/catalog operations are excluded from the first profile.
+- CCM impact: NONE; reuse existing CCM 1.1.0 operation/field meanings without modifying the frozen contract.
+- Native API impact: NONE; v1 remains UNAPPROVED / UNFROZEN / NOT IMPLEMENTED and O01-O17 remain open.
+- REMOTE impact and review: adapter capability/dispatch/observation additions and existing HOME/input bindings; source audit complete, implementation NOT AUTHORIZED.
+- TUNER impact and review: main-loop-owned adapters over existing local authority; source audit complete, implementation NOT AUTHORIZED.
+- Alternatives and compatibility: implementing Native v1 or exposing web routes was rejected for this slice. Additive capabilities permit old/new volume-only interoperability. TUNER-first installation is recommended.
+- Owner approval: PENDING.
+- Effective approved revision: NONE.
+- Implementation tasks/commits: NOT IMPLEMENTED.
+- Verification: source review only; no build or hardware verification.
+- Supersedes / superseded by: NONE.
+
+### D-010: A-REMOTE-013 station catalog and selected-logo boundary
+- Date (UTC): 2026-10-19
+- Task / proposal ID: A-REMOTE-013 Phase 1
+- State: PROPOSED / OWNER REVIEW
+- Problem and evidence: current station arrays use mutable positions/names/URLs, RTCP has no catalog messages, a 20-item result exceeds current REMOTE resource and 512-byte record assumptions, and no logo pipeline exists; [matrix](reports/A-REMOTE-013_CAPABILITY_MATRIX.md) and [risk assessment](reports/A-REMOTE-013_RESOURCE_RISK.md).
+- Exact proposed change: before station implementation, approve TUNER-owned durable opaque station IDs, monotonic catalog revisions, guarded activation, bounded paging/continuation and selected-radio-station-only logo locators. REMOTE owns a bounded volatile logo fetch/decode/cache and placeholder; raw credentials/private payloads are excluded. Exact page, string, image byte/dimension/format and timeout limits require measured design review.
+- CCM impact: NONE proposed; use existing reference/catalog foundations. Any missing field or executable slice requires a separate exact CCM proposal rather than silent extension.
+- Native API impact: NONE; the unapproved candidate is not made effective.
+- REMOTE impact and review: new catalog ingress/UI and bounded logo pipeline; implementation NOT AUTHORIZED; `remote_ctl` use is excluded absent a separate persistence decision.
+- TUNER impact and review: durable identity/migration, catalog snapshots/pages and sanitized logo locator; implementation NOT AUTHORIZED.
+- Alternatives and compatibility: raw array indices, names or URLs are rejected as durable identity; sending whole catalogs or image bytes in one RTCP record is rejected. Deferring logo and optional browse/search remains compatible.
+- Owner approval: PENDING.
+- Effective approved revision: NONE.
+- Implementation tasks/commits: NOT IMPLEMENTED.
+- Verification: source/resource review only; no build or hardware verification.
+- Supersedes / superseded by: NONE.
+
 Product boundaries, direct LAN operation, TUNER catalog ownership, REMOTE artwork ownership and mDNS discovery direction are already recorded in the supplied canonical handoff; this table does not reopen them. Optional deferral is a future explicit release-scope decision, not silently enacted here.
 
 ## Administrative PM assignment record
