@@ -1,0 +1,28 @@
+{
+  "task": "A-REMOTE-012",
+  "scope": "TUNER bounded post-identity snapshot diagnostics",
+  "status": "BUILD_PASS_HARDWARE_NOT_RUN",
+  "tuner_source_commit": "fda5f1ad1e5ebb9e83238cdbaa3ad79564e40842",
+  "environment": "esp32-lwip-psram",
+  "board": "esp32dev",
+  "diagnostic_storage_bytes": 60,
+  "dynamic_diagnostic_allocation": false,
+  "tests": {
+    "diagnostic_model": "11/11 PASS",
+    "integration_redaction": "14/14 PASS",
+    "rtcp_scheduling": "9/9 PASS",
+    "ccm_wire": "16/16 PASS"
+  },
+  "artifact": {
+    "firmware_bytes": 2036992,
+    "firmware_sha256": "18d59b75cbf481b517b09fd274207e2271cdd42a0a146f56eafeca2e8a1196d3",
+    "elf_sha256": "c32bc7023b6ea91b1deee96e1a3b568d2813aa703cc9db9f41cc959bb55db2",
+    "map_sha256": "ecba389e4b77e4a7ee3f2f1c8556de2aa23c5e33127bd901c1b3bc3814591281",
+    "slot_headroom_bytes": 1108736,
+    "static_ram_bytes": 87512,
+    "static_ram_delta_from_installed_a012": 64
+  },
+  "protocol_behavior_changed": false,
+  "hardware_access": false,
+  "root_cause_fixed": false
+}

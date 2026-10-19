@@ -1,0 +1,336 @@
+# A-REMOTE-012 low-latency volume control - software validation and commissioning plan
+
+## Verdict
+
+**ACCEPTED ? READY FOR MERGE.** Final hardware acceptance covers uninterrupted ACTIVE RTCP stability, rapid volume correctness, MP3 coexistence, and post-fix Bluetooth A2DP web/RTCP coexistence for the recorded windows. TUNER v1.1.12 executable source `d112dd0bbef7d86bd22090ec75d76cad3be77677` is installed with exact readback and merged at `4977b49756820edc149acbe1abe4d387a96aa992`; the exact release asset is published under `v1.1.12`. Quantitative latency is WAIVED BY OWNER for A-REMOTE-012 and was not measured. Historical failures and corrections below remain preserved.
+
+
+## v1.1.12 exact release validation ? 2026-10-19
+
+The final source delta from the hardware-accepted Classic-memory correction is exactly one production version literal. Source commit `d112dd0bbef7d86bd22090ec75d76cad3be77677` embeds firmware `1.1.12` and build `d112dd0bbef7`. Its application is 2,037,632 bytes at `0x10000`, SHA-256 `6d7f2ebfa833bd09f287b8a7024071d736dfb2bf02356f889de94d7b980fdf6a`, static DRAM 87,512 bytes, and PlatformIO program usage 2,031,057 / 3,145,728 bytes.
+
+The exact application passed write and independent 460800-baud full-span readback. Owner-confirmed MP3 audio remained uninterrupted while TUNER HTTP, REMOTE HTTP and RTCP READY passed 15/15. Owner-confirmed A2DP audio remained uninterrupted while the same checks passed 15/15; minimum observed internal free heap was 22,468 bytes and minimum largest internal block was 16,372 bytes. Returning to MP3 passed 10/10, with Bluetooth inactive/restartable and RTCP READY. No RTCP close or session delta occurred within any bounded phase.
+
+[TUNER PR #6](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/6) merged normally into `main` at `4977b49756820edc149acbe1abe4d387a96aa992`. [Release `v1.1.12`](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/releases/tag/v1.1.12) targets that merge and contains the exact validated binary. An independent download matched the published size and SHA-256. Private rollback artifacts remain unchanged. Quantitative latency remains owner-waived for this milestone and is not claimed as measured.
+
+## RTCP connection-instability root cause and correction
+
+Two later read-only TUNER captures changed the diagnosis from a permanent post-identity failure to persistent-connection instability. Counters rose from 20 to 104 accepted connections, 18 to 66 accepted client finishes, and 86 to 259 snapshot requests and completions. The later capture records 24 server idle timeouts and 79 peer EOFs, which together account for 103 of 104 accepted connections; one connection was current or otherwise not closed at capture time. No partial/failed response write, allocation failure, lwIP `nomem`, or TUNER Wi-Fi disconnect was observed. Free internal heap was 91,548 bytes with a 77,812-byte largest block. Authentication, identity, capability exchange, snapshots, and two volume commands all succeeded at least intermittently. Memory exhaustion and a permanently broken handshake are therefore rejected as causes by the available evidence.
+
+The confirmed scheduling defect is that TUNER's single Arduino application loop owns RTCP polling and also performs synchronous e-paper refreshes. Its measured maximum turn was 5,983 ms. REMOTE closes an awaited response after the unchanged 3,000 ms deadline, while TUNER closes an idle record session after the unchanged 5,000 ms deadline. Thus a long loop turn can cause REMOTE to close first and TUNER subsequently to observe EOF, or cause TUNER to classify idle timeout before consuming an already buffered request. GxEPD2's selected panel driver performs a synchronous BUSY wait and exposes a cooperative callback specifically during that wait. The exact historical 5,983 ms sample was not phase-tagged, so it cannot be assigned to one named refresh call; the e-paper starvation path itself is source-proven and covers every panel BUSY wait. Browser/network operations may still cause deliberate reconnects during exceptional long operations.
+
+TUNER commit [`073b65963e3ed8e3438bc34134f5a903fce995de`](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/commit/073b65963e3ed8e3438bc34134f5a903fce995de) applies the bounded correction:
+
+- `src/display.h` and `src/display.cpp` expose the existing GxEPD2 BUSY callback without new storage.
+- `src/main.cpp` registers one callback after Wi-Fi setup; while the panel is busy it calls the existing nonblocking RTCP poll on the same application owner and yields for 1 ms.
+- `src/rtcp_server.cpp` reads available bytes before record-idle expiry and processes a complete buffered record at the boundary; incomplete input retains the original timeout.
+- `tests/test_rtcp_display_service_policy.py` verifies owner-preserving callback registration, yielding, read-before-timeout ordering and unchanged handshake deadline.
+
+No new task, queue, dynamic allocation, buffer, retry, timeout extension, framing, cryptography, pairing, CCM, audio or REMOTE behavior was added. Normal REMOTE SYSTEM_SLEEP still intentionally invalidates its session, so some reconnects around actual sleep/wake are expected. Existing counters do not tag each peer EOF with REMOTE sleep state; hardware validation must distinguish the expected lifecycle from residual awake-state churn. The occasional partial REMOTE HTTP status response occurs on separate REMOTE tasks and is not proven to share the TUNER main-loop cause.
+
+Focused verification passed: new display-service policy 9/9; existing RTCP latency policy 10/10; local-volume scheduling policy 10/10; diagnostic integration/redaction policy 14/14; diagnostic state model 11/11. One `esp32-lwip-psram` production build passed. The private candidate is 2,037,152 bytes, SHA-256 `19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8`, with 1,108,576 bytes of the 3 MiB slot remaining. Linked flash is 2,030,581 bytes and static RAM remains 87,512 / 327,680 bytes, a measured 0-byte static-RAM increase over the diagnostic build. The private ELF is 29,789,148 bytes, SHA-256 `697c8ef0662842f7daebd0e3c5c98f675e97b2274f9bdd83cc8f606a6d456367`.
+
+No device was accessed or flashed. Required hardware validation is an application-only TUNER installation with exact readback, followed by awake-state READY/snapshot stability across full and partial e-paper updates, one expected REMOTE sleep/wake invalidation and resynchronization, and MP3/A2DP/web-manager regression. The validated application/full-flash rollback evidence and pairing remain compatible and unchanged.
+
+## Post-installation diagnostic update
+
+Both candidates were subsequently installed with exact application readback PASS. TUNER boots normally, and owner observation confirms fast local audible volume response while e-paper refresh remains slower. REMOTE and TUNER are reachable. REMOTE diagnostics demonstrate TCP establishment, mutual authentication, accepted identity and an accepted capability response: diagnostic stage `complete` is assigned only after the capability parser succeeds. The initial state snapshot does not become authoritative, leaving `volume.level` unknown and `volume.set` unavailable. Later automatic reconnect attempts have also ended after client hello with EOF. No intentional control command was sent.
+
+The first proven failure boundary is therefore **after accepted capabilities and before successful admission of the first snapshot**. A source comparison against the working A-REMOTE-011 implementation found no A-REMOTE-012 change to RTCP record framing, cryptography, identity, capability or snapshot encoding. A-REMOTE-012 adds fixed timing counters and changes main-loop scheduling; TUNER static RAM increased by 40 bytes.
+
+TUNER was observed with 2,304 bytes of free internal heap and a 948-byte largest block. This is serious resource pressure, but it is not proof of causation: identity and capability responses completed under the same firmware, no allocation-failure evidence is exposed by the current read-only web diagnostics, and no source-level allocation failure was observed. The server uses fixed 556-byte receive/transmit members and bounded 512-byte stack buffers. Current diagnostics do not identify whether the snapshot request reached TUNER, response construction or the single-call socket write failed, the session closed, or REMOTE received and rejected a snapshot.
+
+The minimum safe next action is a separately authorized, bounded TUNER diagnostic correction before changing transport behavior: fixed counters/state for application request kind, snapshot dispatch, response construction, requested/written byte counts, close reason, and allocation-failure count delta with free/largest internal heap sampled only on failure. Expected persistent RAM impact is approximately 48-64 bytes with no dynamic allocation. Focused tests should cover identity/capability/snapshot progression, partial/failed response writes, timeout/EOF closure, counter saturation and secret-free serialization. If that evidence proves a partial socket write, the subsequent correction should use a bounded fixed-buffer transmit offset and existing deadline; if it proves allocation pressure, memory should be recovered from demonstrated owners rather than relaxing RTCP security or CCM admission.
+
+## Post-identity diagnostic candidate
+
+The authorized TUNER-only diagnostic source change is complete at commit `fda5f1ad1e5ebb9e83238cdbaa3ad79564e40842`. A fixed 60-byte state object records only bounded enums, counters, requested/written response lengths, internal free/largest heap and allocation-failure count deltas. It retains no payload, key, nonce, proof, pairing identifier, address or device identity and performs no dynamic diagnostic allocation. The existing serial `x` snapshot prints one compact `rtcp_diag` line; the web diagnostics document was deliberately not enlarged under the observed heap pressure.
+
+Instrumentation covers accepted connections, accepted client finish, received application request type, snapshot requests/completions, response build and exact socket-write byte count, partial/zero writes, timeout/EOF and validation close categories, heap at accept/request/close, and allocation failures occurring across the application-response write. Protocol framing, cryptography, counters, timeouts, connection policy, audio and volume behavior are unchanged.
+
+Focused results:
+
+- RTCP diagnostic state model: 11/11 PASS, including normal identity/capability/snapshot progression, partial write, zero write, allocation delta, timeout, EOF and saturation.
+- Diagnostic integration/redaction policy: 14/14 PASS.
+- Existing RTCP scheduling policy: 9/9 PASS.
+- Existing CCM wire regression: 16/16 PASS.
+
+One production build using `esp32-lwip-psram` and board `esp32dev` passed. The exact private firmware artifact is 2,036,992 bytes, SHA-256 `18d59b75cbf481b517b09fd274207e2271cdd42a0a146f56eafeca2e8a1196d3`; its application-slot headroom is 1,108,736 bytes. Static RAM is 87,512 / 327,680 bytes, an increase of 64 bytes over the installed A-REMOTE-012 candidate and 104 bytes over A-REMOTE-011. The private ELF SHA-256 is `c32bc7023b6ea91b1deee96e1a3b568d2813aa703cc9db9f41cc959bb55db2`; map SHA-256 is `ecba389e4b77e4a7ee3f2f1c8556de2aa23c5e33127bd901c1b3bc3814591281`.
+
+### Minimal commissioning procedure
+
+1. Separately authorize TUNER hardware access. Verify the physical TUNER, current installed A-REMOTE-012 application, retained exact rollback and candidate size/hash.
+2. Write only the 2,036,992-byte (`0x1F1500`) TUNER application at `0x10000`; do not erase or write bootloader, partition table, OTA metadata, default NVS or pairing. Read back exactly that range and require the candidate SHA-256.
+3. Boot normally with REMOTE powered. Send no control command and do not rotate either encoder. Allow only the existing automatic connection attempt.
+4. Capture one existing read-only serial `x` snapshot after the attempt. Preserve the private full capture and publish only the compact diagnostic counters.
+5. Interpret the first boundary once: no snapshot request means REMOTE did not deliver it; a request without completion plus partial/failed bytes identifies response transmission; a positive allocation delta identifies an observed allocation failure; a completed snapshot with REMOTE still unknown moves the boundary to REMOTE receipt/admission; timeout/EOF records the close category. Stop after the observation without reconnect loops or speculative correction.
+
+No hardware operation was performed for this diagnostic candidate, and no root-cause fix is claimed.
+
+## Verified cause
+
+The approximately ten-second 15-detent observation is consistent with a source-proven serialization chain:
+
+1. REMOTE generated one absolute one-percent command from the last authoritative value.
+2. The Channel retained one outstanding command and could not advance until the submitted target was observed.
+3. Post-result acquisition could remain behind the periodic snapshot schedule.
+4. TUNER's main loop serviced RTCP once per loop after the web manager and ended with a 10 ms delay.
+
+TUNER's protocol decoder already accepts any exact canonical percentage from 0 through 100, and its command handler calls the existing audio setter directly. The wire protocol was not the limitation.
+
+The TUNER-local encoder exposed a separate confirmed serialization path. Its ISR safely queued detents, but the main loop drained only one detent per turn and synchronously refreshed the e-paper volume overlay after every audio update. The next queued detent therefore waited behind panel I/O. This local display path is not called by RTCP commands, so it does not replace the REMOTE/RTCP finding; both paths required scheduling changes.
+
+## Implemented architecture
+
+### REMOTE private source
+
+Changed private files:
+
+- `components/control_home/include/control_home/api.hpp`
+- `components/control_home/facade.cpp`
+- `components/control_home/runtime.cpp`
+- `components/rtcp_client/client.cpp`
+- `components/user_app/user_app.cpp`
+- `tests/control/volume_admission_tests.cpp`
+- `tests/control/hardening_tests.cpp`
+- `tests/control/ui_volume_binding_tests.py`
+
+The Channel keeps a byte-sized desired target and coalesces undispatched detents into one absolute command. While one command is dispatched, further detents alter only the bounded successor. After authoritative confirmation of the first target, at most one successor is dispatched to the newest desired target. This preserves every admitted detent without a per-detent round trip or unbounded queue.
+
+CCM capture and the volume observation precondition remain mandatory. Targets remain 0-100 and directionally valid from the fresh authoritative observation. Session and capability revisions remain fenced. Definite refusal cancels. Uncertain execution is retained without retry. Disconnect, sleep or scope change invalidates pending state. After a confirmed result, a fresh different volume is accepted as external authority and cancels the obsolete local successor rather than overwriting it.
+
+TCP no-delay is enabled, command completion schedules an immediate snapshot request, and the control owner cadence is 5 ms. HOME displays a provisional `authoritative>desired` value at a 20 ms UI cadence while the indicator bar remains authoritative.
+
+### TUNER public source
+
+Candidate commit: [`5391beef5e7ba264362ea19f2fdd93202308fa55`](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/commit/5391beef5e7ba264362ea19f2fdd93202308fa55), branch `a-remote-012-low-latency`.
+
+Changed files:
+
+- `src/main.cpp`
+- `src/audio.cpp`
+- `src/audio.h`
+- `src/input.cpp`
+- `src/input.h`
+- `src/rtcp_server.cpp`
+- `src/rtcp_server.h`
+- `src/volume_target.h`
+- `src/web_portal.cpp`
+- `tests/test_ccm_wire.cpp`
+- `tests/test_local_volume_latency_policy.py`
+- `tests/test_local_volume_target.cpp`
+- `tests/test_rtcp_latency_policy.py`
+- `CHANGELOG.md`
+
+Physical input is now handled before network/web work. In radio and Bluetooth volume contexts, the first event atomically drains the remaining signed detent total, clamps one absolute 5% target to 0-100, and invokes the existing audio setter once. Menu contexts retain one-event navigation. The synchronous e-paper overlay is deferred until 250 ms of encoder quiet, then renders the authoritative value once. Fixed diagnostics record local command/detent counts and last/maximum setter duration separately from deferred display state.
+
+RTCP is serviced before and after the web-manager turn; the loop delay is 2 ms. Fixed counters record command count, last/maximum audio-apply time and last/maximum complete response time through existing read-only diagnostics. No key, nonce, identity or payload is recorded. The protocol, crypto, pairing store and audio backend semantics are unchanged.
+
+## Verification
+
+- REMOTE coalescing/lifecycle/performance: 8/8 PASS, 164 assertions.
+- REMOTE UI distinction/cadence: 1/1 PASS, 11 assertions.
+- Full REMOTE relevant regression: Core 69/69; profile 6/6; HOME 41/41; hardening 26/26; ingress 18/18; power 19/19; network 17/17; network-sleep 9/9; external-power 11/11; portal 15/15; diagnostics 9/9; physical input 19/19; both WoM modes 7/7; both stack modes 7/7; OTA preflight 8/8; remaining publication/boundary checks PASS.
+- TUNER CCM absolute-volume handler: 16/16 PASS, including 0, 1, 50, 95 and 100 percent plus an inexact-rational rejection.
+- TUNER latency policy/source ownership: 1/1 PASS, 9 assertions.
+- TUNER local absolute target/bounds: 10/10 PASS.
+- TUNER local input/audio/display scheduling policy: 10/10 PASS.
+
+The controlled host model uses 15 detents over 56 ms and a 30 ms command/observation delay. It reports first command at 0 ms, first simulated audible application at 30 ms, final authority 34 ms after the last detent, provisional UI refresh at 20 ms and three RTCP submissions. These are model results, not hardware claims.
+
+## Production artifacts
+
+| Device | Environment | Binary bytes | SHA-256 | Slot headroom | Static RAM | Linked flash |
+| --- | --- | ---: | --- | ---: | ---: | ---: |
+| REMOTE | `remote01` | 2,525,168 | `afd8b426b37cdac5bfd32abf4ee9fbf70c91e3a28ebdf74ae482871572dcdef4` | 620,560 | 47,388 / 327,680 | 2,524,673 / 8,388,608 |
+| TUNER | `esp32-lwip-psram` | 2,036,000 | `0680e8f2c6bfb8b1149ab1a8baec56fa80a7995d0401bf74463ff1f0d1143c1a` | 1,109,728 | 87,448 / 327,680 | 2,029,421 / 3,145,728 |
+
+Against the accepted A-011 production baselines, REMOTE adds 1,232 binary bytes and 160 static-RAM bytes; TUNER adds 1,200 binary bytes and 40 static-RAM bytes. Candidate binaries and rollback images remain private.
+
+The TUNER binary was built from public commit `5391beef5e7ba264362ea19f2fdd93202308fa55`; its embedded build identity contains `5391beef5e7b`. REMOTE is a private Git-less workspace, so it has no source commit identity. Its preserved candidate matches the current production build byte-for-byte, and a private final scoped manifest records the eight changed source files plus `platformio.ini` and `partitions.csv`. This supports scoped source-to-artifact traceability without claiming a nonexistent REMOTE Git commit or publishing private hashes.
+
+## Final rollback review
+
+The following private evidence was rehashed read-only on 2026-10-17:
+
+| Device / role | Bytes | SHA-256 | Recovery status |
+| --- | ---: | --- | --- |
+| REMOTE A-011 application rollback | 2,523,936 | `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d` | Exact application rollback at `0x10000` |
+| REMOTE Stage 1 full flash | 16,777,216 | `31fd537c4bf534b101e74ed582bf0aa909235686207da29ad61413f21688b43d` | Primary and local copy match; complete recovery remains separately authorized |
+| TUNER accepted A-011 production application | 2,034,800 | `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4` | Exact post-pairing application rollback at `0x10000` |
+| TUNER Stage 1 pre-A-011 installed capture | 2,034,800 | `4dc7347191a38a18fe76b1635b446a485443ac6d06406bb6f53d303cd105b88a` | Fresh device readback and full-flash slice; not claimed byte-identical to a historical release artifact |
+| TUNER temporary A-011 diagnostic application | 2,036,400 | `f193863f6d2966cc0797b9bdd2144971fb7b4bfc5bb9b1b4c07ff4840cf4a21c` | Exact diagnostic-state rollback only; not the preferred production rollback |
+| TUNER Stage 1 full flash | 4,194,304 | `4a980e0887fab052389c233429d9cdf398720e119f2b51141a4fcfb8aa5914f6` | Primary and local copy match; complete recovery remains separately authorized |
+
+The coordination baseline identifies TUNER firmware v1.1.11; no evidence supports relabeling the Stage 1 capture as v1.1.0. The reconstructed 2,034,800-byte application with SHA-256 `7b36921cf0b313f63b9b53b4083685dfd7e78c72cd41f4f554bb302e04d6b6fb` remains rejected as an exact rollback image because its bytes differ.
+
+Stage 1 previously copied all eight rollback-critical files to separate physical USB storage with expected sizes. That USB device is not attached during this review, so those external copies were not rehashed. Reconnecting the owner-controlled storage and verifying its retained files is a mandatory pre-write checkpoint; it does not invalidate the independently matching primary and local full-flash captures.
+
+## Rejected intermediate artifacts
+
+The first TUNER candidate build preceded its source commit and therefore embedded the prior Git identifier. Its 2,035,536-byte binary, SHA-256 `71c40924a935fb098ba3718aeafc48c6531f5c2048b479e410076bf302b35d52`, is rejected. The RTCP-only candidate was rebuilt from committed source before the later local-encoder finding produced the final candidate.
+
+The 2,035,536-byte RTCP-only candidate at commit `6bf53a22191f0ff387899fa9a57c805a55461a11`, SHA-256 `615e6fdbc7fd7b883bcee0e9cfa9ab0156e714d4a37757f84f4983407d8e954e`, remains valid historical build evidence but is superseded by the final candidate, which also addresses the TUNER-local encoder path.
+
+A clean reproduction from the accepted A-011 TUNER source produced the expected 2,034,800-byte length and resource metrics but SHA-256 `7b36921cf0b313f63b9b53b4083685dfd7e78c72cd41f4f554bb302e04d6b6fb`; it is not treated as byte-identical rollback evidence. The original accepted rollback binary was then located in three existing private captures, each matching the recorded `49f249...9bbd4` hash, and an additional verified private copy was retained. This preserves exact rollback without making a reproducible-build claim.
+
+## Security and compatibility
+
+CCM strict validation, exact freshness, authenticated provenance, RTCP encryption/counters, request correlation, command preconditions and one-in-flight delivery are unchanged. No automatic retry was added. Memory remains fixed; a desired target replaces queued per-detent work.
+
+- New REMOTE with new TUNER: supported and performance candidate.
+- New REMOTE with old A-011 TUNER: protocol-compatible because the old handler already accepts absolute targets; it lacks the faster service cadence and timing counters.
+- Old A-011 REMOTE with new TUNER: protocol-compatible; legacy one-step commands remain accepted and receive the faster TUNER service cadence.
+
+Either update order fails safely and remains functional. Install TUNER first, verify ordinary audio/UI/web behavior, then install REMOTE to minimize time in the slower mixed pair.
+
+## Hardware acceptance procedure
+
+1. Connect one device at a time. Verify ROM identity, physical flash size and installed partition table. Rehash the exact candidate and application rollback, verify the primary full-flash capture, and reconnect/verify the owner-controlled external backup before the first write.
+2. Install TUNER first, application only at `0x10000`, length `0x1F1120`. Exact readback must match SHA-256 `0680e8f2c6bfb8b1149ab1a8baec56fa80a7995d0401bf74463ff1f0d1143c1a`. Do not touch bootloader, partition table, OTA data, NVS or pairing.
+3. Confirm normal TUNER boot, settings, Wi-Fi, MP3 playback, Bluetooth A2DP and web manager including operation while Bluetooth is active. Confirm RTCP listener and bounded timing counters.
+4. Measure the TUNER physical encoder separately: first and continued detent-to-audible latency, 15 rapid detents, direction reversal and 0/100 boundary clamping. Require first and continued audible response under 100 ms and the final 15-step target within 250 ms after the last detent.
+5. Only after TUNER passes, install REMOTE application at `0x10000`, length `0x2687F0`. Exact readback must match SHA-256 `afd8b426b37cdac5bfd32abf4ee9fbf70c91e3a28ebdf74ae482871572dcdef4`. Preserve `remote_ctl`, default NVS, pairing and partitions.
+6. Confirm normal REMOTE boot, UI/settings, voltage telemetry, sleep/wake and authenticated identity/capability/state synchronization.
+7. Measure REMOTE detent-to-audible change, detent-to-provisional UI, command-to-authoritative UI and final authority after 15 rapid detents. Require under 100 ms first and continued audible response, under 50 ms provisional UI, and final target within 250 ms after the last detent. Confirm fewer than 15 RTCP submissions for a rapid burst, one in flight and no residual pending state.
+8. Exercise rapid direction reversal and minimum/maximum boundaries. Confirm the provisional target reconciles to authoritative TUNER volume without stale replay, unsafe retry or command flooding.
+9. Exercise one disconnect/reconnect and one REMOTE sleep/wake. Require resynchronization without replay. Recheck MP3 and Bluetooth A2DP audio plus the active web manager after paired operation.
+10. On boot, audio, UI, pairing, memory or timing failure, stop. Restore only the affected application at `0x10000`: REMOTE length `0x268320` with SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`, or TUNER length `0x1F0C70` with SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`; verify exact readback. Full-flash restoration remains a separately authorized recovery operation.
+
+At the time this checklist was published, none of its hardware steps had been executed. The later bounded diagnostic installation is recorded below.
+
+## Post-identity diagnostic commissioning result
+
+On 2026-10-17 the owner authorized the bounded TUNER diagnostic installation. The complete eight-file rollback set on separate physical USB storage and the matching local files were reverified against their recorded sizes and SHA-256 identities. ROM preflight identified the expected classic ESP32 TUNER revision with 4 MiB flash. The 2,036,992-byte diagnostic candidate fit the unchanged 3 MiB application slot.
+
+Only the application range beginning at `0x10000` was written. Independent full-span readback matched SHA-256 `18d59b75cbf481b517b09fd274207e2271cdd42a0a146f56eafeca2e8a1196d3`. The normal application then reported build identity `fda5f1ad1e5e`, connected Wi-Fi, 110,412 bytes free internal heap, a 106,484-byte largest block, and zero allocation failures.
+
+Exactly one existing read-only serial `x` snapshot was captured. Its RTCP diagnostic line reported stage/request/close zero, zero connections, zero client finishes, zero records, zero snapshot requests/completions, zero partial or failed writes, and zero timeout/EOF/allocation deltas. A single read-only request to the existing REMOTE diagnostic endpoint timed out. Thus the intended automatic RTCP exchange did not reach TUNER during this bounded observation. The first proven boundary for this run is before TUNER TCP acceptance; it provides no evidence for or against response construction, response writes or allocation failure in the post-identity snapshot path.
+
+The minimum next action is a separately controlled observation with REMOTE first demonstrated online, followed by one natural automatic connection and one TUNER `x` snapshot. Do not loop reconnects, issue control commands or infer that the instrumentation fixed the original defect.
+
+## Scheduling-correction installation and stability result
+
+On 2026-10-17 the owner authorized installation of the scheduling-corrected TUNER application. Preflight reverified the accepted candidate, all eight local rollback-critical files and all eight copies on the separate physical USB drive. ROM identification confirmed the expected classic ESP32 TUNER with 4 MiB flash; the unchanged 3 MiB application slot accommodates the candidate.
+
+Only the application beginning at `0x10000` was written. Independent full-span readback was 2,037,152 bytes and matched SHA-256 `19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8`. Boot logs showed normal PSRAM, display, input, audio and stored-Wi-Fi initialization. The read-only snapshot confirmed connected Wi-Fi with no disconnects, healthy internal heap and no allocation failures. The artifact reports embedded build ID `fda5f1ad1e5e`; this is the parent HEAD visible when the artifact was built before source correction commit `073b65963e3ed8e3438bc34134f5a903fce995de`. The owner-accepted artifact identity remains its exact size and SHA-256; the embedded identifier limitation is now explicit.
+
+The initial TUNER snapshot at uptime 47,029 ms recorded 23 connections, 23 client finishes, 45/45 completed snapshot requests, 23 peer EOFs, zero timeouts, zero partial/failed writes and a 274 ms maximum loop turn. REMOTE was network-connected with one RTCP connection state but no fresh authoritative volume, no `volume.set` and no outstanding command.
+
+After a passive 319-338 second observation with no encoder movement or intentional command, TUNER recorded 285 connections, 283 client finishes, 568/568 completed snapshot requests, 285 peer EOFs, zero timeouts, zero partial/failed writes, zero allocation failures and zero Wi-Fi disconnects. Its cumulative maximum loop turn was 1,738 ms, below both the REMOTE 3,000 ms awaited-response deadline and the TUNER 5,000 ms idle deadline. REMOTE session generation increased from 763 to 1,008 and capability revision from 8,934 to 11,646, then ended disconnected with authoritative volume unknown, `volume.set` unavailable and no outstanding operation.
+
+The exact deltas are 262 accepted connections, 260 accepted client finishes, 523 completed snapshot requests and 262 peer EOFs. This proves the cooperative display servicing reduced the prior scheduling stall and that TUNER successfully processes snapshots, but it did not produce a stable persistent RTCP session. The first remaining boundary is peer-initiated closure after successful request/response cycles; existing evidence does not yet prove the REMOTE-side condition that closes each session. Classification: **RTCP STABILITY FAIL**. Volume-performance, sleep/wake reconnect and MP3/A2DP/web-manager coexistence acceptance remain unrun. No further correction is authorized by this result.
+
+## REMOTE connection-lifecycle investigation
+
+The retained hardware snapshots narrow the lifecycle boundary without proving a corrective change. REMOTE session generation rose from 763 to 1,008 while power counters changed by only two sleep requests and one wake, and the network generation changed by four. Those lifecycle events cannot explain 245 REMOTE sessions or 262 TUNER peer EOFs. TUNER completed all 523 added snapshot requests with zero server timeout, partial/failed write, allocation failure or Wi-Fi disconnect, and its corrected maximum loop turn stayed below REMOTE's response deadline. The remaining churn is therefore inconsistent with expected sleep/network behavior and with a failed TUNER response path.
+
+REMOTE source inspection identified a diagnostic blind spot. All connect, send, receive, framing, timeout, suspend and network-loss paths eventually reset the same client state. The diagnostic failure was cleared by later successful reconnect stages, while suspend/network closes did not store a cause. The receive helper returned one false value for both EOF and socket errors. Consequently, existing counters cannot distinguish a deliberate lifecycle close from timeout, peer EOF, partial read or transport failure. This is the exact remaining uncertainty; the source does not yet justify a transport-behavior change.
+
+The private source now records a bounded last-close category and saturating close count, and separately classifies EOF, would-block and socket error. All existing close sites supply an explicit reason. Invalid encrypted records after identity are also categorized instead of disappearing behind the next reconnect. The fields reuse the existing 16-byte RTCP diagnostic representation by packing stage/failure nibbles and narrowing the server-hello byte count to its verified 0–56 range. `Snapshots` remains exactly 1,024 bytes; no allocation, timeout, retry, buffer, crypto, wire, pairing, CCM or control change was introduced.
+
+Changed private files: `components/rtcp_client/client.cpp`, `components/rtcp_client/include/rtcp_client/client.hpp`, `diagnostic.hpp` and new `io_status.hpp`; `components/control_home/runtime.cpp`; `components/diagnostics/model.cpp` and `include/diagnostics/model.hpp`; `tests/rtcp_client/diagnostic_tests.cpp`, `host_tests.cpp`, new `io_status_tests.cpp` and new `lifecycle_policy_tests.py`; `tests/control/diagnostics_tests.cpp` and `encoder_volume_tests.cpp`. No TUNER file changed.
+
+Focused verification passed: RTCP diagnostic 9/9, read status 5/5, nonblocking readiness 9/9, wire and 128 repeated snapshot parses 11/11, lifecycle policy 10/10, status schema 9/9 with 9,089 assertions, volume admission 8/8 with 164 assertions, encoder/session invalidation 5/5 with 26 assertions, power lifecycle 19/19 with 19,236 assertions and network sleep 9/9 with 5,062 assertions. A stale encoder test assertion that still required adjacent-only targets was updated to the approved A-REMOTE-012 absolute-target behavior while retaining the disconnect/stale-session rejection check.
+
+The single production build passed in `remote01`: firmware 2,525,696 bytes, SHA-256 `a421cb73411a19bf650c78de6bf048faf6e4ac65019f4180ab3de097c40cd798`; linked flash 2,525,201 / 8,388,608 bytes; 620,032 bytes remain in the 3 MiB application slot; static RAM remains 47,388 / 327,680 bytes. The ELF SHA-256 is `d3119212d1f565a03cd785b8d95b97f928bae10a4046c643d7d397c2727b3181`. The candidate and manifest remain private. No hardware access, flash, pairing/NVS mutation or control command occurred.
+
+Hardware validation remains required because this candidate diagnoses rather than repairs the unproven close initiator. After rollback and identity preflight, install only this REMOTE application at `0x10000`, verify exact readback, keep REMOTE awake, and capture initial/final REMOTE status plus matching TUNER `x` diagnostics over one bounded recurrence. Require no encoder input or control command. The first changed `rtcp_close_reason` selects the responsible branch; stop after that result before any correction or performance test.
+
+## REMOTE lifecycle hardware diagnosis
+
+The approved diagnostic application was installed only at `0x10000` after the candidate, device, 16 MiB flash, partition sector, four local rollback files and four separate-USB rollback files passed verification. The prior installed A-REMOTE-012 application was independently preserved. Exact readback of the 2,525,696-byte diagnostic span matched SHA-256 `a421cb73411a19bf650c78de6bf048faf6e4ac65019f4180ab3de097c40cd798`.
+
+Normal boot, stored Wi-Fi, valid voltage telemetry and RTCP startup passed. A 313-second passive window produced 61/61 successful HTTP status samples with no encoder input, control command or system sleep. REMOTE close count increased from 21 to 179, sessions from 21 to 174, attempts from 22 to 180, TCP connections from 21 to 177 and identity acceptances from 19 to 170. Every sample in which close count changed retained close reason 2, `network_lost`. Network status remained CONNECTED after the window with zero reconnects and zero errors.
+
+This identifies a specific REMOTE defect. `network_manager::read_status()` is intentionally zero-wait and returns `false` when its shared mutex is momentarily owned. `rtcp_client::Client::poll()` currently evaluates `!read_status(net) || !net.connected` as one condition and closes any live socket as `network_lost`. Continuous HTTP reachability, no network reconnect/error, no system sleep and repeated reason-2 closures demonstrate that ordinary snapshot contention is being mistaken for a link loss. The retained TUNER window (+262 connections and +262 peer EOF, 523/523 snapshots, zero server timeout/write/allocation/Wi-Fi failure) is the expected peer-side consequence.
+
+The smallest safe correction is to make three states explicit: status unavailable, authoritative connected and authoritative disconnected. A transient unavailable status must leave the established socket/session unchanged and retry on a later poll; an authoritative disconnected status must retain the existing close and session invalidation behavior. Focused tests must cover mutex-contention/unavailable status, actual disconnect, sleep, Wi-Fi reconnect, repeated snapshots and stale-command fencing. No source correction, TUNER write or control command was performed in this operation.
+
+## REMOTE false network-loss correction
+
+The approved REMOTE-only correction adds a fixed `NetworkStatusGate` to the existing client. It preserves the last authoritative network generation, treats a failed zero-wait `read_status()` call as unavailable rather than disconnected, and does not close or otherwise mutate a healthy transport in that case. A successfully read disconnected snapshot immediately follows the existing `network_lost` close path. A successfully read connected snapshot with a changed generation also closes an active transport, preserving network-generation fencing; with no active transport, the client adopts the generation before reconnecting. No dynamic allocation was introduced.
+
+Changed private files are `components/rtcp_client/client.cpp`, `components/rtcp_client/include/rtcp_client/client.hpp`, new `network_status.hpp`, new `tests/rtcp_client/network_status_tests.cpp`, and `tests/rtcp_client/lifecycle_policy_tests.py`. No TUNER, CCM, RTCP message, cryptographic, timeout, retry, pairing, persistence or volume-control source changed.
+
+Deterministic verification passed: network gate 15 checks/142 assertions; lifecycle policy 13 checks; RTCP diagnostics 9, I/O status 5, connect readiness 9 and association/wire 11; power lifecycle 19/19 with 19,236 assertions; network sleep 9/9 with 5,062 assertions; network sleep boundary 1/1 with 21 assertions. The one production `remote01` build passed under Espressif32 6.13.0 / ESP-IDF 5.5.3. Firmware is 2,525,808 bytes with SHA-256 `1ca95a1abe31e990d28d125f0994610f88dc554efa8acb744cef866759033477`; linked flash is 2,525,305 bytes, the 3 MiB slot retains 619,920 bytes, and static RAM remains 47,388 / 327,680 bytes.
+
+The artifact and private manifest are retained outside the public repository. No hardware was accessed or flashed. Hardware verification must install only this REMOTE application after the existing rollback preflight, require exact readback, then repeat one bounded awake no-input paired observation. Acceptance requires stable RTCP authority without false `network_lost` close growth, while a deliberately observed real network loss or normal sleep/wake still invalidates the session and reconnects safely.
+
+## REMOTE accumulated-target reconciliation correction
+
+The false-network-loss candidate was subsequently installed application-only with exact readback. Normal boot, retained stored Wi-Fi/configuration, valid voltage telemetry and RTCP startup passed. In a controlled owner test starting at 53%, exactly ten downward encoder detents produced ten intents and ten local acceptances, but only five RTCP submissions and a final authoritative value of 48% instead of 43%. No operation remained in flight.
+
+Source tracing demonstrated the loss. The control owner resolves a correlated command result every 5 ms, republishes its current Core snapshot in the same loop, and refreshes the RTCP observation only every 1,000 ms. `Channel::publish()` treated any confirmed value unequal to the submitted target as an external authoritative change, even when it was byte-for-byte the unchanged pre-command value already held in `latest`. That branch called `cancel_volume()` and discarded the newer accumulated successor. The observed two-detents-per-one-percent result is the direct repeated form of this sequence.
+
+The private correction changes only that classification: external-change reconciliation now requires the incoming authoritative volume to differ from the previously published authoritative volume as well as from the submitted target. Repeated unchanged pre-command snapshots preserve the bounded successor target; a genuinely changed divergent observation still cancels obsolete local intent. Session/capability invalidation, one command in flight, bounds, definite/uncertain failure handling, no automatic retry and CCM/RTCP semantics remain unchanged.
+
+The focused deterministic suite passed 9/9 with 238 assertions. It compares identical ten-detent sequences from 53%: the slow sequence completes authority after every detent, while the rapid sequence accepts new detents during in-flight commands and interleaves confirmed results with unchanged and fresh snapshots. Both must settle at 43%. It also covers rapid down/up reversal without losing the net accepted target. This confirms the rate-dependent boundary without changing the EC11 decoder. One production `remote01` build passed before the test-only comparison was added: firmware 2,525,824 bytes, SHA-256 `3f46c3ccfd45b29985bbda37f1357a8f36831c17066bd0a33952f238936290bf`, 619,904 bytes free in the 3 MiB application slot and 47,388 bytes static RAM. Changed private files are `components/control_home/include/control_home/api.hpp` and `tests/control/volume_admission_tests.cpp`. No TUNER file or hardware was changed.
+
+Minimum hardware validation remains application-only installation after the existing rollback/device preflight and exact readback, followed by one isolated 53% to 43% ten-detent test and one rapid direction reversal. Record before/after detent, accepted-intent, dispatch, authoritative-volume and in-flight fields. Require every accepted detent in the final target, no residual in-flight state and no stale replay after one sleep/wake. Audible latency and MP3/A2DP/web-manager coexistence remain separate A-REMOTE-012 acceptance items.
+
+## Historical pre-fix final validation review ? 2026-10-18
+
+The final REMOTE sleep-lifecycle candidate is installed with its accepted identity: 2,526,848 bytes, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`, 618,880 bytes OTA headroom and 47,388 bytes static RAM. TUNER remains the installed 2,037,152-byte candidate from source commit `073b65963e3ed8e3438bc34134f5a903fce995de`, SHA-256 `19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8`, 1,108,576 bytes slot headroom and 87,512 bytes static RAM. CCM 1.1.0, RTCP/1 authenticated framing, counters, replay protection, one-in-flight fencing and old/new firmware wire compatibility remain unchanged.
+
+Both devices were moved to the owner-selected replacement WLAN. The final synchronized old-WLAN investigation recorded REMOTE at -78 to -80 dBm, with a passive reconnect at -77 dBm, and TUNER at -68/-69 dBm. The replacement WLAN reports REMOTE at -60 dBm and TUNER at -56 dBm. This improvement and the resulting functional session support weak Wi-Fi as a contributing factor to previous transport instability. It is not a controlled proof that signal strength was the sole cause: the history also contains confirmed REMOTE status-contention and sleep-order defects.
+
+The current Wi-Fi change path is a limited destructive reset of the single default-NVS key `remote_wifi/credentials`, initiated by the existing serial arm/confirm flow, followed by the protected setup AP and `http://192.168.4.1`. A candidate credential is stored only after successful connection. The operation does not erase other default-NVS keys or the dedicated `remote_ctl` partition. Hardware confirms that the RTCP association, pairing identifier and PSK remained usable after reprovisioning. No Wi-Fi password, RTCP secret, capsule or private payload is published.
+
+The owner reports zero REMOTE Wi-Fi reconnects and errors after reprovisioning. REMOTE entered SYSTEM_SLEEP during the five-minute observation, then woke, reconnected, reacquired identity/capabilities/fresh state, and exposed `volume_connected=1`, `volume_known=1`, `volume_set=1` with no outstanding command. The physical encoder controlled TUNER volume after wake. These are hardware PASS for reprovisioning, association retention, automatic sleep/wake reconnection and post-wake control.
+
+`CloseReason` is zero-based. Value 11 is `receive_failed`, set only when nonblocking `lwip_recv` reports a socket error other than would-block. Intentional Core suspension calls `Client::suspend()` and records reason 1. The post-wake diagnostic retained two total closes and last reason 11, but it retains no per-close history and the supplied snapshot has no correlated socket errno/event time. It therefore cannot show whether either close was the intentional suspend, nor prove a continuing firmware defect. A transient connection reset around the network/power transition is consistent with the value; the successful authenticated recovery and fresh authority are the material functional result.
+
+### Validation matrix
+
+| Criterion | Classification | Evidence / limit |
+| --- | --- | --- |
+| REMOTE final application identity and resource budget | HARDWARE/SOURCE VERIFIED PASS | Exact installed candidate identity retained; 2,526,848 bytes, 618,880-byte OTA headroom, 47,388-byte static RAM. |
+| TUNER final application identity and resource budget | HARDWARE/SOURCE VERIFIED PASS | Installed candidate 2,037,152 bytes, 1,108,576-byte slot headroom, 87,512-byte static RAM. |
+| RTCP security and compatibility | SOURCE VERIFIED PASS | No wire/crypto/pairing change; mutual authentication, identity, capabilities and fresh state work on hardware. |
+| Wi-Fi reprovisioning and limited erase domain | HARDWARE VERIFIED PASS | New WLAN connected; only Wi-Fi credential record replaced; unrelated data and RTCP pairing retained. |
+| Rapid volume correctness | HARDWARE VERIFIED PASS | Ten rapid down detents and rapid direction reversal previously reached the exact final authority with no persistent in-flight state. |
+| Sleep/wake reconnection and post-wake control | HARDWARE VERIFIED PASS | Automatic sleep occurred; wake restored authenticated authority and encoder volume control. |
+| Uninterrupted awake RTCP stability | NOT YET TESTED | The five-minute observation included SYSTEM_SLEEP; it cannot satisfy the awake-only window. |
+| Physical latency targets | NOT YET TESTED quantitatively | Local TUNER audio and REMOTE control feel responsive, but <100 ms first response, <250 ms final 15-detent target and <50 ms provisional UI were not measured. |
+| Latest MP3/A2DP/web-manager coexistence | NOT YET TESTED | Earlier A-011 behavior is historical; latest A-012 pair still needs the bounded regression. |
+| E-paper feedback | KNOWN LIMITATION | Local audio changes rapidly; e-paper refresh remains visibly slower and is intentionally deferred. |
+| Motion wake | KNOWN SEPARATE LIMITATION | Intermittent QMI8658 initialization remains outside A-REMOTE-012 and is not a volume/RTCP merge criterion. |
+
+### Historical pre-fix remaining merge gate
+
+PR #18 remains **NO-GO** pending only: (1) one uninterrupted five-minute awake RTCP window on the replacement WLAN with no unexplained session churn; (2) measured first-response, 15-detent settling and provisional-UI latency against the accepted targets; and (3) latest-firmware MP3 plus Bluetooth A2DP/web-manager coexistence. Do not start another investigation unless one of these bounded checks reproduces a functional failure.
+
+## Historical pre-fix final hardware acceptance results ? 2026-10-18
+
+| Check | Result | Evidence |
+| --- | --- | --- |
+| Five-minute uninterrupted ACTIVE RTCP stability | HARDWARE PASS | 307 seconds, 61/61 ACTIVE samples, zero close/attempt/session deltas, fresh volume authority throughout. |
+| MP3 plus web/RTCP coexistence | HARDWARE PASS | Owner-confirmed uninterrupted audio; 31/31 TUNER web and 31/31 REMOTE status responses; zero RTCP churn or allocation failures. |
+| Quantitative <100/<250/<50 ms targets | BLOCKED / NOT MEASURABLE | Current firmware lacks synchronized timestamps for physical detent, audible output and physical UI update. Existing counters establish correctness but cannot establish latency. |
+| Bluetooth A2DP audio | HARDWARE PASS for audibility | Owner confirmed connected, active and audible playback. |
+| Bluetooth A2DP plus web manager and RTCP | HARDWARE FAIL / BLOCKED | 0/10 TUNER web responses within three seconds; RTCP READY 0/10, +16 closes and +15 attempts; source-defined TCP 46411 probe timed out while REMOTE Wi-Fi/HTTP stayed healthy. |
+
+The first proven Bluetooth failure boundary is TUNER network/service availability before RTCP TCP acceptance. Source confirms the listener port is 46411 and both RTCP polling and web handling are main-loop services. Existing evidence does not distinguish Wi-Fi/BT coexistence loss from main-loop starvation or another TUNER runtime condition. An attempted COM5 diagnostic open unexpectedly reset TUNER through the USB serial bridge, invalidating collection of the pre-reset TUNER counters; no flash or persistent state changed. After boot, ping and web service passed 12/12 checks. No corrective development is authorized by this record. PR #18 remains **NO-GO**.
+
+## Final owner acceptance and post-fix coexistence ? 2026-10-18
+
+Historical failure evidence above remains unchanged. The confirmed A2DP outage correlated Classic A2DP activation with internal free heap falling from 102,308 to 10,224 bytes while Arduino-ESP32 initialized unused BLE resources through BTDM. Source commit 24395bad10bbca23da5de75062faaf423c453ada performs a one-time BLE memory release before controller initialization and starts the controller in Classic-only mode, retaining restartable A2DP shutdown/start behavior.
+
+The esp32-lwip-psram production build passed at 2,037,648 bytes, SHA-256 6310a960f96c382d653a5b44f1b8e828f15985b59a40111308c475cf084c72a1, 1,108,080 bytes application-slot headroom and 87,512 bytes static DRAM. Application-only installation and independent exact-span readback passed. Local and separate-storage rollback files matched their recorded sizes and hashes.
+
+| Criterion | Final classification | Evidence / limit |
+| --- | --- | --- |
+| Uninterrupted ACTIVE RTCP stability | HARDWARE PASS | 307 seconds; 61/61 samples; zero close, attempt and session delta; zero HTTP failure. |
+| Encoder and volume correctness | HARDWARE PASS | Individual/rapid/reversal behavior, exact authoritative reconciliation, no persistent in-flight state, and post-wake control verified. |
+| MP3 coexistence | HARDWARE PASS | Final 12/12 TUNER HTTP/web/REMOTE RTCP-ready observations; earlier extended 31/31 paired checks with uninterrupted audible playback. |
+| Bluetooth A2DP audibility | HARDWARE PASS | Owner confirmed active audible playback. |
+| Bluetooth A2DP web coexistence | HARDWARE PASS | Post-fix 24/24 TUNER diagnostics and 24/24 web-manager requests; zero Wi-Fi disconnect/lost-IP delta. |
+| Bluetooth A2DP RTCP coexistence | HARDWARE PASS for recorded window | REMOTE remained synchronized before sleep and recovered automatically after wake; session remained 20 in the post-wake window. One transient freshness interval cleared at the next sample without reconnect. |
+| Firmware installation/readback | HARDWARE PASS | Exact TUNER span 2,037,648 bytes at `0x10000` matched the accepted SHA-256; normal boot and services passed. |
+| RTCP security/protocol compatibility | SOURCE/HARDWARE PASS | No wire, cryptographic, pairing or CCM semantic change; authenticated synchronization and authoritative state observed. |
+| Quantitative latency | WAIVED BY OWNER | Functional responsiveness accepted on hardware. The <100/<250/<50 ms targets were not measured and are not claimed as passed. Waiver is limited to A-REMOTE-012. |
+| E-paper response | KNOWN LIMITATION | Display refresh remains slower than local audio response; accepted for this milestone. |
+| Motion wake | SEPARATE KNOWN LIMITATION | Intermittent QMI8658 initialization remains outside A-REMOTE-012. |
+
+Final disposition: **ACCEPTED — READY FOR MERGE**. Do not infer a stronger continuous A2DP RTCP guarantee than the recorded evidence. Rollback artifacts remain private and preserved.

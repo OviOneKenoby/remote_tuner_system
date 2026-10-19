@@ -1,0 +1,70 @@
+{
+    "schema":  1,
+    "task":  "A-REMOTE-012",
+    "recorded_utc":  "2026-10-18T16:56:59Z",
+    "status":  "ACCEPTED_READY_FOR_MERGE",
+    "coordination_input":  "2aef37bcce307db450d164c456fefa6b9d219ba4",
+    "owner_latency_decision":  {
+                                   "status":  "WAIVED_FOR_A_REMOTE_012",
+                                   "statement":  "Functional responsiveness accepted on hardware; numerical thresholds were not measured or claimed as passed."
+                               },
+    "remote":  {
+                   "bytes":  2526848,
+                   "sha256":  "b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da",
+                   "offset":  "0x10000",
+                   "ota_headroom_bytes":  618880,
+                   "static_ram_bytes":  47388,
+                   "changed_in_final_fix":  false
+               },
+    "tuner":  {
+                  "source_commit":  "24395bad10bbca23da5de75062faaf423c453ada",
+                  "embedded_build":  "24395bad10bb",
+                  "bytes":  2037648,
+                  "sha256":  "6310a960f96c382d653a5b44f1b8e828f15985b59a40111308c475cf084c72a1",
+                  "offset":  "0x10000",
+                  "slot_headroom_bytes":  1108080,
+                  "static_dram_bytes":  87512,
+                  "exact_readback":  "PASS"
+              },
+    "validation":  {
+                       "active_rtcp":  {
+                                           "seconds":  307,
+                                           "samples":  61,
+                                           "result":  "PASS",
+                                           "close_delta":  0,
+                                           "attempt_delta":  0,
+                                           "session_delta":  0,
+                                           "http_failures":  0
+                                       },
+                       "mp3":  {
+                                   "final_samples":  12,
+                                   "extended_samples":  31,
+                                   "result":  "PASS"
+                               },
+                       "a2dp":  {
+                                    "diagnostic_samples":  24,
+                                    "web_samples":  24,
+                                    "wifi_disconnect_delta":  0,
+                                    "lost_ip_delta":  0,
+                                    "audible":  true,
+                                    "post_wake_session":  20,
+                                    "result":  "PASS_RECORDED_WINDOW"
+                                },
+                       "sleep_wake":  {
+                                          "automatic_reconnect":  "PASS",
+                                          "post_wake_volume":  "PASS"
+                                      }
+                   },
+    "limitations":  [
+                        "Quantitative latency waived and not measured.",
+                        "A2DP RTCP statement is limited to the recorded windows.",
+                        "E-paper feedback remains slower than audio response.",
+                        "Intermittent motion-wake issue is outside this task."
+                    ],
+    "privacy":  {
+                    "credentials_published":  false,
+                    "pairing_material_published":  false,
+                    "firmware_binary_published":  false,
+                    "rollback_files_published":  false
+                }
+}

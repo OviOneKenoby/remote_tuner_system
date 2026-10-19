@@ -1,0 +1,54 @@
+{
+  "task": "A-REMOTE-012",
+  "recorded_utc": "2026-10-17T18:04:20Z",
+  "operation": "REMOTE application-only lifecycle diagnostic installation and passive observation",
+  "preflight": {
+    "device": "REMOTE ESP32-S3 revision 0.2",
+    "flash_bytes": 16777216,
+    "application_offset": "0x10000",
+    "partition_sector_match": true,
+    "local_rollback_files_verified": 4,
+    "external_usb_rollback_files_verified": 4,
+    "previous_application_preserved": {
+      "bytes": 2525168,
+      "sha256": "afd8b426b37cdac5bfd32abf4ee9fbf70c91e3a28ebdf74ae482871572dcdef4"
+    }
+  },
+  "installed_application": {
+    "bytes": 2525696,
+    "sha256": "a421cb73411a19bf650c78de6bf048faf6e4ac65019f4180ab3de097c40cd798",
+    "exact_readback": true,
+    "only_application_region_written": true
+  },
+  "post_boot": {
+    "normal_boot": true,
+    "stored_wifi_connected": true,
+    "voltage_telemetry_valid": true,
+    "rtcp_started": true,
+    "control_dispatches": 0
+  },
+  "passive_observation": {
+    "elapsed_seconds": 313,
+    "samples": 61,
+    "successful_http_samples": 61,
+    "failed_http_samples": 0,
+    "power_states_seen": {"active": 7, "display_idle": 54, "system_sleep": 0},
+    "initial": {"session": 21, "capability_revision": 219, "close_reason": 2, "close_count": 21, "connection_attempts": 22, "tcp_connections": 21, "identity_acceptances": 19, "volume_connected": true, "volume_known": true, "volume_set": true, "volume_in_flight": false},
+    "final": {"session": 174, "capability_revision": 1910, "close_reason": 2, "close_count": 179, "connection_attempts": 180, "tcp_connections": 177, "identity_acceptances": 170, "volume_connected": true, "volume_known": false, "volume_set": false, "volume_in_flight": false},
+    "deltas": {"session": 153, "close_count": 158, "connection_attempts": 158, "tcp_connections": 156, "identity_acceptances": 151},
+    "close_change_samples": 56,
+    "close_reason_on_every_observed_change": "network_lost",
+    "network_status_after_window": {"state": "connected", "reconnects": 0, "errors": 0}
+  },
+  "correlation": {
+    "retained_tuner_window": {"connections_delta": 262, "peer_eof_delta": 262, "snapshot_requests_delta": 523, "snapshot_completions_delta": 523, "timeouts_delta": 0, "partial_writes_delta": 0, "failed_writes_delta": 0, "allocation_failures_delta": 0, "wifi_disconnects_delta": 0},
+    "result": "REMOTE network status mutex contention was classified as network loss; REMOTE closed established sockets and TUNER consequently observed peer EOF"
+  },
+  "confirmed_cause": {
+    "condition": "network_manager::read_status uses a zero-wait mutex and can transiently return false while the network remains connected",
+    "defect": "rtcp_client::Client::poll treats read_status failure and an explicit disconnected status as the same network_lost condition",
+    "evidence": "continuous diagnostics reachability, zero network reconnects/errors, no system sleep, every observed close change reason 2, and exact source branch"
+  },
+  "safety": {"encoder_input": false, "control_commands": 0, "tuner_flash": false, "nvs_pairing_partition_changes": false, "automatic_rollback": false},
+  "status": "ROOT CAUSE CONFIRMED; CORRECTION NOT IMPLEMENTED"
+}

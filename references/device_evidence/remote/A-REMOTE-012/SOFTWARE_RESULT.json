@@ -1,0 +1,94 @@
+{
+  "task": "A-REMOTE-012",
+  "date": "2026-10-17",
+  "status": "READY_FOR_HARDWARE_COMMISSIONING",
+  "coordination_baseline": "437e79cdfd6b7febf001271a32467191d84b20d2",
+  "tuner_source_commit": "5391beef5e7ba264362ea19f2fdd93202308fa55",
+  "root_cause": [
+    "one_percent_command_serialization",
+    "periodic_post_result_snapshot_wait",
+    "main_loop_service_cadence",
+    "local_one_detent_per_loop_drain",
+    "local_synchronous_epaper_refresh_per_detent"
+  ],
+  "protocol_wire_changed": false,
+  "one_command_in_flight": true,
+  "automatic_retry": false,
+  "hardware_access": false,
+  "simulation_ms": {
+    "input_span": 56,
+    "first_command": 0,
+    "first_audio": 30,
+    "final_after_last": 34,
+    "ui_refresh": 20,
+    "submissions": 3
+  },
+  "tests": {
+    "remote_volume": {
+      "cases": "8/8",
+      "assertions": 164
+    },
+    "remote_ui": {
+      "cases": "1/1",
+      "assertions": 11
+    },
+    "tuner_ccm": {
+      "checks": "16/16"
+    },
+    "tuner_latency_policy": {
+      "cases": "1/1",
+      "assertions": 9
+    },
+    "tuner_local_target": {
+      "checks": "10/10"
+    },
+    "tuner_local_latency_policy": {
+      "checks": "10/10"
+    },
+    "remote_full_relevant": "PASS"
+  },
+  "artifacts": {
+    "remote": {
+      "bytes": 2525168,
+      "sha256": "afd8b426b37cdac5bfd32abf4ee9fbf70c91e3a28ebdf74ae482871572dcdef4",
+      "slot_headroom": 620560,
+      "static_ram": 47388
+    },
+    "tuner": {
+      "bytes": 2036000,
+      "sha256": "0680e8f2c6bfb8b1149ab1a8baec56fa80a7995d0401bf74463ff1f0d1143c1a",
+      "slot_headroom": 1109728,
+      "static_ram": 87448
+    }
+  },
+  "rollback": {
+    "remote": {
+      "bytes": 2523936,
+      "sha256": "38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d",
+      "full_flash_bytes": 16777216,
+      "full_flash_sha256": "31fd537c4bf534b101e74ed582bf0aa909235686207da29ad61413f21688b43d",
+      "primary_and_local_copy_match": true
+    },
+    "tuner": {
+      "bytes": 2034800,
+      "sha256": "49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4",
+      "pre_a011_capture_sha256": "4dc7347191a38a18fe76b1635b446a485443ac6d06406bb6f53d303cd105b88a",
+      "diagnostic_sha256": "f193863f6d2966cc0797b9bdd2144971fb7b4bfc5bb9b1b4c07ff4840cf4a21c",
+      "reconstructed_nonidentical_sha256": "7b36921cf0b313f63b9b53b4083685dfd7e78c72cd41f4f554bb302e04d6b6fb",
+      "full_flash_bytes": 4194304,
+      "full_flash_sha256": "4a980e0887fab052389c233429d9cdf398720e119f2b51141a4fcfb8aa5914f6",
+      "primary_and_local_copy_match": true
+    }
+  },
+  "precommissioning_review": {
+    "completed": true,
+    "hardware_access": false,
+    "source_changed": false,
+    "tests_repeated": false,
+    "builds_repeated": false,
+    "external_backup_previously_copied": true,
+    "external_backup_currently_attached": false,
+    "external_backup_verification_required_before_write": true,
+    "hardware_acceptance_not_run": true
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "schema": "a-remote-012-rtcp-stability-v1",
+  "recorded_utc": "2026-10-17T14:14:01Z",
+  "scope": "sanitized source diagnosis, correction, focused tests, and production build; no hardware access",
+  "observed": {
+    "connections": {
+      "first": 20,
+      "second": 104
+    },
+    "client_finishes": {
+      "first": 18,
+      "second": 66
+    },
+    "snapshot_requests": {
+      "first": 86,
+      "second": 259
+    },
+    "snapshot_completions": {
+      "first": 86,
+      "second": 259
+    },
+    "timeouts": {
+      "first": 0,
+      "second": 24
+    },
+    "peer_eof": {
+      "first": 19,
+      "second": 79
+    },
+    "partial_writes": 0,
+    "failed_writes": 0,
+    "allocation_failures": 0,
+    "network_nomem": 0,
+    "wifi_disconnects": 0,
+    "free_internal_bytes": 91548,
+    "largest_internal_block_bytes": 77812,
+    "max_loop_ms": 5983,
+    "last_rtcp_response_us": 42700,
+    "max_rtcp_response_us": 68800
+  },
+  "conclusion": {
+    "confirmed": "RTCP is starved by synchronous work on the TUNER application owner; the observed maximum loop turn exceeds both peer deadlines and accounts for server timeout and peer-EOF closure mechanisms.",
+    "expected": "REMOTE SYSTEM_SLEEP intentionally invalidates a session; reconnects around actual sleep/wake are normal.",
+    "unverified": "The historical maximum-loop sample was not phase-tagged to one named operation, and existing counters do not identify which EOFs coincide with REMOTE sleep. The separate REMOTE HTTP partial-response observation has no demonstrated common cause."
+  },
+  "correction": {
+    "repository": "OviOneKenoby/ESP32-WROVER-Internet-radio",
+    "branch": "a-remote-012-low-latency",
+    "commit": "073b65963e3ed8e3438bc34134f5a903fce995de",
+    "files": [
+      "src/display.cpp",
+      "src/display.h",
+      "src/main.cpp",
+      "src/rtcp_server.cpp",
+      "tests/test_rtcp_display_service_policy.py",
+      "CHANGELOG.md"
+    ],
+    "security_semantics": "unchanged",
+    "timeouts": "unchanged",
+    "dynamic_allocation_added": false,
+    "static_ram_delta_bytes": 0
+  },
+  "verification": {
+    "focused": {
+      "display_service_policy": "9/9 PASS",
+      "rtcp_latency_policy": "10/10 PASS",
+      "local_volume_latency_policy": "10/10 PASS",
+      "diagnostic_policy": "14/14 PASS",
+      "diagnostic_model": "11/11 PASS"
+    },
+    "build": {
+      "environment": "esp32-lwip-psram",
+      "board": "esp32dev",
+      "result": "PASS",
+      "binary_bytes": 2037152,
+      "binary_sha256": "19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8",
+      "slot_headroom_bytes": 1108576,
+      "linked_flash_bytes": 2030581,
+      "static_ram_bytes": 87512,
+      "elf_bytes": 29789148,
+      "elf_sha256": "697c8ef0662842f7daebd0e3c5c98f675e97b2274f9bdd83cc8f606a6d456367"
+    }
+  },
+  "hardware": {
+    "accessed": false,
+    "flashed": false,
+    "validation": "NOT RUN"
+  }
+}

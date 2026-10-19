@@ -1,0 +1,13 @@
+{
+  "task": "A-REMOTE-012",
+  "recorded_utc": "2026-10-17T18:40:55Z",
+  "coordination_input": "9e685ab1c49c8e8cbf2ed7d0ccccefc3db884af5",
+  "hardware_evidence": {"start_volume_percent": 53, "accepted_detents_down": 10, "rtcp_submissions": 5, "final_authoritative_percent": 48, "expected_percent": 43, "operation_in_flight_at_end": false},
+  "confirmed_defect": "An unchanged pre-command authoritative snapshot published after correlated result confirmation was classified as divergent authority and cleared the newer accumulated successor target.",
+  "correction": "External-change reconciliation requires a changed authoritative volume; unchanged pre-command snapshots preserve the bounded successor target.",
+  "changed_private_files": ["components/control_home/include/control_home/api.hpp", "tests/control/volume_admission_tests.cpp"],
+  "tests": {"suite": "volume admission and reconciliation", "passed": 9, "failed": 0, "assertions": 238, "slow_ten_detent_final_percent": 43, "rapid_in_flight_ten_detent_final_percent": 43, "direction_reversal": "PASS", "production_source_changed_after_build": false},
+  "production_build": {"environment": "remote01", "platform": "Espressif32 6.13.0", "framework": "ESP-IDF 5.5.3", "result": "PASS", "firmware_bytes": 2525824, "firmware_sha256": "3f46c3ccfd45b29985bbda37f1357a8f36831c17066bd0a33952f238936290bf", "elf_sha256": "60bdb0b4fc2ce1b62aed34803c17ef5c852696ddb54d3853a1161a9dc79dd211", "application_offset": "0x10000", "application_slot_bytes": 3145728, "application_headroom_bytes": 619904, "linked_flash_bytes": 2525325, "static_ram_bytes": 47388, "static_ram_capacity_bytes": 327680},
+  "hardware": {"network_status_candidate_installation": "PASS with exact readback and essential boot checks", "reconciliation_fix_flashed": false, "tuner_modified": false},
+  "status": "SOFTWARE PASS; CORRECTED REMOTE CANDIDATE HARDWARE INSTALLATION PENDING"
+}

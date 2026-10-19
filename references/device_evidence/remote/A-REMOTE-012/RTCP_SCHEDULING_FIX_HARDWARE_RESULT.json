@@ -1,0 +1,73 @@
+{
+  "task": "A-REMOTE-012",
+  "result": "RTCP_STABILITY_FAIL",
+  "date_utc": "2026-10-17",
+  "artifact": {
+    "device": "TUNER",
+    "source_commit": "073b65963e3ed8e3438bc34134f5a903fce995de",
+    "embedded_build_id": "fda5f1ad1e5e",
+    "embedded_id_note": "Artifact was built before the correction commit while its parent was HEAD; accepted identity is the exact size and SHA-256.",
+    "bytes": 2037152,
+    "sha256": "19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8",
+    "offset": "0x10000",
+    "slot_bytes": 3145728,
+    "readback": "PASS"
+  },
+  "preflight": {
+    "expected_device_and_4_mib_flash": "PASS",
+    "local_rollback_files_verified": 8,
+    "external_usb_rollback_files_verified": 8,
+    "application_fit": "PASS"
+  },
+  "boot": {
+    "normal_initialization": "PASS",
+    "stored_wifi_connected": true,
+    "wifi_disconnects": 0,
+    "audio_service_initialized": true,
+    "active_playback_tested": false
+  },
+  "observation": {
+    "remote_elapsed_ms": 319654,
+    "tuner_elapsed_ms": 338304,
+    "intentional_commands": 0,
+    "tuner_initial": {
+      "connections": 23,
+      "client_finishes": 23,
+      "snapshot_requests": 45,
+      "snapshot_completions": 45,
+      "timeouts": 0,
+      "peer_eofs": 23,
+      "partial_writes": 0,
+      "failed_writes": 0,
+      "max_loop_ms": 274
+    },
+    "tuner_final": {
+      "connections": 285,
+      "client_finishes": 283,
+      "snapshot_requests": 568,
+      "snapshot_completions": 568,
+      "timeouts": 0,
+      "peer_eofs": 285,
+      "partial_writes": 0,
+      "failed_writes": 0,
+      "max_loop_ms": 1738
+    },
+    "remote_initial": {
+      "session": 763,
+      "capability_revision": 8934,
+      "volume_connected": 1,
+      "volume_known": 0,
+      "volume_set": 0,
+      "volume_in_flight": 0
+    },
+    "remote_final": {
+      "session": 1008,
+      "capability_revision": 11646,
+      "volume_connected": 0,
+      "volume_known": 0,
+      "volume_set": 0,
+      "volume_in_flight": 0
+    }
+  },
+  "conclusion": "The scheduling correction reduced the observed loop stall and TUNER completed all snapshot requests without resource or write failures, but repeated peer EOF closures continued and the persistent RTCP session did not remain usable."
+}
