@@ -4,13 +4,20 @@
 - State: ACCEPTED / READY FOR MERGE
 - Coordination baseline: `437e79cdfd6b7febf001271a32467191d84b20d2`
 - TUNER source baseline: `18ddd3b16e305341f338afebd7dc725500ecbb73`
-- TUNER final source: `24395bad10bbca23da5de75062faaf423c453ada`
+- TUNER executable source: `d112dd0bbef7d86bd22090ec75d76cad3be77677`; official `main` integration merge: `4977b49756820edc149acbe1abe4d387a96aa992`; release: [`v1.1.12`](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/releases/tag/v1.1.12)
 - Objective: make EC11 volume control feel like a local control while retaining CCM 1.1.0 and RTCP/1 authority, correlation, replay protection, session fencing and fail-closed behavior.
 - Engineering targets were used during development. For final A-REMOTE-012 acceptance, quantitative latency measurement is OWNER WAIVED; the owner accepts the observed functional encoder, UI and audible response. The waiver does not apply automatically to later milestones.
 - Scope: private REMOTE target accumulation, RTCP scheduling and provisional UI; public TUNER RTCP cadence, local encoder/audio scheduling, deferred e-paper feedback and bounded timing evidence; focused/integration regression; production builds; reversible commissioning plan.
 - Exclusions: physical flashing, pairing/NVS/partition changes, CCM or RTCP wire changes, AAC/AAC+, unassigned physical-button actions, intermittent QMI8658 motion-wake work, UI redesign and unrelated refactoring.
 - Acceptance: OWNER ACCEPTED / READY FOR MERGE. Final applications have exact readback evidence. Rapid volume reconciliation, direction reversal, uninterrupted ACTIVE RTCP stability, MP3 coexistence, post-fix Bluetooth A2DP/web/RTCP coexistence, pairing retention and sleep/wake recovery are hardware PASS. Quantitative latency is WAIVED BY OWNER and was not measured.
 - Rollback baseline: REMOTE 2,523,936-byte application, SHA-256 `38b43de02bf1ef69b85678f0a67451836cb0a24e3bf1876283933b3185ed4d5d`; TUNER 2,034,800-byte application, SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`. Both remain private and independently retained.
+
+
+## v1.1.12 publication ? 2026-10-19
+
+The final version-only source commit `d112dd0bbef7d86bd22090ec75d76cad3be77677` changes only the production embedded version from `1.1.11-psram-validation` to `1.1.12`. The resulting `esp32-lwip-psram` application is 2,037,632 bytes, embeds build ID `d112dd0bbef7`, uses 87,512 bytes static DRAM and 2,031,057 of 3,145,728 application bytes, and has SHA-256 `6d7f2ebfa833bd09f287b8a7024071d736dfb2bf02356f889de94d7b980fdf6a`.
+
+Application-only installation and independent exact-span readback passed. Owner-confirmed audible MP3 and A2DP playback remained uninterrupted. Automated coexistence checks passed 15/15 for TUNER HTTP, REMOTE HTTP and RTCP READY in each mode; post-A2DP MP3 recovery passed 10/10 and retained restartable Bluetooth state. The release asset was downloaded independently and matched the exact size and hash. TUNER PR #6 merged normally at `4977b49756820edc149acbe1abe4d387a96aa992`; public release `v1.1.12` targets that commit. Rollback artifacts are unchanged.
 
 ## Result
 
@@ -98,7 +105,7 @@ A-REMOTE-012 is **ACCEPTED — READY FOR MERGE**. Historical FAIL sections above
 
 The TUNER A2DP/network failure was reproduced with internal free heap falling from 102,308 to 10,224 bytes while Arduino-ESP32 initialized the compile-time BTDM controller for a Classic-only A2DP use case. TUNER commit 24395bad10bbca23da5de75062faaf423c453ada releases unused BLE controller memory before first Bluetooth initialization and explicitly initializes/enables Classic mode while preserving the restartable A2DP lifecycle.
 
-The installed TUNER application is 2,037,648 bytes at `0x10000`, SHA-256 6310a960f96c382d653a5b44f1b8e828f15985b59a40111308c475cf084c72a1, with 1,108,080 bytes slot headroom and 87,512 bytes static DRAM. Independent exact-span readback, normal boot, retained configuration/pairing and rollback preflight passed. REMOTE remains the verified 2,526,848-byte application at `0x10000`, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`, with 618,880 bytes OTA headroom and 47,388 bytes static RAM.
+The final installed TUNER v1.1.12 application is 2,037,632 bytes at `0x10000`, SHA-256 `6d7f2ebfa833bd09f287b8a7024071d736dfb2bf02356f889de94d7b980fdf6a`, with 1,108,096 bytes binary slot headroom and 87,512 bytes static DRAM. The prior 2,037,648-byte artifact remains preserved as the hardware-tested pre-release baseline. Independent exact-span readback, normal boot, retained configuration/pairing and rollback preflight passed. REMOTE remains the verified 2,526,848-byte application at `0x10000`, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`, with 618,880 bytes OTA headroom and 47,388 bytes static RAM.
 
 Final hardware evidence: uninterrupted ACTIVE RTCP 307 seconds/61 samples with zero close, attempt or session delta; MP3 coexistence 12/12 final and 31/31 extended checks; post-fix A2DP 24/24 TUNER diagnostics and web-manager responses, zero Wi-Fi disconnect/lost-IP delta, audible playback, automatic RTCP recovery after REMOTE wake, and stable session 20 after recovery. One transient freshness interval recovered on the next sample without reconnect. No stronger continuous guarantee is claimed.
 

@@ -2,7 +2,16 @@
 
 ## Verdict
 
-**ACCEPTED ? READY FOR MERGE.** Final hardware acceptance covers uninterrupted ACTIVE RTCP stability, rapid volume correctness, MP3 coexistence, and post-fix Bluetooth A2DP web/RTCP coexistence for the recorded windows. TUNER commit `24395bad10bbca23da5de75062faaf423c453ada` is installed with exact readback. Quantitative latency is WAIVED BY OWNER for A-REMOTE-012 and was not measured. Historical failures and corrections below remain preserved.
+**ACCEPTED ? READY FOR MERGE.** Final hardware acceptance covers uninterrupted ACTIVE RTCP stability, rapid volume correctness, MP3 coexistence, and post-fix Bluetooth A2DP web/RTCP coexistence for the recorded windows. TUNER v1.1.12 executable source `d112dd0bbef7d86bd22090ec75d76cad3be77677` is installed with exact readback and merged at `4977b49756820edc149acbe1abe4d387a96aa992`; the exact release asset is published under `v1.1.12`. Quantitative latency is WAIVED BY OWNER for A-REMOTE-012 and was not measured. Historical failures and corrections below remain preserved.
+
+
+## v1.1.12 exact release validation ? 2026-10-19
+
+The final source delta from the hardware-accepted Classic-memory correction is exactly one production version literal. Source commit `d112dd0bbef7d86bd22090ec75d76cad3be77677` embeds firmware `1.1.12` and build `d112dd0bbef7`. Its application is 2,037,632 bytes at `0x10000`, SHA-256 `6d7f2ebfa833bd09f287b8a7024071d736dfb2bf02356f889de94d7b980fdf6a`, static DRAM 87,512 bytes, and PlatformIO program usage 2,031,057 / 3,145,728 bytes.
+
+The exact application passed write and independent 460800-baud full-span readback. Owner-confirmed MP3 audio remained uninterrupted while TUNER HTTP, REMOTE HTTP and RTCP READY passed 15/15. Owner-confirmed A2DP audio remained uninterrupted while the same checks passed 15/15; minimum observed internal free heap was 22,468 bytes and minimum largest internal block was 16,372 bytes. Returning to MP3 passed 10/10, with Bluetooth inactive/restartable and RTCP READY. No RTCP close or session delta occurred within any bounded phase.
+
+[TUNER PR #6](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/6) merged normally into `main` at `4977b49756820edc149acbe1abe4d387a96aa992`. [Release `v1.1.12`](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/releases/tag/v1.1.12) targets that merge and contains the exact validated binary. An independent download matched the published size and SHA-256. Private rollback artifacts remain unchanged. Quantitative latency remains owner-waived for this milestone and is not claimed as measured.
 
 ## RTCP connection-instability root cause and correction
 

@@ -1,12 +1,12 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-012-ACCEPTED-2026-10-18T165659Z
-- Updated (UTC): 2026-10-18T16:56:59Z
+- Handoff ID: REMOTE-A-REMOTE-012-V1.1.12-PAIRED-2026-10-19T155925Z
+- Updated (UTC): 2026-10-19T15:59:25Z
 - Task ID: A-REMOTE-012
 - Status: ACCEPTED
 - Prepared by: coordinated A-REMOTE-012 executor
-- Coordination input commit: `2aef37bcce307db450d164c456fefa6b9d219ba4`
+- Coordination input commit: `78e033f19d5c868251c62421fbc7c73303421f5e`
 
 ## Milestone
 Complete low-latency volume correctness, transport lifecycle correction and paired hardware acceptance. Achieved at the owner-approved hobby/public-beta level; PR #18 is ready for merge review.
@@ -37,7 +37,7 @@ No merge blocker. Quantitative latency was waived and not measured. The recorded
 ## Shared-contract impact
 - CCM 1.0.0: NO CHANGE; CCM 1.1.0 remains current OWNER APPROVED / FROZEN
 - TUNER Native API v1: NO CHANGE
-- Other device impact: TUNER Classic-only Bluetooth correction is compatible with existing RTCP/CCM behavior
+- Other device impact: TUNER v1.1.12 is merged/released and remained compatible with existing authenticated RTCP/CCM behavior in MP3, A2DP and mode recovery
 - Approval evidence: owner final acceptance and A-REMOTE-012-only latency waiver recorded in `references/device_evidence/remote/A-REMOTE-012/FINAL_ACCEPTANCE_POST_FIX_2026-10-18.json`
 
 ## Blockers
@@ -50,10 +50,10 @@ Owner authorization is required to merge PR #18.
 NONE assigned. Handle physical button functions separately from the intermittent motion-wake issue.
 
 ## Commit
-- Firmware result commit(s): REMOTE NONE (Git-less); artifact SHA-256 above; TUNER `24395bad10bbca23da5de75062faaf423c453ada`
+- Firmware result commit(s): REMOTE NONE (Git-less); artifact SHA-256 above; TUNER executable source `d112dd0bbef7d86bd22090ec75d76cad3be77677`, merge `4977b49756820edc149acbe1abe4d387a96aa992`, release `v1.1.12`
 - Device changelog: coordination `CHANGELOG.md`; TUNER source commit above
 - Coordination publication: branch `remote/a-remote-012-low-latency`, PR #18
-- Previous handoff archive: `archive/remote/2026-10-18T165659Z_A-REMOTE-012_REMOTE-A-REMOTE-012-FINAL-ACCEPTANCE-2026-10-18T132935Z.md`
+- Previous handoff archive: `archive/remote/2026-10-19T155925Z_A-REMOTE-012_REMOTE-A-REMOTE-012-ACCEPTED-2026-10-18T165659Z.md`
 
 ## Hardware status
 - Physical device tested: YES

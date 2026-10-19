@@ -1,22 +1,22 @@
 # TUNER//01 handoff
 
 ## Metadata
-- Handoff ID: TUNER-A-REMOTE-012-ACCEPTED-2026-10-18T165659Z
-- Updated (UTC): 2026-10-18T16:56:59Z
+- Handoff ID: TUNER-A-REMOTE-012-V1.1.12-RELEASED-2026-10-19T155925Z
+- Updated (UTC): 2026-10-19T15:59:25Z
 - Task ID: A-REMOTE-012
 - Status: ACCEPTED
 - Prepared by: coordinated A-REMOTE-012 executor
-- Coordination input commit: `2aef37bcce307db450d164c456fefa6b9d219ba4`
+- Coordination input commit: `78e033f19d5c868251c62421fbc7c73303421f5e`
 
 ## Milestone
 Correct the reproduced A2DP/network coexistence failure and complete final paired validation. Achieved for the recorded hobby/public-beta acceptance scope.
 
 ## Baseline
 - Device repository: https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio
-- Branch: `a-remote-012-low-latency`
-- Firmware baseline commit: `24395bad10bbca23da5de75062faaf423c453ada`
-- Firmware version: embedded build `24395bad10bb`; 2,037,648 bytes; SHA-256 `6310a960f96c382d653a5b44f1b8e828f15985b59a40111308c475cf084c72a1`
-- Working tree at start: clean; correction committed and published
+- Branch: `main`; integration PR: [#6](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/6)
+- Firmware executable source: `d112dd0bbef7d86bd22090ec75d76cad3be77677`; integration merge: `4977b49756820edc149acbe1abe4d387a96aa992`
+- Firmware version: `1.1.12`; embedded build `d112dd0bbef7`; 2,037,632 bytes; SHA-256 `6d7f2ebfa833bd09f287b8a7024071d736dfb2bf02356f889de94d7b980fdf6a`; [release](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/releases/tag/v1.1.12)
+- Working tree at start: clean; exact version-only source commit built, hardware validated, merged and released
 - Contract references: CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 accepted binding
 
 ## Changes
@@ -26,10 +26,10 @@ Correct the reproduced A2DP/network coexistence failure and complete final paire
 | Check | Command/procedure | Environment | Result | Evidence |
 | --- | --- | --- | --- | --- |
 | Focused policy test | Existing committed test | Host | PASS; 10/10 | TUNER commit `24395bad10bbca23da5de75062faaf423c453ada` |
-| Production build | `pio run -e esp32-lwip-psram` | Production PlatformIO environment | PASS; 2,037,648 bytes; 1,108,080-byte headroom; 87,512-byte static DRAM | `references/device_evidence/remote/A-REMOTE-012/FINAL_ACCEPTANCE_POST_FIX_2026-10-18.json` |
-| Installation/readback | Application-only write at `0x10000`, exact-span readback | Physical TUNER | PASS; SHA-256 exact | same evidence |
-| MP3 coexistence | HTTP/web/RTCP observation with audible playback | Physical pair | PASS | same evidence |
-| A2DP coexistence | 24-sample diagnostic/web observation and post-wake RTCP check | Physical pair | PASS for recorded windows | same evidence |
+| v1.1.12 production build | `pio run -e esp32-lwip-psram` | Production PlatformIO environment | PASS; 2,037,632 bytes; 1,108,096-byte binary slot headroom; 87,512-byte static DRAM | `references/device_evidence/tuner/A-REMOTE-012/V1_1_12_RELEASE.json` |
+| v1.1.12 installation/readback | Application-only write at `0x10000`, independent 460800-baud exact-span readback | Physical TUNER | PASS; SHA-256 exact | same evidence |
+| MP3 coexistence | HTTP/RTCP observation with owner-confirmed audible playback | Physical pair | PASS; 15/15 | same evidence |
+| A2DP coexistence and recovery | HTTP/RTCP observation with owner-confirmed audio, then return to MP3 | Physical pair | PASS; A2DP 15/15, recovery 10/10 | same evidence |
 
 ## Remaining unknowns
 No merge blocker. Quantitative latency is owner-waived and not measured. Long-duration A2DP behavior beyond the recorded windows is not claimed. E-paper feedback remains slower than audio response.
@@ -50,14 +50,14 @@ Owner authorization is required to merge PR #18.
 NONE assigned. Preserve rollback artifacts; schedule later work independently.
 
 ## Commit
-- Firmware result commit(s): `24395bad10bbca23da5de75062faaf423c453ada`
+- Firmware result commit(s): executable source `d112dd0bbef7d86bd22090ec75d76cad3be77677`; integration merge `4977b49756820edc149acbe1abe4d387a96aa992`; tag `v1.1.12`
 - Device changelog: TUNER source commit and coordination `CHANGELOG.md`
 - Coordination publication: branch `remote/a-remote-012-low-latency`, PR #18
-- Previous handoff archive: `archive/tuner/2026-10-18T165659Z_A-REMOTE-012_TUNER-A-REMOTE-012-FINAL-VALIDATION-2026-10-18T112320Z.md`
+- Previous handoff archive: `archive/tuner/2026-10-19T155925Z_A-REMOTE-012_TUNER-A-REMOTE-012-ACCEPTED-2026-10-18T165659Z.md`
 
 ## Hardware status
 - Physical device tested: YES
 - Board / hardware configuration: existing classic ESP32 TUNER; 4 MiB flash; unchanged 3 MiB application slot
 - Procedure and result: exact readback, boot, MP3 and post-fix A2DP HTTP/RTCP coexistence PASS for recorded scope
-- Firmware actually flashed: 2,037,648-byte application at `0x10000`, SHA-256 above
+- Firmware actually flashed: v1.1.12 2,037,632-byte application at `0x10000`, SHA-256 above; exact readback PASS
 - Build-only or simulated checks: focused policy test 10/10 and production build PASS

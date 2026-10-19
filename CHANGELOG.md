@@ -1,3 +1,10 @@
+# 2026-10-19 -- TUNER v1.1.12 RELEASED / A-REMOTE-012 READY FOR MERGE
+
+- The exact one-line version change is source commit `d112dd0bbef7d86bd22090ec75d76cad3be77677`; the embedded version is `1.1.12` and build ID is `d112dd0bbef7`. The A-REMOTE-012 TUNER chain was merged normally by [TUNER PR #6](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/6) into `main` at `4977b49756820edc149acbe1abe4d387a96aa992`.
+- The exact 2,037,632-byte application at `0x10000`, SHA-256 `6d7f2ebfa833bd09f287b8a7024071d736dfb2bf02356f889de94d7b980fdf6a`, passed application-only installation and independent full-span readback. MP3 passed 15/15 TUNER HTTP, 15/15 REMOTE HTTP and 15/15 RTCP READY checks with uninterrupted owner-confirmed audio. A2DP passed the same 15/15 checks with uninterrupted audio; minimum observed internal heap was 22,468 bytes and minimum largest block was 16,372 bytes. Return to MP3 passed 10/10 HTTP/RTCP checks and reported Bluetooth inactive/restartable throughout. RTCP session and close counters were unchanged inside every bounded phase.
+- [Release `v1.1.12`](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/releases/tag/v1.1.12) points to the integration merge and publishes that exact verified binary. A fresh release download matched its size and SHA-256. Local and external rollback files remained byte/hash verified and unchanged. No REMOTE firmware or device configuration changed.
+- A-REMOTE-012 remains **OWNER ACCEPTED / READY FOR MERGE**. Quantitative latency remains **WAIVED BY OWNER for A-REMOTE-012** and is not claimed as measured. Coordination PR #18 remains OPEN and requires separate merge authorization.
+
 # 2026-10-18 -- A-REMOTE-012 OWNER ACCEPTED / READY FOR MERGE
 
 - Preserved the historical A2DP coexistence FAIL and documented its verified resource boundary: Classic A2DP activation under BTDM reduced internal free heap from 102,308 to 10,224 bytes and TUNER network services became unreachable while Wi-Fi remained associated.

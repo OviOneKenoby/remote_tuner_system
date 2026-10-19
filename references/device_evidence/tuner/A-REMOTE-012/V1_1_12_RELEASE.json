@@ -1,0 +1,43 @@
+{
+  "recorded_utc": "2026-10-19T15:59:25Z",
+  "task": "A-REMOTE-012",
+  "status": "OWNER ACCEPTED / READY FOR MERGE",
+  "tuner": {
+    "version": "1.1.12",
+    "executable_source_commit": "d112dd0bbef7d86bd22090ec75d76cad3be77677",
+    "integration_merge_commit": "4977b49756820edc149acbe1abe4d387a96aa992",
+    "pull_request": "https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/6",
+    "release_tag": "v1.1.12",
+    "release_url": "https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/releases/tag/v1.1.12",
+    "application_offset": "0x10000",
+    "application_size": 2037632,
+    "application_sha256": "6d7f2ebfa833bd09f287b8a7024071d736dfb2bf02356f889de94d7b980fdf6a",
+    "static_dram_bytes": 87512,
+    "program_used_bytes": 2031057,
+    "program_capacity_bytes": 3145728
+  },
+  "verification": {
+    "application_only_write": "PASS",
+    "independent_exact_span_readback": "PASS",
+    "downloaded_release_asset_size_hash": "PASS",
+    "mp3_owner_audio": "PASS",
+    "mp3_tuner_http": "15/15",
+    "mp3_remote_http": "15/15",
+    "mp3_rtcp_ready": "15/15",
+    "a2dp_owner_audio": "PASS",
+    "a2dp_tuner_http": "15/15",
+    "a2dp_remote_http": "15/15",
+    "a2dp_rtcp_ready": "15/15",
+    "a2dp_internal_heap_min_bytes": 22468,
+    "a2dp_largest_block_min_bytes": 16372,
+    "mp3_recovery": "10/10",
+    "rtcp_churn_inside_each_phase": 0,
+    "rollback_files": "UNCHANGED / LOCAL-USB HASH MATCH"
+  },
+  "limits": [
+    "Quantitative latency was waived by the owner for A-REMOTE-012 and was not measured.",
+    "Bounded hobby/public-beta validation is not an endurance or industrial qualification campaign.",
+    "AAC/AAC+ remains unresolved and outside A-REMOTE-012."
+  ],
+  "privacy": "No firmware backup, NVS content, credential, pairing material, MAC address or device identifier is included."
+}
