@@ -11,6 +11,14 @@
 - Source review confirmed TUNER owns a 64-byte selected-station name and one 256-byte combined ICY StreamTitle. Discovered-mode local Next adds a Favorite, so remote previous/next are explicitly unavailable outside the fixed saved list. No artist/title split is guessed.
 - Verified the existing REMOTE HOME page is carousel index 2 with two reusable text labels and existing playback controls. The generated brightness page, carousel geometry, artwork placeholder, widgets and graphics remain unchanged. No firmware source, build, device, pairing, NVS, partition or release changed.
 
+# 2026-10-19 -- REMOTE public baseline audit correction / documentation synchronized
+
+- Verified the source-bearing `OviOneKenoby/REMOTE-01` commit `a06608085332255989f49b85be720a4a731cdfa1`; its 1,642 meaningful firmware files have zero substantive differences from the active local A-REMOTE-012 source after line-ending normalization. REMOTE documentation PR #1 merged normally at `1626504d87430cf868bcce267800a2d5ed9a48c1` without changing firmware source or configuration.
+- Preserved the initial audit concern as superseded history. Waveshare's official `06_WIFI_STA` documentation publishes the exact `esp_wifi_bsp` Wi-Fi literals as vendor sample credentials, so they are not evidence of personal or operational credential disclosure. The component remains excluded from the effective build. No rotation, component removal or history rewrite is required from this finding.
+- The reachable-history scan found no operational RTCP secret, private key, API token, flash/NVS dump, rollback backup or REMOTE application binary. Absolute local paths and historical private-LAN addresses remain documentation hygiene items.
+- The accepted REMOTE application remains 2,526,848 bytes with SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`. Existing local build output, preserved candidate and installed readback match that identity. Exact public-commit-to-binary reproducibility is not claimed because the original build workspace was Git-less.
+- Updated the current REMOTE handoff for the public baseline and archived the prior A-REMOTE-012 handoff unchanged. Documentation synchronization only: firmware, hardware, NVS, pairing, partitions and TUNER v1.1.12 are unchanged. D-009 approval is recorded separately above; no firmware implementation or release occurred.
+
 # 2026-10-19 -- A-REMOTE-013 PLANNING / OWNER REVIEW
 
 - Audited the actual TUNER v1.1.12 and private REMOTE source paths for playback, Bluetooth, stations, Favorites/Recent, Radio Browser, metadata, inputs, UI, persistence and lifecycle behavior. A-REMOTE-012 remains CLOSED / ACCEPTED.

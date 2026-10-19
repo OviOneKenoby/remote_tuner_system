@@ -1,63 +1,64 @@
 # REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-A-REMOTE-012-V1.1.12-PAIRED-2026-10-19T155925Z
-- Updated (UTC): 2026-10-19T15:59:25Z
-- Task ID: A-REMOTE-012
-- Status: CLOSED / ACCEPTED
-- Prepared by: coordinated A-REMOTE-012 executor
-- Coordination input commit: `449d4fd7190b23d48e1374176ae69bd1c1a7038b`
+- Handoff ID: REMOTE-PUBLIC-BASELINE-AUDIT-CORRECTION-20261019T201708Z
+- Updated (UTC): 2026-10-19T20:17:08Z
+- Task ID: REMOTE-PUBLIC-BASELINE-AUDIT
+- Status: DOCUMENTATION SYNCHRONIZED / IMPLEMENTATION NOT STARTED
+- Prepared by: REMOTE public baseline auditor
+- Coordination input commit: `8a5124cc404f0a92258360c64e0604714d3dd74f`
 
 ## Milestone
-Complete low-latency volume correctness, transport lifecycle correction and paired hardware acceptance. Achieved at the owner-approved hobby/public-beta level; PR #18 is merged; A-REMOTE-012 is closed.
+Reconcile the new public REMOTE repository with the accepted A-REMOTE-012 baseline, audit reachable history for sensitive data and synchronize the reviewed documentation without publishing a release or changing firmware. Achieved for the documentation scope.
 
 ## Baseline
-- Device repository: private REMOTE workspace; source is not published
-- Branch: NONE (Git-less private workspace)
-- Firmware baseline commit: UNKNOWN (Git-less); artifact identity is authoritative
-- Firmware version: 2,526,848 bytes, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`
-- Working tree at start: private source unchanged during final TUNER correction/acceptance
-- Contract references: CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 accepted binding
+- Device repository: `https://github.com/OviOneKenoby/REMOTE-01`
+- Branch: `main` at documentation merge `1626504d87430cf868bcce267800a2d5ed9a48c1`; source-bearing parent `a06608085332255989f49b85be720a4a731cdfa1`
+- Firmware baseline commit: UNKNOWN; final build workspace was Git-less
+- Firmware version: accepted application 2,526,848 bytes, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`
+- Working tree at start: public checkout clean; active local source Git-less; coordination `main` clean at the input commit
+- Contract references: CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 accepted binding; D-009 OWNER APPROVED / FROZEN, implementation NOT AUTHORIZED / NOT STARTED
 
 ## Changes
-NONE to REMOTE in final acceptance. Earlier A-REMOTE-012 REMOTE corrections and their history remain documented.
+Merged the documentation-only public `README.md`/`CHANGELOG.md` correction through REMOTE PR #1 and synchronized coordination `PROJECT_SYNC.md`/`API_STATUS.md`/`CHANGELOG.md` plus this handoff. The previous latest handoff was archived unchanged. D-009 approval is recorded separately; no firmware source changed.
 
 ## Verification
 | Check | Command/procedure | Environment | Result | Evidence |
 | --- | --- | --- | --- | --- |
-| ACTIVE RTCP stability | 307-second continuous ACTIVE observation | Physical pair | PASS; 61/61, zero close/attempt/session delta | `references/device_evidence/remote/A-REMOTE-012/FINAL_ACCEPTANCE_POST_FIX_2026-10-18.json` |
-| Volume behavior | Physical rapid detents, reversal and post-wake use | Physical pair | PASS | same evidence |
-| MP3 coexistence | Bounded HTTP/RTCP observation with audible playback | Physical pair | PASS; final 12/12 and extended 31/31 | same evidence |
-| A2DP coexistence | Post-fix web/RTCP observation with audible playback | Physical pair | PASS for recorded windows | same evidence |
-| Quantitative latency | Owner acceptance decision | Owner decision | WAIVED for A-REMOTE-012; not measured | same evidence |
+| Public state | Fresh fetch, REST repository metadata and complete reachable commit listing | Public GitHub repository | PASS; one branch, no tags/releases, HEAD above | local audit output; public repository |
+| Source reconciliation | Hash/content comparison excluding enumerated transient/generated output; EOL-normalized second pass | Public checkout versus active local source | PASS; 1,535 exact, 107 EOL-only, zero substantive differences, public-only `.gitattributes` | local audit output |
+| Artifact identity | SHA-256 of current `.pio` output and preserved private candidate; compare accepted hardware evidence | Private local evidence | PASS; both match accepted artifact identity above | A-REMOTE-012 coordination evidence |
+| Vendor sample classification | Compare exact literals and source filename against official Waveshare `06_WIFI_STA` documentation | Official Waveshare wiki | PASS; public vendor example values | `https://www.waveshare.com/wiki/ESP32-S3-Touch-LCD-3.49` |
+| Reachable-history security scan | Four reachable commits; credential/key/token/dump/binary/path checks with values redacted | Public repository | PASS for genuine secret blockers; sample false positive superseded | local audit output |
+| Published REMOTE documentation | Exact two-file PR review and normal merge | Public GitHub repository | PASS | PR #1, merge `1626504d87430cf868bcce267800a2d5ed9a48c1` |
 
 ## Remaining unknowns
-No merge blocker. Quantitative latency was waived and not measured. The recorded A2DP windows do not establish an unlimited-duration guarantee. E-paper latency and intermittent QMI8658 motion wake remain known limitations outside this task.
+Exact derivation of the accepted binary from a public source commit remains unproven because the original build workspace was Git-less and has no immutable complete build-time source manifest. A public REMOTE version/tag, reproducible release artifact, CI provenance and consolidated third-party notice remain future release-preparation work.
 
 ## Shared-contract impact
-- CCM 1.0.0: NO CHANGE; CCM 1.1.0 remains current OWNER APPROVED / FROZEN
-- TUNER Native API v1: NO CHANGE
-- Other device impact: TUNER v1.1.12 is merged/released and remained compatible with existing authenticated RTCP/CCM behavior in MP3, A2DP and mode recovery
-- Approval evidence: owner final acceptance and A-REMOTE-012-only latency waiver recorded in `references/device_evidence/remote/A-REMOTE-012/FINAL_ACCEPTANCE_POST_FIX_2026-10-18.json`
+- CCM 1.0.0: NO CHANGE; CCM 1.1.0 remains current and frozen
+- TUNER Native API v1: NO CHANGE; remains unapproved/unimplemented
+- Other device impact: NONE; TUNER v1.1.12 and its release remain unchanged
+- Approval evidence: owner authorized audit correction/documentation publication and separately approved exact D-009 specification revision; firmware implementation remains unauthorized
 
 ## Blockers
-NONE; PR #18 is merged and A-REMOTE-012 is closed.
+NONE for documentation synchronization. Release publication still requires a separately reviewed version/artifact/provenance plan and explicit authorization.
 
 ## PM decision required
-NONE. A-REMOTE-012 is closed; no next milestone is assigned.
+Review the synchronized coordination record. Separately decide the first REMOTE release version and whether the release must be rebuilt from a tagged public commit or may publish the existing hardware-validated artifact with its provenance limitation. D-009 execution remains separately gated.
 
 ## Recommended next task
-NONE assigned. Handle physical button functions separately from the intermittent motion-wake issue.
+Review the prepared D-009 implementation assignment. Do not begin source implementation without separate owner authorization, and do not combine it with release preparation.
 
 ## Commit
-- Firmware result commit(s): REMOTE NONE (Git-less); artifact SHA-256 above; TUNER executable source `d112dd0bbef7d86bd22090ec75d76cad3be77677`, merge `4977b49756820edc149acbe1abe4d387a96aa992`, release `v1.1.12`
-- Device changelog: coordination `CHANGELOG.md`; TUNER source commit above
-- Coordination publication: branch `remote/a-remote-012-low-latency`, PR #18
-- Previous handoff archive: `archive/remote/2026-10-19T155925Z_A-REMOTE-012_REMOTE-A-REMOTE-012-ACCEPTED-2026-10-18T165659Z.md`
+- Firmware result commit(s): NONE; firmware unchanged
+- Device changelog: public `CHANGELOG.md`, merged by REMOTE PR #1
+- Coordination publication: branch `docs/remote-public-baseline-sync-20261019`; review/merge recorded outside this pre-merge handoff
+- Previous handoff archive: `archive/remote/2026-10-19T201708Z_REMOTE-A-REMOTE-012-V1.1.12-PAIRED-2026-10-19T155925Z.md`
 
 ## Hardware status
-- Physical device tested: YES
-- Board / hardware configuration: Waveshare ESP32-S3-Touch-LCD-3.49B V2 PCB Rev1.1; established encoder mapping unchanged
-- Procedure and result: final matrix PASS except owner-waived quantitative latency and stated limitations
-- Firmware actually flashed: REMOTE 2,526,848 bytes at `0x10000`, SHA-256 above
-- Build-only or simulated checks: prior focused A-REMOTE-012 suites PASS; no build repeated in final documentation
+- Physical device tested: NO; this task reused accepted A-REMOTE-012 evidence
+- Board / hardware configuration: Waveshare ESP32-S3-Touch-LCD-3.49B V2 PCB Rev1.1, 16 MiB flash
+- Procedure and result: NOT RUN; prohibited and unnecessary for documentation correction
+- Firmware actually flashed: unchanged accepted application identified above
+- Build-only or simulated checks: NOT RUN; no source or build input changed
