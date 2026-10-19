@@ -1,9 +1,15 @@
 # Project synchronization
-Updated 2026-10-19; coordination input `aa45826492d78714ce58221ea2a832adb52ac73f`.
+Updated 2026-10-19; coordination input `8a5124cc404f0a92258360c64e0604714d3dd74f`.
 Common phase: A-REMOTE-013 D-009 implementation preparation.
 Common gate: **D-009 OWNER APPROVED / FROZEN; IMPLEMENTATION NOT AUTHORIZED**.
 
 ## Current state - supersedes historical status below
+### REMOTE public baseline audit correction - 2026-10-19
+
+REMOTE public repository `OviOneKenoby/REMOTE-01` currently points `main` to documentation merge `1626504d87430cf868bcce267800a2d5ed9a48c1`; source-bearing parent `a06608085332255989f49b85be720a4a731cdfa1` has zero substantive differences across its 1,642 meaningful firmware files and the active local A-REMOTE-012 source after line-ending normalization. The installed artifact remains the accepted 2,526,848-byte application with SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`. Current-source equivalence and installed-artifact identity are independently proven; exact derivation from a public source commit remains unproven because the build-time REMOTE workspace was Git-less.
+
+The initial audit concern about literals in the build-excluded `components/esp_wifi_bsp` is **SUPERSEDED**. [Waveshare's official `06_WIFI_STA` documentation](https://www.waveshare.com/wiki/ESP32-S3-Touch-LCD-3.49) publishes the exact values as vendor sample credentials. The complete reachable-history scan found no operational REMOTE credential, RTCP association secret, private key, device dump, backup or application binary. No rotation, component removal or history rewrite is required by that finding. Public README/changelog synchronization is merged in REMOTE PR #1; no release is published. D-009 is now OWNER APPROVED / FROZEN, with implementation still not authorized.
+
 ### A-REMOTE-013 planning - 2026-10-19
 
 Planning PR #19 was merged normally at `aa45826492d78714ce58221ea2a832adb52ac73f`. The owner approved and froze the exact [D-009 RTCP/1 specification](references/RTCP_1_D009_PROPOSED.md) reviewed at `4237eadf7e641308a77ba673afadd0e39b52e5d1`; the immutable identity and scope are in the [approval record](references/D009_OWNER_APPROVAL_2026-10-19.md). The [decision record](decisions/D-009_OWNER_REVIEW.md), [source-backed path](reports/A-REMOTE-013_D009_CONTROL_PATH.md), [UI notes](reports/A-REMOTE-013_D009_UI_INTEGRATION.md), [resource calculations](reports/A-REMOTE-013_D009_RESOURCE_CALCULATIONS.md), [implementation-review task](tasks/A-REMOTE-013-D009-IMPLEMENTATION.md) and [unexecuted hardware protocol](protocols/A-REMOTE-013-D009-HARDWARE-VALIDATION.md) are prepared. Firmware implementation is not authorized.
