@@ -1,9 +1,15 @@
 # Project synchronization
-Updated 2026-10-19T16:05:33Z; coordination input `449d4fd7190b23d48e1374176ae69bd1c1a7038b`.
-Common phase: A-REMOTE-012 closed after accepted REMOTE/TUNER common-control and low-latency integration.
-Common gate: **A-REMOTE-012 CLOSED / ACCEPTED**. No automatic next task.
+Updated 2026-10-19; coordination input `32876bde0ed6411738f296faea205446776438a3`.
+Common phase: A-REMOTE-013 functional controls and UI integration planning.
+Common gate: **A-REMOTE-013 PLANNING / OWNER REVIEW**. Firmware implementation is not authorized.
 
 ## Current state - supersedes historical status below
+### A-REMOTE-013 planning - 2026-10-19
+
+Phase 1 source audit and planning are complete. TUNER v1.1.12 already owns local playback, radio browsing, Favorites, Recent, Bluetooth and metadata; REMOTE already owns authenticated volume control, bounded inputs, HOME UI foundations, persistence and lifecycle fencing. The production RTCP binding still exposes only identity, capabilities, volume/playback snapshots and `volume.set`. Playback commands, source selection, station catalogs, richer media state and selected-station logos require approved additive binding semantics. [Task](tasks/A-REMOTE-013.md), [capability matrix](reports/A-REMOTE-013_CAPABILITY_MATRIX.md), [gap analysis](reports/A-REMOTE-013_CONTROL_PATH_AND_PROTOCOL_GAPS.md), [resource assessment](reports/A-REMOTE-013_RESOURCE_RISK.md), [plan](reports/A-REMOTE-013_IMPLEMENTATION_PLAN.md) and [unexecuted hardware checklist](protocols/A-REMOTE-013_HARDWARE_ACCEPTANCE.md).
+
+A-REMOTE-012 remains CLOSED / ACCEPTED. CCM 1.1.0 remains frozen. Native API v1 remains unapproved/unimplemented and O01-O17 remain open. No firmware source, build, hardware, pairing, NVS, partition, release or persistent-storage change occurred.
+
 ### A-REMOTE-012 closure ? 2026-10-19
 
 Coordination PR #18 merged normally at `449d4fd7190b23d48e1374176ae69bd1c1a7038b`. TUNER v1.1.12 is published from executable source `d112dd0bbef7d86bd22090ec75d76cad3be77677` and integration merge `4977b49756820edc149acbe1abe4d387a96aa992`; the exact released application is 2,037,632 bytes with SHA-256 `6d7f2ebfa833bd09f287b8a7024071d736dfb2bf02356f889de94d7b980fdf6a`. Final hardware evidence covers MP3, A2DP, mode recovery, HTTP/RTCP coexistence, sleep/wake and encoder volume behavior at the approved hobby/public-beta level. Quantitative latency is owner-waived and not claimed as measured. REMOTE firmware and rollback artifacts remain unchanged. No new milestone is assigned.

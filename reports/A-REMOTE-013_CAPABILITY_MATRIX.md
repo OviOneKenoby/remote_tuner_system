@@ -1,0 +1,46 @@
+# A-REMOTE-013 source-backed capability matrix
+
+Status terms: **HW PASS** means the recorded hardware evidence covers the stated behavior; **IMPLEMENTED** means executable source exists but this audit found no feature-specific current hardware acceptance; **PARTIAL** means only one side or one layer exists; **MISSING** means no production path exists; **DECISION BLOCKED** means shared semantics must be approved first.
+
+Source references use TUNER v1.1.12 paths and private REMOTE component paths/symbols. They identify behavior without publishing private source.
+
+| Feature | TUNER implementation | REMOTE implementation | RTCP/CCM support | Evidence | Missing work / dependency | Priority |
+| --- | --- | --- | --- | --- | --- | --- |
+| Absolute volume | `src/audio.cpp::setVolume`, `adjustVolumeSteps`; RTCP handler in `src/rtcp_server.cpp::handleApplication` | `control_home`, `encoder_volume`, `rtcp_client::RtcpDevice` | Production RTCP `VOLUME_SET`, snapshot `volume.level`; CCM `volume.set` | **HW PASS** in A-REMOTE-011/012 | None for accepted behavior | Preserve |
+| Radio play/pause | `src/main.cpp::handlePlayingInput` calls `AudioPlayer::pause/resume` | HOME toggle widget and Core operation names exist; no device dispatch | CCM names exist; RTCP binding missing | TUNER **IMPLEMENTED**; REMOTE **PARTIAL** | Approve exact pause/play semantics and binding; O13 | P0 |
+| Stop/resume | `AudioPlayer::stop` is lifecycle/internal; no complete user control contract | Core has `playback.stop`; no RTCP adapter/UI contract | CCM name exists; RTCP missing | **PARTIAL / DECISION BLOCKED** | Decide radio stop versus pause/resume and resulting state; O13 | P2 |
+| Next/previous saved station | `handlePlayingInput`; fixed-list traversal | HOME buttons/facade exist but remain unavailable | CCM names exist; RTCP missing | TUNER **IMPLEMENTED**, REMOTE **PARTIAL** | Guard empty/mutated lists; define authoritative result; O13/O14 | P0 |
+| Discovered-station traversal | In discovered playback, Next adds Favorite and Previous returns; it is not saved-list traversal | No representation | None | TUNER **IMPLEMENTED** local semantics only | Do not map to next/previous without deciding traversal context; O14 | P2 |
+| Mute | No independent mute authority; zero volume is volume, not mute | CCM model has `volume.mute`; no adapter/UI | No RTCP support | **MISSING / DECISION BLOCKED** | Add only after TUNER owns a truthful mute state; O13 | Defer |
+| Radio/Bluetooth selection | `enableBluetooth`, `disableBluetooth`, mode state in `main.cpp` | No source selector UI/adapter | CCM `source.select` exists; RTCP missing | TUNER **HW PASS** for mode transitions; REMOTE **MISSING** | Decide source identities, availability and state; O08/O14 | P1 |
+| Bluetooth controls/lifecycle | `handleBluetoothInput`, AVRCP play/pause/next/previous, restartable Classic-only lifecycle | No BT-specific control/state | No RTCP support | TUNER v1.1.12 **HW PASS** for A2DP and coexistence | Decide whether generic playback maps to AVRCP and how disconnected BT reports; O08/O13 | P2 |
+| Saved station selection | `StationManager`, station-selection UI and playback paths | No station catalog/selection UI | CCM catalog/reference types exist; production ingress and RTCP messages missing | TUNER **IMPLEMENTED** | Durable item ID, catalog generation and guarded activation; O07/O14 | P1 |
+| Favorites | `StationManager` persists up to 10; local add/remove/play; web lists/removes | HOME row only; no screen/model | CCM Favorite/catalog concepts exist; executable binding absent | TUNER **IMPLEMENTED** | Stable IDs, enumerate/activate semantics and synchronization; O07/O09/O14 | P2 |
+| Recent | `StationManager` persists up to 5; local list/play | No model/screen | No approved RTCP mapping | TUNER **IMPLEMENTED** | Define attempt/success semantics and release scope; O09/O14 | P2 |
+| Radio Browser countries | `StationBrowser::fetchCountries`, country-letter flow | No client UI/state | No binding | TUNER **IMPLEMENTED** | Bounded/paged catalog model; do not copy raw URLs | P2 |
+| Tags | `StationBrowser::fetchTags`, tag step | No client UI/state | No binding | TUNER **IMPLEMENTED** | Bounded query/result semantics; O09/O14 | P2 |
+| Language navigation | No language query or UI was found | None | None | **MISSING** | Decide whether it belongs in this release; Radio Browser API support alone is insufficient | Defer |
+| Station search | `searchStations` supports bounded backend filters; production UI is country/tag/initial based, not free-form search | None | None | **PARTIAL** | Specify input, bounds, cancellation and results; O09/O11/O14 | P3 |
+| Station list synchronization | Local arrays/preferences only | Core catalog foundation exists, no production catalog ingress | RTCP messages absent | **DECISION BLOCKED** | Durable opaque IDs, revisions, complete/partial pages, deletion and reconnect; O02/O07/O11/O12/O14 | P1 |
+| Current station name | `nowPlayingName` / `CurrentStationContext` in `src/main.cpp` | HOME title placeholder | No snapshot field in production binding | TUNER **IMPLEMENTED**, REMOTE **UI ONLY** | Add authenticated authoritative media/station observation | P1 |
+| Track/station metadata | ICY metadata and Bluetooth title/artist in `src/audio.cpp`; TUNER display updates | HOME subtitle placeholder | CCM media fields exist; RTCP snapshot lacks them | TUNER **IMPLEMENTED**, REMOTE **UI ONLY** | Bound UTF-8 fields and freshness/context generation | P1 |
+| Stream/playback status | TUNER audio/mode state; RTCP snapshot emits playback byte | HOME playback indicator consumes snapshot | Production RTCP/CCM supported | **HW PASS** for state synchronization within A-REMOTE-011/012 scope | Preserve; refine semantics only through approved profile | Preserve |
+| Codec information | `RadioStation::codec`, `CurrentStationContext`, diagnostics | No codec UI/model | No frozen CCM codec field or RTCP field | TUNER **IMPLEMENTED**, REMOTE **MISSING** | Decide optional extension or UI deferral; do not infer codec from URL | P3 |
+| Selected-station logo | Radio Browser parser retains name, URL and codec only; no logo pipeline | HOME has `ARTWORK` placeholder only | No locator/data message | **MISSING / DECISION BLOCKED** | Define trusted locator, formats, byte/dimension limits, caching and failure behavior; O15 | P4 |
+| Encoder rotation | TUNER local encoder and REMOTE GPIO2/GPIO5 decoder/input router | HOME volume route, bounded coalescing | Existing volume path | **HW PASS** | Preserve other-context navigation behavior | Preserve |
+| Encoder push | TUNER click is context-dependent; REMOTE GPIO38 event is distinguishable | `button_event` currently assigns no action | None | REMOTE input **IMPLEMENTED**, action **MISSING** | Choose context-specific action only after control profile | P1 |
+| Buttons 1-3 | Not applicable on TUNER | GPIO39-41 active-low events, no actions; physically unconnected in accepted evidence | None | Source/host **IMPLEMENTED**, application **MISSING**, physical **NOT TESTED** | Owner assigns actions; keep motion wake separate | P2 |
+| Touch | TUNER has physical/local UI; REMOTE LVGL touch and navigation exist | HOME playback buttons exist but capability-disabled; rows are mock-up navigation | Volume display/state only | Existing UI **IMPLEMENTED**; new actions **PARTIAL** | Wire only approved capabilities; no optimistic authority | P1 |
+| Sleep/wake and reconnect | TUNER server tolerates reconnect; A2DP lifecycle is restartable | Session fencing, pending-intent clearing and automatic reconnect | Existing RTCP binding | **HW PASS** in A-REMOTE-011/012 | Every new request/catalog must obey the same fencing | Preserve |
+| Motion wake | Not applicable | QMI8658 WOM through expander/GPIO8 | None | Works in accepted observations but intermittent initialization is a known separate limitation | Do not conflate with buttons or A-REMOTE-013 controls | Separate |
+| TUNER e-paper coexistence | Synchronous display work has cooperative RTCP servicing and deferred volume feedback | LCD is independent | Existing RTCP | **HW PASS** in bounded MP3/A2DP coexistence windows | New catalog/artwork work must not block service loop | Preserve |
+
+## What already works
+
+The complete accepted end-to-end path is encoder/touch-independent absolute volume: REMOTE input and Core admission, authenticated RTCP command, TUNER audio authority, correlated result, fresh snapshot, and authoritative HOME feedback. Identity, pairing, encryption, reconnect, session invalidation, sleep/wake and bounded A2DP coexistence are established foundations.
+
+TUNER also has substantial local-only functionality: radio play/pause, fixed-station traversal, Bluetooth control, station browser flows, Favorites, Recent, station name, codec context and ICY/AVRCP metadata. These are not automatically REMOTE capabilities.
+
+## Actual gap
+
+The central gap is the cross-device application binding and authoritative state model. A UI callback or web endpoint cannot substitute for an authenticated, capability-gated, correlated RTCP operation. Catalog features additionally need durable identity and bounded paging. Station logo support has no production data source, transport, decoder or cache yet.

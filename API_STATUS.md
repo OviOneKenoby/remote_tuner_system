@@ -1,5 +1,5 @@
 # Shared contract status
-Updated: 2026-10-19T16:05:33Z
+Updated: 2026-10-19
 Authority: D-001 through D-008 and the recorded CCM 1.1.0 owner approval; historical starting facts retained.
 
 | Contract | Version | Approval | Freeze | Implementation |
@@ -8,6 +8,10 @@ Authority: D-001 through D-008 and the recorded CCM 1.1.0 owner approval; histor
 | TUNER Native API | v1 | UNAPPROVED | UNFROZEN | NOT IMPLEMENTED |
 
 Current TUNER final baseline: v1.1.12, main/tag/integration merge `4977b49756820edc149acbe1abe4d387a96aa992`; executable source `d112dd0bbef7d86bd22090ec75d76cad3be77677`, build ID `d112dd0bbef7`, explicit `esp32-lwip-psram`. Exact application: 2,037,632 bytes, SHA-256 `6d7f2ebfa833bd09f287b8a7024071d736dfb2bf02356f889de94d7b980fdf6a`; [release](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/releases/tag/v1.1.12) and [A-REMOTE-012 report](reports/A-REMOTE-012_LOW_LATENCY_SOFTWARE.md). v1.1.11 and the initial 1.1.0 audit remain historical. CCM 1.1.0 remains frozen; no Native approval change.
+
+## A-REMOTE-013 planning status - 2026-10-19
+
+The accepted RTCP/1 implementation currently binds identity, capabilities, `volume.level`, `playback.state`, `volume.set` and correlated results. It does not bind playback commands, source selection, station/Favorite/Recent catalogs, station activation, richer metadata, codec or selected-station logos. CCM 1.1.0 already contains neutral foundations for several of these concepts, but the exact RTCP projection, station identity/catalog bounds and artwork boundary are not approved. Proposed D-009/D-010 are under owner review; they change no effective contract. See [A-REMOTE-013 task](tasks/A-REMOTE-013.md) and [protocol gap analysis](reports/A-REMOTE-013_CONTROL_PATH_AND_PROTOCOL_GAPS.md).
 Common phase: Phase A contract reconciliation + TUNER correctness/control-state foundation.
 
 ## Reference register
