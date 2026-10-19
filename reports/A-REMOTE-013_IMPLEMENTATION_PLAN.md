@@ -2,7 +2,7 @@
 
 ## Gate 0: approve the shared binding
 
-Before firmware edits, owner review must resolve proposed D-009 for the first playback slice. Freeze exact additive message IDs, capability bits, request/result shapes, authoritative snapshot fields, size bounds, compatibility and source-specific failure semantics. CCM 1.1.0 remains unchanged.
+Before firmware edits, owner review must approve the exact [D-009 proposal](../references/RTCP_1_D009_PROPOSED.md) for the first playback slice. Its IDs 9–11, capability bits 3–7, request/result shapes, fixed-list traversal, metadata projection, 446-byte maximum plaintext and mixed-version rules remain proposed, not effective. CCM 1.1.0 remains unchanged.
 
 For station work, D-010 must separately approve durable station identity, catalog revision/paging and station-logo locator/cache boundaries. Do not combine these decisions with the first playback implementation.
 
@@ -17,7 +17,7 @@ Scope: radio `playback.play`, `playback.pause`, `playback.previous`, `playback.n
 5. Preserve single-in-flight, correlation, no retry, session fencing and stale-state clearing.
 6. Build TUNER and REMOTE, then install TUNER first and execute the Slice 1 section of the hardware checklist.
 
-This is the recommended first implementation task after D-009 approval.
+The bounded [implementation task](../tasks/A-REMOTE-013-D009-IMPLEMENTATION.md) and [hardware protocol](../protocols/A-REMOTE-013-D009-HARDWARE-VALIDATION.md) are the recommended next steps after separate D-009 approval and task authorization.
 
 ## Slice 2: source selection
 

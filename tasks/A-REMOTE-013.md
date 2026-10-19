@@ -2,7 +2,7 @@
 
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
 - State: PLANNING / OWNER REVIEW
-- Coordination baseline: `32876bde0ed6411738f296faea205446776438a3`
+- Coordination baseline: planning PR #19 merged at `aa45826492d78714ce58221ea2a832adb52ac73f`
 - TUNER baseline: v1.1.12, executable source `d112dd0bbef7d86bd22090ec75d76cad3be77677`, integration merge `4977b49756820edc149acbe1abe4d387a96aa992`
 - REMOTE installed baseline: 2,526,848-byte application, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`
 - Objective: extend the accepted authenticated REMOTE/TUNER link from volume-only control to bounded playback, station navigation, authoritative UI state and selected-station logo support.
@@ -23,6 +23,10 @@ CCM 1.1.0 remains OWNER APPROVED / FROZEN. The Native API v1 proposal remains UN
 - [Resource and risk assessment](../reports/A-REMOTE-013_RESOURCE_RISK.md)
 - [Incremental implementation plan](../reports/A-REMOTE-013_IMPLEMENTATION_PLAN.md)
 - [Unexecuted hardware acceptance checklist](../protocols/A-REMOTE-013_HARDWARE_ACCEPTANCE.md)
+- [Exact proposed D-009 profile](../references/RTCP_1_D009_PROPOSED.md)
+- [D-009 owner-review record](../decisions/D-009_OWNER_REVIEW.md)
+- [Proposed D-009 implementation task](A-REMOTE-013-D009-IMPLEMENTATION.md)
+- [D-009 unexecuted hardware protocol](../protocols/A-REMOTE-013-D009-HARDWARE-VALIDATION.md)
 - Proposed decisions D-009 and D-010 in the [decision register](../DECISION_REGISTER.md)
 
 ## Phase 1 result

@@ -1,3 +1,10 @@
+# 2026-10-19 -- A-REMOTE-013 D-009 EXACT PROFILE PROPOSED / OWNER REVIEW
+
+- Merged planning PR #19 normally at coordination merge `aa45826492d78714ce58221ea2a832adb52ac73f`, then used that merged `main` as the D-009 planning baseline.
+- Published an exact additive RTCP/1 proposal for radio play/pause/fixed-list previous/next and authoritative station/now-playing text. Proposed IDs 9–11, capability bits 3–7, exact payloads, error codes, UTF-8/bounds, generation/freshness, compatibility and TUNER-first rollout are reviewable; D-009 remains **PROPOSED / NOT APPROVED / NOT IMPLEMENTED**.
+- Source review confirmed TUNER owns a 64-byte selected-station name and one 256-byte combined ICY StreamTitle. Discovered-mode local Next adds a Favorite, so remote previous/next are explicitly unavailable outside the fixed saved list. No artist/title split is guessed.
+- Verified the existing REMOTE HOME page is carousel index 2 with two reusable text labels and existing playback controls. The generated brightness page, carousel geometry, artwork placeholder, widgets and graphics remain unchanged. No firmware source, build, device, pairing, NVS, partition or release changed.
+
 # 2026-10-19 -- A-REMOTE-013 PLANNING / OWNER REVIEW
 
 - Audited the actual TUNER v1.1.12 and private REMOTE source paths for playback, Bluetooth, stations, Favorites/Recent, Radio Browser, metadata, inputs, UI, persistence and lifecycle behavior. A-REMOTE-012 remains CLOSED / ACCEPTED.
