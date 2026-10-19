@@ -1,3 +1,9 @@
+# 2026-10-19 -- A-REMOTE-013 D-009 OWNER APPROVED / FROZEN
+
+- Owner approved the exact D-009 specification reviewed at PR #20 commit `4237eadf7e641308a77ba673afadd0e39b52e5d1`; its SHA-256 is `ad6fa343c7ea6363febfffa143c6ffb62e401c19d994abcdaa7287bd0ded6c92`.
+- Approval covers capability revision 2/bits 3–7, IDs 9–11, correlated playback results, fixed-list-only traversal, authoritative station and combined StreamTitle, documented bounds, unchanged CCM 1.1.0 meanings and TUNER-first compatibility.
+- The specification is frozen for implementation planning. Firmware implementation, builds, hardware operations and releases remain separately gated. D-010 remains PROPOSED / NOT APPROVED; Native API v1 remains UNAPPROVED / NOT IMPLEMENTED.
+
 # 2026-10-19 -- A-REMOTE-013 D-009 EXACT PROFILE PROPOSED / OWNER REVIEW
 
 - Merged planning PR #19 normally at coordination merge `aa45826492d78714ce58221ea2a832adb52ac73f`, then used that merged `main` as the D-009 planning baseline.

@@ -1,14 +1,14 @@
 # Project synchronization
 Updated 2026-10-19; coordination input `aa45826492d78714ce58221ea2a832adb52ac73f`.
-Common phase: A-REMOTE-013 D-009 exact playback/metadata profile owner review.
-Common gate: **D-009 PROPOSED / OWNER REVIEW**. Firmware implementation is not authorized.
+Common phase: A-REMOTE-013 D-009 implementation preparation.
+Common gate: **D-009 OWNER APPROVED / FROZEN; IMPLEMENTATION NOT AUTHORIZED**.
 
 ## Current state - supersedes historical status below
 ### A-REMOTE-013 planning - 2026-10-19
 
-Planning PR #19 was merged normally at `aa45826492d78714ce58221ea2a832adb52ac73f`. The exact [D-009 RTCP/1 proposal](references/RTCP_1_D009_PROPOSED.md), [owner-review record](decisions/D-009_OWNER_REVIEW.md), [source-backed path](reports/A-REMOTE-013_D009_CONTROL_PATH.md), [UI notes](reports/A-REMOTE-013_D009_UI_INTEGRATION.md), [resource calculations](reports/A-REMOTE-013_D009_RESOURCE_CALCULATIONS.md), [proposed implementation task](tasks/A-REMOTE-013-D009-IMPLEMENTATION.md) and [unexecuted hardware protocol](protocols/A-REMOTE-013-D009-HARDWARE-VALIDATION.md) are now prepared. The proposal changes no effective contract until explicit owner approval.
+Planning PR #19 was merged normally at `aa45826492d78714ce58221ea2a832adb52ac73f`. The owner approved and froze the exact [D-009 RTCP/1 specification](references/RTCP_1_D009_PROPOSED.md) reviewed at `4237eadf7e641308a77ba673afadd0e39b52e5d1`; the immutable identity and scope are in the [approval record](references/D009_OWNER_APPROVAL_2026-10-19.md). The [decision record](decisions/D-009_OWNER_REVIEW.md), [source-backed path](reports/A-REMOTE-013_D009_CONTROL_PATH.md), [UI notes](reports/A-REMOTE-013_D009_UI_INTEGRATION.md), [resource calculations](reports/A-REMOTE-013_D009_RESOURCE_CALCULATIONS.md), [implementation-review task](tasks/A-REMOTE-013-D009-IMPLEMENTATION.md) and [unexecuted hardware protocol](protocols/A-REMOTE-013-D009-HARDWARE-VALIDATION.md) are prepared. Firmware implementation is not authorized.
 
-The proposed first slice uses CCM 1.1.0 unchanged. Radio previous/next are limited to the fixed saved list because discovered-mode local Next is a Favorite mutation. Current radio metadata remains one exact combined StreamTitle; no artist/title split is guessed. Existing REMOTE carousel geometry, graphics and widgets remain unchanged. D-010 catalogs/logos remain separate and pending.
+The approved first slice uses CCM 1.1.0 unchanged. Radio previous/next are limited to the fixed saved list because discovered-mode local Next is a Favorite mutation. Current radio metadata remains one exact combined StreamTitle; no artist/title split is guessed. Existing REMOTE carousel geometry, graphics and widgets remain unchanged. D-010 catalogs/logos remain PROPOSED / NOT APPROVED. Native API v1 remains UNAPPROVED / NOT IMPLEMENTED.
 
 Phase 1 source audit and planning are complete. TUNER v1.1.12 already owns local playback, radio browsing, Favorites, Recent, Bluetooth and metadata; REMOTE already owns authenticated volume control, bounded inputs, HOME UI foundations, persistence and lifecycle fencing. The production RTCP binding still exposes only identity, capabilities, volume/playback snapshots and `volume.set`. Playback commands, source selection, station catalogs, richer media state and selected-station logos require approved additive binding semantics. [Task](tasks/A-REMOTE-013.md), [capability matrix](reports/A-REMOTE-013_CAPABILITY_MATRIX.md), [gap analysis](reports/A-REMOTE-013_CONTROL_PATH_AND_PROTOCOL_GAPS.md), [resource assessment](reports/A-REMOTE-013_RESOURCE_RISK.md), [plan](reports/A-REMOTE-013_IMPLEMENTATION_PLAN.md) and [unexecuted hardware checklist](protocols/A-REMOTE-013_HARDWARE_ACCEPTANCE.md).
 

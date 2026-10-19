@@ -1,6 +1,6 @@
 # Shared contract status
 Updated: 2026-10-19
-Authority: D-001 through D-008 and the recorded CCM 1.1.0 owner approval; historical starting facts retained.
+Authority: D-001 through D-009 and the recorded CCM 1.1.0 and D-009 owner approvals; historical starting facts retained.
 
 | Contract | Version | Approval | Freeze | Implementation |
 | --- | --- | --- | --- | --- |
@@ -11,9 +11,9 @@ Current TUNER final baseline: v1.1.12, main/tag/integration merge `4977b49756820
 
 ## A-REMOTE-013 planning status - 2026-10-19
 
-The accepted RTCP/1 implementation currently binds identity, capabilities, `volume.level`, `playback.state`, `volume.set` and correlated results. It does not bind playback commands, source selection, station/Favorite/Recent catalogs, station activation, richer metadata, codec or selected-station logos. CCM 1.1.0 already contains neutral foundations for several of these concepts, but the exact RTCP projection, station identity/catalog bounds and artwork boundary are not approved. Proposed D-009/D-010 are under owner review; they change no effective contract. See [A-REMOTE-013 task](tasks/A-REMOTE-013.md) and [protocol gap analysis](reports/A-REMOTE-013_CONTROL_PATH_AND_PROTOCOL_GAPS.md).
+The accepted RTCP/1 implementation currently binds identity, capabilities, `volume.level`, `playback.state`, `volume.set` and correlated results. It does not yet implement D-009 playback commands or metadata. D-009 is OWNER APPROVED / FROZEN as an additive RTCP application profile; implementation remains NOT AUTHORIZED / NOT STARTED. D-010 station identity/catalog/artwork remains PROPOSED / NOT APPROVED. See [A-REMOTE-013 task](tasks/A-REMOTE-013.md) and [protocol gap analysis](reports/A-REMOTE-013_CONTROL_PATH_AND_PROTOCOL_GAPS.md).
 
-The exact [D-009 playback/now-playing profile](references/RTCP_1_D009_PROPOSED.md) is now published for owner review. It proposes capability bits 3–7 and message IDs 9–11 while preserving IDs 1–8, the 512-byte plaintext maximum, CCM 1.1.0 and mixed-version volume operation. It is **NOT APPROVED / NOT IMPLEMENTED**; [the owner-review record](decisions/D-009_OWNER_REVIEW.md) is the next contract gate. D-010 remains separate.
+The exact [D-009 playback/now-playing profile](references/RTCP_1_D009_PROPOSED.md) is **OWNER APPROVED / FROZEN** at reviewed commit `4237eadf7e641308a77ba673afadd0e39b52e5d1`, specification SHA-256 `ad6fa343c7ea6363febfffa143c6ffb62e401c19d994abcdaa7287bd0ded6c92`. It assigns capability revision 2, bits 3–7 and message IDs 9–11 while preserving IDs 1–8, the 512-byte plaintext maximum, CCM 1.1.0 and mixed-version volume operation. [Approval record](references/D009_OWNER_APPROVAL_2026-10-19.md). Implementation is NOT AUTHORIZED / NOT STARTED; D-010 and Native API v1 remain unapproved.
 Common phase: Phase A contract reconciliation + TUNER correctness/control-state foundation.
 
 ## Reference register

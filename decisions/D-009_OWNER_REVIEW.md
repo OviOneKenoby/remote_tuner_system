@@ -1,7 +1,7 @@
 # D-009 owner review package
 
-Status: **PROPOSED / OWNER REVIEW**
-Effective revision: NONE
+Status: **OWNER APPROVED / FROZEN**
+Effective revision: exact specification at reviewed commit `4237eadf7e641308a77ba673afadd0e39b52e5d1`
 Implementation: NOT AUTHORIZED / NOT STARTED
 
 ## Proposed decision
@@ -27,6 +27,6 @@ No CCM 1.1.0 change is required. The proposal uses existing `playback.*`, `playb
 - Adding screens, graphical widgets, station logos or artwork was rejected as outside this slice.
 - Sending commands to old firmware without advertised bits was rejected as unsafe and incompatible.
 
-## Owner decision requested
+## Owner decision
 
-Approve or reject the exact proposed profile, including IDs 9–11, capability bits 3–7, command preconditions, error codes, metadata layout/bounds, CCM field projection, fixed-list traversal restriction and rollout sequence. Approval authorizes specification freeze only; firmware implementation remains a separate task authorization.
+The owner approved and froze the exact proposed profile on 2026-10-19, including IDs 9–11, capability revision 2 and bits 3–7, command preconditions, error codes, metadata layout/bounds, CCM field projection, fixed-list traversal restriction and TUNER-first rollout. The durable approval identity and scope are recorded in [D-009 owner approval](../references/D009_OWNER_APPROVAL_2026-10-19.md). Firmware implementation remains a separate authorization.
