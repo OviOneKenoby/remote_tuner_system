@@ -13,7 +13,7 @@ Reconcile the new public REMOTE repository with the accepted A-REMOTE-012 baseli
 
 ## Baseline
 - Device repository: `https://github.com/OviOneKenoby/REMOTE-01`
-- Branch: `main` at documentation merge `1626504d87430cf868bcce267800a2d5ed9a48c1`; source-bearing parent `a06608085332255989f49b85be720a4a731cdfa1`
+- Branch: `main` at final documentation merge `d0a6ae556d8cbd9da5d90896b54573a45a48af69`; source-bearing parent `a06608085332255989f49b85be720a4a731cdfa1`
 - Firmware baseline commit: UNKNOWN; final build workspace was Git-less
 - Firmware version: accepted application 2,526,848 bytes, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`
 - Working tree at start: public checkout clean; active local source Git-less; coordination `main` clean at the input commit
@@ -30,7 +30,7 @@ Merged the documentation-only public `README.md`/`CHANGELOG.md` correction throu
 | Artifact identity | SHA-256 of current `.pio` output and preserved private candidate; compare accepted hardware evidence | Private local evidence | PASS; both match accepted artifact identity above | A-REMOTE-012 coordination evidence |
 | Vendor sample classification | Compare exact literals and source filename against official Waveshare `06_WIFI_STA` documentation | Official Waveshare wiki | PASS; public vendor example values | `https://www.waveshare.com/wiki/ESP32-S3-Touch-LCD-3.49` |
 | Reachable-history security scan | Four reachable commits; credential/key/token/dump/binary/path checks with values redacted | Public repository | PASS for genuine secret blockers; sample false positive superseded | local audit output |
-| Published REMOTE documentation | Exact two-file PR review and normal merge | Public GitHub repository | PASS | PR #1, merge `1626504d87430cf868bcce267800a2d5ed9a48c1` |
+| Published REMOTE documentation | Exact documentation review and normal merges | Public GitHub repository | PASS | PR #1 merge `1626504d87430cf868bcce267800a2d5ed9a48c1`; PR #2 status correction merge `d0a6ae556d8cbd9da5d90896b54573a45a48af69` |
 
 ## Remaining unknowns
 Exact derivation of the accepted binary from a public source commit remains unproven because the original build workspace was Git-less and has no immutable complete build-time source manifest. A public REMOTE version/tag, reproducible release artifact, CI provenance and consolidated third-party notice remain future release-preparation work.
@@ -52,7 +52,7 @@ Review the prepared D-009 implementation assignment. Do not begin source impleme
 
 ## Commit
 - Firmware result commit(s): NONE; firmware unchanged
-- Device changelog: public `CHANGELOG.md`, merged by REMOTE PR #1
+- Device changelog: public `CHANGELOG.md`, merged by REMOTE PR #1; final README status synchronized by PR #2
 - Coordination publication: branch `docs/remote-public-baseline-sync-20261019`; review/merge recorded outside this pre-merge handoff
 - Previous handoff archive: `archive/remote/2026-10-19T201708Z_REMOTE-A-REMOTE-012-V1.1.12-PAIRED-2026-10-19T155925Z.md`
 
