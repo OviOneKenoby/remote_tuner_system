@@ -1,3 +1,10 @@
+# 2026-10-20 -- A-REMOTE-014 SOFTWARE READY / HARDWARE NOT VALIDATED
+
+- Implemented bounded native mDNS/DNS-SD discovery for `_rtcp._tcp` in separate TUNER and REMOTE branches. TUNER advertises only while Wi-Fi and its existing RTCP listener are available. REMOTE treats at most four results as transport hints and accepts a runtime endpoint only after the unchanged RTCP mutual proof and encrypted identity exchange.
+- Saved pairing and endpoint records are untouched; no secret or pairing identifier is advertised. CCM 1.1.0 and D-009 semantics are unchanged.
+- Focused tests and both pinned production builds PASS. TUNER executable source `63ff6770fe4f0d7a46cb547ddc8f14abaec7f0fc` produced 2,069,152 bytes, SHA-256 `d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e`. REMOTE executable source `9c805e5444587bc3d8952a57f44ec526c615e74a` produced 2,568,992 bytes, SHA-256 `cdfccacdf07d0e4ca0a29b2c92f3cf29ee5e1b65df109ca730c3915185c82e2d`.
+- No hardware operation occurred. DHCP recovery, multicast behavior, real multiple advertisers, coexistence, and runtime watermarks remain physically unvalidated. A controlled TUNER-first protocol is prepared but unexecuted.
+
 # 2026-10-19 -- A-REMOTE-013 D-009 OWNER APPROVED / FROZEN
 
 - Owner approved the exact D-009 specification reviewed at PR #20 commit `4237eadf7e641308a77ba673afadd0e39b52e5d1`; its SHA-256 is `ad6fa343c7ea6363febfffa143c6ffb62e401c19d994abcdaa7287bd0ded6c92`.

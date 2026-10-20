@@ -1,11 +1,30 @@
 # Shared contract status
-Updated: 2026-10-19
+Updated: 2026-10-20
 Authority: D-001 through D-009 and the recorded CCM 1.1.0 and D-009 owner approvals; historical starting facts retained.
 
 | Contract | Version | Approval | Freeze | Implementation |
 | --- | --- | --- | --- | --- |
 | Common Control Model (CCM) | 1.1.0 | OWNER APPROVED | FROZEN | REMOTE Core/backend subsets exist; full two-device conformance NOT VERIFIED |
 | TUNER Native API | v1 | UNAPPROVED | UNFROZEN | NOT IMPLEMENTED |
+
+## A-REMOTE-014 RTCP transport discovery - 2026-10-20
+
+The RTCP/1 binding now has a software-ready transport-location mechanism using
+DNS-SD service type `_rtcp._tcp` and TCP port 46411. This does not approve or
+freeze the separate Native API mDNS questions: the announcement is an RTCP
+binding detail and introduces no CCM or D-009 field, operation, or authority.
+
+TUNER advertises availability without TXT data or secret identifiers. REMOTE
+accepts bounded results only as endpoint candidates; the existing PSK proof,
+encrypted identity, session fencing, freshness, replay protection, and command
+correlation remain authoritative. Discovery results are not persisted and
+pairing NVS is unchanged. When multicast is unavailable, the saved endpoint is
+the compatibility fallback and stale-endpoint recovery is unavailable.
+
+Host/source-policy tests and pinned builds PASS. Physical discovery, DHCP
+change, multiple advertiser, multicast loss, sleep/wake, coexistence, and
+runtime allocation measurements are NOT RUN. See
+[`reports/A-REMOTE-014_DISCOVERY.md`](reports/A-REMOTE-014_DISCOVERY.md).
 
 Current TUNER final baseline: v1.1.12, main/tag/integration merge `4977b49756820edc149acbe1abe4d387a96aa992`; executable source `d112dd0bbef7d86bd22090ec75d76cad3be77677`, build ID `d112dd0bbef7`, explicit `esp32-lwip-psram`. Exact application: 2,037,632 bytes, SHA-256 `6d7f2ebfa833bd09f287b8a7024071d736dfb2bf02356f889de94d7b980fdf6a`; [release](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/releases/tag/v1.1.12) and [A-REMOTE-012 report](reports/A-REMOTE-012_LOW_LATENCY_SOFTWARE.md). v1.1.11 and the initial 1.1.0 audit remain historical. CCM 1.1.0 remains frozen; no Native approval change.
 
