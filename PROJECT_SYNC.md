@@ -1,9 +1,26 @@
 # Project synchronization
-Updated 2026-10-19; coordination input `8a5124cc404f0a92258360c64e0604714d3dd74f`.
-Common phase: A-REMOTE-013 D-009 implementation preparation.
-Common gate: **D-009 OWNER APPROVED / FROZEN; IMPLEMENTATION NOT AUTHORIZED**.
+Updated 2026-10-20; coordination input `5d36f06c301cdd340fe65084dca4d636ad6dc699`.
+Common phase: A-REMOTE-014 automatic RTCP endpoint discovery.
+Common gate: **SOFTWARE READY / HARDWARE NOT VALIDATED**.
 
 ## Current state - supersedes historical status below
+### A-REMOTE-014 software readiness - 2026-10-20
+
+TUNER and REMOTE now have separate implementation branches for bounded native
+`_rtcp._tcp` discovery. TUNER advertises its existing port 46411 only while
+Wi-Fi and the RTCP listener are ready. REMOTE treats at most four DNS-SD
+results as runtime transport candidates and accepts one only after unchanged
+RTCP mutual authentication and encrypted identity. Pairing, saved endpoint,
+NVS, CCM 1.1.0, D-009, partitions, and protocol security are unchanged.
+
+Focused tests and both pinned production builds pass. Exact artifacts,
+resources, limitations, and the unexecuted TUNER-first procedure are recorded
+in [the report](reports/A-REMOTE-014_DISCOVERY.md) and [hardware protocol](protocols/A-REMOTE-014_HARDWARE_VALIDATION.md).
+TUNER A-REMOTE-014 is stacked on the open D-009 branch without modifying PR #7;
+REMOTE is based on public `main`. No hardware access, flashing, pairing/NVS
+mutation, merge, or release occurred. Controlled hardware commissioning needs
+separate owner authorization.
+
 ### REMOTE public baseline audit correction - 2026-10-19
 
 REMOTE public repository `OviOneKenoby/REMOTE-01` currently points `main` to final documentation merge `d0a6ae556d8cbd9da5d90896b54573a45a48af69`; source-bearing parent `a06608085332255989f49b85be720a4a731cdfa1` has zero substantive differences across its 1,642 meaningful firmware files and the active local A-REMOTE-012 source after line-ending normalization. The installed artifact remains the accepted 2,526,848-byte application with SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`. Current-source equivalence and installed-artifact identity are independently proven; exact derivation from a public source commit remains unproven because the build-time REMOTE workspace was Git-less.
