@@ -4,7 +4,7 @@
 - Handoff ID: TUNER-A-REMOTE-014-SOFTWARE-READY-20261020T190802Z
 - Updated (UTC): 2026-10-20T19:08:02Z
 - Task ID: A-REMOTE-014
-- Status: TUNER FLASHED / READBACK & SMOKE TEST PENDING
+- Status: TUNER FLASH READBACK VERIFIED / RUNTIME SMOKE TESTS PENDING
 - Prepared by: A-REMOTE-014 resume coordinator
 - Coordination input commit: `5d36f06c301cdd340fe65084dca4d636ad6dc699`
 
@@ -55,8 +55,9 @@ Execute only `protocols/A-REMOTE-014_HARDWARE_VALIDATION.md` after explicit owne
 - Previous handoff archive: `archive/tuner/2026-10-20T190802Z_A-REMOTE-014_TUNER-A-REMOTE-012-V1.1.12-RELEASED-2026-10-19T155925Z.md`
 
 ## Hardware status
-- Physical device tested: PARTIAL (esptool flash write verified)
+- Physical device tested: PARTIAL (esptool flash write & readback verified)
 - Firmware flashed: YES — TUNER 2,069,152 bytes written at offset `0x10000` on COM5; esptool data hash verified
-- Readback verification: PENDING independent SHA-256 verification (`d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e`)
+- Readback verification: VERIFIED / PASS — 2,069,152 bytes read back at 115200 baud on COM5; SHA-256 matches `d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e` exactly (earlier 921600-baud readback failure was due to serial transfer truncation)
+- Runtime smoke tests: PENDING (Wi-Fi, HTTP, TCP 46411 listener, DNS-SD `_rtcp._tcp`)
 - Pairing/NVS/partitions changed: NO
-- Overall status: esptool write PASS; readback SHA-256 & smoke tests PENDING; complete hardware NOT VALIDATED
+- Overall status: esptool write PASS; flash readback SHA-256 PASS; runtime smoke tests PENDING; REMOTE flash BLOCKED

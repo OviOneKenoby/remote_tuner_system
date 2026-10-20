@@ -1,12 +1,12 @@
 # Project synchronization
 Updated 2026-10-20; coordination input `5d36f06c301cdd340fe65084dca4d636ad6dc699`.
 Common phase: A-REMOTE-014 automatic RTCP endpoint discovery.
-Common gate: **TUNER FLASHED / READBACK & SMOKE TEST PENDING**.
+Common gate: **TUNER READBACK VERIFIED / SMOKE TEST PENDING**.
 
 ## Current state - supersedes historical status below
 ### A-REMOTE-014 hardware validation resumption - 2026-10-20
 
-TUNER A-REMOTE-014 candidate (2,069,152 bytes) flashed at `0x10000` on COM5. esptool write data hash verification PASSED and target reset completed. Independent readback SHA-256 (`d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e`) and hardware smoke tests are PENDING. REMOTE flashing remains blocked until TUNER readback and smoke test criteria are met.
+TUNER A-REMOTE-014 candidate (2,069,152 bytes) flashed at `0x10000` on COM5. esptool write data hash verification PASSED and target reset completed. Independent readback SHA-256 (`d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e`) at 115200 baud is VERIFIED / PASS (the earlier 921600-baud attempt failed due to an incomplete serial transfer, not a flash defect). TUNER runtime smoke tests (ping, HTTP, TCP port 46411, mDNS `_rtcp._tcp`) are PENDING. REMOTE flashing remains BLOCKED until all TUNER smoke tests pass.
 
 ### A-REMOTE-014 software readiness - 2026-10-20
 

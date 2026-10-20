@@ -1,7 +1,8 @@
-# 2026-10-20 -- A-REMOTE-014 TUNER FLASHED / READBACK & SMOKE TEST PENDING
+# 2026-10-20 -- A-REMOTE-014 TUNER FLASH READBACK VERIFIED / SMOKE TESTS PENDING
 
-- TUNER A-REMOTE-014 candidate (2,069,152 bytes, SHA-256 `d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e`) written to COM5 at `0x10000`. esptool write data hash verification PASSED; hardware reset completed.
-- Independent application readback SHA-256 verification and TUNER smoke tests are PENDING.
+- TUNER A-REMOTE-014 candidate (2,069,152 bytes, SHA-256 `d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e`) written to COM5 at `0x10000`. esptool write data hash verification PASSED.
+- Independent application readback at 115200 baud VERIFIED / PASS: exact 2,069,152 bytes read, SHA-256 matches `d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e` (earlier 921600-baud attempt failed due to serial transfer truncation).
+- TUNER physical runtime smoke tests (ping, HTTP, TCP port 46411, mDNS `_rtcp._tcp`) are PENDING.
 - REMOTE flash remains BLOCKED until all TUNER acceptance criteria pass.
 
 # 2026-10-20 -- A-REMOTE-014 SOFTWARE READY / HARDWARE NOT VALIDATED
