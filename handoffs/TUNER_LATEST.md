@@ -13,7 +13,7 @@ Advertise the existing authenticated RTCP listener through standard DNS-SD so pa
 
 ## Baseline
 - Device repository: `https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio`
-- Branch: `tuner/a-remote-014-mdns-discovery`, stacked on D-009 head `79d247893095b9464583c3cfe0e612d7683871c9`
+- Branch: `tuner/a-remote-014-mdns-discovery`, stacked on D-009 head `79d247893095b9464583c3cfe0e612d7683871c9`; [TUNER PR #8](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/8)
 - Executable source: `63ff6770fe4f0d7a46cb547ddc8f14abaec7f0fc`; project build identity `63ff6770fe4f`
 - Candidate: 2,069,152 bytes; SHA-256 `d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e`
 - Production environment: `esp32-lwip-psram`; static RAM 89,832 bytes; slot headroom 1,076,576 bytes

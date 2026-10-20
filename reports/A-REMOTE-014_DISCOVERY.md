@@ -81,9 +81,13 @@ by four results; exact peak runtime heap use is not measured without hardware.
 TUNER service-record allocation is likewise framework-owned and its exact
 runtime peak is not measured. Both binaries fit their unchanged partitions.
 
-The TUNER branch is stacked on the D-009 PR #7 head, which remains untouched.
-The REMOTE branch starts from public `main`. Candidate binaries are retained
-privately and are not published.
+The TUNER [PR #8](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/8)
+is stacked on the D-009 PR #7 head, which remains untouched. REMOTE
+[PR #3](https://github.com/OviOneKenoby/REMOTE-01/pull/3) starts from public
+`main`. Coordination evidence is in
+[PR #23](https://github.com/OviOneKenoby/remote_tuner_system/pull/23).
+All three remain open and unmerged. Candidate binaries are retained privately
+and are not published.
 
 ## Remaining validation
 

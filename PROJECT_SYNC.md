@@ -16,8 +16,11 @@ NVS, CCM 1.1.0, D-009, partitions, and protocol security are unchanged.
 Focused tests and both pinned production builds pass. Exact artifacts,
 resources, limitations, and the unexecuted TUNER-first procedure are recorded
 in [the report](reports/A-REMOTE-014_DISCOVERY.md) and [hardware protocol](protocols/A-REMOTE-014_HARDWARE_VALIDATION.md).
-TUNER A-REMOTE-014 is stacked on the open D-009 branch without modifying PR #7;
-REMOTE is based on public `main`. No hardware access, flashing, pairing/NVS
+TUNER [PR #8](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/8)
+is stacked on the open D-009 branch without modifying PR #7; REMOTE
+[PR #3](https://github.com/OviOneKenoby/REMOTE-01/pull/3) is based on public
+`main`; coordination is [PR #23](https://github.com/OviOneKenoby/remote_tuner_system/pull/23).
+All remain open and unmerged. No hardware access, flashing, pairing/NVS
 mutation, merge, or release occurred. Controlled hardware commissioning needs
 separate owner authorization.
 

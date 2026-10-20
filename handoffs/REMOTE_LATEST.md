@@ -13,7 +13,7 @@ Automatically locate the already-paired TUNER after DHCP address changes without
 
 ## Baseline
 - Device repository: `https://github.com/OviOneKenoby/REMOTE-01`
-- Branch: `remote/a-remote-014-mdns-discovery`, based on public `main` `d0a6ae556d8cbd9da5d90896b54573a45a48af69`
+- Branch: `remote/a-remote-014-mdns-discovery`, based on public `main` `d0a6ae556d8cbd9da5d90896b54573a45a48af69`; [REMOTE PR #3](https://github.com/OviOneKenoby/REMOTE-01/pull/3)
 - Executable source: `9c805e5444587bc3d8952a57f44ec526c615e74a`
 - Candidate: 2,568,992 bytes; SHA-256 `cdfccacdf07d0e4ca0a29b2c92f3cf29ee5e1b65df109ca730c3915185c82e2d`
 - Production environment: `remote01`; static RAM 56,356 bytes; OTA headroom 577,056 bytes
