@@ -74,3 +74,5 @@ O01/O02/O05/O06 are satisfied for the already accepted RTCP/1 volume profile onl
 ## Compatibility recommendation
 
 Use additive capability bits and message types. A new REMOTE must retain volume-only operation with the current TUNER, and a new TUNER must retain the current binding with the current REMOTE. Unknown messages must fail closed without ending an otherwise valid legacy session where the approved framing permits that behavior. Install and validate TUNER first, then REMOTE, for each cross-device slice.
+
+The exact reviewable resolution for the first slice is [RTCP/1 D-009 proposed playback and now-playing profile](../references/RTCP_1_D009_PROPOSED.md). It does not resolve D-010 catalogs, station identity or artwork.

@@ -1,3 +1,38 @@
+# 2026-10-20 -- A-REMOTE-014 TUNER FLASHED / READBACK & SMOKE TEST PENDING
+
+- TUNER A-REMOTE-014 candidate (2,069,152 bytes, SHA-256 `d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e`) written to COM5 at `0x10000`. esptool write data hash verification PASSED; hardware reset completed.
+- Independent application readback SHA-256 verification and TUNER smoke tests are PENDING.
+- REMOTE flash remains BLOCKED until all TUNER acceptance criteria pass.
+
+# 2026-10-20 -- A-REMOTE-014 SOFTWARE READY / HARDWARE NOT VALIDATED
+
+- Implemented bounded native mDNS/DNS-SD discovery for `_rtcp._tcp` in separate TUNER and REMOTE branches. TUNER advertises only while Wi-Fi and its existing RTCP listener are available. REMOTE treats at most four results as transport hints and accepts a runtime endpoint only after the unchanged RTCP mutual proof and encrypted identity exchange.
+- Saved pairing and endpoint records are untouched; no secret or pairing identifier is advertised. CCM 1.1.0 and D-009 semantics are unchanged.
+- Focused tests and both pinned production builds PASS. TUNER executable source `63ff6770fe4f0d7a46cb547ddc8f14abaec7f0fc` produced 2,069,152 bytes, SHA-256 `d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e`. REMOTE executable source `9c805e5444587bc3d8952a57f44ec526c615e74a` produced 2,568,992 bytes, SHA-256 `cdfccacdf07d0e4ca0a29b2c92f3cf29ee5e1b65df109ca730c3915185c82e2d`.
+- No hardware operation occurred. DHCP recovery, multicast behavior, real multiple advertisers, coexistence, and runtime watermarks remain physically unvalidated. A controlled TUNER-first protocol is prepared but unexecuted.
+
+# 2026-10-19 -- A-REMOTE-013 D-009 OWNER APPROVED / FROZEN
+
+- Owner approved the exact D-009 specification reviewed at PR #20 commit `4237eadf7e641308a77ba673afadd0e39b52e5d1`; its SHA-256 is `ad6fa343c7ea6363febfffa143c6ffb62e401c19d994abcdaa7287bd0ded6c92`.
+- Approval covers capability revision 2/bits 3–7, IDs 9–11, correlated playback results, fixed-list-only traversal, authoritative station and combined StreamTitle, documented bounds, unchanged CCM 1.1.0 meanings and TUNER-first compatibility.
+- The specification is frozen for implementation planning. Firmware implementation, builds, hardware operations and releases remain separately gated. D-010 remains PROPOSED / NOT APPROVED; Native API v1 remains UNAPPROVED / NOT IMPLEMENTED.
+
+# 2026-10-19 -- A-REMOTE-013 D-009 EXACT PROFILE PROPOSED / OWNER REVIEW
+
+- Merged planning PR #19 normally at coordination merge `aa45826492d78714ce58221ea2a832adb52ac73f`, then used that merged `main` as the D-009 planning baseline.
+- Published an exact additive RTCP/1 proposal for radio play/pause/fixed-list previous/next and authoritative station/now-playing text. Proposed IDs 9–11, capability bits 3–7, exact payloads, error codes, UTF-8/bounds, generation/freshness, compatibility and TUNER-first rollout are reviewable; D-009 remains **PROPOSED / NOT APPROVED / NOT IMPLEMENTED**.
+- Source review confirmed TUNER owns a 64-byte selected-station name and one 256-byte combined ICY StreamTitle. Discovered-mode local Next adds a Favorite, so remote previous/next are explicitly unavailable outside the fixed saved list. No artist/title split is guessed.
+- Verified the existing REMOTE HOME page is carousel index 2 with two reusable text labels and existing playback controls. The generated brightness page, carousel geometry, artwork placeholder, widgets and graphics remain unchanged. No firmware source, build, device, pairing, NVS, partition or release changed.
+
+# 2026-10-19 -- REMOTE public baseline audit correction / documentation synchronized
+
+- REMOTE follow-up PR #2 corrected the current D-009 sentence after owner approval and merged normally at `d0a6ae556d8cbd9da5d90896b54573a45a48af69`; public `main` now points to that final documentation merge.
+- Verified the source-bearing `OviOneKenoby/REMOTE-01` commit `a06608085332255989f49b85be720a4a731cdfa1`; its 1,642 meaningful firmware files have zero substantive differences from the active local A-REMOTE-012 source after line-ending normalization. REMOTE documentation PR #1 merged normally at `1626504d87430cf868bcce267800a2d5ed9a48c1` without changing firmware source or configuration.
+- Preserved the initial audit concern as superseded history. Waveshare's official `06_WIFI_STA` documentation publishes the exact `esp_wifi_bsp` Wi-Fi literals as vendor sample credentials, so they are not evidence of personal or operational credential disclosure. The component remains excluded from the effective build. No rotation, component removal or history rewrite is required from this finding.
+- The reachable-history scan found no operational RTCP secret, private key, API token, flash/NVS dump, rollback backup or REMOTE application binary. Absolute local paths and historical private-LAN addresses remain documentation hygiene items.
+- The accepted REMOTE application remains 2,526,848 bytes with SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`. Existing local build output, preserved candidate and installed readback match that identity. Exact public-commit-to-binary reproducibility is not claimed because the original build workspace was Git-less.
+- Updated the current REMOTE handoff for the public baseline and archived the prior A-REMOTE-012 handoff unchanged. Documentation synchronization only: firmware, hardware, NVS, pairing, partitions and TUNER v1.1.12 are unchanged. D-009 approval is recorded separately above; no firmware implementation or release occurred.
+
 # 2026-10-19 -- A-REMOTE-013 PLANNING / OWNER REVIEW
 
 - Audited the actual TUNER v1.1.12 and private REMOTE source paths for playback, Bluetooth, stations, Favorites/Recent, Radio Browser, metadata, inputs, UI, persistence and lifecycle behavior. A-REMOTE-012 remains CLOSED / ACCEPTED.

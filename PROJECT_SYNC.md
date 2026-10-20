@@ -1,10 +1,44 @@
 # Project synchronization
-Updated 2026-10-19; coordination input `32876bde0ed6411738f296faea205446776438a3`.
-Common phase: A-REMOTE-013 functional controls and UI integration planning.
-Common gate: **A-REMOTE-013 PLANNING / OWNER REVIEW**. Firmware implementation is not authorized.
+Updated 2026-10-20; coordination input `5d36f06c301cdd340fe65084dca4d636ad6dc699`.
+Common phase: A-REMOTE-014 automatic RTCP endpoint discovery.
+Common gate: **TUNER FLASHED / READBACK & SMOKE TEST PENDING**.
 
 ## Current state - supersedes historical status below
+### A-REMOTE-014 hardware validation resumption - 2026-10-20
+
+TUNER A-REMOTE-014 candidate (2,069,152 bytes) flashed at `0x10000` on COM5. esptool write data hash verification PASSED and target reset completed. Independent readback SHA-256 (`d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e`) and hardware smoke tests are PENDING. REMOTE flashing remains blocked until TUNER readback and smoke test criteria are met.
+
+### A-REMOTE-014 software readiness - 2026-10-20
+
+TUNER and REMOTE now have separate implementation branches for bounded native
+`_rtcp._tcp` discovery. TUNER advertises its existing port 46411 only while
+Wi-Fi and the RTCP listener are ready. REMOTE treats at most four DNS-SD
+results as runtime transport candidates and accepts one only after unchanged
+RTCP mutual authentication and encrypted identity. Pairing, saved endpoint,
+NVS, CCM 1.1.0, D-009, partitions, and protocol security are unchanged.
+
+Focused tests and both pinned production builds pass. Exact artifacts,
+resources, limitations, and the unexecuted TUNER-first procedure are recorded
+in [the report](reports/A-REMOTE-014_DISCOVERY.md) and [hardware protocol](protocols/A-REMOTE-014_HARDWARE_VALIDATION.md).
+TUNER [PR #8](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/8)
+is stacked on the open D-009 branch without modifying PR #7; REMOTE
+[PR #3](https://github.com/OviOneKenoby/REMOTE-01/pull/3) is based on public
+`main`; coordination is [PR #23](https://github.com/OviOneKenoby/remote_tuner_system/pull/23).
+All remain open and unmerged. No hardware access, flashing, pairing/NVS
+mutation, merge, or release occurred. Controlled hardware commissioning needs
+separate owner authorization.
+
+### REMOTE public baseline audit correction - 2026-10-19
+
+REMOTE public repository `OviOneKenoby/REMOTE-01` currently points `main` to final documentation merge `d0a6ae556d8cbd9da5d90896b54573a45a48af69`; source-bearing parent `a06608085332255989f49b85be720a4a731cdfa1` has zero substantive differences across its 1,642 meaningful firmware files and the active local A-REMOTE-012 source after line-ending normalization. The installed artifact remains the accepted 2,526,848-byte application with SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`. Current-source equivalence and installed-artifact identity are independently proven; exact derivation from a public source commit remains unproven because the build-time REMOTE workspace was Git-less.
+
+The initial audit concern about literals in the build-excluded `components/esp_wifi_bsp` is **SUPERSEDED**. [Waveshare's official `06_WIFI_STA` documentation](https://www.waveshare.com/wiki/ESP32-S3-Touch-LCD-3.49) publishes the exact values as vendor sample credentials. The complete reachable-history scan found no operational REMOTE credential, RTCP association secret, private key, device dump, backup or application binary. No rotation, component removal or history rewrite is required by that finding. Public README/changelog synchronization is merged in REMOTE PR #1; no release is published. D-009 is now OWNER APPROVED / FROZEN, with implementation still not authorized.
+
 ### A-REMOTE-013 planning - 2026-10-19
+
+Planning PR #19 was merged normally at `aa45826492d78714ce58221ea2a832adb52ac73f`. The owner approved and froze the exact [D-009 RTCP/1 specification](references/RTCP_1_D009_PROPOSED.md) reviewed at `4237eadf7e641308a77ba673afadd0e39b52e5d1`; the immutable identity and scope are in the [approval record](references/D009_OWNER_APPROVAL_2026-10-19.md). The [decision record](decisions/D-009_OWNER_REVIEW.md), [source-backed path](reports/A-REMOTE-013_D009_CONTROL_PATH.md), [UI notes](reports/A-REMOTE-013_D009_UI_INTEGRATION.md), [resource calculations](reports/A-REMOTE-013_D009_RESOURCE_CALCULATIONS.md), [implementation-review task](tasks/A-REMOTE-013-D009-IMPLEMENTATION.md) and [unexecuted hardware protocol](protocols/A-REMOTE-013-D009-HARDWARE-VALIDATION.md) are prepared. Firmware implementation is not authorized.
+
+The approved first slice uses CCM 1.1.0 unchanged. Radio previous/next are limited to the fixed saved list because discovered-mode local Next is a Favorite mutation. Current radio metadata remains one exact combined StreamTitle; no artist/title split is guessed. Existing REMOTE carousel geometry, graphics and widgets remain unchanged. D-010 catalogs/logos remain PROPOSED / NOT APPROVED. Native API v1 remains UNAPPROVED / NOT IMPLEMENTED.
 
 Phase 1 source audit and planning are complete. TUNER v1.1.12 already owns local playback, radio browsing, Favorites, Recent, Bluetooth and metadata; REMOTE already owns authenticated volume control, bounded inputs, HOME UI foundations, persistence and lifecycle fencing. The production RTCP binding still exposes only identity, capabilities, volume/playback snapshots and `volume.set`. Playback commands, source selection, station catalogs, richer media state and selected-station logos require approved additive binding semantics. [Task](tasks/A-REMOTE-013.md), [capability matrix](reports/A-REMOTE-013_CAPABILITY_MATRIX.md), [gap analysis](reports/A-REMOTE-013_CONTROL_PATH_AND_PROTOCOL_GAPS.md), [resource assessment](reports/A-REMOTE-013_RESOURCE_RISK.md), [plan](reports/A-REMOTE-013_IMPLEMENTATION_PLAN.md) and [unexecuted hardware checklist](protocols/A-REMOTE-013_HARDWARE_ACCEPTANCE.md).
 

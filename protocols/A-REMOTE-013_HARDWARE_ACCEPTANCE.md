@@ -2,6 +2,8 @@
 
 **UNEXECUTED PLANNING DOCUMENT.** Every installation or persistent operation requires separate owner authorization. Execute only the sections belonging to the approved implementation slice.
 
+For the first playback/metadata slice, use the more specific [D-009 hardware validation protocol](A-REMOTE-013-D009-HARDWARE-VALIDATION.md) after the exact profile is approved and both candidates have passed software verification.
+
 ## Preflight
 
 - [ ] Identify each physical device through its actual ROM/USB interface; do not infer identity from a COM number.

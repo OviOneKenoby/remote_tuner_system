@@ -57,18 +57,18 @@ All entries OPEN / UNRESOLVED. Importing/grouping them issues no new owner appro
 ### D-009: A-REMOTE-013 additive RTCP playback-control profile
 - Date (UTC): 2026-10-19
 - Task / proposal ID: A-REMOTE-013 Phase 1
-- State: PROPOSED / OWNER REVIEW
+- State: OWNER APPROVED / FROZEN; implementation NOT AUTHORIZED / NOT STARTED
 - Problem and evidence: the accepted RTCP binding carries authenticated volume control and playback observation, while TUNER local radio play/pause/previous/next and REMOTE HOME controls are not connected; [gap analysis](reports/A-REMOTE-013_CONTROL_PATH_AND_PROTOCOL_GAPS.md).
-- Exact proposed change: specify additive capability bits and RTCP request/result messages for `playback.play`, `playback.pause`, `playback.previous` and `playback.next`, plus bounded authoritative current-station/title/playback observations. Retain existing framing, 512-byte plaintext limit, authenticated counters, single-in-flight correlation, session fencing, no automatic retry and volume-only compatibility. Stop/mute/source/BT/catalog operations are excluded from the first profile.
+- Exact proposed change: [RTCP/1 D-009 proposed profile](references/RTCP_1_D009_PROPOSED.md): retain IDs 1–8 and the 16-byte capability layout; assign capability bits 3–7 and IDs 9 playback command, 10 now-playing request and 11 now-playing response. The exact profile defines state/generation preconditions, result codes 0–7, fixed-list-only traversal, combined StreamTitle behavior, UTF-8 and string bounds, 446-byte maximum plaintext, freshness, session invalidation and mixed-version compatibility. Stop/mute/source/BT/catalog operations are excluded.
 - CCM impact: NONE; reuse existing CCM 1.1.0 operation/field meanings without modifying the frozen contract.
 - Native API impact: NONE; v1 remains UNAPPROVED / UNFROZEN / NOT IMPLEMENTED and O01-O17 remain open.
-- REMOTE impact and review: adapter capability/dispatch/observation additions and existing HOME/input bindings; source audit complete, implementation NOT AUTHORIZED.
-- TUNER impact and review: main-loop-owned adapters over existing local authority; source audit complete, implementation NOT AUTHORIZED.
+- REMOTE impact and review: adapter capability/dispatch/observation additions and existing HOME control/text bindings; generated carousel/graphics unchanged; source audit complete, implementation NOT AUTHORIZED.
+- TUNER impact and review: fixed-size main-loop-owned command/projection over existing radio authority; discovered Next Favorite mutation and Bluetooth AVRCP excluded; source audit complete, implementation NOT AUTHORIZED.
 - Alternatives and compatibility: implementing Native v1 or exposing web routes was rejected for this slice. Additive capabilities permit old/new volume-only interoperability. TUNER-first installation is recommended.
 - Owner approval: PENDING.
 - Effective approved revision: NONE.
 - Implementation tasks/commits: NOT IMPLEMENTED.
-- Verification: source review only; no build or hardware verification.
+- Verification: exact reviewed commit `4237eadf7e641308a77ba673afadd0e39b52e5d1`; specification SHA-256 `ad6fa343c7ea6363febfffa143c6ffb62e401c19d994abcdaa7287bd0ded6c92`; source review and exact serialized-size calculation only; no build or hardware verification. [Owner approval](references/D009_OWNER_APPROVAL_2026-10-19.md); [decision record](decisions/D-009_OWNER_REVIEW.md).
 - Supersedes / superseded by: NONE.
 
 ### D-010: A-REMOTE-013 station catalog and selected-logo boundary

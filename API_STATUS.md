@@ -1,17 +1,37 @@
 # Shared contract status
-Updated: 2026-10-19
-Authority: D-001 through D-008 and the recorded CCM 1.1.0 owner approval; historical starting facts retained.
+Updated: 2026-10-20
+Authority: D-001 through D-009 and the recorded CCM 1.1.0 and D-009 owner approvals; historical starting facts retained.
 
 | Contract | Version | Approval | Freeze | Implementation |
 | --- | --- | --- | --- | --- |
 | Common Control Model (CCM) | 1.1.0 | OWNER APPROVED | FROZEN | REMOTE Core/backend subsets exist; full two-device conformance NOT VERIFIED |
 | TUNER Native API | v1 | UNAPPROVED | UNFROZEN | NOT IMPLEMENTED |
 
+## A-REMOTE-014 RTCP transport discovery - 2026-10-20
+
+The RTCP/1 binding now has a software-ready transport-location mechanism using
+DNS-SD service type `_rtcp._tcp` and TCP port 46411. This does not approve or
+freeze the separate Native API mDNS questions: the announcement is an RTCP
+binding detail and introduces no CCM or D-009 field, operation, or authority.
+
+TUNER advertises availability without TXT data or secret identifiers. REMOTE
+accepts bounded results only as endpoint candidates; the existing PSK proof,
+encrypted identity, session fencing, freshness, replay protection, and command
+correlation remain authoritative. Discovery results are not persisted and
+pairing NVS is unchanged. When multicast is unavailable, the saved endpoint is
+the compatibility fallback and stale-endpoint recovery is unavailable.
+
+Host/source-policy tests and pinned builds PASS. TUNER candidate flashed on COM5 with esptool write hash PASS; independent readback SHA-256 and physical smoke tests PENDING. REMOTE flash remains BLOCKED. See [`reports/A-REMOTE-014_DISCOVERY.md`](reports/A-REMOTE-014_DISCOVERY.md).
+
 Current TUNER final baseline: v1.1.12, main/tag/integration merge `4977b49756820edc149acbe1abe4d387a96aa992`; executable source `d112dd0bbef7d86bd22090ec75d76cad3be77677`, build ID `d112dd0bbef7`, explicit `esp32-lwip-psram`. Exact application: 2,037,632 bytes, SHA-256 `6d7f2ebfa833bd09f287b8a7024071d736dfb2bf02356f889de94d7b980fdf6a`; [release](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/releases/tag/v1.1.12) and [A-REMOTE-012 report](reports/A-REMOTE-012_LOW_LATENCY_SOFTWARE.md). v1.1.11 and the initial 1.1.0 audit remain historical. CCM 1.1.0 remains frozen; no Native approval change.
+
+Current REMOTE public baseline: repository `OviOneKenoby/REMOTE-01`, `main` at final documentation merge `d0a6ae556d8cbd9da5d90896b54573a45a48af69`; source-bearing parent `a06608085332255989f49b85be720a4a731cdfa1` matches the active local A-REMOTE-012 tree after line-ending normalization. The accepted installed application remains 2,526,848 bytes, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`; exact source-commit-to-binary derivation remains unproven because the build-time workspace was Git-less. The initial `esp_wifi_bsp` credential concern is SUPERSEDED by verification against Waveshare's official `06_WIFI_STA` sample, which publishes the exact literals. No genuine credential or pairing-secret exposure was found. No REMOTE release is published.
 
 ## A-REMOTE-013 planning status - 2026-10-19
 
-The accepted RTCP/1 implementation currently binds identity, capabilities, `volume.level`, `playback.state`, `volume.set` and correlated results. It does not bind playback commands, source selection, station/Favorite/Recent catalogs, station activation, richer metadata, codec or selected-station logos. CCM 1.1.0 already contains neutral foundations for several of these concepts, but the exact RTCP projection, station identity/catalog bounds and artwork boundary are not approved. Proposed D-009/D-010 are under owner review; they change no effective contract. See [A-REMOTE-013 task](tasks/A-REMOTE-013.md) and [protocol gap analysis](reports/A-REMOTE-013_CONTROL_PATH_AND_PROTOCOL_GAPS.md).
+The accepted RTCP/1 implementation currently binds identity, capabilities, `volume.level`, `playback.state`, `volume.set` and correlated results. It does not yet implement D-009 playback commands or metadata. D-009 is OWNER APPROVED / FROZEN as an additive RTCP application profile; implementation remains NOT AUTHORIZED / NOT STARTED. D-010 station identity/catalog/artwork remains PROPOSED / NOT APPROVED. See [A-REMOTE-013 task](tasks/A-REMOTE-013.md) and [protocol gap analysis](reports/A-REMOTE-013_CONTROL_PATH_AND_PROTOCOL_GAPS.md).
+
+The exact [D-009 playback/now-playing profile](references/RTCP_1_D009_PROPOSED.md) is **OWNER APPROVED / FROZEN** at reviewed commit `4237eadf7e641308a77ba673afadd0e39b52e5d1`, specification SHA-256 `ad6fa343c7ea6363febfffa143c6ffb62e401c19d994abcdaa7287bd0ded6c92`. It assigns capability revision 2, bits 3–7 and message IDs 9–11 while preserving IDs 1–8, the 512-byte plaintext maximum, CCM 1.1.0 and mixed-version volume operation. [Approval record](references/D009_OWNER_APPROVAL_2026-10-19.md). Implementation is NOT AUTHORIZED / NOT STARTED; D-010 and Native API v1 remain unapproved.
 Common phase: Phase A contract reconciliation + TUNER correctness/control-state foundation.
 
 ## Reference register

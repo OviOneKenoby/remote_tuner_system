@@ -39,6 +39,8 @@ Flash is not the immediate blocker. TUNER internal heap fragmentation during Cla
 
 ## Expected implementation cost
 
+The exact D-009 layouts and calculations are in [A-REMOTE-013 D-009 resource calculations](A-REMOTE-013_D009_RESOURCE_CALCULATIONS.md). The largest proposed application plaintext is 446 bytes and the encrypted record is 490 bytes, so the existing 512-byte plaintext and 556-byte encrypted buffers do not grow.
+
 Playback command additions should be small in flash and fixed RAM, but exact deltas are UNKNOWN until each production build. Station catalogs and artwork are materially larger. The implementation plan therefore gates them behind measured production builds and hardware coexistence checks rather than reserving speculative memory.
 
 PSRAM is available in the selected TUNER profile and REMOTE hardware, but DMA, lwIP, Bluetooth and some TLS allocations still require internal memory. Merely placing application buffers in PSRAM does not remove the need to measure internal free heap and largest block.
