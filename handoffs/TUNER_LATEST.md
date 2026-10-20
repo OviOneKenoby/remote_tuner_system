@@ -5,11 +5,11 @@
 - Updated (UTC): 2026-10-20T19:08:02Z
 - Task ID: A-REMOTE-014
 - Status: HARDWARE VALIDATED / PASS
-- Prepared by: A-REMOTE-014 resume coordinator
+- Prepared by: A-REMOTE-014 implementation coordinator
 - Coordination input commit: `5d36f06c301cdd340fe65084dca4d636ad6dc699`
 
 ## Milestone
-Advertise the existing authenticated RTCP listener through standard DNS-SD so paired REMOTE devices can recover after DHCP address changes. Software scope achieved; hardware validation remains pending.
+Advertise the existing authenticated RTCP listener through standard DNS-SD so paired REMOTE devices can recover after DHCP address changes. Software scope and hardware validation achieved.
 
 ## Baseline
 - Device repository: `https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio`
@@ -32,22 +32,22 @@ Added bounded `ESPmDNS` `_rtcp._tcp` advertisement on port 46411, following Wi-F
 | Production build | `pio run -e esp32-lwip-psram` | pinned PlatformIO | PASS | artifact identity above |
 
 ## Remaining unknowns
-Physical advertisement lifecycle, multicast behavior, DHCP change, MP3/A2DP/HTTP/RTCP coexistence, and exact runtime mDNS allocation/task watermarks are not measured.
+Physical mDNS packet trace, forced second DHCP change, long-duration soak testing, A2DP regression, and exact runtime mDNS allocation/task watermarks are not measured.
 
 ## Shared-contract impact
 - CCM 1.1.0: NO CHANGE
 - RTCP/1 and D-009 wire semantics: NO CHANGE
 - TUNER Native API v1: NO CHANGE; remains unapproved/unimplemented
-- Other device impact: matching REMOTE discovery branch is required for automatic recovery
+- Other device impact: requires matching REMOTE discovery branch for automatic recovery
 
 ## Blockers
-No software blocker. Hardware acceptance and branch integration remain pending. This branch depends on open D-009 PR #7.
+No software blocker. Hardware acceptance complete. This branch depends on open D-009 PR #7.
 
 ## PM decision required
-Review the stacked branch and authorize TUNER-first controlled commissioning before REMOTE installation.
+Review pull request integration sequence.
 
 ## Recommended next task
-Execute only `protocols/A-REMOTE-014_HARDWARE_VALIDATION.md` after explicit owner authorization; install and verify TUNER before REMOTE.
+Merge TUNER PR #7, TUNER PR #8, REMOTE PR #3, and coordination PR #23 / PR #24.
 
 ## Commit
 - Firmware result commit: `63ff6770fe4f0d7a46cb547ddc8f14abaec7f0fc`

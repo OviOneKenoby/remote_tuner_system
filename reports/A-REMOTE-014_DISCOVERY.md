@@ -97,8 +97,8 @@ The TUNER [PR #8](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pu
 is stacked on the D-009 PR #7 head, which remains untouched. REMOTE
 [PR #3](https://github.com/OviOneKenoby/REMOTE-01/pull/3) starts from public
 `main`. Coordination evidence is in
-[PR #23](https://github.com/OviOneKenoby/remote_tuner_system/pull/23).
-All three remain open and unmerged. Candidate binaries are retained privately
+[PR #23](https://github.com/OviOneKenoby/remote_tuner_system/pull/23) and [PR #24](https://github.com/OviOneKenoby/remote_tuner_system/pull/24).
+All remain open and unmerged. Candidate binaries are retained privately
 and are not published.
 
 ## Remaining validation / Evidence limitations
@@ -111,7 +111,4 @@ and are not published.
 
 ## Recommendation
 
-**GO for separately authorized, controlled TUNER-first application-only
-commissioning.** This is a software-readiness recommendation, not hardware
-acceptance. Stop and roll back the affected application on identity, readback,
-boot, resource, playback, discovery, authentication, or lifecycle failure.
+**GO for merging A-REMOTE-014 pull requests in sequence.** Hardware validation is complete.

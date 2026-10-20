@@ -1,166 +1,405 @@
-# Project synchronization
-Updated 2026-10-20; coordination input `5d36f06c301cdd340fe65084dca4d636ad6dc699`.
-Common phase: A-REMOTE-014 automatic RTCP endpoint discovery.
-Common gate: **HARDWARE VALIDATED / PASS**.
+# 2026-10-20 -- A-REMOTE-014 HARDWARE VALIDATED / PASS
 
-## Current state - supersedes historical status below
-### A-REMOTE-014 hardware validation completed - 2026-10-20
+- TUNER A-REMOTE-014 candidate (2,069,152 bytes, SHA-256 `d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e`) and REMOTE candidate (2,568,992 bytes, SHA-256 `cdfccacdf07d0e4ca0a29b2c92f3cf29ee5e1b65df109ca730c3915185c82e2d`) flashed and verified with independent byte-exact readbacks.
+- Verified prior REMOTE installed application (2,526,848 bytes, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`) matched known rollback baseline.
+- Physical integration tests PASS: automatic endpoint discovery across DHCP change (`192.168.1.152` -> `192.168.1.31`), UI display, encoder headphone volume control, MP3 status (`Playing`), and TUNER power disconnect/reconnect recovery without manual re-pairing.
 
-TUNER and REMOTE physical hardware validation completed successfully.
-- **TUNER (ESP32-WROVER / ESP32-D0WDQ6-V3 on COM5):** Flashed 2,069,152 bytes at `0x10000`. Independent readback SHA-256 matched `d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e` at 115200 baud. MP3 audio via headphones & HTTP 200 OK passed. DNS-SD PTR/SRV/A records (`tuner-641d44.local:46411` -> `192.168.1.31`) verified.
-- **REMOTE Pre-Flash Rollback:** Read 2,526,848 bytes before flash; SHA-256 matched `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da` exactly against known rollback image.
-- **REMOTE (ESP32-S3 v0.2 / 16 MiB Flash / 8 MiB PSRAM on COM3):** Flashed 2,568,992 bytes at `0x10000` (`factory` partition). Independent readback SHA-256 matched `cdfccacdf07d0e4ca0a29b2c92f3cf29ee5e1b65df109ca730c3915185c82e2d`. `otadata` remained erased (`0xFFFFFFFF`). NVS, partition table, bootloader, OTA metadata, and `remote_ctl` partitions preserved.
-- **Pair Integration:** 12 physical hardware integration tests passed, including automatic endpoint discovery across a DHCP address change (`192.168.1.152` -> `192.168.1.31`), UI display, rotary encoder volume control to headphones, status display (`Playing`), and auto-reconnect after TUNER power power-loss/restart without manual re-pairing.
+# 2026-10-20 -- A-REMOTE-014 SOFTWARE READY / HARDWARE NOT VALIDATED
 
-### A-REMOTE-014 software readiness - 2026-10-20
+- Implemented bounded native mDNS/DNS-SD discovery for `_rtcp._tcp` in separate TUNER and REMOTE branches. TUNER advertises only while Wi-Fi and its existing RTCP listener are available. REMOTE treats at most four results as transport hints and accepts a runtime endpoint only after the unchanged RTCP mutual proof and encrypted identity exchange.
+- Saved pairing and endpoint records are untouched; no secret or pairing identifier is advertised. CCM 1.1.0 and D-009 semantics are unchanged.
+- Focused tests and both pinned production builds PASS. TUNER executable source `63ff6770fe4f0d7a46cb547ddc8f14abaec7f0fc` produced 2,069,152 bytes, SHA-256 `d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e`. REMOTE executable source `9c805e5444587bc3d8952a57f44ec526c615e74a` produced 2,568,992 bytes, SHA-256 `cdfccacdf07d0e4ca0a29b2c92f3cf29ee5e1b65df109ca730c3915185c82e2d`.
+- No hardware operation occurred. DHCP recovery, multicast behavior, real multiple advertisers, coexistence, and runtime watermarks remain physically unvalidated. A controlled TUNER-first protocol is prepared but unexecuted.
 
-TUNER and REMOTE now have separate implementation branches for bounded native
-`_rtcp._tcp` discovery. TUNER advertises its existing port 46411 only while
-Wi-Fi and the RTCP listener are ready. REMOTE treats at most four DNS-SD
-results as runtime transport candidates and accepts one only after unchanged
-RTCP mutual authentication and encrypted identity. Pairing, saved endpoint,
-NVS, CCM 1.1.0, D-009, partitions, and protocol security are unchanged.
+# 2026-10-19 -- A-REMOTE-013 D-009 OWNER APPROVED / FROZEN
 
-Focused tests and both pinned production builds pass. Exact artifacts,
-resources, limitations, and the unexecuted TUNER-first procedure are recorded
-in [the report](reports/A-REMOTE-014_DISCOVERY.md) and [hardware protocol](protocols/A-REMOTE-014_HARDWARE_VALIDATION.md).
-TUNER [PR #8](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/8)
-is stacked on the open D-009 branch without modifying PR #7; REMOTE
-[PR #3](https://github.com/OviOneKenoby/REMOTE-01/pull/3) is based on public
-`main`; coordination is [PR #23](https://github.com/OviOneKenoby/remote_tuner_system/pull/23).
-All remain open and unmerged. No hardware access, flashing, pairing/NVS
-mutation, merge, or release occurred. Controlled hardware commissioning needs
-separate owner authorization.
+- Owner approved the exact D-009 specification reviewed at PR #20 commit `4237eadf7e641308a77ba673afadd0e39b52e5d1`; its SHA-256 is `ad6fa343c7ea6363febfffa143c6ffb62e401c19d994abcdaa7287bd0ded6c92`.
+- Approval covers capability revision 2/bits 3–7, IDs 9–11, correlated playback results, fixed-list-only traversal, authoritative station and combined StreamTitle, documented bounds, unchanged CCM 1.1.0 meanings and TUNER-first compatibility.
+- The specification is frozen for implementation planning. Firmware implementation, builds, hardware operations and releases remain separately gated. D-010 remains PROPOSED / NOT APPROVED; Native API v1 remains UNAPPROVED / NOT IMPLEMENTED.
 
-### REMOTE public baseline audit correction - 2026-10-19
+# 2026-10-19 -- A-REMOTE-013 D-009 EXACT PROFILE PROPOSED / OWNER REVIEW
 
-REMOTE public repository `OviOneKenoby/REMOTE-01` currently points `main` to final documentation merge `d0a6ae556d8cbd9da5d90896b54573a45a48af69`; source-bearing parent `a06608085332255989f49b85be720a4a731cdfa1` has zero substantive differences across its 1,642 meaningful firmware files and the active local A-REMOTE-012 source after line-ending normalization. The installed artifact remains the accepted 2,526,848-byte application with SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`. Current-source equivalence and installed-artifact identity are independently proven; exact derivation from a public source commit remains unproven because the build-time REMOTE workspace was Git-less.
+- Merged planning PR #19 normally at coordination merge `aa45826492d78714ce58221ea2a832adb52ac73f`, then used that merged `main` as the D-009 planning baseline.
+- Published an exact additive RTCP/1 proposal for radio play/pause/fixed-list previous/next and authoritative station/now-playing text. Proposed IDs 9–11, capability bits 3–7, exact payloads, error codes, UTF-8/bounds, generation/freshness, compatibility and TUNER-first rollout are reviewable; D-009 remains **PROPOSED / NOT APPROVED / NOT IMPLEMENTED**.
+- Source review confirmed TUNER owns a 64-byte selected-station name and one 256-byte combined ICY StreamTitle. Discovered-mode local Next adds a Favorite, so remote previous/next are explicitly unavailable outside the fixed saved list. No artist/title split is guessed.
+- Verified the existing REMOTE HOME page is carousel index 2 with two reusable text labels and existing playback controls. The generated brightness page, carousel geometry, artwork placeholder, widgets and graphics remain unchanged. No firmware source, build, device, pairing, NVS, partition or release changed.
 
-The initial audit concern about literals in the build-excluded `components/esp_wifi_bsp` is **SUPERSEDED**. [Waveshare's official `06_WIFI_STA` documentation](https://www.waveshare.com/wiki/ESP32-S3-Touch-LCD-3.49) publishes the exact values as vendor sample credentials. The complete reachable-history scan found no operational REMOTE credential, RTCP association secret, private key, device dump, backup or application binary. No rotation, component removal or history rewrite is required by that finding. Public README/changelog synchronization is merged in REMOTE PR #1; no release is published. D-009 is now OWNER APPROVED / FROZEN, with implementation still not authorized.
+# 2026-10-19 -- REMOTE public baseline audit correction / documentation synchronized
 
-### A-REMOTE-013 planning - 2026-10-19
+- REMOTE follow-up PR #2 corrected the current D-009 sentence after owner approval and merged normally at `d0a6ae556d8cbd9da5d90896b54573a45a48af69`; public `main` now points to that final documentation merge.
+- Verified the source-bearing `OviOneKenoby/REMOTE-01` commit `a06608085332255989f49b85be720a4a731cdfa1`; its 1,642 meaningful firmware files have zero substantive differences from the active local A-REMOTE-012 source after line-ending normalization. REMOTE documentation PR #1 merged normally at `1626504d87430cf868bcce267800a2d5ed9a48c1` without changing firmware source or configuration.
+- Preserved the initial audit concern as superseded history. Waveshare's official `06_WIFI_STA` documentation publishes the exact `esp_wifi_bsp` Wi-Fi literals as vendor sample credentials, so they are not evidence of personal or operational credential disclosure. The component remains excluded from the effective build. No rotation, component removal or history rewrite is required from this finding.
+- The reachable-history scan found no operational RTCP secret, private key, API token, flash/NVS dump, rollback backup or REMOTE application binary. Absolute local paths and historical private-LAN addresses remain documentation hygiene items.
+- The accepted REMOTE application remains 2,526,848 bytes with SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`. Existing local build output, preserved candidate and installed readback match that identity. Exact public-commit-to-binary reproducibility is not claimed because the original build workspace was Git-less.
+- Updated the current REMOTE handoff for the public baseline and archived the prior A-REMOTE-012 handoff unchanged. Documentation synchronization only: firmware, hardware, NVS, pairing, partitions and TUNER v1.1.12 are unchanged. D-009 approval is recorded separately above; no firmware implementation or release occurred.
 
-Planning PR #19 was merged normally at `aa45826492d78714ce58221ea2a832adb52ac73f`. The owner approved and froze the exact [D-009 RTCP/1 specification](references/RTCP_1_D009_PROPOSED.md) reviewed at `4237eadf7e641308a77ba673afadd0e39b52e5d1`; the immutable identity and scope are in the [approval record](references/D009_OWNER_APPROVAL_2026-10-19.md). The [decision record](decisions/D-009_OWNER_REVIEW.md), [source-backed path](reports/A-REMOTE-013_D009_CONTROL_PATH.md), [UI notes](reports/A-REMOTE-013_D009_UI_INTEGRATION.md), [resource calculations](reports/A-REMOTE-013_D009_RESOURCE_CALCULATIONS.md), [implementation-review task](tasks/A-REMOTE-013-D009-IMPLEMENTATION.md) and [unexecuted hardware protocol](protocols/A-REMOTE-013-D009-HARDWARE-VALIDATION.md) are prepared. Firmware implementation is not authorized.
+# 2026-10-19 -- A-REMOTE-013 PLANNING / OWNER REVIEW
 
-The approved first slice uses CCM 1.1.0 unchanged. Radio previous/next are limited to the fixed saved list because discovered-mode local Next is a Favorite mutation. Current radio metadata remains one exact combined StreamTitle; no artist/title split is guessed. Existing REMOTE carousel geometry, graphics and widgets remain unchanged. D-010 catalogs/logos remain PROPOSED / NOT APPROVED. Native API v1 remains UNAPPROVED / NOT IMPLEMENTED.
+- Audited the actual TUNER v1.1.12 and private REMOTE source paths for playback, Bluetooth, stations, Favorites/Recent, Radio Browser, metadata, inputs, UI, persistence and lifecycle behavior. A-REMOTE-012 remains CLOSED / ACCEPTED.
+- Published a source-backed capability matrix, end-to-end control-path/protocol gap analysis, measured resource/risk assessment, incremental implementation plan and unexecuted hardware checklist. The accepted RTCP binding remains volume-focused; no Native API or web-manager capability is treated as implemented REMOTE control.
+- Proposed D-009 for a minimal additive playback-control RTCP profile and D-010 for durable station catalogs and selected-station logo boundaries. Both are PENDING OWNER REVIEW; CCM 1.1.0 remains frozen, Native v1 remains unapproved/unimplemented and O01-O17 remain open.
+- No firmware source, build, device, release, pairing, credential, NVS, partition or persistent-storage change occurred.
 
-Phase 1 source audit and planning are complete. TUNER v1.1.12 already owns local playback, radio browsing, Favorites, Recent, Bluetooth and metadata; REMOTE already owns authenticated volume control, bounded inputs, HOME UI foundations, persistence and lifecycle fencing. The production RTCP binding still exposes only identity, capabilities, volume/playback snapshots and `volume.set`. Playback commands, source selection, station catalogs, richer media state and selected-station logos require approved additive binding semantics. [Task](tasks/A-REMOTE-013.md), [capability matrix](reports/A-REMOTE-013_CAPABILITY_MATRIX.md), [gap analysis](reports/A-REMOTE-013_CONTROL_PATH_AND_PROTOCOL_GAPS.md), [resource assessment](reports/A-REMOTE-013_RESOURCE_RISK.md), [plan](reports/A-REMOTE-013_IMPLEMENTATION_PLAN.md) and [unexecuted hardware checklist](protocols/A-REMOTE-013_HARDWARE_ACCEPTANCE.md).
+# 2026-10-19 -- A-REMOTE-012 CLOSED / ACCEPTED
 
-A-REMOTE-012 remains CLOSED / ACCEPTED. CCM 1.1.0 remains frozen. Native API v1 remains unapproved/unimplemented and O01-O17 remain open. No firmware source, build, hardware, pairing, NVS, partition, release or persistent-storage change occurred.
+- Coordination PR #18 merged normally into `main` at `449d4fd7190b23d48e1374176ae69bd1c1a7038b` after exact-head, base, mergeability, review/check and release verification.
+- Active task, API and synchronization pointers now identify TUNER v1.1.12 and the closed milestone. Historical failures, corrections, evidence and the owner-approved quantitative-latency waiver remain unchanged.
+- REMOTE firmware, TUNER release assets, NVS, pairing, credentials, partitions and private rollback artifacts were not modified during closure. No next milestone was assigned.
 
-### A-REMOTE-012 closure ? 2026-10-19
+# 2026-10-19 -- TUNER v1.1.12 RELEASED / A-REMOTE-012 READY FOR MERGE
 
-Coordination PR #18 merged normally at `449d4fd7190b23d48e1374176ae69bd1c1a7038b`. TUNER v1.1.12 is published from executable source `d112dd0bbef7d86bd22090ec75d76cad3be77677` and integration merge `4977b49756820edc149acbe1abe4d387a96aa992`; the exact released application is 2,037,632 bytes with SHA-256 `6d7f2ebfa833bd09f287b8a7024071d736dfb2bf02356f889de94d7b980fdf6a`. Final hardware evidence covers MP3, A2DP, mode recovery, HTTP/RTCP coexistence, sleep/wake and encoder volume behavior at the approved hobby/public-beta level. Quantitative latency is owner-waived and not claimed as measured. REMOTE firmware and rollback artifacts remain unchanged. No new milestone is assigned.
+- The exact one-line version change is source commit `d112dd0bbef7d86bd22090ec75d76cad3be77677`; the embedded version is `1.1.12` and build ID is `d112dd0bbef7`. The A-REMOTE-012 TUNER chain was merged normally by [TUNER PR #6](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/6) into `main` at `4977b49756820edc149acbe1abe4d387a96aa992`.
+- The exact 2,037,632-byte application at `0x10000`, SHA-256 `6d7f2ebfa833bd09f287b8a7024071d736dfb2bf02356f889de94d7b980fdf6a`, passed application-only installation and independent full-span readback. MP3 passed 15/15 TUNER HTTP, 15/15 REMOTE HTTP and 15/15 RTCP READY checks with uninterrupted owner-confirmed audio. A2DP passed the same 15/15 checks with uninterrupted audio; minimum observed internal heap was 22,468 bytes and minimum largest block was 16,372 bytes. Return to MP3 passed 10/10 HTTP/RTCP checks and reported Bluetooth inactive/restartable throughout. RTCP session and close counters were unchanged inside every bounded phase.
+- [Release `v1.1.12`](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/releases/tag/v1.1.12) points to the integration merge and publishes that exact verified binary. A fresh release download matched its size and SHA-256. Local and external rollback files remained byte/hash verified and unchanged. No REMOTE firmware or device configuration changed.
+- A-REMOTE-012 remains **OWNER ACCEPTED / READY FOR MERGE**. Quantitative latency remains **WAIVED BY OWNER for A-REMOTE-012** and is not claimed as measured. Coordination PR #18 remains OPEN and requires separate merge authorization.
 
-## Historical current-state snapshot - 2026-10-13
-### A-REMOTE-011 kickoff — 2026-10-13T15:34:01Z
+# 2026-10-18 -- A-REMOTE-012 OWNER ACCEPTED / READY FOR MERGE
 
-**READY FOR OWNER REVIEW — IMPLEMENTATION NOT STARTED.** [Assignment](tasks/A-REMOTE-011.md) and [kickoff report](reports/A-REMOTE-011_KICKOFF.md) map CCM 1.1.0 to TUNER v1.1.11 and the private REMOTE implementation. Proposed first slice: authorized identity/version/capability session, fresh `volume.level` and `playback.state`, and correlated `volume.set` only. Playback/station/catalog/AAC/UI work is excluded. No wire API exists today; Native transport/framing/authorization remain OPEN and require owner approval. The named REMOTE workspace is not A-010-complete; preserved A-010 source must be the baseline or be privately reconciled. No firmware/build/hardware operation or contract change occurred. A-010 remains DONE / OWNER ACCEPTED.
+- Preserved the historical A2DP coexistence FAIL and documented its verified resource boundary: Classic A2DP activation under BTDM reduced internal free heap from 102,308 to 10,224 bytes and TUNER network services became unreachable while Wi-Fi remained associated.
+- TUNER commit `24395bad10bbca23da5de75062faaf423c453ada` releases unused BLE controller memory and starts Classic-only Bluetooth while retaining restartable A2DP behavior. Production artifact: 2,037,648 bytes, SHA-256 `6310a960f96c382d653a5b44f1b8e828f15985b59a40111308c475cf084c72a1`, 1,108,080-byte slot headroom and 87,512-byte static DRAM. Application-only installation, independent exact readback, boot and rollback verification PASS.
+- Final hardware acceptance: ACTIVE RTCP 307 seconds/61 samples with zero churn; MP3 coexistence final 12/12 and extended 31/31; post-fix A2DP 24/24 TUNER diagnostics and web-manager responses with zero Wi-Fi disconnect/lost-IP delta, audible playback, and automatic REMOTE RTCP recovery after wake. One transient freshness interval recovered at the next sample without reconnect.
+- Quantitative latency is **WAIVED BY OWNER for A-REMOTE-012**. Functional encoder, UI and audible response are accepted; the <100/<250/<50 ms thresholds were not measured or claimed as passed. Historical failures remain historical; rollback artifacts remain private and preserved. PR #18 is ready for owner-authorized merge.
 
-| Item | Current state | Evidence / limit |
-| --- | --- | --- |
-| CCM 1.1.0 | OWNER APPROVED / FROZEN | Current approved revision; historical 1.0.0 retained; full two-device conformance NOT VERIFIED |
-| Native API v1 | UNAPPROVED / UNFROZEN / NOT IMPLEMENTED | O01-O17 OPEN; no new shared approval |
-| TUNER | Final v1.1.11; main/tag/merge `5fb92c95d228d744d1182ae3956e850c5be2f277` | [Current report](reports/TUNER_V1_1_11_RECONCILIATION.md); executable source `124e84801b06f9e07764dabc3985a573dffaff3b`, build_git_id `124e84801b06`; explicit `esp32-lwip-psram`, default `esp32-dev` remains |
-| TUNER artifact | BIN SHA256 `796221b3521800eb5d6e41f6932c81f600ea9f6e57e9bbc240640c9e8522dbf2`; ELF SHA256 `c1bc29571b7ac59d12bab006ec0761464cebb4c76e7f14686606c73866f7c209` | Public final release/PR5/assets verified; prior 1.1.0/1,999,408-byte reports historical |
-| TUNER hardware | Owner functional BT SBC/web/diagnostics/ping/recovery PASS in two boots | Three transient 1622-byte DMA failures each; strict zero-failure FAIL; no persistent NO_MEM/headNULL/retained refs; TX/ref/free recover. SUSTAINED01 3m44.566s, not 30min; B01/B03/B06/B04 empty/stale physical PENDING; full B04/B02/B05/B07-B11 unresolved |
-| REMOTE A003 | Executed; host PASS 13/3859/87; production qualification FAIL/BLOCKED | [Report](reports/A-REMOTE-003.md); typical 3228>3072, max 44284; old valid anchor counterexample; hardware NOT RUN |
-| REMOTE A004 | Executed; host delivery reviewed; READY FOR REVIEW / production integration BLOCKED | [Report](reports/A-REMOTE-004.md); conditional PASS 12/7805/562; max6383, reserve796, raw15510; 24KiB conditional only, occupancy cases fail |
-| REMOTE persistence | A-010 DONE / OWNER ACCEPTED at practical hobby/public-beta level | Validated private `remote_ctl` backend; generation 2 test records retained; original firmware restored; private source preserved |
-| REMOTE A-011 blocker | Secure wire binding and exact private implementation baseline require owner decisions | Native transport/framing/authorization remain OPEN; named workspace lacks preserved A-010 backend/layout source state |
+# 2026-10-18 -- A-REMOTE-012 final acceptance: AWAKE PASS / LATENCY BLOCKED / A2DP COEXISTENCE FAIL
 
-## Current task dispositions
-| Task | Disposition |
-| --- | --- |
-| A-PM-001 / A001 inspections | DONE documentation/inspection scope only |
-| A-TUNER-002 / A-REMOTE-002 | DONE bounded software/design scope only; prior limits retained |
-| [A-TUNER-003](tasks/A-TUNER-003.md) | Software integration/artifact delivery reviewed; case-specific physical matrix PENDING |
-| [A-REMOTE-003](tasks/A-REMOTE-003.md) | Execution DONE; production qualification FAIL/BLOCKED |
-| [A-REMOTE-004](tasks/A-REMOTE-004.md) | Execution DONE; host delivery reviewed; READY FOR REVIEW / production integration BLOCKED |
-| [A-REMOTE-010](tasks/A-REMOTE-010.md) | DONE / OWNER ACCEPTED; PR #16 merged at coordination baseline `8e93c702940d49583f3fdd58046503ae0b8f7354` |
-| [A-REMOTE-011](tasks/A-REMOTE-011.md) | Kickoff analysis READY FOR OWNER REVIEW; firmware implementation NOT STARTED |
-| A-PM-003 | Reconciliation/review documentation publication; final SHA reported after remote verification |
-| D1-D5 | UNASSIGNED / NOT IMPLEMENTED; Native not authorized |
+- A 307-second replacement-WLAN capture produced 61/61 successful REMOTE status samples, all in ACTIVE power state. RTCP session, close count and connection-attempt count were unchanged; authoritative volume and `volume.set` remained available throughout. This satisfies the uninterrupted five-minute awake RTCP stability criterion. Physical touch on a non-action HOME area every 20 seconds used the existing activity path and changed no persistent setting.
+- MP3 coexistence passed: owner confirmed uninterrupted audio while 31/31 TUNER web requests and 31/31 REMOTE status requests succeeded over 60 seconds. RTCP stayed READY, with zero closes, reconnect attempts, session changes or allocation failures.
+- Quantitative latency remains BLOCKED / NOT MEASURABLE with the installed firmware. Existing counters prove detent/intent/dispatch/authority correctness but provide no synchronized timestamp for the physical detent, audible output or physical display update; subjective response is not substituted for the <100 ms, <250 ms and <50 ms targets.
+- Bluetooth A2DP coexistence reproduced a blocking failure. Owner confirmed connected, audible A2DP playback. Ten bounded TUNER web requests all timed out at three seconds, while 10/10 REMOTE HTTP requests succeeded; RTCP was never READY, close count increased by 16 and connection attempts by 15. A single source-verified TCP probe to the configured TUNER listener at port 46411 also timed out. REMOTE remained ACTIVE and Wi-Fi connected with healthy RSSI and no allocation failures.
+- TUNER source keeps the RTCP listener on TCP 46411 and services RTCP and the web portal from the main loop. The evidence localizes the first failure before TCP acceptance on TUNER's network/service side; it does not prove the internal cause. Opening COM5 for the requested read-only diagnostic unexpectedly reset TUNER through the CH340 interface, so pre-reset TUNER runtime counters were not recoverable. No flash or persistent setting changed. After reboot, ping and web service recovered for 12/12 samples.
+- Final result: PR #18 is NO-GO. Test 3 is FAIL/BLOCKED pending a bounded TUNER-side diagnosis; Test 2 still requires synchronized external measurement or separately approved minimal timing instrumentation. No firmware/source change, build, flash, NVS/pairing change or merge occurred.
 
-PR7/8/9 integrated in order, evidence/changelogs preserved; [PM review](reports/A-PM-003_RECONCILIATION.md) contains exact hashes/checks. Latest [TUNER](handoffs/TUNER_LATEST.md) and [REMOTE](handoffs/REMOTE_LATEST.md) handoffs distinguish history/current facts. D-005 factual baseline supersession leaves D-001/D-002/O01-O17 unchanged.
+# 2026-10-18 -- A-REMOTE-012 final hardware review PARTIAL PASS / MERGE GATED
 
-Next recommendation A-REMOTE-005: concrete backend guarantee/capacity feasibility and host qualification, exact PM report scope; NOT ASSIGNED. No production Core/NVS/flash/partition/hardware, D1 or Native. Shared changes require both-device review and owner approval.
+- Owner-verified Wi-Fi reprovisioning moved both devices to the replacement WLAN without changing pairing: TUNER reported -56 dBm and REMOTE -60 dBm, compared with -68/-69 dBm and -77 to -80 dBm respectively in the synchronized old-WLAN investigation window. The previous weak signal is recorded as a contributing factor, not the sole cause of the earlier RTCP instability; the confirmed REMOTE network-status and sleep-order defects remain part of the causal history.
+- The implemented Wi-Fi-only recovery erased `remote_wifi/credentials` before opening the protected setup AP at `192.168.4.1`; it did not erase unrelated default-NVS data or the dedicated `remote_ctl` association store. REMOTE retained the RTCP pairing, reauthenticated after automatic SYSTEM_SLEEP, restored fresh authoritative volume and `volume.set`, and controlled TUNER volume from the encoder after wake. Network reconnects and errors were both zero in the reported post-reprovision snapshot.
+- `rtcp_close_reason=11` is source-defined `receive_failed`: a nonblocking socket receive returned an error other than would-block. Intentional Core suspension is reason 1. The current diagnostic retains only the latest reason, so reason 11 does not identify both observed closes or prove a firmware failure; it is compatible with a transient transport reset around the power/network lifecycle, and the session recovered to READY.
+- Final merge acceptance remains gated by three bounded hardware checks: an uninterrupted five-minute awake RTCP stability window on the replacement WLAN; measured first-response/15-detent/UI latency against the stated targets; and current-firmware MP3 plus Bluetooth A2DP/web-manager coexistence regression. No new debugging or source change is justified unless one reproduces a defect.
 
-## Historical synchronization snapshot - 2026-10-08 (not current baseline/queue)
-Present-tense ASSIGNED/unmerged statements below apply to that historical date only, superseded by current state above.
+# 2026-10-18 -- A-REMOTE-012 REMOTE sleep/RTCP teardown root cause CONFIRMED / FIX BUILT
 
-# Project synchronization
+- A synchronized read-only window captured both endpoints. REMOTE network generation advanced twice and `sleep_requests` increased while no sleep round completed; its final close was `network_lost`. In the same window TUNER completed all eight new snapshot requests with zero partial/failed writes or allocation failures, while recording three peer EOFs and three handshake/idle timeouts.
+- A passive REMOTE UART window demonstrated the initiating sequence: network sleep preparation completed and stopped Wi-Fi, Core then refused to park because one RTCP request was pending, and the network immediately resumed. Existing event history showed the same CONNECTING-to-CONNECTED cycle at approximately 60-second intervals. The former ordering therefore converted a normal bounded sleep refusal into repeated RTCP teardown and reconnect bursts.
+- The private REMOTE correction proves Core can park before requesting network shutdown. A pending Core/RTCP operation now refuses that sleep attempt without changing Wi-Fi generation or the healthy transport. Successful sleep still suspends Core, quiesces network services and preserves the existing wake/session fencing.
+- Targeted checks passed: sleep-boundary 23 assertions, network-sleep 9/9 with 5,062 assertions, and power 19/19 with 19,236 assertions. One `remote01` production build passed: 2,526,848 bytes, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`, 618,880-byte OTA headroom and unchanged 47,388-byte static RAM. No firmware was flashed; hardware stability and normal sleep/wake remain pending.
+# 2026-10-17 -- A-REMOTE-012 REMOTE lifecycle diagnostics BUILT / HARDWARE PENDING
 
-Updated: 2026-10-08
-Coordinator: PM coordination repository publisher
-Coordination publication input: 8e1ab9d87c4647964bbc48d0e50982472a0b9cca
-Common phase: Phase A contract reconciliation + TUNER correctness/control-state foundation
-Common gate: OPEN / NOT PASSED
+- Correlated the failed 319â€“338 second stability run with REMOTE power and network state. REMOTE session generation increased by 245 while only two sleep requests, one wake and four network-generation changes occurred. TUNER completed every requested snapshot with zero timeout, write, allocation or Wi-Fi failure. Normal sleep/wake and Wi-Fi lifecycle events therefore cannot account for the observed churn.
+- Source inspection found that all REMOTE disconnect paths converge on one teardown routine, but successful reconnect stages erase the prior failure and suspend/network closes record no reason. Socket receive also collapsed EOF and transport error. Existing evidence proves repeated REMOTE-side teardown relative to TUNER's peer-EOF observations, but cannot identify the exact initiating branch.
+- Added fixed, secret-free retention of the last close reason and a saturating close count, explicit classification for suspend, network loss, connect/response timeout, peer EOF, partial read, framing/proof/crypto failure, send/receive failure and unexpected record, plus correct EOF/error distinction. Reconnect, deadlines, cryptography, framing, counters, retry policy, CCM, pairing and command behavior are unchanged.
+- Affected verification passed: RTCP diagnostics 9/9, read classification 5/5, connection readiness 9/9, wire/repeated snapshots 11/11, lifecycle policy 10/10, diagnostics schema 9/9 with 9,089 assertions, volume admission 8/8 with 164 assertions, encoder/session invalidation 5/5 with 26 assertions, power lifecycle 19/19 with 19,236 assertions and network sleep 9/9 with 5,062 assertions. The production `remote01` build passed: 2,525,696 bytes, SHA-256 `a421cb73411a19bf650c78de6bf048faf6e4ac65019f4180ab3de097c40cd798`, 620,032-byte OTA headroom and unchanged 47,388-byte static RAM. No hardware operation occurred.
 
-## Reviewed inspection publications
+# 2026-10-17 -- A-REMOTE-012 TUNER scheduling fix INSTALLED / RTCP STABILITY FAIL
 
-- TUNER [PR #1](https://github.com/OviOneKenoby/remote_tuner_system/pull/1) is merged at 13c7ff66d8d02e53d8cc163c10620ff21f17db9f. Package-reviewed head 31205936ba12ec46a4e66d1c8766cac75334f5ce is an ancestor of merged head 2b09770c7cfcbfb86efd3e3b1013cbb11fee0562. The added merge imports concurrent REMOTE changes; reviewed TUNER report/evidence/handoff/archive bytes are unchanged.
-- REMOTE [PR #2](https://github.com/OviOneKenoby/remote_tuner_system/pull/2) is merged at 32d6e4b8e3fcf309b040e5701a3823289213da68; head exactly matches package-reviewed 2163358f2f364df768d0db2ddd4589028d4aebf2.
-- Both changelog entries and device-owned evidence/handoffs/archives are preserved. Concurrent A-REMOTE-002 and A-TUNER-002 publications are preserved and match the exact package assignments. Final integration input includes A-TUNER-002 assignment merge d172db8615ca2da53d510d65c6a6ffcc5b21dd4a.
+- Reverified the accepted 2,037,152-byte TUNER application (SHA-256 `19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8`), all eight local rollback files and all eight separate-USB copies. ROM preflight confirmed the expected classic ESP32 TUNER, 4 MiB flash and unchanged 3 MiB application slot.
+- Wrote only the TUNER application at `0x10000`; independent full-span readback matched the accepted SHA-256 exactly. Normal boot, stored Wi-Fi, audio-system initialization and network service passed. The binary reports embedded build ID `fda5f1ad1e5e`, the parent visible when the artifact was built before correction commit `073b65963e3ed8e3438bc34134f5a903fce995de`; artifact identity remains the accepted size/hash.
+- During a passive 319-338 second paired observation, TUNER maximum loop time remained below the prior 5,983 ms stall (274 ms initially, 1,738 ms cumulative final), memory remained healthy and every one of 523 additional snapshot requests completed. Nevertheless, accepted connections and peer EOFs both increased by 262, REMOTE session generation increased by 245, and REMOTE finished disconnected with `volume_known=0`, `volume_set=0` and no outstanding command. No timeout, partial/failed write, allocation failure, Wi-Fi disconnect or intentional volume command occurred. Classification: **RTCP STABILITY FAIL**; the scheduling correction reduces starvation but does not resolve the repeated peer-close lifecycle.
 
-## Baselines and authority
+# 2026-10-17 -- A-REMOTE-012 RTCP connection-starvation correction BUILT / HARDWARE PENDING
 
-| Item | Current coordination state | Evidence / limit |
-| --- | --- | --- |
-| CCM 1.0.0 | OWNER APPROVED / FROZEN; actual artifact and original approval excerpt recovered | [REMOTE evidence index](references/device_evidence/remote/A-REMOTE-001/INDEX.md); SHA-256 7a46f9fffe706476de458aac078d0af1c94844df339248d3f9f4b5cf033011d7; original attachment has no independent UTC timestamp/signature; historical provenance, no new approval |
-| Native API v1 | UNAPPROVED / UNFROZEN / NOT IMPLEMENTED | D-002; O01-O17 OPEN; proposed mappings are not acceptance |
-| TUNER | Inspected executable baseline 371cdebce7ba2648ea71636d5bdb5d738b42e680, version 1.1.0; documentation-only result 48821a6071072b77a9a023303ebf215a0577ff2e | [A-TUNER-001](reports/A-TUNER-001.md); B01-B11 disposition recorded; current execution baseline must be rechecked |
-| REMOTE | Git-less source inventory and immutable evidence captured | [A-REMOTE-001](reports/A-REMOTE-001.md); branch/firmware commit unavailable, no fabricated identity |
-| Hardware / artifacts | Fresh build/upload/hardware NOT RUN in A-001 inspections | TUNER flashed image/resources UNKNOWN. REMOTE current BIN/ELF differs from recorded rollback; flashed image UNKNOWN; ADC optimization hardware FAIL, rollback residency PENDING. Historical acceptance retains dated scope only |
+- Later TUNER captures prove intermittent successful authentication and 259/259 completed snapshots, alongside 24 server idle timeouts and 79 peer EOFs across 104 accepted connections. No partial/failed write, allocation failure, network `nomem` or Wi-Fi disconnect occurred. The 5,983 ms maximum TUNER loop turn exceeds REMOTE's unchanged 3,000 ms response deadline and TUNER's unchanged 5,000 ms idle deadline.
+- Source inspection confirmed RTCP polling and synchronous GxEPD2 BUSY waits share the application owner. Public TUNER commit `073b65963e3ed8e3438bc34134f5a903fce995de` uses the driver's existing cooperative BUSY callback to service RTCP and yield, and consumes a complete buffered application record before idle-timeout classification. No task, allocation, buffer, retry, timeout, protocol, crypto, CCM, pairing, audio or REMOTE change was introduced.
+- Focused scheduling/deadline/diagnostic checks passed 54 checks/assertions. The `esp32-lwip-psram` production build passed: 2,037,152 bytes, SHA-256 `19c39f4721ff43b939806f18aee599203225afde384c07934d58f1d0cc0398e8`, 1,108,576-byte slot headroom and unchanged 87,512-byte static RAM. No hardware operation occurred; stable READY behavior across e-paper refresh and expected sleep/wake reconnects remains to be physically validated.
 
-## Task queue
+# 2026-10-17 -- A-REMOTE-012 TUNER post-identity diagnostic installation VERIFIED / TARGET PATH NOT EXERCISED
 
-| ID | Owner | Scope | Status |
-| --- | --- | --- | --- |
-| A-PM-001 | PM | Initial evidence indexing and assignment publication | DONE - documentation publication |
-| A-TUNER-001 | TUNER//01 | Baseline/B01-B11/foundation/resource inspection | DONE - reviewed inspection/documentation only |
-| A-REMOTE-001 | REMOTE//01 | Baseline/frozen-model/mapping/durability/sleep inspection | DONE - reviewed inspection/documentation only |
-| A-TUNER-002 | TUNER//01 | B01, B04 zero-count, B06 and B03 bounded correctness guards | DONE - bounded implementation/software-build delivery only; physical PENDING |
-| A-REMOTE-002 | REMOTE//01 | Durable recovery and catalog/reference/numeric operation design | DONE - design delivery only; production NOT IMPLEMENTED |
-| A-TUNER-003 | TUNER//01 | Final firmware integration review and exact artifact/owner regression preparation | ASSIGNED; hardware PENDING |
-| A-REMOTE-003 | REMOTE//01 | Isolated D0 complete safety codec/storage qualification | ASSIGNED; production integration NOT IMPLEMENTED |
+- Reverified all eight rollback-critical files on separate physical USB storage and their local counterparts against the recorded sizes and SHA-256 identities. ROM preflight identified the expected TUNER ESP32 revision and 4 MiB flash; the candidate fit the unchanged 3 MiB application slot.
+- Installed only the 2,036,992-byte TUNER diagnostic application at `0x10000`. Independent full-span readback matched SHA-256 `18d59b75cbf481b517b09fd274207e2271cdd42a0a146f56eafeca2e8a1196d3` exactly. Booted firmware reported source identity `fda5f1ad1e5e` with connected Wi-Fi, healthy heap and zero allocation failures.
+- Exactly one serial `x` snapshot showed zero accepted RTCP connections, client finishes, records and snapshot requests. One read-only REMOTE status request timed out. This observation stops before TUNER TCP acceptance and therefore does not exercise or classify the intended post-identity snapshot boundary. No control command, REMOTE change, NVS/pairing/partition change or speculative correction occurred.
 
-Exact scope: [A-TUNER-002](tasks/A-TUNER-002.md), [A-REMOTE-002](tasks/A-REMOTE-002.md). [Authorization package and publication scope](references/PM_FOLLOW_UP_INDEX.md). Publication precedes execution. Each device records its actual current coordination input and rechecks its baseline. Neither A-002 depends on completion of the other. No automatic dispatch is configured.
+# 2026-10-17 -- A-REMOTE-012 final pre-commissioning review READY
 
-A-TUNER-002 authorizes only its four bounded device corrections and software/build validation; no flashing or automatic hardware tests. A-REMOTE-002 authorizes design/documents only, with no executable/test/config changes or fresh build/hardware work. This publisher performs neither assignment.
+- Confirmed that TUNER's physical-encoder lag had an independent source-level cause: one queued detent per loop followed by a synchronous e-paper refresh. The existing `5391beef5e7ba264362ea19f2fdd93202308fa55` candidate already contains the bounded correction; no source change, retest or rebuild was needed in this review.
+- Rehashed both A-012 candidates, exact A-011 application rollbacks and matching primary/local full-flash captures. Clarified the distinct TUNER pre-A-011 installed capture, accepted A-011 production image, temporary diagnostic image and rejected non-identical reconstruction.
+- Published the final TUNER-first commissioning checklist. Physical audible/UI targets, rapid-detent/reversal/boundary behavior, reconnect/sleep safety and MP3/A2DP/web-manager regression remain NOT RUN. No hardware access or flash occurred.
 
-## Phase A synchronization gate
+# 2026-10-17 -- A-REMOTE-012 low-latency volume control SOFTWARE PASS / HARDWARE PENDING
 
-| Criterion | Status | Evidence / remaining gap |
-| --- | --- | --- |
-| Frozen artifact/provenance availability | RECOVERED / INDEXED | Exact frozen hash and historical approval excerpt; not full conformance |
-| Current inspected device baselines | RECORDED with limits | Both A-001 reports; runtime/flashed identity and live execution recheck remain separate |
-| Preliminary bidirectional mapping and correction scope | REVIEWED for follow-up assignment | Reports establish prerequisites/proposals; no binding or semantic acceptance |
-| Correctness and durable recovery implementation | NOT VERIFIED | A-002 deliveries reviewed; four TUNER guards have software/build evidence, physical PENDING; REMOTE design is NOT IMPLEMENTED |
-| Both complete A-001 handoffs | REVIEWED / PRESERVED | Owner-reviewed package and merged documentation PRs |
-| Resource and physical hardware acceptance | NOT VERIFIED | Explicit hardware/artifact gaps above; historical evidence is not current acceptance |
-| Shared ambiguity and Native approval | OPEN / NOT APPROVED | O01-O17 remain OPEN; separate both-device review and explicit owner approval required |
+- Source analysis proved that one-percent command serialization and periodic post-result snapshot scheduling dominated the observed rapid-encoder delay. The existing CCM `volume.set` wire operation already accepts absolute canonical percentages, so no CCM/RTCP semantic or wire change was required.
+- Private REMOTE now coalesces detents into a bounded absolute desired target while retaining one command in flight, strict authority/session/capability fencing, no uncertain retry and invalidation on disconnect/sleep. It requests authoritative state immediately after results, enables TCP no-delay, uses a 5 ms owner cadence and shows a distinct 20 ms provisional `authoritative>desired` value while retaining the authoritative bar.
+- Owner feedback that TUNER's own encoder also lagged exposed a second source-proven path: one queued detent was drained per loop, then every detent synchronously refreshed e-paper before the next could be handled. Public TUNER commit `5391beef5e7ba264362ea19f2fdd93202308fa55` handles local input before network/web work, coalesces queued detents into one bounded absolute audio update, and defers one authoritative e-paper overlay until 250 ms of encoder quiet. Menu navigation remains unchanged.
+- RTCP remains serviced before and after the web-manager turn with a 2 ms loop delay and bounded secret-free apply/response timing. Local diagnostics separately expose command/detent counts, setter duration and deferred-display state. Protocol, security, pairing and audio backend semantics remain unchanged.
+- Focused REMOTE tests passed 8/8 with 164 assertions plus UI 1/1 with 11 assertions; the full relevant REMOTE suite passed. TUNER checks passed CCM 16/16, RTCP scheduling 9/9, local target/bounds 10/10 and local scheduling 10/10. A controlled 30 ms model reports first RTCP audio at 30 ms, final authority 34 ms after the last of 15 detents, 20 ms provisional UI and three submissions. Hardware timing is not claimed.
+- Production builds passed. REMOTE: 2,525,168 bytes, SHA-256 `afd8b426b37cdac5bfd32abf4ee9fbf70c91e3a28ebdf74ae482871572dcdef4`, 620,560-byte OTA headroom, 47,388-byte static RAM. TUNER: 2,036,000 bytes, SHA-256 `0680e8f2c6bfb8b1149ab1a8baec56fa80a7995d0401bf74463ff1f0d1143c1a`, 1,109,728-byte slot headroom, 87,448-byte static RAM. No hardware access or flash occurred.
 
-Gate remains OPEN / NOT PASSED. A completed inspection and assigned follow-up do not prove device or Native acceptance.
+# 2026-10-16 -- A-REMOTE-011 RTCP freshness-policy correction build PASS
 
-## Next PM action
+- Corrected only the private REMOTE RTCP field registration so `volume.level` and `playback.state` use the same 2,000 ms verified-sequence freshness contract as their authenticated RTCP observations. CCM's exact policy validation remains unchanged; unrelated capabilities and RTCP behavior are untouched.
+- Focused regression PASS: 1/1 case, 6 assertions, proving the matching policy is admitted and the former mismatch remains rejected. The single `remote01` production build passed: firmware 2,522,912 bytes, SHA-256 `7382e69ce03544b5282cd4d38cece0a01fd8a74b8e739823676dbf3fac5165b9`; 622,816 bytes OTA headroom; static RAM 47,212/327,680 bytes (14.4%). No hardware operation occurred; installation requires separate owner authorization.
 
-Review future A-003 results with artifact-specific physical evidence and D0 complete projection/size/fault qualification. REMOTE D1-D5 remain unassigned. Shared Native decisions still require both-device review and owner approval.
+# 2026-10-16 -- A-REMOTE-011 TUNER diagnostic commissioning PASS
 
-## A-002 review and current A-003 assignment - 2026-10-08
+- Mandatory preflight identified the expected TUNER ESP32 on its CH340 interface, reverified the 2,036,400-byte `esp32-lwip-psram` candidate and rollback evidence, confirmed the installed production image byte-for-byte, and confirmed `app0` at `0x10000` with 3 MiB capacity. The diagnostic application was written once at `0x10000`; exact readback matched SHA-256 `f193863f6d2966cc0797b9bdd2144971fb7b4bfc5bb9b1b4c07ff4840cf4a21c`.
+- TUNER booted with retained Wi-Fi, audio service and RTCP listener. Bounded diagnostics show client finish, complete encrypted records, framing/session/counter validation, GCM authentication, identity dispatch, identity-response generation and complete writes all succeeding; timeout, EOF, transport-error and close counters remain zero. REMOTE now receives and accepts identity responses with no handshake failure, but fresh volume/capability state remains unavailable. The first remaining boundary is after identity acceptance, outside the instrumented TUNER identity path. No control command, pairing/NVS/partition change or retry occurred.
 
-[PM review record](reports/A-PM-002_REVIEW.md), [complete authorization package](references/PM_FOLLOW_UP_A003_2026-10-08.md), exact [TUNER task](tasks/A-TUNER-003.md) and [REMOTE task](tasks/A-REMOTE-003.md). Documentation PR #5/#6 exact reviewed heads integrated; evidence and both changelog entries preserved. Earlier assignment paragraphs remain historical scope descriptions. A-003 now supersedes the current queue's next action, without changing prior authorization.
+# 2026-10-16 -- A-REMOTE-011 TUNER diagnostics production build PASS
 
-TUNER reviewed implementation head 8fac1da6ccd749a47843d99dc746fc3d6e4bf19b is in a separate firmware PR, not merged by this publisher. Executor-reported clean build binary 1,999,408 bytes / AF066BA215F863A7D2583A6313ACEE00020CCFAD4F8F8C3168DEDA76BCD6F5D4; physical acceptance PENDING. PM package reports an independent 249-check Ubuntu host PASS, not an ESP32 build or actual HTTP/NVS/audio proof. B01/B03/B06 and B04-empty/stale have software evidence; full B04 identity and B02/B05/B07-B11 remain open/outside scope.
+- Verified `esp32-lwip-psram` as the accepted TUNER production environment (`esp32dev`, Espressif ESP32 Dev Module) and ran the single authorized unchanged-source build. PASS: firmware 2,036,400 bytes, SHA-256 `f193863f6d2966cc0797b9bdd2144971fb7b4bfc5bb9b1b4c07ff4840cf4a21c`; flash 2,029,825/3,145,728 bytes (64.5%), binary slot headroom 1,109,328 bytes; static RAM 87,464/327,680 bytes (26.7%).
+- The focused diagnostic model remains 4/4 PASS and its fixed storage remains 60 bytes. The prior `esp32-dev` artifact remains rejected. No source, device or persistent-state change occurred; installation requires separate owner authorization.
 
-REMOTE design accepted only as design. Its 3,072-byte bank is an unqualified estimate; mandatory projection, exact encoded size, storage/update/GC reserve, failures and no-replay recovery require isolated D0 qualification. Physical capacity/atomicity/endurance/latency remain UNKNOWN. D1-D5 unassigned; Native and production journal not implemented. Previous source/flashed mismatch, ADC FAIL and rollback residency PENDING remain explicit. Neither A-003 depends on the other's completion; publisher executes neither. Common gate OPEN / NOT PASSED, all O01-O17 OPEN.
+# 2026-10-16 -- A-REMOTE-011 diagnostic installation stopped before ROM identity
 
-## Current A-REMOTE-005 assignment - 2026-10-11
-[A-REMOTE-005](tasks/A-REMOTE-005.md) is now ASSIGNED for read-only concrete backend analysis and isolated host qualification; supersedes only the prior recommendation/not-assigned statement. Production, real NVS/credentials, hardware, Native and D1-D5 remain excluded/unassigned.
+- Reverified the accepted 2,522,560-byte candidate and retained 16 MiB rollback backup. Windows enumerated the expected Espressif interface as healthy, but the first read-only esptool operation could not open it and returned device error 31.
+- Stopped before ROM identity, erase, write or readback. Zero flash bytes changed; boot and RTCP handshake diagnosis were not reached. No automatic retry occurred.
+
+# 2026-10-16 -- A-REMOTE-011 bounded handshake diagnostic candidate build PASS
+
+- Layout inspection proved the 16-byte overflow was exactly 1,024-byte `Snapshots` + 4,112-byte `Ring` + 3,072-byte response buffer. Reduced only the response buffer to 3,056 bytes; `Snapshots` remains 1,024 and `Storage` is exactly 8,192 bytes. Limits, guards, locking, allocation and RTCP semantics remain unchanged.
+- Direct schema/layout verification passed 9/9 cases with 9,087 assertions. The single production build passed: private firmware 2,522,560 bytes, SHA-256 `ac5e259eb8c57029e897b0106d44851d085b7d29ebc7d7bf827089dfadaf1a4d`, 623,168 bytes OTA headroom and 47,212 bytes static RAM. No hardware operation occurred; installation is separately gated.
+
+# 2026-10-16 -- A-REMOTE-011 snapshot budget fixed; production build stopped at storage guard
+
+- Restored the 40-field Core array and represented all requested RTCP handshake evidence in a fixed 16-byte substructure with saturating counters. `diagnostics::Snapshots` is exactly 1,024 bytes; no limit increase, allocation or protocol behavior change.
+- Focused diagnostics schema passed 9/9 cases with 9,086 assertions; RTCP diagnostic model passed 6/6 assertions. The single production build then failed its next guard because `diagnostics::Storage` is 8,208 bytes versus the existing 8,192-byte maximum. Stopped without correction or rebuild; no firmware artifact or hardware operation exists.
+
+# 2026-10-15 -- A-REMOTE-011 compiler environment resolved; schema bound failure
+
+- Applied the owner-validated process-only PATH correction for MSYS2 UCRT64. The focused RTCP diagnostic model compiled and passed 6/6 assertions.
+- The next focused status-schema compilation demonstrated that the added fields expand `diagnostics::Snapshots` to 1,120 bytes, exceeding its existing 1,024-byte static bound. Stopped before correction or production build; no hardware operation occurred.
+
+# 2026-10-15 -- A-REMOTE-011 focused diagnostic compilation retry failed
+
+- Verified the unchanged focused-test compiler, working directory, source, include tree, diagnostic header and writable output location, then used the single authorized retry.
+- The compiler again exited 1 with zero stdout/stderr and no executable. Stopped without further retry; tests and the production build were not run. No source, hardware or TUNER change occurred.
+
+# 2026-10-15 -- A-REMOTE-011 bounded RTCP handshake diagnostics stopped at test compilation
+
+- Added private fixed-size, secret-free stage/failure diagnostics for TCP connection, client hello, server hello framing/proof, client finish and encrypted identity receipt/acceptance. Protocol behavior, timeouts, reconnect policy, cryptography and CCM semantics are unchanged.
+- The first focused host-test compilation exited 1 without diagnostic output and produced no executable. Stopped without retry; the production build was not started, so no candidate artifact or resource result exists. No hardware or TUNER operation occurred.
+
+# 2026-10-15 -- A-REMOTE-011 Stage 5 diagnostic application installed; control test blocked
+
+- Recovered the healthy USB interface, verified the expected ESP32-S3/16 MiB identity, candidate and retained rollback image, then wrote the accepted 2,520,640-byte application once at `0x10000` using 921600 baud. Exact readback matched SHA-256 `9edbfc968dbfe3dea66ab4d8932bb2e9389df670874510264b99fc9b5b51f98a`; no retry occurred.
+- The application boots with stored networking and valid voltage observations. Baseline diagnostics recorded zero encoder transitions, intents and dispatches, but the volume channel remained disconnected with no authoritative volume or `volume.set` capability. RTCP volume synchronization is not confirmed, so no encoder rotation or command was attempted. Owner visual checks remain pending.
+
+# 2026-10-15 -- A-REMOTE-011 Stage 5 diagnostic installation stopped before ROM connection
+
+- Reverified the accepted 2,520,640-byte candidate and retained private rollback backup.
+- The healthy enumerated USB serial/JTAG interface failed its first read-only esptool open with Windows device error 31. The stop occurred before ROM connection, erase or write; zero flash bytes changed.
+- No automatic retry, readback, boot check, encoder rotation or control command occurred. Owner action is required before a separately requested retry.
+
+# 2026-10-15 -- A-REMOTE-011 Stage 5 diagnostic array-size fix
+
+- Confirmed 40 diagnostic initializer fields and 40 JSON names, then changed only the Core values declaration from 39 to 40 entries.
+- Exactly one production build passed. The private 2,520,640-byte application has SHA-256 `9edbfc968dbfe3dea66ab4d8932bb2e9389df670874510264b99fc9b5b51f98a`, 625,088 bytes of 3 MiB OTA headroom and 47,212 bytes static RAM.
+- Passing tests were not repeated. No hardware, flash, command or TUNER operation occurred; installation remains separately gated.
+
+# 2026-10-15 -- A-REMOTE-011 Stage 5 brightness/admission implementation stopped at build
+
+- Privately restored the generated brightness slider's original `setUpduty` binding and kept the existing authoritative HOME volume label/bar independent. Added bounded read-only encoder and exact volume-admission diagnostics without changing admission semantics.
+- Focused UI, admission and affected encoder checks passed 8/8 cases with 53 total assertions.
+- The single production build failed because the diagnostics Core array was declared for 39 entries while the implementation and JSON names supply 40. Stopped without correction or a second build; no candidate artifact or hardware action exists.
+
+# 2026-10-15 -- A-REMOTE-011 Stage 5 slider/encoder diagnosis
+
+- Marked Stage 5 hardware validation FAIL. The only generated LVGL slider is conclusively the 0-255 brightness control; no separate LVGL volume slider exists. The HOME volume presentation is an authoritative numeric label plus a plain indicator bar.
+- Read-only runtime evidence after owner rotation showed an active synchronized session, 59 local request rejections and zero Core ingress/RTCP dispatches. Sampling, complete-cycle decoding and HOME routing therefore reached local admission; current diagnostics cannot distinguish the exact failed readiness/volume/bounds/in-flight gate.
+- Required next work is limited to restoring the brightness binding and adding bounded read-only admission/encoder diagnostics before another controlled detent. No source edit, build, flash, command or TUNER change occurred during diagnosis.
+
+# 2026-10-15 -- A-REMOTE-011 Stage 5 existing volume slider binding
+
+- Reused the existing 0-255 LVGL mock-up slider as a display-only view of authoritative CCM `volume.level`; its former backlight callback is no longer bound and touch command generation is disabled.
+- The LVGL timer maps all 101 supported 0-100 volume steps to distinct slider positions. It updates only from copied TUNER observations and visually disables the indicator for unknown, stale or disconnected state; encoder intent remains on the unchanged CCM path with no optimistic UI movement.
+- Focused tests passed 2/2 with 211 assertions. One production build passed: 2,518,656 bytes, SHA-256 `af11826c7d19051a7584ee1f70eebf43efb427d1e55b116e5928a75877ec05eb`, 627,072 bytes OTA headroom and 47,180 bytes static RAM. No hardware or live command occurred.
+
+# 2026-10-15 -- A-REMOTE-011 Stage 5 EC11 installation
+
+- Installed the accepted 2,518,896-byte REMOTE application once at `0x10000` using 921600-baud esptool communication; exact readback matched SHA-256 `6aca8931fcd08b91fcf489bd6d77212cbb0d4c762e70a657d7abec6911ab8e95`.
+- Two post-boot read-only snapshots showed connected stored networking, valid voltage sensing, IMU readiness, an active authenticated session with advancing capability revisions, and zero control dispatches.
+- Stopped before intentional encoder rotation, KEY testing or any `volume.set`. Direction and detent convention remain physically unverified; owner visual confirmation and separate control-test authorization are required. PR #17 remains open.
+
+# 2026-10-14 -- A-REMOTE-011 Stage 5 GPIO resolution proposal
+
+- Published the evidence-based REMOTE GPIO map for Waveshare V2/PCB Rev1.1, separating confirmed board/firmware assignments from candidate and owner-selected uses.
+- Proposed GPIO2/J6-3 for encoder A, GPIO5/J6-6 for encoder B and J6-9 GND for common. Both GPIOs are direct expansion breakouts with no other schematic load, production claim or ESP32-S3 strapping role.
+- No source edit, build, test or hardware operation occurred. Implementation remains stopped pending owner approval of the exact wiring and physical J6 orientation.
+
+# 2026-10-14 -- A-REMOTE-011 Stage 5 blocked by encoder GPIO conflict
+
+- Recorded the owner-selected GPIO4 CLK / GPIO5 DT assignment and GPIO1 reservation for Waveshare ESP32-S3-Touch-LCD-3.49B V2 PCB Rev1.1.
+- Official schematic and active-source checks agree that GPIO4 is `BAT_ADC`, actively sampled as ADC1 channel 3. GPIO1 separately remains the external-power ADC input. The requested encoder pair is therefore unsafe and was not enabled.
+- A bounded transient private candidate passed focused tests and built, but is rejected and non-deployable; all source edits were reverted. No hardware, flash, pairing/NVS or RTCP control operation occurred. PR #17 remains open.
+
+# 2026-10-14 -- A-REMOTE-011 Stage 5 encoder routing blocked before source edit
+
+- Inspected the active private REMOTE source and preserved A-010/A-011 copies. All contain the bounded host-side quadrature model, but none contains a production encoder sampler, encoder GPIO identity, encoder event consumer, LVGL encoder input or UI-context router.
+- Stopped rather than inventing GPIO assignments or changing navigation semantics outside the HOME control context. No private source change, test, build, hardware operation or `volume.set` occurred.
+- PR #17 remains open. Owner input is required for the accepted existing encoder hardware/driver identity, detent convention and UI context rule before implementation can proceed.
+# 2026-10-14 -- A-REMOTE-011 Stage 5 stopped before transmission
+
+- Confirmed the live authenticated session remained healthy with a current capability revision, connected network, intact Core owner invariant, zero failed allocations and zero command dispatches.
+- Stopped before transmission because the production REMOTE has no volume intent or `volume.set` request-construction path. The operation exists in the CCM/RTCP adapter, but the facade exposes only previous/toggle/next and the development serial hook rejects commands in RTCP mode.
+- No control command, firmware change, pairing/NVS/settings mutation or hardware write occurred. PR #17 remains open; the minimum next decision is whether to authorize a narrow REMOTE volume-intent implementation and build.
+# 2026-10-14 -- A-REMOTE-011 Stage 4 complete
+
+- Continued only the work blocked by the earlier COM5 access failure. Restored the accepted 2,034,800-byte TUNER production application once at `0x10000`; exact readback matched SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`. The completed REMOTE restoration was not repeated.
+- Both production applications boot normally with retained pairing/configuration and owner-confirmed normal UI. Authenticated RTCP/1 negotiated CCM 1.1.0 identity, the bounded capability set and continuing fresh `volume.level`/`playback.state` snapshots.
+- Diagnostics showed one active session, advancing capability/lifecycle evidence, and zero command dispatches or transport-result errors. No RTCP control command, unrelated flash write, source change or PR merge occurred. PR #17 remains open pending a separate owner decision on the optional one-command `volume.set` stage.
+# 2026-10-14 -- A-REMOTE-011 Stage 4 stopped at TUNER port-open failure
+
+- Restored the accepted 2,515,584-byte REMOTE production application once at `0x10000`; exact readback matched SHA-256 `ceae9f64329c5409fdfe92e5ac5394885010abf1cf66ac24a5ab7fcc35f11647`, normal boot was observed and the association remained configured.
+- TUNER restoration did not start: esptool could not open busy COM5 and returned `Access is denied` before ROM connection, erase or write. Zero TUNER flash bytes were written and no retry occurred.
+- Authenticated RTCP/1 read-only verification was not reached. PR #17 remains open and unmerged pending a new owner decision for the unexecuted TUNER restoration and remaining checks.
+
+# 2026-10-14 -- A-REMOTE-011 Stage 3C REMOTE pairing complete
+
+- Installed the exact 2,517,248-byte REMOTE commissioning helper once at `0x10000` using 921600-baud esptool communication; exact readback matched SHA-256 `acb1948f791557e4a82adfde5228871e8a5e3602b937fff407426966031696a2`.
+- The read-only 64 KiB `remote_ctl` pre-provision capture matched the accepted healthy generation-2 baseline byte-for-byte. The unchanged original REMOTE capsule was then transmitted exactly once and returned sanitized `complete`.
+- Both pairing stores are now provisioned. No retry, TUNER modification, production restore, RTCP command or PR merge occurred; PR #17 remains open.
+
+# 2026-10-14 -- A-REMOTE-011 Stage 3B TUNER pairing complete
+
+- Installed the corrected 2,026,736-byte TUNER commissioning application once at `0x10000` using 921600-baud esptool communication; exact readback matched SHA-256 `b866918f5a63586c5ed28cb192d71a9b63c886b6d10cf0fdd4cc5a5e6198c7a7`.
+- Transmitted the unchanged retained TUNER capsule exactly once after helper readiness; sanitized result was `complete`. No retry occurred.
+- TUNER helper remains installed and TUNER pairing is provisioned. REMOTE was disconnected and unmodified; no production restore, RTCP command or PR merge occurred. PR #17 remains open.
+
+# 2026-10-14 -- A-REMOTE-011 Stage 3B targeted TUNER helper correction
+
+- Corrected only the private commissioning helper's empty-store probe: ESP-IDF `ESP_ERR_NVS_NOT_FOUND` now identifies an absent unprovisioned namespace, while all other open/read errors and partial states remain fail-closed.
+- Focused tests passed 22/22 and a clean commissioning build passed. The corrected 2,026,736-byte firmware has SHA-256 `b866918f5a63586c5ed28cb192d71a9b63c886b6d10cf0fdd4cc5a5e6198c7a7`.
+- The original private capsules remain unchanged. No hardware access, flash, capsule transmission, NVS mutation, REMOTE change or PR merge occurred; PR #17 remains open.
+
+# 2026-10-14 ? A-REMOTE-011 Stage 3B TUNER pairing stopped
+
+- Verified retained TUNER rollback evidence, the accepted five-entry layout, REMOTE active generation 2, the current private TUNER locator and the exact commissioning image; generated one private matching capsule pair with the operating-system CSPRNG.
+- Installed and independently read back the 2,026,864-byte TUNER commissioning application at `0x10000`; SHA-256 matched `8b239db4d8cdee712341a68fa12fb6ea521bc4c6b8eed62020832517d8c5d111`.
+- The single authorized TUNER capsule transmission returned sanitized `storage_error`. Source review shows the helper stopped at its initial read-only missing-namespace check before any pairing write. No retry, REMOTE provisioning, restore or RTCP command occurred; PR #17 remains open and unmerged.
+
+# 2026-10-14 â€” A-REMOTE-011 Stage 3A private pairing helper
+
+- Implemented private commissioning-only helpers matching the existing TUNER Preferences reader and REMOTE A-010 association reader, with fixed binary capsules, one-shot refusal, explicit partial-state recovery and no secret output.
+- Focused capsule/policy tests passed 16/16; commissioning and normal production builds passed for both devices with ample application-slot headroom and commissioning disabled in normal builds.
+- No operational credentials were generated, no hardware was accessed, and no pairing data was written. PR #17 remains open and unmerged pending separate authorization for any helper flashing or provisioning.
+
+# 2026-10-14 ? A-REMOTE-011 Stage 2B TUNER installation
+
+- Installed the exact TUNER Phase 3 application from `18ddd3b16e305341f338afebd7dc725500ecbb73` once at `0x10000` using stable 921600-baud esptool communication. Independent 2,034,800-byte readback matched SHA-256 `49f249ac0f6ea9f9d1e285ea15514ef5dc84483163c01edd1e052b2c8769bbd4`.
+- Offline comparison explained the post-boot NVS delta as one valid 29-byte append-only framework DHCP-state entry. No pre-existing configuration entry changed and no pairing namespace exists; the owner accepted the delta.
+- Owner functional confirmation passed UI/controls, retained Wi-Fi, MP3, Bluetooth A2DP, web manager during Bluetooth, stations, favorites and recent items. Pairing/PSK/RTCP control and Stage 3 were not started; REMOTE was unchanged; PR #17 remains open and unmerged.
+
+# 2026-10-14 ? A-REMOTE-011 Stage 2A REMOTE installation
+
+- Installed the exact Phase 3 REMOTE application once at `0x10000`; independent 2,515,584-byte readback matched candidate SHA-256 `ceae9f64329c5409fdfe92e5ac5394885010abf1cf66ac24a5ab7fcc35f11647`.
+- `remote_ctl` remained byte-identical to Stage 1. Normal factory boot, Wi-Fi and disabled-unpaired RTCP state passed; the owner confirmed normal UI, retained configuration and one ordinary sleep/wake cycle.
+- Bootloader, partition table, default NVS, OTA metadata and TUNER were not written. No pairing, PSK or RTCP command occurred. Stage 2B remains unauthorized; PR #17 remains open and unmerged.
+
+# 2026-10-14 ? A-REMOTE-011 Stage 1 read-only hardware capture
+
+- Stage 1 PASS separately for REMOTE//01 and TUNER//01: chip/flash identity, installed partition layouts, complete private flash/application backups, direct rollback-region reads, hashes and ROM/USB recovery access were verified.
+- Installed partition bytes match the accepted REMOTE seven-entry and TUNER five-entry artifacts. Direct table, persistence and candidate-range reads match their full-backup slices. TUNER installed firmware is structurally valid but not claimed byte-identical to the historical v1.1.11 artifact; the fresh readback is the rollback authority.
+- No write, erase, flash, pairing, PSK generation, NVS/remote_ctl mutation, RTCP control, merge or later commissioning stage occurred. Stage 2 remains unauthorized and separate-storage copy verification remains a pre-write prerequisite.
+
+# 2026-10-14 ? A-REMOTE-011 Phase 4 commissioning preparation
+
+- Prepared a staged, reversible two-device commissioning protocol with exact application-only write ranges, fresh private backup prerequisites, sanitized evidence gates, one controlled `volume.set`, reconnect/resynchronization, bounded TUNER MP3/A2DP/web-manager memory measurements and exact rollback steps.
+- Actual source inspection found that both accepted candidates read pairing data but expose no pairing writer. Pairing is therefore blocked pending a separately reviewed private one-shot helper and owner approval; raw NVS patching is prohibited.
+- Reused accepted Phase 3 build/test evidence without rerunning it. No device was accessed, no firmware or persistent state was changed, no operational PSK was generated, and PR #17 remains open and unmerged. The next requested authority is read-only Stage 1 only.
+
+# 2026-10-13 â€” A-REMOTE-011 Phase 3 implementation
+
+- Promoted the accepted A-010 private REMOTE baseline through a verified reversible backup and implemented the frozen RTCP/1 transport plus the first CCM 1.1.0 slice on REMOTE and TUNER.
+- Recorded focused tests, clean production builds, artifact hashes, flash/RAM deltas and the remaining runtime coexistence risk. TUNER implementation is on commit `18ddd3b16e305341f338afebd7dc725500ecbb73`; REMOTE source and all binaries remain private.
+- Hardware was not accessed or flashed, no operational PSK was created, and PR #17 remains open and unmerged pending a separate commissioning decision.
+
+# Coordination changelog
+
+## 2026-10-08 â€” Starter package
+
+- Created coordination structure, exact task/decision/handoff templates, PM bootstrap and Codex footer.
+- Preserved owner-supplied CCM/API statuses, TUNER audited baseline and Phase A scope.
+- Marked underlying source artifacts, REMOTE baseline, build and physical hardware evidence as unavailable/unverified.
+- Added shared-contract owner approval gate, role ownership, archive and concurrent-publication rules.
+- No firmware modified, no API implemented, no remote repository published, no automatic dispatch configured.
+- Package verification is recorded in PACKAGE_VERIFICATION.md; archive contents and checksums checked before delivery.
+
+## 2026-10-08 â€” A-PM-001 coordination review and parallel inspection assignments
+- Read rules/status/register/templates and both initial handoffs at dd63c07e485218dfc34ceb6a8855c8a929b4ae89; verified repository read capability. Historical connector publication attempts returned 403; subsequent authenticated Git push and readback succeeded.
+- Imported all 13 entries from the owner-supplied PM starter package unchanged, verified its 12 manifest hashes, and added provenance/authority index. Final frozen CCM artifact/original approval remains missing.
+- Independently confirmed TUNER remote main / 371cdebce7ba2648ea71636d5bdb5d738b42e680 and source version 1.1.0; no local checkout/build/runtime/hardware claim.
+- Assigned exact-template A-REMOTE-001 live baseline/CCM mapping/durability reconciliation and A-TUNER-001 baseline/B01-B11/foundation/resource inspection in parallel.
+- Registered O01-O17 as OPEN and flagged stale CCM/API/SDK/artwork/sleep records. Historical REMOTE acceptance is separate from latest ADC optimization FAIL/rollback retest PENDING.
+- Preserved both initial latest handoffs and archives for their device owners. No firmware or read-only reference edits, contract changes/approval, builds/uploads/hardware tests or automatic dispatch.
+- Added reports/A-PM-001.md and updated PM sync/status/checksums. Common gate OPEN / NOT PASSED. This entry does not overwrite the original starter history.
+
+## 2026-10-08 - A-PM-001 publication completed
+- Initial documentation publication verified at 07303e6feae109f4b1700563e2f26e7a5d4c09b3; PM task DONE. Device tasks ASSIGNED; common gate OPEN / NOT PASSED. Device execution NOT RUN.
+- Added reference-specific .gitattributes -text exceptions after detecting normalization, restored original bytes and regenerated checksums from final Git blobs. Handoffs, archives, templates and firmware preserved.
+
+## 2026-10-08 â€” A-TUNER-001 baseline/correctness inspection
+- Verified the live clean TUNER `main` checkout at `371cdebce7ba2648ea71636d5bdb5d738b42e680`, firmware `1.1.0`, against coordination execution input `769c4dc1f50acebbf855b06d4bcf9cfc5eba7e16`.
+- Rechecked B01â€“B11 with exact triggers/consequences, correction candidates and acceptance evidence. Preserved the already fixed decoder lifetime, Recent alias, Bluetooth codec, metadata snapshot, Wi-Fi termination and finite EOF fixes.
+- Documented current radio/BT/catalog semantics, an internal single-owner/immutable-snapshot proposal, O decision dependencies and a staged resource measurement plan. O01â€“O17 remain OPEN; no contract choice or implementation approval was made.
+- Hashed and scoped the pre-existing 2026-09-27 build artifacts; no fresh build, upload, hardware test, reset or NVS action was run. Current flashed artifact and runtime margins remain unknown.
+- Published a documentation-only firmware changelog commit `48821a6071072b77a9a023303ebf215a0577ff2e` on `tuner/a-tuner-001-docs`; no executable firmware changed.
+- Added `reports/A-TUNER-001.md` and TUNER baseline evidence, archived `TUNER-INIT-20261008`, and replaced the complete TUNER latest handoff. Status READY FOR REVIEW; common gate OPEN / NOT PASSED.
+
+## 2026-10-08 ? A-REMOTE-001 inspection results published for review
+
+Executed owner-invoked REMOTE inspection/documentation assignment against coordination769c4dc1f50acebbf855b06d4bcf9cfc5eba7e16. Recovered actual frozenCCM1.0.0 and original owner approval attachment excerpt; sections1?20 exact byte-match historical candidate after two documented version substitutions. Published live source/artifact inventory, bidirectional minimum-Native mapping, durable recovery/ingress/operation/numeric prerequisites and separate sleep evidence ledger. Current local BIN/ELF differs from recorded rollback; flashed image and control residency remain UNKNOWN/PENDING, no inherited PASS. O01?O17 remain OPEN; Native unapproved/unfrozen/not implemented. Archived prior REMOTE handoff byte-for-byte; new handoff READY FOR REVIEW. No PM/TUNER status edits, source/tests/config/library/artifact changes, new tests/build/upload/hardware or common-gate approval. See reports/A-REMOTE-001.md and references/device_evidence/remote/A-REMOTE-001/INDEX.md.
+
+## 2026-10-08 - PM reviewed A-001 integration and A-002 assignments
+- Read current rules/status/reports and both device handoffs at 13c7ff66d8d02e53d8cc163c10620ff21f17db9f. Verified already-merged PR #2 head against the package; reviewed PR #1 head change as concurrent-main merge with unchanged TUNER delivery bytes. Preserved both device changelog entries, handoffs, archives and all evidence.
+- Preserved concurrent exact A-REMOTE-002 and unchanged original PM package; published exact A-TUNER-002 and shared authorization index. Marked A-001 inspections DONE for documentation scope and A-002 work ASSIGNED.
+- Indexed recovered frozen CCM/provenance without semantic change or new approval. Hardware/flashed-artifact/resource gaps remain explicit. Native UNAPPROVED/UNFROZEN/NOT IMPLEMENTED; O01-O17 OPEN; common gate OPEN / NOT PASSED. No device task, firmware change, build, upload or hardware action performed by this publisher.
+- Final concurrency recheck found the exact A-TUNER-002 assignment already merged at d172db8615ca2da53d510d65c6a6ffcc5b21dd4a; ordinary merge preserved that publication and task bytes.
 
 
-## A-REMOTE-005 result - 2026-10-11T18:03:56Z
-Read-only concrete backend/host execution delivered; [task](tasks/A-REMOTE-005.md) acceptance BLOCKED, [report](reports/A-REMOTE-005.md). Host PASS 8/10247/1079; G1 required freshness/anti-rollback FAIL for same-domain NVS root+records; physical G2-G4/capacity UNKNOWN.180 capacity cases: ideal108-byte remote_wifi assumption662 entries fits756 conditionally; adverse occupancy/fragmentation FAIL. SDK selected5.5.3 re-pinned, five old snapshots differ beyond EOL, originals retained. No physical tests or production integration; D1-D5 unassigned. Supersedes prior ASSIGNED/recommendation status only; TUNER/A003/A004/CCM/Native/O01-O17/common gate verdicts unchanged. Result branch requires review, not automatically merged.
+## 2026-10-08 - A-REMOTE-002 bounded design results
+
+READY FOR REVIEW, DESIGN ONLY. reports/A-REMOTE-002.md with durable identity/effect/conflict recovery, commit-before-dispatch/no-replay fault matrix, bounded NVS alternatives and qualifications, reference/catalog/Favorite/content/query and exact Rational-volume slices. Completed prior package rechecked against current main8e1ab9d; latest owner authorized direct publication, superseding delegation for these outputs. Additive source/SDK hashes, byte-preserved A-001 handoff archive and complete replacement; device design/changelog already completed. No firmware/test/config/build/upload/hardware changes; frozen CCM unchanged; Native unapproved/unfrozen/not implemented; O01-O17 and common gate OPEN. Preserved concurrent PM/TUNER changes.
+
+## 2026-10-08 â€” A-TUNER-002 bounded correctness guards ready for review
+- Executed the owner-authorized task from coordination input `d172db8615ca2da53d510d65c6a6ffcc5b21dd4a`; firmware baseline remained V1.1.0 executable `371cdebce7ba2648ea71636d5bdb5d738b42e680` plus documentation-only `48821a6071072b77a9a023303ebf215a0577ff2e`.
+- Published firmware commit `8fac1da6ccd749a47843d99dc746fc3d6e4bf19b` and PR https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/2 for B01 strict DELETE parsing, B04 empty/stale traversal guards, B06 saturating volume-down and B03 actual discovered codec propagation.
+- Deterministic host suite PASS: 249 checks. Clean isolated pinned `esp32-dev` build PASS: RAM 83,056/327,680 (25.3%), flash 1,992,833/3,145,728 (63.4%). `firmware.bin` 1,999,408 bytes, SHA-256 `AF066BA215F863A7D2583A6313ACEE00020CCFAD4F8F8C3168DEDA76BCD6F5D4`.
+- Upload and physical hardware regression NOT RUN; hardware remains PENDING. Durable catalog identity, B02/B05/B07â€“B11, Native API and O01â€“O17 remain outside scope/open. CCM 1.0.0 and shared-contract status unchanged.
+- Added the full report, build/test evidence, byte-preserved prior handoff archive and complete TUNER latest handoff. Status READY FOR REVIEW; common gate remains OPEN / NOT PASSED.
+
+## 2026-10-08 - PM A-002 review and exact A-003 assignments
+- Integrated exact reviewed documentation PR #5/#6 with ordinary merges; preserved both device additions, full evidence and byte-original archives. Recorded PM package host-test provenance separately from executor ESP32 build evidence.
+- Preserved complete A-003 authorization package, published exact tasks and A-PM-002_REVIEW; appended scope-limited A-002 DONE dispositions while retaining original assignment bytes. A-003 ASSIGNED.
+- Hardware/artifact/storage gaps retained; full B04 identity and unrelated B items open, D1-D5 unassigned, O01-O17 OPEN, Native unapproved/unfrozen/not implemented, gate OPEN / NOT PASSED. No device task or firmware merge performed by publisher.
+
+## 2026-10-08 â€” A-TUNER-003 software integration and identified artifact
+- Executed from coordination input `531aa8cd0435ed9813ab39664888992583df0d28`; rereviewed unchanged firmware PR #2 head `8fac1da6ccd749a47843d99dc746fc3d6e4bf19b` and its B01/B03/B04-empty-stale/B06 call paths.
+- Merged firmware PR #2 ordinarily as `d1e51765179f99567df3b5d18a451152adac514c`; the merge tree exactly equals the reviewed head tree. A documentation-only artifact/changelog PR #3 was merged as final firmware main `cb17e945b9c0e086a03e7176d9ad442a8c78d89b`; executable/configuration paths are unchanged.
+- Recovered the original tested `firmware.bin` rather than rebuilding or relabeling it: 1,999,408 bytes, SHA-256 `AF066BA215F863A7D2583A6313ACEE00020CCFAD4F8F8C3168DEDA76BCD6F5D4`. Public non-production prerelease download/readback and tag-to-source checks PASS.
+- Published an owner-assisted, NVS-preserving regression matrix with artifact/build-ID gates, real DELETE cases, empty/stale traversal, radio/BT zero-volume, codec storage/reboot/playback, representative regression and restoration steps.
+- No automatic upload, reset, NVS erase or physical action occurred. All hardware rows remain PENDING / NOT RUN; full B04 identity, B02/B05/B07â€“B11, O01â€“O17, Native approval and the common gate remain open/outside scope.
+
+
+## 2026-10-08 - A-REMOTE-003 isolated D0 qualification
+- REMOTE direct execution from main531aa8cd0435ed9813ab39664888992583df0d28. Complete narrowed projection/field trace,host codec/fake backend,exact fixture sizes/fault evidence published for PM review;prior REMOTE handoff byte-archived.
+- Host regression PASS13 tests/3859 counted checks/87 scenarios;production qualification FAIL/BLOCKED:2746->3228 typical resolution exceeds3072;maximum35324->44284,reserve8960;valid-old-anchor counterexample exposes unqualified newest-intent integrity.
+- No firmware integration/live NVS/credentials access/build/upload/hardware test,partition or shared-contract change. CCM frozen,Native unapproved/unfrozen/not implemented,O01-O17 open;D1-D5 remain unassigned/common gate OPEN. Separate redesign/physical qualification required.
+
+
+## 2026-10-08 - A-REMOTE-004 bounded storage/recovery redesign
+- Explicit owner-authorized task published and executed from main531aa8cd0435ed9813ab39664888992583df0d28. A003input74e4f1a681cd589625aff63e91f917076cc22586/PR8 preserved unmerged;both latest-published A003 and current-main A002 handoffs byte-archived.
+- Added complete narrow lossless typed profile,BASE/ALLOC/PROOF log,intermediate per-key proof/recovery and bounded compaction;future resolution/overlap reserved,unqualified newest-head blocks. Host PASS12tests/7805checks/562scenarios,100compactions/400allocations;both rollback counterexamples retained.
+- Measured complete max6383bytes/growth796/raw record reserve15510. Existing24KiB conditional ideal fit under smaller occupancy assumptions,fails2-4KiB;actual backend integrity/free/GC/root overhead remain UNKNOWN,production BLOCKED. Larger-partition alternatives docs only.
+- No production Core/NVS/credentials access,partition/config/Native/TUNER changes,build/upload/hardware. CCM frozen,Native unapproved/unfrozen/not implemented,O01-O17open/common gate OPEN;separate backend/physical/importer gates remain.
+
+
+## 2026-10-11T17:37:47Z - A-PM-003 current-state reconciliation
+- Reviewed/merged PR7/8/9 exact heads in order; historical evidence, A003/A004, archives and all changelog deltas preserved; ordinary merges in PM report.
+- Independently reproduced host A003/A004 suites; production FAIL/BLOCKED and conditional host PASS / BLOCKED; hardware NOT RUN.
+- Reconciled final TUNER v1.1.11 main/tag/PR5/release/source/BIN/ELF; all five asset digests PASS. Owner functional BT/web/ping/recovery acceptance retains zero-DMA FAIL,3m44.566s limit and case-specific physical PENDING.
+- Updated current globals/task dispositions; appended D-005 without deleting history/closing O01-O17; archived both old handoffs byte-for-byte; added exact owner authorization, PM evidence/review/current TUNER report and Git-blob manifest.
+- No shared/Native/production Core/firmware/release/live NVS/credentials/partition/flash/hardware changes. D1-D5 unassigned; next backend mission recommended only.
+
+## 2026-10-11T17:51:33Z - A-PM-004 administrative reference correction
+- Removed conversational reconciliation authorization transcript from current tree; replaced with concise technical scope/reference. Updated current links, report wording and attributes; regenerated root Git-blob manifest. Previous handoffs archived byte-for-byte before link replacement.
+- No history rewrite/force push; PR7/8/9 merges and A-PM-003/D-005/device technical verdicts unchanged.
+
+## 2026-10-11 - A-REMOTE-005 assignment
+- Published exact scoped concrete-backend host qualification assignment after verified administrative correction; direct execution authorized, hardware/production/Native/D1-D5 excluded.
+
+
+## 2026-10-11T18:03:56Z - A-REMOTE-005 concrete backend host/source qualification
+- Delivered read-only source/SDK provenance, G0-G4 matrix and isolated source-informed model; host PASS, G1 required anti-rollback FAIL, overall BLOCKED. A003/whole-domain rollback counterexamples retained; actual unqualified candidate always GLOBAL_BLOCK, recovery emits0.
+- Capacity ledger separates encoded/logical/physical overlap/root/metadata/proof/GC/fragmentation/remote_wifi/external occupancy; ideal conditional, adverse FAIL, actual UNKNOWN. No credential values accessed/published.
+- New report/evidence and BLOCKED task/current REMOTE handoff after byte-exact archive; PROJECT_SYNC/manifest refreshed. Device own isolated docs/tools/changelog only, production/config/.pio/SDK/TUNER preserved. Physical proposal NOT RUN; Native/D1-D5/shared gate unchanged.
 
 ## P-REMOTE-V1-001 / A-PM-005 - 2026-10-11 - PROPOSED / NOT APPROVED
 PR10 exact head807e5cd4e17d1b29526b20ad0b237044c5e8769a reviewed/reproduced and integrated through normal merge `4588adc63c4856d31f144913aad59e599993c233`. A005 original verdict remains host PASS, strict G1 FAIL, physical G2-G4 UNKNOWN, capacity CONDITIONAL/FAIL, physical NOT RUN, production NOT IMPLEMENTED, acceptance BLOCKED.
@@ -188,10 +427,10 @@ PR13 normal merge `72875788767840d27c7085faf994b012d1babefd` accepts read-only e
 [Exact task](tasks/A-REMOTE-008.md) assigns private offline source-to-build closure only. D-008 architectural approval does not authorize hardware writes/backend/migration. Original workspace/source privacy preserved; result requires separate OPEN/unmerged review. A009 not assigned/started. All shared/hardware qualification gaps retained.
 
 ## A-REMOTE-008 blocked result - 2026-10-11
-[Report](reports/A-REMOTE-008_SOURCE_TO_BUILD.md): INCONCLUSIVE — BUILD REPRODUCTION BLOCKED BY INTERMITTENT COMPILER PROCESS FAILURE on repeated GCC internal compiler error Segmentation fault at esp_lcd_panel_rgb.c:700:1 (-j8/-j1 clean attempts). No complete artifacts or fresh firmware hash; correspondence UNKNOWN, not proven code mismatch.4036 original files and1031 selected external hashes preserved, effective config/TU lists agree; private Git baseline unqualified/no push. No hardware/source/SDK publication/change. A008/A009 BLOCKED, no automatic implementation. D00864KiB target/serviceUSB/noOTAtable/ROMrecovery architecture approved, migration/backend/production unqualified; frozenCCM/Nativeunapproved/O01-O17/gateOPEN/ADCFAIL/rollbackPENDING unchanged.
+[Report](reports/A-REMOTE-008_SOURCE_TO_BUILD.md): INCONCLUSIVE â€” BUILD REPRODUCTION BLOCKED BY INTERMITTENT COMPILER PROCESS FAILURE on repeated GCC internal compiler error Segmentation fault at esp_lcd_panel_rgb.c:700:1 (-j8/-j1 clean attempts). No complete artifacts or fresh firmware hash; correspondence UNKNOWN, not proven code mismatch.4036 original files and1031 selected external hashes preserved, effective config/TU lists agree; private Git baseline unqualified/no push. No hardware/source/SDK publication/change. A008/A009 BLOCKED, no automatic implementation. D00864KiB target/serviceUSB/noOTAtable/ROMrecovery architecture approved, migration/backend/production unqualified; frozenCCM/Nativeunapproved/O01-O17/gateOPEN/ADCFAIL/rollbackPENDING unchanged.
 
 ## A008 verdict corrected before PR14 merge - 2026-10-11
-Previous SOURCE DOES NOT MATCH label was unsupported; retained in prior Git/history only. Current: INCONCLUSIVE — BUILD REPRODUCTION BLOCKED BY INTERMITTENT COMPILER PROCESS FAILURE; source-to-build UNKNOWN; A008 IN PROGRESS / BLOCKED ON INTERMITTENT COMPILER PROCESS FAILURE, A009 BLOCKED / NOT STARTED. Same PR14 diagnostic continuation; no source/SDK/version/qualification-flag change or hardware authorization.
+Previous SOURCE DOES NOT MATCH label was unsupported; retained in prior Git/history only. Current: INCONCLUSIVE â€” BUILD REPRODUCTION BLOCKED BY INTERMITTENT COMPILER PROCESS FAILURE; source-to-build UNKNOWN; A008 IN PROGRESS / BLOCKED ON INTERMITTENT COMPILER PROCESS FAILURE, A009 BLOCKED / NOT STARTED. Same PR14 diagnostic continuation; no source/SDK/version/qualification-flag change or hardware authorization.
 
 ## A008 isolated diagnosis - 2026-10-11T20:20:56Z
 [Compiler diagnosis](references/device_evidence/remote/A-REMOTE-008/ICE_DIAGNOSTIC.md): NONDETERMINISTIC ENVIRONMENT OR HARDWARE FAILURE, root cause UNKNOWN (no proven hardware fault). Frozen .i/original-flags repeats PASS; exact source/response/environment variable PASS/ICE; official toolchain payload MATCH, SDK upstream MATCH. No path/TEMP fix, no optimization sweep (condition unmet), no complete new builds. LVGL deletion actor/phase UNKNOWN, private zero-byte docs restored; prior timing claim withdrawn. Current INCONCLUSIVE — BUILD REPRODUCTION BLOCKED BY INTERMITTENT COMPILER PROCESS FAILURE; source-to-build UNKNOWN; A008 IN PROGRESS / BLOCKED ON INTERMITTENT COMPILER PROCESS FAILURE, A009 BLOCKED / NOT STARTED. Second isolated Windows same-package/input/flags reproduction requires owner decision, no automatic task. Original/SDK/toolchain/hardware preserved; PR14 OPEN/unmerged; no A009/firmware/Native/CCM changes, O01–O17/gate OPEN/NOT PASSED.
@@ -238,10 +477,6 @@ A-REMOTE-009 remains BLOCKED / NOT STARTED; this acceptance creates no assignmen
 [Owner acceptance](references/A008_FINAL_OWNER_ACCEPTANCE_2026-10-12.md); normal [PR14 merge](https://github.com/OviOneKenoby/remote_tuner_system/commit/36b819e79b6f6385e9e5abf380ffcb4cc412f0dc) of reviewed head `0f90de668b4b36c67b1f3ad8d572614a6a8affdb`. This current status supersedes prior pending-review or INCONCLUSIVE labels without altering their historical evidence. A009 proposal only: approved 64KiB layout preparation and bounded USB/ROM recovery test/rollback protocol; no assignment or execution.
 
 
-## A009 preparation assigned — 2026-10-12T18:22:12.346791+00:00
-Owner explicitly authorizes [A-REMOTE-009 preparation](tasks/A-REMOTE-009.md), [scope](references/A009_PREPARATION_OWNER_AUTHORIZATION_2026-10-12.md), from `e6fa6f4911eb6bcd342d1db9600ad66f134636ab`. ASSIGNED / PREPARATION IN PROGRESS, hardware execution BLOCKED. A008 stays DONE / OWNER ACCEPTED. No hardware access or protocol command execution; no backend/API/TUNER/production edits, no A010. New PR must remain OPEN/unmerged. Prior A009 unassigned/blocked labels are preserved historical snapshots; only preparation is now authorized.
-
-
 ## A009 preparation ready for owner review — 2026-10-12T18:35:41.124995+00:00
 **PASS — HOST LAYOUT/RECOVERY PREPARATION; HARDWARE NOT RUN.** [Report](reports/A-REMOTE-009_PREPARATION.md), [assignment](tasks/A-REMOTE-009.md), [unexecuted owner protocol](protocols/A-REMOTE-009_USB_ROM_RECOVERY.md). Add remote_ctl64KiB at0xE20000; six baseline records byte-identical, all offsets/sizes/factory/both3MiB OTA slots preserved; bounds/alignment/no-overlap PASS. Clean -j1 build PASS, firmware2485584bytes/headroom660144bytes per OTA slot. Only disposable layout candidate; no production source/tool/hardware change. PR15 OPEN/unmerged. A009 preparation complete; hardware phase BLOCKED pending explicit owner approval and fresh full-backup preflight. A008 DONE/OWNER ACCEPTED unchanged; A010 NOT STARTED; no backend/API/TUNER/CCM changes. Native unapproved; O01–O17/common gate OPEN/NOT PASSED. Hardware/USB-recovery/migration/backend qualification NOT RUN.
 
@@ -277,6 +512,9 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 
 ## A010 diagnostic candidate ready for owner review — 2026-10-13T06:43:09.576743+00:00
 **PASS — DIAGNOSTIC CANDIDATE IMPLEMENTED / HOST VERIFIED / CLEAN BUILD; HARDWARE NOT RUN.** [Report](reports/A-REMOTE-010_DIAGNOSTIC_CANDIDATE.md), [task](tasks/A-REMOTE-010.md), [evidence](references/device_evidence/remote/A-REMOTE-010/DIAGNOSTIC_RESULT.json), [protocol](protocols/A-REMOTE-010_HARDWARE_VALIDATION.md), [owner scope](references/A010_DIAGNOSTIC_CONTINUATION_OWNER_AUTHORIZATION_2026-10-13.md). Normal build diagnostic disabled; candidate `remote01_a010_diag` only. Exact `!A010` UART commands, per-mutation confirmation tokens and fixed remote_ctl identity guard. Boot persistence activity NONE. Tests 28/28 PASS; adapter review PASS; clean build PASS; firmware 2,503,936 bytes / 641,792 bytes OTA headroom; table exact A009. No hardware/source/artifact/payload/secret publication, no upload/write/erase, no TUNER/common API/layout change. PR16 OPEN/unmerged; A010 continues awaiting exact hardware decision; A011 NOT STARTED; CCM frozen, Native unapproved, O01–O17/common gate OPEN.
+# A-REMOTE-011 kickoff — 2026-10-13T15:34:01Z
+
+CCM 1.1.0 remains OWNER APPROVED / FROZEN. Read-only inspection confirms neither device implements a common wire API. The Native API document remains design-only: transport, framing, discovery and authorization are OPEN. [A-011 kickoff](reports/A-REMOTE-011_KICKOFF.md) proposes a minimum first milestone of one authorized session, identity/version/capability negotiation, fresh `volume.level` and `playback.state`, and `volume.set` only. This is READY FOR OWNER REVIEW and not implementation approval. No endpoint, message encoding or security mechanism is approved by this publication; O01-O17 and the common gate remain OPEN / NOT PASSED.
 
 ## A-REMOTE-012 final acceptance — 2026-10-18
 

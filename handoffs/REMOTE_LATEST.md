@@ -9,7 +9,7 @@
 - Coordination input commit: `5d36f06c301cdd340fe65084dca4d636ad6dc699`
 
 ## Milestone
-Automatically locate the already-paired TUNER after DHCP address changes without editing persistent association data or weakening RTCP authority. Software scope achieved; hardware validation remains pending.
+Automatically locate the already-paired TUNER after DHCP address changes without editing persistent association data or weakening RTCP authority. Software scope and hardware validation achieved.
 
 ## Baseline
 - Device repository: `https://github.com/OviOneKenoby/REMOTE-01`
@@ -33,7 +33,7 @@ Added official ESP-IDF mDNS 1.14.0, a fixed static discovery worker, bounded DNS
 | Production build | clean `pio run -e remote01` | pinned PlatformIO / ESP-IDF 5.5.3 | PASS | artifact identity above |
 
 ## Remaining unknowns
-Physical mDNS behavior, DHCP recovery, multiple advertisers, multicast loss, sleep/wake, coexistence, and runtime mDNS heap/task watermarks are not measured. A multicast-blocked network cannot recover a stale saved endpoint.
+Physical mDNS packet trace, forced second DHCP change, long-duration soak testing, A2DP regression, and runtime mDNS heap/task watermarks are not measured. A multicast-blocked network cannot recover a stale saved endpoint.
 
 ## Shared-contract impact
 - CCM 1.1.0: NO CHANGE
@@ -42,13 +42,13 @@ Physical mDNS behavior, DHCP recovery, multiple advertisers, multicast loss, sle
 - Other device impact: requires matching TUNER `_rtcp._tcp` advertisement branch
 
 ## Blockers
-No software blocker. Hardware acceptance and branch integration remain pending. TUNER branch is stacked on open D-009 PR #7.
+No software blocker. Hardware acceptance complete. TUNER branch is stacked on open D-009 PR #7.
 
 ## PM decision required
-Authorize the controlled TUNER-first application-only hardware protocol after reviewing all three A-REMOTE-014 PRs.
+Review pull request integration sequence.
 
 ## Recommended next task
-Execute only `protocols/A-REMOTE-014_HARDWARE_VALIDATION.md` after explicit owner authorization; stop before any flash until then.
+Merge TUNER PR #7, TUNER PR #8, REMOTE PR #3, and coordination PR #23 / PR #24.
 
 ## Commit
 - Firmware result commits: `02a3f4d10056ce1731d512b1f816db0777cb67a7`, `9c805e5444587bc3d8952a57f44ec526c615e74a`
