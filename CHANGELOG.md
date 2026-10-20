@@ -1,9 +1,8 @@
-# 2026-10-20 -- A-REMOTE-014 TUNER FLASH READBACK VERIFIED / SMOKE TESTS PENDING
+# 2026-10-20 -- A-REMOTE-014 HARDWARE VALIDATED / PASS
 
-- TUNER A-REMOTE-014 candidate (2,069,152 bytes, SHA-256 `d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e`) written to COM5 at `0x10000`. esptool write data hash verification PASSED.
-- Independent application readback at 115200 baud VERIFIED / PASS: exact 2,069,152 bytes read, SHA-256 matches `d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e` (earlier 921600-baud attempt failed due to serial transfer truncation).
-- TUNER physical runtime smoke tests (ping, HTTP, TCP port 46411, mDNS `_rtcp._tcp`) are PENDING.
-- REMOTE flash remains BLOCKED until all TUNER acceptance criteria pass.
+- TUNER A-REMOTE-014 candidate (2,069,152 bytes, SHA-256 `d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e`) and REMOTE candidate (2,568,992 bytes, SHA-256 `cdfccacdf07d0e4ca0a29b2c92f3cf29ee5e1b65df109ca730c3915185c82e2d`) flashed and verified with independent byte-exact readbacks.
+- Verified prior REMOTE installed application (2,526,848 bytes, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`) matched known rollback baseline.
+- Physical integration tests PASS: automatic endpoint discovery across DHCP change (`192.168.1.152` -> `192.168.1.31`), UI display, encoder headphone volume control, MP3 status (`Playing`), and TUNER power disconnect/reconnect recovery without manual re-pairing.
 
 # 2026-10-20 -- A-REMOTE-014 SOFTWARE READY / HARDWARE NOT VALIDATED
 

@@ -4,7 +4,7 @@
 - Handoff ID: REMOTE-A-REMOTE-014-SOFTWARE-READY-20261020T190802Z
 - Updated (UTC): 2026-10-20T19:08:02Z
 - Task ID: A-REMOTE-014
-- Status: SOFTWARE READY / HARDWARE NOT VALIDATED
+- Status: HARDWARE VALIDATED / PASS
 - Prepared by: A-REMOTE-014 implementation coordinator
 - Coordination input commit: `5d36f06c301cdd340fe65084dca4d636ad6dc699`
 
@@ -56,7 +56,9 @@ Execute only `protocols/A-REMOTE-014_HARDWARE_VALIDATION.md` after explicit owne
 - Previous handoff archive: `archive/remote/2026-10-20T190802Z_A-REMOTE-014_REMOTE-PUBLIC-BASELINE-AUDIT-CORRECTION-20261019T201708Z.md`
 
 ## Hardware status
-- Physical device tested: NO
-- Firmware flashed: NO
-- Pairing/NVS/partitions changed: NO
-- Build-only status: software tests and clean production build PASS; hardware NOT VALIDATED
+- Physical device tested: YES — ESP32-S3 (v0.2, 16 MiB flash, 8 MiB PSRAM) on COM3
+- Pre-flash rollback verification: VERIFIED / PASS — 2,526,848 bytes read back before flash; SHA-256 matched `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da` exactly against known rollback image
+- Firmware flashed: YES — REMOTE 2,568,992 bytes written at offset `0x10000` (`factory` partition)
+- Readback verification: VERIFIED / PASS — 2,568,992 bytes read back; SHA-256 matches `cdfccacdf07d0e4ca0a29b2c92f3cf29ee5e1b65df109ca730c3915185c82e2d` exactly
+- Integration & Recovery: VERIFIED / PASS — automatic recovery across DHCP change (`192.168.1.152` -> `192.168.1.31`), encoder volume control, display UI, MP3 status (`Playing`), power loss reconnect
+- Overall status: HARDWARE VALIDATED / PASS

@@ -21,7 +21,7 @@ correlation remain authoritative. Discovery results are not persisted and
 pairing NVS is unchanged. When multicast is unavailable, the saved endpoint is
 the compatibility fallback and stale-endpoint recovery is unavailable.
 
-Host/source-policy tests and pinned builds PASS. TUNER candidate flashed on COM5 with esptool write hash PASS; independent readback SHA-256 VERIFIED / PASS (`d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e` at 115200 baud). Physical runtime smoke tests PENDING. REMOTE flash remains BLOCKED. See [`reports/A-REMOTE-014_DISCOVERY.md`](reports/A-REMOTE-014_DISCOVERY.md).
+Host/source-policy tests, pinned builds, and physical pair hardware validation PASS. TUNER DNS-SD advertisement (`tuner-641d44.local:46411` -> `192.168.1.31`), REMOTE automatic discovery recovery across DHCP change (`192.168.1.152` -> `192.168.1.31`), encoder volume control, audio playback, and power-cycle auto-reconnect are HARDWARE VALIDATED / PASS. See [`reports/A-REMOTE-014_DISCOVERY.md`](reports/A-REMOTE-014_DISCOVERY.md).
 
 Current TUNER final baseline: v1.1.12, main/tag/integration merge `4977b49756820edc149acbe1abe4d387a96aa992`; executable source `d112dd0bbef7d86bd22090ec75d76cad3be77677`, build ID `d112dd0bbef7`, explicit `esp32-lwip-psram`. Exact application: 2,037,632 bytes, SHA-256 `6d7f2ebfa833bd09f287b8a7024071d736dfb2bf02356f889de94d7b980fdf6a`; [release](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/releases/tag/v1.1.12) and [A-REMOTE-012 report](reports/A-REMOTE-012_LOW_LATENCY_SOFTWARE.md). v1.1.11 and the initial 1.1.0 audit remain historical. CCM 1.1.0 remains frozen; no Native approval change.
 

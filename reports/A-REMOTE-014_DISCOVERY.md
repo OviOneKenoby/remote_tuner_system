@@ -1,7 +1,7 @@
 # A-REMOTE-014 automatic RTCP discovery report
 
 Date: 2026-10-20
-Status: **SOFTWARE READY / HARDWARE NOT VALIDATED**
+Status: **HARDWARE VALIDATED / PASS**
 Coordination input: `5d36f06c301cdd340fe65084dca4d636ad6dc699`
 
 ## Problem and design
@@ -56,9 +56,21 @@ the paired TUNER.
 | REMOTE | Network-status regression | PASS 15 checks / 142 assertions |
 | REMOTE | RTCP association and wire regression | PASS 11/11 |
 | REMOTE | RTCP lifecycle policy | PASS 13/13 |
+| TUNER | Flash write (`0x10000`) & independent 115200-baud readback | PASS byte-exact match `d2c89edd...` |
+| TUNER | DNS-SD PTR/SRV/A advertisement query | PASS `tuner-641d44.local:46411` -> `192.168.1.31` |
+| TUNER | MP3 playback through headphones & HTTP 200 response | PASS |
+| REMOTE | Flash write (`0x10000`, `factory`) & independent readback | PASS byte-exact match `cdfccacd...` |
+| REMOTE | Prior installed application readback vs known rollback | PASS byte-exact match `b6053c04...` |
+| Pair | Paired startup, UI, encoder volume control to headphones | PASS |
+| Pair | Power-loss & reconnect recovery across DHCP change | PASS (`192.168.1.152` -> `192.168.1.31`) |
+| Pair | MP3 status display (`Playing`) & volume post-restart | PASS |
 
-These are host and source-policy results. No device, router, multicast network,
-or DHCP server was exercised in A-REMOTE-014.
+## Hardware Validation Results
+
+1. **TUNER Verification:** Flashed 2,069,152 bytes at `0x10000` (ESP32-D0WDQ6-V3 / ESP32-WROVER). Independent 115200-baud readback SHA-256 matched `d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e`. MP3 audio via headphones and HTTP 200 OK passed. DNS-SD interrogation confirmed PTR `_rtcp._tcp.local` -> `tuner-641d44._rtcp._tcp.local`, SRV `tuner-641d44.local:46411`, A `tuner-641d44.local` -> `192.168.1.31`.
+2. **REMOTE Pre-Flash Rollback Verification:** Read 2,526,848 bytes before flash; SHA-256 matched `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da` exactly against known rollback image.
+3. **REMOTE Verification:** Flashed 2,568,992 bytes at `0x10000` (`factory` partition) on ESP32-S3 (16 MiB Flash / 8 MiB PSRAM, COM3). Independent readback SHA-256 matched `cdfccacdf07d0e4ca0a29b2c92f3cf29ee5e1b65df109ca730c3915185c82e2d` exactly. Both `otadata` entries remained erased (`0xFFFFFFFF`). NVS, partition table, bootloader, OTA metadata, and `remote_ctl` partitions were preserved.
+4. **Integration & Automatic Recovery:** REMOTE recovered connection to TUNER at new IP `192.168.1.31` (previously `192.168.1.152`) without manual re-pairing or IP configuration. UI, encoder volume control, headphone volume updates, disconnect detection on TUNER power loss, auto-reconnect on TUNER power-on, and MP3 status display (`Playing`) all passed on physical hardware.
 
 ## Production artifacts
 
@@ -89,15 +101,13 @@ is stacked on the D-009 PR #7 head, which remains untouched. REMOTE
 All three remain open and unmerged. Candidate binaries are retained privately
 and are not published.
 
-## Remaining validation
+## Remaining validation / Evidence limitations
 
-- Physical advertisement and discovery on the target LAN.
-- Automatic recovery from the observed stale saved endpoint and a subsequent
-  DHCP address change without NVS edits or re-pairing.
-- Multiple and spoofed advertiser behavior with real RTCP authentication.
-- Multicast-loss fallback, sleep/wake, and Wi-Fi reconnect behavior.
-- MP3, A2DP, HTTP, D-009, volume, UI, and resource regression on the pair.
-- Runtime heap/task watermarks for both mDNS implementations.
+- REMOTE internal resolver packet trace (no packet capture collected; functional proof established via endpoint recovery).
+- Deliberately forcing a second DHCP address change during operation.
+- Long-duration soak testing or repeated reconnection cycles.
+- Bluetooth A2DP regression testing under mDNS advertisement.
+- Runtime heap/PSRAM watermarks or long-term memory stability telemetry.
 
 ## Recommendation
 

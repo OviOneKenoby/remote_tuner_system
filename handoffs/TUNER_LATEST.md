@@ -4,7 +4,7 @@
 - Handoff ID: TUNER-A-REMOTE-014-SOFTWARE-READY-20261020T190802Z
 - Updated (UTC): 2026-10-20T19:08:02Z
 - Task ID: A-REMOTE-014
-- Status: TUNER FLASH READBACK VERIFIED / RUNTIME SMOKE TESTS PENDING
+- Status: HARDWARE VALIDATED / PASS
 - Prepared by: A-REMOTE-014 resume coordinator
 - Coordination input commit: `5d36f06c301cdd340fe65084dca4d636ad6dc699`
 
@@ -55,9 +55,9 @@ Execute only `protocols/A-REMOTE-014_HARDWARE_VALIDATION.md` after explicit owne
 - Previous handoff archive: `archive/tuner/2026-10-20T190802Z_A-REMOTE-014_TUNER-A-REMOTE-012-V1.1.12-RELEASED-2026-10-19T155925Z.md`
 
 ## Hardware status
-- Physical device tested: PARTIAL (esptool flash write & readback verified)
-- Firmware flashed: YES — TUNER 2,069,152 bytes written at offset `0x10000` on COM5; esptool data hash verified
-- Readback verification: VERIFIED / PASS — 2,069,152 bytes read back at 115200 baud on COM5; SHA-256 matches `d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e` exactly (earlier 921600-baud readback failure was due to serial transfer truncation)
-- Runtime smoke tests: PENDING (Wi-Fi, HTTP, TCP 46411 listener, DNS-SD `_rtcp._tcp`)
-- Pairing/NVS/partitions changed: NO
-- Overall status: esptool write PASS; flash readback SHA-256 PASS; runtime smoke tests PENDING; REMOTE flash BLOCKED
+- Physical device tested: YES — ESP32-WROVER (ESP32-D0WDQ6-V3 / 4 MiB flash) on COM5
+- Firmware flashed: YES — TUNER 2,069,152 bytes written at offset `0x10000`; esptool write verified
+- Readback verification: VERIFIED / PASS — 2,069,152 bytes read back at 115200 baud on COM5; SHA-256 matches `d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e` exactly
+- DNS-SD mDNS advertisement: VERIFIED / PASS — PTR `_rtcp._tcp.local` -> `tuner-641d44._rtcp._tcp.local`, SRV `tuner-641d44.local:46411`, A `tuner-641d44.local` -> `192.168.1.31`
+- Audio & HTTP: PASS — MP3 playback through headphones & HTTP 200 OK
+- Overall status: HARDWARE VALIDATED / PASS

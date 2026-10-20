@@ -2,7 +2,7 @@
 
 ## Status
 
-**SOFTWARE READY / HARDWARE NOT VALIDATED** as of 2026-10-20.
+**HARDWARE VALIDATED / PASS** as of 2026-10-20.
 
 ## Objective
 
@@ -32,8 +32,11 @@ TUNER PR #7 remains unchanged and dedicated to D-009.
 
 ## Result
 
-Software design, implementation, focused verification, and both production
-builds passed. The exact evidence and limitations are in
+Software design, implementation, focused verification, both production builds,
+and physical hardware validation passed. TUNER (2,069,152 bytes) and REMOTE
+(2,568,992 bytes) candidates were flashed, read back, and independently
+SHA-256 verified. Functional automatic endpoint recovery across a DHCP address
+change (from `192.168.1.152` to `192.168.1.31`), encoder volume control, audio
+playback status, and TUNER power disconnect/reconnect recovery were verified.
+The exact evidence and limitations are in
 [`reports/A-REMOTE-014_DISCOVERY.md`](../reports/A-REMOTE-014_DISCOVERY.md).
-Controlled TUNER-first hardware validation remains separately gated by owner
-authorization and the unexecuted protocol.

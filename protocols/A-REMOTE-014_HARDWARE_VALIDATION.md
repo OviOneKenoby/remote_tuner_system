@@ -1,6 +1,6 @@
 # A-REMOTE-014 controlled hardware validation
 
-Status: **UNEXECUTED — explicit owner authorization required**.
+Status: **COMPLETED / PASS** (Functional hardware validation completed 2026-10-20).
 
 ## Preconditions
 

@@ -1,12 +1,16 @@
 # Project synchronization
 Updated 2026-10-20; coordination input `5d36f06c301cdd340fe65084dca4d636ad6dc699`.
 Common phase: A-REMOTE-014 automatic RTCP endpoint discovery.
-Common gate: **TUNER READBACK VERIFIED / SMOKE TEST PENDING**.
+Common gate: **HARDWARE VALIDATED / PASS**.
 
 ## Current state - supersedes historical status below
-### A-REMOTE-014 hardware validation resumption - 2026-10-20
+### A-REMOTE-014 hardware validation completed - 2026-10-20
 
-TUNER A-REMOTE-014 candidate (2,069,152 bytes) flashed at `0x10000` on COM5. esptool write data hash verification PASSED and target reset completed. Independent readback SHA-256 (`d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e`) at 115200 baud is VERIFIED / PASS (the earlier 921600-baud attempt failed due to an incomplete serial transfer, not a flash defect). TUNER runtime smoke tests (ping, HTTP, TCP port 46411, mDNS `_rtcp._tcp`) are PENDING. REMOTE flashing remains BLOCKED until all TUNER smoke tests pass.
+TUNER and REMOTE physical hardware validation completed successfully.
+- **TUNER (ESP32-WROVER / ESP32-D0WDQ6-V3 on COM5):** Flashed 2,069,152 bytes at `0x10000`. Independent readback SHA-256 matched `d2c89edd1e5aa25a01c7f88ce787ccdcfa2e708a89d6fb402d0326a519ec896e` at 115200 baud. MP3 audio via headphones & HTTP 200 OK passed. DNS-SD PTR/SRV/A records (`tuner-641d44.local:46411` -> `192.168.1.31`) verified.
+- **REMOTE Pre-Flash Rollback:** Read 2,526,848 bytes before flash; SHA-256 matched `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da` exactly against known rollback image.
+- **REMOTE (ESP32-S3 v0.2 / 16 MiB Flash / 8 MiB PSRAM on COM3):** Flashed 2,568,992 bytes at `0x10000` (`factory` partition). Independent readback SHA-256 matched `cdfccacdf07d0e4ca0a29b2c92f3cf29ee5e1b65df109ca730c3915185c82e2d`. `otadata` remained erased (`0xFFFFFFFF`). NVS, partition table, bootloader, OTA metadata, and `remote_ctl` partitions preserved.
+- **Pair Integration:** 12 physical hardware integration tests passed, including automatic endpoint discovery across a DHCP address change (`192.168.1.152` -> `192.168.1.31`), UI display, rotary encoder volume control to headphones, status display (`Playing`), and auto-reconnect after TUNER power power-loss/restart without manual re-pairing.
 
 ### A-REMOTE-014 software readiness - 2026-10-20
 
