@@ -1,3 +1,11 @@
-# Reference index placeholder
+# Reference index
 
-No contract or audit artifacts are bundled. Obtain the owner-approved CCM 1.0.0 plus approval evidence, Native API v1 candidate, TUNER audit, REMOTE decisions/changelog and device repository references. Index each by stable URL/path, revision/hash, authority and availability in API_STATUS.md. Preserve historical candidates with explicit historical labels. Never edit synced source files; store permitted copies or immutable links. Do not add credentials or Wi-Fi secrets.
+## Current approved and proposed contracts
+
+- `CCM_1_1_0.md`: OWNER APPROVED / FROZEN common model.
+- `A_REMOTE_011_AUTHENTICATED_TCP_V1.md`: accepted RTCP/1 authenticated transport specification.
+- `RTCP_1_D009_PROPOSED.md`: D-009 content is OWNER APPROVED / FROZEN; historical filename retained.
+- `D009_OWNER_APPROVAL_2026-10-19.md`: durable D-009 approval scope.
+- `RTCP_1_BLUETOOTH_EXTENSION_V1_PROPOSED.md`: BTX/1.0 PROPOSED / OWNER REVIEW / NOT IMPLEMENTED.
+
+Preserve historical candidates with explicit historical labels and index current authority in `API_STATUS.md`. Never edit imported source snapshots. Do not add credentials, operational pairing material or Wi-Fi secrets.

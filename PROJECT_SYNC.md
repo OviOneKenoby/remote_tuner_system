@@ -1,9 +1,15 @@
 # Project synchronization
-Updated 2026-10-19; coordination input `8a5124cc404f0a92258360c64e0604714d3dd74f`.
-Common phase: A-REMOTE-013 D-009 implementation preparation.
-Common gate: **D-009 OWNER APPROVED / FROZEN; IMPLEMENTATION NOT AUTHORIZED**.
+Updated 2026-10-22; Bluetooth proposal input `5d36f06c301cdd340fe65084dca4d636ad6dc699`.
+Common phase: authenticated Bluetooth RTCP extension contract review.
+Common gate: **D-011 BTX/1.0 PROPOSED / OWNER APPROVAL REQUIRED; IMPLEMENTATION NOT AUTHORIZED**.
 
 ## Current state - supersedes historical status below
+### RTCP/1 Bluetooth extension proposal - 2026-10-22
+
+The source audit confirmed TUNER already owns working A2DP audio, local AVRCP commands and bounded artist/title metadata, while REMOTE already owns authenticated RTCP, volume and reusable HOME presentation. Frozen D-009 intentionally clears Bluetooth metadata and operation flags, so [BTX/1.0](references/RTCP_1_BLUETOOTH_EXTENSION_V1_PROPOSED.md) proposes a separate authenticated extension under [D-011](decisions/D-011_BLUETOOTH_RTCP_EXTENSION.md).
+
+The proposed two-query negotiation preserves the first legacy revision-2 capability response byte-for-byte. An immediate second ID 3 receives ID 4 from an old TUNER or ID 12 from a BTX-capable TUNER, avoiding unknown-message probes and preserving mixed-version D-009/volume behavior. Proposed IDs 13–15 cover bounded Bluetooth state and explicit AVRCP actions. The maximum response is 255-byte plaintext / 299-byte authenticated record. Public reference codecs pass 17/17 focused tests. No device source, firmware build, hardware, NVS, pairing, partition or release changed. Owner approval is required before either firmware task.
+
 ### REMOTE public baseline audit correction - 2026-10-19
 
 REMOTE public repository `OviOneKenoby/REMOTE-01` currently points `main` to final documentation merge `d0a6ae556d8cbd9da5d90896b54573a45a48af69`; source-bearing parent `a06608085332255989f49b85be720a4a731cdfa1` has zero substantive differences across its 1,642 meaningful firmware files and the active local A-REMOTE-012 source after line-ending normalization. The installed artifact remains the accepted 2,526,848-byte application with SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`. Current-source equivalence and installed-artifact identity are independently proven; exact derivation from a public source commit remains unproven because the build-time REMOTE workspace was Git-less.

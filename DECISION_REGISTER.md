@@ -88,6 +88,23 @@ All entries OPEN / UNRESOLVED. Importing/grouping them issues no new owner appro
 - Verification: source/resource review only; no build or hardware verification.
 - Supersedes / superseded by: NONE.
 
+### D-011: RTCP/1 Bluetooth Extension v1
+- Date (UTC): 2026-10-22
+- Task / proposal ID: Bluetooth RTCP Extension Phase 2
+- State: PROPOSED / OWNER REVIEW / NOT IMPLEMENTED
+- Problem and evidence: TUNER owns working A2DP, local AVRCP commands and bounded artist/title metadata, but frozen D-009 context 3 intentionally carries no Bluetooth metadata or operation availability. REMOTE therefore cannot present or control those functions without a separate profile.
+- Exact proposed change: [BTX/1.0](references/RTCP_1_BLUETOOTH_EXTENSION_V1_PROPOSED.md) preserves the first revision-2 ID 3/4 exchange, uses one immediate second authenticated ID 3 as an opt-in probe, and proposes IDs 12–15 for extension capability, bounded Bluetooth state and explicit AVRCP command. Existing correlated result ID 8 is reused. Maximum BTX plaintext/authenticated size is 255/299 bytes.
+- CCM impact: NONE proposed; existing source, playback and media meanings remain authoritative and generation-fenced. Frozen CCM 1.1.0 is unchanged.
+- Native API impact: NONE; v1 remains UNAPPROVED / UNFROZEN / NOT IMPLEMENTED.
+- REMOTE impact and review: session-scoped negotiation, strict codecs, source/metadata/availability projection and a bounded 195-byte HOME title-buffer increase; implementation NOT AUTHORIZED.
+- TUNER impact and review: A2DP callback authority, fixed projection and main-loop AVRCP owner; existing metadata arrays and transport buffers are reused; implementation NOT AUTHORIZED.
+- Alternatives and compatibility: revision/bit reuse, unsolicited unknown requests, mDNS authority, firmware-version inference and transport-version changes are rejected. [Compatibility matrix](reports/RTCP_BLUETOOTH_EXTENSION_COMPATIBILITY.md) preserves old/new D-009 and volume behavior.
+- Owner approval: PENDING for negotiation, IDs/layouts, bounds, state authority, result semantics and TUNER-first rollout.
+- Effective approved revision: NONE.
+- Implementation tasks/commits: [bounded plan](tasks/RTCP_BLUETOOTH_EXTENSION_IMPLEMENTATION_PLAN.md); UNASSIGNED / NOT IMPLEMENTED.
+- Verification: deterministic public application-codec vectors and 17 focused host tests PASS; no production build or hardware verification.
+- Supersedes / superseded by: NONE; D-009 and D-010 remain separate.
+
 Product boundaries, direct LAN operation, TUNER catalog ownership, REMOTE artwork ownership and mDNS discovery direction are already recorded in the supplied canonical handoff; this table does not reopen them. Optional deferral is a future explicit release-scope decision, not silently enacted here.
 
 ## Administrative PM assignment record

@@ -1,3 +1,11 @@
+# 2026-10-22 -- RTCP/1 BLUETOOTH EXTENSION v1 PROPOSED / OWNER REVIEW
+
+- Added the proposed BTX/1.0 authenticated application profile as D-011 without changing frozen RTCP/1 transport, CCM 1.1.0 or D-009 semantics.
+- Selected an authenticated two-query capability probe: every session first receives the exact legacy revision-2 ID 4 response; an immediate second ID 3 returns legacy ID 4 from an old TUNER or new ID 12 from a BTX-capable TUNER. Negotiation is session-scoped and mixed-version operation retains D-009 and volume.
+- Proposed IDs 12–15 for extension capability, bounded Bluetooth state and explicit AVRCP commands; generic correlated result ID 8 is retained. Maximum BTX plaintext is 255 bytes and authenticated size is 299 bytes, below existing D-009 maxima.
+- Added deterministic public codec vectors and 17 focused reference tests covering negotiation, legacy fallback, metadata/state, command/result layouts, malformed input, UTF-8 boundaries, session reset and maximum record size. All 17 passed.
+- Added the architecture decision, compatibility matrix and separately gated TUNER/REMOTE/rollout task breakdown. Status remains PROPOSED / NOT APPROVED / NOT IMPLEMENTED; no device source, build, hardware, pairing, NVS, partition or release changed.
+
 # 2026-10-19 -- A-REMOTE-013 D-009 OWNER APPROVED / FROZEN
 
 - Owner approved the exact D-009 specification reviewed at PR #20 commit `4237eadf7e641308a77ba673afadd0e39b52e5d1`; its SHA-256 is `ad6fa343c7ea6363febfffa143c6ffb62e401c19d994abcdaa7287bd0ded6c92`.

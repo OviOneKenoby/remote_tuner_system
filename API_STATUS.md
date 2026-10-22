@@ -1,10 +1,12 @@
 # Shared contract status
-Updated: 2026-10-19
-Authority: D-001 through D-009 and the recorded CCM 1.1.0 and D-009 owner approvals; historical starting facts retained.
+Updated: 2026-10-22
+Authority: D-001 through D-009 and the recorded CCM 1.1.0 and D-009 owner approvals; D-011 is a proposal only; historical starting facts retained.
 
 | Contract | Version | Approval | Freeze | Implementation |
 | --- | --- | --- | --- | --- |
 | Common Control Model (CCM) | 1.1.0 | OWNER APPROVED | FROZEN | REMOTE Core/backend subsets exist; full two-device conformance NOT VERIFIED |
+| RTCP/1 D-009 radio playback/metadata profile | revision 2 | OWNER APPROVED | FROZEN | Implemented in device feature branches; integration state tracked separately |
+| RTCP/1 Bluetooth Extension | BTX/1.0 | PENDING OWNER REVIEW | PROPOSED / UNFROZEN | NOT IMPLEMENTED |
 | TUNER Native API | v1 | UNAPPROVED | UNFROZEN | NOT IMPLEMENTED |
 
 Current TUNER final baseline: v1.1.12, main/tag/integration merge `4977b49756820edc149acbe1abe4d387a96aa992`; executable source `d112dd0bbef7d86bd22090ec75d76cad3be77677`, build ID `d112dd0bbef7`, explicit `esp32-lwip-psram`. Exact application: 2,037,632 bytes, SHA-256 `6d7f2ebfa833bd09f287b8a7024071d736dfb2bf02356f889de94d7b980fdf6a`; [release](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/releases/tag/v1.1.12) and [A-REMOTE-012 report](reports/A-REMOTE-012_LOW_LATENCY_SOFTWARE.md). v1.1.11 and the initial 1.1.0 audit remain historical. CCM 1.1.0 remains frozen; no Native approval change.
@@ -16,6 +18,10 @@ Current REMOTE public baseline: repository `OviOneKenoby/REMOTE-01`, `main` at f
 The accepted RTCP/1 implementation currently binds identity, capabilities, `volume.level`, `playback.state`, `volume.set` and correlated results. It does not yet implement D-009 playback commands or metadata. D-009 is OWNER APPROVED / FROZEN as an additive RTCP application profile; implementation remains NOT AUTHORIZED / NOT STARTED. D-010 station identity/catalog/artwork remains PROPOSED / NOT APPROVED. See [A-REMOTE-013 task](tasks/A-REMOTE-013.md) and [protocol gap analysis](reports/A-REMOTE-013_CONTROL_PATH_AND_PROTOCOL_GAPS.md).
 
 The exact [D-009 playback/now-playing profile](references/RTCP_1_D009_PROPOSED.md) is **OWNER APPROVED / FROZEN** at reviewed commit `4237eadf7e641308a77ba673afadd0e39b52e5d1`, specification SHA-256 `ad6fa343c7ea6363febfffa143c6ffb62e401c19d994abcdaa7287bd0ded6c92`. It assigns capability revision 2, bits 3–7 and message IDs 9–11 while preserving IDs 1–8, the 512-byte plaintext maximum, CCM 1.1.0 and mixed-version volume operation. [Approval record](references/D009_OWNER_APPROVAL_2026-10-19.md). Implementation is NOT AUTHORIZED / NOT STARTED; D-010 and Native API v1 remain unapproved.
+## RTCP/1 Bluetooth extension proposal - 2026-10-22
+
+[BTX/1.0](references/RTCP_1_BLUETOOTH_EXTENSION_V1_PROPOSED.md) and [D-011](decisions/D-011_BLUETOOTH_RTCP_EXTENSION.md) are **PROPOSED / PENDING OWNER REVIEW / NOT IMPLEMENTED**. The proposal preserves the exact first revision-2 capability response and uses one immediate second authenticated ID 3 query to distinguish a legacy ID 4 fallback from new extension response ID 12. Proposed IDs 13–15 carry bounded Bluetooth state and explicit AVRCP commands; existing volume and frozen D-009 remain unchanged. No firmware task is authorized until the exact negotiation, layouts, metadata bounds, state authority and rollout are owner approved.
+
 Common phase: Phase A contract reconciliation + TUNER correctness/control-state foundation.
 
 ## Reference register
