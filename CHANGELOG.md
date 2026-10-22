@@ -1,3 +1,8 @@
+# 2026-10-22 -- RTCP/1 BLUETOOTH EXTENSION v1 OWNER APPROVED / FROZEN
+
+- Owner approved the exact BTX/1.0 and D-011 proposal at head `e5bec2d639ec6c99cd52aabaafa3e52582754105`, including negotiation, IDs/layouts, metadata bounds, callback authority, generation fencing, resource budgets and TUNER-first rollout.
+- TUNER Phase 3 source implementation, focused tests, one production build and review publication are authorized. REMOTE implementation, hardware, merges and releases remain separately gated. Frozen D-009 is unchanged.
+
 # 2026-10-22 -- RTCP/1 BLUETOOTH EXTENSION v1 PROPOSED / OWNER REVIEW
 
 - Added the proposed BTX/1.0 authenticated application profile as D-011 without changing frozen RTCP/1 transport, CCM 1.1.0 or D-009 semantics.

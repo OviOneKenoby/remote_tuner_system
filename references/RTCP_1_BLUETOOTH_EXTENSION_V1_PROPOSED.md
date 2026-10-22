@@ -1,6 +1,6 @@
 # RTCP/1 Bluetooth Extension v1 proposed profile
 
-Status: **PROPOSED / OWNER REVIEW — NOT APPROVED, NOT IMPLEMENTED**
+Status: **OWNER APPROVED / FROZEN — TUNER IMPLEMENTATION AUTHORIZED, REMOTE NOT AUTHORIZED**
 
 Short name: **BTX/1.0**. Decision candidate: **D-011**.
 
@@ -303,11 +303,11 @@ Accepted baselines are TUNER static RAM 89,832 bytes with 1,076,576 bytes applic
 
 Rollout is TUNER first. Before REMOTE installation, the new TUNER must be tested with the installed old REMOTE to prove exact legacy behavior. Pairing, PSK, Wi-Fi, NVS, partition layouts and cryptographic framing remain unchanged.
 
-## 14. Reference artifacts and approval gate
+## 14. Reference artifacts and recorded approval
 
 Executable application-codec vectors are in `tools/qualification/rtcp_bluetooth_v1`. They do not implement cryptography and contain no operational identity, metadata or secret.
 
-Owner approval must explicitly accept:
+The owner approval recorded on 2026-10-22 explicitly accepts:
 
 1. BTX/1.0 and D-011 status;
 2. the consecutive second-ID-3 opt-in mechanism;
@@ -317,4 +317,4 @@ Owner approval must explicitly accept:
 6. callback-based playback authority and source/phone generation rules;
 7. resource limits and TUNER-first rollout.
 
-Until that approval is recorded, BTX/1.0 remains PROPOSED and neither firmware implementation is assigned.
+That approval is recorded in `D011_OWNER_APPROVAL_2026-10-22.md`. The wire contract is frozen at proposal head `e5bec2d639ec6c99cd52aabaafa3e52582754105`. TUNER implementation is authorized for Phase 3; REMOTE implementation, hardware flashing, merges and releases remain unauthorized.

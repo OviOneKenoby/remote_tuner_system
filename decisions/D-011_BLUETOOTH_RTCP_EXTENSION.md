@@ -1,6 +1,6 @@
 # D-011 — RTCP/1 Bluetooth Extension v1
 
-Status: **PROPOSED / OWNER REVIEW — NOT APPROVED, NOT IMPLEMENTED**
+Status: **OWNER APPROVED / FROZEN — TUNER IMPLEMENTATION AUTHORIZED, REMOTE NOT AUTHORIZED**
 
 Date: 2026-10-22
 
@@ -12,9 +12,9 @@ Device baselines held unchanged: TUNER accepted application SHA-256 `d2c89edd1e5
 
 TUNER already owns working A2DP audio, AVRCP metadata and local Play/Pause/Previous/Next. REMOTE already owns authenticated RTCP, volume control and HOME presentation. Frozen D-009 intentionally reports Bluetooth only as context 3 for radio-state invalidation and forbids Bluetooth metadata and operation flags. Reinterpreting D-009 would make deployed REMOTE decoders reject the response and would change an owner-approved contract.
 
-## Proposed decision
+## Approved decision
 
-Adopt [BTX/1.0](../references/RTCP_1_BLUETOOTH_EXTENSION_V1_PROPOSED.md) as a separate authenticated RTCP/1 application profile after owner review.
+Adopt [BTX/1.0](../references/RTCP_1_BLUETOOTH_EXTENSION_V1_PROPOSED.md) as a separate authenticated RTCP/1 application profile.
 
 - Preserve the first ID 3/4 exchange as exact revision-2 D-009 capability behavior.
 - Use one immediate, authenticated second ID 3 request as explicit BTX opt-in.
@@ -48,12 +48,12 @@ An accepted command result means TUNER revalidated and submitted the operation l
 
 ## Compatibility and rollback
 
-Legacy and extension behavior coexist in one authenticated service. Negotiation is session-only and is cleared on reconnect, sleep teardown, restart or rollback. Application rollback on either device restores D-009 fallback without changing NVS, pairing, credentials or partitions. TUNER-first rollout is proposed, with old-REMOTE compatibility verified before REMOTE installation.
+Legacy and extension behavior coexist in one authenticated service. Negotiation is session-only and is cleared on reconnect, sleep teardown, restart or rollback. Application rollback on either device restores D-009 fallback without changing NVS, pairing, credentials or partitions. TUNER-first rollout is approved, with old-REMOTE compatibility verified before REMOTE installation.
 
 ## Resource consequence
 
 Maximum BTX plaintext is 255 bytes and authenticated size is 299 bytes, below the existing D-009 maxima. TUNER adds no dynamic allocation or transport buffer and is budgeted for at most 64 bytes of new persistent scalar state. REMOTE is budgeted for at most 320 bytes of persistent state, including the 195-byte HOME title-buffer increase.
 
-## Approval boundary
+## Approval record
 
-This record is a proposal. Firmware work is blocked until the owner explicitly approves the negotiation mechanism, messages, bounds, authority semantics and rollout order. Approval must be recorded separately and must not rewrite frozen D-009.
+The owner approved BTX/1.0 and D-011 on 2026-10-22 at reviewed proposal head `e5bec2d639ec6c99cd52aabaafa3e52582754105`, including the negotiation mechanism, IDs/layouts, bounds, authority semantics, resource budgets and TUNER-first rollout. [Approval evidence](../references/D011_OWNER_APPROVAL_2026-10-22.md). This approval authorizes the bounded TUNER Phase 3 implementation only; REMOTE implementation, hardware flashing, PR merges and releases remain separately gated. Frozen D-009 is unchanged.

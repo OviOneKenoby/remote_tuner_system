@@ -1,14 +1,14 @@
 # Project synchronization
 Updated 2026-10-22; Bluetooth proposal input `5d36f06c301cdd340fe65084dca4d636ad6dc699`.
-Common phase: authenticated Bluetooth RTCP extension contract review.
-Common gate: **D-011 BTX/1.0 PROPOSED / OWNER APPROVAL REQUIRED; IMPLEMENTATION NOT AUTHORIZED**.
+Common phase: approved Bluetooth RTCP extension; TUNER Phase 3 implementation.
+Common gate: **D-011 BTX/1.0 OWNER APPROVED / FROZEN; TUNER IMPLEMENTATION AUTHORIZED; REMOTE NOT AUTHORIZED**.
 
 ## Current state - supersedes historical status below
-### RTCP/1 Bluetooth extension proposal - 2026-10-22
+### RTCP/1 Bluetooth extension approval - 2026-10-22
 
 The source audit confirmed TUNER already owns working A2DP audio, local AVRCP commands and bounded artist/title metadata, while REMOTE already owns authenticated RTCP, volume and reusable HOME presentation. Frozen D-009 intentionally clears Bluetooth metadata and operation flags, so [BTX/1.0](references/RTCP_1_BLUETOOTH_EXTENSION_V1_PROPOSED.md) proposes a separate authenticated extension under [D-011](decisions/D-011_BLUETOOTH_RTCP_EXTENSION.md).
 
-The proposed two-query negotiation preserves the first legacy revision-2 capability response byte-for-byte. An immediate second ID 3 receives ID 4 from an old TUNER or ID 12 from a BTX-capable TUNER, avoiding unknown-message probes and preserving mixed-version D-009/volume behavior. Proposed IDs 13–15 cover bounded Bluetooth state and explicit AVRCP actions. The maximum response is 255-byte plaintext / 299-byte authenticated record. Public reference codecs pass 17/17 focused tests. No device source, firmware build, hardware, NVS, pairing, partition or release changed. Owner approval is required before either firmware task.
+The owner approved the exact two-query negotiation, IDs 12–15 and ID 8 reuse, artist/title bounds, callback authority, source/phone generation fencing, resource budgets and TUNER-first rollout at proposal head `e5bec2d639ec6c99cd52aabaafa3e52582754105`. The wire contract is frozen and recorded in [D-011 approval evidence](references/D011_OWNER_APPROVAL_2026-10-22.md). TUNER Phase 3 source implementation, focused tests, one production build and review publication are authorized. REMOTE source, hardware, NVS, pairing, partitions, PR merges and releases remain unchanged and unauthorized.
 
 ### REMOTE public baseline audit correction - 2026-10-19
 
