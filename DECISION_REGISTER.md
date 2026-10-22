@@ -97,12 +97,12 @@ All entries OPEN / UNRESOLVED. Importing/grouping them issues no new owner appro
 - CCM impact: NONE proposed; existing source, playback and media meanings remain authoritative and generation-fenced. Frozen CCM 1.1.0 is unchanged.
 - Native API impact: NONE; v1 remains UNAPPROVED / UNFROZEN / NOT IMPLEMENTED.
 - REMOTE impact and review: session-scoped negotiation, strict codecs, source/metadata/availability projection and a bounded 195-byte HOME title-buffer increase; implementation NOT AUTHORIZED.
-- TUNER impact and review: A2DP callback authority, fixed projection and main-loop AVRCP owner; existing metadata arrays and transport buffers are reused; Phase 3 implementation AUTHORIZED.
+- TUNER impact and review: A2DP callback authority, fixed projection and main-loop AVRCP owner; existing metadata arrays and transport buffers are reused; Phase 3 SOFTWARE VERIFIED / HARDWARE NOT RUN.
 - Alternatives and compatibility: revision/bit reuse, unsolicited unknown requests, mDNS authority, firmware-version inference and transport-version changes are rejected. [Compatibility matrix](reports/RTCP_BLUETOOTH_EXTENSION_COMPATIBILITY.md) preserves old/new D-009 and volume behavior.
 - Owner approval: RECORDED 2026-10-22 for negotiation, IDs/layouts, bounds, state authority, result semantics, resource budgets and TUNER-first rollout; [evidence](references/D011_OWNER_APPROVAL_2026-10-22.md).
 - Effective approved revision: BTX/1.0 at proposal head `e5bec2d639ec6c99cd52aabaafa3e52582754105`.
-- Implementation tasks/commits: [bounded plan](tasks/RTCP_BLUETOOTH_EXTENSION_IMPLEMENTATION_PLAN.md); TUNER Phase 3 ASSIGNED / IN PROGRESS; REMOTE NOT AUTHORIZED.
-- Verification: deterministic public application-codec vectors and 17 focused host tests PASS; no production build or hardware verification.
+- Implementation tasks/commits: [bounded plan](tasks/RTCP_BLUETOOTH_EXTENSION_IMPLEMENTATION_PLAN.md); TUNER implementation `bc9c148a942732c890fcba6e6b15769bc4cd9067`, documentation `1ac32909f0fe1697f0a7301cd1d3c79956b1a92f`, [PR #9](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/9); REMOTE NOT AUTHORIZED.
+- Verification: 183 focused BTX/compatibility assertions and checks PASS; pinned production build PASS; [implementation report](reports/BTX_1_0_TUNER_IMPLEMENTATION.md). Hardware NOT RUN.
 - Supersedes / superseded by: NONE; D-009 and D-010 remain separate.
 
 Product boundaries, direct LAN operation, TUNER catalog ownership, REMOTE artwork ownership and mDNS discovery direction are already recorded in the supplied canonical handoff; this table does not reopen them. Optional deferral is a future explicit release-scope decision, not silently enacted here.

@@ -1,3 +1,10 @@
+# 2026-10-22 -- BTX/1.0 TUNER SOFTWARE IMPLEMENTATION VERIFIED
+
+- Implemented owner-approved BTX/1.0 on TUNER branch `tuner/btx-1.0-implementation`, stacked on the accepted D-009 + mDNS source, without changing REMOTE or frozen D-009 semantics.
+- Focused BTX and compatibility verification passed 183 assertions/checks. Production `esp32-lwip-psram` build passed at source `bc9c148a942732c890fcba6e6b15769bc4cd9067`.
+- Candidate: 2,072,960 bytes, SHA-256 `67fbeb56082fffddb6104f5ed948395bc862262cf5bcb10602292b08cb3ad590`; ELF SHA-256 `e4807c7929941cf0a0255a24b98633342ed9a435d6da31a4973ca31e2eaace99`; static RAM 89,904 bytes; slot headroom 1,072,768 bytes.
+- TUNER [PR #9](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/9) is OPEN / UNMERGED. Hardware remains NOT RUN; REMOTE implementation remains NOT AUTHORIZED.
+
 # 2026-10-22 -- RTCP/1 BLUETOOTH EXTENSION v1 OWNER APPROVED / FROZEN
 
 - Owner approved the exact BTX/1.0 and D-011 proposal at head `e5bec2d639ec6c99cd52aabaafa3e52582754105`, including negotiation, IDs/layouts, metadata bounds, callback authority, generation fencing, resource budgets and TUNER-first rollout.

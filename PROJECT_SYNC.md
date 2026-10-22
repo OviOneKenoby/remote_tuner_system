@@ -1,7 +1,7 @@
 # Project synchronization
 Updated 2026-10-22; Bluetooth proposal input `5d36f06c301cdd340fe65084dca4d636ad6dc699`.
-Common phase: approved Bluetooth RTCP extension; TUNER Phase 3 implementation.
-Common gate: **D-011 BTX/1.0 OWNER APPROVED / FROZEN; TUNER IMPLEMENTATION AUTHORIZED; REMOTE NOT AUTHORIZED**.
+Common phase: approved Bluetooth RTCP extension; TUNER Phase 3 software verified.
+Common gate: **D-011 BTX/1.0 OWNER APPROVED / FROZEN; TUNER SOFTWARE VERIFIED / HARDWARE NOT RUN; REMOTE NOT AUTHORIZED**.
 
 ## Current state - supersedes historical status below
 ### RTCP/1 Bluetooth extension approval - 2026-10-22
@@ -9,6 +9,8 @@ Common gate: **D-011 BTX/1.0 OWNER APPROVED / FROZEN; TUNER IMPLEMENTATION AUTHO
 The source audit confirmed TUNER already owns working A2DP audio, local AVRCP commands and bounded artist/title metadata, while REMOTE already owns authenticated RTCP, volume and reusable HOME presentation. Frozen D-009 intentionally clears Bluetooth metadata and operation flags, so [BTX/1.0](references/RTCP_1_BLUETOOTH_EXTENSION_V1_PROPOSED.md) proposes a separate authenticated extension under [D-011](decisions/D-011_BLUETOOTH_RTCP_EXTENSION.md).
 
 The owner approved the exact two-query negotiation, IDs 12–15 and ID 8 reuse, artist/title bounds, callback authority, source/phone generation fencing, resource budgets and TUNER-first rollout at proposal head `e5bec2d639ec6c99cd52aabaafa3e52582754105`. The wire contract is frozen and recorded in [D-011 approval evidence](references/D011_OWNER_APPROVAL_2026-10-22.md). TUNER Phase 3 source implementation, focused tests, one production build and review publication are authorized. REMOTE source, hardware, NVS, pairing, partitions, PR merges and releases remain unchanged and unauthorized.
+
+TUNER Phase 3 is now **SOFTWARE VERIFIED / HARDWARE NOT RUN**. [Implementation evidence](reports/BTX_1_0_TUNER_IMPLEMENTATION.md) records source `bc9c148a942732c890fcba6e6b15769bc4cd9067`, 183 passing checks/assertions and the successful pinned production build. The 2,072,960-byte private candidate has SHA-256 `67fbeb56082fffddb6104f5ed948395bc862262cf5bcb10602292b08cb3ad590`, uses 89,904 bytes static RAM and leaves 1,072,768 bytes application-slot headroom. TUNER [PR #9](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/9) is OPEN / UNMERGED. No device was accessed or flashed; TUNER-first hardware acceptance and all REMOTE implementation remain separately gated.
 
 ### REMOTE public baseline audit correction - 2026-10-19
 
