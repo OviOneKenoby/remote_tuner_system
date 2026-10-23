@@ -18,6 +18,8 @@ Status: **SOFTWARE VERIFIED / READY FOR HARDWARE PREPARATION / HARDWARE ACCEPTAN
 
 REMOTE reconciliation used a normal merge of current PR #4 into PR #5. Only additive changelog history conflicted; both D-009 and BTX histories were preserved. No executable file changed in the reconciliation commit, so the passing focused tests and production build were not repeated.
 
+A-REMOTE-013 D-009 Round 5 remains **PARTIAL HARDWARE PASS**. Its verified hardware evidence remains valid as the baseline under BTX; cases previously marked untested remain untested.
+
 ## Candidates and rollback
 
 | Item | Bytes | SHA-256 | Verification |
@@ -39,6 +41,7 @@ The current running firmware identity on either device is **UNKNOWN** in this re
 - TUNER: 2,072,960-byte app, 89,904-byte static RAM, 1,072,768-byte slot headroom, 60-byte persistent BTX state.
 - REMOTE: 2,582,432-byte app, 56,652-byte static RAM, 563,296-byte slot headroom, 232/320-byte persistent growth and 192/195-byte HOME snapshot growth.
 - TUNER callback-derived A2DP audio state is contract-compliant source authority. Physical validation must confirm phone Play/Pause produces reliable authoritative transitions; if it does not, AVRCP play-status callback evaluation requires separate authorization.
+- An accepted BTX command result proves authenticated TUNER admission and local AVRCP submission only. Phone/player-specific AVRCP support may vary and must be observed with the intended phone and representative player applications; the software evidence does not claim that every phone applies every command.
 
 ## Remaining hardware acceptance
 

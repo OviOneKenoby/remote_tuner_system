@@ -31,3 +31,5 @@ Status: **READY FOR HARDWARE PREPARATION / NO HARDWARE WRITE AUTHORIZED**
 Stop before writing if device identity, flash size, partition bounds, candidate hash, rollback hash or independent storage evidence differs. Stop after any write/readback mismatch, boot failure, authentication regression, audio/network regression, unsafe resource result or unexpected reset. Do not retry, roll back, merge or release automatically.
 
 Next action: owner review and separate authorization for the TUNER read-only preflight/application-only commissioning stage. TUNER playback-state authority remains a physical acceptance item; source changes are not justified without a reproducible callback-state failure.
+
+Phone/player-specific AVRCP support is an explicit acceptance boundary: an accepted RTCP result proves TUNER submission, while authoritative callbacks and physical audio/metadata observation must prove the phone applied the command.
