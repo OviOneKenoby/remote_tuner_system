@@ -1,3 +1,9 @@
+# 2026-10-23 -- A-REMOTE-013 D-009 ROUND 5 PARTIAL HARDWARE PASS
+
+- Installed and independently read back the exact 2,578,352-byte REMOTE Round 5 application, SHA-256 `6eb44ff4137d8c11f44dc5e0fed0a7061f77b172d4a38982e5219bbd7454e278`; retained Wi-Fi, pairing, authenticated RTCP and authoritative volume passed.
+- Owner hardware PASS covers existing UI, encoder volume, bidirectional radio Play/Pause, station/combined StreamTitle presentation and invalidation, TUNER restart/reconnect, discovered-context Previous/Next withdrawal, A2DP coexistence and return to radio. Bluetooth metadata and AVRCP remain outside D-009.
+- Fixed saved-list Previous/Next/wrap, any instrumented Favorites non-mutation proof, REMOTE sleep/wake/restart and representative resource/stability checks remain pending. REMOTE PR #4 and TUNER PR #7 remain open; A-REMOTE-013 remains HARDWARE ACCEPTANCE PENDING. [Report](reports/A-REMOTE-013_D009_ROUND5_HARDWARE_VALIDATION.md).
+
 # 2026-10-19 -- A-REMOTE-013 D-009 OWNER APPROVED / FROZEN
 
 - Owner approved the exact D-009 specification reviewed at PR #20 commit `4237eadf7e641308a77ba673afadd0e39b52e5d1`; its SHA-256 is `ad6fa343c7ea6363febfffa143c6ffb62e401c19d994abcdaa7287bd0ded6c92`.

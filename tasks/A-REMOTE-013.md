@@ -1,7 +1,7 @@
 # A-REMOTE-013: Functional Controls and UI Integration
 
 - Owner: REMOTE//01 with coordinated TUNER//01 changes
-- State: PLANNING / OWNER REVIEW
+- State: D-009 ROUND 5 PARTIAL HARDWARE PASS / HARDWARE ACCEPTANCE PENDING
 - Coordination baseline: planning PR #19 merged at `aa45826492d78714ce58221ea2a832adb52ac73f`
 - TUNER baseline: v1.1.12, executable source `d112dd0bbef7d86bd22090ec75d76cad3be77677`, integration merge `4977b49756820edc149acbe1abe4d387a96aa992`
 - REMOTE installed baseline: 2,526,848-byte application, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`
@@ -9,6 +9,16 @@
 - Phase 1 scope: source audit, gap analysis, decisions, implementation sequence and hardware acceptance planning only.
 - Exclusions: firmware edits/builds/flashing, device access, CCM changes, Native API implementation, pairing/NVS/partition changes, MQTT, SmartThings and AAC/AAC+.
 - Acceptance for Phase 1: a source-backed planning package and reviewable unmerged PR. Firmware implementation requires a separate owner decision.
+
+## Current D-009 execution status - 2026-10-23
+
+The owner subsequently approved the frozen D-009 implementation on both
+devices. REMOTE PR #4 and TUNER PR #7 remain open and unmerged; REMOTE PR #4 is
+intentionally stacked on A-REMOTE-014 discovery. The exact REMOTE Round 5
+application was installed and independently read back, and the completed
+session is a [partial hardware pass](../reports/A-REMOTE-013_D009_ROUND5_HARDWARE_VALIDATION.md).
+Full A-REMOTE-013 acceptance remains pending the explicitly listed fixed-list,
+lifecycle and representative stability/resource checks.
 
 ## Verified starting point
 

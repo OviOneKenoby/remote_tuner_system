@@ -1,64 +1,67 @@
-# REMOTE//01 handoff
+﻿# REMOTE//01 handoff
 
 ## Metadata
-- Handoff ID: REMOTE-PUBLIC-BASELINE-AUDIT-CORRECTION-20261019T201708Z
-- Updated (UTC): 2026-10-19T20:17:08Z
-- Task ID: REMOTE-PUBLIC-BASELINE-AUDIT
-- Status: DOCUMENTATION SYNCHRONIZED / IMPLEMENTATION NOT STARTED
-- Prepared by: REMOTE public baseline auditor
-- Coordination input commit: `8a5124cc404f0a92258360c64e0604714d3dd74f`
+- Handoff ID: REMOTE-A-REMOTE-013-D009-ROUND5-20261023T192017Z
+- Updated (UTC): 2026-10-23T19:20:17Z
+- Task ID: A-REMOTE-013 / D-009
+- Status: IN PROGRESS
+- Prepared by: firmware validation lead
+- Coordination input commit: `5d36f06c301cdd340fe65084dca4d636ad6dc699`
 
 ## Milestone
-Reconcile the new public REMOTE repository with the accepted A-REMOTE-012 baseline, audit reachable history for sensitive data and synchronize the reviewed documentation without publishing a release or changing firmware. Achieved for the documentation scope.
+Close the REMOTE D-009 Round 5 hardware-test session, preserve verified results and identify the remaining acceptance gates. Achieved as TEST SESSION CLOSED / PARTIAL HARDWARE PASS. Overall A-REMOTE-013 acceptance is not achieved.
 
 ## Baseline
 - Device repository: `https://github.com/OviOneKenoby/REMOTE-01`
-- Branch: `main` at final documentation merge `d0a6ae556d8cbd9da5d90896b54573a45a48af69`; source-bearing parent `a06608085332255989f49b85be720a4a731cdfa1`
-- Firmware baseline commit: UNKNOWN; final build workspace was Git-less
-- Firmware version: accepted application 2,526,848 bytes, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`
-- Working tree at start: public checkout clean; active local source Git-less; coordination `main` clean at the input commit
-- Contract references: CCM 1.1.0 OWNER APPROVED / FROZEN; RTCP/1 accepted binding; D-009 OWNER APPROVED / FROZEN, implementation NOT AUTHORIZED / NOT STARTED
+- Branch: `remote/a-remote-013-d009`; PR #4 targets `remote/a-remote-014-mdns-discovery`
+- Firmware baseline commit: functional source `bfce47816a8b2b8a92f41d76c6a4bc4975d25361`; documentation result `271a6578737a5f314bb33cc1aefc2fc4986ad0d7`
+- Firmware version: private Round 5 application, 2,578,352 bytes, SHA-256 `6eb44ff4137d8c11f44dc5e0fed0a7061f77b172d4a38982e5219bbd7454e278`
+- Working tree at start: clean dedicated REMOTE D-009 worktree; coordination documentation branch created clean from `origin/main`
+- Contract references: CCM 1.1.0 OWNER APPROVED / FROZEN; D-009 OWNER APPROVED / FROZEN, specification SHA-256 `ad6fa343c7ea6363febfffa143c6ffb62e401c19d994abcdaa7287bd0ded6c92`
 
 ## Changes
-Merged the documentation-only public `README.md`/`CHANGELOG.md` correction through REMOTE PR #1 and synchronized coordination `PROJECT_SYNC.md`/`API_STATUS.md`/`CHANGELOG.md` plus this handoff. The previous latest handoff was archived unchanged. D-009 approval is recorded separately; no firmware source changed.
+Documentation only. Added the dedicated Round 5 hardware report, updated REMOTE and coordination changelogs/status, archived the previous coordination handoff and replaced the latest handoff using this template. Firmware, protocol, pairing, NVS, partitions and TUNER were unchanged during closure.
 
 ## Verification
 | Check | Command/procedure | Environment | Result | Evidence |
 | --- | --- | --- | --- | --- |
-| Public state | Fresh fetch, REST repository metadata and complete reachable commit listing | Public GitHub repository | PASS; one branch, no tags/releases, HEAD above | local audit output; public repository |
-| Source reconciliation | Hash/content comparison excluding enumerated transient/generated output; EOL-normalized second pass | Public checkout versus active local source | PASS; 1,535 exact, 107 EOL-only, zero substantive differences, public-only `.gitattributes` | local audit output |
-| Artifact identity | SHA-256 of current `.pio` output and preserved private candidate; compare accepted hardware evidence | Private local evidence | PASS; both match accepted artifact identity above | A-REMOTE-012 coordination evidence |
-| Vendor sample classification | Compare exact literals and source filename against official Waveshare `06_WIFI_STA` documentation | Official Waveshare wiki | PASS; public vendor example values | `https://www.waveshare.com/wiki/ESP32-S3-Touch-LCD-3.49` |
-| Reachable-history security scan | Four reachable commits; credential/key/token/dump/binary/path checks with values redacted | Public repository | PASS for genuine secret blockers; sample false positive superseded | local audit output |
-| Published REMOTE documentation | Exact documentation review and normal merges | Public GitHub repository | PASS | PR #1 merge `1626504d87430cf868bcce267800a2d5ed9a48c1`; PR #2 status correction merge `d0a6ae556d8cbd9da5d90896b54573a45a48af69` |
+| REMOTE application identity | Pre-write hash, one application-only write at `0x10000`, independent exact-span readback | ESP32-S3, esptool 4.11.0 | PASS; 2,578,352 bytes and exact SHA-256 | private hardware evidence; public sanitized report |
+| Rollback readiness | Hash local and separate-USB full/application/`remote_ctl` files against manifests | Owner workstation and separate USB storage | PASS | private backup manifests |
+| Boot and association | Existing status API after normal boot/reconnect | Installed Round 5 pair | PASS; Wi-Fi, pairing, RTCP and volume restored | private status capture; owner observation |
+| Existing UI and volume | Owner carousel, brightness, touch, HOME and encoder operation | Physical REMOTE/TUNER | PASS | owner statement recorded in report |
+| D-009 radio state/control | REMOTE and local TUNER Play/Pause; station and StreamTitle changes | Physical REMOTE/TUNER | PASS | owner statement recorded in report |
+| Restart lifecycle | Restart TUNER while REMOTE remains powered; inspect invalidation and recovery | Physical REMOTE/TUNER | PASS | owner statement recorded in report |
+| A2DP coexistence | Play Bluetooth audio, inspect radio-field withdrawal, return to radio | Physical pair and phone | PASS for D-009 scope | owner statement recorded in report |
+| Fixed saved-list traversal/wrap | Requires populated fixed saved list | Physical pair | NOT RUN; owner has no populated list | remaining acceptance item |
+| Sleep/wake, REMOTE restart and representative resources | Required later bounded procedures | Physical REMOTE/TUNER | NOT RUN | remaining acceptance items |
 
 ## Remaining unknowns
-Exact derivation of the accepted binary from a public source commit remains unproven because the original build workspace was Git-less and has no immutable complete build-time source manifest. A public REMOTE version/tag, reproducible release artifact, CI provenance and consolidated third-party notice remain future release-preparation work.
+Successful fixed saved-list Previous/Next and wrap, any approved forced-invalid-command Favorites non-mutation proof, REMOTE sleep/wake and D-009 resynchronization, a safe REMOTE restart, and representative MP3/A2DP/web resource/stability measurements remain unverified. The Bluetooth upper-state observation requires interpretation only if a future Bluetooth-specific contract assigns that presentation; Bluetooth metadata and AVRCP are outside D-009.
 
 ## Shared-contract impact
-- CCM 1.0.0: NO CHANGE; CCM 1.1.0 remains current and frozen
+- CCM 1.0.0: NO CHANGE; current CCM 1.1.0 remains owner-approved and frozen
 - TUNER Native API v1: NO CHANGE; remains unapproved/unimplemented
-- Other device impact: NONE; TUNER v1.1.12 and its release remain unchanged
-- Approval evidence: owner authorized audit correction/documentation publication and separately approved exact D-009 specification revision; firmware implementation remains unauthorized
+- Other device impact: TUNER D-009 PR #7 remains open and unmerged; no TUNER change was made during closure
+- Approval evidence: owner approved D-009 and this documentation-only Round 5 test-session closure
 
 ## Blockers
-NONE for documentation synchronization. Release publication still requires a separately reviewed version/artifact/provenance plan and explicit authorization.
+Full A-REMOTE-013 hardware acceptance is blocked on the remaining physical checks above. Firmware PR integration also retains the intentional A-REMOTE-014 dependency.
 
 ## PM decision required
-Review the synchronized coordination record. Separately decide the first REMOTE release version and whether the release must be rebuilt from a tagged public commit or may publish the existing hardware-validated artifact with its provenance limitation. D-009 execution remains separately gated.
+NONE for recording the partial pass. PR merge/overall milestone acceptance requires a later owner decision after remaining mandatory checks.
 
 ## Recommended next task
-Review the prepared D-009 implementation assignment. Do not begin source implementation without separate owner authorization, and do not combine it with release preparation.
+Populate a fixed saved-station list with at least two entries, then execute bounded Previous/Next, wrap and discovered-context refusal verification without changing firmware. After that, perform the existing sleep/wake resynchronization check.
 
 ## Commit
-- Firmware result commit(s): NONE; firmware unchanged
-- Device changelog: public `CHANGELOG.md`, merged by REMOTE PR #1; final README status synchronized by PR #2
-- Coordination publication: branch `docs/remote-public-baseline-sync-20261019`; review/merge recorded outside this pre-merge handoff
-- Previous handoff archive: `archive/remote/2026-10-19T201708Z_REMOTE-A-REMOTE-012-V1.1.12-PAIRED-2026-10-19T155925Z.md`
+- Firmware result commit(s): REMOTE source `bfce47816a8b2b8a92f41d76c6a4bc4975d25361`; REMOTE documentation `271a6578737a5f314bb33cc1aefc2fc4986ad0d7`; TUNER implementation reference `6a58c036e84863b2b4cf2458ce159d5bc5639466`
+- Device changelog: REMOTE `CHANGELOG.md` at documentation commit above
+- Coordination publication: branch `docs/a-remote-013-round5-hardware-closure`; final coordination hash reported in publication message
+- Previous handoff archive: `archive/remote/2026-10-23T192017Z_A-REMOTE-013_D009_PRE-ROUND5-CLOSURE.md`
 
 ## Hardware status
-- Physical device tested: NO; this task reused accepted A-REMOTE-012 evidence
-- Board / hardware configuration: Waveshare ESP32-S3-Touch-LCD-3.49B V2 PCB Rev1.1, 16 MiB flash
-- Procedure and result: NOT RUN; prohibited and unnecessary for documentation correction
-- Firmware actually flashed: unchanged accepted application identified above
-- Build-only or simulated checks: NOT RUN; no source or build input changed
+- Physical device tested: YES
+- Board / hardware configuration: REMOTE Waveshare ESP32-S3-Touch-LCD-3.49B V2 PCB Rev1.1, 16 MiB flash; paired TUNER running retained D-009 candidate
+- Procedure and result: application-only installation/readback plus owner-observed UI, radio control/metadata, TUNER restart/reconnect and A2DP coexistence; PARTIAL HARDWARE PASS
+- Firmware actually flashed: REMOTE source `bfce47816a8b2b8a92f41d76c6a4bc4975d25361`, 2,578,352-byte application SHA-256 `6eb44ff4137d8c11f44dc5e0fed0a7061f77b172d4a38982e5219bbd7454e278`
+- Build-only or simulated checks: prior Round 5 focused suites and production build remain valid; none rerun during documentation closure

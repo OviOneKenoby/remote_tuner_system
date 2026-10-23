@@ -1,9 +1,30 @@
 # Project synchronization
-Updated 2026-10-19; coordination input `8a5124cc404f0a92258360c64e0604714d3dd74f`.
-Common phase: A-REMOTE-013 D-009 implementation preparation.
-Common gate: **D-009 OWNER APPROVED / FROZEN; IMPLEMENTATION NOT AUTHORIZED**.
+Updated 2026-10-23; coordination input `5d36f06c301cdd340fe65084dca4d636ad6dc699`.
+Common phase: A-REMOTE-013 D-009 hardware acceptance.
+Common gate: **D-009 IMPLEMENTED / ROUND 5 PARTIAL HARDWARE PASS; ACCEPTANCE PENDING**.
 
 ## Current state - supersedes historical status below
+### A-REMOTE-013 D-009 Round 5 - 2026-10-23
+
+The owner-authorized REMOTE and TUNER D-009 implementations are present in
+open, unmerged firmware PRs [REMOTE #4](https://github.com/OviOneKenoby/REMOTE-01/pull/4)
+and [TUNER #7](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/7).
+REMOTE PR #4 intentionally targets the open A-REMOTE-014 discovery branch.
+
+The exact 2,578,352-byte REMOTE Round 5 application, SHA-256
+`6eb44ff4137d8c11f44dc5e0fed0a7061f77b172d4a38982e5219bbd7454e278`,
+was installed application-only and independently read back. Hardware PASS now
+covers retained Wi-Fi/pairing, authenticated RTCP, volume, existing UI, radio
+Play/Pause in both directions, station/StreamTitle presentation and lifecycle
+invalidation, TUNER restart/reconnect, A2DP coexistence and return to radio.
+Discovered-context Previous/Next withdrawal passed. Fixed saved-list traversal
+and wrap, any instrumented Favorites non-mutation proof, REMOTE sleep/wake and
+restart, and representative resource/stability acceptance remain unexecuted.
+See [the Round 5 report](reports/A-REMOTE-013_D009_ROUND5_HARDWARE_VALIDATION.md).
+
+A-REMOTE-013 remains **HARDWARE ACCEPTANCE PENDING**. Bluetooth metadata and
+AVRCP are outside D-009 and are not blockers for this milestone.
+
 ### REMOTE public baseline audit correction - 2026-10-19
 
 REMOTE public repository `OviOneKenoby/REMOTE-01` currently points `main` to final documentation merge `d0a6ae556d8cbd9da5d90896b54573a45a48af69`; source-bearing parent `a06608085332255989f49b85be720a4a731cdfa1` has zero substantive differences across its 1,642 meaningful firmware files and the active local A-REMOTE-012 source after line-ending normalization. The installed artifact remains the accepted 2,526,848-byte application with SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`. Current-source equivalence and installed-artifact identity are independently proven; exact derivation from a public source commit remains unproven because the build-time REMOTE workspace was Git-less.

@@ -9,6 +9,19 @@ Authority: D-001 through D-009 and the recorded CCM 1.1.0 and D-009 owner approv
 
 Current TUNER final baseline: v1.1.12, main/tag/integration merge `4977b49756820edc149acbe1abe4d387a96aa992`; executable source `d112dd0bbef7d86bd22090ec75d76cad3be77677`, build ID `d112dd0bbef7`, explicit `esp32-lwip-psram`. Exact application: 2,037,632 bytes, SHA-256 `6d7f2ebfa833bd09f287b8a7024071d736dfb2bf02356f889de94d7b980fdf6a`; [release](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/releases/tag/v1.1.12) and [A-REMOTE-012 report](reports/A-REMOTE-012_LOW_LATENCY_SOFTWARE.md). v1.1.11 and the initial 1.1.0 audit remain historical. CCM 1.1.0 remains frozen; no Native approval change.
 
+## A-REMOTE-013 D-009 implementation status - 2026-10-23
+
+D-009 is implemented in open REMOTE PR #4 and TUNER PR #7. The exact REMOTE
+Round 5 application was installed and independently verified; the completed
+hardware session is a [partial hardware pass](reports/A-REMOTE-013_D009_ROUND5_HARDWARE_VALIDATION.md).
+Authenticated radio Play/Pause, authoritative playback state, selected station,
+combined StreamTitle, reconnect invalidation/recovery and legacy volume passed.
+Previous/Next withdrawal in discovered context passed. Fixed saved-list
+Previous/Next/wrap, any instrumented Favorites non-mutation proof, sleep/wake,
+restart and representative stability/resources remain pending. Bluetooth
+metadata and AVRCP are outside D-009. Overall A-REMOTE-013 hardware acceptance
+is pending; neither firmware PR is merged.
+
 Current REMOTE public baseline: repository `OviOneKenoby/REMOTE-01`, `main` at final documentation merge `d0a6ae556d8cbd9da5d90896b54573a45a48af69`; source-bearing parent `a06608085332255989f49b85be720a4a731cdfa1` matches the active local A-REMOTE-012 tree after line-ending normalization. The accepted installed application remains 2,526,848 bytes, SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`; exact source-commit-to-binary derivation remains unproven because the build-time workspace was Git-less. The initial `esp_wifi_bsp` credential concern is SUPERSEDED by verification against Waveshare's official `06_WIFI_STA` sample, which publishes the exact literals. No genuine credential or pairing-secret exposure was found. No REMOTE release is published.
 
 ## A-REMOTE-013 planning status - 2026-10-19
