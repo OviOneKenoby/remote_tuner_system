@@ -1,6 +1,6 @@
 # D-011 — RTCP/1 Bluetooth Extension v1
 
-Status: **OWNER APPROVED / FROZEN — TUNER IMPLEMENTATION AUTHORIZED, REMOTE NOT AUTHORIZED**
+Status: **OWNER APPROVED / FROZEN — BOTH DEVICE IMPLEMENTATIONS SOFTWARE VERIFIED; HARDWARE ACCEPTANCE PENDING**
 
 Date: 2026-10-22
 
@@ -56,4 +56,4 @@ Maximum BTX plaintext is 255 bytes and authenticated size is 299 bytes, below th
 
 ## Approval record
 
-The owner approved BTX/1.0 and D-011 on 2026-10-22 at reviewed proposal head `e5bec2d639ec6c99cd52aabaafa3e52582754105`, including the negotiation mechanism, IDs/layouts, bounds, authority semantics, resource budgets and TUNER-first rollout. [Approval evidence](../references/D011_OWNER_APPROVAL_2026-10-22.md). This approval authorizes the bounded TUNER Phase 3 implementation only; REMOTE implementation, hardware flashing, PR merges and releases remain separately gated. Frozen D-009 is unchanged.
+The owner approved BTX/1.0 and D-011 on 2026-10-22 at reviewed proposal head `e5bec2d639ec6c99cd52aabaafa3e52582754105`, including the negotiation mechanism, IDs/layouts, bounds, authority semantics, resource budgets and TUNER-first rollout. [Approval evidence](../references/D011_OWNER_APPROVAL_2026-10-22.md). At approval time this authorized the bounded TUNER Phase 3 implementation only. Later explicit owner authorizations completed the REMOTE implementation as well. TUNER PR #9 and REMOTE PR #5 remain open and unmerged; coordinated hardware acceptance, merges and releases remain separately gated. Frozen D-009 is unchanged.

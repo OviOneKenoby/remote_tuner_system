@@ -1,12 +1,12 @@
 # Shared contract status
-Updated: 2026-10-22
+Updated: 2026-10-23
 Authority: D-001 through D-011 and the recorded CCM 1.1.0, D-009 and D-011 owner approvals; historical starting facts retained.
 
 | Contract | Version | Approval | Freeze | Implementation |
 | --- | --- | --- | --- | --- |
 | Common Control Model (CCM) | 1.1.0 | OWNER APPROVED | FROZEN | REMOTE Core/backend subsets exist; full two-device conformance NOT VERIFIED |
 | RTCP/1 D-009 radio playback/metadata profile | revision 2 | OWNER APPROVED | FROZEN | Implemented in device feature branches; integration state tracked separately |
-| RTCP/1 Bluetooth Extension | BTX/1.0 | OWNER APPROVED | FROZEN | TUNER software verified / hardware not run; REMOTE not authorized |
+| RTCP/1 Bluetooth Extension | BTX/1.0 | OWNER APPROVED | FROZEN | TUNER and REMOTE software verified; PRs open/unmerged; coordinated hardware acceptance pending |
 | TUNER Native API | v1 | UNAPPROVED | UNFROZEN | NOT IMPLEMENTED |
 
 Current TUNER final baseline: v1.1.12, main/tag/integration merge `4977b49756820edc149acbe1abe4d387a96aa992`; executable source `d112dd0bbef7d86bd22090ec75d76cad3be77677`, build ID `d112dd0bbef7`, explicit `esp32-lwip-psram`. Exact application: 2,037,632 bytes, SHA-256 `6d7f2ebfa833bd09f287b8a7024071d736dfb2bf02356f889de94d7b980fdf6a`; [release](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/releases/tag/v1.1.12) and [A-REMOTE-012 report](reports/A-REMOTE-012_LOW_LATENCY_SOFTWARE.md). v1.1.11 and the initial 1.1.0 audit remain historical. CCM 1.1.0 remains frozen; no Native approval change.
@@ -20,9 +20,9 @@ The accepted RTCP/1 implementation currently binds identity, capabilities, `volu
 The exact [D-009 playback/now-playing profile](references/RTCP_1_D009_PROPOSED.md) is **OWNER APPROVED / FROZEN** at reviewed commit `4237eadf7e641308a77ba673afadd0e39b52e5d1`, specification SHA-256 `ad6fa343c7ea6363febfffa143c6ffb62e401c19d994abcdaa7287bd0ded6c92`. It assigns capability revision 2, bits 3–7 and message IDs 9–11 while preserving IDs 1–8, the 512-byte plaintext maximum, CCM 1.1.0 and mixed-version volume operation. [Approval record](references/D009_OWNER_APPROVAL_2026-10-19.md). Implementation is NOT AUTHORIZED / NOT STARTED; D-010 and Native API v1 remain unapproved.
 ## RTCP/1 Bluetooth extension approval - 2026-10-22
 
-[BTX/1.0](references/RTCP_1_BLUETOOTH_EXTENSION_V1_PROPOSED.md) and [D-011](decisions/D-011_BLUETOOTH_RTCP_EXTENSION.md) are **OWNER APPROVED / FROZEN** at reviewed proposal head `e5bec2d639ec6c99cd52aabaafa3e52582754105`. The approved contract preserves the exact first revision-2 capability response and uses one immediate second authenticated ID 3 query to distinguish legacy ID 4 fallback from extension response ID 12. IDs 13–15 carry bounded Bluetooth state and explicit AVRCP commands; existing volume and frozen D-009 remain unchanged. TUNER Phase 3 implementation is authorized; REMOTE implementation, hardware, merges and releases remain separately gated. [Approval record](references/D011_OWNER_APPROVAL_2026-10-22.md).
+[BTX/1.0](references/RTCP_1_BLUETOOTH_EXTENSION_V1_PROPOSED.md) and [D-011](decisions/D-011_BLUETOOTH_RTCP_EXTENSION.md) are **OWNER APPROVED / FROZEN** at reviewed proposal head `e5bec2d639ec6c99cd52aabaafa3e52582754105`; the exact frozen specification is 18,318 bytes with SHA-256 `6391f46d1f789aa5468474dc6aa475324bff95cf1abca4dea716fb3016524db9`. The approved contract preserves the exact first revision-2 capability response and uses one immediate second authenticated ID 3 query to distinguish legacy ID 4 fallback from extension response ID 12. IDs 13–15 carry bounded Bluetooth state and explicit AVRCP commands; existing volume and frozen D-009 remain unchanged. [Approval record](references/D011_OWNER_APPROVAL_2026-10-22.md).
 
-TUNER Phase 3 implementation is **SOFTWARE VERIFIED / HARDWARE NOT RUN** at source `bc9c148a942732c890fcba6e6b15769bc4cd9067`; 183 focused/compatibility checks and the pinned production build passed. Candidate identity and budgets are recorded in the [implementation report](reports/BTX_1_0_TUNER_IMPLEMENTATION.md) and TUNER [PR #9](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/9). This does not authorize hardware, REMOTE implementation, a merge or a release.
+TUNER is **SOFTWARE VERIFIED / HARDWARE ACCEPTANCE PENDING** at executable source `bc9c148a942732c890fcba6e6b15769bc4cd9067`, documentation head `1ac32909f0fe1697f0a7301cd1d3c79956b1a92f`, and open [PR #9](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/9). REMOTE is **SOFTWARE VERIFIED / HARDWARE ACCEPTANCE PENDING** at executable source `5b32cbbeb554cd8a4d49094a5bd7c4797fd0b403` and reconciled open [PR #5](https://github.com/OviOneKenoby/REMOTE-01/pull/5) head `2200bc8df02262e076ecdbd3c9fd66eac4c5d3b3`, based on current D-009 PR #4 head `271a6578737a5f314bb33cc1aefc2fc4986ad0d7`. Candidate identities, compatibility, rollback and the gated commissioning sequence are recorded in the [integration reconciliation](reports/BTX_1_0_INTEGRATION_RECONCILIATION.md). No merge or hardware operation is authorized by this status update.
 
 Common phase: Phase A contract reconciliation + TUNER correctness/control-state foundation.
 

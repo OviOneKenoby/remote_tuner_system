@@ -1,8 +1,8 @@
 # RTCP/1 Bluetooth Extension v1 implementation plan
 
-Status: **PROPOSED / UNASSIGNED / IMPLEMENTATION NOT AUTHORIZED**
+Status: **SOFTWARE IMPLEMENTATION COMPLETE / HARDWARE ACCEPTANCE PENDING**
 
-Dependency: explicit owner approval of D-011 and the exact BTX/1.0 proposal.
+Dependency satisfied: D-011 and the exact BTX/1.0 proposal are owner approved and frozen. Sections 1 and 2 are completed software history; sections 3–6 remain the active hardware/compatibility gate. Current identities are recorded in the integration reconciliation report.
 
 ## 1. TUNER firmware task
 
