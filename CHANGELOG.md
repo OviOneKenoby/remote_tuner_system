@@ -1,3 +1,23 @@
+# 2026-10-22 -- BTX/1.0 TUNER SOFTWARE IMPLEMENTATION VERIFIED
+
+- Implemented owner-approved BTX/1.0 on TUNER branch `tuner/btx-1.0-implementation`, stacked on the accepted D-009 + mDNS source, without changing REMOTE or frozen D-009 semantics.
+- Focused BTX and compatibility verification passed 183 assertions/checks. Production `esp32-lwip-psram` build passed at source `bc9c148a942732c890fcba6e6b15769bc4cd9067`.
+- Candidate: 2,072,960 bytes, SHA-256 `67fbeb56082fffddb6104f5ed948395bc862262cf5bcb10602292b08cb3ad590`; ELF SHA-256 `e4807c7929941cf0a0255a24b98633342ed9a435d6da31a4973ca31e2eaace99`; static RAM 89,904 bytes; slot headroom 1,072,768 bytes.
+- TUNER [PR #9](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/9) is OPEN / UNMERGED. Hardware remains NOT RUN; REMOTE implementation remains NOT AUTHORIZED.
+
+# 2026-10-22 -- RTCP/1 BLUETOOTH EXTENSION v1 OWNER APPROVED / FROZEN
+
+- Owner approved the exact BTX/1.0 and D-011 proposal at head `e5bec2d639ec6c99cd52aabaafa3e52582754105`, including negotiation, IDs/layouts, metadata bounds, callback authority, generation fencing, resource budgets and TUNER-first rollout.
+- TUNER Phase 3 source implementation, focused tests, one production build and review publication are authorized. REMOTE implementation, hardware, merges and releases remain separately gated. Frozen D-009 is unchanged.
+
+# 2026-10-22 -- RTCP/1 BLUETOOTH EXTENSION v1 PROPOSED / OWNER REVIEW
+
+- Added the proposed BTX/1.0 authenticated application profile as D-011 without changing frozen RTCP/1 transport, CCM 1.1.0 or D-009 semantics.
+- Selected an authenticated two-query capability probe: every session first receives the exact legacy revision-2 ID 4 response; an immediate second ID 3 returns legacy ID 4 from an old TUNER or new ID 12 from a BTX-capable TUNER. Negotiation is session-scoped and mixed-version operation retains D-009 and volume.
+- Proposed IDs 12–15 for extension capability, bounded Bluetooth state and explicit AVRCP commands; generic correlated result ID 8 is retained. Maximum BTX plaintext is 255 bytes and authenticated size is 299 bytes, below existing D-009 maxima.
+- Added deterministic public codec vectors and 17 focused reference tests covering negotiation, legacy fallback, metadata/state, command/result layouts, malformed input, UTF-8 boundaries, session reset and maximum record size. All 17 passed.
+- Added the architecture decision, compatibility matrix and separately gated TUNER/REMOTE/rollout task breakdown. Status remains PROPOSED / NOT APPROVED / NOT IMPLEMENTED; no device source, build, hardware, pairing, NVS, partition or release changed.
+
 # 2026-10-19 -- A-REMOTE-013 D-009 OWNER APPROVED / FROZEN
 
 - Owner approved the exact D-009 specification reviewed at PR #20 commit `4237eadf7e641308a77ba673afadd0e39b52e5d1`; its SHA-256 is `ad6fa343c7ea6363febfffa143c6ffb62e401c19d994abcdaa7287bd0ded6c92`.
@@ -718,3 +738,9 @@ No new hardware access/write/recovery test, firmware/source/tool/NVS/remote_ctl/
 - Over approximately five minutes, REMOTE recorded 40 closes/attempts while its measured maximum `Client::poll()` interval remained 64 ms. This excludes REMOTE client-poll starvation for the measured interval. Four additional sessions completed, excluding a permanent pairing, cryptographic or framing mismatch. The observed `connect_timeout`, ready-state `response_timeout`, and `ECONNRESET` occur at distinct transport boundaries and do not establish one common cause; queued-byte evidence was unavailable, not zero.
 - Source review found no new protocol regression. TUNER accepts and services RTCP only from its application loop, uses unchanged 3 s handshake and 5 s record-idle deadlines, processes complete buffered records before expiry, and reports bounded response writes. REMOTE checks its 3 s response deadline before receive processing and correctly reports socket reset from `recv`. Existing evidence cannot identify whether TUNER listener/service availability, WLAN delivery, or another transport condition caused the failures. No source change, test, build or new firmware was justified.
 - The minimum remaining observation is one synchronized, read-only TUNER serial `x` snapshot at the start and end of a short window, paired with the retained REMOTE status fields. TUNER serial access was unavailable during this investigation; PR #18 remains open and unmerged.
+# 2026-10-23 -- D-011 / BTX 1.0 integration reconciled for hardware preparation
+
+- Verified the frozen 18,318-byte BTX/1.0 specification at approval head `e5bec2d639ec6c99cd52aabaafa3e52582754105`, SHA-256 `6391f46d1f789aa5468474dc6aa475324bff95cf1abca4dea716fb3016524db9`; no contract semantics changed.
+- Reconciled REMOTE BTX PR #5 with current D-009 PR #4 by normal merge commit `2200bc8df02262e076ecdbd3c9fd66eac4c5d3b3`, preserving the Round 5 fixes and history. The conflict was documentation-only; executable BTX source was unchanged, so existing focused tests and build evidence remain applicable.
+- Confirmed TUNER PR #9 at `1ac32909f0fe1697f0a7301cd1d3c79956b1a92f` and executable source `bc9c148a942732c890fcba6e6b15769bc4cd9067`. Confirmed private candidate/readback identities for both devices and verified D-009 rollback images plus separate-USB full/application backups.
+- Published the compatibility matrix, TUNER-first application-only commissioning sequence and exact resumable handoff. Current running device firmware identities remain UNKNOWN because no hardware access occurred. No firmware was rebuilt, flashed, merged or released.

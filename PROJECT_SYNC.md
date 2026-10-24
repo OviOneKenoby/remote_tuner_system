@@ -1,9 +1,19 @@
 # Project synchronization
-Updated 2026-10-19; coordination input `8a5124cc404f0a92258360c64e0604714d3dd74f`.
-Common phase: A-REMOTE-013 D-009 implementation preparation.
-Common gate: **D-009 OWNER APPROVED / FROZEN; IMPLEMENTATION NOT AUTHORIZED**.
+Updated 2026-10-23; Bluetooth proposal input `5d36f06c301cdd340fe65084dca4d636ad6dc699`.
+Common phase: approved Bluetooth RTCP extension; both device implementations software verified and reconciled.
+Common gate: **D-011 BTX/1.0 OWNER APPROVED / FROZEN; TUNER AND REMOTE SOFTWARE VERIFIED; HARDWARE ACCEPTANCE PENDING; PRs OPEN / UNMERGED**.
 
 ## Current state - supersedes historical status below
+### RTCP/1 Bluetooth extension approval - 2026-10-22
+
+The source audit confirmed TUNER already owns working A2DP audio, local AVRCP commands and bounded artist/title metadata, while REMOTE already owns authenticated RTCP, volume and reusable HOME presentation. Frozen D-009 intentionally clears Bluetooth metadata and operation flags, so [BTX/1.0](references/RTCP_1_BLUETOOTH_EXTENSION_V1_PROPOSED.md) proposes a separate authenticated extension under [D-011](decisions/D-011_BLUETOOTH_RTCP_EXTENSION.md).
+
+The owner approved the exact two-query negotiation, IDs 12–15 and ID 8 reuse, artist/title bounds, callback authority, source/phone generation fencing, resource budgets and TUNER-first rollout at proposal head `e5bec2d639ec6c99cd52aabaafa3e52582754105`. The 18,318-byte frozen wire contract has SHA-256 `6391f46d1f789aa5468474dc6aa475324bff95cf1abca4dea716fb3016524db9` and is recorded in [D-011 approval evidence](references/D011_OWNER_APPROVAL_2026-10-22.md). Later owner authorizations completed both bounded device implementations; those later authorizations do not authorize hardware writes or PR merges here.
+
+TUNER and REMOTE are now **SOFTWARE VERIFIED / HARDWARE ACCEPTANCE PENDING**. TUNER [PR #9](https://github.com/OviOneKenoby/ESP32-WROVER-Internet-radio/pull/9) remains open at documentation head `1ac32909f0fe1697f0a7301cd1d3c79956b1a92f` with executable source `bc9c148a942732c890fcba6e6b15769bc4cd9067`. REMOTE [PR #5](https://github.com/OviOneKenoby/REMOTE-01/pull/5) remains open at reconciled head `2200bc8df02262e076ecdbd3c9fd66eac4c5d3b3`, containing executable source `5b32cbbeb554cd8a4d49094a5bd7c4797fd0b403` on current D-009 PR #4 head `271a6578737a5f314bb33cc1aefc2fc4986ad0d7`. Exact candidates and independent readbacks are privately preserved. The current running firmware identities are UNKNOWN without hardware access. See the [integration reconciliation](reports/BTX_1_0_INTEGRATION_RECONCILIATION.md) and [resumable handoff](handoffs/BTX_1_0_LATEST.md).
+
+A-REMOTE-013 D-009 Round 5 remains **PARTIAL HARDWARE PASS**. Its verified volume, HOME, radio metadata/control, reconnection and coexistence evidence remains valid and is the REMOTE baseline under BTX. Untested D-009 cases remain unclaimed. BTX command acceptance means authenticated local admission/submission; phone/player-specific AVRCP behavior and callback-authoritative state transitions still require physical validation.
+
 ### REMOTE public baseline audit correction - 2026-10-19
 
 REMOTE public repository `OviOneKenoby/REMOTE-01` currently points `main` to final documentation merge `d0a6ae556d8cbd9da5d90896b54573a45a48af69`; source-bearing parent `a06608085332255989f49b85be720a4a731cdfa1` has zero substantive differences across its 1,642 meaningful firmware files and the active local A-REMOTE-012 source after line-ending normalization. The installed artifact remains the accepted 2,526,848-byte application with SHA-256 `b6053c04c03114a24a59f178da4eb03d4bada77faded43b6009667579c21d5da`. Current-source equivalence and installed-artifact identity are independently proven; exact derivation from a public source commit remains unproven because the build-time REMOTE workspace was Git-less.
